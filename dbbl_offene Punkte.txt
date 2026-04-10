@@ -1,0 +1,5 @@
+Die Liste mit 99999 beenden
+Es gibt liegen, da steht in er Tabelle ein Zusatz, der dann dazu
+führt, dfass beim direken Vergleich die Spiele nicht berücksichtigt
+werden (z.B. Punkteabzug).
+Beim direkten Vergleich noch nicht alle Entscheidungskrierien berücksichtigt 
