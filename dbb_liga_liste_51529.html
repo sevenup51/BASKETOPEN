@@ -1,33 +1,56 @@
-<!DOCTYPE html><html><body>
 
-    <style>
-    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
-    table {
-      border-collapse: collapse;
-      background: #ffffff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      margin-bottom: 20px;
-    }
-    th {
-      background: #2c3e50;
-      color: #ffffff;
-      padding: 6px 10px;
-      font-size: 13px;
-    }
-    td {
-      padding: 6px 10px;
-      border-bottom: 1px solid #dddddd;
-      font-size: 13px;
-    }
-    tr:nth-child(even) { background: #f2f6fa; }
-    .punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
-    .punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
-    pre { font-family: Consolas, monospace; font-size: 13px; }
-    </style>
-    
-<h1>Ligatabelle Herren ProA (Senioren; Liganr.: 10)</h1>
-<p><i>Stand: 24.04.2026 12:53 Uhr</i></p>
-<h2>Aktuelle Tabelle</h2>
+<style>
+details:target {
+    open: open;
+}
+
+body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+table {
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+}
+th {
+  background: #2c3e50;
+  color: #ffffff;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 13px;
+}
+tr:nth-child(even) { background: #f2f6fa; }
+.punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
+.punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
+pre { font-family: Consolas, monospace; font-size: 13px; }
+</style>
+
+<details>
+<summary><b>Was finde ich hier</b> <b>(ausklappbar)</b></summary>
+<div style='margin-left:15px;'>
+<p><b>Allgemein</b></p>
+<p>Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>Diese Ligen haben das Format:<br><code>https://www.basketball-bund.net/index.jsp?Action=102&liga_id={LIGA_ID}</code><br><br>Aktuell wird dies automatisiert für die BBL und für die ProA erzeugt.<br>Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).<br><br>Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br><b>BBL:   </b> <a href='https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1</a><br><b>ProA:</b> <a href='https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1</a></p>
+<p><b>Tabelle</b></p>
+<p>Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben,<br>wenn zwei oder mehr Teams punktgleich sind.<br>Hierzu werden zwei unterschiedliche Farben benutzt, um die "Punktzahl‑Gruppen" zu unterscheiden.</p>
+<p><b>Punktzahl‑Gruppen</b></p>
+<p>Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>Hier werden zuerst die Teams aufgeführt.<br>Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>Diese Tabelle wird ausgegeben.<br>Anschließend folgt der Restspielplan dieser Teams.<br>Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.</p>
+<p><b>Ergebnisse – ausklappbar</b></p>
+<p>Sämtliche bisher gespielten Ergebnisse.</p>
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+<p>Welche Spiele stehen noch an?</p>
+<p><b>Spiele pro Team – ausklappbar</b></p>
+<p>Hier eine Übersicht pro Team, welche Ergebnisse diese erzielt haben.</p>
+<p style='font-size:12px;color:#555;'>Änderungen werden ergänzt.</p>
+</div>
+</details>
+<hr>
+<h2>Herren ProA (Senioren; Liganr.: 10)</h2>
+<p><b>Tabelle (DBB) – Stand:</b> 24.04.2026 13:21 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
+<b>Python Version:</b> 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]<br>
+<b>Datenbasis:</b> https://www.basketball-bund.net/index.jsp?Action=102&liga_id={LIGA_ID}</p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -39,7 +62,6 @@
       <th>Punkte</th>
       <th>Körbe</th>
       <th>Differenz</th>
-      <th>Punkte_fmt</th>
     </tr>
   </thead>
   <tbody>
@@ -52,7 +74,6 @@
       <td>54</td>
       <td>3059 : 2638</td>
       <td>421</td>
-      <td>54</td>
     </tr>
     <tr>
       <td>2</td>
@@ -63,7 +84,6 @@
       <td>52</td>
       <td>2846 : 2506</td>
       <td>340</td>
-      <td>52</td>
     </tr>
     <tr>
       <td>3</td>
@@ -74,7 +94,6 @@
       <td>44</td>
       <td>2806 : 2545</td>
       <td>261</td>
-      <td>44</td>
     </tr>
     <tr>
       <td>4</td>
@@ -82,10 +101,9 @@
       <td>32</td>
       <td>21</td>
       <td>11</td>
-      <td>42</td>
+      <td><a href="#pg_42" class="punkte-blau">42</a></td>
       <td>2733 : 2578</td>
       <td>155</td>
-      <td><a href="#pg_42" data-pg="pg_42" class="punkte-blau">42</a></td>
     </tr>
     <tr>
       <td>5</td>
@@ -93,10 +111,9 @@
       <td>32</td>
       <td>21</td>
       <td>11</td>
-      <td>42</td>
+      <td><a href="#pg_42" class="punkte-blau">42</a></td>
       <td>2934 : 2800</td>
       <td>134</td>
-      <td><a href="#pg_42" data-pg="pg_42" class="punkte-blau">42</a></td>
     </tr>
     <tr>
       <td>6</td>
@@ -107,7 +124,6 @@
       <td>36</td>
       <td>2701 : 2616</td>
       <td>85</td>
-      <td>36</td>
     </tr>
     <tr>
       <td>7</td>
@@ -118,7 +134,6 @@
       <td>34</td>
       <td>2720 : 2574</td>
       <td>146</td>
-      <td>34</td>
     </tr>
     <tr>
       <td>8</td>
@@ -129,7 +144,6 @@
       <td>32</td>
       <td>2602 : 2702</td>
       <td>-100</td>
-      <td>32</td>
     </tr>
     <tr>
       <td>9</td>
@@ -137,10 +151,9 @@
       <td>32</td>
       <td>14</td>
       <td>18</td>
-      <td>28</td>
+      <td><a href="#pg_28" class="punkte-orange">28</a></td>
       <td>2663 : 2759</td>
       <td>-96</td>
-      <td><a href="#pg_28" data-pg="pg_28" class="punkte-orange">28</a></td>
     </tr>
     <tr>
       <td>10</td>
@@ -148,10 +161,9 @@
       <td>32</td>
       <td>14</td>
       <td>18</td>
-      <td>28</td>
+      <td><a href="#pg_28" class="punkte-orange">28</a></td>
       <td>2650 : 2632</td>
       <td>18</td>
-      <td><a href="#pg_28" data-pg="pg_28" class="punkte-orange">28</a></td>
     </tr>
     <tr>
       <td>11</td>
@@ -159,10 +171,9 @@
       <td>32</td>
       <td>14</td>
       <td>18</td>
-      <td>28</td>
+      <td><a href="#pg_28" class="punkte-orange">28</a></td>
       <td>2635 : 2734</td>
       <td>-99</td>
-      <td><a href="#pg_28" data-pg="pg_28" class="punkte-orange">28</a></td>
     </tr>
     <tr>
       <td>12</td>
@@ -170,10 +181,9 @@
       <td>32</td>
       <td>13</td>
       <td>19</td>
-      <td>26</td>
+      <td><a href="#pg_26" class="punkte-blau">26</a></td>
       <td>2759 : 2902</td>
       <td>-143</td>
-      <td><a href="#pg_26" data-pg="pg_26" class="punkte-blau">26</a></td>
     </tr>
     <tr>
       <td>13</td>
@@ -181,10 +191,9 @@
       <td>32</td>
       <td>13</td>
       <td>19</td>
-      <td>26</td>
+      <td><a href="#pg_26" class="punkte-blau">26</a></td>
       <td>2667 : 2757</td>
       <td>-90</td>
-      <td><a href="#pg_26" data-pg="pg_26" class="punkte-blau">26</a></td>
     </tr>
     <tr>
       <td>14</td>
@@ -192,10 +201,9 @@
       <td>32</td>
       <td>12</td>
       <td>20</td>
-      <td>24</td>
+      <td><a href="#pg_24" class="punkte-orange">24</a></td>
       <td>2577 : 2732</td>
       <td>-155</td>
-      <td><a href="#pg_24" data-pg="pg_24" class="punkte-orange">24</a></td>
     </tr>
     <tr>
       <td>15</td>
@@ -203,10 +211,9 @@
       <td>32</td>
       <td>12</td>
       <td>20</td>
-      <td>24</td>
+      <td><a href="#pg_24" class="punkte-orange">24</a></td>
       <td>2581 : 2792</td>
       <td>-211</td>
-      <td><a href="#pg_24" data-pg="pg_24" class="punkte-orange">24</a></td>
     </tr>
     <tr>
       <td>16</td>
@@ -217,7 +224,6 @@
       <td>22</td>
       <td>2599 : 2729</td>
       <td>-130</td>
-      <td>22</td>
     </tr>
     <tr>
       <td>17</td>
@@ -228,7 +234,6 @@
       <td>18</td>
       <td>2542 : 2756</td>
       <td>-214</td>
-      <td>18</td>
     </tr>
     <tr>
       <td>18</td>
@@ -239,7 +244,6 @@
       <td>16</td>
       <td>2393 : 2715</td>
       <td>-322</td>
-      <td>16</td>
     </tr>
   </tbody>
 </table>
@@ -479,6 +483,2931 @@ Paderborn Baskets              24  Spiele: 32
 02.05.2026 19:30    <span style="color:#ff8c00; font-weight:bold;">Tigers Tübingen</span>      vs   Eisbären Bremerhaven
 02.05.2026 19:30    PS Karlsruhe LIONS   vs   <span style="color:#ff8c00; font-weight:bold;">Paderborn Baskets</span>
 </pre>
+</details>
+<hr>
+<details>
+<summary><h2 style='display:inline;'>Ergebnisse - ausklappbar</h2></summary>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>nr</th>
+      <th>sptag</th>
+      <th>date</th>
+      <th>home</th>
+      <th>guest</th>
+      <th>hs</th>
+      <th>gs</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2003614</td>
+      <td>32</td>
+      <td>19.04.2026 16:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>SBB Baskets</td>
+      <td>70</td>
+      <td>77</td>
+      <td>70:77</td>
+    </tr>
+    <tr>
+      <td>2003607</td>
+      <td>32</td>
+      <td>18.04.2026 19:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>Artland Dragons</td>
+      <td>82</td>
+      <td>84</td>
+      <td>82:84</td>
+    </tr>
+    <tr>
+      <td>2003608</td>
+      <td>32</td>
+      <td>18.04.2026 19:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>RheinStars Köln</td>
+      <td>77</td>
+      <td>87</td>
+      <td>77:87</td>
+    </tr>
+    <tr>
+      <td>2003609</td>
+      <td>32</td>
+      <td>18.04.2026 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>Phoenix Hagen</td>
+      <td>91</td>
+      <td>95</td>
+      <td>91:95</td>
+    </tr>
+    <tr>
+      <td>2003610</td>
+      <td>32</td>
+      <td>18.04.2026 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>79</td>
+      <td>78</td>
+      <td>79:78</td>
+    </tr>
+    <tr>
+      <td>2003611</td>
+      <td>32</td>
+      <td>18.04.2026 15:30</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>90</td>
+      <td>77</td>
+      <td>90:77</td>
+    </tr>
+    <tr>
+      <td>2003612</td>
+      <td>32</td>
+      <td>18.04.2026 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>Paderborn Baskets</td>
+      <td>81</td>
+      <td>92</td>
+      <td>81:92</td>
+    </tr>
+    <tr>
+      <td>2003613</td>
+      <td>32</td>
+      <td>18.04.2026 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>86</td>
+      <td>83</td>
+      <td>86:83</td>
+    </tr>
+    <tr>
+      <td>2003615</td>
+      <td>32</td>
+      <td>18.04.2026 18:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>BG Göttingen</td>
+      <td>70</td>
+      <td>69</td>
+      <td>70:69</td>
+    </tr>
+    <tr>
+      <td>2003603</td>
+      <td>31</td>
+      <td>12.04.2026 15:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>81</td>
+      <td>73</td>
+      <td>81:73</td>
+    </tr>
+    <tr>
+      <td>2003604</td>
+      <td>31</td>
+      <td>12.04.2026 16:00</td>
+      <td>Phoenix Hagen</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>96</td>
+      <td>75</td>
+      <td>96:75</td>
+    </tr>
+    <tr>
+      <td>2003605</td>
+      <td>31</td>
+      <td>12.04.2026 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>103</td>
+      <td>94</td>
+      <td>103:94</td>
+    </tr>
+    <tr>
+      <td>2003606</td>
+      <td>31</td>
+      <td>12.04.2026 17:00</td>
+      <td>RheinStars Köln</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>67</td>
+      <td>69</td>
+      <td>67:69</td>
+    </tr>
+    <tr>
+      <td>2003599</td>
+      <td>31</td>
+      <td>11.04.2026 19:30</td>
+      <td>Artland Dragons</td>
+      <td>Tigers Tübingen</td>
+      <td>97</td>
+      <td>88</td>
+      <td>97:88</td>
+    </tr>
+    <tr>
+      <td>2003600</td>
+      <td>31</td>
+      <td>11.04.2026 19:00</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>GIESSEN 46ers</td>
+      <td>67</td>
+      <td>95</td>
+      <td>67:95</td>
+    </tr>
+    <tr>
+      <td>2003601</td>
+      <td>31</td>
+      <td>11.04.2026 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>75</td>
+      <td>87</td>
+      <td>75:87</td>
+    </tr>
+    <tr>
+      <td>2003602</td>
+      <td>31</td>
+      <td>11.04.2026 18:30</td>
+      <td>BG Göttingen</td>
+      <td>BBC Bayreuth</td>
+      <td>93</td>
+      <td>70</td>
+      <td>93:70</td>
+    </tr>
+    <tr>
+      <td>2003598</td>
+      <td>31</td>
+      <td>10.04.2026 19:30</td>
+      <td>SBB Baskets</td>
+      <td>Uni Baskets Münster</td>
+      <td>105</td>
+      <td>81</td>
+      <td>105:81</td>
+    </tr>
+    <tr>
+      <td>2003589</td>
+      <td>30</td>
+      <td>04.04.2026 20:30</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>RheinStars Köln</td>
+      <td>76</td>
+      <td>85</td>
+      <td>76:85</td>
+    </tr>
+    <tr>
+      <td>2003590</td>
+      <td>30</td>
+      <td>04.04.2026 19:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>96</td>
+      <td>97</td>
+      <td>96:97</td>
+    </tr>
+    <tr>
+      <td>2003591</td>
+      <td>30</td>
+      <td>04.04.2026 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>91</td>
+      <td>86</td>
+      <td>91:86</td>
+    </tr>
+    <tr>
+      <td>2003592</td>
+      <td>30</td>
+      <td>04.04.2026 18:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>99</td>
+      <td>58</td>
+      <td>99:58</td>
+    </tr>
+    <tr>
+      <td>2003593</td>
+      <td>30</td>
+      <td>04.04.2026 18:00</td>
+      <td>SBB Baskets</td>
+      <td>Paderborn Baskets</td>
+      <td>69</td>
+      <td>71</td>
+      <td>69:71</td>
+    </tr>
+    <tr>
+      <td>2003594</td>
+      <td>30</td>
+      <td>04.04.2026 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>Artland Dragons</td>
+      <td>77</td>
+      <td>84</td>
+      <td>77:84</td>
+    </tr>
+    <tr>
+      <td>2003595</td>
+      <td>30</td>
+      <td>04.04.2026 18:30</td>
+      <td>BG Göttingen</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>90</td>
+      <td>60</td>
+      <td>90:60</td>
+    </tr>
+    <tr>
+      <td>2003596</td>
+      <td>30</td>
+      <td>04.04.2026 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>Phoenix Hagen</td>
+      <td>116</td>
+      <td>109</td>
+      <td>116:109</td>
+    </tr>
+    <tr>
+      <td>2003597</td>
+      <td>30</td>
+      <td>04.04.2026 19:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>Tigers Tübingen</td>
+      <td>77</td>
+      <td>82</td>
+      <td>77:82</td>
+    </tr>
+    <tr>
+      <td>2003586</td>
+      <td>29</td>
+      <td>29.03.2026 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>59</td>
+      <td>75</td>
+      <td>59:75</td>
+    </tr>
+    <tr>
+      <td>2003587</td>
+      <td>29</td>
+      <td>29.03.2026 17:00</td>
+      <td>Artland Dragons</td>
+      <td>BBC Bayreuth</td>
+      <td>89</td>
+      <td>82</td>
+      <td>89:82</td>
+    </tr>
+    <tr>
+      <td>2003588</td>
+      <td>29</td>
+      <td>29.03.2026 17:00</td>
+      <td>RheinStars Köln</td>
+      <td>BG Göttingen</td>
+      <td>88</td>
+      <td>80</td>
+      <td>88:80</td>
+    </tr>
+    <tr>
+      <td>2003582</td>
+      <td>29</td>
+      <td>28.03.2026 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>105</td>
+      <td>84</td>
+      <td>105:84</td>
+    </tr>
+    <tr>
+      <td>2003583</td>
+      <td>29</td>
+      <td>28.03.2026 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>GIESSEN 46ers</td>
+      <td>82</td>
+      <td>77</td>
+      <td>82:77</td>
+    </tr>
+    <tr>
+      <td>2003584</td>
+      <td>29</td>
+      <td>28.03.2026 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>82</td>
+      <td>96</td>
+      <td>82:96</td>
+    </tr>
+    <tr>
+      <td>2003585</td>
+      <td>29</td>
+      <td>28.03.2026 19:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>89</td>
+      <td>64</td>
+      <td>89:64</td>
+    </tr>
+    <tr>
+      <td>2003580</td>
+      <td>29</td>
+      <td>27.03.2026 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>93</td>
+      <td>95</td>
+      <td>93:95</td>
+    </tr>
+    <tr>
+      <td>2003581</td>
+      <td>29</td>
+      <td>27.03.2026 19:30</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>SBB Baskets</td>
+      <td>74</td>
+      <td>92</td>
+      <td>74:92</td>
+    </tr>
+    <tr>
+      <td>2003578</td>
+      <td>28</td>
+      <td>23.03.2026 19:30</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>Paderborn Baskets</td>
+      <td>93</td>
+      <td>95</td>
+      <td>93:95</td>
+    </tr>
+    <tr>
+      <td>2003579</td>
+      <td>28</td>
+      <td>23.03.2026 19:30</td>
+      <td>RheinStars Köln</td>
+      <td>Phoenix Hagen</td>
+      <td>91</td>
+      <td>92</td>
+      <td>91:92</td>
+    </tr>
+    <tr>
+      <td>2003575</td>
+      <td>28</td>
+      <td>22.03.2026 15:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>89</td>
+      <td>93</td>
+      <td>89:93</td>
+    </tr>
+    <tr>
+      <td>2003577</td>
+      <td>28</td>
+      <td>22.03.2026 15:00</td>
+      <td>BG Göttingen</td>
+      <td>Artland Dragons</td>
+      <td>93</td>
+      <td>101</td>
+      <td>93:101</td>
+    </tr>
+    <tr>
+      <td>2003572</td>
+      <td>28</td>
+      <td>21.03.2026 18:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>75</td>
+      <td>98</td>
+      <td>75:98</td>
+    </tr>
+    <tr>
+      <td>2003573</td>
+      <td>28</td>
+      <td>21.03.2026 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>GIESSEN 46ers</td>
+      <td>89</td>
+      <td>79</td>
+      <td>89:79</td>
+    </tr>
+    <tr>
+      <td>2003574</td>
+      <td>28</td>
+      <td>21.03.2026 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>93</td>
+      <td>72</td>
+      <td>93:72</td>
+    </tr>
+    <tr>
+      <td>2003576</td>
+      <td>28</td>
+      <td>21.03.2026 18:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>Uni Baskets Münster</td>
+      <td>73</td>
+      <td>79</td>
+      <td>73:79</td>
+    </tr>
+    <tr>
+      <td>2003571</td>
+      <td>28</td>
+      <td>20.03.2026 19:30</td>
+      <td>SBB Baskets</td>
+      <td>Tigers Tübingen</td>
+      <td>82</td>
+      <td>71</td>
+      <td>82:71</td>
+    </tr>
+    <tr>
+      <td>2003562</td>
+      <td>27</td>
+      <td>15.03.2026 18:00</td>
+      <td>Uni Baskets Münster</td>
+      <td>BG Göttingen</td>
+      <td>55</td>
+      <td>100</td>
+      <td>55:100</td>
+    </tr>
+    <tr>
+      <td>2003569</td>
+      <td>27</td>
+      <td>15.03.2026 17:00</td>
+      <td>Artland Dragons</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>96</td>
+      <td>90</td>
+      <td>96:90</td>
+    </tr>
+    <tr>
+      <td>2003570</td>
+      <td>27</td>
+      <td>15.03.2026 16:00</td>
+      <td>Phoenix Hagen</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>90</td>
+      <td>77</td>
+      <td>90:77</td>
+    </tr>
+    <tr>
+      <td>2003563</td>
+      <td>27</td>
+      <td>14.03.2026 19:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>111</td>
+      <td>89</td>
+      <td>111:89</td>
+    </tr>
+    <tr>
+      <td>2003564</td>
+      <td>27</td>
+      <td>14.03.2026 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>RheinStars Köln</td>
+      <td>87</td>
+      <td>67</td>
+      <td>87:67</td>
+    </tr>
+    <tr>
+      <td>2003565</td>
+      <td>27</td>
+      <td>14.03.2026 19:00</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>82</td>
+      <td>75</td>
+      <td>82:75</td>
+    </tr>
+    <tr>
+      <td>2003567</td>
+      <td>27</td>
+      <td>14.03.2026 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>74</td>
+      <td>95</td>
+      <td>74:95</td>
+    </tr>
+    <tr>
+      <td>2003568</td>
+      <td>27</td>
+      <td>14.03.2026 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>BBC Bayreuth</td>
+      <td>72</td>
+      <td>78</td>
+      <td>72:78</td>
+    </tr>
+    <tr>
+      <td>2003566</td>
+      <td>27</td>
+      <td>13.03.2026 19:30</td>
+      <td>SBB Baskets</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>78</td>
+      <td>81</td>
+      <td>78:81</td>
+    </tr>
+    <tr>
+      <td>2003556</td>
+      <td>26</td>
+      <td>11.03.2026 19:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>76</td>
+      <td>78</td>
+      <td>76:78</td>
+    </tr>
+    <tr>
+      <td>2003554</td>
+      <td>26</td>
+      <td>09.03.2026 19:30</td>
+      <td>SBB Baskets</td>
+      <td>BBC Bayreuth</td>
+      <td>75</td>
+      <td>74</td>
+      <td>75:74</td>
+    </tr>
+    <tr>
+      <td>2003553</td>
+      <td>26</td>
+      <td>08.03.2026 16:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>Phoenix Hagen</td>
+      <td>85</td>
+      <td>91</td>
+      <td>85:91</td>
+    </tr>
+    <tr>
+      <td>2003555</td>
+      <td>26</td>
+      <td>08.03.2026 15:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>Uni Baskets Münster</td>
+      <td>110</td>
+      <td>71</td>
+      <td>110:71</td>
+    </tr>
+    <tr>
+      <td>2003557</td>
+      <td>26</td>
+      <td>08.03.2026 15:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>Tigers Tübingen</td>
+      <td>83</td>
+      <td>86</td>
+      <td>83:86</td>
+    </tr>
+    <tr>
+      <td>2003558</td>
+      <td>26</td>
+      <td>08.03.2026 18:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>89</td>
+      <td>70</td>
+      <td>89:70</td>
+    </tr>
+    <tr>
+      <td>2003559</td>
+      <td>26</td>
+      <td>08.03.2026 16:00</td>
+      <td>Paderborn Baskets</td>
+      <td>Artland Dragons</td>
+      <td>87</td>
+      <td>94</td>
+      <td>87:94</td>
+    </tr>
+    <tr>
+      <td>2003560</td>
+      <td>26</td>
+      <td>08.03.2026 15:00</td>
+      <td>BG Göttingen</td>
+      <td>GIESSEN 46ers</td>
+      <td>80</td>
+      <td>86</td>
+      <td>80:86</td>
+    </tr>
+    <tr>
+      <td>2003561</td>
+      <td>26</td>
+      <td>08.03.2026 17:00</td>
+      <td>RheinStars Köln</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>89</td>
+      <td>93</td>
+      <td>89:93</td>
+    </tr>
+    <tr>
+      <td>2003544</td>
+      <td>25</td>
+      <td>06.03.2026 20:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>Paderborn Baskets</td>
+      <td>92</td>
+      <td>59</td>
+      <td>92:59</td>
+    </tr>
+    <tr>
+      <td>2003545</td>
+      <td>25</td>
+      <td>06.03.2026 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>77</td>
+      <td>98</td>
+      <td>77:98</td>
+    </tr>
+    <tr>
+      <td>2003546</td>
+      <td>25</td>
+      <td>06.03.2026 19:30</td>
+      <td>Artland Dragons</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>95</td>
+      <td>99</td>
+      <td>95:99</td>
+    </tr>
+    <tr>
+      <td>2003547</td>
+      <td>25</td>
+      <td>06.03.2026 19:30</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>70</td>
+      <td>72</td>
+      <td>70:72</td>
+    </tr>
+    <tr>
+      <td>2003548</td>
+      <td>25</td>
+      <td>06.03.2026 19:30</td>
+      <td>Phoenix Hagen</td>
+      <td>BG Göttingen</td>
+      <td>91</td>
+      <td>80</td>
+      <td>91:80</td>
+    </tr>
+    <tr>
+      <td>2003549</td>
+      <td>25</td>
+      <td>06.03.2026 19:30</td>
+      <td>SBB Baskets</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>83</td>
+      <td>98</td>
+      <td>83:98</td>
+    </tr>
+    <tr>
+      <td>2003550</td>
+      <td>25</td>
+      <td>06.03.2026 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>75</td>
+      <td>69</td>
+      <td>75:69</td>
+    </tr>
+    <tr>
+      <td>2003551</td>
+      <td>25</td>
+      <td>06.03.2026 20:00</td>
+      <td>Uni Baskets Münster</td>
+      <td>BBC Bayreuth</td>
+      <td>67</td>
+      <td>86</td>
+      <td>67:86</td>
+    </tr>
+    <tr>
+      <td>2003552</td>
+      <td>25</td>
+      <td>06.03.2026 19:30</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>RheinStars Köln</td>
+      <td>96</td>
+      <td>113</td>
+      <td>96:113</td>
+    </tr>
+    <tr>
+      <td>2003542</td>
+      <td>24</td>
+      <td>22.02.2026 17:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>87</td>
+      <td>83</td>
+      <td>87:83</td>
+    </tr>
+    <tr>
+      <td>2003543</td>
+      <td>24</td>
+      <td>22.02.2026 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>SBB Baskets</td>
+      <td>91</td>
+      <td>82</td>
+      <td>91:82</td>
+    </tr>
+    <tr>
+      <td>2003536</td>
+      <td>24</td>
+      <td>21.02.2026 18:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>Tigers Tübingen</td>
+      <td>94</td>
+      <td>81</td>
+      <td>94:81</td>
+    </tr>
+    <tr>
+      <td>2003537</td>
+      <td>24</td>
+      <td>21.02.2026 17:30</td>
+      <td>GIESSEN 46ers</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>90</td>
+      <td>81</td>
+      <td>90:81</td>
+    </tr>
+    <tr>
+      <td>2003538</td>
+      <td>24</td>
+      <td>21.02.2026 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>RheinStars Köln</td>
+      <td>82</td>
+      <td>93</td>
+      <td>82:93</td>
+    </tr>
+    <tr>
+      <td>2003539</td>
+      <td>24</td>
+      <td>21.02.2026 18:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>Phoenix Hagen</td>
+      <td>94</td>
+      <td>79</td>
+      <td>94:79</td>
+    </tr>
+    <tr>
+      <td>2003540</td>
+      <td>24</td>
+      <td>21.02.2026 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>Artland Dragons</td>
+      <td>92</td>
+      <td>90</td>
+      <td>92:90</td>
+    </tr>
+    <tr>
+      <td>2003541</td>
+      <td>24</td>
+      <td>21.02.2026 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>BG Göttingen</td>
+      <td>87</td>
+      <td>86</td>
+      <td>87:86</td>
+    </tr>
+    <tr>
+      <td>2003523</td>
+      <td>22</td>
+      <td>20.02.2026 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>SBB Baskets</td>
+      <td>91</td>
+      <td>79</td>
+      <td>91:79</td>
+    </tr>
+    <tr>
+      <td>2003535</td>
+      <td>24</td>
+      <td>20.02.2026 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>Uni Baskets Münster</td>
+      <td>88</td>
+      <td>67</td>
+      <td>88:67</td>
+    </tr>
+    <tr>
+      <td>2003531</td>
+      <td>23</td>
+      <td>15.02.2026 17:00</td>
+      <td>Artland Dragons</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>87</td>
+      <td>94</td>
+      <td>87:94</td>
+    </tr>
+    <tr>
+      <td>2003534</td>
+      <td>23</td>
+      <td>15.02.2026 17:00</td>
+      <td>RheinStars Köln</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>76</td>
+      <td>79</td>
+      <td>76:79</td>
+    </tr>
+    <tr>
+      <td>2003527</td>
+      <td>23</td>
+      <td>14.02.2026 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>BBC Bayreuth</td>
+      <td>66</td>
+      <td>84</td>
+      <td>66:84</td>
+    </tr>
+    <tr>
+      <td>2003528</td>
+      <td>23</td>
+      <td>14.02.2026 19:00</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>Phoenix Hagen</td>
+      <td>92</td>
+      <td>102</td>
+      <td>92:102</td>
+    </tr>
+    <tr>
+      <td>2003529</td>
+      <td>23</td>
+      <td>14.02.2026 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>84</td>
+      <td>68</td>
+      <td>84:68</td>
+    </tr>
+    <tr>
+      <td>2003530</td>
+      <td>23</td>
+      <td>14.02.2026 18:30</td>
+      <td>BG Göttingen</td>
+      <td>Paderborn Baskets</td>
+      <td>105</td>
+      <td>99</td>
+      <td>105:99</td>
+    </tr>
+    <tr>
+      <td>2003532</td>
+      <td>23</td>
+      <td>14.02.2026 18:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>65</td>
+      <td>90</td>
+      <td>65:90</td>
+    </tr>
+    <tr>
+      <td>2003533</td>
+      <td>23</td>
+      <td>14.02.2026 19:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>84</td>
+      <td>80</td>
+      <td>84:80</td>
+    </tr>
+    <tr>
+      <td>2003526</td>
+      <td>23</td>
+      <td>13.02.2026 19:30</td>
+      <td>SBB Baskets</td>
+      <td>GIESSEN 46ers</td>
+      <td>88</td>
+      <td>92</td>
+      <td>88:92</td>
+    </tr>
+    <tr>
+      <td>2003524</td>
+      <td>22</td>
+      <td>11.02.2026 19:30</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>88</td>
+      <td>89</td>
+      <td>88:89</td>
+    </tr>
+    <tr>
+      <td>2003517</td>
+      <td>22</td>
+      <td>08.02.2026 15:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>Tigers Tübingen</td>
+      <td>92</td>
+      <td>69</td>
+      <td>92:69</td>
+    </tr>
+    <tr>
+      <td>2003518</td>
+      <td>22</td>
+      <td>08.02.2026 15:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>Paderborn Baskets</td>
+      <td>91</td>
+      <td>72</td>
+      <td>91:72</td>
+    </tr>
+    <tr>
+      <td>2003519</td>
+      <td>22</td>
+      <td>08.02.2026 15:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>BBC Bayreuth</td>
+      <td>89</td>
+      <td>58</td>
+      <td>89:58</td>
+    </tr>
+    <tr>
+      <td>2003520</td>
+      <td>22</td>
+      <td>08.02.2026 15:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>82</td>
+      <td>88</td>
+      <td>82:88</td>
+    </tr>
+    <tr>
+      <td>2003521</td>
+      <td>22</td>
+      <td>08.02.2026 16:00</td>
+      <td>Phoenix Hagen</td>
+      <td>Artland Dragons</td>
+      <td>96</td>
+      <td>73</td>
+      <td>96:73</td>
+    </tr>
+    <tr>
+      <td>2003522</td>
+      <td>22</td>
+      <td>08.02.2026 16:00</td>
+      <td>BG Göttingen</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>65</td>
+      <td>63</td>
+      <td>65:63</td>
+    </tr>
+    <tr>
+      <td>2003525</td>
+      <td>22</td>
+      <td>08.02.2026 17:00</td>
+      <td>RheinStars Köln</td>
+      <td>Uni Baskets Münster</td>
+      <td>86</td>
+      <td>62</td>
+      <td>86:62</td>
+    </tr>
+    <tr>
+      <td>2003508</td>
+      <td>21</td>
+      <td>06.02.2026 19:30</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>GIESSEN 46ers</td>
+      <td>83</td>
+      <td>72</td>
+      <td>83:72</td>
+    </tr>
+    <tr>
+      <td>2003509</td>
+      <td>21</td>
+      <td>06.02.2026 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>96</td>
+      <td>68</td>
+      <td>96:68</td>
+    </tr>
+    <tr>
+      <td>2003510</td>
+      <td>21</td>
+      <td>06.02.2026 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>99</td>
+      <td>79</td>
+      <td>99:79</td>
+    </tr>
+    <tr>
+      <td>2003511</td>
+      <td>21</td>
+      <td>06.02.2026 19:30</td>
+      <td>Artland Dragons</td>
+      <td>RheinStars Köln</td>
+      <td>97</td>
+      <td>85</td>
+      <td>97:85</td>
+    </tr>
+    <tr>
+      <td>2003512</td>
+      <td>21</td>
+      <td>06.02.2026 19:30</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>BG Göttingen</td>
+      <td>81</td>
+      <td>86</td>
+      <td>81:86</td>
+    </tr>
+    <tr>
+      <td>2003513</td>
+      <td>21</td>
+      <td>06.02.2026 19:30</td>
+      <td>SBB Baskets</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>87</td>
+      <td>84</td>
+      <td>87:84</td>
+    </tr>
+    <tr>
+      <td>2003514</td>
+      <td>21</td>
+      <td>06.02.2026 20:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>81</td>
+      <td>87</td>
+      <td>81:87</td>
+    </tr>
+    <tr>
+      <td>2003515</td>
+      <td>21</td>
+      <td>06.02.2026 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>Phoenix Hagen</td>
+      <td>93</td>
+      <td>99</td>
+      <td>93:99</td>
+    </tr>
+    <tr>
+      <td>2003516</td>
+      <td>21</td>
+      <td>05.02.2026 19:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>79</td>
+      <td>96</td>
+      <td>79:96</td>
+    </tr>
+    <tr>
+      <td>2003505</td>
+      <td>20</td>
+      <td>01.02.2026 15:00</td>
+      <td>BBC Bayreuth</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>84</td>
+      <td>83</td>
+      <td>84:83</td>
+    </tr>
+    <tr>
+      <td>2003506</td>
+      <td>20</td>
+      <td>01.02.2026 15:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>81</td>
+      <td>65</td>
+      <td>81:65</td>
+    </tr>
+    <tr>
+      <td>2003507</td>
+      <td>20</td>
+      <td>01.02.2026 17:00</td>
+      <td>RheinStars Köln</td>
+      <td>Paderborn Baskets</td>
+      <td>88</td>
+      <td>89</td>
+      <td>88:89</td>
+    </tr>
+    <tr>
+      <td>2003501</td>
+      <td>20</td>
+      <td>31.01.2026 19:30</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>87</td>
+      <td>77</td>
+      <td>87:77</td>
+    </tr>
+    <tr>
+      <td>2003502</td>
+      <td>20</td>
+      <td>31.01.2026 18:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>115</td>
+      <td>67</td>
+      <td>115:67</td>
+    </tr>
+    <tr>
+      <td>2003503</td>
+      <td>20</td>
+      <td>31.01.2026 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>Tigers Tübingen</td>
+      <td>94</td>
+      <td>80</td>
+      <td>94:80</td>
+    </tr>
+    <tr>
+      <td>2003504</td>
+      <td>20</td>
+      <td>31.01.2026 18:30</td>
+      <td>BG Göttingen</td>
+      <td>SBB Baskets</td>
+      <td>96</td>
+      <td>90</td>
+      <td>96:90</td>
+    </tr>
+    <tr>
+      <td>2003499</td>
+      <td>20</td>
+      <td>30.01.2026 20:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>Uni Baskets Münster</td>
+      <td>74</td>
+      <td>77</td>
+      <td>74:77</td>
+    </tr>
+    <tr>
+      <td>2003500</td>
+      <td>20</td>
+      <td>30.01.2026 19:30</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>Artland Dragons</td>
+      <td>90</td>
+      <td>75</td>
+      <td>90:75</td>
+    </tr>
+    <tr>
+      <td>2003495</td>
+      <td>19</td>
+      <td>25.01.2026 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>Phoenix Hagen</td>
+      <td>67</td>
+      <td>100</td>
+      <td>67:100</td>
+    </tr>
+    <tr>
+      <td>2003496</td>
+      <td>19</td>
+      <td>25.01.2026 16:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>BBC Bayreuth</td>
+      <td>99</td>
+      <td>65</td>
+      <td>99:65</td>
+    </tr>
+    <tr>
+      <td>2003497</td>
+      <td>19</td>
+      <td>25.01.2026 15:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>94</td>
+      <td>76</td>
+      <td>94:76</td>
+    </tr>
+    <tr>
+      <td>2003498</td>
+      <td>19</td>
+      <td>25.01.2026 18:00</td>
+      <td>Uni Baskets Münster</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>72</td>
+      <td>90</td>
+      <td>72:90</td>
+    </tr>
+    <tr>
+      <td>2003491</td>
+      <td>19</td>
+      <td>24.01.2026 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>BG Göttingen</td>
+      <td>76</td>
+      <td>93</td>
+      <td>76:93</td>
+    </tr>
+    <tr>
+      <td>2003492</td>
+      <td>19</td>
+      <td>24.01.2026 19:30</td>
+      <td>Artland Dragons</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>90</td>
+      <td>80</td>
+      <td>90:80</td>
+    </tr>
+    <tr>
+      <td>2003494</td>
+      <td>19</td>
+      <td>24.01.2026 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>75</td>
+      <td>83</td>
+      <td>75:83</td>
+    </tr>
+    <tr>
+      <td>2003490</td>
+      <td>19</td>
+      <td>23.01.2026 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>GIESSEN 46ers</td>
+      <td>66</td>
+      <td>89</td>
+      <td>66:89</td>
+    </tr>
+    <tr>
+      <td>2003493</td>
+      <td>19</td>
+      <td>23.01.2026 19:30</td>
+      <td>SBB Baskets</td>
+      <td>RheinStars Köln</td>
+      <td>89</td>
+      <td>93</td>
+      <td>89:93</td>
+    </tr>
+    <tr>
+      <td>2003489</td>
+      <td>18</td>
+      <td>18.01.2026 15:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>95</td>
+      <td>72</td>
+      <td>95:72</td>
+    </tr>
+    <tr>
+      <td>2003482</td>
+      <td>18</td>
+      <td>17.01.2026 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>Paderborn Baskets</td>
+      <td>92</td>
+      <td>103</td>
+      <td>92:103</td>
+    </tr>
+    <tr>
+      <td>2003483</td>
+      <td>18</td>
+      <td>17.01.2026 19:00</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>Tigers Tübingen</td>
+      <td>81</td>
+      <td>55</td>
+      <td>81:55</td>
+    </tr>
+    <tr>
+      <td>2003484</td>
+      <td>18</td>
+      <td>17.01.2026 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>RheinStars Köln</td>
+      <td>99</td>
+      <td>58</td>
+      <td>99:58</td>
+    </tr>
+    <tr>
+      <td>2003485</td>
+      <td>18</td>
+      <td>17.01.2026 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>SBB Baskets</td>
+      <td>95</td>
+      <td>84</td>
+      <td>95:84</td>
+    </tr>
+    <tr>
+      <td>2003486</td>
+      <td>18</td>
+      <td>17.01.2026 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>Uni Baskets Münster</td>
+      <td>82</td>
+      <td>63</td>
+      <td>82:63</td>
+    </tr>
+    <tr>
+      <td>2003487</td>
+      <td>18</td>
+      <td>17.01.2026 18:30</td>
+      <td>BG Göttingen</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>84</td>
+      <td>79</td>
+      <td>84:79</td>
+    </tr>
+    <tr>
+      <td>2003481</td>
+      <td>18</td>
+      <td>16.01.2026 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>78</td>
+      <td>71</td>
+      <td>78:71</td>
+    </tr>
+    <tr>
+      <td>2003488</td>
+      <td>18</td>
+      <td>15.01.2026 20:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>Artland Dragons</td>
+      <td>79</td>
+      <td>87</td>
+      <td>79:87</td>
+    </tr>
+    <tr>
+      <td>2003472</td>
+      <td>17</td>
+      <td>12.01.2026 19:30</td>
+      <td>SBB Baskets</td>
+      <td>BG Göttingen</td>
+      <td>82</td>
+      <td>89</td>
+      <td>82:89</td>
+    </tr>
+    <tr>
+      <td>2003473</td>
+      <td>17</td>
+      <td>11.01.2026 16:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>71</td>
+      <td>79</td>
+      <td>71:79</td>
+    </tr>
+    <tr>
+      <td>2003479</td>
+      <td>17</td>
+      <td>11.01.2026 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>GIESSEN 46ers</td>
+      <td>92</td>
+      <td>91</td>
+      <td>92:91</td>
+    </tr>
+    <tr>
+      <td>2003480</td>
+      <td>17</td>
+      <td>11.01.2026 17:00</td>
+      <td>RheinStars Köln</td>
+      <td>BBC Bayreuth</td>
+      <td>90</td>
+      <td>82</td>
+      <td>90:82</td>
+    </tr>
+    <tr>
+      <td>2003474</td>
+      <td>17</td>
+      <td>10.01.2026 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>Phoenix Hagen</td>
+      <td>78</td>
+      <td>104</td>
+      <td>78:104</td>
+    </tr>
+    <tr>
+      <td>2003475</td>
+      <td>17</td>
+      <td>10.01.2026 19:30</td>
+      <td>Artland Dragons</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>104</td>
+      <td>87</td>
+      <td>104:87</td>
+    </tr>
+    <tr>
+      <td>2003476</td>
+      <td>17</td>
+      <td>10.01.2026 18:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>89</td>
+      <td>80</td>
+      <td>89:80</td>
+    </tr>
+    <tr>
+      <td>2003477</td>
+      <td>17</td>
+      <td>10.01.2026 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>67</td>
+      <td>95</td>
+      <td>67:95</td>
+    </tr>
+    <tr>
+      <td>2003478</td>
+      <td>17</td>
+      <td>10.01.2026 19:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>75</td>
+      <td>86</td>
+      <td>75:86</td>
+    </tr>
+    <tr>
+      <td>2003469</td>
+      <td>16</td>
+      <td>04.01.2026 16:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>Paderborn Baskets</td>
+      <td>73</td>
+      <td>84</td>
+      <td>73:84</td>
+    </tr>
+    <tr>
+      <td>2003471</td>
+      <td>16</td>
+      <td>04.01.2026 17:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>Artland Dragons</td>
+      <td>82</td>
+      <td>80</td>
+      <td>82:80</td>
+    </tr>
+    <tr>
+      <td>2003464</td>
+      <td>16</td>
+      <td>03.01.2026 19:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>SBB Baskets</td>
+      <td>95</td>
+      <td>66</td>
+      <td>95:66</td>
+    </tr>
+    <tr>
+      <td>2003465</td>
+      <td>16</td>
+      <td>03.01.2026 15:30</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>Tigers Tübingen</td>
+      <td>83</td>
+      <td>75</td>
+      <td>83:75</td>
+    </tr>
+    <tr>
+      <td>2003466</td>
+      <td>16</td>
+      <td>03.01.2026 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>79</td>
+      <td>80</td>
+      <td>79:80</td>
+    </tr>
+    <tr>
+      <td>2003467</td>
+      <td>16</td>
+      <td>03.01.2026 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>BBC Bayreuth</td>
+      <td>90</td>
+      <td>99</td>
+      <td>90:99</td>
+    </tr>
+    <tr>
+      <td>2003468</td>
+      <td>16</td>
+      <td>03.01.2026 18:30</td>
+      <td>BG Göttingen</td>
+      <td>Uni Baskets Münster</td>
+      <td>81</td>
+      <td>63</td>
+      <td>81:63</td>
+    </tr>
+    <tr>
+      <td>2003470</td>
+      <td>16</td>
+      <td>03.01.2026 18:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>RheinStars Köln</td>
+      <td>92</td>
+      <td>95</td>
+      <td>92:95</td>
+    </tr>
+    <tr>
+      <td>2003463</td>
+      <td>16</td>
+      <td>02.01.2026 19:30</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>89</td>
+      <td>107</td>
+      <td>89:107</td>
+    </tr>
+    <tr>
+      <td>2003455</td>
+      <td>15</td>
+      <td>30.12.2025 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>BG Göttingen</td>
+      <td>82</td>
+      <td>70</td>
+      <td>82:70</td>
+    </tr>
+    <tr>
+      <td>2003462</td>
+      <td>15</td>
+      <td>28.12.2025 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>98</td>
+      <td>105</td>
+      <td>98:105</td>
+    </tr>
+    <tr>
+      <td>2003454</td>
+      <td>15</td>
+      <td>27.12.2025 18:00</td>
+      <td>SBB Baskets</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>99</td>
+      <td>88</td>
+      <td>99:88</td>
+    </tr>
+    <tr>
+      <td>2003456</td>
+      <td>15</td>
+      <td>27.12.2025 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>Uni Baskets Münster</td>
+      <td>83</td>
+      <td>82</td>
+      <td>83:82</td>
+    </tr>
+    <tr>
+      <td>2003457</td>
+      <td>15</td>
+      <td>27.12.2025 19:30</td>
+      <td>Artland Dragons</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>85</td>
+      <td>93</td>
+      <td>85:93</td>
+    </tr>
+    <tr>
+      <td>2003458</td>
+      <td>15</td>
+      <td>27.12.2025 16:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>Tigers Tübingen</td>
+      <td>101</td>
+      <td>86</td>
+      <td>101:86</td>
+    </tr>
+    <tr>
+      <td>2003460</td>
+      <td>15</td>
+      <td>27.12.2025 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>89</td>
+      <td>62</td>
+      <td>89:62</td>
+    </tr>
+    <tr>
+      <td>2003461</td>
+      <td>15</td>
+      <td>27.12.2025 18:00</td>
+      <td>RheinStars Köln</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>98</td>
+      <td>95</td>
+      <td>98:95</td>
+    </tr>
+    <tr>
+      <td>2003459</td>
+      <td>15</td>
+      <td>26.12.2025 18:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>GIESSEN 46ers</td>
+      <td>64</td>
+      <td>74</td>
+      <td>64:74</td>
+    </tr>
+    <tr>
+      <td>2003446</td>
+      <td>14</td>
+      <td>23.12.2025 19:30</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>76</td>
+      <td>82</td>
+      <td>76:82</td>
+    </tr>
+    <tr>
+      <td>2003447</td>
+      <td>14</td>
+      <td>23.12.2025 20:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>BG Göttingen</td>
+      <td>61</td>
+      <td>83</td>
+      <td>61:83</td>
+    </tr>
+    <tr>
+      <td>2003448</td>
+      <td>14</td>
+      <td>23.12.2025 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>Artland Dragons</td>
+      <td>97</td>
+      <td>105</td>
+      <td>97:105</td>
+    </tr>
+    <tr>
+      <td>2003449</td>
+      <td>14</td>
+      <td>23.12.2025 19:30</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>BBC Bayreuth</td>
+      <td>88</td>
+      <td>80</td>
+      <td>88:80</td>
+    </tr>
+    <tr>
+      <td>2003450</td>
+      <td>14</td>
+      <td>23.12.2025 19:30</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>Phoenix Hagen</td>
+      <td>73</td>
+      <td>82</td>
+      <td>73:82</td>
+    </tr>
+    <tr>
+      <td>2003451</td>
+      <td>14</td>
+      <td>23.12.2025 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>92</td>
+      <td>67</td>
+      <td>92:67</td>
+    </tr>
+    <tr>
+      <td>2003453</td>
+      <td>14</td>
+      <td>23.12.2025 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>RheinStars Köln</td>
+      <td>89</td>
+      <td>74</td>
+      <td>89:74</td>
+    </tr>
+    <tr>
+      <td>2003452</td>
+      <td>14</td>
+      <td>22.12.2025 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>94</td>
+      <td>88</td>
+      <td>94:88</td>
+    </tr>
+    <tr>
+      <td>2003445</td>
+      <td>14</td>
+      <td>21.12.2025 18:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>SBB Baskets</td>
+      <td>77</td>
+      <td>67</td>
+      <td>77:67</td>
+    </tr>
+    <tr>
+      <td>2003438</td>
+      <td>13</td>
+      <td>20.12.2025 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>Tigers Tübingen</td>
+      <td>72</td>
+      <td>78</td>
+      <td>72:78</td>
+    </tr>
+    <tr>
+      <td>2003439</td>
+      <td>13</td>
+      <td>20.12.2025 19:30</td>
+      <td>Artland Dragons</td>
+      <td>GIESSEN 46ers</td>
+      <td>107</td>
+      <td>100</td>
+      <td>107:100</td>
+    </tr>
+    <tr>
+      <td>2003440</td>
+      <td>13</td>
+      <td>20.12.2025 16:30</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>94</td>
+      <td>86</td>
+      <td>94:86</td>
+    </tr>
+    <tr>
+      <td>2003441</td>
+      <td>13</td>
+      <td>20.12.2025 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>Paderborn Baskets</td>
+      <td>103</td>
+      <td>63</td>
+      <td>103:63</td>
+    </tr>
+    <tr>
+      <td>2003442</td>
+      <td>13</td>
+      <td>20.12.2025 18:30</td>
+      <td>BG Göttingen</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>78</td>
+      <td>91</td>
+      <td>78:91</td>
+    </tr>
+    <tr>
+      <td>2003443</td>
+      <td>13</td>
+      <td>20.12.2025 19:30</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>88</td>
+      <td>82</td>
+      <td>88:82</td>
+    </tr>
+    <tr>
+      <td>2003444</td>
+      <td>13</td>
+      <td>20.12.2025 18:00</td>
+      <td>RheinStars Köln</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>83</td>
+      <td>81</td>
+      <td>83:81</td>
+    </tr>
+    <tr>
+      <td>2003437</td>
+      <td>13</td>
+      <td>19.12.2025 19:30</td>
+      <td>SBB Baskets</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>81</td>
+      <td>77</td>
+      <td>81:77</td>
+    </tr>
+    <tr>
+      <td>2003436</td>
+      <td>13</td>
+      <td>18.12.2025 20:00</td>
+      <td>Uni Baskets Münster</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>79</td>
+      <td>93</td>
+      <td>79:93</td>
+    </tr>
+    <tr>
+      <td>2003428</td>
+      <td>12</td>
+      <td>14.12.2025 16:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>83</td>
+      <td>95</td>
+      <td>83:95</td>
+    </tr>
+    <tr>
+      <td>2003434</td>
+      <td>12</td>
+      <td>14.12.2025 15:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>BBC Bayreuth</td>
+      <td>95</td>
+      <td>84</td>
+      <td>95:84</td>
+    </tr>
+    <tr>
+      <td>2003435</td>
+      <td>12</td>
+      <td>14.12.2025 17:00</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>Artland Dragons</td>
+      <td>92</td>
+      <td>104</td>
+      <td>92:104</td>
+    </tr>
+    <tr>
+      <td>2003429</td>
+      <td>12</td>
+      <td>13.12.2025 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>Uni Baskets Münster</td>
+      <td>71</td>
+      <td>83</td>
+      <td>71:83</td>
+    </tr>
+    <tr>
+      <td>2003430</td>
+      <td>12</td>
+      <td>13.12.2025 19:00</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>96</td>
+      <td>77</td>
+      <td>96:77</td>
+    </tr>
+    <tr>
+      <td>2003431</td>
+      <td>12</td>
+      <td>13.12.2025 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>103</td>
+      <td>81</td>
+      <td>103:81</td>
+    </tr>
+    <tr>
+      <td>2003432</td>
+      <td>12</td>
+      <td>13.12.2025 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>Phoenix Hagen</td>
+      <td>81</td>
+      <td>60</td>
+      <td>81:60</td>
+    </tr>
+    <tr>
+      <td>2003433</td>
+      <td>12</td>
+      <td>13.12.2025 18:30</td>
+      <td>BG Göttingen</td>
+      <td>RheinStars Köln</td>
+      <td>95</td>
+      <td>83</td>
+      <td>95:83</td>
+    </tr>
+    <tr>
+      <td>2003427</td>
+      <td>12</td>
+      <td>12.12.2025 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>SBB Baskets</td>
+      <td>74</td>
+      <td>87</td>
+      <td>74:87</td>
+    </tr>
+    <tr>
+      <td>2003405</td>
+      <td>9</td>
+      <td>08.12.2025 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>95</td>
+      <td>85</td>
+      <td>95:85</td>
+    </tr>
+    <tr>
+      <td>2003420</td>
+      <td>11</td>
+      <td>08.12.2025 19:30</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>BG Göttingen</td>
+      <td>67</td>
+      <td>84</td>
+      <td>67:84</td>
+    </tr>
+    <tr>
+      <td>2003425</td>
+      <td>11</td>
+      <td>07.12.2025 15:00</td>
+      <td>BBC Bayreuth</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>91</td>
+      <td>77</td>
+      <td>91:77</td>
+    </tr>
+    <tr>
+      <td>2003426</td>
+      <td>11</td>
+      <td>07.12.2025 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>101</td>
+      <td>97</td>
+      <td>101:97</td>
+    </tr>
+    <tr>
+      <td>2003419</td>
+      <td>11</td>
+      <td>06.12.2025 19:30</td>
+      <td>Artland Dragons</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>94</td>
+      <td>108</td>
+      <td>94:108</td>
+    </tr>
+    <tr>
+      <td>2003421</td>
+      <td>11</td>
+      <td>06.12.2025 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>87</td>
+      <td>84</td>
+      <td>87:84</td>
+    </tr>
+    <tr>
+      <td>2003423</td>
+      <td>11</td>
+      <td>06.12.2025 19:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>Paderborn Baskets</td>
+      <td>84</td>
+      <td>90</td>
+      <td>84:90</td>
+    </tr>
+    <tr>
+      <td>2003424</td>
+      <td>11</td>
+      <td>06.12.2025 18:00</td>
+      <td>RheinStars Köln</td>
+      <td>GIESSEN 46ers</td>
+      <td>92</td>
+      <td>76</td>
+      <td>92:76</td>
+    </tr>
+    <tr>
+      <td>2003418</td>
+      <td>11</td>
+      <td>05.12.2025 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>Tigers Tübingen</td>
+      <td>92</td>
+      <td>82</td>
+      <td>92:82</td>
+    </tr>
+    <tr>
+      <td>2003422</td>
+      <td>11</td>
+      <td>05.12.2025 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>SBB Baskets</td>
+      <td>89</td>
+      <td>76</td>
+      <td>89:76</td>
+    </tr>
+    <tr>
+      <td>2003416</td>
+      <td>10</td>
+      <td>23.11.2025 18:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>Artland Dragons</td>
+      <td>76</td>
+      <td>107</td>
+      <td>76:107</td>
+    </tr>
+    <tr>
+      <td>2003417</td>
+      <td>10</td>
+      <td>23.11.2025 15:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>BBC Bayreuth</td>
+      <td>90</td>
+      <td>89</td>
+      <td>90:89</td>
+    </tr>
+    <tr>
+      <td>2003409</td>
+      <td>10</td>
+      <td>22.11.2025 19:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>83</td>
+      <td>61</td>
+      <td>83:61</td>
+    </tr>
+    <tr>
+      <td>2003410</td>
+      <td>10</td>
+      <td>22.11.2025 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>71</td>
+      <td>86</td>
+      <td>71:86</td>
+    </tr>
+    <tr>
+      <td>2003411</td>
+      <td>10</td>
+      <td>22.11.2025 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>Uni Baskets Münster</td>
+      <td>85</td>
+      <td>69</td>
+      <td>85:69</td>
+    </tr>
+    <tr>
+      <td>2003412</td>
+      <td>10</td>
+      <td>22.11.2025 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>SBB Baskets</td>
+      <td>73</td>
+      <td>65</td>
+      <td>73:65</td>
+    </tr>
+    <tr>
+      <td>2003413</td>
+      <td>10</td>
+      <td>22.11.2025 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>78</td>
+      <td>85</td>
+      <td>78:85</td>
+    </tr>
+    <tr>
+      <td>2003414</td>
+      <td>10</td>
+      <td>22.11.2025 18:30</td>
+      <td>BG Göttingen</td>
+      <td>Phoenix Hagen</td>
+      <td>98</td>
+      <td>103</td>
+      <td>98:103</td>
+    </tr>
+    <tr>
+      <td>2003415</td>
+      <td>10</td>
+      <td>22.11.2025 18:00</td>
+      <td>RheinStars Köln</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>84</td>
+      <td>92</td>
+      <td>84:92</td>
+    </tr>
+    <tr>
+      <td>2003402</td>
+      <td>9</td>
+      <td>16.11.2025 15:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>RheinStars Köln</td>
+      <td>89</td>
+      <td>87</td>
+      <td>89:87</td>
+    </tr>
+    <tr>
+      <td>2003407</td>
+      <td>9</td>
+      <td>16.11.2025 15:00</td>
+      <td>Tigers Tübingen</td>
+      <td>Paderborn Baskets</td>
+      <td>104</td>
+      <td>85</td>
+      <td>104:85</td>
+    </tr>
+    <tr>
+      <td>2003408</td>
+      <td>9</td>
+      <td>16.11.2025 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>Artland Dragons</td>
+      <td>83</td>
+      <td>113</td>
+      <td>83:113</td>
+    </tr>
+    <tr>
+      <td>2003400</td>
+      <td>9</td>
+      <td>15.11.2025 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>BG Göttingen</td>
+      <td>77</td>
+      <td>88</td>
+      <td>77:88</td>
+    </tr>
+    <tr>
+      <td>2003401</td>
+      <td>9</td>
+      <td>15.11.2025 19:00</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>79</td>
+      <td>75</td>
+      <td>79:75</td>
+    </tr>
+    <tr>
+      <td>2003403</td>
+      <td>9</td>
+      <td>15.11.2025 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>123</td>
+      <td>81</td>
+      <td>123:81</td>
+    </tr>
+    <tr>
+      <td>2003406</td>
+      <td>9</td>
+      <td>15.11.2025 19:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>GIESSEN 46ers</td>
+      <td>62</td>
+      <td>64</td>
+      <td>62:64</td>
+    </tr>
+    <tr>
+      <td>2003404</td>
+      <td>9</td>
+      <td>14.11.2025 19:30</td>
+      <td>SBB Baskets</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>71</td>
+      <td>89</td>
+      <td>71:89</td>
+    </tr>
+    <tr>
+      <td>2003398</td>
+      <td>8</td>
+      <td>10.11.2025 19:30</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>Uni Baskets Münster</td>
+      <td>81</td>
+      <td>69</td>
+      <td>81:69</td>
+    </tr>
+    <tr>
+      <td>2003399</td>
+      <td>8</td>
+      <td>10.11.2025 19:30</td>
+      <td>RheinStars Köln</td>
+      <td>SBB Baskets</td>
+      <td>72</td>
+      <td>80</td>
+      <td>72:80</td>
+    </tr>
+    <tr>
+      <td>2003391</td>
+      <td>8</td>
+      <td>09.11.2025 15:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>97</td>
+      <td>71</td>
+      <td>97:71</td>
+    </tr>
+    <tr>
+      <td>2003392</td>
+      <td>8</td>
+      <td>09.11.2025 15:00</td>
+      <td>BBC Bayreuth</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>63</td>
+      <td>79</td>
+      <td>63:79</td>
+    </tr>
+    <tr>
+      <td>2003393</td>
+      <td>8</td>
+      <td>09.11.2025 17:00</td>
+      <td>Artland Dragons</td>
+      <td>Phoenix Hagen</td>
+      <td>110</td>
+      <td>109</td>
+      <td>110:109</td>
+    </tr>
+    <tr>
+      <td>2003394</td>
+      <td>8</td>
+      <td>09.11.2025 17:00</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>87</td>
+      <td>69</td>
+      <td>87:69</td>
+    </tr>
+    <tr>
+      <td>2003395</td>
+      <td>8</td>
+      <td>09.11.2025 17:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>Tigers Tübingen</td>
+      <td>83</td>
+      <td>62</td>
+      <td>83:62</td>
+    </tr>
+    <tr>
+      <td>2003396</td>
+      <td>8</td>
+      <td>09.11.2025 16:00</td>
+      <td>Paderborn Baskets</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>69</td>
+      <td>91</td>
+      <td>69:91</td>
+    </tr>
+    <tr>
+      <td>2003397</td>
+      <td>8</td>
+      <td>09.11.2025 15:00</td>
+      <td>BG Göttingen</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>93</td>
+      <td>74</td>
+      <td>93:74</td>
+    </tr>
+    <tr>
+      <td>2003382</td>
+      <td>7</td>
+      <td>07.11.2025 19:30</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>BG Göttingen</td>
+      <td>63</td>
+      <td>68</td>
+      <td>63:68</td>
+    </tr>
+    <tr>
+      <td>2003383</td>
+      <td>7</td>
+      <td>07.11.2025 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>GIESSEN 46ers</td>
+      <td>84</td>
+      <td>82</td>
+      <td>84:82</td>
+    </tr>
+    <tr>
+      <td>2003384</td>
+      <td>7</td>
+      <td>07.11.2025 19:30</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>Paderborn Baskets</td>
+      <td>94</td>
+      <td>92</td>
+      <td>94:92</td>
+    </tr>
+    <tr>
+      <td>2003385</td>
+      <td>7</td>
+      <td>07.11.2025 19:30</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>Artland Dragons</td>
+      <td>88</td>
+      <td>84</td>
+      <td>88:84</td>
+    </tr>
+    <tr>
+      <td>2003386</td>
+      <td>7</td>
+      <td>07.11.2025 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>83</td>
+      <td>87</td>
+      <td>83:87</td>
+    </tr>
+    <tr>
+      <td>2003387</td>
+      <td>7</td>
+      <td>07.11.2025 19:30</td>
+      <td>Phoenix Hagen</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>113</td>
+      <td>97</td>
+      <td>113:97</td>
+    </tr>
+    <tr>
+      <td>2003388</td>
+      <td>7</td>
+      <td>07.11.2025 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>SBB Baskets</td>
+      <td>104</td>
+      <td>99</td>
+      <td>104:99</td>
+    </tr>
+    <tr>
+      <td>2003389</td>
+      <td>7</td>
+      <td>07.11.2025 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>76</td>
+      <td>80</td>
+      <td>76:80</td>
+    </tr>
+    <tr>
+      <td>2003390</td>
+      <td>7</td>
+      <td>07.11.2025 20:00</td>
+      <td>Uni Baskets Münster</td>
+      <td>RheinStars Köln</td>
+      <td>78</td>
+      <td>83</td>
+      <td>78:83</td>
+    </tr>
+    <tr>
+      <td>2003378</td>
+      <td>6</td>
+      <td>02.11.2025 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>Tigers Tübingen</td>
+      <td>76</td>
+      <td>90</td>
+      <td>76:90</td>
+    </tr>
+    <tr>
+      <td>2003379</td>
+      <td>6</td>
+      <td>02.11.2025 16:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>Uni Baskets Münster</td>
+      <td>97</td>
+      <td>96</td>
+      <td>97:96</td>
+    </tr>
+    <tr>
+      <td>2003380</td>
+      <td>6</td>
+      <td>02.11.2025 15:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>59</td>
+      <td>74</td>
+      <td>59:74</td>
+    </tr>
+    <tr>
+      <td>2003381</td>
+      <td>6</td>
+      <td>02.11.2025 17:00</td>
+      <td>RheinStars Köln</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>87</td>
+      <td>74</td>
+      <td>87:74</td>
+    </tr>
+    <tr>
+      <td>2003374</td>
+      <td>6</td>
+      <td>01.11.2025 19:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>76</td>
+      <td>74</td>
+      <td>76:74</td>
+    </tr>
+    <tr>
+      <td>2003375</td>
+      <td>6</td>
+      <td>01.11.2025 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>97</td>
+      <td>82</td>
+      <td>97:82</td>
+    </tr>
+    <tr>
+      <td>2003376</td>
+      <td>6</td>
+      <td>01.11.2025 19:30</td>
+      <td>Artland Dragons</td>
+      <td>Paderborn Baskets</td>
+      <td>85</td>
+      <td>54</td>
+      <td>85:54</td>
+    </tr>
+    <tr>
+      <td>2003377</td>
+      <td>6</td>
+      <td>01.11.2025 18:30</td>
+      <td>BG Göttingen</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>100</td>
+      <td>88</td>
+      <td>100:88</td>
+    </tr>
+    <tr>
+      <td>2003373</td>
+      <td>6</td>
+      <td>31.10.2025 19:30</td>
+      <td>SBB Baskets</td>
+      <td>Phoenix Hagen</td>
+      <td>79</td>
+      <td>111</td>
+      <td>79:111</td>
+    </tr>
+    <tr>
+      <td>2003372</td>
+      <td>5</td>
+      <td>26.10.2025 17:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>87</td>
+      <td>93</td>
+      <td>87:93</td>
+    </tr>
+    <tr>
+      <td>2003364</td>
+      <td>5</td>
+      <td>25.10.2025 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>SBB Baskets</td>
+      <td>91</td>
+      <td>64</td>
+      <td>91:64</td>
+    </tr>
+    <tr>
+      <td>2003365</td>
+      <td>5</td>
+      <td>25.10.2025 19:30</td>
+      <td>Artland Dragons</td>
+      <td>BG Göttingen</td>
+      <td>83</td>
+      <td>104</td>
+      <td>83:104</td>
+    </tr>
+    <tr>
+      <td>2003366</td>
+      <td>5</td>
+      <td>25.10.2025 19:00</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>92</td>
+      <td>90</td>
+      <td>92:90</td>
+    </tr>
+    <tr>
+      <td>2003367</td>
+      <td>5</td>
+      <td>25.10.2025 18:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>100</td>
+      <td>91</td>
+      <td>100:91</td>
+    </tr>
+    <tr>
+      <td>2003368</td>
+      <td>5</td>
+      <td>25.10.2025 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>GIESSEN 46ers</td>
+      <td>106</td>
+      <td>82</td>
+      <td>106:82</td>
+    </tr>
+    <tr>
+      <td>2003369</td>
+      <td>5</td>
+      <td>25.10.2025 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>BBC Bayreuth</td>
+      <td>88</td>
+      <td>74</td>
+      <td>88:74</td>
+    </tr>
+    <tr>
+      <td>2003370</td>
+      <td>5</td>
+      <td>25.10.2025 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>RheinStars Köln</td>
+      <td>87</td>
+      <td>69</td>
+      <td>87:69</td>
+    </tr>
+    <tr>
+      <td>2003371</td>
+      <td>5</td>
+      <td>25.10.2025 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>Uni Baskets Münster</td>
+      <td>98</td>
+      <td>65</td>
+      <td>98:65</td>
+    </tr>
+    <tr>
+      <td>2003355</td>
+      <td>4</td>
+      <td>20.10.2025 19:30</td>
+      <td>SBB Baskets</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>76</td>
+      <td>105</td>
+      <td>76:105</td>
+    </tr>
+    <tr>
+      <td>2003363</td>
+      <td>4</td>
+      <td>20.10.2025 19:30</td>
+      <td>RheinStars Köln</td>
+      <td>Tigers Tübingen</td>
+      <td>59</td>
+      <td>80</td>
+      <td>59:80</td>
+    </tr>
+    <tr>
+      <td>2003356</td>
+      <td>4</td>
+      <td>18.10.2025 18:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>84</td>
+      <td>81</td>
+      <td>84:81</td>
+    </tr>
+    <tr>
+      <td>2003357</td>
+      <td>4</td>
+      <td>18.10.2025 19:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>94</td>
+      <td>74</td>
+      <td>94:74</td>
+    </tr>
+    <tr>
+      <td>2003358</td>
+      <td>4</td>
+      <td>18.10.2025 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>Artland Dragons</td>
+      <td>93</td>
+      <td>96</td>
+      <td>93:96</td>
+    </tr>
+    <tr>
+      <td>2003359</td>
+      <td>4</td>
+      <td>18.10.2025 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>Paderborn Baskets</td>
+      <td>76</td>
+      <td>73</td>
+      <td>76:73</td>
+    </tr>
+    <tr>
+      <td>2003360</td>
+      <td>4</td>
+      <td>18.10.2025 18:30</td>
+      <td>BG Göttingen</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>97</td>
+      <td>78</td>
+      <td>97:78</td>
+    </tr>
+    <tr>
+      <td>2003361</td>
+      <td>4</td>
+      <td>18.10.2025 20:00</td>
+      <td>Uni Baskets Münster</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>92</td>
+      <td>86</td>
+      <td>92:86</td>
+    </tr>
+    <tr>
+      <td>2003362</td>
+      <td>4</td>
+      <td>18.10.2025 18:30</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>Phoenix Hagen</td>
+      <td>88</td>
+      <td>119</td>
+      <td>88:119</td>
+    </tr>
+    <tr>
+      <td>2003354</td>
+      <td>3</td>
+      <td>13.10.2025 19:30</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>73</td>
+      <td>84</td>
+      <td>73:84</td>
+    </tr>
+    <tr>
+      <td>2003349</td>
+      <td>3</td>
+      <td>12.10.2025 15:00</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>BBC Bayreuth</td>
+      <td>98</td>
+      <td>74</td>
+      <td>98:74</td>
+    </tr>
+    <tr>
+      <td>2003353</td>
+      <td>3</td>
+      <td>12.10.2025 15:00</td>
+      <td>Tigers Tübingen</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>68</td>
+      <td>80</td>
+      <td>68:80</td>
+    </tr>
+    <tr>
+      <td>2003347</td>
+      <td>3</td>
+      <td>11.10.2025 19:30</td>
+      <td>Artland Dragons</td>
+      <td>SBB Baskets</td>
+      <td>85</td>
+      <td>77</td>
+      <td>85:77</td>
+    </tr>
+    <tr>
+      <td>2003348</td>
+      <td>3</td>
+      <td>11.10.2025 19:00</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>RheinStars Köln</td>
+      <td>92</td>
+      <td>67</td>
+      <td>92:67</td>
+    </tr>
+    <tr>
+      <td>2003350</td>
+      <td>3</td>
+      <td>11.10.2025 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>Uni Baskets Münster</td>
+      <td>85</td>
+      <td>64</td>
+      <td>85:64</td>
+    </tr>
+    <tr>
+      <td>2003351</td>
+      <td>3</td>
+      <td>11.10.2025 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>GIESSEN 46ers</td>
+      <td>100</td>
+      <td>93</td>
+      <td>100:93</td>
+    </tr>
+    <tr>
+      <td>2003352</td>
+      <td>3</td>
+      <td>11.10.2025 19:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>BG Göttingen</td>
+      <td>84</td>
+      <td>97</td>
+      <td>84:97</td>
+    </tr>
+    <tr>
+      <td>2003346</td>
+      <td>3</td>
+      <td>10.10.2025 20:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>76</td>
+      <td>61</td>
+      <td>76:61</td>
+    </tr>
+    <tr>
+      <td>2003345</td>
+      <td>2</td>
+      <td>06.10.2025 19:30</td>
+      <td>RheinStars Köln</td>
+      <td>Artland Dragons</td>
+      <td>72</td>
+      <td>84</td>
+      <td>72:84</td>
+    </tr>
+    <tr>
+      <td>2003343</td>
+      <td>2</td>
+      <td>05.10.2025 17:00</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>Paderborn Baskets</td>
+      <td>69</td>
+      <td>62</td>
+      <td>69:62</td>
+    </tr>
+    <tr>
+      <td>2003338</td>
+      <td>2</td>
+      <td>04.10.2025 19:00</td>
+      <td>GIESSEN 46ers</td>
+      <td>Phoenix Hagen</td>
+      <td>77</td>
+      <td>92</td>
+      <td>77:92</td>
+    </tr>
+    <tr>
+      <td>2003339</td>
+      <td>2</td>
+      <td>04.10.2025 19:00</td>
+      <td>BBC Bayreuth</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>89</td>
+      <td>107</td>
+      <td>89:107</td>
+    </tr>
+    <tr>
+      <td>2003340</td>
+      <td>2</td>
+      <td>04.10.2025 20:00</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>88</td>
+      <td>72</td>
+      <td>88:72</td>
+    </tr>
+    <tr>
+      <td>2003342</td>
+      <td>2</td>
+      <td>04.10.2025 18:30</td>
+      <td>BG Göttingen</td>
+      <td>Tigers Tübingen</td>
+      <td>83</td>
+      <td>90</td>
+      <td>83:90</td>
+    </tr>
+    <tr>
+      <td>2003344</td>
+      <td>2</td>
+      <td>04.10.2025 19:30</td>
+      <td>Uni Baskets Münster</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>79</td>
+      <td>96</td>
+      <td>79:96</td>
+    </tr>
+    <tr>
+      <td>2003337</td>
+      <td>2</td>
+      <td>03.10.2025 16:00</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>72</td>
+      <td>92</td>
+      <td>72:92</td>
+    </tr>
+    <tr>
+      <td>2003341</td>
+      <td>2</td>
+      <td>03.10.2025 19:30</td>
+      <td>SBB Baskets</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>101</td>
+      <td>72</td>
+      <td>101:72</td>
+    </tr>
+    <tr>
+      <td>2003331</td>
+      <td>1</td>
+      <td>28.09.2025 18:00</td>
+      <td>VfL SparkassenStars Bochum</td>
+      <td>HAKRO Merlins Crailsheim</td>
+      <td>84</td>
+      <td>110</td>
+      <td>84:110</td>
+    </tr>
+    <tr>
+      <td>2003335</td>
+      <td>1</td>
+      <td>28.09.2025 17:30</td>
+      <td>PS Karlsruhe LIONS</td>
+      <td>Bayer Giants Leverkusen</td>
+      <td>81</td>
+      <td>66</td>
+      <td>81:66</td>
+    </tr>
+    <tr>
+      <td>2003336</td>
+      <td>1</td>
+      <td>28.09.2025 17:00</td>
+      <td>EPG Baskets Koblenz</td>
+      <td>BG Göttingen</td>
+      <td>80</td>
+      <td>98</td>
+      <td>80:98</td>
+    </tr>
+    <tr>
+      <td>2003328</td>
+      <td>1</td>
+      <td>27.09.2025 19:00</td>
+      <td>Phoenix Hagen</td>
+      <td>RheinStars Köln</td>
+      <td>101</td>
+      <td>74</td>
+      <td>101:74</td>
+    </tr>
+    <tr>
+      <td>2003329</td>
+      <td>1</td>
+      <td>27.09.2025 19:30</td>
+      <td>Tigers Tübingen</td>
+      <td>Nürnberg Falcons BC</td>
+      <td>81</td>
+      <td>100</td>
+      <td>81:100</td>
+    </tr>
+    <tr>
+      <td>2003332</td>
+      <td>1</td>
+      <td>27.09.2025 18:30</td>
+      <td>Eisbären Bremerhaven</td>
+      <td>SBB Baskets</td>
+      <td>76</td>
+      <td>69</td>
+      <td>76:69</td>
+    </tr>
+    <tr>
+      <td>2003333</td>
+      <td>1</td>
+      <td>27.09.2025 19:00</td>
+      <td>Bozic Estriche Knights Kirchheim</td>
+      <td>GIESSEN 46ers</td>
+      <td>61</td>
+      <td>79</td>
+      <td>61:79</td>
+    </tr>
+    <tr>
+      <td>2003334</td>
+      <td>1</td>
+      <td>27.09.2025 19:30</td>
+      <td>Paderborn Baskets</td>
+      <td>BBC Bayreuth</td>
+      <td>73</td>
+      <td>94</td>
+      <td>73:94</td>
+    </tr>
+    <tr>
+      <td>2003330</td>
+      <td>1</td>
+      <td>26.09.2025 19:30</td>
+      <td>Artland Dragons</td>
+      <td>Uni Baskets Münster</td>
+      <td>69</td>
+      <td>71</td>
+      <td>69:71</td>
+    </tr>
+  </tbody>
+</table>
+</details>
+<hr>
+<details>
+<summary><h2 style='display:inline;'>Restspielplan (alle ausstehenden Spiele) - ausklappbar</h2></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th></tr>
+<tr style='background:#ffcc99;'><td>2003616</td><td>33</td><td>24.04.2026 19:30</td><td>SBB Baskets</td><td>Artland Dragons</td></tr>
+<tr><td>2003617</td><td>33</td><td>25.04.2026 18:00</td><td>Bayer Giants Leverkusen</td><td>Bozic Estriche Knights Kirchheim</td></tr>
+<tr><td>2003618</td><td>33</td><td>25.04.2026 19:00</td><td>VfL SparkassenStars Bochum</td><td>Uni Baskets Münster</td></tr>
+<tr><td>2003620</td><td>33</td><td>25.04.2026 19:00</td><td>Phoenix Hagen</td><td>HAKRO Merlins Crailsheim</td></tr>
+<tr><td>2003621</td><td>33</td><td>25.04.2026 19:30</td><td>Paderborn Baskets</td><td>Tigers Tübingen</td></tr>
+<tr><td>2003622</td><td>33</td><td>25.04.2026 18:30</td><td>BG Göttingen</td><td>PS Karlsruhe LIONS</td></tr>
+<tr><td>2003619</td><td>33</td><td>26.04.2026 15:00</td><td>Eisbären Bremerhaven</td><td>GIESSEN 46ers</td></tr>
+<tr><td>2003623</td><td>33</td><td>26.04.2026 17:00</td><td>EPG Baskets Koblenz</td><td>BBC Bayreuth</td></tr>
+<tr><td>2003624</td><td>33</td><td>26.04.2026 17:00</td><td>RheinStars Köln</td><td>Nürnberg Falcons BC</td></tr>
+<tr><td>2003625</td><td>34</td><td>02.05.2026 19:30</td><td>GIESSEN 46ers</td><td>EPG Baskets Koblenz</td></tr>
+<tr><td>2003626</td><td>34</td><td>02.05.2026 19:30</td><td>BBC Bayreuth</td><td>VfL SparkassenStars Bochum</td></tr>
+<tr><td>2003627</td><td>34</td><td>02.05.2026 19:30</td><td>Tigers Tübingen</td><td>Eisbären Bremerhaven</td></tr>
+<tr><td>2003628</td><td>34</td><td>02.05.2026 19:30</td><td>Artland Dragons</td><td>Bayer Giants Leverkusen</td></tr>
+<tr><td>2003629</td><td>34</td><td>02.05.2026 19:30</td><td>HAKRO Merlins Crailsheim</td><td>BG Göttingen</td></tr>
+<tr><td>2003630</td><td>34</td><td>02.05.2026 19:30</td><td>Nürnberg Falcons BC</td><td>SBB Baskets</td></tr>
+<tr><td>2003631</td><td>34</td><td>02.05.2026 19:30</td><td>Bozic Estriche Knights Kirchheim</td><td>RheinStars Köln</td></tr>
+<tr><td>2003632</td><td>34</td><td>02.05.2026 19:30</td><td>PS Karlsruhe LIONS</td><td>Paderborn Baskets</td></tr>
+<tr><td>2003633</td><td>34</td><td>02.05.2026 19:30</td><td>Uni Baskets Münster</td><td>Phoenix Hagen</td></tr>
+</table>
 </details>
 <hr>
 <details>
@@ -1204,24 +4133,3 @@ Paderborn Baskets              24  Spiele: 32
 </table>
 </details>
 </details>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("a[data-pg]").forEach(link => {
-    link.addEventListener("click", e => {
-      const id = link.getAttribute("data-pg");
-
-      document.querySelectorAll("details[id^='pg_']").forEach(d => {
-        d.removeAttribute("open");
-      });
-
-      const target = document.getElementById(id);
-      if (target) {
-        target.setAttribute("open", "");
-      }
-    });
-  });
-});
-</script>
-
-</body></html>
