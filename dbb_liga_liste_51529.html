@@ -1,4 +1,8 @@
 
+    details:target {
+    open: open;
+}
+
 <style>
 body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
 table {
@@ -44,7 +48,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
 </details>
 <hr>
 <h2>Herren ProA (Senioren; Liganr.: 10)</h2>
-<p><b>Tabelle (DBB) – Stand:</b> 24.04.2026 11:24 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
+<p><b>Tabelle (DBB) – Stand:</b> 24.04.2026 11:54 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
 <b>Python Version:</b> 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]<br>
 <b>Datenbasis:</b> https://www.basketball-bund.net/index.jsp?Action=102&liga_id={LIGA_ID}</p>
 <table border="1" class="dataframe">
@@ -97,7 +101,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
       <td>32</td>
       <td>21</td>
       <td>11</td>
-      <td><span class="punkte-blau">42</span></td>
+      <td><a href="#pg_42" class="punkte-blau">42</a></td>
       <td>2733 : 2578</td>
       <td>155</td>
     </tr>
@@ -107,7 +111,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
       <td>32</td>
       <td>21</td>
       <td>11</td>
-      <td><span class="punkte-blau">42</span></td>
+      <td><a href="#pg_42" class="punkte-blau">42</a></td>
       <td>2934 : 2800</td>
       <td>134</td>
     </tr>
@@ -147,7 +151,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
       <td>32</td>
       <td>14</td>
       <td>18</td>
-      <td><span class="punkte-orange">28</span></td>
+      <td><a href="#pg_28" class="punkte-orange">28</a></td>
       <td>2663 : 2759</td>
       <td>-96</td>
     </tr>
@@ -157,7 +161,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
       <td>32</td>
       <td>14</td>
       <td>18</td>
-      <td><span class="punkte-orange">28</span></td>
+      <td><a href="#pg_28" class="punkte-orange">28</a></td>
       <td>2650 : 2632</td>
       <td>18</td>
     </tr>
@@ -167,7 +171,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
       <td>32</td>
       <td>14</td>
       <td>18</td>
-      <td><span class="punkte-orange">28</span></td>
+      <td><a href="#pg_28" class="punkte-orange">28</a></td>
       <td>2635 : 2734</td>
       <td>-99</td>
     </tr>
@@ -177,7 +181,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
       <td>32</td>
       <td>13</td>
       <td>19</td>
-      <td><span class="punkte-blau">26</span></td>
+      <td><a href="#pg_26" class="punkte-blau">26</a></td>
       <td>2759 : 2902</td>
       <td>-143</td>
     </tr>
@@ -187,7 +191,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
       <td>32</td>
       <td>13</td>
       <td>19</td>
-      <td><span class="punkte-blau">26</span></td>
+      <td><a href="#pg_26" class="punkte-blau">26</a></td>
       <td>2667 : 2757</td>
       <td>-90</td>
     </tr>
@@ -197,7 +201,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
       <td>32</td>
       <td>12</td>
       <td>20</td>
-      <td><span class="punkte-orange">24</span></td>
+      <td><a href="#pg_24" class="punkte-orange">24</a></td>
       <td>2577 : 2732</td>
       <td>-155</td>
     </tr>
@@ -207,7 +211,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
       <td>32</td>
       <td>12</td>
       <td>20</td>
-      <td><span class="punkte-orange">24</span></td>
+      <td><a href="#pg_24" class="punkte-orange">24</a></td>
       <td>2581 : 2792</td>
       <td>-211</td>
     </tr>
@@ -245,7 +249,7 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
 </table>
 <hr>
 <h2>Punktzahl‑Gruppen</h2>
-<details open>
+<details id="pg_42" open>
 <summary><h3 style='display:inline;'>Teams mit 42 Punkten</h3></summary>
 <pre>
 Eisbären Bremerhaven           42  Spiele: 32
@@ -301,7 +305,7 @@ Artland Dragons                42  Spiele: 32
 02.05.2026 19:30    <span style="color:#ff8c00; font-weight:bold;">Artland Dragons</span>        vs   Bayer Giants Leverkusen
 </pre>
 </details>
-<details>
+<details id="pg_28">
 <summary><h3 style='display:inline;'>Teams mit 28 Punkten</h3></summary>
 <pre>
 VfL SparkassenStars Bochum     28  Spiele: 32
@@ -372,7 +376,7 @@ RheinStars Köln                28  Spiele: 32
 02.05.2026 19:30    Bozic Estriche Knights Kirchheim   vs   <span style="color:#ff8c00; font-weight:bold;">RheinStars Köln</span>
 </pre>
 </details>
-<details>
+<details id="pg_26">
 <summary><h3 style='display:inline;'>Teams mit 26 Punkten</h3></summary>
 <pre>
 EPG Baskets Koblenz            26  Spiele: 32
@@ -426,7 +430,7 @@ BBC Bayreuth                   26  Spiele: 32
 02.05.2026 19:30    <span style="color:#ff8c00; font-weight:bold;">BBC Bayreuth</span>          vs   VfL SparkassenStars Bochum
 </pre>
 </details>
-<details>
+<details id="pg_24">
 <summary><h3 style='display:inline;'>Teams mit 24 Punkten</h3></summary>
 <pre>
 Tigers Tübingen                24  Spiele: 32
