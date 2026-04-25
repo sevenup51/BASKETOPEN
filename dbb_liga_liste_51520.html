@@ -1,10 +1,10 @@
 
 <style>
-details:target {
-    open: open;
+body { 
+    font-family: Arial, sans-serif; 
+    background:#f4f6f9; 
+    margin:20px; 
 }
-
-body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
 
 table {
   border-collapse: collapse;
@@ -31,7 +31,17 @@ tr:nth-child(even) { background: #f2f6fa; }
 .punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
 .punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
 
-a.punkte-blau, a.punkte-orange { cursor:pointer; }
+#open_all, #close_all {
+    background:#e6f0ff;
+    border:1px solid #b5c7e0;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+#open_all:hover, #close_all:hover {
+    background:#d9e6ff;
+}
 
 pre { font-family: Consolas, monospace; font-size: 13px; }
 </style>
@@ -39,8 +49,8 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
 <details>
 <summary><b>Was finde ich hier</b> (ausklappbar)</summary>
 <div style='margin-left:15px;'>
-<p><b>Allgemein</b></p>
 
+<p><b>Allgemein</b></p>
 <p>
 Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
 Diese Ligen haben das Format:<br>
@@ -50,27 +60,24 @@ Aktuell wird dies automatisiert für die BBL und für die ProA erzeugt.<br>
 Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).<br><br>
 
 Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
-<b>BBL:</b> <a href='https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1' target='_blank'>
+<b>BBL:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1" target="_blank">
 https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1</a><br>
-<b>ProA:</b> <a href='https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1' target='_blank'>
+<b>ProA:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1" target="_blank">
 https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1</a><br><br>
 
-Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten<br>
-ist aufgeklappt. Alle anderen muss man händisch aufklappen.<br>
+Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.
 </p>
 
 <p><b>Tabelle</b></p>
-
 <p>
-Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben,<br>
-wenn zwei oder mehr Teams punktgleich sind.<br>
+Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
 Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
 Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
-und eine geöffnete Punktzahl-Gruppe schließt.<br>
+und eine geöffnete Punktzahl-Gruppe schließt.
 </p>
 
 <p><b>Punktzahl‑Gruppen</b></p>
-
 <p>
 Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
 Hier werden zuerst die Teams aufgeführt.<br>
@@ -80,14 +87,12 @@ Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.
 </p>
 
 <p><b>Ergebnisse – ausklappbar</b></p>
-
 <p>
 Sämtliche bisher gespielten Ergebnisse.<br>
 Aktuellste Ergebnisse stehen oben.
 </p>
 
 <p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
-
 <p>
 Nach Restspielplan<br>
 Welche Spiele stehen noch an?<br>
@@ -95,7 +100,6 @@ Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.
 </p>
 
 <p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
-
 <p>
 Es werden dann alle Vereine angezeigt.<br>
 Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.
@@ -108,9 +112,7 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 <button id='close_all'>Alles schließen</button>
 </div>
 <h2>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</h2>
-<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 13:19 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
-<b>Python Version:</b> 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]<br>
-<b>Datenbasis:</b> https://www.basketball-bund.net/index.jsp?Action=102&liga_id=51520</p>
+<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 13:54 Uhr</p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -315,11 +317,11 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 Fitness First Würzburg Baskets 34  Spiele: 30
 ratiopharm ulm                 34  Spiele: 31
 </pre>
-<p><b>Die bisher gegeneinander gespielten Spiele der Teams mit 34 Punkten.</b></p>
+<p><b>Direkte Duelle:</b></p>
 <pre>
 29.12.2025 18:30     ratiopharm ulm                 66:61   Fitness First Würzburg Baskets
 </pre>
-<p><b>Der direkte Vergleich der Teams mit 34 Punkten.</b></p>
+<p><b>Direkter Vergleich:</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -356,14 +358,14 @@ ratiopharm ulm                 34  Spiele: 31
     </tr>
   </tbody>
 </table>
-<p><b>Restspielplan der Teams mit 34 Punkten.</b></p>
+<p><b>Restspiele:</b></p>
 <pre>
-25.04.2026 18:30    <span style="color:#ff8c00; font-weight:bold;">ratiopharm ulm</span>                   vs   Veolia Towers Hamburg
-26.04.2026 16:30    SYNTAINICS MBC                   vs   <span style="color:#ff8c00; font-weight:bold;">Fitness First Würzburg Baskets</span>
 02.05.2026 18:30    <span style="color:#ff8c00; font-weight:bold;">Fitness First Würzburg Baskets</span>   vs   <span style="color:#ff8c00; font-weight:bold;">ratiopharm ulm</span>
 07.05.2026 20:00    Veolia Towers Hamburg            vs   <span style="color:#ff8c00; font-weight:bold;">Fitness First Würzburg Baskets</span>
 10.05.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">Fitness First Würzburg Baskets</span>   vs   MHP RIESEN Ludwigsburg
 10.05.2026 16:30    SKYLINERS                        vs   <span style="color:#ff8c00; font-weight:bold;">ratiopharm ulm</span>
+25.04.2026 18:30    <span style="color:#ff8c00; font-weight:bold;">ratiopharm ulm</span>                   vs   Veolia Towers Hamburg
+26.04.2026 16:30    SYNTAINICS MBC                   vs   <span style="color:#ff8c00; font-weight:bold;">Fitness First Würzburg Baskets</span>
 </pre>
 </details>
 <details id="pg_32" class="liga-block">
@@ -372,12 +374,12 @@ ratiopharm ulm                 34  Spiele: 31
 VET-CONCEPT Gladiators Trier   32  Spiele: 30
 MHP RIESEN Ludwigsburg         32  Spiele: 30
 </pre>
-<p><b>Die bisher gegeneinander gespielten Spiele der Teams mit 32 Punkten.</b></p>
+<p><b>Direkte Duelle:</b></p>
 <pre>
 06.12.2025 20:00     MHP RIESEN Ludwigsburg         80:86   VET-CONCEPT Gladiators Trier
 06.04.2026 15:00     VET-CONCEPT Gladiators Trier   92:76   MHP RIESEN Ludwigsburg
 </pre>
-<p><b>Der direkte Vergleich der Teams mit 32 Punkten.</b></p>
+<p><b>Direkter Vergleich:</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -414,16 +416,16 @@ MHP RIESEN Ludwigsburg         32  Spiele: 30
     </tr>
   </tbody>
 </table>
-<p><b>Restspielplan der Teams mit 32 Punkten.</b></p>
+<p><b>Restspiele:</b></p>
 <pre>
-25.04.2026 20:00    Science City Jena                vs   <span style="color:#ff8c00; font-weight:bold;">VET-CONCEPT Gladiators Trier</span>
-25.04.2026 18:30    <span style="color:#ff8c00; font-weight:bold;">MHP RIESEN Ludwigsburg</span>           vs   ROSTOCK SEAWOLVES
 02.05.2026 20:00    <span style="color:#ff8c00; font-weight:bold;">VET-CONCEPT Gladiators Trier</span>     vs   EWE Baskets Oldenburg
 02.05.2026 20:00    Basketball Löwen Braunschweig    vs   <span style="color:#ff8c00; font-weight:bold;">MHP RIESEN Ludwigsburg</span>
 07.05.2026 18:30    <span style="color:#ff8c00; font-weight:bold;">MHP RIESEN Ludwigsburg</span>           vs   FC Bayern München Basketball
 08.05.2026 20:00    Telekom Baskets Bonn             vs   <span style="color:#ff8c00; font-weight:bold;">VET-CONCEPT Gladiators Trier</span>
 10.05.2026 16:30    Fitness First Würzburg Baskets   vs   <span style="color:#ff8c00; font-weight:bold;">MHP RIESEN Ludwigsburg</span>
 10.05.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">VET-CONCEPT Gladiators Trier</span>     vs   SYNTAINICS MBC
+25.04.2026 18:30    <span style="color:#ff8c00; font-weight:bold;">MHP RIESEN Ludwigsburg</span>           vs   ROSTOCK SEAWOLVES
+25.04.2026 20:00    Science City Jena                vs   <span style="color:#ff8c00; font-weight:bold;">VET-CONCEPT Gladiators Trier</span>
 </pre>
 </details>
 <details id="pg_28" class="liga-block">
@@ -432,12 +434,12 @@ MHP RIESEN Ludwigsburg         32  Spiele: 30
 ROSTOCK SEAWOLVES              28  Spiele: 29
 NINERS Chemnitz                28  Spiele: 30
 </pre>
-<p><b>Die bisher gegeneinander gespielten Spiele der Teams mit 28 Punkten.</b></p>
+<p><b>Direkte Duelle:</b></p>
 <pre>
 20.12.2025 20:00     NINERS Chemnitz                97:92   ROSTOCK SEAWOLVES
 15.03.2026 16:30     ROSTOCK SEAWOLVES              73:78   NINERS Chemnitz
 </pre>
-<p><b>Der direkte Vergleich der Teams mit 28 Punkten.</b></p>
+<p><b>Direkter Vergleich:</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -474,17 +476,17 @@ NINERS Chemnitz                28  Spiele: 30
     </tr>
   </tbody>
 </table>
-<p><b>Restspielplan der Teams mit 28 Punkten.</b></p>
+<p><b>Restspiele:</b></p>
 <pre>
-25.04.2026 18:30    MHP RIESEN Ludwigsburg          vs   <span style="color:#ff8c00; font-weight:bold;">ROSTOCK SEAWOLVES</span>
-27.04.2026 20:00    FC Bayern München Basketball    vs   <span style="color:#ff8c00; font-weight:bold;">ROSTOCK SEAWOLVES</span>
-27.04.2026 20:00    <span style="color:#ff8c00; font-weight:bold;">NINERS Chemnitz</span>                 vs   BMA365 Bamberg Baskets
 02.05.2026 18:30    <span style="color:#ff8c00; font-weight:bold;">ROSTOCK SEAWOLVES</span>               vs   Science City Jena
 03.05.2026 15:00    ALBA BERLIN                     vs   <span style="color:#ff8c00; font-weight:bold;">NINERS Chemnitz</span>
 07.05.2026 18:30    <span style="color:#ff8c00; font-weight:bold;">NINERS Chemnitz</span>                 vs   SKYLINERS
 08.05.2026 18:30    RASTA Vechta                    vs   <span style="color:#ff8c00; font-weight:bold;">ROSTOCK SEAWOLVES</span>
 10.05.2026 16:30    Basketball Löwen Braunschweig   vs   <span style="color:#ff8c00; font-weight:bold;">NINERS Chemnitz</span>
 10.05.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">ROSTOCK SEAWOLVES</span>               vs   Veolia Towers Hamburg
+25.04.2026 18:30    MHP RIESEN Ludwigsburg          vs   <span style="color:#ff8c00; font-weight:bold;">ROSTOCK SEAWOLVES</span>
+27.04.2026 20:00    FC Bayern München Basketball    vs   <span style="color:#ff8c00; font-weight:bold;">ROSTOCK SEAWOLVES</span>
+27.04.2026 20:00    <span style="color:#ff8c00; font-weight:bold;">NINERS Chemnitz</span>                 vs   BMA365 Bamberg Baskets
 </pre>
 </details>
 <details id="pg_26" class="liga-block">
@@ -493,12 +495,12 @@ NINERS Chemnitz                28  Spiele: 30
 EWE Baskets Oldenburg          26  Spiele: 30
 Veolia Towers Hamburg          26  Spiele: 30
 </pre>
-<p><b>Die bisher gegeneinander gespielten Spiele der Teams mit 26 Punkten.</b></p>
+<p><b>Direkte Duelle:</b></p>
 <pre>
 27.12.2025 16:30     Veolia Towers Hamburg          69:94   EWE Baskets Oldenburg
 01.04.2026 20:00     EWE Baskets Oldenburg          77:96   Veolia Towers Hamburg
 </pre>
-<p><b>Der direkte Vergleich der Teams mit 26 Punkten.</b></p>
+<p><b>Direkter Vergleich:</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -535,16 +537,16 @@ Veolia Towers Hamburg          26  Spiele: 30
     </tr>
   </tbody>
 </table>
-<p><b>Restspielplan der Teams mit 26 Punkten.</b></p>
+<p><b>Restspiele:</b></p>
 <pre>
-25.04.2026 18:30    ratiopharm ulm                 vs   <span style="color:#ff8c00; font-weight:bold;">Veolia Towers Hamburg</span>
-25.04.2026 20:00    <span style="color:#ff8c00; font-weight:bold;">EWE Baskets Oldenburg</span>          vs   MLP Academics Heidelberg
 02.05.2026 20:00    VET-CONCEPT Gladiators Trier   vs   <span style="color:#ff8c00; font-weight:bold;">EWE Baskets Oldenburg</span>
 03.05.2026 18:00    BMA365 Bamberg Baskets         vs   <span style="color:#ff8c00; font-weight:bold;">Veolia Towers Hamburg</span>
 07.05.2026 20:00    <span style="color:#ff8c00; font-weight:bold;">Veolia Towers Hamburg</span>          vs   Fitness First Würzburg Baskets
 08.05.2026 20:00    <span style="color:#ff8c00; font-weight:bold;">EWE Baskets Oldenburg</span>          vs   Basketball Löwen Braunschweig
 10.05.2026 16:30    ROSTOCK SEAWOLVES              vs   <span style="color:#ff8c00; font-weight:bold;">Veolia Towers Hamburg</span>
 10.05.2026 16:30    FC Bayern München Basketball   vs   <span style="color:#ff8c00; font-weight:bold;">EWE Baskets Oldenburg</span>
+25.04.2026 18:30    ratiopharm ulm                 vs   <span style="color:#ff8c00; font-weight:bold;">Veolia Towers Hamburg</span>
+25.04.2026 20:00    <span style="color:#ff8c00; font-weight:bold;">EWE Baskets Oldenburg</span>          vs   MLP Academics Heidelberg
 </pre>
 </details>
 <details id="pg_24" class="liga-block">
@@ -553,12 +555,12 @@ Veolia Towers Hamburg          26  Spiele: 30
 SKYLINERS                      24  Spiele: 30
 SYNTAINICS MBC                 24  Spiele: 30
 </pre>
-<p><b>Die bisher gegeneinander gespielten Spiele der Teams mit 24 Punkten.</b></p>
+<p><b>Direkte Duelle:</b></p>
 <pre>
 26.10.2025 15:00     SKYLINERS                      93:97   SYNTAINICS MBC
 06.03.2026 18:30     SYNTAINICS MBC                 83:96   SKYLINERS
 </pre>
-<p><b>Der direkte Vergleich der Teams mit 24 Punkten.</b></p>
+<p><b>Direkter Vergleich:</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -595,16 +597,16 @@ SYNTAINICS MBC                 24  Spiele: 30
     </tr>
   </tbody>
 </table>
-<p><b>Restspielplan der Teams mit 24 Punkten.</b></p>
+<p><b>Restspiele:</b></p>
 <pre>
-26.04.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">SYNTAINICS MBC</span>                 vs   Fitness First Würzburg Baskets
-26.04.2026 18:00    <span style="color:#ff8c00; font-weight:bold;">SKYLINERS</span>                      vs   ALBA BERLIN
 01.05.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">SKYLINERS</span>                      vs   Telekom Baskets Bonn
 04.05.2026 20:00    MLP Academics Heidelberg       vs   <span style="color:#ff8c00; font-weight:bold;">SYNTAINICS MBC</span>
 07.05.2026 18:30    NINERS Chemnitz                vs   <span style="color:#ff8c00; font-weight:bold;">SKYLINERS</span>
 08.05.2026 18:30    <span style="color:#ff8c00; font-weight:bold;">SYNTAINICS MBC</span>                 vs   BMA365 Bamberg Baskets
 10.05.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">SKYLINERS</span>                      vs   ratiopharm ulm
 10.05.2026 16:30    VET-CONCEPT Gladiators Trier   vs   <span style="color:#ff8c00; font-weight:bold;">SYNTAINICS MBC</span>
+26.04.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">SYNTAINICS MBC</span>                 vs   Fitness First Würzburg Baskets
+26.04.2026 18:00    <span style="color:#ff8c00; font-weight:bold;">SKYLINERS</span>                      vs   ALBA BERLIN
 </pre>
 </details>
 <details id="pg_16" class="liga-block">
@@ -613,12 +615,12 @@ SYNTAINICS MBC                 24  Spiele: 30
 MLP Academics Heidelberg       16  Spiele: 30
 Basketball Löwen Braunschweig  16  Spiele: 30
 </pre>
-<p><b>Die bisher gegeneinander gespielten Spiele der Teams mit 16 Punkten.</b></p>
+<p><b>Direkte Duelle:</b></p>
 <pre>
 07.12.2025 16:30     MLP Academics Heidelberg       95:75   Basketball Löwen Braunschweig
 01.02.2026 15:00     Basketball Löwen Braunschweig  94:99   MLP Academics Heidelberg
 </pre>
-<p><b>Der direkte Vergleich der Teams mit 16 Punkten.</b></p>
+<p><b>Direkter Vergleich:</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -655,20 +657,20 @@ Basketball Löwen Braunschweig  16  Spiele: 30
     </tr>
   </tbody>
 </table>
-<p><b>Restspielplan der Teams mit 16 Punkten.</b></p>
+<p><b>Restspiele:</b></p>
 <pre>
-25.04.2026 20:00    EWE Baskets Oldenburg           vs   <span style="color:#ff8c00; font-weight:bold;">MLP Academics Heidelberg</span>
 02.05.2026 20:00    <span style="color:#ff8c00; font-weight:bold;">Basketball Löwen Braunschweig</span>   vs   MHP RIESEN Ludwigsburg
 04.05.2026 20:00    <span style="color:#ff8c00; font-weight:bold;">MLP Academics Heidelberg</span>        vs   SYNTAINICS MBC
 07.05.2026 20:00    Science City Jena               vs   <span style="color:#ff8c00; font-weight:bold;">MLP Academics Heidelberg</span>
 08.05.2026 20:00    EWE Baskets Oldenburg           vs   <span style="color:#ff8c00; font-weight:bold;">Basketball Löwen Braunschweig</span>
 10.05.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">MLP Academics Heidelberg</span>        vs   RASTA Vechta
 10.05.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">Basketball Löwen Braunschweig</span>   vs   NINERS Chemnitz
+25.04.2026 20:00    EWE Baskets Oldenburg           vs   <span style="color:#ff8c00; font-weight:bold;">MLP Academics Heidelberg</span>
 </pre>
 </details>
 <hr>
 <details class='liga-block'>
-<summary><h2 style='display:inline;'>Ergebnisse - ausklappbar</h2></summary>
+<summary><h2 style='display:inline;'>Ergebnisse</h2></summary>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -3388,7 +3390,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 </details>
 <hr>
 <details class='liga-block'>
-<summary><h2 style='display:inline;'>Restspielplan (alle ausstehenden Spiele) - ausklappbar</h2></summary>
+<summary><h2 style='display:inline;'>Restspielplan</h2></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th></tr>
 <tr style='background:#ffcc99;'><td>272</td><td>31</td><td>25.04.2026 18:30</td><td>ratiopharm ulm</td><td>Veolia Towers Hamburg</td></tr>
@@ -3430,7 +3432,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 </details>
 <hr>
 <details class='liga-block'>
-<summary><h2 style='display:inline;'>Spiele pro Team - ausklappbar</h2></summary>
+<summary><h2 style='display:inline;'>Spiele pro Team</h2></summary>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>FC Bayern München Basketball</b></summary>
 <table>
@@ -4154,39 +4156,26 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Klickbare Punktzahlen (Punktzahl-Gruppen)
+  // Punktzahl-Gruppen Navigation
   document.querySelectorAll("a[href^='#pg_']").forEach(link => {
-    link.addEventListener("click", e => {
+    link.addEventListener("click", () => {
       const id = link.getAttribute("href").substring(1);
-
-      document.querySelectorAll("details[id^='pg_']").forEach(d => {
-        d.removeAttribute("open");
-      });
-
+      document.querySelectorAll("details[id^='pg_']").forEach(d => d.removeAttribute("open"));
       const target = document.getElementById(id);
-      if (target) {
-        target.setAttribute("open", "");
-      }
+      if (target) target.setAttribute("open", "");
     });
   });
 
-  // Nur Liga-Blöcke öffnen/schließen
+  // Liga-Blöcke öffnen/schließen
   const ligaDetails = document.querySelectorAll("details.liga-block");
 
-  const btnOpen = document.getElementById("open_all");
-  const btnClose = document.getElementById("close_all");
+  document.getElementById("open_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.setAttribute("open", ""));
+  });
 
-  if (btnOpen) {
-    btnOpen.addEventListener("click", () => {
-      ligaDetails.forEach(d => d.setAttribute("open", ""));
-    });
-  }
-
-  if (btnClose) {
-    btnClose.addEventListener("click", () => {
-      ligaDetails.forEach(d => d.removeAttribute("open"));
-    });
-  }
+  document.getElementById("close_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.removeAttribute("open"));
+  });
 
 });
 </script>
