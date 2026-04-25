@@ -1,10 +1,10 @@
 
 <style>
-details:target {
-    open: open;
+body { 
+    font-family: Arial, sans-serif; 
+    background:#f4f6f9; 
+    margin:20px; 
 }
-
-body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
 
 table {
   border-collapse: collapse;
@@ -31,7 +31,17 @@ tr:nth-child(even) { background: #f2f6fa; }
 .punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
 .punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
 
-a.punkte-blau, a.punkte-orange { cursor:pointer; }
+#open_all, #close_all {
+    background:#e6f0ff;
+    border:1px solid #b5c7e0;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+#open_all:hover, #close_all:hover {
+    background:#d9e6ff;
+}
 
 pre { font-family: Consolas, monospace; font-size: 13px; }
 </style>
@@ -39,8 +49,8 @@ pre { font-family: Consolas, monospace; font-size: 13px; }
 <details>
 <summary><b>Was finde ich hier</b> (ausklappbar)</summary>
 <div style='margin-left:15px;'>
-<p><b>Allgemein</b></p>
 
+<p><b>Allgemein</b></p>
 <p>
 Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
 Diese Ligen haben das Format:<br>
@@ -50,27 +60,24 @@ Aktuell wird dies automatisiert für die BBL und für die ProA erzeugt.<br>
 Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).<br><br>
 
 Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
-<b>BBL:</b> <a href='https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1' target='_blank'>
+<b>BBL:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1" target="_blank">
 https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1</a><br>
-<b>ProA:</b> <a href='https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1' target='_blank'>
+<b>ProA:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1" target="_blank">
 https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1</a><br><br>
 
-Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten<br>
-ist aufgeklappt. Alle anderen muss man händisch aufklappen.<br>
+Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.
 </p>
 
 <p><b>Tabelle</b></p>
-
 <p>
-Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben,<br>
-wenn zwei oder mehr Teams punktgleich sind.<br>
+Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
 Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
 Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
-und eine geöffnete Punktzahl-Gruppe schließt.<br>
+und eine geöffnete Punktzahl-Gruppe schließt.
 </p>
 
 <p><b>Punktzahl‑Gruppen</b></p>
-
 <p>
 Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
 Hier werden zuerst die Teams aufgeführt.<br>
@@ -80,14 +87,12 @@ Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.
 </p>
 
 <p><b>Ergebnisse – ausklappbar</b></p>
-
 <p>
 Sämtliche bisher gespielten Ergebnisse.<br>
 Aktuellste Ergebnisse stehen oben.
 </p>
 
 <p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
-
 <p>
 Nach Restspielplan<br>
 Welche Spiele stehen noch an?<br>
@@ -95,7 +100,6 @@ Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.
 </p>
 
 <p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
-
 <p>
 Es werden dann alle Vereine angezeigt.<br>
 Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.
@@ -108,9 +112,7 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 <button id='close_all'>Alles schließen</button>
 </div>
 <h2>Bezirksoberliga Herren 25/26 (Senioren Schwaben; Liganr.: 22004)</h2>
-<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 13:19 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
-<b>Python Version:</b> 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]<br>
-<b>Datenbasis:</b> https://www.basketball-bund.net/index.jsp?Action=102&liga_id=50499</p>
+<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 13:55 Uhr</p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -235,12 +237,12 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 PSV Ingolstadt                 30  Spiele: 18
 VSC Donauwörth                 30  Spiele: 18
 </pre>
-<p><b>Die bisher gegeneinander gespielten Spiele der Teams mit 30 Punkten.</b></p>
+<p><b>Direkte Duelle:</b></p>
 <pre>
 22.11.2025 19:30     VSC Donauwörth                 60:68   PSV Ingolstadt
 07.03.2026 18:00     PSV Ingolstadt                 78:84   VSC Donauwörth
 </pre>
-<p><b>Der direkte Vergleich der Teams mit 30 Punkten.</b></p>
+<p><b>Direkter Vergleich:</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -277,7 +279,7 @@ VSC Donauwörth                 30  Spiele: 18
     </tr>
   </tbody>
 </table>
-<p><b>Restspielplan der Teams mit 30 Punkten.</b></p>
+<p><b>Restspiele:</b></p>
 <pre>
 Keine Restspiele gefunden.
 </pre>
@@ -288,12 +290,12 @@ Keine Restspiele gefunden.
 Sportfreunde Friedberg         18  Spiele: 18
 TV Augsburg 2                  18  Spiele: 18
 </pre>
-<p><b>Die bisher gegeneinander gespielten Spiele der Teams mit 18 Punkten.</b></p>
+<p><b>Direkte Duelle:</b></p>
 <pre>
 05.10.2025 17:00     TV Augsburg 2                  0:20    Sportfreunde Friedberg
 14.12.2025 17:00     Sportfreunde Friedberg         79:61   TV Augsburg 2
 </pre>
-<p><b>Der direkte Vergleich der Teams mit 18 Punkten.</b></p>
+<p><b>Direkter Vergleich:</b></p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -330,14 +332,14 @@ TV Augsburg 2                  18  Spiele: 18
     </tr>
   </tbody>
 </table>
-<p><b>Restspielplan der Teams mit 18 Punkten.</b></p>
+<p><b>Restspiele:</b></p>
 <pre>
 Keine Restspiele gefunden.
 </pre>
 </details>
 <hr>
 <details class='liga-block'>
-<summary><h2 style='display:inline;'>Ergebnisse - ausklappbar</h2></summary>
+<summary><h2 style='display:inline;'>Ergebnisse</h2></summary>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1257,250 +1259,250 @@ Keine Restspiele gefunden.
 </details>
 <hr>
 <details class='liga-block'>
-<summary><h2 style='display:inline;'>Restspielplan (alle ausstehenden Spiele) - ausklappbar</h2></summary>
+<summary><h2 style='display:inline;'>Restspielplan</h2></summary>
 <p><i>Keine Restspiele gefunden.</i></p>
 </details>
 <hr>
 <details class='liga-block'>
-<summary><h2 style='display:inline;'>Spiele pro Team - ausklappbar</h2></summary>
+<summary><h2 style='display:inline;'>Spiele pro Team</h2></summary>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>PSV Ingolstadt</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4002</td><td>1</td><td>05.10.2025 17:00</td><td>PSV Ingolstadt</td><td>TSV Gersthofen</td><td>73.0</td><td>52.0</td><td>73:52</td></tr>
-<tr><td>4007</td><td>2</td><td>12.10.2025 17:00</td><td>TSV Diedorf</td><td>PSV Ingolstadt</td><td>44.0</td><td>96.0</td><td>44:96</td></tr>
-<tr><td>4012</td><td>3</td><td>18.10.2025 18:00</td><td>PSV Ingolstadt</td><td>MTV Baskets Ingolstadt</td><td>79.0</td><td>52.0</td><td>79:52</td></tr>
-<tr><td>4020</td><td>4</td><td>26.10.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>PSV Ingolstadt</td><td>101.0</td><td>79.0</td><td>101:79</td></tr>
-<tr><td>4022</td><td>5</td><td>08.11.2025 18:00</td><td>PSV Ingolstadt</td><td>TSV 1862 Neuburg</td><td>71.0</td><td>44.0</td><td>71:44</td></tr>
-<tr><td>4028</td><td>6</td><td>15.11.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>PSV Ingolstadt</td><td>61.0</td><td>80.0</td><td>61:80</td></tr>
-<tr><td>4031</td><td>7</td><td>22.11.2025 19:30</td><td>VSC Donauwörth</td><td>PSV Ingolstadt</td><td>60.0</td><td>68.0</td><td>60:68</td></tr>
-<tr><td>4037</td><td>8</td><td>29.11.2025 19:00</td><td>PSV Ingolstadt</td><td>TV Augsburg 2</td><td>83.0</td><td>66.0</td><td>83:66</td></tr>
-<tr><td>4047</td><td>10</td><td>14.12.2025 17:00</td><td>TSV Gersthofen</td><td>PSV Ingolstadt</td><td>73.0</td><td>70.0</td><td>73:70</td></tr>
-<tr><td>4044</td><td>9</td><td>11.01.2026 17:00</td><td>Sportfreunde Friedberg</td><td>PSV Ingolstadt</td><td>62.0</td><td>84.0</td><td>62:84</td></tr>
-<tr><td>4052</td><td>11</td><td>17.01.2026 18:00</td><td>PSV Ingolstadt</td><td>TSV Diedorf</td><td>109.0</td><td>45.0</td><td>109:45</td></tr>
-<tr><td>4057</td><td>12</td><td>25.01.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>PSV Ingolstadt</td><td>63.0</td><td>71.0</td><td>63:71</td></tr>
-<tr><td>4065</td><td>13</td><td>01.02.2026 17:00</td><td>PSV Ingolstadt</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>86.0</td><td>51.0</td><td>86:51</td></tr>
-<tr><td>4073</td><td>15</td><td>01.03.2026 17:00</td><td>PSV Ingolstadt</td><td>Green Devils Schrobenhausen</td><td>61.0</td><td>57.0</td><td>61:57</td></tr>
-<tr><td>4076</td><td>16</td><td>07.03.2026 18:00</td><td>PSV Ingolstadt</td><td>VSC Donauwörth</td><td>78.0</td><td>84.0</td><td>78:84</td></tr>
-<tr><td>4082</td><td>17</td><td>14.03.2026 20:00</td><td>TV Augsburg 2</td><td>PSV Ingolstadt</td><td>74.0</td><td>85.0</td><td>74:85</td></tr>
-<tr><td>4089</td><td>18</td><td>21.03.2026 18:00</td><td>PSV Ingolstadt</td><td>Sportfreunde Friedberg</td><td>62.0</td><td>49.0</td><td>62:49</td></tr>
-<tr><td>4067</td><td>14</td><td>27.03.2026 20:00</td><td>TSV 1862 Neuburg</td><td>PSV Ingolstadt</td><td>65.0</td><td>96.0</td><td>65:96</td></tr>
+<tr><td>4002</td><td>1</td><td>05.10.2025 17:00</td><td>PSV Ingolstadt</td><td>TSV Gersthofen</td><td>73</td><td>52</td><td>73:52</td></tr>
+<tr><td>4007</td><td>2</td><td>12.10.2025 17:00</td><td>TSV Diedorf</td><td>PSV Ingolstadt</td><td>44</td><td>96</td><td>44:96</td></tr>
+<tr><td>4012</td><td>3</td><td>18.10.2025 18:00</td><td>PSV Ingolstadt</td><td>MTV Baskets Ingolstadt</td><td>79</td><td>52</td><td>79:52</td></tr>
+<tr><td>4020</td><td>4</td><td>26.10.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>PSV Ingolstadt</td><td>101</td><td>79</td><td>101:79</td></tr>
+<tr><td>4022</td><td>5</td><td>08.11.2025 18:00</td><td>PSV Ingolstadt</td><td>TSV 1862 Neuburg</td><td>71</td><td>44</td><td>71:44</td></tr>
+<tr><td>4028</td><td>6</td><td>15.11.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>PSV Ingolstadt</td><td>61</td><td>80</td><td>61:80</td></tr>
+<tr><td>4031</td><td>7</td><td>22.11.2025 19:30</td><td>VSC Donauwörth</td><td>PSV Ingolstadt</td><td>60</td><td>68</td><td>60:68</td></tr>
+<tr><td>4037</td><td>8</td><td>29.11.2025 19:00</td><td>PSV Ingolstadt</td><td>TV Augsburg 2</td><td>83</td><td>66</td><td>83:66</td></tr>
+<tr><td>4047</td><td>10</td><td>14.12.2025 17:00</td><td>TSV Gersthofen</td><td>PSV Ingolstadt</td><td>73</td><td>70</td><td>73:70</td></tr>
+<tr><td>4044</td><td>9</td><td>11.01.2026 17:00</td><td>Sportfreunde Friedberg</td><td>PSV Ingolstadt</td><td>62</td><td>84</td><td>62:84</td></tr>
+<tr><td>4052</td><td>11</td><td>17.01.2026 18:00</td><td>PSV Ingolstadt</td><td>TSV Diedorf</td><td>109</td><td>45</td><td>109:45</td></tr>
+<tr><td>4057</td><td>12</td><td>25.01.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>PSV Ingolstadt</td><td>63</td><td>71</td><td>63:71</td></tr>
+<tr><td>4065</td><td>13</td><td>01.02.2026 17:00</td><td>PSV Ingolstadt</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>86</td><td>51</td><td>86:51</td></tr>
+<tr><td>4073</td><td>15</td><td>01.03.2026 17:00</td><td>PSV Ingolstadt</td><td>Green Devils Schrobenhausen</td><td>61</td><td>57</td><td>61:57</td></tr>
+<tr><td>4076</td><td>16</td><td>07.03.2026 18:00</td><td>PSV Ingolstadt</td><td>VSC Donauwörth</td><td>78</td><td>84</td><td>78:84</td></tr>
+<tr><td>4082</td><td>17</td><td>14.03.2026 20:00</td><td>TV Augsburg 2</td><td>PSV Ingolstadt</td><td>74</td><td>85</td><td>74:85</td></tr>
+<tr><td>4089</td><td>18</td><td>21.03.2026 18:00</td><td>PSV Ingolstadt</td><td>Sportfreunde Friedberg</td><td>62</td><td>49</td><td>62:49</td></tr>
+<tr><td>4067</td><td>14</td><td>27.03.2026 20:00</td><td>TSV 1862 Neuburg</td><td>PSV Ingolstadt</td><td>65</td><td>96</td><td>65:96</td></tr>
 </table>
 </details>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>VSC Donauwörth</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4001</td><td>1</td><td>04.10.2025 19:30</td><td>VSC Donauwörth</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>80.0</td><td>62.0</td><td>80:62</td></tr>
-<tr><td>4009</td><td>2</td><td>12.10.2025 17:00</td><td>Sportfreunde Friedberg</td><td>VSC Donauwörth</td><td>59.0</td><td>67.0</td><td>59:67</td></tr>
-<tr><td>4011</td><td>3</td><td>18.10.2025 19:30</td><td>VSC Donauwörth</td><td>TSV 1862 Neuburg</td><td>76.0</td><td>58.0</td><td>76:58</td></tr>
-<tr><td>4018</td><td>4</td><td>02.11.2025 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>67.0</td><td>75.0</td><td>67:75</td></tr>
-<tr><td>4021</td><td>5</td><td>08.11.2025 19:30</td><td>VSC Donauwörth</td><td>Green Devils Schrobenhausen</td><td>75.0</td><td>57.0</td><td>75:57</td></tr>
-<tr><td>4027</td><td>6</td><td>15.11.2025 17:30</td><td>TSV Diedorf</td><td>VSC Donauwörth</td><td>44.0</td><td>79.0</td><td>44:79</td></tr>
-<tr><td>4031</td><td>7</td><td>22.11.2025 19:30</td><td>VSC Donauwörth</td><td>PSV Ingolstadt</td><td>60.0</td><td>68.0</td><td>60:68</td></tr>
-<tr><td>4036</td><td>8</td><td>29.11.2025 19:30</td><td>VSC Donauwörth</td><td>MTV Baskets Ingolstadt</td><td>76.0</td><td>70.0</td><td>76:70</td></tr>
-<tr><td>4045</td><td>9</td><td>07.12.2025 15:00</td><td>TV Augsburg 2</td><td>VSC Donauwörth</td><td>51.0</td><td>92.0</td><td>51:92</td></tr>
-<tr><td>4046</td><td>10</td><td>14.12.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>VSC Donauwörth</td><td>66.0</td><td>108.0</td><td>66:108</td></tr>
-<tr><td>4054</td><td>11</td><td>17.01.2026 19:30</td><td>VSC Donauwörth</td><td>Sportfreunde Friedberg</td><td>68.0</td><td>76.0</td><td>68:76</td></tr>
-<tr><td>4056</td><td>12</td><td>24.01.2026 18:00</td><td>TSV 1862 Neuburg</td><td>VSC Donauwörth</td><td>53.0</td><td>84.0</td><td>53:84</td></tr>
-<tr><td>4063</td><td>13</td><td>31.01.2026 19:30</td><td>VSC Donauwörth</td><td>TSV Gersthofen</td><td>102.0</td><td>61.0</td><td>102:61</td></tr>
-<tr><td>4066</td><td>14</td><td>07.02.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>VSC Donauwörth</td><td>55.0</td><td>60.0</td><td>55:60</td></tr>
-<tr><td>4072</td><td>15</td><td>28.02.2026 19:30</td><td>VSC Donauwörth</td><td>TSV Diedorf</td><td>88.0</td><td>56.0</td><td>88:56</td></tr>
-<tr><td>4076</td><td>16</td><td>07.03.2026 18:00</td><td>PSV Ingolstadt</td><td>VSC Donauwörth</td><td>78.0</td><td>84.0</td><td>78:84</td></tr>
-<tr><td>4081</td><td>17</td><td>14.03.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>VSC Donauwörth</td><td>55.0</td><td>81.0</td><td>55:81</td></tr>
-<tr><td>4090</td><td>18</td><td>21.03.2026 19:30</td><td>VSC Donauwörth</td><td>TV Augsburg 2</td><td>82.0</td><td>85.0</td><td>82:85</td></tr>
+<tr><td>4001</td><td>1</td><td>04.10.2025 19:30</td><td>VSC Donauwörth</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>80</td><td>62</td><td>80:62</td></tr>
+<tr><td>4009</td><td>2</td><td>12.10.2025 17:00</td><td>Sportfreunde Friedberg</td><td>VSC Donauwörth</td><td>59</td><td>67</td><td>59:67</td></tr>
+<tr><td>4011</td><td>3</td><td>18.10.2025 19:30</td><td>VSC Donauwörth</td><td>TSV 1862 Neuburg</td><td>76</td><td>58</td><td>76:58</td></tr>
+<tr><td>4018</td><td>4</td><td>02.11.2025 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>67</td><td>75</td><td>67:75</td></tr>
+<tr><td>4021</td><td>5</td><td>08.11.2025 19:30</td><td>VSC Donauwörth</td><td>Green Devils Schrobenhausen</td><td>75</td><td>57</td><td>75:57</td></tr>
+<tr><td>4027</td><td>6</td><td>15.11.2025 17:30</td><td>TSV Diedorf</td><td>VSC Donauwörth</td><td>44</td><td>79</td><td>44:79</td></tr>
+<tr><td>4031</td><td>7</td><td>22.11.2025 19:30</td><td>VSC Donauwörth</td><td>PSV Ingolstadt</td><td>60</td><td>68</td><td>60:68</td></tr>
+<tr><td>4036</td><td>8</td><td>29.11.2025 19:30</td><td>VSC Donauwörth</td><td>MTV Baskets Ingolstadt</td><td>76</td><td>70</td><td>76:70</td></tr>
+<tr><td>4045</td><td>9</td><td>07.12.2025 15:00</td><td>TV Augsburg 2</td><td>VSC Donauwörth</td><td>51</td><td>92</td><td>51:92</td></tr>
+<tr><td>4046</td><td>10</td><td>14.12.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>VSC Donauwörth</td><td>66</td><td>108</td><td>66:108</td></tr>
+<tr><td>4054</td><td>11</td><td>17.01.2026 19:30</td><td>VSC Donauwörth</td><td>Sportfreunde Friedberg</td><td>68</td><td>76</td><td>68:76</td></tr>
+<tr><td>4056</td><td>12</td><td>24.01.2026 18:00</td><td>TSV 1862 Neuburg</td><td>VSC Donauwörth</td><td>53</td><td>84</td><td>53:84</td></tr>
+<tr><td>4063</td><td>13</td><td>31.01.2026 19:30</td><td>VSC Donauwörth</td><td>TSV Gersthofen</td><td>102</td><td>61</td><td>102:61</td></tr>
+<tr><td>4066</td><td>14</td><td>07.02.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>VSC Donauwörth</td><td>55</td><td>60</td><td>55:60</td></tr>
+<tr><td>4072</td><td>15</td><td>28.02.2026 19:30</td><td>VSC Donauwörth</td><td>TSV Diedorf</td><td>88</td><td>56</td><td>88:56</td></tr>
+<tr><td>4076</td><td>16</td><td>07.03.2026 18:00</td><td>PSV Ingolstadt</td><td>VSC Donauwörth</td><td>78</td><td>84</td><td>78:84</td></tr>
+<tr><td>4081</td><td>17</td><td>14.03.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>VSC Donauwörth</td><td>55</td><td>81</td><td>55:81</td></tr>
+<tr><td>4090</td><td>18</td><td>21.03.2026 19:30</td><td>VSC Donauwörth</td><td>TV Augsburg 2</td><td>82</td><td>85</td><td>82:85</td></tr>
 </table>
 </details>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>MTV Baskets Ingolstadt</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4004</td><td>1</td><td>04.10.2025 17:30</td><td>TSV 1862 Neuburg</td><td>MTV Baskets Ingolstadt</td><td>54.0</td><td>62.0</td><td>54:62</td></tr>
-<tr><td>4006</td><td>2</td><td>11.10.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>Green Devils Schrobenhausen</td><td>58.0</td><td>49.0</td><td>58:49</td></tr>
-<tr><td>4012</td><td>3</td><td>18.10.2025 18:00</td><td>PSV Ingolstadt</td><td>MTV Baskets Ingolstadt</td><td>79.0</td><td>52.0</td><td>79:52</td></tr>
-<tr><td>4016</td><td>4</td><td>25.10.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TV Augsburg 2</td><td>64.0</td><td>63.0</td><td>64:63</td></tr>
-<tr><td>4024</td><td>5</td><td>30.10.2025 20:00</td><td>Sportfreunde Friedberg</td><td>MTV Baskets Ingolstadt</td><td>63.0</td><td>76.0</td><td>63:76</td></tr>
-<tr><td>4026</td><td>6</td><td>16.11.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV Gersthofen</td><td>66.0</td><td>62.0</td><td>66:62</td></tr>
-<tr><td>4036</td><td>8</td><td>29.11.2025 19:30</td><td>VSC Donauwörth</td><td>MTV Baskets Ingolstadt</td><td>76.0</td><td>70.0</td><td>76:70</td></tr>
-<tr><td>4041</td><td>9</td><td>06.12.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>84.0</td><td>61.0</td><td>84:61</td></tr>
-<tr><td>4049</td><td>10</td><td>13.12.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV 1862 Neuburg</td><td>64.0</td><td>49.0</td><td>64:49</td></tr>
-<tr><td>4051</td><td>11</td><td>17.01.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>MTV Baskets Ingolstadt</td><td>20.0</td><td>0.0</td><td>20:0</td></tr>
-<tr><td>4057</td><td>12</td><td>25.01.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>PSV Ingolstadt</td><td>63.0</td><td>71.0</td><td>63:71</td></tr>
-<tr><td>4061</td><td>13</td><td>31.01.2026 16:30</td><td>TV Augsburg 2</td><td>MTV Baskets Ingolstadt</td><td>66.0</td><td>74.0</td><td>66:74</td></tr>
-<tr><td>4069</td><td>14</td><td>07.02.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>Sportfreunde Friedberg</td><td>67.0</td><td>53.0</td><td>67:53</td></tr>
-<tr><td>4071</td><td>15</td><td>01.03.2026 14:45</td><td>TSV Gersthofen</td><td>MTV Baskets Ingolstadt</td><td>52.0</td><td>61.0</td><td>52:61</td></tr>
-<tr><td>4077</td><td>16</td><td>08.03.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV Diedorf</td><td>84.0</td><td>62.0</td><td>84:62</td></tr>
-<tr><td>4081</td><td>17</td><td>14.03.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>VSC Donauwörth</td><td>55.0</td><td>81.0</td><td>55:81</td></tr>
-<tr><td>4086</td><td>18</td><td>22.03.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>MTV Baskets Ingolstadt</td><td>77.0</td><td>65.0</td><td>77:65</td></tr>
-<tr><td>4032</td><td>7</td><td>28.03.2026 17:30</td><td>TSV Diedorf</td><td>MTV Baskets Ingolstadt</td><td>66.0</td><td>68.0</td><td>66:68</td></tr>
+<tr><td>4004</td><td>1</td><td>04.10.2025 17:30</td><td>TSV 1862 Neuburg</td><td>MTV Baskets Ingolstadt</td><td>54</td><td>62</td><td>54:62</td></tr>
+<tr><td>4006</td><td>2</td><td>11.10.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>Green Devils Schrobenhausen</td><td>58</td><td>49</td><td>58:49</td></tr>
+<tr><td>4012</td><td>3</td><td>18.10.2025 18:00</td><td>PSV Ingolstadt</td><td>MTV Baskets Ingolstadt</td><td>79</td><td>52</td><td>79:52</td></tr>
+<tr><td>4016</td><td>4</td><td>25.10.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TV Augsburg 2</td><td>64</td><td>63</td><td>64:63</td></tr>
+<tr><td>4024</td><td>5</td><td>30.10.2025 20:00</td><td>Sportfreunde Friedberg</td><td>MTV Baskets Ingolstadt</td><td>63</td><td>76</td><td>63:76</td></tr>
+<tr><td>4026</td><td>6</td><td>16.11.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV Gersthofen</td><td>66</td><td>62</td><td>66:62</td></tr>
+<tr><td>4036</td><td>8</td><td>29.11.2025 19:30</td><td>VSC Donauwörth</td><td>MTV Baskets Ingolstadt</td><td>76</td><td>70</td><td>76:70</td></tr>
+<tr><td>4041</td><td>9</td><td>06.12.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>84</td><td>61</td><td>84:61</td></tr>
+<tr><td>4049</td><td>10</td><td>13.12.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV 1862 Neuburg</td><td>64</td><td>49</td><td>64:49</td></tr>
+<tr><td>4051</td><td>11</td><td>17.01.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>MTV Baskets Ingolstadt</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>4057</td><td>12</td><td>25.01.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>PSV Ingolstadt</td><td>63</td><td>71</td><td>63:71</td></tr>
+<tr><td>4061</td><td>13</td><td>31.01.2026 16:30</td><td>TV Augsburg 2</td><td>MTV Baskets Ingolstadt</td><td>66</td><td>74</td><td>66:74</td></tr>
+<tr><td>4069</td><td>14</td><td>07.02.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>Sportfreunde Friedberg</td><td>67</td><td>53</td><td>67:53</td></tr>
+<tr><td>4071</td><td>15</td><td>01.03.2026 14:45</td><td>TSV Gersthofen</td><td>MTV Baskets Ingolstadt</td><td>52</td><td>61</td><td>52:61</td></tr>
+<tr><td>4077</td><td>16</td><td>08.03.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV Diedorf</td><td>84</td><td>62</td><td>84:62</td></tr>
+<tr><td>4081</td><td>17</td><td>14.03.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>VSC Donauwörth</td><td>55</td><td>81</td><td>55:81</td></tr>
+<tr><td>4086</td><td>18</td><td>22.03.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>MTV Baskets Ingolstadt</td><td>77</td><td>65</td><td>77:65</td></tr>
+<tr><td>4032</td><td>7</td><td>28.03.2026 17:30</td><td>TSV Diedorf</td><td>MTV Baskets Ingolstadt</td><td>66</td><td>68</td><td>66:68</td></tr>
 </table>
 </details>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>BG powered by BBA Leitershofen/Stadtbergen 3</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4001</td><td>1</td><td>04.10.2025 19:30</td><td>VSC Donauwörth</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>80.0</td><td>62.0</td><td>80:62</td></tr>
-<tr><td>4010</td><td>2</td><td>12.10.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV 1862 Neuburg</td><td>72.0</td><td>64.0</td><td>72:64</td></tr>
-<tr><td>4013</td><td>3</td><td>18.10.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>77.0</td><td>71.0</td><td>77:71</td></tr>
-<tr><td>4020</td><td>4</td><td>26.10.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>PSV Ingolstadt</td><td>101.0</td><td>79.0</td><td>101:79</td></tr>
-<tr><td>4058</td><td>12</td><td>02.11.2025 16:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>Green Devils Schrobenhausen</td><td>87.0</td><td>73.0</td><td>87:73</td></tr>
-<tr><td>4025</td><td>5</td><td>08.11.2025 20:00</td><td>TV Augsburg 2</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>88.0</td><td>71.0</td><td>88:71</td></tr>
-<tr><td>4030</td><td>6</td><td>16.11.2025 13:00</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>Sportfreunde Friedberg</td><td>81.0</td><td>61.0</td><td>81:61</td></tr>
-<tr><td>4033</td><td>7</td><td>23.11.2025 17:00</td><td>TSV Gersthofen</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>65.0</td><td>98.0</td><td>65:98</td></tr>
-<tr><td>4040</td><td>8</td><td>30.11.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV Diedorf</td><td>116.0</td><td>63.0</td><td>116:63</td></tr>
-<tr><td>4041</td><td>9</td><td>06.12.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>84.0</td><td>61.0</td><td>84:61</td></tr>
-<tr><td>4046</td><td>10</td><td>14.12.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>VSC Donauwörth</td><td>66.0</td><td>108.0</td><td>66:108</td></tr>
-<tr><td>4055</td><td>11</td><td>17.01.2026 20:00</td><td>TSV 1862 Neuburg</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>74.0</td><td>79.0</td><td>74:79</td></tr>
-<tr><td>4065</td><td>13</td><td>01.02.2026 17:00</td><td>PSV Ingolstadt</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>86.0</td><td>51.0</td><td>86:51</td></tr>
-<tr><td>4070</td><td>14</td><td>08.02.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TV Augsburg 2</td><td>61.0</td><td>86.0</td><td>61:86</td></tr>
-<tr><td>4078</td><td>16</td><td>08.03.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV Gersthofen</td><td>77.0</td><td>71.0</td><td>77:71</td></tr>
-<tr><td>4085</td><td>17</td><td>14.03.2026 20:00</td><td>TSV Diedorf</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>76.0</td><td>93.0</td><td>76:93</td></tr>
-<tr><td>4086</td><td>18</td><td>22.03.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>MTV Baskets Ingolstadt</td><td>77.0</td><td>65.0</td><td>77:65</td></tr>
-<tr><td>4075</td><td>15</td><td>26.03.2026 20:15</td><td>Sportfreunde Friedberg</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>70.0</td><td>96.0</td><td>70:96</td></tr>
+<tr><td>4001</td><td>1</td><td>04.10.2025 19:30</td><td>VSC Donauwörth</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>80</td><td>62</td><td>80:62</td></tr>
+<tr><td>4010</td><td>2</td><td>12.10.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV 1862 Neuburg</td><td>72</td><td>64</td><td>72:64</td></tr>
+<tr><td>4013</td><td>3</td><td>18.10.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>77</td><td>71</td><td>77:71</td></tr>
+<tr><td>4020</td><td>4</td><td>26.10.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>PSV Ingolstadt</td><td>101</td><td>79</td><td>101:79</td></tr>
+<tr><td>4058</td><td>12</td><td>02.11.2025 16:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>Green Devils Schrobenhausen</td><td>87</td><td>73</td><td>87:73</td></tr>
+<tr><td>4025</td><td>5</td><td>08.11.2025 20:00</td><td>TV Augsburg 2</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>88</td><td>71</td><td>88:71</td></tr>
+<tr><td>4030</td><td>6</td><td>16.11.2025 13:00</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>Sportfreunde Friedberg</td><td>81</td><td>61</td><td>81:61</td></tr>
+<tr><td>4033</td><td>7</td><td>23.11.2025 17:00</td><td>TSV Gersthofen</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>65</td><td>98</td><td>65:98</td></tr>
+<tr><td>4040</td><td>8</td><td>30.11.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV Diedorf</td><td>116</td><td>63</td><td>116:63</td></tr>
+<tr><td>4041</td><td>9</td><td>06.12.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>84</td><td>61</td><td>84:61</td></tr>
+<tr><td>4046</td><td>10</td><td>14.12.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>VSC Donauwörth</td><td>66</td><td>108</td><td>66:108</td></tr>
+<tr><td>4055</td><td>11</td><td>17.01.2026 20:00</td><td>TSV 1862 Neuburg</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>74</td><td>79</td><td>74:79</td></tr>
+<tr><td>4065</td><td>13</td><td>01.02.2026 17:00</td><td>PSV Ingolstadt</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>86</td><td>51</td><td>86:51</td></tr>
+<tr><td>4070</td><td>14</td><td>08.02.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TV Augsburg 2</td><td>61</td><td>86</td><td>61:86</td></tr>
+<tr><td>4078</td><td>16</td><td>08.03.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV Gersthofen</td><td>77</td><td>71</td><td>77:71</td></tr>
+<tr><td>4085</td><td>17</td><td>14.03.2026 20:00</td><td>TSV Diedorf</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>76</td><td>93</td><td>76:93</td></tr>
+<tr><td>4086</td><td>18</td><td>22.03.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>MTV Baskets Ingolstadt</td><td>77</td><td>65</td><td>77:65</td></tr>
+<tr><td>4075</td><td>15</td><td>26.03.2026 20:15</td><td>Sportfreunde Friedberg</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>70</td><td>96</td><td>70:96</td></tr>
 </table>
 </details>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>Sportfreunde Friedberg</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4005</td><td>1</td><td>05.10.2025 17:00</td><td>TV Augsburg 2</td><td>Sportfreunde Friedberg</td><td>0.0</td><td>20.0</td><td>0:20</td></tr>
-<tr><td>4009</td><td>2</td><td>12.10.2025 17:00</td><td>Sportfreunde Friedberg</td><td>VSC Donauwörth</td><td>59.0</td><td>67.0</td><td>59:67</td></tr>
-<tr><td>4014</td><td>3</td><td>18.10.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TSV Gersthofen</td><td>76.0</td><td>85.0</td><td>76:85</td></tr>
-<tr><td>4017</td><td>4</td><td>25.10.2025 17:30</td><td>TSV Diedorf</td><td>Sportfreunde Friedberg</td><td>65.0</td><td>74.0</td><td>65:74</td></tr>
-<tr><td>4024</td><td>5</td><td>30.10.2025 20:00</td><td>Sportfreunde Friedberg</td><td>MTV Baskets Ingolstadt</td><td>63.0</td><td>76.0</td><td>63:76</td></tr>
-<tr><td>4030</td><td>6</td><td>16.11.2025 13:00</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>Sportfreunde Friedberg</td><td>81.0</td><td>61.0</td><td>81:61</td></tr>
-<tr><td>4034</td><td>7</td><td>23.11.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TSV 1862 Neuburg</td><td>75.0</td><td>56.0</td><td>75:56</td></tr>
-<tr><td>4038</td><td>8</td><td>29.11.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>Sportfreunde Friedberg</td><td>80.0</td><td>69.0</td><td>80:69</td></tr>
-<tr><td>4050</td><td>10</td><td>14.12.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TV Augsburg 2</td><td>79.0</td><td>61.0</td><td>79:61</td></tr>
-<tr><td>4062</td><td>13</td><td>10.01.2026 18:30</td><td>Sportfreunde Friedberg</td><td>TSV Diedorf</td><td>80.0</td><td>66.0</td><td>80:66</td></tr>
-<tr><td>4044</td><td>9</td><td>11.01.2026 17:00</td><td>Sportfreunde Friedberg</td><td>PSV Ingolstadt</td><td>62.0</td><td>84.0</td><td>62:84</td></tr>
-<tr><td>4054</td><td>11</td><td>17.01.2026 19:30</td><td>VSC Donauwörth</td><td>Sportfreunde Friedberg</td><td>68.0</td><td>76.0</td><td>68:76</td></tr>
-<tr><td>4069</td><td>14</td><td>07.02.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>Sportfreunde Friedberg</td><td>67.0</td><td>53.0</td><td>67:53</td></tr>
-<tr><td>4059</td><td>12</td><td>15.02.2026 17:00</td><td>TSV Gersthofen</td><td>Sportfreunde Friedberg</td><td>69.0</td><td>76.0</td><td>69:76</td></tr>
-<tr><td>4079</td><td>16</td><td>07.03.2026 20:00</td><td>TSV 1862 Neuburg</td><td>Sportfreunde Friedberg</td><td>53.0</td><td>74.0</td><td>53:74</td></tr>
-<tr><td>4083</td><td>17</td><td>15.03.2026 17:00</td><td>Sportfreunde Friedberg</td><td>Green Devils Schrobenhausen</td><td>81.0</td><td>76.0</td><td>81:76</td></tr>
-<tr><td>4089</td><td>18</td><td>21.03.2026 18:00</td><td>PSV Ingolstadt</td><td>Sportfreunde Friedberg</td><td>62.0</td><td>49.0</td><td>62:49</td></tr>
-<tr><td>4075</td><td>15</td><td>26.03.2026 20:15</td><td>Sportfreunde Friedberg</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>70.0</td><td>96.0</td><td>70:96</td></tr>
+<tr><td>4005</td><td>1</td><td>05.10.2025 17:00</td><td>TV Augsburg 2</td><td>Sportfreunde Friedberg</td><td>0</td><td>20</td><td>0:20</td></tr>
+<tr><td>4009</td><td>2</td><td>12.10.2025 17:00</td><td>Sportfreunde Friedberg</td><td>VSC Donauwörth</td><td>59</td><td>67</td><td>59:67</td></tr>
+<tr><td>4014</td><td>3</td><td>18.10.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TSV Gersthofen</td><td>76</td><td>85</td><td>76:85</td></tr>
+<tr><td>4017</td><td>4</td><td>25.10.2025 17:30</td><td>TSV Diedorf</td><td>Sportfreunde Friedberg</td><td>65</td><td>74</td><td>65:74</td></tr>
+<tr><td>4024</td><td>5</td><td>30.10.2025 20:00</td><td>Sportfreunde Friedberg</td><td>MTV Baskets Ingolstadt</td><td>63</td><td>76</td><td>63:76</td></tr>
+<tr><td>4030</td><td>6</td><td>16.11.2025 13:00</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>Sportfreunde Friedberg</td><td>81</td><td>61</td><td>81:61</td></tr>
+<tr><td>4034</td><td>7</td><td>23.11.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TSV 1862 Neuburg</td><td>75</td><td>56</td><td>75:56</td></tr>
+<tr><td>4038</td><td>8</td><td>29.11.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>Sportfreunde Friedberg</td><td>80</td><td>69</td><td>80:69</td></tr>
+<tr><td>4050</td><td>10</td><td>14.12.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TV Augsburg 2</td><td>79</td><td>61</td><td>79:61</td></tr>
+<tr><td>4062</td><td>13</td><td>10.01.2026 18:30</td><td>Sportfreunde Friedberg</td><td>TSV Diedorf</td><td>80</td><td>66</td><td>80:66</td></tr>
+<tr><td>4044</td><td>9</td><td>11.01.2026 17:00</td><td>Sportfreunde Friedberg</td><td>PSV Ingolstadt</td><td>62</td><td>84</td><td>62:84</td></tr>
+<tr><td>4054</td><td>11</td><td>17.01.2026 19:30</td><td>VSC Donauwörth</td><td>Sportfreunde Friedberg</td><td>68</td><td>76</td><td>68:76</td></tr>
+<tr><td>4069</td><td>14</td><td>07.02.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>Sportfreunde Friedberg</td><td>67</td><td>53</td><td>67:53</td></tr>
+<tr><td>4059</td><td>12</td><td>15.02.2026 17:00</td><td>TSV Gersthofen</td><td>Sportfreunde Friedberg</td><td>69</td><td>76</td><td>69:76</td></tr>
+<tr><td>4079</td><td>16</td><td>07.03.2026 20:00</td><td>TSV 1862 Neuburg</td><td>Sportfreunde Friedberg</td><td>53</td><td>74</td><td>53:74</td></tr>
+<tr><td>4083</td><td>17</td><td>15.03.2026 17:00</td><td>Sportfreunde Friedberg</td><td>Green Devils Schrobenhausen</td><td>81</td><td>76</td><td>81:76</td></tr>
+<tr><td>4089</td><td>18</td><td>21.03.2026 18:00</td><td>PSV Ingolstadt</td><td>Sportfreunde Friedberg</td><td>62</td><td>49</td><td>62:49</td></tr>
+<tr><td>4075</td><td>15</td><td>26.03.2026 20:15</td><td>Sportfreunde Friedberg</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>70</td><td>96</td><td>70:96</td></tr>
 </table>
 </details>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>TV Augsburg 2</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4005</td><td>1</td><td>05.10.2025 17:00</td><td>TV Augsburg 2</td><td>Sportfreunde Friedberg</td><td>0.0</td><td>20.0</td><td>0:20</td></tr>
-<tr><td>4008</td><td>2</td><td>12.10.2025 17:00</td><td>TSV Gersthofen</td><td>TV Augsburg 2</td><td>90.0</td><td>83.0</td><td>90:83</td></tr>
-<tr><td>4015</td><td>3</td><td>19.10.2025 17:30</td><td>TV Augsburg 2</td><td>TSV Diedorf</td><td>72.0</td><td>69.0</td><td>72:69</td></tr>
-<tr><td>4016</td><td>4</td><td>25.10.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TV Augsburg 2</td><td>64.0</td><td>63.0</td><td>64:63</td></tr>
-<tr><td>4025</td><td>5</td><td>08.11.2025 20:00</td><td>TV Augsburg 2</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>88.0</td><td>71.0</td><td>88:71</td></tr>
-<tr><td>4029</td><td>6</td><td>15.11.2025 18:00</td><td>TSV 1862 Neuburg</td><td>TV Augsburg 2</td><td>54.0</td><td>50.0</td><td>54:50</td></tr>
-<tr><td>4035</td><td>7</td><td>22.11.2025 17:00</td><td>TV Augsburg 2</td><td>Green Devils Schrobenhausen</td><td>96.0</td><td>65.0</td><td>96:65</td></tr>
-<tr><td>4037</td><td>8</td><td>29.11.2025 19:00</td><td>PSV Ingolstadt</td><td>TV Augsburg 2</td><td>83.0</td><td>66.0</td><td>83:66</td></tr>
-<tr><td>4045</td><td>9</td><td>07.12.2025 15:00</td><td>TV Augsburg 2</td><td>VSC Donauwörth</td><td>51.0</td><td>92.0</td><td>51:92</td></tr>
-<tr><td>4050</td><td>10</td><td>14.12.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TV Augsburg 2</td><td>79.0</td><td>61.0</td><td>79:61</td></tr>
-<tr><td>4053</td><td>11</td><td>17.01.2026 17:00</td><td>TV Augsburg 2</td><td>TSV Gersthofen</td><td>67.0</td><td>62.0</td><td>67:62</td></tr>
-<tr><td>4060</td><td>12</td><td>24.01.2026 17:30</td><td>TSV Diedorf</td><td>TV Augsburg 2</td><td>67.0</td><td>71.0</td><td>67:71</td></tr>
-<tr><td>4061</td><td>13</td><td>31.01.2026 16:30</td><td>TV Augsburg 2</td><td>MTV Baskets Ingolstadt</td><td>66.0</td><td>74.0</td><td>66:74</td></tr>
-<tr><td>4070</td><td>14</td><td>08.02.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TV Augsburg 2</td><td>61.0</td><td>86.0</td><td>61:86</td></tr>
-<tr><td>4074</td><td>15</td><td>01.03.2026 18:30</td><td>TV Augsburg 2</td><td>TSV 1862 Neuburg</td><td>80.0</td><td>52.0</td><td>80:52</td></tr>
-<tr><td>4080</td><td>16</td><td>07.03.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TV Augsburg 2</td><td>63.0</td><td>68.0</td><td>63:68</td></tr>
-<tr><td>4082</td><td>17</td><td>14.03.2026 20:00</td><td>TV Augsburg 2</td><td>PSV Ingolstadt</td><td>74.0</td><td>85.0</td><td>74:85</td></tr>
-<tr><td>4090</td><td>18</td><td>21.03.2026 19:30</td><td>VSC Donauwörth</td><td>TV Augsburg 2</td><td>82.0</td><td>85.0</td><td>82:85</td></tr>
+<tr><td>4005</td><td>1</td><td>05.10.2025 17:00</td><td>TV Augsburg 2</td><td>Sportfreunde Friedberg</td><td>0</td><td>20</td><td>0:20</td></tr>
+<tr><td>4008</td><td>2</td><td>12.10.2025 17:00</td><td>TSV Gersthofen</td><td>TV Augsburg 2</td><td>90</td><td>83</td><td>90:83</td></tr>
+<tr><td>4015</td><td>3</td><td>19.10.2025 17:30</td><td>TV Augsburg 2</td><td>TSV Diedorf</td><td>72</td><td>69</td><td>72:69</td></tr>
+<tr><td>4016</td><td>4</td><td>25.10.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TV Augsburg 2</td><td>64</td><td>63</td><td>64:63</td></tr>
+<tr><td>4025</td><td>5</td><td>08.11.2025 20:00</td><td>TV Augsburg 2</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>88</td><td>71</td><td>88:71</td></tr>
+<tr><td>4029</td><td>6</td><td>15.11.2025 18:00</td><td>TSV 1862 Neuburg</td><td>TV Augsburg 2</td><td>54</td><td>50</td><td>54:50</td></tr>
+<tr><td>4035</td><td>7</td><td>22.11.2025 17:00</td><td>TV Augsburg 2</td><td>Green Devils Schrobenhausen</td><td>96</td><td>65</td><td>96:65</td></tr>
+<tr><td>4037</td><td>8</td><td>29.11.2025 19:00</td><td>PSV Ingolstadt</td><td>TV Augsburg 2</td><td>83</td><td>66</td><td>83:66</td></tr>
+<tr><td>4045</td><td>9</td><td>07.12.2025 15:00</td><td>TV Augsburg 2</td><td>VSC Donauwörth</td><td>51</td><td>92</td><td>51:92</td></tr>
+<tr><td>4050</td><td>10</td><td>14.12.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TV Augsburg 2</td><td>79</td><td>61</td><td>79:61</td></tr>
+<tr><td>4053</td><td>11</td><td>17.01.2026 17:00</td><td>TV Augsburg 2</td><td>TSV Gersthofen</td><td>67</td><td>62</td><td>67:62</td></tr>
+<tr><td>4060</td><td>12</td><td>24.01.2026 17:30</td><td>TSV Diedorf</td><td>TV Augsburg 2</td><td>67</td><td>71</td><td>67:71</td></tr>
+<tr><td>4061</td><td>13</td><td>31.01.2026 16:30</td><td>TV Augsburg 2</td><td>MTV Baskets Ingolstadt</td><td>66</td><td>74</td><td>66:74</td></tr>
+<tr><td>4070</td><td>14</td><td>08.02.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TV Augsburg 2</td><td>61</td><td>86</td><td>61:86</td></tr>
+<tr><td>4074</td><td>15</td><td>01.03.2026 18:30</td><td>TV Augsburg 2</td><td>TSV 1862 Neuburg</td><td>80</td><td>52</td><td>80:52</td></tr>
+<tr><td>4080</td><td>16</td><td>07.03.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TV Augsburg 2</td><td>63</td><td>68</td><td>63:68</td></tr>
+<tr><td>4082</td><td>17</td><td>14.03.2026 20:00</td><td>TV Augsburg 2</td><td>PSV Ingolstadt</td><td>74</td><td>85</td><td>74:85</td></tr>
+<tr><td>4090</td><td>18</td><td>21.03.2026 19:30</td><td>VSC Donauwörth</td><td>TV Augsburg 2</td><td>82</td><td>85</td><td>82:85</td></tr>
 </table>
 </details>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>Green Devils Schrobenhausen</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4003</td><td>1</td><td>04.10.2025 19:45</td><td>Green Devils Schrobenhausen</td><td>TSV Diedorf</td><td>69.0</td><td>52.0</td><td>69:52</td></tr>
-<tr><td>4006</td><td>2</td><td>11.10.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>Green Devils Schrobenhausen</td><td>58.0</td><td>49.0</td><td>58:49</td></tr>
-<tr><td>4013</td><td>3</td><td>18.10.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>77.0</td><td>71.0</td><td>77:71</td></tr>
-<tr><td>4058</td><td>12</td><td>02.11.2025 16:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>Green Devils Schrobenhausen</td><td>87.0</td><td>73.0</td><td>87:73</td></tr>
-<tr><td>4021</td><td>5</td><td>08.11.2025 19:30</td><td>VSC Donauwörth</td><td>Green Devils Schrobenhausen</td><td>75.0</td><td>57.0</td><td>75:57</td></tr>
-<tr><td>4028</td><td>6</td><td>15.11.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>PSV Ingolstadt</td><td>61.0</td><td>80.0</td><td>61:80</td></tr>
-<tr><td>4035</td><td>7</td><td>22.11.2025 17:00</td><td>TV Augsburg 2</td><td>Green Devils Schrobenhausen</td><td>96.0</td><td>65.0</td><td>96:65</td></tr>
-<tr><td>4038</td><td>8</td><td>29.11.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>Sportfreunde Friedberg</td><td>80.0</td><td>69.0</td><td>80:69</td></tr>
-<tr><td>4048</td><td>10</td><td>13.12.2025 17:30</td><td>TSV Diedorf</td><td>Green Devils Schrobenhausen</td><td>71.0</td><td>83.0</td><td>71:83</td></tr>
-<tr><td>4043</td><td>9</td><td>11.01.2026 17:00</td><td>TSV Gersthofen</td><td>Green Devils Schrobenhausen</td><td>70.0</td><td>60.0</td><td>70:60</td></tr>
-<tr><td>4051</td><td>11</td><td>17.01.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>MTV Baskets Ingolstadt</td><td>20.0</td><td>0.0</td><td>20:0</td></tr>
-<tr><td>4064</td><td>13</td><td>31.01.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TSV 1862 Neuburg</td><td>67.0</td><td>46.0</td><td>67:46</td></tr>
-<tr><td>4066</td><td>14</td><td>07.02.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>VSC Donauwörth</td><td>55.0</td><td>60.0</td><td>55:60</td></tr>
-<tr><td>4019</td><td>4</td><td>14.02.2026 17:30</td><td>TSV 1862 Neuburg</td><td>Green Devils Schrobenhausen</td><td>42.0</td><td>74.0</td><td>42:74</td></tr>
-<tr><td>4073</td><td>15</td><td>01.03.2026 17:00</td><td>PSV Ingolstadt</td><td>Green Devils Schrobenhausen</td><td>61.0</td><td>57.0</td><td>61:57</td></tr>
-<tr><td>4080</td><td>16</td><td>07.03.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TV Augsburg 2</td><td>63.0</td><td>68.0</td><td>63:68</td></tr>
-<tr><td>4083</td><td>17</td><td>15.03.2026 17:00</td><td>Sportfreunde Friedberg</td><td>Green Devils Schrobenhausen</td><td>81.0</td><td>76.0</td><td>81:76</td></tr>
-<tr><td>4088</td><td>18</td><td>21.03.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TSV Gersthofen</td><td>80.0</td><td>78.0</td><td>80:78</td></tr>
+<tr><td>4003</td><td>1</td><td>04.10.2025 19:45</td><td>Green Devils Schrobenhausen</td><td>TSV Diedorf</td><td>69</td><td>52</td><td>69:52</td></tr>
+<tr><td>4006</td><td>2</td><td>11.10.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>Green Devils Schrobenhausen</td><td>58</td><td>49</td><td>58:49</td></tr>
+<tr><td>4013</td><td>3</td><td>18.10.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>77</td><td>71</td><td>77:71</td></tr>
+<tr><td>4058</td><td>12</td><td>02.11.2025 16:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>Green Devils Schrobenhausen</td><td>87</td><td>73</td><td>87:73</td></tr>
+<tr><td>4021</td><td>5</td><td>08.11.2025 19:30</td><td>VSC Donauwörth</td><td>Green Devils Schrobenhausen</td><td>75</td><td>57</td><td>75:57</td></tr>
+<tr><td>4028</td><td>6</td><td>15.11.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>PSV Ingolstadt</td><td>61</td><td>80</td><td>61:80</td></tr>
+<tr><td>4035</td><td>7</td><td>22.11.2025 17:00</td><td>TV Augsburg 2</td><td>Green Devils Schrobenhausen</td><td>96</td><td>65</td><td>96:65</td></tr>
+<tr><td>4038</td><td>8</td><td>29.11.2025 20:00</td><td>Green Devils Schrobenhausen</td><td>Sportfreunde Friedberg</td><td>80</td><td>69</td><td>80:69</td></tr>
+<tr><td>4048</td><td>10</td><td>13.12.2025 17:30</td><td>TSV Diedorf</td><td>Green Devils Schrobenhausen</td><td>71</td><td>83</td><td>71:83</td></tr>
+<tr><td>4043</td><td>9</td><td>11.01.2026 17:00</td><td>TSV Gersthofen</td><td>Green Devils Schrobenhausen</td><td>70</td><td>60</td><td>70:60</td></tr>
+<tr><td>4051</td><td>11</td><td>17.01.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>MTV Baskets Ingolstadt</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>4064</td><td>13</td><td>31.01.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TSV 1862 Neuburg</td><td>67</td><td>46</td><td>67:46</td></tr>
+<tr><td>4066</td><td>14</td><td>07.02.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>VSC Donauwörth</td><td>55</td><td>60</td><td>55:60</td></tr>
+<tr><td>4019</td><td>4</td><td>14.02.2026 17:30</td><td>TSV 1862 Neuburg</td><td>Green Devils Schrobenhausen</td><td>42</td><td>74</td><td>42:74</td></tr>
+<tr><td>4073</td><td>15</td><td>01.03.2026 17:00</td><td>PSV Ingolstadt</td><td>Green Devils Schrobenhausen</td><td>61</td><td>57</td><td>61:57</td></tr>
+<tr><td>4080</td><td>16</td><td>07.03.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TV Augsburg 2</td><td>63</td><td>68</td><td>63:68</td></tr>
+<tr><td>4083</td><td>17</td><td>15.03.2026 17:00</td><td>Sportfreunde Friedberg</td><td>Green Devils Schrobenhausen</td><td>81</td><td>76</td><td>81:76</td></tr>
+<tr><td>4088</td><td>18</td><td>21.03.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TSV Gersthofen</td><td>80</td><td>78</td><td>80:78</td></tr>
 </table>
 </details>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>TSV Gersthofen</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4002</td><td>1</td><td>05.10.2025 17:00</td><td>PSV Ingolstadt</td><td>TSV Gersthofen</td><td>73.0</td><td>52.0</td><td>73:52</td></tr>
-<tr><td>4008</td><td>2</td><td>12.10.2025 17:00</td><td>TSV Gersthofen</td><td>TV Augsburg 2</td><td>90.0</td><td>83.0</td><td>90:83</td></tr>
-<tr><td>4014</td><td>3</td><td>18.10.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TSV Gersthofen</td><td>76.0</td><td>85.0</td><td>76:85</td></tr>
-<tr><td>4018</td><td>4</td><td>02.11.2025 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>67.0</td><td>75.0</td><td>67:75</td></tr>
-<tr><td>4023</td><td>5</td><td>09.11.2025 17:00</td><td>TSV Gersthofen</td><td>TSV Diedorf</td><td>101.0</td><td>61.0</td><td>101:61</td></tr>
-<tr><td>4026</td><td>6</td><td>16.11.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV Gersthofen</td><td>66.0</td><td>62.0</td><td>66:62</td></tr>
-<tr><td>4033</td><td>7</td><td>23.11.2025 17:00</td><td>TSV Gersthofen</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>65.0</td><td>98.0</td><td>65:98</td></tr>
-<tr><td>4039</td><td>8</td><td>29.11.2025 20:00</td><td>TSV 1862 Neuburg</td><td>TSV Gersthofen</td><td>93.0</td><td>84.0</td><td>93:84</td></tr>
-<tr><td>4047</td><td>10</td><td>14.12.2025 17:00</td><td>TSV Gersthofen</td><td>PSV Ingolstadt</td><td>73.0</td><td>70.0</td><td>73:70</td></tr>
-<tr><td>4043</td><td>9</td><td>11.01.2026 17:00</td><td>TSV Gersthofen</td><td>Green Devils Schrobenhausen</td><td>70.0</td><td>60.0</td><td>70:60</td></tr>
-<tr><td>4053</td><td>11</td><td>17.01.2026 17:00</td><td>TV Augsburg 2</td><td>TSV Gersthofen</td><td>67.0</td><td>62.0</td><td>67:62</td></tr>
-<tr><td>4063</td><td>13</td><td>31.01.2026 19:30</td><td>VSC Donauwörth</td><td>TSV Gersthofen</td><td>102.0</td><td>61.0</td><td>102:61</td></tr>
-<tr><td>4068</td><td>14</td><td>07.02.2026 17:30</td><td>TSV Diedorf</td><td>TSV Gersthofen</td><td>67.0</td><td>74.0</td><td>67:74</td></tr>
-<tr><td>4059</td><td>12</td><td>15.02.2026 17:00</td><td>TSV Gersthofen</td><td>Sportfreunde Friedberg</td><td>69.0</td><td>76.0</td><td>69:76</td></tr>
-<tr><td>4071</td><td>15</td><td>01.03.2026 14:45</td><td>TSV Gersthofen</td><td>MTV Baskets Ingolstadt</td><td>52.0</td><td>61.0</td><td>52:61</td></tr>
-<tr><td>4078</td><td>16</td><td>08.03.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV Gersthofen</td><td>77.0</td><td>71.0</td><td>77:71</td></tr>
-<tr><td>4084</td><td>17</td><td>15.03.2026 17:00</td><td>TSV Gersthofen</td><td>TSV 1862 Neuburg</td><td>83.0</td><td>69.0</td><td>83:69</td></tr>
-<tr><td>4088</td><td>18</td><td>21.03.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TSV Gersthofen</td><td>80.0</td><td>78.0</td><td>80:78</td></tr>
+<tr><td>4002</td><td>1</td><td>05.10.2025 17:00</td><td>PSV Ingolstadt</td><td>TSV Gersthofen</td><td>73</td><td>52</td><td>73:52</td></tr>
+<tr><td>4008</td><td>2</td><td>12.10.2025 17:00</td><td>TSV Gersthofen</td><td>TV Augsburg 2</td><td>90</td><td>83</td><td>90:83</td></tr>
+<tr><td>4014</td><td>3</td><td>18.10.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TSV Gersthofen</td><td>76</td><td>85</td><td>76:85</td></tr>
+<tr><td>4018</td><td>4</td><td>02.11.2025 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>67</td><td>75</td><td>67:75</td></tr>
+<tr><td>4023</td><td>5</td><td>09.11.2025 17:00</td><td>TSV Gersthofen</td><td>TSV Diedorf</td><td>101</td><td>61</td><td>101:61</td></tr>
+<tr><td>4026</td><td>6</td><td>16.11.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV Gersthofen</td><td>66</td><td>62</td><td>66:62</td></tr>
+<tr><td>4033</td><td>7</td><td>23.11.2025 17:00</td><td>TSV Gersthofen</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>65</td><td>98</td><td>65:98</td></tr>
+<tr><td>4039</td><td>8</td><td>29.11.2025 20:00</td><td>TSV 1862 Neuburg</td><td>TSV Gersthofen</td><td>93</td><td>84</td><td>93:84</td></tr>
+<tr><td>4047</td><td>10</td><td>14.12.2025 17:00</td><td>TSV Gersthofen</td><td>PSV Ingolstadt</td><td>73</td><td>70</td><td>73:70</td></tr>
+<tr><td>4043</td><td>9</td><td>11.01.2026 17:00</td><td>TSV Gersthofen</td><td>Green Devils Schrobenhausen</td><td>70</td><td>60</td><td>70:60</td></tr>
+<tr><td>4053</td><td>11</td><td>17.01.2026 17:00</td><td>TV Augsburg 2</td><td>TSV Gersthofen</td><td>67</td><td>62</td><td>67:62</td></tr>
+<tr><td>4063</td><td>13</td><td>31.01.2026 19:30</td><td>VSC Donauwörth</td><td>TSV Gersthofen</td><td>102</td><td>61</td><td>102:61</td></tr>
+<tr><td>4068</td><td>14</td><td>07.02.2026 17:30</td><td>TSV Diedorf</td><td>TSV Gersthofen</td><td>67</td><td>74</td><td>67:74</td></tr>
+<tr><td>4059</td><td>12</td><td>15.02.2026 17:00</td><td>TSV Gersthofen</td><td>Sportfreunde Friedberg</td><td>69</td><td>76</td><td>69:76</td></tr>
+<tr><td>4071</td><td>15</td><td>01.03.2026 14:45</td><td>TSV Gersthofen</td><td>MTV Baskets Ingolstadt</td><td>52</td><td>61</td><td>52:61</td></tr>
+<tr><td>4078</td><td>16</td><td>08.03.2026 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV Gersthofen</td><td>77</td><td>71</td><td>77:71</td></tr>
+<tr><td>4084</td><td>17</td><td>15.03.2026 17:00</td><td>TSV Gersthofen</td><td>TSV 1862 Neuburg</td><td>83</td><td>69</td><td>83:69</td></tr>
+<tr><td>4088</td><td>18</td><td>21.03.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TSV Gersthofen</td><td>80</td><td>78</td><td>80:78</td></tr>
 </table>
 </details>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>TSV 1862 Neuburg</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4004</td><td>1</td><td>04.10.2025 17:30</td><td>TSV 1862 Neuburg</td><td>MTV Baskets Ingolstadt</td><td>54.0</td><td>62.0</td><td>54:62</td></tr>
-<tr><td>4010</td><td>2</td><td>12.10.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV 1862 Neuburg</td><td>72.0</td><td>64.0</td><td>72:64</td></tr>
-<tr><td>4011</td><td>3</td><td>18.10.2025 19:30</td><td>VSC Donauwörth</td><td>TSV 1862 Neuburg</td><td>76.0</td><td>58.0</td><td>76:58</td></tr>
-<tr><td>4022</td><td>5</td><td>08.11.2025 18:00</td><td>PSV Ingolstadt</td><td>TSV 1862 Neuburg</td><td>71.0</td><td>44.0</td><td>71:44</td></tr>
-<tr><td>4029</td><td>6</td><td>15.11.2025 18:00</td><td>TSV 1862 Neuburg</td><td>TV Augsburg 2</td><td>54.0</td><td>50.0</td><td>54:50</td></tr>
-<tr><td>4034</td><td>7</td><td>23.11.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TSV 1862 Neuburg</td><td>75.0</td><td>56.0</td><td>75:56</td></tr>
-<tr><td>4039</td><td>8</td><td>29.11.2025 20:00</td><td>TSV 1862 Neuburg</td><td>TSV Gersthofen</td><td>93.0</td><td>84.0</td><td>93:84</td></tr>
-<tr><td>4042</td><td>9</td><td>06.12.2025 17:30</td><td>TSV Diedorf</td><td>TSV 1862 Neuburg</td><td>45.0</td><td>71.0</td><td>45:71</td></tr>
-<tr><td>4049</td><td>10</td><td>13.12.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV 1862 Neuburg</td><td>64.0</td><td>49.0</td><td>64:49</td></tr>
-<tr><td>4055</td><td>11</td><td>17.01.2026 20:00</td><td>TSV 1862 Neuburg</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>74.0</td><td>79.0</td><td>74:79</td></tr>
-<tr><td>4056</td><td>12</td><td>24.01.2026 18:00</td><td>TSV 1862 Neuburg</td><td>VSC Donauwörth</td><td>53.0</td><td>84.0</td><td>53:84</td></tr>
-<tr><td>4064</td><td>13</td><td>31.01.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TSV 1862 Neuburg</td><td>67.0</td><td>46.0</td><td>67:46</td></tr>
-<tr><td>4019</td><td>4</td><td>14.02.2026 17:30</td><td>TSV 1862 Neuburg</td><td>Green Devils Schrobenhausen</td><td>42.0</td><td>74.0</td><td>42:74</td></tr>
-<tr><td>4087</td><td>18</td><td>21.02.2026 19:00</td><td>TSV 1862 Neuburg</td><td>TSV Diedorf</td><td>83.0</td><td>73.0</td><td>83:73</td></tr>
-<tr><td>4074</td><td>15</td><td>01.03.2026 18:30</td><td>TV Augsburg 2</td><td>TSV 1862 Neuburg</td><td>80.0</td><td>52.0</td><td>80:52</td></tr>
-<tr><td>4079</td><td>16</td><td>07.03.2026 20:00</td><td>TSV 1862 Neuburg</td><td>Sportfreunde Friedberg</td><td>53.0</td><td>74.0</td><td>53:74</td></tr>
-<tr><td>4084</td><td>17</td><td>15.03.2026 17:00</td><td>TSV Gersthofen</td><td>TSV 1862 Neuburg</td><td>83.0</td><td>69.0</td><td>83:69</td></tr>
-<tr><td>4067</td><td>14</td><td>27.03.2026 20:00</td><td>TSV 1862 Neuburg</td><td>PSV Ingolstadt</td><td>65.0</td><td>96.0</td><td>65:96</td></tr>
+<tr><td>4004</td><td>1</td><td>04.10.2025 17:30</td><td>TSV 1862 Neuburg</td><td>MTV Baskets Ingolstadt</td><td>54</td><td>62</td><td>54:62</td></tr>
+<tr><td>4010</td><td>2</td><td>12.10.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV 1862 Neuburg</td><td>72</td><td>64</td><td>72:64</td></tr>
+<tr><td>4011</td><td>3</td><td>18.10.2025 19:30</td><td>VSC Donauwörth</td><td>TSV 1862 Neuburg</td><td>76</td><td>58</td><td>76:58</td></tr>
+<tr><td>4022</td><td>5</td><td>08.11.2025 18:00</td><td>PSV Ingolstadt</td><td>TSV 1862 Neuburg</td><td>71</td><td>44</td><td>71:44</td></tr>
+<tr><td>4029</td><td>6</td><td>15.11.2025 18:00</td><td>TSV 1862 Neuburg</td><td>TV Augsburg 2</td><td>54</td><td>50</td><td>54:50</td></tr>
+<tr><td>4034</td><td>7</td><td>23.11.2025 17:00</td><td>Sportfreunde Friedberg</td><td>TSV 1862 Neuburg</td><td>75</td><td>56</td><td>75:56</td></tr>
+<tr><td>4039</td><td>8</td><td>29.11.2025 20:00</td><td>TSV 1862 Neuburg</td><td>TSV Gersthofen</td><td>93</td><td>84</td><td>93:84</td></tr>
+<tr><td>4042</td><td>9</td><td>06.12.2025 17:30</td><td>TSV Diedorf</td><td>TSV 1862 Neuburg</td><td>45</td><td>71</td><td>45:71</td></tr>
+<tr><td>4049</td><td>10</td><td>13.12.2025 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV 1862 Neuburg</td><td>64</td><td>49</td><td>64:49</td></tr>
+<tr><td>4055</td><td>11</td><td>17.01.2026 20:00</td><td>TSV 1862 Neuburg</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>74</td><td>79</td><td>74:79</td></tr>
+<tr><td>4056</td><td>12</td><td>24.01.2026 18:00</td><td>TSV 1862 Neuburg</td><td>VSC Donauwörth</td><td>53</td><td>84</td><td>53:84</td></tr>
+<tr><td>4064</td><td>13</td><td>31.01.2026 20:00</td><td>Green Devils Schrobenhausen</td><td>TSV 1862 Neuburg</td><td>67</td><td>46</td><td>67:46</td></tr>
+<tr><td>4019</td><td>4</td><td>14.02.2026 17:30</td><td>TSV 1862 Neuburg</td><td>Green Devils Schrobenhausen</td><td>42</td><td>74</td><td>42:74</td></tr>
+<tr><td>4087</td><td>18</td><td>21.02.2026 19:00</td><td>TSV 1862 Neuburg</td><td>TSV Diedorf</td><td>83</td><td>73</td><td>83:73</td></tr>
+<tr><td>4074</td><td>15</td><td>01.03.2026 18:30</td><td>TV Augsburg 2</td><td>TSV 1862 Neuburg</td><td>80</td><td>52</td><td>80:52</td></tr>
+<tr><td>4079</td><td>16</td><td>07.03.2026 20:00</td><td>TSV 1862 Neuburg</td><td>Sportfreunde Friedberg</td><td>53</td><td>74</td><td>53:74</td></tr>
+<tr><td>4084</td><td>17</td><td>15.03.2026 17:00</td><td>TSV Gersthofen</td><td>TSV 1862 Neuburg</td><td>83</td><td>69</td><td>83:69</td></tr>
+<tr><td>4067</td><td>14</td><td>27.03.2026 20:00</td><td>TSV 1862 Neuburg</td><td>PSV Ingolstadt</td><td>65</td><td>96</td><td>65:96</td></tr>
 </table>
 </details>
 <details class='liga-block' style='margin-left:20px;'>
 <summary><b>TSV Diedorf</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
-<tr><td>4003</td><td>1</td><td>04.10.2025 19:45</td><td>Green Devils Schrobenhausen</td><td>TSV Diedorf</td><td>69.0</td><td>52.0</td><td>69:52</td></tr>
-<tr><td>4007</td><td>2</td><td>12.10.2025 17:00</td><td>TSV Diedorf</td><td>PSV Ingolstadt</td><td>44.0</td><td>96.0</td><td>44:96</td></tr>
-<tr><td>4015</td><td>3</td><td>19.10.2025 17:30</td><td>TV Augsburg 2</td><td>TSV Diedorf</td><td>72.0</td><td>69.0</td><td>72:69</td></tr>
-<tr><td>4017</td><td>4</td><td>25.10.2025 17:30</td><td>TSV Diedorf</td><td>Sportfreunde Friedberg</td><td>65.0</td><td>74.0</td><td>65:74</td></tr>
-<tr><td>4023</td><td>5</td><td>09.11.2025 17:00</td><td>TSV Gersthofen</td><td>TSV Diedorf</td><td>101.0</td><td>61.0</td><td>101:61</td></tr>
-<tr><td>4027</td><td>6</td><td>15.11.2025 17:30</td><td>TSV Diedorf</td><td>VSC Donauwörth</td><td>44.0</td><td>79.0</td><td>44:79</td></tr>
-<tr><td>4040</td><td>8</td><td>30.11.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV Diedorf</td><td>116.0</td><td>63.0</td><td>116:63</td></tr>
-<tr><td>4042</td><td>9</td><td>06.12.2025 17:30</td><td>TSV Diedorf</td><td>TSV 1862 Neuburg</td><td>45.0</td><td>71.0</td><td>45:71</td></tr>
-<tr><td>4048</td><td>10</td><td>13.12.2025 17:30</td><td>TSV Diedorf</td><td>Green Devils Schrobenhausen</td><td>71.0</td><td>83.0</td><td>71:83</td></tr>
-<tr><td>4062</td><td>13</td><td>10.01.2026 18:30</td><td>Sportfreunde Friedberg</td><td>TSV Diedorf</td><td>80.0</td><td>66.0</td><td>80:66</td></tr>
-<tr><td>4052</td><td>11</td><td>17.01.2026 18:00</td><td>PSV Ingolstadt</td><td>TSV Diedorf</td><td>109.0</td><td>45.0</td><td>109:45</td></tr>
-<tr><td>4060</td><td>12</td><td>24.01.2026 17:30</td><td>TSV Diedorf</td><td>TV Augsburg 2</td><td>67.0</td><td>71.0</td><td>67:71</td></tr>
-<tr><td>4068</td><td>14</td><td>07.02.2026 17:30</td><td>TSV Diedorf</td><td>TSV Gersthofen</td><td>67.0</td><td>74.0</td><td>67:74</td></tr>
-<tr><td>4087</td><td>18</td><td>21.02.2026 19:00</td><td>TSV 1862 Neuburg</td><td>TSV Diedorf</td><td>83.0</td><td>73.0</td><td>83:73</td></tr>
-<tr><td>4072</td><td>15</td><td>28.02.2026 19:30</td><td>VSC Donauwörth</td><td>TSV Diedorf</td><td>88.0</td><td>56.0</td><td>88:56</td></tr>
-<tr><td>4077</td><td>16</td><td>08.03.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV Diedorf</td><td>84.0</td><td>62.0</td><td>84:62</td></tr>
-<tr><td>4085</td><td>17</td><td>14.03.2026 20:00</td><td>TSV Diedorf</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>76.0</td><td>93.0</td><td>76:93</td></tr>
-<tr><td>4032</td><td>7</td><td>28.03.2026 17:30</td><td>TSV Diedorf</td><td>MTV Baskets Ingolstadt</td><td>66.0</td><td>68.0</td><td>66:68</td></tr>
+<tr><td>4003</td><td>1</td><td>04.10.2025 19:45</td><td>Green Devils Schrobenhausen</td><td>TSV Diedorf</td><td>69</td><td>52</td><td>69:52</td></tr>
+<tr><td>4007</td><td>2</td><td>12.10.2025 17:00</td><td>TSV Diedorf</td><td>PSV Ingolstadt</td><td>44</td><td>96</td><td>44:96</td></tr>
+<tr><td>4015</td><td>3</td><td>19.10.2025 17:30</td><td>TV Augsburg 2</td><td>TSV Diedorf</td><td>72</td><td>69</td><td>72:69</td></tr>
+<tr><td>4017</td><td>4</td><td>25.10.2025 17:30</td><td>TSV Diedorf</td><td>Sportfreunde Friedberg</td><td>65</td><td>74</td><td>65:74</td></tr>
+<tr><td>4023</td><td>5</td><td>09.11.2025 17:00</td><td>TSV Gersthofen</td><td>TSV Diedorf</td><td>101</td><td>61</td><td>101:61</td></tr>
+<tr><td>4027</td><td>6</td><td>15.11.2025 17:30</td><td>TSV Diedorf</td><td>VSC Donauwörth</td><td>44</td><td>79</td><td>44:79</td></tr>
+<tr><td>4040</td><td>8</td><td>30.11.2025 17:15</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>TSV Diedorf</td><td>116</td><td>63</td><td>116:63</td></tr>
+<tr><td>4042</td><td>9</td><td>06.12.2025 17:30</td><td>TSV Diedorf</td><td>TSV 1862 Neuburg</td><td>45</td><td>71</td><td>45:71</td></tr>
+<tr><td>4048</td><td>10</td><td>13.12.2025 17:30</td><td>TSV Diedorf</td><td>Green Devils Schrobenhausen</td><td>71</td><td>83</td><td>71:83</td></tr>
+<tr><td>4062</td><td>13</td><td>10.01.2026 18:30</td><td>Sportfreunde Friedberg</td><td>TSV Diedorf</td><td>80</td><td>66</td><td>80:66</td></tr>
+<tr><td>4052</td><td>11</td><td>17.01.2026 18:00</td><td>PSV Ingolstadt</td><td>TSV Diedorf</td><td>109</td><td>45</td><td>109:45</td></tr>
+<tr><td>4060</td><td>12</td><td>24.01.2026 17:30</td><td>TSV Diedorf</td><td>TV Augsburg 2</td><td>67</td><td>71</td><td>67:71</td></tr>
+<tr><td>4068</td><td>14</td><td>07.02.2026 17:30</td><td>TSV Diedorf</td><td>TSV Gersthofen</td><td>67</td><td>74</td><td>67:74</td></tr>
+<tr><td>4087</td><td>18</td><td>21.02.2026 19:00</td><td>TSV 1862 Neuburg</td><td>TSV Diedorf</td><td>83</td><td>73</td><td>83:73</td></tr>
+<tr><td>4072</td><td>15</td><td>28.02.2026 19:30</td><td>VSC Donauwörth</td><td>TSV Diedorf</td><td>88</td><td>56</td><td>88:56</td></tr>
+<tr><td>4077</td><td>16</td><td>08.03.2026 18:00</td><td>MTV Baskets Ingolstadt</td><td>TSV Diedorf</td><td>84</td><td>62</td><td>84:62</td></tr>
+<tr><td>4085</td><td>17</td><td>14.03.2026 20:00</td><td>TSV Diedorf</td><td>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>76</td><td>93</td><td>76:93</td></tr>
+<tr><td>4032</td><td>7</td><td>28.03.2026 17:30</td><td>TSV Diedorf</td><td>MTV Baskets Ingolstadt</td><td>66</td><td>68</td><td>66:68</td></tr>
 </table>
 </details>
 </details>
@@ -1508,39 +1510,26 @@ Keine Restspiele gefunden.
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  // Klickbare Punktzahlen (Punktzahl-Gruppen)
+  // Punktzahl-Gruppen Navigation
   document.querySelectorAll("a[href^='#pg_']").forEach(link => {
-    link.addEventListener("click", e => {
+    link.addEventListener("click", () => {
       const id = link.getAttribute("href").substring(1);
-
-      document.querySelectorAll("details[id^='pg_']").forEach(d => {
-        d.removeAttribute("open");
-      });
-
+      document.querySelectorAll("details[id^='pg_']").forEach(d => d.removeAttribute("open"));
       const target = document.getElementById(id);
-      if (target) {
-        target.setAttribute("open", "");
-      }
+      if (target) target.setAttribute("open", "");
     });
   });
 
-  // Nur Liga-Blöcke öffnen/schließen
+  // Liga-Blöcke öffnen/schließen
   const ligaDetails = document.querySelectorAll("details.liga-block");
 
-  const btnOpen = document.getElementById("open_all");
-  const btnClose = document.getElementById("close_all");
+  document.getElementById("open_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.setAttribute("open", ""));
+  });
 
-  if (btnOpen) {
-    btnOpen.addEventListener("click", () => {
-      ligaDetails.forEach(d => d.setAttribute("open", ""));
-    });
-  }
-
-  if (btnClose) {
-    btnClose.addEventListener("click", () => {
-      ligaDetails.forEach(d => d.removeAttribute("open"));
-    });
-  }
+  document.getElementById("close_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.removeAttribute("open"));
+  });
 
 });
 </script>
