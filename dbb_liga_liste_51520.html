@@ -5,27 +5,34 @@ details:target {
 }
 
 body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+
 table {
   border-collapse: collapse;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   margin-bottom: 20px;
 }
+
 th {
-  background: #2c3e50;
-  color: #ffffff;
+  background: #e6f0ff !important;
+  color: #000000;
   padding: 6px 10px;
   font-size: 13px;
 }
+
 td {
   padding: 6px 10px;
   border-bottom: 1px solid #dddddd;
   font-size: 13px;
 }
+
 tr:nth-child(even) { background: #f2f6fa; }
+
 .punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
 .punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
+
 a.punkte-blau, a.punkte-orange { cursor:pointer; }
+
 pre { font-family: Consolas, monospace; font-size: 13px; }
 </style>
 
@@ -101,7 +108,7 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 <button id='close_all'>Alles schließen</button>
 </div>
 <h2>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</h2>
-<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 12:42 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
+<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 13:07 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
 <b>Python Version:</b> 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]<br>
 <b>Datenbasis:</b> https://www.basketball-bund.net/index.jsp?Action=102&liga_id=51520</p>
 <table border="1" class="dataframe">
@@ -302,7 +309,7 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 </table>
 <hr>
 <h2>Punktzahl‑Gruppen</h2>
-<details id="pg_34" open>
+<details id="pg_34" class="liga-block" open>
 <summary><h3 style='display:inline;'>Teams mit 34 Punkten</h3></summary>
 <pre>
 Fitness First Würzburg Baskets 34  Spiele: 30
@@ -359,7 +366,7 @@ ratiopharm ulm                 34  Spiele: 31
 10.05.2026 16:30    SKYLINERS                        vs   <span style="color:#ff8c00; font-weight:bold;">ratiopharm ulm</span>
 </pre>
 </details>
-<details id="pg_32">
+<details id="pg_32" class="liga-block">
 <summary><h3 style='display:inline;'>Teams mit 32 Punkten</h3></summary>
 <pre>
 VET-CONCEPT Gladiators Trier   32  Spiele: 30
@@ -419,7 +426,7 @@ MHP RIESEN Ludwigsburg         32  Spiele: 30
 10.05.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">VET-CONCEPT Gladiators Trier</span>     vs   SYNTAINICS MBC
 </pre>
 </details>
-<details id="pg_28">
+<details id="pg_28" class="liga-block">
 <summary><h3 style='display:inline;'>Teams mit 28 Punkten</h3></summary>
 <pre>
 ROSTOCK SEAWOLVES              28  Spiele: 29
@@ -480,7 +487,7 @@ NINERS Chemnitz                28  Spiele: 30
 10.05.2026 16:30    <span style="color:#ff8c00; font-weight:bold;">ROSTOCK SEAWOLVES</span>               vs   Veolia Towers Hamburg
 </pre>
 </details>
-<details id="pg_26">
+<details id="pg_26" class="liga-block">
 <summary><h3 style='display:inline;'>Teams mit 26 Punkten</h3></summary>
 <pre>
 EWE Baskets Oldenburg          26  Spiele: 30
@@ -540,7 +547,7 @@ Veolia Towers Hamburg          26  Spiele: 30
 10.05.2026 16:30    FC Bayern München Basketball   vs   <span style="color:#ff8c00; font-weight:bold;">EWE Baskets Oldenburg</span>
 </pre>
 </details>
-<details id="pg_24">
+<details id="pg_24" class="liga-block">
 <summary><h3 style='display:inline;'>Teams mit 24 Punkten</h3></summary>
 <pre>
 SKYLINERS                      24  Spiele: 30
@@ -600,7 +607,7 @@ SYNTAINICS MBC                 24  Spiele: 30
 10.05.2026 16:30    VET-CONCEPT Gladiators Trier   vs   <span style="color:#ff8c00; font-weight:bold;">SYNTAINICS MBC</span>
 </pre>
 </details>
-<details id="pg_16">
+<details id="pg_16" class="liga-block">
 <summary><h3 style='display:inline;'>Teams mit 16 Punkten</h3></summary>
 <pre>
 MLP Academics Heidelberg       16  Spiele: 30
@@ -660,7 +667,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 </pre>
 </details>
 <hr>
-<details>
+<details class='liga-block'>
 <summary><h2 style='display:inline;'>Ergebnisse - ausklappbar</h2></summary>
 <table border="1" class="dataframe">
   <thead>
@@ -3380,7 +3387,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 </table>
 </details>
 <hr>
-<details>
+<details class='liga-block'>
 <summary><h2 style='display:inline;'>Restspielplan (alle ausstehenden Spiele) - ausklappbar</h2></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th></tr>
@@ -3422,9 +3429,9 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 </table>
 </details>
 <hr>
-<details>
+<details class='liga-block'>
 <summary><h2 style='display:inline;'>Spiele pro Team - ausklappbar</h2></summary>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>FC Bayern München Basketball</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3464,7 +3471,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>FC Bayern München Basketball</td><td>EWE Baskets Oldenburg</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>ALBA BERLIN</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3504,7 +3511,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>ALBA BERLIN</td><td>Science City Jena</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>BMA365 Bamberg Baskets</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3544,7 +3551,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>BMA365 Bamberg Baskets</td><td>Telekom Baskets Bonn</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Telekom Baskets Bonn</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3584,7 +3591,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>BMA365 Bamberg Baskets</td><td>Telekom Baskets Bonn</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Fitness First Würzburg Baskets</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3624,7 +3631,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>Fitness First Würzburg Baskets</td><td>MHP RIESEN Ludwigsburg</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>ratiopharm ulm</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3664,7 +3671,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>SKYLINERS</td><td>ratiopharm ulm</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>VET-CONCEPT Gladiators Trier</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3704,7 +3711,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>VET-CONCEPT Gladiators Trier</td><td>SYNTAINICS MBC</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>MHP RIESEN Ludwigsburg</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3744,7 +3751,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>Fitness First Würzburg Baskets</td><td>MHP RIESEN Ludwigsburg</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>RASTA Vechta</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3783,7 +3790,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>MLP Academics Heidelberg</td><td>RASTA Vechta</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>ROSTOCK SEAWOLVES</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3823,7 +3830,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>ROSTOCK SEAWOLVES</td><td>Veolia Towers Hamburg</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>NINERS Chemnitz</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3863,7 +3870,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>Basketball Löwen Braunschweig</td><td>NINERS Chemnitz</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>EWE Baskets Oldenburg</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3903,7 +3910,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>FC Bayern München Basketball</td><td>EWE Baskets Oldenburg</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Veolia Towers Hamburg</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3943,7 +3950,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>ROSTOCK SEAWOLVES</td><td>Veolia Towers Hamburg</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>SKYLINERS</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3983,7 +3990,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>SKYLINERS</td><td>ratiopharm ulm</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>SYNTAINICS MBC</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4023,7 +4030,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>VET-CONCEPT Gladiators Trier</td><td>SYNTAINICS MBC</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Science City Jena</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4063,7 +4070,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>ALBA BERLIN</td><td>Science City Jena</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>MLP Academics Heidelberg</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4103,7 +4110,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>10.05.2026 16:30</td><td>MLP Academics Heidelberg</td><td>RASTA Vechta</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Basketball Löwen Braunschweig</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4146,6 +4153,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+
   // Klickbare Punktzahlen (Punktzahl-Gruppen)
   document.querySelectorAll("a[href^='#pg_']").forEach(link => {
     link.addEventListener("click", e => {
@@ -4162,21 +4170,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Alles öffnen / Alles schließen
-  const allDetails = document.querySelectorAll("details");
+  // Nur Liga-Blöcke öffnen/schließen
+  const ligaDetails = document.querySelectorAll("details.liga-block");
+
   const btnOpen = document.getElementById("open_all");
   const btnClose = document.getElementById("close_all");
 
   if (btnOpen) {
     btnOpen.addEventListener("click", () => {
-      allDetails.forEach(d => d.setAttribute("open", ""));
+      ligaDetails.forEach(d => d.setAttribute("open", ""));
     });
   }
 
   if (btnClose) {
     btnClose.addEventListener("click", () => {
-      allDetails.forEach(d => d.removeAttribute("open"));
+      ligaDetails.forEach(d => d.removeAttribute("open"));
     });
   }
+
 });
 </script>
