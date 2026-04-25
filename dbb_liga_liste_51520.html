@@ -96,8 +96,12 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 
 </div>
 </details>
+<div style='margin:10px 0;'>
+<button id='open_all' style='margin-right:10px;'>Alles öffnen</button>
+<button id='close_all'>Alles schließen</button>
+</div>
 <h2>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</h2>
-<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 11:48 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
+<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 12:42 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
 <b>Python Version:</b> 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]<br>
 <b>Datenbasis:</b> https://www.basketball-bund.net/index.jsp?Action=102&liga_id=51520</p>
 <table border="1" class="dataframe">
@@ -4142,6 +4146,7 @@ Basketball Löwen Braunschweig  16  Spiele: 30
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  // Klickbare Punktzahlen (Punktzahl-Gruppen)
   document.querySelectorAll("a[href^='#pg_']").forEach(link => {
     link.addEventListener("click", e => {
       const id = link.getAttribute("href").substring(1);
@@ -4156,5 +4161,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Alles öffnen / Alles schließen
+  const allDetails = document.querySelectorAll("details");
+  const btnOpen = document.getElementById("open_all");
+  const btnClose = document.getElementById("close_all");
+
+  if (btnOpen) {
+    btnOpen.addEventListener("click", () => {
+      allDetails.forEach(d => d.setAttribute("open", ""));
+    });
+  }
+
+  if (btnClose) {
+    btnClose.addEventListener("click", () => {
+      allDetails.forEach(d => d.removeAttribute("open"));
+    });
+  }
 });
 </script>
