@@ -5,27 +5,34 @@ details:target {
 }
 
 body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+
 table {
   border-collapse: collapse;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   margin-bottom: 20px;
 }
+
 th {
-  background: #2c3e50;
-  color: #ffffff;
+  background: #e6f0ff !important;
+  color: #000000;
   padding: 6px 10px;
   font-size: 13px;
 }
+
 td {
   padding: 6px 10px;
   border-bottom: 1px solid #dddddd;
   font-size: 13px;
 }
+
 tr:nth-child(even) { background: #f2f6fa; }
+
 .punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
 .punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
+
 a.punkte-blau, a.punkte-orange { cursor:pointer; }
+
 pre { font-family: Consolas, monospace; font-size: 13px; }
 </style>
 
@@ -101,7 +108,7 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 <button id='close_all'>Alles schließen</button>
 </div>
 <h2>Herren ProA (Senioren; Liganr.: 10)</h2>
-<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 12:42 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
+<p><b>Tabelle (DBB) – Stand:</b> 25.04.2026 13:07 Uhr <span style='font-weight:bold;'>@hdiw</span><br>
 <b>Python Version:</b> 3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]<br>
 <b>Datenbasis:</b> https://www.basketball-bund.net/index.jsp?Action=102&liga_id=51529</p>
 <table border="1" class="dataframe">
@@ -302,7 +309,7 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 </table>
 <hr>
 <h2>Punktzahl‑Gruppen</h2>
-<details id="pg_42" open>
+<details id="pg_42" class="liga-block" open>
 <summary><h3 style='display:inline;'>Teams mit 42 Punkten</h3></summary>
 <pre>
 Eisbären Bremerhaven           42  Spiele: 32
@@ -357,7 +364,7 @@ Artland Dragons                42  Spiele: 33
 02.05.2026 19:30    <span style="color:#ff8c00; font-weight:bold;">Artland Dragons</span>        vs   Bayer Giants Leverkusen
 </pre>
 </details>
-<details id="pg_28">
+<details id="pg_28" class="liga-block">
 <summary><h3 style='display:inline;'>Teams mit 28 Punkten</h3></summary>
 <pre>
 VfL SparkassenStars Bochum     28  Spiele: 32
@@ -428,7 +435,7 @@ RheinStars Köln                28  Spiele: 32
 02.05.2026 19:30    Bozic Estriche Knights Kirchheim   vs   <span style="color:#ff8c00; font-weight:bold;">RheinStars Köln</span>
 </pre>
 </details>
-<details id="pg_26">
+<details id="pg_26" class="liga-block">
 <summary><h3 style='display:inline;'>Teams mit 26 Punkten</h3></summary>
 <pre>
 EPG Baskets Koblenz            26  Spiele: 32
@@ -482,7 +489,7 @@ BBC Bayreuth                   26  Spiele: 32
 02.05.2026 19:30    <span style="color:#ff8c00; font-weight:bold;">BBC Bayreuth</span>          vs   VfL SparkassenStars Bochum
 </pre>
 </details>
-<details id="pg_24">
+<details id="pg_24" class="liga-block">
 <summary><h3 style='display:inline;'>Teams mit 24 Punkten</h3></summary>
 <pre>
 Tigers Tübingen                24  Spiele: 32
@@ -553,7 +560,7 @@ SBB Baskets                    24  Spiele: 33
 </pre>
 </details>
 <hr>
-<details>
+<details class='liga-block'>
 <summary><h2 style='display:inline;'>Ergebnisse - ausklappbar</h2></summary>
 <table border="1" class="dataframe">
   <thead>
@@ -3463,7 +3470,7 @@ SBB Baskets                    24  Spiele: 33
 </table>
 </details>
 <hr>
-<details>
+<details class='liga-block'>
 <summary><h2 style='display:inline;'>Restspielplan (alle ausstehenden Spiele) - ausklappbar</h2></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th></tr>
@@ -3487,9 +3494,9 @@ SBB Baskets                    24  Spiele: 33
 </table>
 </details>
 <hr>
-<details>
+<details class='liga-block'>
 <summary><h2 style='display:inline;'>Spiele pro Team - ausklappbar</h2></summary>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Phoenix Hagen</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3529,7 +3536,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>Uni Baskets Münster</td><td>Phoenix Hagen</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>HAKRO Merlins Crailsheim</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3569,7 +3576,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>HAKRO Merlins Crailsheim</td><td>BG Göttingen</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>BG Göttingen</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3609,7 +3616,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>HAKRO Merlins Crailsheim</td><td>BG Göttingen</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Eisbären Bremerhaven</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3649,7 +3656,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>Tigers Tübingen</td><td>Eisbären Bremerhaven</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Artland Dragons</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3689,7 +3696,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>Artland Dragons</td><td>Bayer Giants Leverkusen</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Bozic Estriche Knights Kirchheim</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3729,7 +3736,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>Bozic Estriche Knights Kirchheim</td><td>RheinStars Köln</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>GIESSEN 46ers</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3769,7 +3776,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>GIESSEN 46ers</td><td>EPG Baskets Koblenz</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>PS Karlsruhe LIONS</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3809,7 +3816,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>PS Karlsruhe LIONS</td><td>Paderborn Baskets</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>VfL SparkassenStars Bochum</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3849,7 +3856,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>BBC Bayreuth</td><td>VfL SparkassenStars Bochum</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Nürnberg Falcons BC</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3889,7 +3896,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>Nürnberg Falcons BC</td><td>SBB Baskets</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>RheinStars Köln</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3929,7 +3936,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>Bozic Estriche Knights Kirchheim</td><td>RheinStars Köln</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>EPG Baskets Koblenz</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -3969,7 +3976,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>GIESSEN 46ers</td><td>EPG Baskets Koblenz</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>BBC Bayreuth</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4009,7 +4016,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>BBC Bayreuth</td><td>VfL SparkassenStars Bochum</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Tigers Tübingen</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4049,7 +4056,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>Tigers Tübingen</td><td>Eisbären Bremerhaven</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Paderborn Baskets</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4089,7 +4096,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>PS Karlsruhe LIONS</td><td>Paderborn Baskets</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>SBB Baskets</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4129,7 +4136,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>Nürnberg Falcons BC</td><td>SBB Baskets</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Bayer Giants Leverkusen</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4169,7 +4176,7 @@ SBB Baskets                    24  Spiele: 33
 <tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>02.05.2026 19:30</td><td>Artland Dragons</td><td>Bayer Giants Leverkusen</td><td>0</td><td>0</td><td>0:0</td></tr>
 </table>
 </details>
-<details style='margin-left:20px;'>
+<details class='liga-block' style='margin-left:20px;'>
 <summary><b>Uni Baskets Münster</b></summary>
 <table>
 <tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
@@ -4213,6 +4220,7 @@ SBB Baskets                    24  Spiele: 33
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+
   // Klickbare Punktzahlen (Punktzahl-Gruppen)
   document.querySelectorAll("a[href^='#pg_']").forEach(link => {
     link.addEventListener("click", e => {
@@ -4229,21 +4237,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Alles öffnen / Alles schließen
-  const allDetails = document.querySelectorAll("details");
+  // Nur Liga-Blöcke öffnen/schließen
+  const ligaDetails = document.querySelectorAll("details.liga-block");
+
   const btnOpen = document.getElementById("open_all");
   const btnClose = document.getElementById("close_all");
 
   if (btnOpen) {
     btnOpen.addEventListener("click", () => {
-      allDetails.forEach(d => d.setAttribute("open", ""));
+      ligaDetails.forEach(d => d.setAttribute("open", ""));
     });
   }
 
   if (btnClose) {
     btnClose.addEventListener("click", () => {
-      allDetails.forEach(d => d.removeAttribute("open"));
+      ligaDetails.forEach(d => d.removeAttribute("open"));
     });
   }
+
 });
 </script>
