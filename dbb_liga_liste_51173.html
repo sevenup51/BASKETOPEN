@@ -1,0 +1,786 @@
+
+<style>
+body { 
+    font-family: Arial, sans-serif; 
+    background:#f4f6f9; 
+    margin:20px; 
+}
+
+table {
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+}
+
+th {
+  background: #e6f0ff !important;
+  color: #000000;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 13px;
+}
+
+tr:nth-child(even) { background: #f2f6fa; }
+
+.punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
+.punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
+
+#open_all, #close_all {
+    background:#e6f0ff;
+    border:1px solid #b5c7e0;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+#open_all:hover, #close_all:hover {
+    background:#d9e6ff;
+}
+
+pre { font-family: Consolas, monospace; font-size: 13px; }
+</style>
+
+<details>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<p><b>Allgemein</b></p>
+<p>
+Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
+Diese Ligen haben das Format:<br>
+<code>https://www.basketball-bund.net/index.jsp?Action=102&liga_id={LIGA_ID}</code><br><br>
+
+Aktuell wird dies automatisiert für die BBL und für die ProA erzeugt.<br>
+Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).<br><br>
+
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+<b>BBL:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1</a><br>
+<b>ProA:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1</a><br><br>
+
+Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.
+</p>
+
+<p><b>Tabelle</b></p>
+<p>
+Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
+Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
+Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
+und eine geöffnete Punktzahl-Gruppe schließt.
+</p>
+
+<p><b>Punktzahl‑Gruppen</b></p>
+<p>
+Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
+Hier werden zuerst die Teams aufgeführt.<br>
+Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>
+Anschließend folgt der Restspielplan dieser Teams.<br>
+Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.
+</p>
+
+<p><b>Ergebnisse – ausklappbar</b></p>
+<p>
+Sämtliche bisher gespielten Ergebnisse.<br>
+Aktuellste Ergebnisse stehen oben.
+</p>
+
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+<p>
+Nach Restspielplan<br>
+Welche Spiele stehen noch an?<br>
+Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.
+</p>
+
+<p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
+<p>
+Es werden dann alle Vereine angezeigt.<br>
+Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.
+</p>
+
+</div>
+</details>
+<div style='margin:10px 0;'>
+<button id='open_all' style='margin-right:10px;'>Alles öffnen</button>
+<button id='close_all'>Alles schließen</button>
+</div>
+<h2>Bezirksliga U14 männlich Mitte Nord 25/26 (U14 Schwaben; Liganr.: 22075)</h2>
+<p><b>Tabelle (DBB) – Stand:</b> 26.04.2026 13:30 Uhr</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Platz</th>
+      <th>Verein</th>
+      <th>Spiele</th>
+      <th>Siege</th>
+      <th>Niederlagen</th>
+      <th>Punkte</th>
+      <th>Körbe</th>
+      <th>Differenz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>12</td>
+      <td>11</td>
+      <td>0</td>
+      <td>23</td>
+      <td>984 : 466</td>
+      <td>518</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>TSV Gersthofen</td>
+      <td>11</td>
+      <td>9</td>
+      <td>2</td>
+      <td>18</td>
+      <td>809 : 503</td>
+      <td>306</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>TSV Diedorf</td>
+      <td>12</td>
+      <td>7</td>
+      <td>5</td>
+      <td>14</td>
+      <td>680 : 749</td>
+      <td>-69</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>11</td>
+      <td>6</td>
+      <td>5</td>
+      <td>12</td>
+      <td>738 : 580</td>
+      <td>158</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>TSV Meitingen</td>
+      <td>11</td>
+      <td>4</td>
+      <td>7</td>
+      <td>8</td>
+      <td>556 : 672</td>
+      <td>-116</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>11</td>
+      <td>2</td>
+      <td>8</td>
+      <td>4</td>
+      <td>393 : 604</td>
+      <td>-211</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>TSV Neusäß</td>
+      <td>12</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>421 : 1007</td>
+      <td>-586</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h2>Punktzahl‑Gruppen</h2>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Ergebnisse</h2></summary>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>nr</th>
+      <th>sptag</th>
+      <th>date</th>
+      <th>home</th>
+      <th>guest</th>
+      <th>hs</th>
+      <th>gs</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>75029</td>
+      <td>8</td>
+      <td>26.04.2026 15:00</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0:0</td>
+    </tr>
+    <tr>
+      <td>75054</td>
+      <td>14</td>
+      <td>22.03.2026 12:15</td>
+      <td>TSV Gersthofen</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>78</td>
+      <td>55</td>
+      <td>78:55</td>
+    </tr>
+    <tr>
+      <td>75055</td>
+      <td>14</td>
+      <td>22.03.2026 12:30</td>
+      <td>TSV Meitingen</td>
+      <td>TSV Neusäß</td>
+      <td>51</td>
+      <td>46</td>
+      <td>51:46</td>
+    </tr>
+    <tr>
+      <td>75053</td>
+      <td>14</td>
+      <td>15.03.2026 12:15</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>TSV Diedorf</td>
+      <td>100</td>
+      <td>51</td>
+      <td>100:51</td>
+    </tr>
+    <tr>
+      <td>75046</td>
+      <td>12</td>
+      <td>14.03.2026 17:00</td>
+      <td>TSV Diedorf</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>79</td>
+      <td>55</td>
+      <td>79:55</td>
+    </tr>
+    <tr>
+      <td>75049</td>
+      <td>13</td>
+      <td>07.03.2026 10:30</td>
+      <td>TSV Diedorf</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>52</td>
+      <td>46</td>
+      <td>52:46</td>
+    </tr>
+    <tr>
+      <td>75051</td>
+      <td>13</td>
+      <td>07.03.2026 12:45</td>
+      <td>TSV Neusäß</td>
+      <td>TSV Gersthofen</td>
+      <td>52</td>
+      <td>82</td>
+      <td>52:82</td>
+    </tr>
+    <tr>
+      <td>75052</td>
+      <td>13</td>
+      <td>07.03.2026 12:30</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>40</td>
+      <td>74</td>
+      <td>40:74</td>
+    </tr>
+    <tr>
+      <td>75047</td>
+      <td>12</td>
+      <td>28.02.2026 14:30</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>TSV Neusäß</td>
+      <td>115</td>
+      <td>26</td>
+      <td>115:26</td>
+    </tr>
+    <tr>
+      <td>75023</td>
+      <td>6</td>
+      <td>08.02.2026 12:15</td>
+      <td>TSV Gersthofen</td>
+      <td>TSV Neusäß</td>
+      <td>93</td>
+      <td>36</td>
+      <td>93:36</td>
+    </tr>
+    <tr>
+      <td>75015</td>
+      <td>4</td>
+      <td>01.02.2026 10:00</td>
+      <td>TSV Gersthofen</td>
+      <td>TSV Meitingen</td>
+      <td>84</td>
+      <td>39</td>
+      <td>84:39</td>
+    </tr>
+    <tr>
+      <td>75041</td>
+      <td>11</td>
+      <td>31.01.2026 10:30</td>
+      <td>TSV Neusäß</td>
+      <td>TSV Diedorf</td>
+      <td>36</td>
+      <td>71</td>
+      <td>36:71</td>
+    </tr>
+    <tr>
+      <td>75042</td>
+      <td>11</td>
+      <td>31.01.2026 17:15</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>32</td>
+      <td>65</td>
+      <td>32:65</td>
+    </tr>
+    <tr>
+      <td>75037</td>
+      <td>10</td>
+      <td>25.01.2026 12:15</td>
+      <td>TSV Gersthofen</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>20</td>
+      <td>0</td>
+      <td>20:0</td>
+    </tr>
+    <tr>
+      <td>75039</td>
+      <td>10</td>
+      <td>25.01.2026 14:30</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>TSV Neusäß</td>
+      <td>75</td>
+      <td>27</td>
+      <td>75:27</td>
+    </tr>
+    <tr>
+      <td>75035</td>
+      <td>9</td>
+      <td>18.01.2026 16:30</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TSV Neusäß</td>
+      <td>59</td>
+      <td>37</td>
+      <td>59:37</td>
+    </tr>
+    <tr>
+      <td>75036</td>
+      <td>9</td>
+      <td>18.01.2026 12:15</td>
+      <td>TSV Gersthofen</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>62</td>
+      <td>71</td>
+      <td>62:71</td>
+    </tr>
+    <tr>
+      <td>75033</td>
+      <td>9</td>
+      <td>11.01.2026 12:30</td>
+      <td>TSV Meitingen</td>
+      <td>TSV Diedorf</td>
+      <td>59</td>
+      <td>60</td>
+      <td>59:60</td>
+    </tr>
+    <tr>
+      <td>75030</td>
+      <td>8</td>
+      <td>13.12.2025 17:00</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>TSV Meitingen</td>
+      <td>47</td>
+      <td>58</td>
+      <td>47:58</td>
+    </tr>
+    <tr>
+      <td>75031</td>
+      <td>8</td>
+      <td>13.12.2025 10:30</td>
+      <td>TSV Diedorf</td>
+      <td>TSV Gersthofen</td>
+      <td>45</td>
+      <td>70</td>
+      <td>45:70</td>
+    </tr>
+    <tr>
+      <td>75025</td>
+      <td>7</td>
+      <td>06.12.2025 10:30</td>
+      <td>TSV Diedorf</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>54</td>
+      <td>89</td>
+      <td>54:89</td>
+    </tr>
+    <tr>
+      <td>75027</td>
+      <td>7</td>
+      <td>06.12.2025 12:45</td>
+      <td>TSV Neusäß</td>
+      <td>TSV Meitingen</td>
+      <td>46</td>
+      <td>84</td>
+      <td>46:84</td>
+    </tr>
+    <tr>
+      <td>75024</td>
+      <td>6</td>
+      <td>30.11.2025 14:00</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>76</td>
+      <td>54</td>
+      <td>76:54</td>
+    </tr>
+    <tr>
+      <td>75021</td>
+      <td>6</td>
+      <td>29.11.2025 15:00</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TSV Diedorf</td>
+      <td>53</td>
+      <td>55</td>
+      <td>53:55</td>
+    </tr>
+    <tr>
+      <td>75018</td>
+      <td>5</td>
+      <td>23.11.2025 12:30</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>TSV Diedorf</td>
+      <td>83</td>
+      <td>48</td>
+      <td>83:48</td>
+    </tr>
+    <tr>
+      <td>75017</td>
+      <td>5</td>
+      <td>22.11.2025 10:30</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TSV Meitingen</td>
+      <td>27</td>
+      <td>61</td>
+      <td>27:61</td>
+    </tr>
+    <tr>
+      <td>75019</td>
+      <td>5</td>
+      <td>22.11.2025 12:45</td>
+      <td>TSV Neusäß</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>33</td>
+      <td>129</td>
+      <td>33:129</td>
+    </tr>
+    <tr>
+      <td>75014</td>
+      <td>4</td>
+      <td>16.11.2025 14:30</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>79</td>
+      <td>31</td>
+      <td>79:31</td>
+    </tr>
+    <tr>
+      <td>75043</td>
+      <td>11</td>
+      <td>16.11.2025 10:30</td>
+      <td>TSV Meitingen</td>
+      <td>TSV Gersthofen</td>
+      <td>47</td>
+      <td>68</td>
+      <td>47:68</td>
+    </tr>
+    <tr>
+      <td>75013</td>
+      <td>4</td>
+      <td>15.11.2025 10:30</td>
+      <td>TSV Diedorf</td>
+      <td>TSV Neusäß</td>
+      <td>56</td>
+      <td>32</td>
+      <td>56:32</td>
+    </tr>
+    <tr>
+      <td>75009</td>
+      <td>3</td>
+      <td>09.11.2025 10:00</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TSV Gersthofen</td>
+      <td>47</td>
+      <td>106</td>
+      <td>47:106</td>
+    </tr>
+    <tr>
+      <td>75010</td>
+      <td>3</td>
+      <td>09.11.2025 10:15</td>
+      <td>TSV Meitingen</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>24</td>
+      <td>76</td>
+      <td>24:76</td>
+    </tr>
+    <tr>
+      <td>75011</td>
+      <td>3</td>
+      <td>08.11.2025 10:30</td>
+      <td>TSV Neusäß</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>24</td>
+      <td>116</td>
+      <td>24:116</td>
+    </tr>
+    <tr>
+      <td>75008</td>
+      <td>2</td>
+      <td>26.10.2025 14:00</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>TSV Gersthofen</td>
+      <td>74</td>
+      <td>54</td>
+      <td>74:54</td>
+    </tr>
+    <tr>
+      <td>75005</td>
+      <td>2</td>
+      <td>25.10.2025 10:30</td>
+      <td>TSV Diedorf</td>
+      <td>TSV Meitingen</td>
+      <td>72</td>
+      <td>34</td>
+      <td>72:34</td>
+    </tr>
+    <tr>
+      <td>75007</td>
+      <td>2</td>
+      <td>25.10.2025 10:30</td>
+      <td>TSV Neusäß</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>26</td>
+      <td>76</td>
+      <td>26:76</td>
+    </tr>
+    <tr>
+      <td>75002</td>
+      <td>1</td>
+      <td>19.10.2025 12:30</td>
+      <td>TSV Meitingen</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>53</td>
+      <td>69</td>
+      <td>53:69</td>
+    </tr>
+    <tr>
+      <td>75003</td>
+      <td>1</td>
+      <td>19.10.2025 12:15</td>
+      <td>TSV Gersthofen</td>
+      <td>TSV Diedorf</td>
+      <td>92</td>
+      <td>37</td>
+      <td>92:37</td>
+    </tr>
+    <tr>
+      <td>75001</td>
+      <td>1</td>
+      <td>18.10.2025 15:00</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>22</td>
+      <td>103</td>
+      <td>22:103</td>
+    </tr>
+    <tr>
+      <td>75038</td>
+      <td>10</td>
+      <td>12.10.2025 12:15</td>
+      <td>Sportfreunde Friedberg</td>
+      <td>TSV Meitingen</td>
+      <td>77</td>
+      <td>46</td>
+      <td>77:46</td>
+    </tr>
+  </tbody>
+</table>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Restspielplan</h2></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th></tr>
+<tr style='background:#ffcc99;'><td>75029</td><td>8</td><td>26.04.2026 15:00</td><td>Sportfreunde Friedberg</td><td>SSV Schrobenhausen 2</td></tr>
+</table>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Spiele pro Team</h2></summary>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>Sportfreunde Friedberg</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>75038</td><td>10</td><td>12.10.2025 12:15</td><td>Sportfreunde Friedberg</td><td>TSV Meitingen</td><td>77</td><td>46</td><td>77:46</td></tr>
+<tr><td>75001</td><td>1</td><td>18.10.2025 15:00</td><td>SSV Schrobenhausen 2</td><td>Sportfreunde Friedberg</td><td>22</td><td>103</td><td>22:103</td></tr>
+<tr><td>75008</td><td>2</td><td>26.10.2025 14:00</td><td>Sportfreunde Friedberg</td><td>TSV Gersthofen</td><td>74</td><td>54</td><td>74:54</td></tr>
+<tr><td>75010</td><td>3</td><td>09.11.2025 10:15</td><td>TSV Meitingen</td><td>Sportfreunde Friedberg</td><td>24</td><td>76</td><td>24:76</td></tr>
+<tr><td>75019</td><td>5</td><td>22.11.2025 12:45</td><td>TSV Neusäß</td><td>Sportfreunde Friedberg</td><td>33</td><td>129</td><td>33:129</td></tr>
+<tr><td>75024</td><td>6</td><td>30.11.2025 14:00</td><td>Sportfreunde Friedberg</td><td>VSC Baskets Donauwörth</td><td>76</td><td>54</td><td>76:54</td></tr>
+<tr><td>75025</td><td>7</td><td>06.12.2025 10:30</td><td>TSV Diedorf</td><td>Sportfreunde Friedberg</td><td>54</td><td>89</td><td>54:89</td></tr>
+<tr><td>75036</td><td>9</td><td>18.01.2026 12:15</td><td>TSV Gersthofen</td><td>Sportfreunde Friedberg</td><td>62</td><td>71</td><td>62:71</td></tr>
+<tr><td>75047</td><td>12</td><td>28.02.2026 14:30</td><td>Sportfreunde Friedberg</td><td>TSV Neusäß</td><td>115</td><td>26</td><td>115:26</td></tr>
+<tr><td>75052</td><td>13</td><td>07.03.2026 12:30</td><td>VSC Baskets Donauwörth</td><td>Sportfreunde Friedberg</td><td>40</td><td>74</td><td>40:74</td></tr>
+<tr><td>75053</td><td>14</td><td>15.03.2026 12:15</td><td>Sportfreunde Friedberg</td><td>TSV Diedorf</td><td>100</td><td>51</td><td>100:51</td></tr>
+<tr><td>75029</td><td>8</td><td>26.04.2026 15:00</td><td>Sportfreunde Friedberg</td><td>SSV Schrobenhausen 2</td><td>0</td><td>0</td><td>0:0</td></tr>
+<tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>26.04.2026 15:00</td><td>Sportfreunde Friedberg</td><td>SSV Schrobenhausen 2</td><td>0</td><td>0</td><td>0:0</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Gersthofen</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>75003</td><td>1</td><td>19.10.2025 12:15</td><td>TSV Gersthofen</td><td>TSV Diedorf</td><td>92</td><td>37</td><td>92:37</td></tr>
+<tr><td>75008</td><td>2</td><td>26.10.2025 14:00</td><td>Sportfreunde Friedberg</td><td>TSV Gersthofen</td><td>74</td><td>54</td><td>74:54</td></tr>
+<tr><td>75009</td><td>3</td><td>09.11.2025 10:00</td><td>SSV Schrobenhausen 2</td><td>TSV Gersthofen</td><td>47</td><td>106</td><td>47:106</td></tr>
+<tr><td>75043</td><td>11</td><td>16.11.2025 10:30</td><td>TSV Meitingen</td><td>TSV Gersthofen</td><td>47</td><td>68</td><td>47:68</td></tr>
+<tr><td>75031</td><td>8</td><td>13.12.2025 10:30</td><td>TSV Diedorf</td><td>TSV Gersthofen</td><td>45</td><td>70</td><td>45:70</td></tr>
+<tr><td>75036</td><td>9</td><td>18.01.2026 12:15</td><td>TSV Gersthofen</td><td>Sportfreunde Friedberg</td><td>62</td><td>71</td><td>62:71</td></tr>
+<tr><td>75037</td><td>10</td><td>25.01.2026 12:15</td><td>TSV Gersthofen</td><td>SSV Schrobenhausen 2</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>75015</td><td>4</td><td>01.02.2026 10:00</td><td>TSV Gersthofen</td><td>TSV Meitingen</td><td>84</td><td>39</td><td>84:39</td></tr>
+<tr><td>75023</td><td>6</td><td>08.02.2026 12:15</td><td>TSV Gersthofen</td><td>TSV Neusäß</td><td>93</td><td>36</td><td>93:36</td></tr>
+<tr><td>75051</td><td>13</td><td>07.03.2026 12:45</td><td>TSV Neusäß</td><td>TSV Gersthofen</td><td>52</td><td>82</td><td>52:82</td></tr>
+<tr><td>75054</td><td>14</td><td>22.03.2026 12:15</td><td>TSV Gersthofen</td><td>VSC Baskets Donauwörth</td><td>78</td><td>55</td><td>78:55</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Diedorf</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>75003</td><td>1</td><td>19.10.2025 12:15</td><td>TSV Gersthofen</td><td>TSV Diedorf</td><td>92</td><td>37</td><td>92:37</td></tr>
+<tr><td>75005</td><td>2</td><td>25.10.2025 10:30</td><td>TSV Diedorf</td><td>TSV Meitingen</td><td>72</td><td>34</td><td>72:34</td></tr>
+<tr><td>75013</td><td>4</td><td>15.11.2025 10:30</td><td>TSV Diedorf</td><td>TSV Neusäß</td><td>56</td><td>32</td><td>56:32</td></tr>
+<tr><td>75018</td><td>5</td><td>23.11.2025 12:30</td><td>VSC Baskets Donauwörth</td><td>TSV Diedorf</td><td>83</td><td>48</td><td>83:48</td></tr>
+<tr><td>75021</td><td>6</td><td>29.11.2025 15:00</td><td>SSV Schrobenhausen 2</td><td>TSV Diedorf</td><td>53</td><td>55</td><td>53:55</td></tr>
+<tr><td>75025</td><td>7</td><td>06.12.2025 10:30</td><td>TSV Diedorf</td><td>Sportfreunde Friedberg</td><td>54</td><td>89</td><td>54:89</td></tr>
+<tr><td>75031</td><td>8</td><td>13.12.2025 10:30</td><td>TSV Diedorf</td><td>TSV Gersthofen</td><td>45</td><td>70</td><td>45:70</td></tr>
+<tr><td>75033</td><td>9</td><td>11.01.2026 12:30</td><td>TSV Meitingen</td><td>TSV Diedorf</td><td>59</td><td>60</td><td>59:60</td></tr>
+<tr><td>75041</td><td>11</td><td>31.01.2026 10:30</td><td>TSV Neusäß</td><td>TSV Diedorf</td><td>36</td><td>71</td><td>36:71</td></tr>
+<tr><td>75049</td><td>13</td><td>07.03.2026 10:30</td><td>TSV Diedorf</td><td>SSV Schrobenhausen 2</td><td>52</td><td>46</td><td>52:46</td></tr>
+<tr><td>75046</td><td>12</td><td>14.03.2026 17:00</td><td>TSV Diedorf</td><td>VSC Baskets Donauwörth</td><td>79</td><td>55</td><td>79:55</td></tr>
+<tr><td>75053</td><td>14</td><td>15.03.2026 12:15</td><td>Sportfreunde Friedberg</td><td>TSV Diedorf</td><td>100</td><td>51</td><td>100:51</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>VSC Baskets Donauwörth</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>75002</td><td>1</td><td>19.10.2025 12:30</td><td>TSV Meitingen</td><td>VSC Baskets Donauwörth</td><td>53</td><td>69</td><td>53:69</td></tr>
+<tr><td>75011</td><td>3</td><td>08.11.2025 10:30</td><td>TSV Neusäß</td><td>VSC Baskets Donauwörth</td><td>24</td><td>116</td><td>24:116</td></tr>
+<tr><td>75014</td><td>4</td><td>16.11.2025 14:30</td><td>VSC Baskets Donauwörth</td><td>SSV Schrobenhausen 2</td><td>79</td><td>31</td><td>79:31</td></tr>
+<tr><td>75018</td><td>5</td><td>23.11.2025 12:30</td><td>VSC Baskets Donauwörth</td><td>TSV Diedorf</td><td>83</td><td>48</td><td>83:48</td></tr>
+<tr><td>75024</td><td>6</td><td>30.11.2025 14:00</td><td>Sportfreunde Friedberg</td><td>VSC Baskets Donauwörth</td><td>76</td><td>54</td><td>76:54</td></tr>
+<tr><td>75030</td><td>8</td><td>13.12.2025 17:00</td><td>VSC Baskets Donauwörth</td><td>TSV Meitingen</td><td>47</td><td>58</td><td>47:58</td></tr>
+<tr><td>75039</td><td>10</td><td>25.01.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Neusäß</td><td>75</td><td>27</td><td>75:27</td></tr>
+<tr><td>75042</td><td>11</td><td>31.01.2026 17:15</td><td>SSV Schrobenhausen 2</td><td>VSC Baskets Donauwörth</td><td>32</td><td>65</td><td>32:65</td></tr>
+<tr><td>75052</td><td>13</td><td>07.03.2026 12:30</td><td>VSC Baskets Donauwörth</td><td>Sportfreunde Friedberg</td><td>40</td><td>74</td><td>40:74</td></tr>
+<tr><td>75046</td><td>12</td><td>14.03.2026 17:00</td><td>TSV Diedorf</td><td>VSC Baskets Donauwörth</td><td>79</td><td>55</td><td>79:55</td></tr>
+<tr><td>75054</td><td>14</td><td>22.03.2026 12:15</td><td>TSV Gersthofen</td><td>VSC Baskets Donauwörth</td><td>78</td><td>55</td><td>78:55</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Meitingen</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>75038</td><td>10</td><td>12.10.2025 12:15</td><td>Sportfreunde Friedberg</td><td>TSV Meitingen</td><td>77</td><td>46</td><td>77:46</td></tr>
+<tr><td>75002</td><td>1</td><td>19.10.2025 12:30</td><td>TSV Meitingen</td><td>VSC Baskets Donauwörth</td><td>53</td><td>69</td><td>53:69</td></tr>
+<tr><td>75005</td><td>2</td><td>25.10.2025 10:30</td><td>TSV Diedorf</td><td>TSV Meitingen</td><td>72</td><td>34</td><td>72:34</td></tr>
+<tr><td>75010</td><td>3</td><td>09.11.2025 10:15</td><td>TSV Meitingen</td><td>Sportfreunde Friedberg</td><td>24</td><td>76</td><td>24:76</td></tr>
+<tr><td>75043</td><td>11</td><td>16.11.2025 10:30</td><td>TSV Meitingen</td><td>TSV Gersthofen</td><td>47</td><td>68</td><td>47:68</td></tr>
+<tr><td>75017</td><td>5</td><td>22.11.2025 10:30</td><td>SSV Schrobenhausen 2</td><td>TSV Meitingen</td><td>27</td><td>61</td><td>27:61</td></tr>
+<tr><td>75027</td><td>7</td><td>06.12.2025 12:45</td><td>TSV Neusäß</td><td>TSV Meitingen</td><td>46</td><td>84</td><td>46:84</td></tr>
+<tr><td>75030</td><td>8</td><td>13.12.2025 17:00</td><td>VSC Baskets Donauwörth</td><td>TSV Meitingen</td><td>47</td><td>58</td><td>47:58</td></tr>
+<tr><td>75033</td><td>9</td><td>11.01.2026 12:30</td><td>TSV Meitingen</td><td>TSV Diedorf</td><td>59</td><td>60</td><td>59:60</td></tr>
+<tr><td>75015</td><td>4</td><td>01.02.2026 10:00</td><td>TSV Gersthofen</td><td>TSV Meitingen</td><td>84</td><td>39</td><td>84:39</td></tr>
+<tr><td>75055</td><td>14</td><td>22.03.2026 12:30</td><td>TSV Meitingen</td><td>TSV Neusäß</td><td>51</td><td>46</td><td>51:46</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>SSV Schrobenhausen 2</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>75001</td><td>1</td><td>18.10.2025 15:00</td><td>SSV Schrobenhausen 2</td><td>Sportfreunde Friedberg</td><td>22</td><td>103</td><td>22:103</td></tr>
+<tr><td>75007</td><td>2</td><td>25.10.2025 10:30</td><td>TSV Neusäß</td><td>SSV Schrobenhausen 2</td><td>26</td><td>76</td><td>26:76</td></tr>
+<tr><td>75009</td><td>3</td><td>09.11.2025 10:00</td><td>SSV Schrobenhausen 2</td><td>TSV Gersthofen</td><td>47</td><td>106</td><td>47:106</td></tr>
+<tr><td>75014</td><td>4</td><td>16.11.2025 14:30</td><td>VSC Baskets Donauwörth</td><td>SSV Schrobenhausen 2</td><td>79</td><td>31</td><td>79:31</td></tr>
+<tr><td>75017</td><td>5</td><td>22.11.2025 10:30</td><td>SSV Schrobenhausen 2</td><td>TSV Meitingen</td><td>27</td><td>61</td><td>27:61</td></tr>
+<tr><td>75021</td><td>6</td><td>29.11.2025 15:00</td><td>SSV Schrobenhausen 2</td><td>TSV Diedorf</td><td>53</td><td>55</td><td>53:55</td></tr>
+<tr><td>75035</td><td>9</td><td>18.01.2026 16:30</td><td>SSV Schrobenhausen 2</td><td>TSV Neusäß</td><td>59</td><td>37</td><td>59:37</td></tr>
+<tr><td>75037</td><td>10</td><td>25.01.2026 12:15</td><td>TSV Gersthofen</td><td>SSV Schrobenhausen 2</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>75042</td><td>11</td><td>31.01.2026 17:15</td><td>SSV Schrobenhausen 2</td><td>VSC Baskets Donauwörth</td><td>32</td><td>65</td><td>32:65</td></tr>
+<tr><td>75049</td><td>13</td><td>07.03.2026 10:30</td><td>TSV Diedorf</td><td>SSV Schrobenhausen 2</td><td>52</td><td>46</td><td>52:46</td></tr>
+<tr><td>75029</td><td>8</td><td>26.04.2026 15:00</td><td>Sportfreunde Friedberg</td><td>SSV Schrobenhausen 2</td><td>0</td><td>0</td><td>0:0</td></tr>
+<tr><td style='background:#e0e0e0;'></td><td style='background:#e0e0e0;'></td><td>26.04.2026 15:00</td><td>Sportfreunde Friedberg</td><td>SSV Schrobenhausen 2</td><td>0</td><td>0</td><td>0:0</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Neusäß</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>75007</td><td>2</td><td>25.10.2025 10:30</td><td>TSV Neusäß</td><td>SSV Schrobenhausen 2</td><td>26</td><td>76</td><td>26:76</td></tr>
+<tr><td>75011</td><td>3</td><td>08.11.2025 10:30</td><td>TSV Neusäß</td><td>VSC Baskets Donauwörth</td><td>24</td><td>116</td><td>24:116</td></tr>
+<tr><td>75013</td><td>4</td><td>15.11.2025 10:30</td><td>TSV Diedorf</td><td>TSV Neusäß</td><td>56</td><td>32</td><td>56:32</td></tr>
+<tr><td>75019</td><td>5</td><td>22.11.2025 12:45</td><td>TSV Neusäß</td><td>Sportfreunde Friedberg</td><td>33</td><td>129</td><td>33:129</td></tr>
+<tr><td>75027</td><td>7</td><td>06.12.2025 12:45</td><td>TSV Neusäß</td><td>TSV Meitingen</td><td>46</td><td>84</td><td>46:84</td></tr>
+<tr><td>75035</td><td>9</td><td>18.01.2026 16:30</td><td>SSV Schrobenhausen 2</td><td>TSV Neusäß</td><td>59</td><td>37</td><td>59:37</td></tr>
+<tr><td>75039</td><td>10</td><td>25.01.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Neusäß</td><td>75</td><td>27</td><td>75:27</td></tr>
+<tr><td>75041</td><td>11</td><td>31.01.2026 10:30</td><td>TSV Neusäß</td><td>TSV Diedorf</td><td>36</td><td>71</td><td>36:71</td></tr>
+<tr><td>75023</td><td>6</td><td>08.02.2026 12:15</td><td>TSV Gersthofen</td><td>TSV Neusäß</td><td>93</td><td>36</td><td>93:36</td></tr>
+<tr><td>75047</td><td>12</td><td>28.02.2026 14:30</td><td>Sportfreunde Friedberg</td><td>TSV Neusäß</td><td>115</td><td>26</td><td>115:26</td></tr>
+<tr><td>75051</td><td>13</td><td>07.03.2026 12:45</td><td>TSV Neusäß</td><td>TSV Gersthofen</td><td>52</td><td>82</td><td>52:82</td></tr>
+<tr><td>75055</td><td>14</td><td>22.03.2026 12:30</td><td>TSV Meitingen</td><td>TSV Neusäß</td><td>51</td><td>46</td><td>51:46</td></tr>
+</table>
+</details>
+</details>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Punktzahl-Gruppen Navigation
+  document.querySelectorAll("a[href^='#pg_']").forEach(link => {
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("href").substring(1);
+      document.querySelectorAll("details[id^='pg_']").forEach(d => d.removeAttribute("open"));
+      const target = document.getElementById(id);
+      if (target) target.setAttribute("open", "");
+    });
+  });
+
+  // Liga-Blöcke öffnen/schließen
+  const ligaDetails = document.querySelectorAll("details.liga-block");
+
+  document.getElementById("open_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.setAttribute("open", ""));
+  });
+
+  document.getElementById("close_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.removeAttribute("open"));
+  });
+
+});
+</script>
