@@ -1,0 +1,1059 @@
+
+<style>
+body { 
+    font-family: Arial, sans-serif; 
+    background:#f4f6f9; 
+    margin:20px; 
+}
+
+table {
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+}
+
+th {
+  background: #e6f0ff !important;
+  color: #000000;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 13px;
+}
+
+tr:nth-child(even) { background: #f2f6fa; }
+
+.punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
+.punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
+
+#open_all, #close_all {
+    background:#e6f0ff;
+    border:1px solid #b5c7e0;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+#open_all:hover, #close_all:hover {
+    background:#d9e6ff;
+}
+
+pre { font-family: Consolas, monospace; font-size: 13px; }
+</style>
+
+<details>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<p><b>Allgemein</b></p>
+<p>
+Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
+Diese Ligen haben das Format:<br>
+<code>https://www.basketball-bund.net/index.jsp?Action=102&liga_id={LIGA_ID}</code><br><br>
+
+Aktuell wird dies automatisiert für die BBL und für die ProA erzeugt.<br>
+Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).<br><br>
+
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+<b>BBL:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1</a><br>
+<b>ProA:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1</a><br><br>
+
+Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.
+</p>
+
+<p><b>Tabelle</b></p>
+<p>
+Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
+Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
+Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
+und eine geöffnete Punktzahl-Gruppe schließt.
+</p>
+
+<p><b>Punktzahl‑Gruppen</b></p>
+<p>
+Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
+Hier werden zuerst die Teams aufgeführt.<br>
+Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>
+Anschließend folgt der Restspielplan dieser Teams.<br>
+Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.
+</p>
+
+<p><b>Ergebnisse – ausklappbar</b></p>
+<p>
+Sämtliche bisher gespielten Ergebnisse.<br>
+Aktuellste Ergebnisse stehen oben.
+</p>
+
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+<p>
+Nach Restspielplan<br>
+Welche Spiele stehen noch an?<br>
+Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.
+</p>
+
+<p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
+<p>
+Es werden dann alle Vereine angezeigt.<br>
+Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.
+</p>
+
+</div>
+</details>
+<div style='margin:10px 0;'>
+<button id='open_all' style='margin-right:10px;'>Alles öffnen</button>
+<button id='close_all'>Alles schließen</button>
+</div>
+<h2>Bezirksliga U10 gemischt Nord 25/26 (U10 Schwaben; Liganr.: 22045)</h2>
+<p><b>Tabelle (DBB) – Stand:</b> 26.04.2026 13:31 Uhr</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Platz</th>
+      <th>Verein</th>
+      <th>Spiele</th>
+      <th>Siege</th>
+      <th>Niederlagen</th>
+      <th>Punkte</th>
+      <th>Körbe</th>
+      <th>Differenz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>DJK Eichstätt</td>
+      <td>14</td>
+      <td>13</td>
+      <td>1</td>
+      <td>26</td>
+      <td>1157 : 482</td>
+      <td>675</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>14</td>
+      <td>12</td>
+      <td>2</td>
+      <td>24</td>
+      <td>1084 : 589</td>
+      <td>495</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>TV 1847 Augsburg</td>
+      <td>14</td>
+      <td>10</td>
+      <td>4</td>
+      <td>20</td>
+      <td>860 : 586</td>
+      <td>274</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>13</td>
+      <td>5</td>
+      <td>8</td>
+      <td><a href="#pg_10" class="punkte-blau">10</a></td>
+      <td>736 : 922</td>
+      <td>-186</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>PSV Ingolstadt</td>
+      <td>14</td>
+      <td>5</td>
+      <td>9</td>
+      <td><a href="#pg_10" class="punkte-blau">10</a></td>
+      <td>704 : 751</td>
+      <td>-47</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>14</td>
+      <td>5</td>
+      <td>9</td>
+      <td><a href="#pg_10" class="punkte-blau">10</a></td>
+      <td>667 : 891</td>
+      <td>-224</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>14</td>
+      <td>4</td>
+      <td>10</td>
+      <td>7</td>
+      <td>574 : 920</td>
+      <td>-346</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>VSC Donauwörth 2</td>
+      <td>13</td>
+      <td>1</td>
+      <td>12</td>
+      <td>2</td>
+      <td>421 : 1062</td>
+      <td>-641</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>BSC Wertingen</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0 : 0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h2>Punktzahl‑Gruppen</h2>
+<details id="pg_10" class="liga-block" open>
+<summary><h3 style='display:inline;'>Teams mit 10 Punkten</h3></summary>
+<pre>
+SSV Schrobenhausen 2           10  Spiele: 13
+PSV Ingolstadt                 10  Spiele: 14
+TSV 1862 Neuburg               10  Spiele: 14
+</pre>
+<p><b>Direkte Duelle:</b></p>
+<pre>
+25.10.2025 13:00     PSV Ingolstadt                 46:53   SSV Schrobenhausen 2
+30.11.2025 10:30     PSV Ingolstadt                 42:46   TSV 1862 Neuburg
+14.02.2026 14:30     TSV 1862 Neuburg               61:54   SSV Schrobenhausen 2
+01.02.2026 10:00     SSV Schrobenhausen 2           72:70   PSV Ingolstadt
+14.03.2026 10:30     TSV 1862 Neuburg               47:70   PSV Ingolstadt
+22.03.2026 12:00     SSV Schrobenhausen 2           58:45   TSV 1862 Neuburg
+</pre>
+<p><b>Direkter Vergleich:</b></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>+P</th>
+      <th>-P</th>
+      <th>erzielt</th>
+      <th>erhalten</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>4</td>
+      <td>6</td>
+      <td>2</td>
+      <td>237</td>
+      <td>222</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>199</td>
+      <td>224</td>
+      <td>-25</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>PSV Ingolstadt</td>
+      <td>4</td>
+      <td>2</td>
+      <td>6</td>
+      <td>228</td>
+      <td>218</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>Restspiele:</b></p>
+<pre>
+Keine Restspiele gefunden.
+</pre>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Ergebnisse</h2></summary>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>nr</th>
+      <th>sptag</th>
+      <th>date</th>
+      <th>home</th>
+      <th>guest</th>
+      <th>hs</th>
+      <th>gs</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>45018</td>
+      <td>4</td>
+      <td>28.03.2026 14:30</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>VSC Donauwörth 2</td>
+      <td>86</td>
+      <td>44</td>
+      <td>86:44</td>
+    </tr>
+    <tr>
+      <td>45088</td>
+      <td>18</td>
+      <td>22.03.2026 12:00</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>58</td>
+      <td>45</td>
+      <td>58:45</td>
+    </tr>
+    <tr>
+      <td>45090</td>
+      <td>18</td>
+      <td>22.03.2026 12:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>45</td>
+      <td>72</td>
+      <td>45:72</td>
+    </tr>
+    <tr>
+      <td>45087</td>
+      <td>18</td>
+      <td>21.03.2026 10:30</td>
+      <td>PSV Ingolstadt</td>
+      <td>DJK Eichstätt</td>
+      <td>38</td>
+      <td>61</td>
+      <td>38:61</td>
+    </tr>
+    <tr>
+      <td>45089</td>
+      <td>18</td>
+      <td>21.03.2026 13:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>TV 1847 Augsburg</td>
+      <td>67</td>
+      <td>45</td>
+      <td>67:45</td>
+    </tr>
+    <tr>
+      <td>45076</td>
+      <td>16</td>
+      <td>15.03.2026 11:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>VSC Donauwörth 2</td>
+      <td>116</td>
+      <td>25</td>
+      <td>116:25</td>
+    </tr>
+    <tr>
+      <td>45082</td>
+      <td>17</td>
+      <td>14.03.2026 10:30</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>11</td>
+      <td>120</td>
+      <td>11:120</td>
+    </tr>
+    <tr>
+      <td>45083</td>
+      <td>17</td>
+      <td>14.03.2026 10:00</td>
+      <td>TV 1847 Augsburg</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>67</td>
+      <td>44</td>
+      <td>67:44</td>
+    </tr>
+    <tr>
+      <td>45084</td>
+      <td>17</td>
+      <td>14.03.2026 10:30</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>PSV Ingolstadt</td>
+      <td>47</td>
+      <td>70</td>
+      <td>47:70</td>
+    </tr>
+    <tr>
+      <td>45079</td>
+      <td>16</td>
+      <td>07.03.2026 10:30</td>
+      <td>PSV Ingolstadt</td>
+      <td>TV 1847 Augsburg</td>
+      <td>51</td>
+      <td>50</td>
+      <td>51:50</td>
+    </tr>
+    <tr>
+      <td>45080</td>
+      <td>16</td>
+      <td>07.03.2026 10:30</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>93</td>
+      <td>37</td>
+      <td>93:37</td>
+    </tr>
+    <tr>
+      <td>45073</td>
+      <td>15</td>
+      <td>01.03.2026 10:30</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>72</td>
+      <td>65</td>
+      <td>72:65</td>
+    </tr>
+    <tr>
+      <td>45072</td>
+      <td>15</td>
+      <td>28.02.2026 15:00</td>
+      <td>VSC Donauwörth 2</td>
+      <td>DJK Eichstätt</td>
+      <td>12</td>
+      <td>127</td>
+      <td>12:127</td>
+    </tr>
+    <tr>
+      <td>45074</td>
+      <td>15</td>
+      <td>28.02.2026 10:30</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>PSV Ingolstadt</td>
+      <td>25</td>
+      <td>57</td>
+      <td>25:57</td>
+    </tr>
+    <tr>
+      <td>45043</td>
+      <td>9</td>
+      <td>14.02.2026 14:30</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>61</td>
+      <td>54</td>
+      <td>61:54</td>
+    </tr>
+    <tr>
+      <td>45067</td>
+      <td>14</td>
+      <td>08.02.2026 12:30</td>
+      <td>PSV Ingolstadt</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>54</td>
+      <td>83</td>
+      <td>54:83</td>
+    </tr>
+    <tr>
+      <td>45068</td>
+      <td>14</td>
+      <td>08.02.2026 09:00</td>
+      <td>DJK Eichstätt</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>102</td>
+      <td>15</td>
+      <td>102:15</td>
+    </tr>
+    <tr>
+      <td>45063</td>
+      <td>13</td>
+      <td>01.02.2026 12:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>43</td>
+      <td>74</td>
+      <td>43:74</td>
+    </tr>
+    <tr>
+      <td>45064</td>
+      <td>13</td>
+      <td>01.02.2026 10:00</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>PSV Ingolstadt</td>
+      <td>72</td>
+      <td>70</td>
+      <td>72:70</td>
+    </tr>
+    <tr>
+      <td>45060</td>
+      <td>12</td>
+      <td>25.01.2026 09:30</td>
+      <td>DJK Eichstätt</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>87</td>
+      <td>16</td>
+      <td>87:16</td>
+    </tr>
+    <tr>
+      <td>45056</td>
+      <td>12</td>
+      <td>24.01.2026 10:00</td>
+      <td>PSV Ingolstadt</td>
+      <td>VSC Donauwörth 2</td>
+      <td>91</td>
+      <td>27</td>
+      <td>91:27</td>
+    </tr>
+    <tr>
+      <td>45059</td>
+      <td>12</td>
+      <td>24.01.2026 10:30</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>TV 1847 Augsburg</td>
+      <td>47</td>
+      <td>81</td>
+      <td>47:81</td>
+    </tr>
+    <tr>
+      <td>45054</td>
+      <td>11</td>
+      <td>18.01.2026 12:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>TV 1847 Augsburg</td>
+      <td>30</td>
+      <td>54</td>
+      <td>30:54</td>
+    </tr>
+    <tr>
+      <td>45052</td>
+      <td>11</td>
+      <td>17.01.2026 13:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>DJK Eichstätt</td>
+      <td>40</td>
+      <td>81</td>
+      <td>40:81</td>
+    </tr>
+    <tr>
+      <td>45053</td>
+      <td>11</td>
+      <td>17.01.2026 10:30</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>82</td>
+      <td>44</td>
+      <td>82:44</td>
+    </tr>
+    <tr>
+      <td>45034</td>
+      <td>7</td>
+      <td>10.01.2026 12:30</td>
+      <td>TV 1847 Augsburg</td>
+      <td>PSV Ingolstadt</td>
+      <td>52</td>
+      <td>30</td>
+      <td>52:30</td>
+    </tr>
+    <tr>
+      <td>45062</td>
+      <td>13</td>
+      <td>20.12.2025 10:00</td>
+      <td>TV 1847 Augsburg</td>
+      <td>DJK Eichstätt</td>
+      <td>67</td>
+      <td>45</td>
+      <td>67:45</td>
+    </tr>
+    <tr>
+      <td>45048</td>
+      <td>10</td>
+      <td>14.12.2025 09:30</td>
+      <td>DJK Eichstätt</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>75</td>
+      <td>41</td>
+      <td>75:41</td>
+    </tr>
+    <tr>
+      <td>45047</td>
+      <td>10</td>
+      <td>13.12.2025 10:30</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>33</td>
+      <td>73</td>
+      <td>33:73</td>
+    </tr>
+    <tr>
+      <td>45050</td>
+      <td>10</td>
+      <td>13.12.2025 10:00</td>
+      <td>TV 1847 Augsburg</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>20</td>
+      <td>0</td>
+      <td>20:0</td>
+    </tr>
+    <tr>
+      <td>45014</td>
+      <td>3</td>
+      <td>07.12.2025 10:00</td>
+      <td>TV 1847 Augsburg</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>48</td>
+      <td>33</td>
+      <td>48:33</td>
+    </tr>
+    <tr>
+      <td>45042</td>
+      <td>9</td>
+      <td>07.12.2025 09:30</td>
+      <td>DJK Eichstätt</td>
+      <td>PSV Ingolstadt</td>
+      <td>67</td>
+      <td>19</td>
+      <td>67:19</td>
+    </tr>
+    <tr>
+      <td>45044</td>
+      <td>9</td>
+      <td>06.12.2025 17:30</td>
+      <td>TV 1847 Augsburg</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>36</td>
+      <td>77</td>
+      <td>36:77</td>
+    </tr>
+    <tr>
+      <td>45045</td>
+      <td>9</td>
+      <td>06.12.2025 10:30</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>VSC Donauwörth 2</td>
+      <td>55</td>
+      <td>37</td>
+      <td>55:37</td>
+    </tr>
+    <tr>
+      <td>45039</td>
+      <td>8</td>
+      <td>30.11.2025 10:30</td>
+      <td>PSV Ingolstadt</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>42</td>
+      <td>46</td>
+      <td>42:46</td>
+    </tr>
+    <tr>
+      <td>45037</td>
+      <td>8</td>
+      <td>29.11.2025 13:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>70</td>
+      <td>32</td>
+      <td>70:32</td>
+    </tr>
+    <tr>
+      <td>45038</td>
+      <td>8</td>
+      <td>29.11.2025 10:30</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TV 1847 Augsburg</td>
+      <td>41</td>
+      <td>108</td>
+      <td>41:108</td>
+    </tr>
+    <tr>
+      <td>45031</td>
+      <td>7</td>
+      <td>23.11.2025 10:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>37</td>
+      <td>92</td>
+      <td>37:92</td>
+    </tr>
+    <tr>
+      <td>45035</td>
+      <td>7</td>
+      <td>22.11.2025 10:30</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>81</td>
+      <td>66</td>
+      <td>81:66</td>
+    </tr>
+    <tr>
+      <td>45027</td>
+      <td>6</td>
+      <td>16.11.2025 09:30</td>
+      <td>DJK Eichstätt</td>
+      <td>VSC Donauwörth 2</td>
+      <td>111</td>
+      <td>19</td>
+      <td>111:19</td>
+    </tr>
+    <tr>
+      <td>45028</td>
+      <td>6</td>
+      <td>15.11.2025 15:00</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>41</td>
+      <td>96</td>
+      <td>41:96</td>
+    </tr>
+    <tr>
+      <td>45029</td>
+      <td>6</td>
+      <td>15.11.2025 10:30</td>
+      <td>PSV Ingolstadt</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>64</td>
+      <td>63</td>
+      <td>64:63</td>
+    </tr>
+    <tr>
+      <td>45022</td>
+      <td>5</td>
+      <td>09.11.2025 12:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>PSV Ingolstadt</td>
+      <td>71</td>
+      <td>43</td>
+      <td>71:43</td>
+    </tr>
+    <tr>
+      <td>45021</td>
+      <td>5</td>
+      <td>08.11.2025 14:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>47</td>
+      <td>65</td>
+      <td>47:65</td>
+    </tr>
+    <tr>
+      <td>45023</td>
+      <td>5</td>
+      <td>08.11.2025 10:30</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>DJK Eichstätt</td>
+      <td>54</td>
+      <td>96</td>
+      <td>54:96</td>
+    </tr>
+    <tr>
+      <td>45017</td>
+      <td>4</td>
+      <td>26.10.2025 09:30</td>
+      <td>DJK Eichstätt</td>
+      <td>TV 1847 Augsburg</td>
+      <td>62</td>
+      <td>47</td>
+      <td>62:47</td>
+    </tr>
+    <tr>
+      <td>45019</td>
+      <td>4</td>
+      <td>25.10.2025 13:00</td>
+      <td>PSV Ingolstadt</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>46</td>
+      <td>53</td>
+      <td>46:53</td>
+    </tr>
+    <tr>
+      <td>45011</td>
+      <td>3</td>
+      <td>19.10.2025 12:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>PSV Ingolstadt</td>
+      <td>34</td>
+      <td>29</td>
+      <td>34:29</td>
+    </tr>
+    <tr>
+      <td>45015</td>
+      <td>3</td>
+      <td>18.10.2025 10:30</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>DJK Eichstätt</td>
+      <td>19</td>
+      <td>65</td>
+      <td>19:65</td>
+    </tr>
+    <tr>
+      <td>45007</td>
+      <td>2</td>
+      <td>12.10.2025 09:30</td>
+      <td>DJK Eichstätt</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>61</td>
+      <td>52</td>
+      <td>61:52</td>
+    </tr>
+    <tr>
+      <td>45008</td>
+      <td>2</td>
+      <td>11.10.2025 12:45</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>57</td>
+      <td>43</td>
+      <td>57:43</td>
+    </tr>
+    <tr>
+      <td>45009</td>
+      <td>2</td>
+      <td>11.10.2025 10:00</td>
+      <td>TV 1847 Augsburg</td>
+      <td>VSC Donauwörth 2</td>
+      <td>90</td>
+      <td>21</td>
+      <td>90:21</td>
+    </tr>
+    <tr>
+      <td>45003</td>
+      <td>1</td>
+      <td>05.10.2025 12:15</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>DJK Eichstätt</td>
+      <td>43</td>
+      <td>117</td>
+      <td>43:117</td>
+    </tr>
+    <tr>
+      <td>45005</td>
+      <td>1</td>
+      <td>05.10.2025 09:30</td>
+      <td>ESV Ingolstadt-Ringsee 2</td>
+      <td>TV 1847 Augsburg</td>
+      <td>38</td>
+      <td>95</td>
+      <td>38:95</td>
+    </tr>
+    <tr>
+      <td>45002</td>
+      <td>1</td>
+      <td>04.10.2025 14:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>TSV 1862 Neuburg</td>
+      <td>55</td>
+      <td>25</td>
+      <td>55:25</td>
+    </tr>
+  </tbody>
+</table>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Restspielplan</h2></summary>
+<p><i>Keine Restspiele gefunden.</i></p>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Spiele pro Team</h2></summary>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>DJK Eichstätt</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>45003</td><td>1</td><td>05.10.2025 12:15</td><td>SSV Schrobenhausen 2</td><td>DJK Eichstätt</td><td>43</td><td>117</td><td>43:117</td></tr>
+<tr><td>45007</td><td>2</td><td>12.10.2025 09:30</td><td>DJK Eichstätt</td><td>TSV Etting-Ingolstadt</td><td>61</td><td>52</td><td>61:52</td></tr>
+<tr><td>45015</td><td>3</td><td>18.10.2025 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>DJK Eichstätt</td><td>19</td><td>65</td><td>19:65</td></tr>
+<tr><td>45017</td><td>4</td><td>26.10.2025 09:30</td><td>DJK Eichstätt</td><td>TV 1847 Augsburg</td><td>62</td><td>47</td><td>62:47</td></tr>
+<tr><td>45023</td><td>5</td><td>08.11.2025 10:30</td><td>TSV 1862 Neuburg</td><td>DJK Eichstätt</td><td>54</td><td>96</td><td>54:96</td></tr>
+<tr><td>45027</td><td>6</td><td>16.11.2025 09:30</td><td>DJK Eichstätt</td><td>VSC Donauwörth 2</td><td>111</td><td>19</td><td>111:19</td></tr>
+<tr><td>45042</td><td>9</td><td>07.12.2025 09:30</td><td>DJK Eichstätt</td><td>PSV Ingolstadt</td><td>67</td><td>19</td><td>67:19</td></tr>
+<tr><td>45048</td><td>10</td><td>14.12.2025 09:30</td><td>DJK Eichstätt</td><td>SSV Schrobenhausen 2</td><td>75</td><td>41</td><td>75:41</td></tr>
+<tr><td>45062</td><td>13</td><td>20.12.2025 10:00</td><td>TV 1847 Augsburg</td><td>DJK Eichstätt</td><td>67</td><td>45</td><td>67:45</td></tr>
+<tr><td>45052</td><td>11</td><td>17.01.2026 13:00</td><td>TSV Etting-Ingolstadt</td><td>DJK Eichstätt</td><td>40</td><td>81</td><td>40:81</td></tr>
+<tr><td>45060</td><td>12</td><td>25.01.2026 09:30</td><td>DJK Eichstätt</td><td>ESV Ingolstadt-Ringsee 2</td><td>87</td><td>16</td><td>87:16</td></tr>
+<tr><td>45068</td><td>14</td><td>08.02.2026 09:00</td><td>DJK Eichstätt</td><td>TSV 1862 Neuburg</td><td>102</td><td>15</td><td>102:15</td></tr>
+<tr><td>45072</td><td>15</td><td>28.02.2026 15:00</td><td>VSC Donauwörth 2</td><td>DJK Eichstätt</td><td>12</td><td>127</td><td>12:127</td></tr>
+<tr><td>45087</td><td>18</td><td>21.03.2026 10:30</td><td>PSV Ingolstadt</td><td>DJK Eichstätt</td><td>38</td><td>61</td><td>38:61</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Etting-Ingolstadt</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>45002</td><td>1</td><td>04.10.2025 14:00</td><td>TSV Etting-Ingolstadt</td><td>TSV 1862 Neuburg</td><td>55</td><td>25</td><td>55:25</td></tr>
+<tr><td>45007</td><td>2</td><td>12.10.2025 09:30</td><td>DJK Eichstätt</td><td>TSV Etting-Ingolstadt</td><td>61</td><td>52</td><td>61:52</td></tr>
+<tr><td>45022</td><td>5</td><td>09.11.2025 12:00</td><td>TSV Etting-Ingolstadt</td><td>PSV Ingolstadt</td><td>71</td><td>43</td><td>71:43</td></tr>
+<tr><td>45028</td><td>6</td><td>15.11.2025 15:00</td><td>SSV Schrobenhausen 2</td><td>TSV Etting-Ingolstadt</td><td>41</td><td>96</td><td>41:96</td></tr>
+<tr><td>45031</td><td>7</td><td>23.11.2025 10:30</td><td>VSC Donauwörth 2</td><td>TSV Etting-Ingolstadt</td><td>37</td><td>92</td><td>37:92</td></tr>
+<tr><td>45037</td><td>8</td><td>29.11.2025 13:00</td><td>TSV Etting-Ingolstadt</td><td>ESV Ingolstadt-Ringsee 2</td><td>70</td><td>32</td><td>70:32</td></tr>
+<tr><td>45044</td><td>9</td><td>06.12.2025 17:30</td><td>TV 1847 Augsburg</td><td>TSV Etting-Ingolstadt</td><td>36</td><td>77</td><td>36:77</td></tr>
+<tr><td>45047</td><td>10</td><td>13.12.2025 10:30</td><td>TSV 1862 Neuburg</td><td>TSV Etting-Ingolstadt</td><td>33</td><td>73</td><td>33:73</td></tr>
+<tr><td>45052</td><td>11</td><td>17.01.2026 13:00</td><td>TSV Etting-Ingolstadt</td><td>DJK Eichstätt</td><td>40</td><td>81</td><td>40:81</td></tr>
+<tr><td>45067</td><td>14</td><td>08.02.2026 12:30</td><td>PSV Ingolstadt</td><td>TSV Etting-Ingolstadt</td><td>54</td><td>83</td><td>54:83</td></tr>
+<tr><td>45073</td><td>15</td><td>01.03.2026 10:30</td><td>TSV Etting-Ingolstadt</td><td>SSV Schrobenhausen 2</td><td>72</td><td>65</td><td>72:65</td></tr>
+<tr><td>45082</td><td>17</td><td>14.03.2026 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>TSV Etting-Ingolstadt</td><td>11</td><td>120</td><td>11:120</td></tr>
+<tr><td>45076</td><td>16</td><td>15.03.2026 11:00</td><td>TSV Etting-Ingolstadt</td><td>VSC Donauwörth 2</td><td>116</td><td>25</td><td>116:25</td></tr>
+<tr><td>45089</td><td>18</td><td>21.03.2026 13:00</td><td>TSV Etting-Ingolstadt</td><td>TV 1847 Augsburg</td><td>67</td><td>45</td><td>67:45</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TV 1847 Augsburg</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>45005</td><td>1</td><td>05.10.2025 09:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>TV 1847 Augsburg</td><td>38</td><td>95</td><td>38:95</td></tr>
+<tr><td>45009</td><td>2</td><td>11.10.2025 10:00</td><td>TV 1847 Augsburg</td><td>VSC Donauwörth 2</td><td>90</td><td>21</td><td>90:21</td></tr>
+<tr><td>45017</td><td>4</td><td>26.10.2025 09:30</td><td>DJK Eichstätt</td><td>TV 1847 Augsburg</td><td>62</td><td>47</td><td>62:47</td></tr>
+<tr><td>45038</td><td>8</td><td>29.11.2025 10:30</td><td>SSV Schrobenhausen 2</td><td>TV 1847 Augsburg</td><td>41</td><td>108</td><td>41:108</td></tr>
+<tr><td>45044</td><td>9</td><td>06.12.2025 17:30</td><td>TV 1847 Augsburg</td><td>TSV Etting-Ingolstadt</td><td>36</td><td>77</td><td>36:77</td></tr>
+<tr><td>45014</td><td>3</td><td>07.12.2025 10:00</td><td>TV 1847 Augsburg</td><td>TSV 1862 Neuburg</td><td>48</td><td>33</td><td>48:33</td></tr>
+<tr><td>45050</td><td>10</td><td>13.12.2025 10:00</td><td>TV 1847 Augsburg</td><td>ESV Ingolstadt-Ringsee 2</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>45062</td><td>13</td><td>20.12.2025 10:00</td><td>TV 1847 Augsburg</td><td>DJK Eichstätt</td><td>67</td><td>45</td><td>67:45</td></tr>
+<tr><td>45034</td><td>7</td><td>10.01.2026 12:30</td><td>TV 1847 Augsburg</td><td>PSV Ingolstadt</td><td>52</td><td>30</td><td>52:30</td></tr>
+<tr><td>45054</td><td>11</td><td>18.01.2026 12:30</td><td>VSC Donauwörth 2</td><td>TV 1847 Augsburg</td><td>30</td><td>54</td><td>30:54</td></tr>
+<tr><td>45059</td><td>12</td><td>24.01.2026 10:30</td><td>TSV 1862 Neuburg</td><td>TV 1847 Augsburg</td><td>47</td><td>81</td><td>47:81</td></tr>
+<tr><td>45079</td><td>16</td><td>07.03.2026 10:30</td><td>PSV Ingolstadt</td><td>TV 1847 Augsburg</td><td>51</td><td>50</td><td>51:50</td></tr>
+<tr><td>45083</td><td>17</td><td>14.03.2026 10:00</td><td>TV 1847 Augsburg</td><td>SSV Schrobenhausen 2</td><td>67</td><td>44</td><td>67:44</td></tr>
+<tr><td>45089</td><td>18</td><td>21.03.2026 13:00</td><td>TSV Etting-Ingolstadt</td><td>TV 1847 Augsburg</td><td>67</td><td>45</td><td>67:45</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>SSV Schrobenhausen 2</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>45003</td><td>1</td><td>05.10.2025 12:15</td><td>SSV Schrobenhausen 2</td><td>DJK Eichstätt</td><td>43</td><td>117</td><td>43:117</td></tr>
+<tr><td>45019</td><td>4</td><td>25.10.2025 13:00</td><td>PSV Ingolstadt</td><td>SSV Schrobenhausen 2</td><td>46</td><td>53</td><td>46:53</td></tr>
+<tr><td>45021</td><td>5</td><td>08.11.2025 14:30</td><td>VSC Donauwörth 2</td><td>SSV Schrobenhausen 2</td><td>47</td><td>65</td><td>47:65</td></tr>
+<tr><td>45028</td><td>6</td><td>15.11.2025 15:00</td><td>SSV Schrobenhausen 2</td><td>TSV Etting-Ingolstadt</td><td>41</td><td>96</td><td>41:96</td></tr>
+<tr><td>45035</td><td>7</td><td>22.11.2025 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>SSV Schrobenhausen 2</td><td>81</td><td>66</td><td>81:66</td></tr>
+<tr><td>45038</td><td>8</td><td>29.11.2025 10:30</td><td>SSV Schrobenhausen 2</td><td>TV 1847 Augsburg</td><td>41</td><td>108</td><td>41:108</td></tr>
+<tr><td>45048</td><td>10</td><td>14.12.2025 09:30</td><td>DJK Eichstätt</td><td>SSV Schrobenhausen 2</td><td>75</td><td>41</td><td>75:41</td></tr>
+<tr><td>45064</td><td>13</td><td>01.02.2026 10:00</td><td>SSV Schrobenhausen 2</td><td>PSV Ingolstadt</td><td>72</td><td>70</td><td>72:70</td></tr>
+<tr><td>45043</td><td>9</td><td>14.02.2026 14:30</td><td>TSV 1862 Neuburg</td><td>SSV Schrobenhausen 2</td><td>61</td><td>54</td><td>61:54</td></tr>
+<tr><td>45073</td><td>15</td><td>01.03.2026 10:30</td><td>TSV Etting-Ingolstadt</td><td>SSV Schrobenhausen 2</td><td>72</td><td>65</td><td>72:65</td></tr>
+<tr><td>45080</td><td>16</td><td>07.03.2026 10:30</td><td>SSV Schrobenhausen 2</td><td>ESV Ingolstadt-Ringsee 2</td><td>93</td><td>37</td><td>93:37</td></tr>
+<tr><td>45083</td><td>17</td><td>14.03.2026 10:00</td><td>TV 1847 Augsburg</td><td>SSV Schrobenhausen 2</td><td>67</td><td>44</td><td>67:44</td></tr>
+<tr><td>45088</td><td>18</td><td>22.03.2026 12:00</td><td>SSV Schrobenhausen 2</td><td>TSV 1862 Neuburg</td><td>58</td><td>45</td><td>58:45</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>PSV Ingolstadt</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>45011</td><td>3</td><td>19.10.2025 12:30</td><td>VSC Donauwörth 2</td><td>PSV Ingolstadt</td><td>34</td><td>29</td><td>34:29</td></tr>
+<tr><td>45019</td><td>4</td><td>25.10.2025 13:00</td><td>PSV Ingolstadt</td><td>SSV Schrobenhausen 2</td><td>46</td><td>53</td><td>46:53</td></tr>
+<tr><td>45022</td><td>5</td><td>09.11.2025 12:00</td><td>TSV Etting-Ingolstadt</td><td>PSV Ingolstadt</td><td>71</td><td>43</td><td>71:43</td></tr>
+<tr><td>45029</td><td>6</td><td>15.11.2025 10:30</td><td>PSV Ingolstadt</td><td>ESV Ingolstadt-Ringsee 2</td><td>64</td><td>63</td><td>64:63</td></tr>
+<tr><td>45039</td><td>8</td><td>30.11.2025 10:30</td><td>PSV Ingolstadt</td><td>TSV 1862 Neuburg</td><td>42</td><td>46</td><td>42:46</td></tr>
+<tr><td>45042</td><td>9</td><td>07.12.2025 09:30</td><td>DJK Eichstätt</td><td>PSV Ingolstadt</td><td>67</td><td>19</td><td>67:19</td></tr>
+<tr><td>45034</td><td>7</td><td>10.01.2026 12:30</td><td>TV 1847 Augsburg</td><td>PSV Ingolstadt</td><td>52</td><td>30</td><td>52:30</td></tr>
+<tr><td>45056</td><td>12</td><td>24.01.2026 10:00</td><td>PSV Ingolstadt</td><td>VSC Donauwörth 2</td><td>91</td><td>27</td><td>91:27</td></tr>
+<tr><td>45064</td><td>13</td><td>01.02.2026 10:00</td><td>SSV Schrobenhausen 2</td><td>PSV Ingolstadt</td><td>72</td><td>70</td><td>72:70</td></tr>
+<tr><td>45067</td><td>14</td><td>08.02.2026 12:30</td><td>PSV Ingolstadt</td><td>TSV Etting-Ingolstadt</td><td>54</td><td>83</td><td>54:83</td></tr>
+<tr><td>45074</td><td>15</td><td>28.02.2026 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>PSV Ingolstadt</td><td>25</td><td>57</td><td>25:57</td></tr>
+<tr><td>45079</td><td>16</td><td>07.03.2026 10:30</td><td>PSV Ingolstadt</td><td>TV 1847 Augsburg</td><td>51</td><td>50</td><td>51:50</td></tr>
+<tr><td>45084</td><td>17</td><td>14.03.2026 10:30</td><td>TSV 1862 Neuburg</td><td>PSV Ingolstadt</td><td>47</td><td>70</td><td>47:70</td></tr>
+<tr><td>45087</td><td>18</td><td>21.03.2026 10:30</td><td>PSV Ingolstadt</td><td>DJK Eichstätt</td><td>38</td><td>61</td><td>38:61</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV 1862 Neuburg</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>45002</td><td>1</td><td>04.10.2025 14:00</td><td>TSV Etting-Ingolstadt</td><td>TSV 1862 Neuburg</td><td>55</td><td>25</td><td>55:25</td></tr>
+<tr><td>45008</td><td>2</td><td>11.10.2025 12:45</td><td>TSV 1862 Neuburg</td><td>ESV Ingolstadt-Ringsee 2</td><td>57</td><td>43</td><td>57:43</td></tr>
+<tr><td>45023</td><td>5</td><td>08.11.2025 10:30</td><td>TSV 1862 Neuburg</td><td>DJK Eichstätt</td><td>54</td><td>96</td><td>54:96</td></tr>
+<tr><td>45039</td><td>8</td><td>30.11.2025 10:30</td><td>PSV Ingolstadt</td><td>TSV 1862 Neuburg</td><td>42</td><td>46</td><td>42:46</td></tr>
+<tr><td>45014</td><td>3</td><td>07.12.2025 10:00</td><td>TV 1847 Augsburg</td><td>TSV 1862 Neuburg</td><td>48</td><td>33</td><td>48:33</td></tr>
+<tr><td>45047</td><td>10</td><td>13.12.2025 10:30</td><td>TSV 1862 Neuburg</td><td>TSV Etting-Ingolstadt</td><td>33</td><td>73</td><td>33:73</td></tr>
+<tr><td>45053</td><td>11</td><td>17.01.2026 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>TSV 1862 Neuburg</td><td>82</td><td>44</td><td>82:44</td></tr>
+<tr><td>45059</td><td>12</td><td>24.01.2026 10:30</td><td>TSV 1862 Neuburg</td><td>TV 1847 Augsburg</td><td>47</td><td>81</td><td>47:81</td></tr>
+<tr><td>45063</td><td>13</td><td>01.02.2026 12:30</td><td>VSC Donauwörth 2</td><td>TSV 1862 Neuburg</td><td>43</td><td>74</td><td>43:74</td></tr>
+<tr><td>45068</td><td>14</td><td>08.02.2026 09:00</td><td>DJK Eichstätt</td><td>TSV 1862 Neuburg</td><td>102</td><td>15</td><td>102:15</td></tr>
+<tr><td>45043</td><td>9</td><td>14.02.2026 14:30</td><td>TSV 1862 Neuburg</td><td>SSV Schrobenhausen 2</td><td>61</td><td>54</td><td>61:54</td></tr>
+<tr><td>45084</td><td>17</td><td>14.03.2026 10:30</td><td>TSV 1862 Neuburg</td><td>PSV Ingolstadt</td><td>47</td><td>70</td><td>47:70</td></tr>
+<tr><td>45088</td><td>18</td><td>22.03.2026 12:00</td><td>SSV Schrobenhausen 2</td><td>TSV 1862 Neuburg</td><td>58</td><td>45</td><td>58:45</td></tr>
+<tr><td>45018</td><td>4</td><td>28.03.2026 14:30</td><td>TSV 1862 Neuburg</td><td>VSC Donauwörth 2</td><td>86</td><td>44</td><td>86:44</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>ESV Ingolstadt-Ringsee 2</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>45005</td><td>1</td><td>05.10.2025 09:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>TV 1847 Augsburg</td><td>38</td><td>95</td><td>38:95</td></tr>
+<tr><td>45008</td><td>2</td><td>11.10.2025 12:45</td><td>TSV 1862 Neuburg</td><td>ESV Ingolstadt-Ringsee 2</td><td>57</td><td>43</td><td>57:43</td></tr>
+<tr><td>45015</td><td>3</td><td>18.10.2025 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>DJK Eichstätt</td><td>19</td><td>65</td><td>19:65</td></tr>
+<tr><td>45029</td><td>6</td><td>15.11.2025 10:30</td><td>PSV Ingolstadt</td><td>ESV Ingolstadt-Ringsee 2</td><td>64</td><td>63</td><td>64:63</td></tr>
+<tr><td>45035</td><td>7</td><td>22.11.2025 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>SSV Schrobenhausen 2</td><td>81</td><td>66</td><td>81:66</td></tr>
+<tr><td>45037</td><td>8</td><td>29.11.2025 13:00</td><td>TSV Etting-Ingolstadt</td><td>ESV Ingolstadt-Ringsee 2</td><td>70</td><td>32</td><td>70:32</td></tr>
+<tr><td>45045</td><td>9</td><td>06.12.2025 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>VSC Donauwörth 2</td><td>55</td><td>37</td><td>55:37</td></tr>
+<tr><td>45050</td><td>10</td><td>13.12.2025 10:00</td><td>TV 1847 Augsburg</td><td>ESV Ingolstadt-Ringsee 2</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>45053</td><td>11</td><td>17.01.2026 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>TSV 1862 Neuburg</td><td>82</td><td>44</td><td>82:44</td></tr>
+<tr><td>45060</td><td>12</td><td>25.01.2026 09:30</td><td>DJK Eichstätt</td><td>ESV Ingolstadt-Ringsee 2</td><td>87</td><td>16</td><td>87:16</td></tr>
+<tr><td>45074</td><td>15</td><td>28.02.2026 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>PSV Ingolstadt</td><td>25</td><td>57</td><td>25:57</td></tr>
+<tr><td>45080</td><td>16</td><td>07.03.2026 10:30</td><td>SSV Schrobenhausen 2</td><td>ESV Ingolstadt-Ringsee 2</td><td>93</td><td>37</td><td>93:37</td></tr>
+<tr><td>45082</td><td>17</td><td>14.03.2026 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>TSV Etting-Ingolstadt</td><td>11</td><td>120</td><td>11:120</td></tr>
+<tr><td>45090</td><td>18</td><td>22.03.2026 12:30</td><td>VSC Donauwörth 2</td><td>ESV Ingolstadt-Ringsee 2</td><td>45</td><td>72</td><td>45:72</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>VSC Donauwörth 2</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>45009</td><td>2</td><td>11.10.2025 10:00</td><td>TV 1847 Augsburg</td><td>VSC Donauwörth 2</td><td>90</td><td>21</td><td>90:21</td></tr>
+<tr><td>45011</td><td>3</td><td>19.10.2025 12:30</td><td>VSC Donauwörth 2</td><td>PSV Ingolstadt</td><td>34</td><td>29</td><td>34:29</td></tr>
+<tr><td>45021</td><td>5</td><td>08.11.2025 14:30</td><td>VSC Donauwörth 2</td><td>SSV Schrobenhausen 2</td><td>47</td><td>65</td><td>47:65</td></tr>
+<tr><td>45027</td><td>6</td><td>16.11.2025 09:30</td><td>DJK Eichstätt</td><td>VSC Donauwörth 2</td><td>111</td><td>19</td><td>111:19</td></tr>
+<tr><td>45031</td><td>7</td><td>23.11.2025 10:30</td><td>VSC Donauwörth 2</td><td>TSV Etting-Ingolstadt</td><td>37</td><td>92</td><td>37:92</td></tr>
+<tr><td>45045</td><td>9</td><td>06.12.2025 10:30</td><td>ESV Ingolstadt-Ringsee 2</td><td>VSC Donauwörth 2</td><td>55</td><td>37</td><td>55:37</td></tr>
+<tr><td>45054</td><td>11</td><td>18.01.2026 12:30</td><td>VSC Donauwörth 2</td><td>TV 1847 Augsburg</td><td>30</td><td>54</td><td>30:54</td></tr>
+<tr><td>45056</td><td>12</td><td>24.01.2026 10:00</td><td>PSV Ingolstadt</td><td>VSC Donauwörth 2</td><td>91</td><td>27</td><td>91:27</td></tr>
+<tr><td>45063</td><td>13</td><td>01.02.2026 12:30</td><td>VSC Donauwörth 2</td><td>TSV 1862 Neuburg</td><td>43</td><td>74</td><td>43:74</td></tr>
+<tr><td>45072</td><td>15</td><td>28.02.2026 15:00</td><td>VSC Donauwörth 2</td><td>DJK Eichstätt</td><td>12</td><td>127</td><td>12:127</td></tr>
+<tr><td>45076</td><td>16</td><td>15.03.2026 11:00</td><td>TSV Etting-Ingolstadt</td><td>VSC Donauwörth 2</td><td>116</td><td>25</td><td>116:25</td></tr>
+<tr><td>45090</td><td>18</td><td>22.03.2026 12:30</td><td>VSC Donauwörth 2</td><td>ESV Ingolstadt-Ringsee 2</td><td>45</td><td>72</td><td>45:72</td></tr>
+<tr><td>45018</td><td>4</td><td>28.03.2026 14:30</td><td>TSV 1862 Neuburg</td><td>VSC Donauwörth 2</td><td>86</td><td>44</td><td>86:44</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BSC Wertingen</b></summary>
+<p><i>Keine Spiele gefunden.</i></p>
+</details>
+</details>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Punktzahl-Gruppen Navigation
+  document.querySelectorAll("a[href^='#pg_']").forEach(link => {
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("href").substring(1);
+      document.querySelectorAll("details[id^='pg_']").forEach(d => d.removeAttribute("open"));
+      const target = document.getElementById(id);
+      if (target) target.setAttribute("open", "");
+    });
+  });
+
+  // Liga-Blöcke öffnen/schließen
+  const ligaDetails = document.querySelectorAll("details.liga-block");
+
+  document.getElementById("open_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.setAttribute("open", ""));
+  });
+
+  document.getElementById("close_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.removeAttribute("open"));
+  });
+
+});
+</script>
