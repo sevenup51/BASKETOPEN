@@ -1,0 +1,712 @@
+
+<style>
+body { 
+    font-family: Arial, sans-serif; 
+    background:#f4f6f9; 
+    margin:20px; 
+}
+
+table {
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+}
+
+th {
+  background: #e6f0ff !important;
+  color: #000000;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 13px;
+}
+
+tr:nth-child(even) { background: #f2f6fa; }
+
+.punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
+.punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
+
+#open_all, #close_all {
+    background:#e6f0ff;
+    border:1px solid #b5c7e0;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+#open_all:hover, #close_all:hover {
+    background:#d9e6ff;
+}
+
+pre { font-family: Consolas, monospace; font-size: 13px; }
+</style>
+
+<details>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<p><b>Allgemein</b></p>
+<p>
+Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
+Diese Ligen haben das Format:<br>
+<code>https://www.basketball-bund.net/index.jsp?Action=102&liga_id={LIGA_ID}</code><br><br>
+
+Aktuell wird dies automatisiert für die BBL und für die ProA erzeugt.<br>
+Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).<br><br>
+
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+<b>BBL:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1</a><br>
+<b>ProA:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1</a><br><br>
+
+Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.
+</p>
+
+<p><b>Tabelle</b></p>
+<p>
+Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
+Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
+Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
+und eine geöffnete Punktzahl-Gruppe schließt.
+</p>
+
+<p><b>Punktzahl‑Gruppen</b></p>
+<p>
+Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
+Hier werden zuerst die Teams aufgeführt.<br>
+Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>
+Anschließend folgt der Restspielplan dieser Teams.<br>
+Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.
+</p>
+
+<p><b>Ergebnisse – ausklappbar</b></p>
+<p>
+Sämtliche bisher gespielten Ergebnisse.<br>
+Aktuellste Ergebnisse stehen oben.
+</p>
+
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+<p>
+Nach Restspielplan<br>
+Welche Spiele stehen noch an?<br>
+Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.
+</p>
+
+<p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
+<p>
+Es werden dann alle Vereine angezeigt.<br>
+Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.
+</p>
+
+</div>
+</details>
+<div style='margin:10px 0;'>
+<button id='open_all' style='margin-right:10px;'>Alles öffnen</button>
+<button id='close_all'>Alles schließen</button>
+</div>
+<h2>Unbekannte Liga</h2>
+<p><b>Tabelle (DBB) – Stand:</b> 26.04.2026 13:30 Uhr</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Platz</th>
+      <th>Verein</th>
+      <th>Spiele</th>
+      <th>Siege</th>
+      <th>Niederlagen</th>
+      <th>Punkte</th>
+      <th>Körbe</th>
+      <th>Differenz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>10</td>
+      <td>9</td>
+      <td>1</td>
+      <td><a href="#pg_18" class="punkte-blau">18</a></td>
+      <td>779 : 534</td>
+      <td>245</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>10</td>
+      <td>9</td>
+      <td>1</td>
+      <td><a href="#pg_18" class="punkte-blau">18</a></td>
+      <td>752 : 520</td>
+      <td>232</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>10</td>
+      <td>5</td>
+      <td>4</td>
+      <td>11</td>
+      <td>789 : 692</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>TSV Neuburg</td>
+      <td>10</td>
+      <td>2</td>
+      <td>7</td>
+      <td>5</td>
+      <td>613 : 692</td>
+      <td>-79</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>10</td>
+      <td>2</td>
+      <td>8</td>
+      <td>4</td>
+      <td>475 : 754</td>
+      <td>-279</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>VSC Donauwörth 2</td>
+      <td>10</td>
+      <td>2</td>
+      <td>8</td>
+      <td>3</td>
+      <td>510 : 726</td>
+      <td>-216</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>FC Gerolfing 1930 e.V.</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0 : 0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h2>Punktzahl‑Gruppen</h2>
+<details id="pg_18" class="liga-block" open>
+<summary><h3 style='display:inline;'>Teams mit 18 Punkten</h3></summary>
+<pre>
+TSV Etting-Ingolstadt          18  Spiele: 10
+ESV Ringsee Ingolstadt 1       18  Spiele: 10
+</pre>
+<p><b>Direkte Duelle:</b></p>
+<pre>
+30.11.2025 11:00     TSV Etting-Ingolstadt          79:28   ESV Ringsee Ingolstadt 1
+08.03.2026 11:00     ESV Ringsee Ingolstadt 1       76:60   TSV Etting-Ingolstadt
+</pre>
+<p><b>Direkter Vergleich:</b></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>+P</th>
+      <th>-P</th>
+      <th>erzielt</th>
+      <th>erhalten</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>139</td>
+      <td>104</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>104</td>
+      <td>139</td>
+      <td>-35</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>Restspiele:</b></p>
+<pre>
+Keine Restspiele gefunden.
+</pre>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Ergebnisse</h2></summary>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>nr</th>
+      <th>sptag</th>
+      <th>date</th>
+      <th>home</th>
+      <th>guest</th>
+      <th>hs</th>
+      <th>gs</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>35055</td>
+      <td>14</td>
+      <td>22.03.2026 11:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>87</td>
+      <td>54</td>
+      <td>87:54</td>
+    </tr>
+    <tr>
+      <td>35056</td>
+      <td>14</td>
+      <td>22.03.2026 16:30</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>56</td>
+      <td>96</td>
+      <td>56:96</td>
+    </tr>
+    <tr>
+      <td>35054</td>
+      <td>14</td>
+      <td>14.03.2026 12:45</td>
+      <td>TSV Neuburg</td>
+      <td>VSC Donauwörth 2</td>
+      <td>67</td>
+      <td>83</td>
+      <td>67:83</td>
+    </tr>
+    <tr>
+      <td>35050</td>
+      <td>13</td>
+      <td>08.03.2026 11:00</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>76</td>
+      <td>60</td>
+      <td>76:60</td>
+    </tr>
+    <tr>
+      <td>35051</td>
+      <td>13</td>
+      <td>08.03.2026 12:15</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>TSV Neuburg</td>
+      <td>53</td>
+      <td>86</td>
+      <td>53:86</td>
+    </tr>
+    <tr>
+      <td>35048</td>
+      <td>12</td>
+      <td>28.02.2026 12:45</td>
+      <td>TSV Neuburg</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>43</td>
+      <td>69</td>
+      <td>43:69</td>
+    </tr>
+    <tr>
+      <td>35045</td>
+      <td>12</td>
+      <td>08.02.2026 15:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>96</td>
+      <td>81</td>
+      <td>96:81</td>
+    </tr>
+    <tr>
+      <td>35042</td>
+      <td>11</td>
+      <td>01.02.2026 12:00</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>VSC Donauwörth 2</td>
+      <td>108</td>
+      <td>41</td>
+      <td>108:41</td>
+    </tr>
+    <tr>
+      <td>35043</td>
+      <td>11</td>
+      <td>01.02.2026 11:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>TSV Neuburg</td>
+      <td>69</td>
+      <td>46</td>
+      <td>69:46</td>
+    </tr>
+    <tr>
+      <td>35039</td>
+      <td>10</td>
+      <td>25.01.2026 10:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>59</td>
+      <td>74</td>
+      <td>59:74</td>
+    </tr>
+    <tr>
+      <td>35037</td>
+      <td>10</td>
+      <td>24.01.2026 15:00</td>
+      <td>TSV Neuburg</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>65</td>
+      <td>89</td>
+      <td>65:89</td>
+    </tr>
+    <tr>
+      <td>35035</td>
+      <td>9</td>
+      <td>18.01.2026 12:00</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>90</td>
+      <td>65</td>
+      <td>90:65</td>
+    </tr>
+    <tr>
+      <td>35034</td>
+      <td>9</td>
+      <td>17.01.2026 12:30</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>VSC Donauwörth 2</td>
+      <td>90</td>
+      <td>36</td>
+      <td>90:36</td>
+    </tr>
+    <tr>
+      <td>35032</td>
+      <td>8</td>
+      <td>10.01.2026 11:00</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>30</td>
+      <td>75</td>
+      <td>30:75</td>
+    </tr>
+    <tr>
+      <td>35030</td>
+      <td>8</td>
+      <td>13.12.2025 12:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>40</td>
+      <td>69</td>
+      <td>40:69</td>
+    </tr>
+    <tr>
+      <td>35026</td>
+      <td>7</td>
+      <td>07.12.2025 10:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>TSV Neuburg</td>
+      <td>88</td>
+      <td>60</td>
+      <td>88:60</td>
+    </tr>
+    <tr>
+      <td>35027</td>
+      <td>7</td>
+      <td>07.12.2025 10:30</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>39</td>
+      <td>109</td>
+      <td>39:109</td>
+    </tr>
+    <tr>
+      <td>35028</td>
+      <td>7</td>
+      <td>06.12.2025 12:30</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>83</td>
+      <td>61</td>
+      <td>83:61</td>
+    </tr>
+    <tr>
+      <td>35022</td>
+      <td>6</td>
+      <td>30.11.2025 11:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>79</td>
+      <td>28</td>
+      <td>79:28</td>
+    </tr>
+    <tr>
+      <td>35023</td>
+      <td>6</td>
+      <td>29.11.2025 15:00</td>
+      <td>TSV Neuburg</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>80</td>
+      <td>56</td>
+      <td>80:56</td>
+    </tr>
+    <tr>
+      <td>35017</td>
+      <td>5</td>
+      <td>22.11.2025 15:00</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>76</td>
+      <td>82</td>
+      <td>76:82</td>
+    </tr>
+    <tr>
+      <td>35020</td>
+      <td>5</td>
+      <td>22.11.2025 12:30</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>TSV Neuburg</td>
+      <td>64</td>
+      <td>62</td>
+      <td>64:62</td>
+    </tr>
+    <tr>
+      <td>35014</td>
+      <td>4</td>
+      <td>16.11.2025 10:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>62</td>
+      <td>99</td>
+      <td>62:99</td>
+    </tr>
+    <tr>
+      <td>35015</td>
+      <td>4</td>
+      <td>15.11.2025 10:30</td>
+      <td>TSV Neuburg</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>40</td>
+      <td>57</td>
+      <td>40:57</td>
+    </tr>
+    <tr>
+      <td>35009</td>
+      <td>3</td>
+      <td>09.11.2025 14:15</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TSV Neuburg</td>
+      <td>64</td>
+      <td>64</td>
+      <td>64:64</td>
+    </tr>
+    <tr>
+      <td>35011</td>
+      <td>3</td>
+      <td>08.11.2025 13:00</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>VSC Donauwörth 2</td>
+      <td>20</td>
+      <td>0</td>
+      <td>20:0</td>
+    </tr>
+    <tr>
+      <td>35006</td>
+      <td>2</td>
+      <td>26.10.2025 10:30</td>
+      <td>VSC Donauwörth 2</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>47</td>
+      <td>68</td>
+      <td>47:68</td>
+    </tr>
+    <tr>
+      <td>35007</td>
+      <td>2</td>
+      <td>26.10.2025 11:00</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>38</td>
+      <td>65</td>
+      <td>38:65</td>
+    </tr>
+    <tr>
+      <td>35002</td>
+      <td>1</td>
+      <td>19.10.2025 11:00</td>
+      <td>TSV Etting-Ingolstadt</td>
+      <td>VSC Donauwörth 2</td>
+      <td>71</td>
+      <td>54</td>
+      <td>71:54</td>
+    </tr>
+    <tr>
+      <td>35004</td>
+      <td>1</td>
+      <td>18.10.2025 12:30</td>
+      <td>ESV Ringsee Ingolstadt 1</td>
+      <td>TSV 1861 Nördlingen 2</td>
+      <td>103</td>
+      <td>46</td>
+      <td>103:46</td>
+    </tr>
+  </tbody>
+</table>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Restspielplan</h2></summary>
+<p><i>Keine Restspiele gefunden.</i></p>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Spiele pro Team</h2></summary>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Etting-Ingolstadt</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>35002</td><td>1</td><td>19.10.2025 11:00</td><td>TSV Etting-Ingolstadt</td><td>VSC Donauwörth 2</td><td>71</td><td>54</td><td>71:54</td></tr>
+<tr><td>35015</td><td>4</td><td>15.11.2025 10:30</td><td>TSV Neuburg</td><td>TSV Etting-Ingolstadt</td><td>40</td><td>57</td><td>40:57</td></tr>
+<tr><td>35017</td><td>5</td><td>22.11.2025 15:00</td><td>SSV Schrobenhausen 2</td><td>TSV Etting-Ingolstadt</td><td>76</td><td>82</td><td>76:82</td></tr>
+<tr><td>35022</td><td>6</td><td>30.11.2025 11:00</td><td>TSV Etting-Ingolstadt</td><td>ESV Ringsee Ingolstadt 1</td><td>79</td><td>28</td><td>79:28</td></tr>
+<tr><td>35027</td><td>7</td><td>07.12.2025 10:30</td><td>TSV 1861 Nördlingen 2</td><td>TSV Etting-Ingolstadt</td><td>39</td><td>109</td><td>39:109</td></tr>
+<tr><td>35030</td><td>8</td><td>13.12.2025 12:30</td><td>VSC Donauwörth 2</td><td>TSV Etting-Ingolstadt</td><td>40</td><td>69</td><td>40:69</td></tr>
+<tr><td>35043</td><td>11</td><td>01.02.2026 11:00</td><td>TSV Etting-Ingolstadt</td><td>TSV Neuburg</td><td>69</td><td>46</td><td>69:46</td></tr>
+<tr><td>35045</td><td>12</td><td>08.02.2026 15:00</td><td>TSV Etting-Ingolstadt</td><td>SSV Schrobenhausen 2</td><td>96</td><td>81</td><td>96:81</td></tr>
+<tr><td>35050</td><td>13</td><td>08.03.2026 11:00</td><td>ESV Ringsee Ingolstadt 1</td><td>TSV Etting-Ingolstadt</td><td>76</td><td>60</td><td>76:60</td></tr>
+<tr><td>35055</td><td>14</td><td>22.03.2026 11:00</td><td>TSV Etting-Ingolstadt</td><td>TSV 1861 Nördlingen 2</td><td>87</td><td>54</td><td>87:54</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>ESV Ringsee Ingolstadt 1</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>35004</td><td>1</td><td>18.10.2025 12:30</td><td>ESV Ringsee Ingolstadt 1</td><td>TSV 1861 Nördlingen 2</td><td>103</td><td>46</td><td>103:46</td></tr>
+<tr><td>35006</td><td>2</td><td>26.10.2025 10:30</td><td>VSC Donauwörth 2</td><td>ESV Ringsee Ingolstadt 1</td><td>47</td><td>68</td><td>47:68</td></tr>
+<tr><td>35020</td><td>5</td><td>22.11.2025 12:30</td><td>ESV Ringsee Ingolstadt 1</td><td>TSV Neuburg</td><td>64</td><td>62</td><td>64:62</td></tr>
+<tr><td>35022</td><td>6</td><td>30.11.2025 11:00</td><td>TSV Etting-Ingolstadt</td><td>ESV Ringsee Ingolstadt 1</td><td>79</td><td>28</td><td>79:28</td></tr>
+<tr><td>35028</td><td>7</td><td>06.12.2025 12:30</td><td>ESV Ringsee Ingolstadt 1</td><td>SSV Schrobenhausen 2</td><td>83</td><td>61</td><td>83:61</td></tr>
+<tr><td>35032</td><td>8</td><td>10.01.2026 11:00</td><td>TSV 1861 Nördlingen 2</td><td>ESV Ringsee Ingolstadt 1</td><td>30</td><td>75</td><td>30:75</td></tr>
+<tr><td>35034</td><td>9</td><td>17.01.2026 12:30</td><td>ESV Ringsee Ingolstadt 1</td><td>VSC Donauwörth 2</td><td>90</td><td>36</td><td>90:36</td></tr>
+<tr><td>35048</td><td>12</td><td>28.02.2026 12:45</td><td>TSV Neuburg</td><td>ESV Ringsee Ingolstadt 1</td><td>43</td><td>69</td><td>43:69</td></tr>
+<tr><td>35050</td><td>13</td><td>08.03.2026 11:00</td><td>ESV Ringsee Ingolstadt 1</td><td>TSV Etting-Ingolstadt</td><td>76</td><td>60</td><td>76:60</td></tr>
+<tr><td>35056</td><td>14</td><td>22.03.2026 16:30</td><td>SSV Schrobenhausen 2</td><td>ESV Ringsee Ingolstadt 1</td><td>56</td><td>96</td><td>56:96</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>SSV Schrobenhausen 2</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>35007</td><td>2</td><td>26.10.2025 11:00</td><td>TSV 1861 Nördlingen 2</td><td>SSV Schrobenhausen 2</td><td>38</td><td>65</td><td>38:65</td></tr>
+<tr><td>35009</td><td>3</td><td>09.11.2025 14:15</td><td>SSV Schrobenhausen 2</td><td>TSV Neuburg</td><td>64</td><td>64</td><td>64:64</td></tr>
+<tr><td>35014</td><td>4</td><td>16.11.2025 10:30</td><td>VSC Donauwörth 2</td><td>SSV Schrobenhausen 2</td><td>62</td><td>99</td><td>62:99</td></tr>
+<tr><td>35017</td><td>5</td><td>22.11.2025 15:00</td><td>SSV Schrobenhausen 2</td><td>TSV Etting-Ingolstadt</td><td>76</td><td>82</td><td>76:82</td></tr>
+<tr><td>35028</td><td>7</td><td>06.12.2025 12:30</td><td>ESV Ringsee Ingolstadt 1</td><td>SSV Schrobenhausen 2</td><td>83</td><td>61</td><td>83:61</td></tr>
+<tr><td>35035</td><td>9</td><td>18.01.2026 12:00</td><td>SSV Schrobenhausen 2</td><td>TSV 1861 Nördlingen 2</td><td>90</td><td>65</td><td>90:65</td></tr>
+<tr><td>35037</td><td>10</td><td>24.01.2026 15:00</td><td>TSV Neuburg</td><td>SSV Schrobenhausen 2</td><td>65</td><td>89</td><td>65:89</td></tr>
+<tr><td>35042</td><td>11</td><td>01.02.2026 12:00</td><td>SSV Schrobenhausen 2</td><td>VSC Donauwörth 2</td><td>108</td><td>41</td><td>108:41</td></tr>
+<tr><td>35045</td><td>12</td><td>08.02.2026 15:00</td><td>TSV Etting-Ingolstadt</td><td>SSV Schrobenhausen 2</td><td>96</td><td>81</td><td>96:81</td></tr>
+<tr><td>35056</td><td>14</td><td>22.03.2026 16:30</td><td>SSV Schrobenhausen 2</td><td>ESV Ringsee Ingolstadt 1</td><td>56</td><td>96</td><td>56:96</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Neuburg</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>35009</td><td>3</td><td>09.11.2025 14:15</td><td>SSV Schrobenhausen 2</td><td>TSV Neuburg</td><td>64</td><td>64</td><td>64:64</td></tr>
+<tr><td>35015</td><td>4</td><td>15.11.2025 10:30</td><td>TSV Neuburg</td><td>TSV Etting-Ingolstadt</td><td>40</td><td>57</td><td>40:57</td></tr>
+<tr><td>35020</td><td>5</td><td>22.11.2025 12:30</td><td>ESV Ringsee Ingolstadt 1</td><td>TSV Neuburg</td><td>64</td><td>62</td><td>64:62</td></tr>
+<tr><td>35023</td><td>6</td><td>29.11.2025 15:00</td><td>TSV Neuburg</td><td>TSV 1861 Nördlingen 2</td><td>80</td><td>56</td><td>80:56</td></tr>
+<tr><td>35026</td><td>7</td><td>07.12.2025 10:30</td><td>VSC Donauwörth 2</td><td>TSV Neuburg</td><td>88</td><td>60</td><td>88:60</td></tr>
+<tr><td>35037</td><td>10</td><td>24.01.2026 15:00</td><td>TSV Neuburg</td><td>SSV Schrobenhausen 2</td><td>65</td><td>89</td><td>65:89</td></tr>
+<tr><td>35043</td><td>11</td><td>01.02.2026 11:00</td><td>TSV Etting-Ingolstadt</td><td>TSV Neuburg</td><td>69</td><td>46</td><td>69:46</td></tr>
+<tr><td>35048</td><td>12</td><td>28.02.2026 12:45</td><td>TSV Neuburg</td><td>ESV Ringsee Ingolstadt 1</td><td>43</td><td>69</td><td>43:69</td></tr>
+<tr><td>35051</td><td>13</td><td>08.03.2026 12:15</td><td>TSV 1861 Nördlingen 2</td><td>TSV Neuburg</td><td>53</td><td>86</td><td>53:86</td></tr>
+<tr><td>35054</td><td>14</td><td>14.03.2026 12:45</td><td>TSV Neuburg</td><td>VSC Donauwörth 2</td><td>67</td><td>83</td><td>67:83</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV 1861 Nördlingen 2</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>35004</td><td>1</td><td>18.10.2025 12:30</td><td>ESV Ringsee Ingolstadt 1</td><td>TSV 1861 Nördlingen 2</td><td>103</td><td>46</td><td>103:46</td></tr>
+<tr><td>35007</td><td>2</td><td>26.10.2025 11:00</td><td>TSV 1861 Nördlingen 2</td><td>SSV Schrobenhausen 2</td><td>38</td><td>65</td><td>38:65</td></tr>
+<tr><td>35011</td><td>3</td><td>08.11.2025 13:00</td><td>TSV 1861 Nördlingen 2</td><td>VSC Donauwörth 2</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>35023</td><td>6</td><td>29.11.2025 15:00</td><td>TSV Neuburg</td><td>TSV 1861 Nördlingen 2</td><td>80</td><td>56</td><td>80:56</td></tr>
+<tr><td>35027</td><td>7</td><td>07.12.2025 10:30</td><td>TSV 1861 Nördlingen 2</td><td>TSV Etting-Ingolstadt</td><td>39</td><td>109</td><td>39:109</td></tr>
+<tr><td>35032</td><td>8</td><td>10.01.2026 11:00</td><td>TSV 1861 Nördlingen 2</td><td>ESV Ringsee Ingolstadt 1</td><td>30</td><td>75</td><td>30:75</td></tr>
+<tr><td>35035</td><td>9</td><td>18.01.2026 12:00</td><td>SSV Schrobenhausen 2</td><td>TSV 1861 Nördlingen 2</td><td>90</td><td>65</td><td>90:65</td></tr>
+<tr><td>35039</td><td>10</td><td>25.01.2026 10:30</td><td>VSC Donauwörth 2</td><td>TSV 1861 Nördlingen 2</td><td>59</td><td>74</td><td>59:74</td></tr>
+<tr><td>35051</td><td>13</td><td>08.03.2026 12:15</td><td>TSV 1861 Nördlingen 2</td><td>TSV Neuburg</td><td>53</td><td>86</td><td>53:86</td></tr>
+<tr><td>35055</td><td>14</td><td>22.03.2026 11:00</td><td>TSV Etting-Ingolstadt</td><td>TSV 1861 Nördlingen 2</td><td>87</td><td>54</td><td>87:54</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>VSC Donauwörth 2</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>35002</td><td>1</td><td>19.10.2025 11:00</td><td>TSV Etting-Ingolstadt</td><td>VSC Donauwörth 2</td><td>71</td><td>54</td><td>71:54</td></tr>
+<tr><td>35006</td><td>2</td><td>26.10.2025 10:30</td><td>VSC Donauwörth 2</td><td>ESV Ringsee Ingolstadt 1</td><td>47</td><td>68</td><td>47:68</td></tr>
+<tr><td>35011</td><td>3</td><td>08.11.2025 13:00</td><td>TSV 1861 Nördlingen 2</td><td>VSC Donauwörth 2</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>35014</td><td>4</td><td>16.11.2025 10:30</td><td>VSC Donauwörth 2</td><td>SSV Schrobenhausen 2</td><td>62</td><td>99</td><td>62:99</td></tr>
+<tr><td>35026</td><td>7</td><td>07.12.2025 10:30</td><td>VSC Donauwörth 2</td><td>TSV Neuburg</td><td>88</td><td>60</td><td>88:60</td></tr>
+<tr><td>35030</td><td>8</td><td>13.12.2025 12:30</td><td>VSC Donauwörth 2</td><td>TSV Etting-Ingolstadt</td><td>40</td><td>69</td><td>40:69</td></tr>
+<tr><td>35034</td><td>9</td><td>17.01.2026 12:30</td><td>ESV Ringsee Ingolstadt 1</td><td>VSC Donauwörth 2</td><td>90</td><td>36</td><td>90:36</td></tr>
+<tr><td>35039</td><td>10</td><td>25.01.2026 10:30</td><td>VSC Donauwörth 2</td><td>TSV 1861 Nördlingen 2</td><td>59</td><td>74</td><td>59:74</td></tr>
+<tr><td>35042</td><td>11</td><td>01.02.2026 12:00</td><td>SSV Schrobenhausen 2</td><td>VSC Donauwörth 2</td><td>108</td><td>41</td><td>108:41</td></tr>
+<tr><td>35054</td><td>14</td><td>14.03.2026 12:45</td><td>TSV Neuburg</td><td>VSC Donauwörth 2</td><td>67</td><td>83</td><td>67:83</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>FC Gerolfing 1930 e.V.</b></summary>
+<p><i>Keine Spiele gefunden.</i></p>
+</details>
+</details>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Punktzahl-Gruppen Navigation
+  document.querySelectorAll("a[href^='#pg_']").forEach(link => {
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("href").substring(1);
+      document.querySelectorAll("details[id^='pg_']").forEach(d => d.removeAttribute("open"));
+      const target = document.getElementById(id);
+      if (target) target.setAttribute("open", "");
+    });
+  });
+
+  // Liga-Blöcke öffnen/schließen
+  const ligaDetails = document.querySelectorAll("details.liga-block");
+
+  document.getElementById("open_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.setAttribute("open", ""));
+  });
+
+  document.getElementById("close_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.removeAttribute("open"));
+  });
+
+});
+</script>
