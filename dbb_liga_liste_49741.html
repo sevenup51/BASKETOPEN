@@ -1,0 +1,1510 @@
+
+<style>
+body { 
+    font-family: Arial, sans-serif; 
+    background:#f4f6f9; 
+    margin:20px; 
+}
+
+table {
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+}
+
+th {
+  background: #e6f0ff !important;
+  color: #000000;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 13px;
+}
+
+tr:nth-child(even) { background: #f2f6fa; }
+
+.punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
+.punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
+
+#open_all, #close_all {
+    background:#e6f0ff;
+    border:1px solid #b5c7e0;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+#open_all:hover, #close_all:hover {
+    background:#d9e6ff;
+}
+
+pre { font-family: Consolas, monospace; font-size: 13px; }
+</style>
+
+<details>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<p><b>Allgemein</b></p>
+<p>
+Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
+Diese Ligen haben das Format:<br>
+<code>https://www.basketball-bund.net/index.jsp?Action=102&liga_id={LIGA_ID}</code><br><br>
+
+Aktuell wird dies automatisiert für die BBL und für die ProA erzeugt.<br>
+Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).<br><br>
+
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+<b>BBL:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1</a><br>
+<b>ProA:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1</a><br><br>
+
+Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.
+</p>
+
+<p><b>Tabelle</b></p>
+<p>
+Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
+Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
+Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
+und eine geöffnete Punktzahl-Gruppe schließt.
+</p>
+
+<p><b>Punktzahl‑Gruppen</b></p>
+<p>
+Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
+Hier werden zuerst die Teams aufgeführt.<br>
+Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>
+Anschließend folgt der Restspielplan dieser Teams.<br>
+Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.
+</p>
+
+<p><b>Ergebnisse – ausklappbar</b></p>
+<p>
+Sämtliche bisher gespielten Ergebnisse.<br>
+Aktuellste Ergebnisse stehen oben.
+</p>
+
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+<p>
+Nach Restspielplan<br>
+Welche Spiele stehen noch an?<br>
+Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.
+</p>
+
+<p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
+<p>
+Es werden dann alle Vereine angezeigt.<br>
+Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.
+</p>
+
+</div>
+</details>
+<div style='margin:10px 0;'>
+<button id='open_all' style='margin-right:10px;'>Alles öffnen</button>
+<button id='close_all'>Alles schließen</button>
+</div>
+<h2>1. Regionalliga Damen (Senioren; Liganr.: 2001)</h2>
+<p><b>Tabelle (DBB) – Stand:</b> 26.04.2026 13:31 Uhr</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Platz</th>
+      <th>Verein</th>
+      <th>Spiele</th>
+      <th>Siege</th>
+      <th>Niederlagen</th>
+      <th>Punkte</th>
+      <th>Körbe</th>
+      <th>Differenz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TuS Neukölln(Punktabzug: 1)</td>
+      <td>18</td>
+      <td>15</td>
+      <td>3</td>
+      <td>29</td>
+      <td>1061 : 850</td>
+      <td>211</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>SCALA Hamburg</td>
+      <td>18</td>
+      <td>12</td>
+      <td>6</td>
+      <td><a href="#pg_24" class="punkte-blau">24</a></td>
+      <td>1281 : 1133</td>
+      <td>148</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>BG Zehlendorf</td>
+      <td>18</td>
+      <td>12</td>
+      <td>6</td>
+      <td><a href="#pg_24" class="punkte-blau">24</a></td>
+      <td>1174 : 972</td>
+      <td>202</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>ASC 46 Göttingen</td>
+      <td>18</td>
+      <td>11</td>
+      <td>7</td>
+      <td><a href="#pg_22" class="punkte-orange">22</a></td>
+      <td>1157 : 1146</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Rostock Seawolves</td>
+      <td>18</td>
+      <td>11</td>
+      <td>7</td>
+      <td><a href="#pg_22" class="punkte-orange">22</a></td>
+      <td>1089 : 1057</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>18</td>
+      <td>9</td>
+      <td>9</td>
+      <td>18</td>
+      <td>1140 : 1119</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Hamburg Towers</td>
+      <td>18</td>
+      <td>6</td>
+      <td>12</td>
+      <td>12</td>
+      <td>1099 : 1169</td>
+      <td>-70</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>SC Rist Wedel</td>
+      <td>18</td>
+      <td>5</td>
+      <td>13</td>
+      <td>10</td>
+      <td>1080 : 1232</td>
+      <td>-152</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Osnabrücker SC 2(Punktabzug: 1)</td>
+      <td>18</td>
+      <td>5</td>
+      <td>13</td>
+      <td><a href="#pg_8" class="punkte-blau">8</a></td>
+      <td>954 : 1212</td>
+      <td>-258</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>BASS Berlin</td>
+      <td>18</td>
+      <td>4</td>
+      <td>14</td>
+      <td><a href="#pg_8" class="punkte-blau">8</a></td>
+      <td>1018 : 1163</td>
+      <td>-145</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h2>Punktzahl‑Gruppen</h2>
+<details id="pg_24" class="liga-block" open>
+<summary><h3 style='display:inline;'>Teams mit 24 Punkten</h3></summary>
+<pre>
+SCALA Hamburg                  24  Spiele: 18
+BG Zehlendorf                  24  Spiele: 18
+</pre>
+<p><b>Direkte Duelle:</b></p>
+<pre>
+06.12.2025 20:00     SCALA Hamburg                  82:68   BG Zehlendorf
+05.10.2025 17:30     BG Zehlendorf                  68:73   SCALA Hamburg
+</pre>
+<p><b>Direkter Vergleich:</b></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>+P</th>
+      <th>-P</th>
+      <th>erzielt</th>
+      <th>erhalten</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>SCALA Hamburg</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>155</td>
+      <td>136</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>BG Zehlendorf</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>136</td>
+      <td>155</td>
+      <td>-19</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>Restspiele:</b></p>
+<pre>
+Keine Restspiele gefunden.
+</pre>
+</details>
+<details id="pg_22" class="liga-block">
+<summary><h3 style='display:inline;'>Teams mit 22 Punkten</h3></summary>
+<pre>
+ASC 46 Göttingen               22  Spiele: 18
+Rostock Seawolves              22  Spiele: 18
+</pre>
+<p><b>Direkte Duelle:</b></p>
+<pre>
+05.10.2025 13:00     Rostock Seawolves              67:70   ASC 46 Göttingen
+17.01.2026 19:30     ASC 46 Göttingen               82:58   Rostock Seawolves
+</pre>
+<p><b>Direkter Vergleich:</b></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>+P</th>
+      <th>-P</th>
+      <th>erzielt</th>
+      <th>erhalten</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>ASC 46 Göttingen</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>152</td>
+      <td>125</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Rostock Seawolves</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>125</td>
+      <td>152</td>
+      <td>-27</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>Restspiele:</b></p>
+<pre>
+Keine Restspiele gefunden.
+</pre>
+</details>
+<details id="pg_8" class="liga-block">
+<summary><h3 style='display:inline;'>Teams mit 8 Punkten</h3></summary>
+<pre>
+Osnabrücker SC 2(Punktabzug: 1)  8  Spiele: 18
+BASS Berlin                     8  Spiele: 18
+</pre>
+<p><b>Direkte Duelle:</b></p>
+<p><i>Keine direkten Duelle.</i></p>
+<p><b>Direkter Vergleich:</b></p>
+<p><i>Keine direkten Duelle vorhanden.</i></p>
+<p><b>Restspiele:</b></p>
+<pre>
+Keine Restspiele gefunden.
+</pre>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Ergebnisse</h2></summary>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>nr</th>
+      <th>sptag</th>
+      <th>date</th>
+      <th>home</th>
+      <th>guest</th>
+      <th>hs</th>
+      <th>gs</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2046</td>
+      <td>10</td>
+      <td>11.04.2026 15:00</td>
+      <td>Rostock Seawolves</td>
+      <td>TuS Neukölln</td>
+      <td>50</td>
+      <td>42</td>
+      <td>50:42</td>
+    </tr>
+    <tr>
+      <td>2050</td>
+      <td>10</td>
+      <td>04.04.2026 17:30</td>
+      <td>BG Zehlendorf</td>
+      <td>Hamburg Towers</td>
+      <td>60</td>
+      <td>55</td>
+      <td>60:55</td>
+    </tr>
+    <tr>
+      <td>2049</td>
+      <td>10</td>
+      <td>29.03.2026 16:00</td>
+      <td>BASS Berlin</td>
+      <td>ASC 46 Göttingen</td>
+      <td>65</td>
+      <td>72</td>
+      <td>65:72</td>
+    </tr>
+    <tr>
+      <td>2047</td>
+      <td>10</td>
+      <td>28.03.2026 14:00</td>
+      <td>Osnabrücker SC 2</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>69</td>
+      <td>74</td>
+      <td>69:74</td>
+    </tr>
+    <tr>
+      <td>2054</td>
+      <td>11</td>
+      <td>28.03.2026 17:00</td>
+      <td>TuS Neukölln</td>
+      <td>BG Zehlendorf</td>
+      <td>62</td>
+      <td>55</td>
+      <td>62:55</td>
+    </tr>
+    <tr>
+      <td>2070</td>
+      <td>14</td>
+      <td>28.03.2026 15:00</td>
+      <td>Rostock Seawolves</td>
+      <td>Hamburg Towers</td>
+      <td>73</td>
+      <td>53</td>
+      <td>73:53</td>
+    </tr>
+    <tr>
+      <td>2042</td>
+      <td>9</td>
+      <td>21.03.2026 13:30</td>
+      <td>SC Rist Wedel</td>
+      <td>ASC 46 Göttingen</td>
+      <td>57</td>
+      <td>63</td>
+      <td>57:63</td>
+    </tr>
+    <tr>
+      <td>2086</td>
+      <td>18</td>
+      <td>21.03.2026 15:00</td>
+      <td>Rostock Seawolves</td>
+      <td>BASS Berlin</td>
+      <td>68</td>
+      <td>46</td>
+      <td>68:46</td>
+    </tr>
+    <tr>
+      <td>2088</td>
+      <td>18</td>
+      <td>21.03.2026 17:15</td>
+      <td>SCALA Hamburg</td>
+      <td>Osnabrücker SC 2</td>
+      <td>84</td>
+      <td>46</td>
+      <td>84:46</td>
+    </tr>
+    <tr>
+      <td>2089</td>
+      <td>18</td>
+      <td>21.03.2026 15:00</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>BG Zehlendorf</td>
+      <td>49</td>
+      <td>56</td>
+      <td>49:56</td>
+    </tr>
+    <tr>
+      <td>2090</td>
+      <td>18</td>
+      <td>21.03.2026 15:30</td>
+      <td>TuS Neukölln</td>
+      <td>Hamburg Towers</td>
+      <td>60</td>
+      <td>47</td>
+      <td>60:47</td>
+    </tr>
+    <tr>
+      <td>2081</td>
+      <td>17</td>
+      <td>14.03.2026 16:00</td>
+      <td>BASS Berlin</td>
+      <td>TuS Neukölln</td>
+      <td>44</td>
+      <td>54</td>
+      <td>44:54</td>
+    </tr>
+    <tr>
+      <td>2082</td>
+      <td>17</td>
+      <td>14.03.2026 16:00</td>
+      <td>Hamburg Towers</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>57</td>
+      <td>68</td>
+      <td>57:68</td>
+    </tr>
+    <tr>
+      <td>2084</td>
+      <td>17</td>
+      <td>14.03.2026 20:00</td>
+      <td>Osnabrücker SC 2</td>
+      <td>ASC 46 Göttingen</td>
+      <td>61</td>
+      <td>71</td>
+      <td>61:71</td>
+    </tr>
+    <tr>
+      <td>2085</td>
+      <td>17</td>
+      <td>14.03.2026 14:00</td>
+      <td>SC Rist Wedel</td>
+      <td>Rostock Seawolves</td>
+      <td>39</td>
+      <td>82</td>
+      <td>39:82</td>
+    </tr>
+    <tr>
+      <td>2076</td>
+      <td>16</td>
+      <td>07.03.2026 15:00</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>TuS Neukölln</td>
+      <td>76</td>
+      <td>64</td>
+      <td>76:64</td>
+    </tr>
+    <tr>
+      <td>2077</td>
+      <td>16</td>
+      <td>07.03.2026 16:00</td>
+      <td>BASS Berlin</td>
+      <td>SC Rist Wedel</td>
+      <td>64</td>
+      <td>55</td>
+      <td>64:55</td>
+    </tr>
+    <tr>
+      <td>2078</td>
+      <td>16</td>
+      <td>07.03.2026 15:00</td>
+      <td>Rostock Seawolves</td>
+      <td>Osnabrücker SC 2</td>
+      <td>54</td>
+      <td>38</td>
+      <td>54:38</td>
+    </tr>
+    <tr>
+      <td>2079</td>
+      <td>16</td>
+      <td>07.03.2026 16:30</td>
+      <td>ASC 46 Göttingen</td>
+      <td>BG Zehlendorf</td>
+      <td>61</td>
+      <td>58</td>
+      <td>61:58</td>
+    </tr>
+    <tr>
+      <td>2080</td>
+      <td>16</td>
+      <td>07.03.2026 20:00</td>
+      <td>SCALA Hamburg</td>
+      <td>Hamburg Towers</td>
+      <td>81</td>
+      <td>73</td>
+      <td>81:73</td>
+    </tr>
+    <tr>
+      <td>2071</td>
+      <td>15</td>
+      <td>28.02.2026 16:00</td>
+      <td>Osnabrücker SC 2</td>
+      <td>BASS Berlin</td>
+      <td>73</td>
+      <td>72</td>
+      <td>73:72</td>
+    </tr>
+    <tr>
+      <td>2072</td>
+      <td>15</td>
+      <td>28.02.2026 17:00</td>
+      <td>TuS Neukölln</td>
+      <td>SC Rist Wedel</td>
+      <td>72</td>
+      <td>52</td>
+      <td>72:52</td>
+    </tr>
+    <tr>
+      <td>2073</td>
+      <td>15</td>
+      <td>28.02.2026 15:00</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>SCALA Hamburg</td>
+      <td>50</td>
+      <td>51</td>
+      <td>50:51</td>
+    </tr>
+    <tr>
+      <td>2074</td>
+      <td>15</td>
+      <td>28.02.2026 15:30</td>
+      <td>Hamburg Towers</td>
+      <td>ASC 46 Göttingen</td>
+      <td>54</td>
+      <td>56</td>
+      <td>54:56</td>
+    </tr>
+    <tr>
+      <td>2075</td>
+      <td>15</td>
+      <td>28.02.2026 17:30</td>
+      <td>BG Zehlendorf</td>
+      <td>Rostock Seawolves</td>
+      <td>66</td>
+      <td>52</td>
+      <td>66:52</td>
+    </tr>
+    <tr>
+      <td>2059</td>
+      <td>12</td>
+      <td>21.02.2026 19:30</td>
+      <td>Osnabrücker SC 2</td>
+      <td>BG Zehlendorf</td>
+      <td>36</td>
+      <td>75</td>
+      <td>36:75</td>
+    </tr>
+    <tr>
+      <td>2069</td>
+      <td>14</td>
+      <td>16.02.2026 19:45</td>
+      <td>BASS Berlin</td>
+      <td>BG Zehlendorf</td>
+      <td>34</td>
+      <td>78</td>
+      <td>34:78</td>
+    </tr>
+    <tr>
+      <td>2066</td>
+      <td>14</td>
+      <td>14.02.2026 20:00</td>
+      <td>SCALA Hamburg</td>
+      <td>TuS Neukölln</td>
+      <td>52</td>
+      <td>48</td>
+      <td>52:48</td>
+    </tr>
+    <tr>
+      <td>2067</td>
+      <td>14</td>
+      <td>14.02.2026 19:30</td>
+      <td>ASC 46 Göttingen</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>62</td>
+      <td>63</td>
+      <td>62:63</td>
+    </tr>
+    <tr>
+      <td>2061</td>
+      <td>13</td>
+      <td>07.02.2026 15:00</td>
+      <td>Hamburg Towers</td>
+      <td>BASS Berlin</td>
+      <td>67</td>
+      <td>62</td>
+      <td>67:62</td>
+    </tr>
+    <tr>
+      <td>2062</td>
+      <td>13</td>
+      <td>07.02.2026 17:30</td>
+      <td>BG Zehlendorf</td>
+      <td>SC Rist Wedel</td>
+      <td>76</td>
+      <td>47</td>
+      <td>76:47</td>
+    </tr>
+    <tr>
+      <td>2063</td>
+      <td>13</td>
+      <td>07.02.2026 17:00</td>
+      <td>TuS Neukölln</td>
+      <td>Osnabrücker SC 2</td>
+      <td>20</td>
+      <td>0</td>
+      <td>20:0</td>
+    </tr>
+    <tr>
+      <td>2064</td>
+      <td>13</td>
+      <td>07.02.2026 20:00</td>
+      <td>SCALA Hamburg</td>
+      <td>ASC 46 Göttingen</td>
+      <td>84</td>
+      <td>62</td>
+      <td>84:62</td>
+    </tr>
+    <tr>
+      <td>2065</td>
+      <td>13</td>
+      <td>07.02.2026 15:00</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>Rostock Seawolves</td>
+      <td>44</td>
+      <td>51</td>
+      <td>44:51</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>1</td>
+      <td>01.02.2026 13:30</td>
+      <td>Hamburg Towers</td>
+      <td>BG Zehlendorf</td>
+      <td>53</td>
+      <td>68</td>
+      <td>53:68</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>5</td>
+      <td>31.01.2026 17:00</td>
+      <td>TuS Neukölln</td>
+      <td>SCALA Hamburg</td>
+      <td>68</td>
+      <td>67</td>
+      <td>68:67</td>
+    </tr>
+    <tr>
+      <td>2068</td>
+      <td>14</td>
+      <td>31.01.2026 13:00</td>
+      <td>SC Rist Wedel</td>
+      <td>Osnabrücker SC 2</td>
+      <td>59</td>
+      <td>65</td>
+      <td>59:65</td>
+    </tr>
+    <tr>
+      <td>2056</td>
+      <td>12</td>
+      <td>24.01.2026 19:30</td>
+      <td>ASC 46 Göttingen</td>
+      <td>TuS Neukölln</td>
+      <td>50</td>
+      <td>62</td>
+      <td>50:62</td>
+    </tr>
+    <tr>
+      <td>2057</td>
+      <td>12</td>
+      <td>24.01.2026 16:00</td>
+      <td>BASS Berlin</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>70</td>
+      <td>63</td>
+      <td>70:63</td>
+    </tr>
+    <tr>
+      <td>2058</td>
+      <td>12</td>
+      <td>24.01.2026 15:00</td>
+      <td>Rostock Seawolves</td>
+      <td>SCALA Hamburg</td>
+      <td>57</td>
+      <td>46</td>
+      <td>57:46</td>
+    </tr>
+    <tr>
+      <td>2060</td>
+      <td>12</td>
+      <td>24.01.2026 18:00</td>
+      <td>SC Rist Wedel</td>
+      <td>Hamburg Towers</td>
+      <td>74</td>
+      <td>51</td>
+      <td>74:51</td>
+    </tr>
+    <tr>
+      <td>2087</td>
+      <td>18</td>
+      <td>22.01.2026 19:30</td>
+      <td>ASC 46 Göttingen</td>
+      <td>SC Rist Wedel</td>
+      <td>62</td>
+      <td>66</td>
+      <td>62:66</td>
+    </tr>
+    <tr>
+      <td>2053</td>
+      <td>11</td>
+      <td>18.01.2026 19:00</td>
+      <td>Hamburg Towers</td>
+      <td>Osnabrücker SC 2</td>
+      <td>80</td>
+      <td>68</td>
+      <td>80:68</td>
+    </tr>
+    <tr>
+      <td>2051</td>
+      <td>11</td>
+      <td>17.01.2026 20:00</td>
+      <td>SCALA Hamburg</td>
+      <td>BASS Berlin</td>
+      <td>61</td>
+      <td>73</td>
+      <td>61:73</td>
+    </tr>
+    <tr>
+      <td>2052</td>
+      <td>11</td>
+      <td>17.01.2026 15:00</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>SC Rist Wedel</td>
+      <td>82</td>
+      <td>65</td>
+      <td>82:65</td>
+    </tr>
+    <tr>
+      <td>2055</td>
+      <td>11</td>
+      <td>17.01.2026 19:30</td>
+      <td>ASC 46 Göttingen</td>
+      <td>Rostock Seawolves</td>
+      <td>82</td>
+      <td>58</td>
+      <td>82:58</td>
+    </tr>
+    <tr>
+      <td>2039</td>
+      <td>8</td>
+      <td>14.12.2025 16:30</td>
+      <td>ASC 46 Göttingen</td>
+      <td>Osnabrücker SC 2</td>
+      <td>76</td>
+      <td>72</td>
+      <td>76:72</td>
+    </tr>
+    <tr>
+      <td>2041</td>
+      <td>9</td>
+      <td>13.12.2025 16:00</td>
+      <td>BASS Berlin</td>
+      <td>Rostock Seawolves</td>
+      <td>53</td>
+      <td>58</td>
+      <td>53:58</td>
+    </tr>
+    <tr>
+      <td>2043</td>
+      <td>9</td>
+      <td>13.12.2025 16:00</td>
+      <td>Osnabrücker SC 2</td>
+      <td>SCALA Hamburg</td>
+      <td>75</td>
+      <td>71</td>
+      <td>75:71</td>
+    </tr>
+    <tr>
+      <td>2044</td>
+      <td>9</td>
+      <td>13.12.2025 17:30</td>
+      <td>BG Zehlendorf</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>82</td>
+      <td>53</td>
+      <td>82:53</td>
+    </tr>
+    <tr>
+      <td>2045</td>
+      <td>9</td>
+      <td>13.12.2025 17:30</td>
+      <td>Hamburg Towers</td>
+      <td>TuS Neukölln</td>
+      <td>43</td>
+      <td>47</td>
+      <td>43:47</td>
+    </tr>
+    <tr>
+      <td>2040</td>
+      <td>8</td>
+      <td>07.12.2025 14:30</td>
+      <td>Rostock Seawolves</td>
+      <td>SC Rist Wedel</td>
+      <td>72</td>
+      <td>66</td>
+      <td>72:66</td>
+    </tr>
+    <tr>
+      <td>2036</td>
+      <td>8</td>
+      <td>06.12.2025 17:00</td>
+      <td>TuS Neukölln</td>
+      <td>BASS Berlin</td>
+      <td>64</td>
+      <td>44</td>
+      <td>64:44</td>
+    </tr>
+    <tr>
+      <td>2037</td>
+      <td>8</td>
+      <td>06.12.2025 15:00</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>Hamburg Towers</td>
+      <td>65</td>
+      <td>52</td>
+      <td>65:52</td>
+    </tr>
+    <tr>
+      <td>2038</td>
+      <td>8</td>
+      <td>06.12.2025 20:00</td>
+      <td>SCALA Hamburg</td>
+      <td>BG Zehlendorf</td>
+      <td>82</td>
+      <td>68</td>
+      <td>82:68</td>
+    </tr>
+    <tr>
+      <td>2002</td>
+      <td>1</td>
+      <td>29.11.2025 15:00</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>Osnabrücker SC 2</td>
+      <td>80</td>
+      <td>28</td>
+      <td>80:28</td>
+    </tr>
+    <tr>
+      <td>2034</td>
+      <td>7</td>
+      <td>29.11.2025 17:30</td>
+      <td>BG Zehlendorf</td>
+      <td>ASC 46 Göttingen</td>
+      <td>60</td>
+      <td>57</td>
+      <td>60:57</td>
+    </tr>
+    <tr>
+      <td>2048</td>
+      <td>10</td>
+      <td>29.11.2025 15:00</td>
+      <td>SC Rist Wedel</td>
+      <td>SCALA Hamburg</td>
+      <td>68</td>
+      <td>55</td>
+      <td>68:55</td>
+    </tr>
+    <tr>
+      <td>2031</td>
+      <td>7</td>
+      <td>22.11.2025 17:00</td>
+      <td>TuS Neukölln</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>66</td>
+      <td>51</td>
+      <td>66:51</td>
+    </tr>
+    <tr>
+      <td>2032</td>
+      <td>7</td>
+      <td>22.11.2025 18:00</td>
+      <td>SC Rist Wedel</td>
+      <td>BASS Berlin</td>
+      <td>64</td>
+      <td>62</td>
+      <td>64:62</td>
+    </tr>
+    <tr>
+      <td>2033</td>
+      <td>7</td>
+      <td>22.11.2025 17:30</td>
+      <td>Osnabrücker SC 2</td>
+      <td>Rostock Seawolves</td>
+      <td>73</td>
+      <td>64</td>
+      <td>73:64</td>
+    </tr>
+    <tr>
+      <td>2035</td>
+      <td>7</td>
+      <td>22.11.2025 19:00</td>
+      <td>Hamburg Towers</td>
+      <td>SCALA Hamburg</td>
+      <td>80</td>
+      <td>89</td>
+      <td>80:89</td>
+    </tr>
+    <tr>
+      <td>2030</td>
+      <td>6</td>
+      <td>16.11.2025 14:30</td>
+      <td>Rostock Seawolves</td>
+      <td>BG Zehlendorf</td>
+      <td>65</td>
+      <td>48</td>
+      <td>65:48</td>
+    </tr>
+    <tr>
+      <td>2026</td>
+      <td>6</td>
+      <td>15.11.2025 16:00</td>
+      <td>BASS Berlin</td>
+      <td>Osnabrücker SC 2</td>
+      <td>50</td>
+      <td>56</td>
+      <td>50:56</td>
+    </tr>
+    <tr>
+      <td>2027</td>
+      <td>6</td>
+      <td>15.11.2025 17:30</td>
+      <td>SC Rist Wedel</td>
+      <td>TuS Neukölln</td>
+      <td>40</td>
+      <td>74</td>
+      <td>40:74</td>
+    </tr>
+    <tr>
+      <td>2028</td>
+      <td>6</td>
+      <td>15.11.2025 20:00</td>
+      <td>SCALA Hamburg</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>76</td>
+      <td>59</td>
+      <td>76:59</td>
+    </tr>
+    <tr>
+      <td>2029</td>
+      <td>6</td>
+      <td>15.11.2025 17:00</td>
+      <td>ASC 46 Göttingen</td>
+      <td>Hamburg Towers</td>
+      <td>69</td>
+      <td>78</td>
+      <td>69:78</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>5</td>
+      <td>08.11.2025 15:00</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>ASC 46 Göttingen</td>
+      <td>64</td>
+      <td>68</td>
+      <td>64:68</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>5</td>
+      <td>08.11.2025 18:30</td>
+      <td>Osnabrücker SC 2</td>
+      <td>SC Rist Wedel</td>
+      <td>51</td>
+      <td>81</td>
+      <td>51:81</td>
+    </tr>
+    <tr>
+      <td>2024</td>
+      <td>5</td>
+      <td>08.11.2025 17:30</td>
+      <td>BG Zehlendorf</td>
+      <td>BASS Berlin</td>
+      <td>67</td>
+      <td>36</td>
+      <td>67:36</td>
+    </tr>
+    <tr>
+      <td>2025</td>
+      <td>5</td>
+      <td>08.11.2025 19:00</td>
+      <td>Hamburg Towers</td>
+      <td>Rostock Seawolves</td>
+      <td>61</td>
+      <td>55</td>
+      <td>61:55</td>
+    </tr>
+    <tr>
+      <td>2019</td>
+      <td>4</td>
+      <td>02.11.2025 13:00</td>
+      <td>ASC 46 Göttingen</td>
+      <td>SCALA Hamburg</td>
+      <td>66</td>
+      <td>59</td>
+      <td>66:59</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>4</td>
+      <td>01.11.2025 16:00</td>
+      <td>BASS Berlin</td>
+      <td>Hamburg Towers</td>
+      <td>66</td>
+      <td>63</td>
+      <td>66:63</td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td>4</td>
+      <td>01.11.2025 18:00</td>
+      <td>SC Rist Wedel</td>
+      <td>BG Zehlendorf</td>
+      <td>56</td>
+      <td>71</td>
+      <td>56:71</td>
+    </tr>
+    <tr>
+      <td>2018</td>
+      <td>4</td>
+      <td>01.11.2025 17:30</td>
+      <td>Osnabrücker SC 2</td>
+      <td>TuS Neukölln</td>
+      <td>43</td>
+      <td>69</td>
+      <td>43:69</td>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>4</td>
+      <td>01.11.2025 18:00</td>
+      <td>Rostock Seawolves</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>73</td>
+      <td>59</td>
+      <td>73:59</td>
+    </tr>
+    <tr>
+      <td>2009</td>
+      <td>2</td>
+      <td>25.10.2025 17:30</td>
+      <td>BG Zehlendorf</td>
+      <td>TuS Neukölln</td>
+      <td>40</td>
+      <td>52</td>
+      <td>40:52</td>
+    </tr>
+    <tr>
+      <td>2001</td>
+      <td>1</td>
+      <td>18.10.2025 17:00</td>
+      <td>TuS Neukölln</td>
+      <td>Rostock Seawolves</td>
+      <td>72</td>
+      <td>47</td>
+      <td>72:47</td>
+    </tr>
+    <tr>
+      <td>2011</td>
+      <td>3</td>
+      <td>11.10.2025 17:00</td>
+      <td>TuS Neukölln</td>
+      <td>ASC 46 Göttingen</td>
+      <td>65</td>
+      <td>49</td>
+      <td>65:49</td>
+    </tr>
+    <tr>
+      <td>2012</td>
+      <td>3</td>
+      <td>11.10.2025 15:00</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>BASS Berlin</td>
+      <td>62</td>
+      <td>57</td>
+      <td>62:57</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>3</td>
+      <td>11.10.2025 20:00</td>
+      <td>SCALA Hamburg</td>
+      <td>Rostock Seawolves</td>
+      <td>99</td>
+      <td>43</td>
+      <td>99:43</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>3</td>
+      <td>11.10.2025 17:30</td>
+      <td>BG Zehlendorf</td>
+      <td>Osnabrücker SC 2</td>
+      <td>78</td>
+      <td>49</td>
+      <td>78:49</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>3</td>
+      <td>11.10.2025 19:00</td>
+      <td>Hamburg Towers</td>
+      <td>SC Rist Wedel</td>
+      <td>78</td>
+      <td>57</td>
+      <td>78:57</td>
+    </tr>
+    <tr>
+      <td>2010</td>
+      <td>2</td>
+      <td>05.10.2025 13:00</td>
+      <td>Rostock Seawolves</td>
+      <td>ASC 46 Göttingen</td>
+      <td>67</td>
+      <td>70</td>
+      <td>67:70</td>
+    </tr>
+    <tr>
+      <td>2083</td>
+      <td>17</td>
+      <td>05.10.2025 17:30</td>
+      <td>BG Zehlendorf</td>
+      <td>SCALA Hamburg</td>
+      <td>68</td>
+      <td>73</td>
+      <td>68:73</td>
+    </tr>
+    <tr>
+      <td>2006</td>
+      <td>2</td>
+      <td>04.10.2025 16:00</td>
+      <td>BASS Berlin</td>
+      <td>SCALA Hamburg</td>
+      <td>67</td>
+      <td>77</td>
+      <td>67:77</td>
+    </tr>
+    <tr>
+      <td>2007</td>
+      <td>2</td>
+      <td>04.10.2025 18:00</td>
+      <td>SC Rist Wedel</td>
+      <td>MTV/BG Wolfenbüttel</td>
+      <td>72</td>
+      <td>78</td>
+      <td>72:78</td>
+    </tr>
+    <tr>
+      <td>2008</td>
+      <td>2</td>
+      <td>04.10.2025 17:00</td>
+      <td>Osnabrücker SC 2</td>
+      <td>Hamburg Towers</td>
+      <td>51</td>
+      <td>54</td>
+      <td>51:54</td>
+    </tr>
+    <tr>
+      <td>2003</td>
+      <td>1</td>
+      <td>27.09.2025 20:00</td>
+      <td>SCALA Hamburg</td>
+      <td>SC Rist Wedel</td>
+      <td>74</td>
+      <td>62</td>
+      <td>74:62</td>
+    </tr>
+    <tr>
+      <td>2004</td>
+      <td>1</td>
+      <td>27.09.2025 19:30</td>
+      <td>ASC 46 Göttingen</td>
+      <td>BASS Berlin</td>
+      <td>61</td>
+      <td>53</td>
+      <td>61:53</td>
+    </tr>
+  </tbody>
+</table>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Restspielplan</h2></summary>
+<p><i>Keine Restspiele gefunden.</i></p>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Spiele pro Team</h2></summary>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TuS Neukölln(Punktabzug: 1)</b></summary>
+<p><i>Keine Spiele gefunden.</i></p>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>SCALA Hamburg</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2003</td><td>1</td><td>27.09.2025 20:00</td><td>SCALA Hamburg</td><td>SC Rist Wedel</td><td>74</td><td>62</td><td>74:62</td></tr>
+<tr><td>2006</td><td>2</td><td>04.10.2025 16:00</td><td>BASS Berlin</td><td>SCALA Hamburg</td><td>67</td><td>77</td><td>67:77</td></tr>
+<tr><td>2083</td><td>17</td><td>05.10.2025 17:30</td><td>BG Zehlendorf</td><td>SCALA Hamburg</td><td>68</td><td>73</td><td>68:73</td></tr>
+<tr><td>2013</td><td>3</td><td>11.10.2025 20:00</td><td>SCALA Hamburg</td><td>Rostock Seawolves</td><td>99</td><td>43</td><td>99:43</td></tr>
+<tr><td>2019</td><td>4</td><td>02.11.2025 13:00</td><td>ASC 46 Göttingen</td><td>SCALA Hamburg</td><td>66</td><td>59</td><td>66:59</td></tr>
+<tr><td>2028</td><td>6</td><td>15.11.2025 20:00</td><td>SCALA Hamburg</td><td>MTV/BG Wolfenbüttel</td><td>76</td><td>59</td><td>76:59</td></tr>
+<tr><td>2035</td><td>7</td><td>22.11.2025 19:00</td><td>Hamburg Towers</td><td>SCALA Hamburg</td><td>80</td><td>89</td><td>80:89</td></tr>
+<tr><td>2048</td><td>10</td><td>29.11.2025 15:00</td><td>SC Rist Wedel</td><td>SCALA Hamburg</td><td>68</td><td>55</td><td>68:55</td></tr>
+<tr><td>2038</td><td>8</td><td>06.12.2025 20:00</td><td>SCALA Hamburg</td><td>BG Zehlendorf</td><td>82</td><td>68</td><td>82:68</td></tr>
+<tr><td>2043</td><td>9</td><td>13.12.2025 16:00</td><td>Osnabrücker SC 2</td><td>SCALA Hamburg</td><td>75</td><td>71</td><td>75:71</td></tr>
+<tr><td>2051</td><td>11</td><td>17.01.2026 20:00</td><td>SCALA Hamburg</td><td>BASS Berlin</td><td>61</td><td>73</td><td>61:73</td></tr>
+<tr><td>2058</td><td>12</td><td>24.01.2026 15:00</td><td>Rostock Seawolves</td><td>SCALA Hamburg</td><td>57</td><td>46</td><td>57:46</td></tr>
+<tr><td>2021</td><td>5</td><td>31.01.2026 17:00</td><td>TuS Neukölln</td><td>SCALA Hamburg</td><td>68</td><td>67</td><td>68:67</td></tr>
+<tr><td>2064</td><td>13</td><td>07.02.2026 20:00</td><td>SCALA Hamburg</td><td>ASC 46 Göttingen</td><td>84</td><td>62</td><td>84:62</td></tr>
+<tr><td>2066</td><td>14</td><td>14.02.2026 20:00</td><td>SCALA Hamburg</td><td>TuS Neukölln</td><td>52</td><td>48</td><td>52:48</td></tr>
+<tr><td>2073</td><td>15</td><td>28.02.2026 15:00</td><td>MTV/BG Wolfenbüttel</td><td>SCALA Hamburg</td><td>50</td><td>51</td><td>50:51</td></tr>
+<tr><td>2080</td><td>16</td><td>07.03.2026 20:00</td><td>SCALA Hamburg</td><td>Hamburg Towers</td><td>81</td><td>73</td><td>81:73</td></tr>
+<tr><td>2088</td><td>18</td><td>21.03.2026 17:15</td><td>SCALA Hamburg</td><td>Osnabrücker SC 2</td><td>84</td><td>46</td><td>84:46</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BG Zehlendorf</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2083</td><td>17</td><td>05.10.2025 17:30</td><td>BG Zehlendorf</td><td>SCALA Hamburg</td><td>68</td><td>73</td><td>68:73</td></tr>
+<tr><td>2014</td><td>3</td><td>11.10.2025 17:30</td><td>BG Zehlendorf</td><td>Osnabrücker SC 2</td><td>78</td><td>49</td><td>78:49</td></tr>
+<tr><td>2009</td><td>2</td><td>25.10.2025 17:30</td><td>BG Zehlendorf</td><td>TuS Neukölln</td><td>40</td><td>52</td><td>40:52</td></tr>
+<tr><td>2017</td><td>4</td><td>01.11.2025 18:00</td><td>SC Rist Wedel</td><td>BG Zehlendorf</td><td>56</td><td>71</td><td>56:71</td></tr>
+<tr><td>2024</td><td>5</td><td>08.11.2025 17:30</td><td>BG Zehlendorf</td><td>BASS Berlin</td><td>67</td><td>36</td><td>67:36</td></tr>
+<tr><td>2030</td><td>6</td><td>16.11.2025 14:30</td><td>Rostock Seawolves</td><td>BG Zehlendorf</td><td>65</td><td>48</td><td>65:48</td></tr>
+<tr><td>2034</td><td>7</td><td>29.11.2025 17:30</td><td>BG Zehlendorf</td><td>ASC 46 Göttingen</td><td>60</td><td>57</td><td>60:57</td></tr>
+<tr><td>2038</td><td>8</td><td>06.12.2025 20:00</td><td>SCALA Hamburg</td><td>BG Zehlendorf</td><td>82</td><td>68</td><td>82:68</td></tr>
+<tr><td>2044</td><td>9</td><td>13.12.2025 17:30</td><td>BG Zehlendorf</td><td>MTV/BG Wolfenbüttel</td><td>82</td><td>53</td><td>82:53</td></tr>
+<tr><td>2005</td><td>1</td><td>01.02.2026 13:30</td><td>Hamburg Towers</td><td>BG Zehlendorf</td><td>53</td><td>68</td><td>53:68</td></tr>
+<tr><td>2062</td><td>13</td><td>07.02.2026 17:30</td><td>BG Zehlendorf</td><td>SC Rist Wedel</td><td>76</td><td>47</td><td>76:47</td></tr>
+<tr><td>2069</td><td>14</td><td>16.02.2026 19:45</td><td>BASS Berlin</td><td>BG Zehlendorf</td><td>34</td><td>78</td><td>34:78</td></tr>
+<tr><td>2059</td><td>12</td><td>21.02.2026 19:30</td><td>Osnabrücker SC 2</td><td>BG Zehlendorf</td><td>36</td><td>75</td><td>36:75</td></tr>
+<tr><td>2075</td><td>15</td><td>28.02.2026 17:30</td><td>BG Zehlendorf</td><td>Rostock Seawolves</td><td>66</td><td>52</td><td>66:52</td></tr>
+<tr><td>2079</td><td>16</td><td>07.03.2026 16:30</td><td>ASC 46 Göttingen</td><td>BG Zehlendorf</td><td>61</td><td>58</td><td>61:58</td></tr>
+<tr><td>2089</td><td>18</td><td>21.03.2026 15:00</td><td>MTV/BG Wolfenbüttel</td><td>BG Zehlendorf</td><td>49</td><td>56</td><td>49:56</td></tr>
+<tr><td>2054</td><td>11</td><td>28.03.2026 17:00</td><td>TuS Neukölln</td><td>BG Zehlendorf</td><td>62</td><td>55</td><td>62:55</td></tr>
+<tr><td>2050</td><td>10</td><td>04.04.2026 17:30</td><td>BG Zehlendorf</td><td>Hamburg Towers</td><td>60</td><td>55</td><td>60:55</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>ASC 46 Göttingen</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2004</td><td>1</td><td>27.09.2025 19:30</td><td>ASC 46 Göttingen</td><td>BASS Berlin</td><td>61</td><td>53</td><td>61:53</td></tr>
+<tr><td>2010</td><td>2</td><td>05.10.2025 13:00</td><td>Rostock Seawolves</td><td>ASC 46 Göttingen</td><td>67</td><td>70</td><td>67:70</td></tr>
+<tr><td>2011</td><td>3</td><td>11.10.2025 17:00</td><td>TuS Neukölln</td><td>ASC 46 Göttingen</td><td>65</td><td>49</td><td>65:49</td></tr>
+<tr><td>2019</td><td>4</td><td>02.11.2025 13:00</td><td>ASC 46 Göttingen</td><td>SCALA Hamburg</td><td>66</td><td>59</td><td>66:59</td></tr>
+<tr><td>2022</td><td>5</td><td>08.11.2025 15:00</td><td>MTV/BG Wolfenbüttel</td><td>ASC 46 Göttingen</td><td>64</td><td>68</td><td>64:68</td></tr>
+<tr><td>2029</td><td>6</td><td>15.11.2025 17:00</td><td>ASC 46 Göttingen</td><td>Hamburg Towers</td><td>69</td><td>78</td><td>69:78</td></tr>
+<tr><td>2034</td><td>7</td><td>29.11.2025 17:30</td><td>BG Zehlendorf</td><td>ASC 46 Göttingen</td><td>60</td><td>57</td><td>60:57</td></tr>
+<tr><td>2039</td><td>8</td><td>14.12.2025 16:30</td><td>ASC 46 Göttingen</td><td>Osnabrücker SC 2</td><td>76</td><td>72</td><td>76:72</td></tr>
+<tr><td>2055</td><td>11</td><td>17.01.2026 19:30</td><td>ASC 46 Göttingen</td><td>Rostock Seawolves</td><td>82</td><td>58</td><td>82:58</td></tr>
+<tr><td>2087</td><td>18</td><td>22.01.2026 19:30</td><td>ASC 46 Göttingen</td><td>SC Rist Wedel</td><td>62</td><td>66</td><td>62:66</td></tr>
+<tr><td>2056</td><td>12</td><td>24.01.2026 19:30</td><td>ASC 46 Göttingen</td><td>TuS Neukölln</td><td>50</td><td>62</td><td>50:62</td></tr>
+<tr><td>2064</td><td>13</td><td>07.02.2026 20:00</td><td>SCALA Hamburg</td><td>ASC 46 Göttingen</td><td>84</td><td>62</td><td>84:62</td></tr>
+<tr><td>2067</td><td>14</td><td>14.02.2026 19:30</td><td>ASC 46 Göttingen</td><td>MTV/BG Wolfenbüttel</td><td>62</td><td>63</td><td>62:63</td></tr>
+<tr><td>2074</td><td>15</td><td>28.02.2026 15:30</td><td>Hamburg Towers</td><td>ASC 46 Göttingen</td><td>54</td><td>56</td><td>54:56</td></tr>
+<tr><td>2079</td><td>16</td><td>07.03.2026 16:30</td><td>ASC 46 Göttingen</td><td>BG Zehlendorf</td><td>61</td><td>58</td><td>61:58</td></tr>
+<tr><td>2084</td><td>17</td><td>14.03.2026 20:00</td><td>Osnabrücker SC 2</td><td>ASC 46 Göttingen</td><td>61</td><td>71</td><td>61:71</td></tr>
+<tr><td>2042</td><td>9</td><td>21.03.2026 13:30</td><td>SC Rist Wedel</td><td>ASC 46 Göttingen</td><td>57</td><td>63</td><td>57:63</td></tr>
+<tr><td>2049</td><td>10</td><td>29.03.2026 16:00</td><td>BASS Berlin</td><td>ASC 46 Göttingen</td><td>65</td><td>72</td><td>65:72</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>Rostock Seawolves</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2010</td><td>2</td><td>05.10.2025 13:00</td><td>Rostock Seawolves</td><td>ASC 46 Göttingen</td><td>67</td><td>70</td><td>67:70</td></tr>
+<tr><td>2013</td><td>3</td><td>11.10.2025 20:00</td><td>SCALA Hamburg</td><td>Rostock Seawolves</td><td>99</td><td>43</td><td>99:43</td></tr>
+<tr><td>2001</td><td>1</td><td>18.10.2025 17:00</td><td>TuS Neukölln</td><td>Rostock Seawolves</td><td>72</td><td>47</td><td>72:47</td></tr>
+<tr><td>2020</td><td>4</td><td>01.11.2025 18:00</td><td>Rostock Seawolves</td><td>MTV/BG Wolfenbüttel</td><td>73</td><td>59</td><td>73:59</td></tr>
+<tr><td>2025</td><td>5</td><td>08.11.2025 19:00</td><td>Hamburg Towers</td><td>Rostock Seawolves</td><td>61</td><td>55</td><td>61:55</td></tr>
+<tr><td>2030</td><td>6</td><td>16.11.2025 14:30</td><td>Rostock Seawolves</td><td>BG Zehlendorf</td><td>65</td><td>48</td><td>65:48</td></tr>
+<tr><td>2033</td><td>7</td><td>22.11.2025 17:30</td><td>Osnabrücker SC 2</td><td>Rostock Seawolves</td><td>73</td><td>64</td><td>73:64</td></tr>
+<tr><td>2040</td><td>8</td><td>07.12.2025 14:30</td><td>Rostock Seawolves</td><td>SC Rist Wedel</td><td>72</td><td>66</td><td>72:66</td></tr>
+<tr><td>2041</td><td>9</td><td>13.12.2025 16:00</td><td>BASS Berlin</td><td>Rostock Seawolves</td><td>53</td><td>58</td><td>53:58</td></tr>
+<tr><td>2055</td><td>11</td><td>17.01.2026 19:30</td><td>ASC 46 Göttingen</td><td>Rostock Seawolves</td><td>82</td><td>58</td><td>82:58</td></tr>
+<tr><td>2058</td><td>12</td><td>24.01.2026 15:00</td><td>Rostock Seawolves</td><td>SCALA Hamburg</td><td>57</td><td>46</td><td>57:46</td></tr>
+<tr><td>2065</td><td>13</td><td>07.02.2026 15:00</td><td>MTV/BG Wolfenbüttel</td><td>Rostock Seawolves</td><td>44</td><td>51</td><td>44:51</td></tr>
+<tr><td>2075</td><td>15</td><td>28.02.2026 17:30</td><td>BG Zehlendorf</td><td>Rostock Seawolves</td><td>66</td><td>52</td><td>66:52</td></tr>
+<tr><td>2078</td><td>16</td><td>07.03.2026 15:00</td><td>Rostock Seawolves</td><td>Osnabrücker SC 2</td><td>54</td><td>38</td><td>54:38</td></tr>
+<tr><td>2085</td><td>17</td><td>14.03.2026 14:00</td><td>SC Rist Wedel</td><td>Rostock Seawolves</td><td>39</td><td>82</td><td>39:82</td></tr>
+<tr><td>2086</td><td>18</td><td>21.03.2026 15:00</td><td>Rostock Seawolves</td><td>BASS Berlin</td><td>68</td><td>46</td><td>68:46</td></tr>
+<tr><td>2070</td><td>14</td><td>28.03.2026 15:00</td><td>Rostock Seawolves</td><td>Hamburg Towers</td><td>73</td><td>53</td><td>73:53</td></tr>
+<tr><td>2046</td><td>10</td><td>11.04.2026 15:00</td><td>Rostock Seawolves</td><td>TuS Neukölln</td><td>50</td><td>42</td><td>50:42</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>MTV/BG Wolfenbüttel</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2007</td><td>2</td><td>04.10.2025 18:00</td><td>SC Rist Wedel</td><td>MTV/BG Wolfenbüttel</td><td>72</td><td>78</td><td>72:78</td></tr>
+<tr><td>2012</td><td>3</td><td>11.10.2025 15:00</td><td>MTV/BG Wolfenbüttel</td><td>BASS Berlin</td><td>62</td><td>57</td><td>62:57</td></tr>
+<tr><td>2020</td><td>4</td><td>01.11.2025 18:00</td><td>Rostock Seawolves</td><td>MTV/BG Wolfenbüttel</td><td>73</td><td>59</td><td>73:59</td></tr>
+<tr><td>2022</td><td>5</td><td>08.11.2025 15:00</td><td>MTV/BG Wolfenbüttel</td><td>ASC 46 Göttingen</td><td>64</td><td>68</td><td>64:68</td></tr>
+<tr><td>2028</td><td>6</td><td>15.11.2025 20:00</td><td>SCALA Hamburg</td><td>MTV/BG Wolfenbüttel</td><td>76</td><td>59</td><td>76:59</td></tr>
+<tr><td>2031</td><td>7</td><td>22.11.2025 17:00</td><td>TuS Neukölln</td><td>MTV/BG Wolfenbüttel</td><td>66</td><td>51</td><td>66:51</td></tr>
+<tr><td>2002</td><td>1</td><td>29.11.2025 15:00</td><td>MTV/BG Wolfenbüttel</td><td>Osnabrücker SC 2</td><td>80</td><td>28</td><td>80:28</td></tr>
+<tr><td>2037</td><td>8</td><td>06.12.2025 15:00</td><td>MTV/BG Wolfenbüttel</td><td>Hamburg Towers</td><td>65</td><td>52</td><td>65:52</td></tr>
+<tr><td>2044</td><td>9</td><td>13.12.2025 17:30</td><td>BG Zehlendorf</td><td>MTV/BG Wolfenbüttel</td><td>82</td><td>53</td><td>82:53</td></tr>
+<tr><td>2052</td><td>11</td><td>17.01.2026 15:00</td><td>MTV/BG Wolfenbüttel</td><td>SC Rist Wedel</td><td>82</td><td>65</td><td>82:65</td></tr>
+<tr><td>2057</td><td>12</td><td>24.01.2026 16:00</td><td>BASS Berlin</td><td>MTV/BG Wolfenbüttel</td><td>70</td><td>63</td><td>70:63</td></tr>
+<tr><td>2065</td><td>13</td><td>07.02.2026 15:00</td><td>MTV/BG Wolfenbüttel</td><td>Rostock Seawolves</td><td>44</td><td>51</td><td>44:51</td></tr>
+<tr><td>2067</td><td>14</td><td>14.02.2026 19:30</td><td>ASC 46 Göttingen</td><td>MTV/BG Wolfenbüttel</td><td>62</td><td>63</td><td>62:63</td></tr>
+<tr><td>2073</td><td>15</td><td>28.02.2026 15:00</td><td>MTV/BG Wolfenbüttel</td><td>SCALA Hamburg</td><td>50</td><td>51</td><td>50:51</td></tr>
+<tr><td>2076</td><td>16</td><td>07.03.2026 15:00</td><td>MTV/BG Wolfenbüttel</td><td>TuS Neukölln</td><td>76</td><td>64</td><td>76:64</td></tr>
+<tr><td>2082</td><td>17</td><td>14.03.2026 16:00</td><td>Hamburg Towers</td><td>MTV/BG Wolfenbüttel</td><td>57</td><td>68</td><td>57:68</td></tr>
+<tr><td>2089</td><td>18</td><td>21.03.2026 15:00</td><td>MTV/BG Wolfenbüttel</td><td>BG Zehlendorf</td><td>49</td><td>56</td><td>49:56</td></tr>
+<tr><td>2047</td><td>10</td><td>28.03.2026 14:00</td><td>Osnabrücker SC 2</td><td>MTV/BG Wolfenbüttel</td><td>69</td><td>74</td><td>69:74</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>Hamburg Towers</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2008</td><td>2</td><td>04.10.2025 17:00</td><td>Osnabrücker SC 2</td><td>Hamburg Towers</td><td>51</td><td>54</td><td>51:54</td></tr>
+<tr><td>2015</td><td>3</td><td>11.10.2025 19:00</td><td>Hamburg Towers</td><td>SC Rist Wedel</td><td>78</td><td>57</td><td>78:57</td></tr>
+<tr><td>2016</td><td>4</td><td>01.11.2025 16:00</td><td>BASS Berlin</td><td>Hamburg Towers</td><td>66</td><td>63</td><td>66:63</td></tr>
+<tr><td>2025</td><td>5</td><td>08.11.2025 19:00</td><td>Hamburg Towers</td><td>Rostock Seawolves</td><td>61</td><td>55</td><td>61:55</td></tr>
+<tr><td>2029</td><td>6</td><td>15.11.2025 17:00</td><td>ASC 46 Göttingen</td><td>Hamburg Towers</td><td>69</td><td>78</td><td>69:78</td></tr>
+<tr><td>2035</td><td>7</td><td>22.11.2025 19:00</td><td>Hamburg Towers</td><td>SCALA Hamburg</td><td>80</td><td>89</td><td>80:89</td></tr>
+<tr><td>2037</td><td>8</td><td>06.12.2025 15:00</td><td>MTV/BG Wolfenbüttel</td><td>Hamburg Towers</td><td>65</td><td>52</td><td>65:52</td></tr>
+<tr><td>2045</td><td>9</td><td>13.12.2025 17:30</td><td>Hamburg Towers</td><td>TuS Neukölln</td><td>43</td><td>47</td><td>43:47</td></tr>
+<tr><td>2053</td><td>11</td><td>18.01.2026 19:00</td><td>Hamburg Towers</td><td>Osnabrücker SC 2</td><td>80</td><td>68</td><td>80:68</td></tr>
+<tr><td>2060</td><td>12</td><td>24.01.2026 18:00</td><td>SC Rist Wedel</td><td>Hamburg Towers</td><td>74</td><td>51</td><td>74:51</td></tr>
+<tr><td>2005</td><td>1</td><td>01.02.2026 13:30</td><td>Hamburg Towers</td><td>BG Zehlendorf</td><td>53</td><td>68</td><td>53:68</td></tr>
+<tr><td>2061</td><td>13</td><td>07.02.2026 15:00</td><td>Hamburg Towers</td><td>BASS Berlin</td><td>67</td><td>62</td><td>67:62</td></tr>
+<tr><td>2074</td><td>15</td><td>28.02.2026 15:30</td><td>Hamburg Towers</td><td>ASC 46 Göttingen</td><td>54</td><td>56</td><td>54:56</td></tr>
+<tr><td>2080</td><td>16</td><td>07.03.2026 20:00</td><td>SCALA Hamburg</td><td>Hamburg Towers</td><td>81</td><td>73</td><td>81:73</td></tr>
+<tr><td>2082</td><td>17</td><td>14.03.2026 16:00</td><td>Hamburg Towers</td><td>MTV/BG Wolfenbüttel</td><td>57</td><td>68</td><td>57:68</td></tr>
+<tr><td>2090</td><td>18</td><td>21.03.2026 15:30</td><td>TuS Neukölln</td><td>Hamburg Towers</td><td>60</td><td>47</td><td>60:47</td></tr>
+<tr><td>2070</td><td>14</td><td>28.03.2026 15:00</td><td>Rostock Seawolves</td><td>Hamburg Towers</td><td>73</td><td>53</td><td>73:53</td></tr>
+<tr><td>2050</td><td>10</td><td>04.04.2026 17:30</td><td>BG Zehlendorf</td><td>Hamburg Towers</td><td>60</td><td>55</td><td>60:55</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>SC Rist Wedel</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2003</td><td>1</td><td>27.09.2025 20:00</td><td>SCALA Hamburg</td><td>SC Rist Wedel</td><td>74</td><td>62</td><td>74:62</td></tr>
+<tr><td>2007</td><td>2</td><td>04.10.2025 18:00</td><td>SC Rist Wedel</td><td>MTV/BG Wolfenbüttel</td><td>72</td><td>78</td><td>72:78</td></tr>
+<tr><td>2015</td><td>3</td><td>11.10.2025 19:00</td><td>Hamburg Towers</td><td>SC Rist Wedel</td><td>78</td><td>57</td><td>78:57</td></tr>
+<tr><td>2017</td><td>4</td><td>01.11.2025 18:00</td><td>SC Rist Wedel</td><td>BG Zehlendorf</td><td>56</td><td>71</td><td>56:71</td></tr>
+<tr><td>2023</td><td>5</td><td>08.11.2025 18:30</td><td>Osnabrücker SC 2</td><td>SC Rist Wedel</td><td>51</td><td>81</td><td>51:81</td></tr>
+<tr><td>2027</td><td>6</td><td>15.11.2025 17:30</td><td>SC Rist Wedel</td><td>TuS Neukölln</td><td>40</td><td>74</td><td>40:74</td></tr>
+<tr><td>2032</td><td>7</td><td>22.11.2025 18:00</td><td>SC Rist Wedel</td><td>BASS Berlin</td><td>64</td><td>62</td><td>64:62</td></tr>
+<tr><td>2048</td><td>10</td><td>29.11.2025 15:00</td><td>SC Rist Wedel</td><td>SCALA Hamburg</td><td>68</td><td>55</td><td>68:55</td></tr>
+<tr><td>2040</td><td>8</td><td>07.12.2025 14:30</td><td>Rostock Seawolves</td><td>SC Rist Wedel</td><td>72</td><td>66</td><td>72:66</td></tr>
+<tr><td>2052</td><td>11</td><td>17.01.2026 15:00</td><td>MTV/BG Wolfenbüttel</td><td>SC Rist Wedel</td><td>82</td><td>65</td><td>82:65</td></tr>
+<tr><td>2087</td><td>18</td><td>22.01.2026 19:30</td><td>ASC 46 Göttingen</td><td>SC Rist Wedel</td><td>62</td><td>66</td><td>62:66</td></tr>
+<tr><td>2060</td><td>12</td><td>24.01.2026 18:00</td><td>SC Rist Wedel</td><td>Hamburg Towers</td><td>74</td><td>51</td><td>74:51</td></tr>
+<tr><td>2068</td><td>14</td><td>31.01.2026 13:00</td><td>SC Rist Wedel</td><td>Osnabrücker SC 2</td><td>59</td><td>65</td><td>59:65</td></tr>
+<tr><td>2062</td><td>13</td><td>07.02.2026 17:30</td><td>BG Zehlendorf</td><td>SC Rist Wedel</td><td>76</td><td>47</td><td>76:47</td></tr>
+<tr><td>2072</td><td>15</td><td>28.02.2026 17:00</td><td>TuS Neukölln</td><td>SC Rist Wedel</td><td>72</td><td>52</td><td>72:52</td></tr>
+<tr><td>2077</td><td>16</td><td>07.03.2026 16:00</td><td>BASS Berlin</td><td>SC Rist Wedel</td><td>64</td><td>55</td><td>64:55</td></tr>
+<tr><td>2085</td><td>17</td><td>14.03.2026 14:00</td><td>SC Rist Wedel</td><td>Rostock Seawolves</td><td>39</td><td>82</td><td>39:82</td></tr>
+<tr><td>2042</td><td>9</td><td>21.03.2026 13:30</td><td>SC Rist Wedel</td><td>ASC 46 Göttingen</td><td>57</td><td>63</td><td>57:63</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>Osnabrücker SC 2(Punktabzug: 1)</b></summary>
+<p><i>Keine Spiele gefunden.</i></p>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BASS Berlin</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2004</td><td>1</td><td>27.09.2025 19:30</td><td>ASC 46 Göttingen</td><td>BASS Berlin</td><td>61</td><td>53</td><td>61:53</td></tr>
+<tr><td>2006</td><td>2</td><td>04.10.2025 16:00</td><td>BASS Berlin</td><td>SCALA Hamburg</td><td>67</td><td>77</td><td>67:77</td></tr>
+<tr><td>2012</td><td>3</td><td>11.10.2025 15:00</td><td>MTV/BG Wolfenbüttel</td><td>BASS Berlin</td><td>62</td><td>57</td><td>62:57</td></tr>
+<tr><td>2016</td><td>4</td><td>01.11.2025 16:00</td><td>BASS Berlin</td><td>Hamburg Towers</td><td>66</td><td>63</td><td>66:63</td></tr>
+<tr><td>2024</td><td>5</td><td>08.11.2025 17:30</td><td>BG Zehlendorf</td><td>BASS Berlin</td><td>67</td><td>36</td><td>67:36</td></tr>
+<tr><td>2026</td><td>6</td><td>15.11.2025 16:00</td><td>BASS Berlin</td><td>Osnabrücker SC 2</td><td>50</td><td>56</td><td>50:56</td></tr>
+<tr><td>2032</td><td>7</td><td>22.11.2025 18:00</td><td>SC Rist Wedel</td><td>BASS Berlin</td><td>64</td><td>62</td><td>64:62</td></tr>
+<tr><td>2036</td><td>8</td><td>06.12.2025 17:00</td><td>TuS Neukölln</td><td>BASS Berlin</td><td>64</td><td>44</td><td>64:44</td></tr>
+<tr><td>2041</td><td>9</td><td>13.12.2025 16:00</td><td>BASS Berlin</td><td>Rostock Seawolves</td><td>53</td><td>58</td><td>53:58</td></tr>
+<tr><td>2051</td><td>11</td><td>17.01.2026 20:00</td><td>SCALA Hamburg</td><td>BASS Berlin</td><td>61</td><td>73</td><td>61:73</td></tr>
+<tr><td>2057</td><td>12</td><td>24.01.2026 16:00</td><td>BASS Berlin</td><td>MTV/BG Wolfenbüttel</td><td>70</td><td>63</td><td>70:63</td></tr>
+<tr><td>2061</td><td>13</td><td>07.02.2026 15:00</td><td>Hamburg Towers</td><td>BASS Berlin</td><td>67</td><td>62</td><td>67:62</td></tr>
+<tr><td>2069</td><td>14</td><td>16.02.2026 19:45</td><td>BASS Berlin</td><td>BG Zehlendorf</td><td>34</td><td>78</td><td>34:78</td></tr>
+<tr><td>2071</td><td>15</td><td>28.02.2026 16:00</td><td>Osnabrücker SC 2</td><td>BASS Berlin</td><td>73</td><td>72</td><td>73:72</td></tr>
+<tr><td>2077</td><td>16</td><td>07.03.2026 16:00</td><td>BASS Berlin</td><td>SC Rist Wedel</td><td>64</td><td>55</td><td>64:55</td></tr>
+<tr><td>2081</td><td>17</td><td>14.03.2026 16:00</td><td>BASS Berlin</td><td>TuS Neukölln</td><td>44</td><td>54</td><td>44:54</td></tr>
+<tr><td>2086</td><td>18</td><td>21.03.2026 15:00</td><td>Rostock Seawolves</td><td>BASS Berlin</td><td>68</td><td>46</td><td>68:46</td></tr>
+<tr><td>2049</td><td>10</td><td>29.03.2026 16:00</td><td>BASS Berlin</td><td>ASC 46 Göttingen</td><td>65</td><td>72</td><td>65:72</td></tr>
+</table>
+</details>
+</details>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Punktzahl-Gruppen Navigation
+  document.querySelectorAll("a[href^='#pg_']").forEach(link => {
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("href").substring(1);
+      document.querySelectorAll("details[id^='pg_']").forEach(d => d.removeAttribute("open"));
+      const target = document.getElementById(id);
+      if (target) target.setAttribute("open", "");
+    });
+  });
+
+  // Liga-Blöcke öffnen/schließen
+  const ligaDetails = document.querySelectorAll("details.liga-block");
+
+  document.getElementById("open_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.setAttribute("open", ""));
+  });
+
+  document.getElementById("close_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.removeAttribute("open"));
+  });
+
+});
+</script>
