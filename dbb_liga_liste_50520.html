@@ -1,0 +1,591 @@
+
+<style>
+body { 
+    font-family: Arial, sans-serif; 
+    background:#f4f6f9; 
+    margin:20px; 
+}
+
+table {
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+}
+
+th {
+  background: #e6f0ff !important;
+  color: #000000;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 13px;
+}
+
+tr:nth-child(even) { background: #f2f6fa; }
+
+.punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
+.punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
+
+#open_all, #close_all {
+    background:#e6f0ff;
+    border:1px solid #b5c7e0;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+#open_all:hover, #close_all:hover {
+    background:#d9e6ff;
+}
+
+pre { font-family: Consolas, monospace; font-size: 13px; }
+</style>
+
+<details>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<p><b>Allgemein</b></p>
+<p>
+Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
+Diese Ligen haben das Format:<br>
+<code>https://www.basketball-bund.net/index.jsp?Action=102&liga_id={LIGA_ID}</code><br><br>
+
+Aktuell wird dies automatisiert für die BBL und für die ProA erzeugt.<br>
+Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).<br><br>
+
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+<b>BBL:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1</a><br>
+<b>ProA:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1</a><br><br>
+
+Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.
+</p>
+
+<p><b>Tabelle</b></p>
+<p>
+Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
+Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
+Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
+und eine geöffnete Punktzahl-Gruppe schließt.
+</p>
+
+<p><b>Punktzahl‑Gruppen</b></p>
+<p>
+Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
+Hier werden zuerst die Teams aufgeführt.<br>
+Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>
+Anschließend folgt der Restspielplan dieser Teams.<br>
+Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.
+</p>
+
+<p><b>Ergebnisse – ausklappbar</b></p>
+<p>
+Sämtliche bisher gespielten Ergebnisse.<br>
+Aktuellste Ergebnisse stehen oben.
+</p>
+
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+<p>
+Nach Restspielplan<br>
+Welche Spiele stehen noch an?<br>
+Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.
+</p>
+
+<p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
+<p>
+Es werden dann alle Vereine angezeigt.<br>
+Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.
+</p>
+
+</div>
+</details>
+<div style='margin:10px 0;'>
+<button id='open_all' style='margin-right:10px;'>Alles öffnen</button>
+<button id='close_all'>Alles schließen</button>
+</div>
+<h2>Unbekannte Liga</h2>
+<p><b>Tabelle (DBB) – Stand:</b> 26.04.2026 13:31 Uhr</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Platz</th>
+      <th>Verein</th>
+      <th>Spiele</th>
+      <th>Siege</th>
+      <th>Niederlagen</th>
+      <th>Punkte</th>
+      <th>Körbe</th>
+      <th>Differenz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>8</td>
+      <td>8</td>
+      <td>0</td>
+      <td>16</td>
+      <td>741 : 376</td>
+      <td>365</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>BG Leitershofen/Stadtbergen</td>
+      <td>8</td>
+      <td>6</td>
+      <td>2</td>
+      <td>12</td>
+      <td>699 : 450</td>
+      <td>249</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>TSV Nördlingen</td>
+      <td>8</td>
+      <td>2</td>
+      <td>6</td>
+      <td><a href="#pg_4" class="punkte-blau">4</a></td>
+      <td>485 : 686</td>
+      <td>-201</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>SSV Schrobenhausen</td>
+      <td>8</td>
+      <td>2</td>
+      <td>6</td>
+      <td><a href="#pg_4" class="punkte-blau">4</a></td>
+      <td>526 : 695</td>
+      <td>-169</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>VSC Donauwörth</td>
+      <td>8</td>
+      <td>2</td>
+      <td>6</td>
+      <td><a href="#pg_4" class="punkte-blau">4</a></td>
+      <td>500 : 744</td>
+      <td>-244</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>ESV Ingolstadt-Ringsee</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0 : 0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<h2>Punktzahl‑Gruppen</h2>
+<details id="pg_4" class="liga-block" open>
+<summary><h3 style='display:inline;'>Teams mit 4 Punkten</h3></summary>
+<pre>
+TSV Nördlingen                  4  Spiele: 8
+SSV Schrobenhausen              4  Spiele: 8
+VSC Donauwörth                  4  Spiele: 8
+</pre>
+<p><b>Direkte Duelle:</b></p>
+<pre>
+25.10.2025 10:30     SSV Schrobenhausen             89:79   TSV Nördlingen
+22.11.2025 12:30     VSC Donauwörth                 87:83   TSV Nördlingen
+30.11.2025 14:30     VSC Donauwörth                 80:71   SSV Schrobenhausen
+17.01.2026 11:00     TSV Nördlingen                 68:54   SSV Schrobenhausen
+08.02.2026 10:00     TSV Nördlingen                 77:66   VSC Donauwörth
+07.03.2026 12:45     SSV Schrobenhausen             95:77   VSC Donauwörth
+</pre>
+<p><b>Direkter Vergleich:</b></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>+P</th>
+      <th>-P</th>
+      <th>erzielt</th>
+      <th>erhalten</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TSV Nördlingen</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>307</td>
+      <td>296</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>SSV Schrobenhausen</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>309</td>
+      <td>304</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>VSC Donauwörth</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>310</td>
+      <td>326</td>
+      <td>-16</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>Restspiele:</b></p>
+<pre>
+Keine Restspiele gefunden.
+</pre>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Ergebnisse</h2></summary>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>nr</th>
+      <th>sptag</th>
+      <th>date</th>
+      <th>home</th>
+      <th>guest</th>
+      <th>hs</th>
+      <th>gs</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>38044</td>
+      <td>11</td>
+      <td>27.03.2026 15:00</td>
+      <td>BG Leitershofen/Stadtbergen</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>51</td>
+      <td>70</td>
+      <td>51:70</td>
+    </tr>
+    <tr>
+      <td>38053</td>
+      <td>14</td>
+      <td>22.03.2026 11:00</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>SSV Schrobenhausen</td>
+      <td>102</td>
+      <td>48</td>
+      <td>102:48</td>
+    </tr>
+    <tr>
+      <td>38056</td>
+      <td>14</td>
+      <td>22.03.2026 14:30</td>
+      <td>VSC Donauwörth</td>
+      <td>BG Leitershofen/Stadtbergen</td>
+      <td>67</td>
+      <td>106</td>
+      <td>67:106</td>
+    </tr>
+    <tr>
+      <td>38050</td>
+      <td>13</td>
+      <td>08.03.2026 10:00</td>
+      <td>BG Leitershofen/Stadtbergen</td>
+      <td>TSV Nördlingen</td>
+      <td>67</td>
+      <td>56</td>
+      <td>67:56</td>
+    </tr>
+    <tr>
+      <td>38049</td>
+      <td>13</td>
+      <td>07.03.2026 12:45</td>
+      <td>SSV Schrobenhausen</td>
+      <td>VSC Donauwörth</td>
+      <td>95</td>
+      <td>77</td>
+      <td>95:77</td>
+    </tr>
+    <tr>
+      <td>38010</td>
+      <td>3</td>
+      <td>01.03.2026 10:00</td>
+      <td>TSV Nördlingen</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>57</td>
+      <td>107</td>
+      <td>57:107</td>
+    </tr>
+    <tr>
+      <td>38045</td>
+      <td>12</td>
+      <td>08.02.2026 10:00</td>
+      <td>TSV Nördlingen</td>
+      <td>VSC Donauwörth</td>
+      <td>77</td>
+      <td>66</td>
+      <td>77:66</td>
+    </tr>
+    <tr>
+      <td>38038</td>
+      <td>10</td>
+      <td>24.01.2026 10:30</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>TSV Nördlingen</td>
+      <td>108</td>
+      <td>15</td>
+      <td>108:15</td>
+    </tr>
+    <tr>
+      <td>38040</td>
+      <td>10</td>
+      <td>24.01.2026 10:00</td>
+      <td>SSV Schrobenhausen</td>
+      <td>BG Leitershofen/Stadtbergen</td>
+      <td>47</td>
+      <td>121</td>
+      <td>47:121</td>
+    </tr>
+    <tr>
+      <td>38033</td>
+      <td>9</td>
+      <td>17.01.2026 11:00</td>
+      <td>TSV Nördlingen</td>
+      <td>SSV Schrobenhausen</td>
+      <td>68</td>
+      <td>54</td>
+      <td>68:54</td>
+    </tr>
+    <tr>
+      <td>38029</td>
+      <td>8</td>
+      <td>13.12.2025 10:30</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>VSC Donauwörth</td>
+      <td>98</td>
+      <td>31</td>
+      <td>98:31</td>
+    </tr>
+    <tr>
+      <td>38025</td>
+      <td>7</td>
+      <td>07.12.2025 12:00</td>
+      <td>SSV Schrobenhausen</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>73</td>
+      <td>97</td>
+      <td>73:97</td>
+    </tr>
+    <tr>
+      <td>38028</td>
+      <td>7</td>
+      <td>07.12.2025 12:00</td>
+      <td>BG Leitershofen/Stadtbergen</td>
+      <td>VSC Donauwörth</td>
+      <td>122</td>
+      <td>44</td>
+      <td>122:44</td>
+    </tr>
+    <tr>
+      <td>38021</td>
+      <td>6</td>
+      <td>30.11.2025 14:30</td>
+      <td>VSC Donauwörth</td>
+      <td>SSV Schrobenhausen</td>
+      <td>80</td>
+      <td>71</td>
+      <td>80:71</td>
+    </tr>
+    <tr>
+      <td>38022</td>
+      <td>6</td>
+      <td>29.11.2025 12:15</td>
+      <td>TSV Nördlingen</td>
+      <td>BG Leitershofen/Stadtbergen</td>
+      <td>50</td>
+      <td>108</td>
+      <td>50:108</td>
+    </tr>
+    <tr>
+      <td>38017</td>
+      <td>5</td>
+      <td>22.11.2025 12:30</td>
+      <td>VSC Donauwörth</td>
+      <td>TSV Nördlingen</td>
+      <td>87</td>
+      <td>83</td>
+      <td>87:83</td>
+    </tr>
+    <tr>
+      <td>38016</td>
+      <td>4</td>
+      <td>16.11.2025 10:00</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>BG Leitershofen/Stadtbergen</td>
+      <td>67</td>
+      <td>53</td>
+      <td>67:53</td>
+    </tr>
+    <tr>
+      <td>38012</td>
+      <td>3</td>
+      <td>09.11.2025 10:00</td>
+      <td>BG Leitershofen/Stadtbergen</td>
+      <td>SSV Schrobenhausen</td>
+      <td>71</td>
+      <td>49</td>
+      <td>71:49</td>
+    </tr>
+    <tr>
+      <td>38005</td>
+      <td>2</td>
+      <td>25.10.2025 10:30</td>
+      <td>SSV Schrobenhausen</td>
+      <td>TSV Nördlingen</td>
+      <td>89</td>
+      <td>79</td>
+      <td>89:79</td>
+    </tr>
+    <tr>
+      <td>38001</td>
+      <td>1</td>
+      <td>19.10.2025 14:30</td>
+      <td>VSC Donauwörth</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>48</td>
+      <td>92</td>
+      <td>48:92</td>
+    </tr>
+  </tbody>
+</table>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Restspielplan</h2></summary>
+<p><i>Keine Restspiele gefunden.</i></p>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Spiele pro Team</h2></summary>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Schwaben Augsburg</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>38001</td><td>1</td><td>19.10.2025 14:30</td><td>VSC Donauwörth</td><td>TSV Schwaben Augsburg</td><td>48</td><td>92</td><td>48:92</td></tr>
+<tr><td>38016</td><td>4</td><td>16.11.2025 10:00</td><td>TSV Schwaben Augsburg</td><td>BG Leitershofen/Stadtbergen</td><td>67</td><td>53</td><td>67:53</td></tr>
+<tr><td>38025</td><td>7</td><td>07.12.2025 12:00</td><td>SSV Schrobenhausen</td><td>TSV Schwaben Augsburg</td><td>73</td><td>97</td><td>73:97</td></tr>
+<tr><td>38029</td><td>8</td><td>13.12.2025 10:30</td><td>TSV Schwaben Augsburg</td><td>VSC Donauwörth</td><td>98</td><td>31</td><td>98:31</td></tr>
+<tr><td>38038</td><td>10</td><td>24.01.2026 10:30</td><td>TSV Schwaben Augsburg</td><td>TSV Nördlingen</td><td>108</td><td>15</td><td>108:15</td></tr>
+<tr><td>38010</td><td>3</td><td>01.03.2026 10:00</td><td>TSV Nördlingen</td><td>TSV Schwaben Augsburg</td><td>57</td><td>107</td><td>57:107</td></tr>
+<tr><td>38053</td><td>14</td><td>22.03.2026 11:00</td><td>TSV Schwaben Augsburg</td><td>SSV Schrobenhausen</td><td>102</td><td>48</td><td>102:48</td></tr>
+<tr><td>38044</td><td>11</td><td>27.03.2026 15:00</td><td>BG Leitershofen/Stadtbergen</td><td>TSV Schwaben Augsburg</td><td>51</td><td>70</td><td>51:70</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BG Leitershofen/Stadtbergen</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>38012</td><td>3</td><td>09.11.2025 10:00</td><td>BG Leitershofen/Stadtbergen</td><td>SSV Schrobenhausen</td><td>71</td><td>49</td><td>71:49</td></tr>
+<tr><td>38016</td><td>4</td><td>16.11.2025 10:00</td><td>TSV Schwaben Augsburg</td><td>BG Leitershofen/Stadtbergen</td><td>67</td><td>53</td><td>67:53</td></tr>
+<tr><td>38022</td><td>6</td><td>29.11.2025 12:15</td><td>TSV Nördlingen</td><td>BG Leitershofen/Stadtbergen</td><td>50</td><td>108</td><td>50:108</td></tr>
+<tr><td>38028</td><td>7</td><td>07.12.2025 12:00</td><td>BG Leitershofen/Stadtbergen</td><td>VSC Donauwörth</td><td>122</td><td>44</td><td>122:44</td></tr>
+<tr><td>38040</td><td>10</td><td>24.01.2026 10:00</td><td>SSV Schrobenhausen</td><td>BG Leitershofen/Stadtbergen</td><td>47</td><td>121</td><td>47:121</td></tr>
+<tr><td>38050</td><td>13</td><td>08.03.2026 10:00</td><td>BG Leitershofen/Stadtbergen</td><td>TSV Nördlingen</td><td>67</td><td>56</td><td>67:56</td></tr>
+<tr><td>38056</td><td>14</td><td>22.03.2026 14:30</td><td>VSC Donauwörth</td><td>BG Leitershofen/Stadtbergen</td><td>67</td><td>106</td><td>67:106</td></tr>
+<tr><td>38044</td><td>11</td><td>27.03.2026 15:00</td><td>BG Leitershofen/Stadtbergen</td><td>TSV Schwaben Augsburg</td><td>51</td><td>70</td><td>51:70</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Nördlingen</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>38005</td><td>2</td><td>25.10.2025 10:30</td><td>SSV Schrobenhausen</td><td>TSV Nördlingen</td><td>89</td><td>79</td><td>89:79</td></tr>
+<tr><td>38017</td><td>5</td><td>22.11.2025 12:30</td><td>VSC Donauwörth</td><td>TSV Nördlingen</td><td>87</td><td>83</td><td>87:83</td></tr>
+<tr><td>38022</td><td>6</td><td>29.11.2025 12:15</td><td>TSV Nördlingen</td><td>BG Leitershofen/Stadtbergen</td><td>50</td><td>108</td><td>50:108</td></tr>
+<tr><td>38033</td><td>9</td><td>17.01.2026 11:00</td><td>TSV Nördlingen</td><td>SSV Schrobenhausen</td><td>68</td><td>54</td><td>68:54</td></tr>
+<tr><td>38038</td><td>10</td><td>24.01.2026 10:30</td><td>TSV Schwaben Augsburg</td><td>TSV Nördlingen</td><td>108</td><td>15</td><td>108:15</td></tr>
+<tr><td>38045</td><td>12</td><td>08.02.2026 10:00</td><td>TSV Nördlingen</td><td>VSC Donauwörth</td><td>77</td><td>66</td><td>77:66</td></tr>
+<tr><td>38010</td><td>3</td><td>01.03.2026 10:00</td><td>TSV Nördlingen</td><td>TSV Schwaben Augsburg</td><td>57</td><td>107</td><td>57:107</td></tr>
+<tr><td>38050</td><td>13</td><td>08.03.2026 10:00</td><td>BG Leitershofen/Stadtbergen</td><td>TSV Nördlingen</td><td>67</td><td>56</td><td>67:56</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>SSV Schrobenhausen</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>38005</td><td>2</td><td>25.10.2025 10:30</td><td>SSV Schrobenhausen</td><td>TSV Nördlingen</td><td>89</td><td>79</td><td>89:79</td></tr>
+<tr><td>38012</td><td>3</td><td>09.11.2025 10:00</td><td>BG Leitershofen/Stadtbergen</td><td>SSV Schrobenhausen</td><td>71</td><td>49</td><td>71:49</td></tr>
+<tr><td>38021</td><td>6</td><td>30.11.2025 14:30</td><td>VSC Donauwörth</td><td>SSV Schrobenhausen</td><td>80</td><td>71</td><td>80:71</td></tr>
+<tr><td>38025</td><td>7</td><td>07.12.2025 12:00</td><td>SSV Schrobenhausen</td><td>TSV Schwaben Augsburg</td><td>73</td><td>97</td><td>73:97</td></tr>
+<tr><td>38033</td><td>9</td><td>17.01.2026 11:00</td><td>TSV Nördlingen</td><td>SSV Schrobenhausen</td><td>68</td><td>54</td><td>68:54</td></tr>
+<tr><td>38040</td><td>10</td><td>24.01.2026 10:00</td><td>SSV Schrobenhausen</td><td>BG Leitershofen/Stadtbergen</td><td>47</td><td>121</td><td>47:121</td></tr>
+<tr><td>38049</td><td>13</td><td>07.03.2026 12:45</td><td>SSV Schrobenhausen</td><td>VSC Donauwörth</td><td>95</td><td>77</td><td>95:77</td></tr>
+<tr><td>38053</td><td>14</td><td>22.03.2026 11:00</td><td>TSV Schwaben Augsburg</td><td>SSV Schrobenhausen</td><td>102</td><td>48</td><td>102:48</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>VSC Donauwörth</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>38001</td><td>1</td><td>19.10.2025 14:30</td><td>VSC Donauwörth</td><td>TSV Schwaben Augsburg</td><td>48</td><td>92</td><td>48:92</td></tr>
+<tr><td>38017</td><td>5</td><td>22.11.2025 12:30</td><td>VSC Donauwörth</td><td>TSV Nördlingen</td><td>87</td><td>83</td><td>87:83</td></tr>
+<tr><td>38021</td><td>6</td><td>30.11.2025 14:30</td><td>VSC Donauwörth</td><td>SSV Schrobenhausen</td><td>80</td><td>71</td><td>80:71</td></tr>
+<tr><td>38028</td><td>7</td><td>07.12.2025 12:00</td><td>BG Leitershofen/Stadtbergen</td><td>VSC Donauwörth</td><td>122</td><td>44</td><td>122:44</td></tr>
+<tr><td>38029</td><td>8</td><td>13.12.2025 10:30</td><td>TSV Schwaben Augsburg</td><td>VSC Donauwörth</td><td>98</td><td>31</td><td>98:31</td></tr>
+<tr><td>38045</td><td>12</td><td>08.02.2026 10:00</td><td>TSV Nördlingen</td><td>VSC Donauwörth</td><td>77</td><td>66</td><td>77:66</td></tr>
+<tr><td>38049</td><td>13</td><td>07.03.2026 12:45</td><td>SSV Schrobenhausen</td><td>VSC Donauwörth</td><td>95</td><td>77</td><td>95:77</td></tr>
+<tr><td>38056</td><td>14</td><td>22.03.2026 14:30</td><td>VSC Donauwörth</td><td>BG Leitershofen/Stadtbergen</td><td>67</td><td>106</td><td>67:106</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>ESV Ingolstadt-Ringsee</b></summary>
+<p><i>Keine Spiele gefunden.</i></p>
+</details>
+</details>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Punktzahl-Gruppen Navigation
+  document.querySelectorAll("a[href^='#pg_']").forEach(link => {
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("href").substring(1);
+      document.querySelectorAll("details[id^='pg_']").forEach(d => d.removeAttribute("open"));
+      const target = document.getElementById(id);
+      if (target) target.setAttribute("open", "");
+    });
+  });
+
+  // Liga-Blöcke öffnen/schließen
+  const ligaDetails = document.querySelectorAll("details.liga-block");
+
+  document.getElementById("open_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.setAttribute("open", ""));
+  });
+
+  document.getElementById("close_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.removeAttribute("open"));
+  });
+
+});
+</script>
