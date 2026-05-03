@@ -44,6 +44,27 @@ tr:nth-child(even) { background: #f2f6fa; }
 }
 
 pre { font-family: Consolas, monospace; font-size: 13px; }
+
+
+/* --------------------------------------------- */
+/* KREUZTABELLE – NEUE CSS-KLASSEN                */
+/* --------------------------------------------- */
+
+td.win  { background:#c8f7c5; }     /* hellgrün */
+td.loss { background:#f7c5c5; }     /* hellrot */
+td.past { background:orange; }
+td.nodata { background:#e0e0e0; }
+
+td.diag {
+    background: repeating-linear-gradient(
+        45deg,
+        #ccc,
+        #ccc 4px,
+        #eee 4px,
+        #eee 8px
+    );
+}
+
 </style>
 
 <details>
@@ -112,7 +133,7 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 <button id='close_all'>Alles schließen</button>
 </div>
 <h2>Unbekannte Liga</h2>
-<p><b>Tabelle (DBB) – Stand:</b> 03.05.2026 08:12 Uhr</p>
+<p><b>Tabelle (DBB) – Stand:</b> 03.05.2026 08:36 Uhr</p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -229,6 +250,144 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
     </tr>
   </tbody>
 </table>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Kreuztabelle</h2></summary>
+<table style='font-size:11px;'>
+<tr><th></th>
+<th>PSV</th>
+<th>VSC</th>
+<th>MTV</th>
+<th>BGL3</th>
+<th>FDB</th>
+<th>TVA2</th>
+<th>SOB</th>
+<th>GER</th>
+<th>NEU</th>
+<th>DIE</th>
+</tr>
+<tr><th>PSV</th>
+<td class='diag'></td>
+<td class='loss'>78:84</td>
+<td class='win'>79:52</td>
+<td class='win'>86:51</td>
+<td class='win'>62:49</td>
+<td class='win'>83:66</td>
+<td class='win'>61:57</td>
+<td class='win'>73:52</td>
+<td class='win'>71:44</td>
+<td class='win'>109:45</td>
+</tr>
+<tr><th>VSC</th>
+<td class='loss'>60:68</td>
+<td class='diag'></td>
+<td class='win'>76:70</td>
+<td class='win'>80:62</td>
+<td class='loss'>68:76</td>
+<td class='loss'>82:85</td>
+<td class='win'>75:57</td>
+<td class='win'>102:61</td>
+<td class='win'>76:58</td>
+<td class='win'>88:56</td>
+</tr>
+<tr><th>MTV</th>
+<td class='loss'>63:71</td>
+<td class='loss'>55:81</td>
+<td class='diag'></td>
+<td class='win'>84:61</td>
+<td class='win'>67:53</td>
+<td class='win'>64:63</td>
+<td class='win'>58:49</td>
+<td class='win'>66:62</td>
+<td class='win'>64:49</td>
+<td class='win'>84:62</td>
+</tr>
+<tr><th>BGL3</th>
+<td class='win'>101:79</td>
+<td class='loss'>66:108</td>
+<td class='win'>77:65</td>
+<td class='diag'></td>
+<td class='win'>81:61</td>
+<td class='loss'>61:86</td>
+<td class='win'>87:73</td>
+<td class='win'>77:71</td>
+<td class='win'>72:64</td>
+<td class='win'>116:63</td>
+</tr>
+<tr><th>FDB</th>
+<td class='loss'>62:84</td>
+<td class='loss'>59:67</td>
+<td class='loss'>63:76</td>
+<td class='loss'>70:96</td>
+<td class='diag'></td>
+<td class='win'>79:61</td>
+<td class='win'>81:76</td>
+<td class='loss'>76:85</td>
+<td class='win'>75:56</td>
+<td class='win'>80:66</td>
+</tr>
+<tr><th>TVA2</th>
+<td class='loss'>74:85</td>
+<td class='loss'>51:92</td>
+<td class='loss'>66:74</td>
+<td class='win'>88:71</td>
+<td class='loss'>0:20</td>
+<td class='diag'></td>
+<td class='win'>96:65</td>
+<td class='win'>67:62</td>
+<td class='win'>80:52</td>
+<td class='win'>72:69</td>
+</tr>
+<tr><th>SOB</th>
+<td class='loss'>61:80</td>
+<td class='loss'>55:60</td>
+<td class='win'>20:0</td>
+<td class='win'>77:71</td>
+<td class='win'>80:69</td>
+<td class='loss'>63:68</td>
+<td class='diag'></td>
+<td class='win'>80:78</td>
+<td class='win'>67:46</td>
+<td class='win'>69:52</td>
+</tr>
+<tr><th>GER</th>
+<td class='win'>73:70</td>
+<td class='loss'>67:75</td>
+<td class='loss'>52:61</td>
+<td class='loss'>65:98</td>
+<td class='loss'>69:76</td>
+<td class='win'>90:83</td>
+<td class='win'>70:60</td>
+<td class='diag'></td>
+<td class='win'>83:69</td>
+<td class='win'>101:61</td>
+</tr>
+<tr><th>NEU</th>
+<td class='loss'>65:96</td>
+<td class='loss'>53:84</td>
+<td class='loss'>54:62</td>
+<td class='loss'>74:79</td>
+<td class='loss'>53:74</td>
+<td class='win'>54:50</td>
+<td class='loss'>42:74</td>
+<td class='win'>93:84</td>
+<td class='diag'></td>
+<td class='win'>83:73</td>
+</tr>
+<tr><th>DIE</th>
+<td class='loss'>44:96</td>
+<td class='loss'>44:79</td>
+<td class='loss'>66:68</td>
+<td class='loss'>76:93</td>
+<td class='loss'>65:74</td>
+<td class='loss'>67:71</td>
+<td class='loss'>71:83</td>
+<td class='loss'>67:74</td>
+<td class='loss'>45:71</td>
+<td class='diag'></td>
+</tr>
+</table>
+</details>
 <hr>
 <h2>Punktzahl‑Gruppen</h2>
 <details id="pg_30" class="liga-block" open>
