@@ -44,6 +44,27 @@ tr:nth-child(even) { background: #f2f6fa; }
 }
 
 pre { font-family: Consolas, monospace; font-size: 13px; }
+
+
+/* --------------------------------------------- */
+/* KREUZTABELLE – NEUE CSS-KLASSEN                */
+/* --------------------------------------------- */
+
+td.win  { background:#c8f7c5; }     /* hellgrün */
+td.loss { background:#f7c5c5; }     /* hellrot */
+td.past { background:orange; }
+td.nodata { background:#e0e0e0; }
+
+td.diag {
+    background: repeating-linear-gradient(
+        45deg,
+        #ccc,
+        #ccc 4px,
+        #eee 4px,
+        #eee 8px
+    );
+}
+
 </style>
 
 <details>
@@ -113,7 +134,7 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 </div>
 <p style='color:red; font-style:italic; font-weight:bold;'>Es sind noch nicht alle aktuellen Spielergebnisse erfasst.<br>Es liegt ein Fehler größeren Umfangs bei der BBL auf basketball-bund.net vor.<br>Betreiberfirma ist zur Fehlerbeseitigung beauftragt.</p>
 <h2>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 51520)</h2>
-<p><b>Tabelle (DBB) – Stand:</b> 03.05.2026 08:12 Uhr</p>
+<p><b>Tabelle (DBB) – Stand:</b> 03.05.2026 08:36 Uhr</p>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -312,6 +333,392 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 </table>
 <p style='color:red; font-style:italic; font-weight:bold;'>Link zur aktuellen Tabelle:<br><a href='https://easycredit-bbl.de/saison/tabelle' target='_blank' style='color:red;'>https://easycredit-bbl.de/saison/tabelle</a></p>
 <p style='color:red; font-style:italic; font-weight:bold;'>Die letzten Spiele (wichtig ab 24.04.2026):<br><a href='https://easycredit-bbl.de/saison/spielplaene_liga-pokalspiele/hauptrunde' target='_blank' style='color:red;'>https://easycredit-bbl.de/saison/spielplaene_liga-pokalspiele/hauptrunde</a></p>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Kreuztabelle</h2></summary>
+<table style='font-size:11px;'>
+<tr><th></th>
+<th>FCB</th>
+<th>BER</th>
+<th>BA</th>
+<th>BN</th>
+<th>WUE</th>
+<th>ULM</th>
+<th>TR</th>
+<th>LB</th>
+<th>VEC</th>
+<th>HRO</th>
+<th>CHE</th>
+<th>OL</th>
+<th>HH</th>
+<th>FRA</th>
+<th>MBC</th>
+<th>JEN</th>
+<th>HD</th>
+<th>BS</th>
+</tr>
+<tr><th>FCB</th>
+<td class='diag'></td>
+<td class='past'>01.05.26</td>
+<td class='win'>96:81</td>
+<td class='win'>66:63</td>
+<td class='win'>98:79</td>
+<td class='loss'>62:79</td>
+<td class='win'>94:83</td>
+<td class='win'>93:59</td>
+<td class=''>03.05.26</td>
+<td class='past'>27.04.26</td>
+<td class='win'>91:77</td>
+<td class=''>10.05.26</td>
+<td class='win'>96:79</td>
+<td class='win'>85:76</td>
+<td class='win'>83:62</td>
+<td class='win'>93:77</td>
+<td class='win'>93:81</td>
+<td class='win'>98:80</td>
+</tr>
+<tr><th>BER</th>
+<td class='win'>67:61</td>
+<td class='diag'></td>
+<td class='win'>87:82</td>
+<td class='win'>91:75</td>
+<td class='win'>71:68</td>
+<td class='loss'>66:67</td>
+<td class='loss'>92:97</td>
+<td class='win'>80:47</td>
+<td class='win'>84:82</td>
+<td class='win'>89:85</td>
+<td class=''>03.05.26</td>
+<td class='loss'>79:81</td>
+<td class='loss'>87:93</td>
+<td class='win'>89:83</td>
+<td class='win'>88:80</td>
+<td class=''>10.05.26</td>
+<td class='win'>87:62</td>
+<td class='win'>104:73</td>
+</tr>
+<tr><th>BA</th>
+<td class='win'>97:93</td>
+<td class='loss'>92:98</td>
+<td class='diag'></td>
+<td class=''>10.05.26</td>
+<td class='win'>92:86</td>
+<td class='loss'>83:106</td>
+<td class='win'>98:79</td>
+<td class='loss'>79:100</td>
+<td class='win'>96:86</td>
+<td class='loss'>74:87</td>
+<td class='win'>96:82</td>
+<td class='win'>83:61</td>
+<td class=''>03.05.26</td>
+<td class='loss'>77:80</td>
+<td class='win'>99:74</td>
+<td class='win'>81:75</td>
+<td class='win'>80:69</td>
+<td class='win'>88:81</td>
+</tr>
+<tr><th>BN</th>
+<td class='loss'>55:83</td>
+<td class='loss'>70:84</td>
+<td class='win'>76:74</td>
+<td class='diag'></td>
+<td class='loss'>61:72</td>
+<td class='win'>81:79</td>
+<td class=''>08.05.26</td>
+<td class='loss'>79:81</td>
+<td class='win'>101:83</td>
+<td class='loss'>77:81</td>
+<td class='win'>86:82</td>
+<td class='win'>73:71</td>
+<td class='win'>92:85</td>
+<td class='win'>88:76</td>
+<td class='win'>88:72</td>
+<td class='win'>92:64</td>
+<td class='win'>94:82</td>
+<td class='win'>96:85</td>
+</tr>
+<tr><th>WUE</th>
+<td class='loss'>81:90</td>
+<td class='win'>96:92</td>
+<td class='loss'>80:98</td>
+<td class='loss'>81:87</td>
+<td class='diag'></td>
+<td class='past'>02.05.26</td>
+<td class='win'>102:83</td>
+<td class=''>10.05.26</td>
+<td class='loss'>86:103</td>
+<td class='loss'>63:75</td>
+<td class='win'>81:69</td>
+<td class='win'>82:71</td>
+<td class='win'>91:88</td>
+<td class='win'>80:66</td>
+<td class='win'>89:71</td>
+<td class='win'>97:92</td>
+<td class='win'>70:54</td>
+<td class='win'>92:80</td>
+</tr>
+<tr><th>ULM</th>
+<td class='loss'>77:81</td>
+<td class='loss'>77:89</td>
+<td class='loss'>73:89</td>
+<td class='win'>84:77</td>
+<td class='win'>66:61</td>
+<td class='diag'></td>
+<td class='win'>97:67</td>
+<td class='win'>93:76</td>
+<td class='win'>77:75</td>
+<td class='win'>87:80</td>
+<td class='win'>94:81</td>
+<td class='win'>101:72</td>
+<td class='past'>25.04.26</td>
+<td class='loss'>67:75</td>
+<td class='win'>104:81</td>
+<td class='win'>93:90</td>
+<td class='loss'>77:79</td>
+<td class='win'>72:59</td>
+</tr>
+<tr><th>TR</th>
+<td class='loss'>80:104</td>
+<td class='loss'>92:99</td>
+<td class='win'>92:87</td>
+<td class='win'>102:98</td>
+<td class='win'>102:90</td>
+<td class='win'>100:89</td>
+<td class='diag'></td>
+<td class='win'>92:76</td>
+<td class='win'>96:87</td>
+<td class='win'>88:78</td>
+<td class='loss'>100:105</td>
+<td class='past'>02.05.26</td>
+<td class='win'>101:92</td>
+<td class='win'>89:84</td>
+<td class=''>10.05.26</td>
+<td class='loss'>94:95</td>
+<td class='loss'>69:71</td>
+<td class='win'>78:73</td>
+</tr>
+<tr><th>LB</th>
+<td class=''>07.05.26</td>
+<td class='loss'>77:101</td>
+<td class='loss'>74:86</td>
+<td class='loss'>85:86</td>
+<td class='loss'>79:84</td>
+<td class='win'>90:81</td>
+<td class='loss'>80:86</td>
+<td class='diag'></td>
+<td class='loss'>80:86</td>
+<td class='past'>25.04.26</td>
+<td class='win'>87:79</td>
+<td class='win'>65:59</td>
+<td class='win'>75:67</td>
+<td class='win'>97:65</td>
+<td class='win'>86:82</td>
+<td class='win'>91:82</td>
+<td class='win'>89:73</td>
+<td class='win'>86:62</td>
+</tr>
+<tr><th>VEC</th>
+<td class='loss'>74:77</td>
+<td class='loss'>83:95</td>
+<td class='win'>96:93</td>
+<td class='loss'>70:76</td>
+<td class='loss'>100:104</td>
+<td class='win'>85:73</td>
+<td class='win'>123:97</td>
+<td class='win'>121:102</td>
+<td class='diag'></td>
+<td class=''>08.05.26</td>
+<td class='win'>80:78</td>
+<td class='loss'>79:96</td>
+<td class='win'>97:95</td>
+<td class='loss'>95:98</td>
+<td class='loss'>83:96</td>
+<td class='win'>101:64</td>
+<td class='win'>86:76</td>
+<td class='past'>24.04.26</td>
+</tr>
+<tr><th>HRO</th>
+<td class='loss'>67:85</td>
+<td class='loss'>66:80</td>
+<td class='loss'>86:88</td>
+<td class='loss'>86:88</td>
+<td class='win'>77:74</td>
+<td class='loss'>68:75</td>
+<td class='win'>118:103</td>
+<td class='win'>96:89</td>
+<td class='loss'>87:91</td>
+<td class='diag'></td>
+<td class='loss'>73:78</td>
+<td class='win'>94:77</td>
+<td class=''>10.05.26</td>
+<td class='win'>82:77</td>
+<td class='win'>82:77</td>
+<td class='past'>02.05.26</td>
+<td class='win'>90:79</td>
+<td class='win'>98:78</td>
+</tr>
+<tr><th>CHE</th>
+<td class='loss'>59:87</td>
+<td class='loss'>85:89</td>
+<td class='past'>27.04.26</td>
+<td class='loss'>75:76</td>
+<td class='loss'>67:86</td>
+<td class='win'>79:66</td>
+<td class='win'>96:84</td>
+<td class='win'>111:88</td>
+<td class='loss'>90:96</td>
+<td class='win'>97:92</td>
+<td class='diag'></td>
+<td class='win'>95:85</td>
+<td class='win'>102:78</td>
+<td class=''>07.05.26</td>
+<td class='win'>79:75</td>
+<td class='win'>76:73</td>
+<td class='win'>99:96</td>
+<td class='win'>93:75</td>
+</tr>
+<tr><th>OL</th>
+<td class='loss'>79:87</td>
+<td class='win'>76:73</td>
+<td class='loss'>89:103</td>
+<td class='win'>98:94</td>
+<td class='loss'>79:85</td>
+<td class='loss'>86:93</td>
+<td class='win'>108:85</td>
+<td class='win'>102:88</td>
+<td class='loss'>70:91</td>
+<td class='win'>81:79</td>
+<td class='win'>89:72</td>
+<td class='diag'></td>
+<td class='loss'>77:96</td>
+<td class='loss'>75:89</td>
+<td class='win'>91:84</td>
+<td class='loss'>92:95</td>
+<td class='past'>25.04.26</td>
+<td class=''>08.05.26</td>
+</tr>
+<tr><th>HH</th>
+<td class='win'>96:81</td>
+<td class='win'>99:80</td>
+<td class='loss'>71:101</td>
+<td class='loss'>68:86</td>
+<td class=''>07.05.26</td>
+<td class='win'>84:82</td>
+<td class='win'>90:72</td>
+<td class='loss'>84:88</td>
+<td class='loss'>83:92</td>
+<td class='win'>91:86</td>
+<td class='win'>86:69</td>
+<td class='loss'>69:94</td>
+<td class='diag'></td>
+<td class='win'>97:75</td>
+<td class='loss'>85:93</td>
+<td class='loss'>82:84</td>
+<td class='win'>86:83</td>
+<td class='win'>95:85</td>
+</tr>
+<tr><th>FRA</th>
+<td class='loss'>69:97</td>
+<td class='past'>26.04.26</td>
+<td class='loss'>61:84</td>
+<td class='past'>01.05.26</td>
+<td class='win'>82:80</td>
+<td class=''>10.05.26</td>
+<td class='loss'>108:115</td>
+<td class='loss'>88:98</td>
+<td class='loss'>89:93</td>
+<td class='win'>97:74</td>
+<td class='win'>89:86</td>
+<td class='loss'>73:79</td>
+<td class='loss'>78:82</td>
+<td class='diag'></td>
+<td class='loss'>93:97</td>
+<td class='win'>79:70</td>
+<td class='loss'>73:93</td>
+<td class='loss'>87:90</td>
+</tr>
+<tr><th>MBC</th>
+<td class='win'>91:79</td>
+<td class='win'>99:68</td>
+<td class=''>08.05.26</td>
+<td class='win'>84:77</td>
+<td class='past'>26.04.26</td>
+<td class='win'>75:71</td>
+<td class='loss'>84:110</td>
+<td class='loss'>82:93</td>
+<td class='win'>90:82</td>
+<td class='loss'>80:94</td>
+<td class='loss'>90:94</td>
+<td class='loss'>84:90</td>
+<td class='win'>99:94</td>
+<td class='loss'>83:96</td>
+<td class='diag'></td>
+<td class='loss'>86:95</td>
+<td class='win'>85:67</td>
+<td class='win'>99:93</td>
+</tr>
+<tr><th>JEN</th>
+<td class='loss'>61:106</td>
+<td class='loss'>78:97</td>
+<td class='loss'>81:102</td>
+<td class='loss'>80:92</td>
+<td class='loss'>69:87</td>
+<td class='loss'>70:92</td>
+<td class='past'>25.04.26</td>
+<td class='loss'>75:84</td>
+<td class='win'>95:78</td>
+<td class='loss'>82:89</td>
+<td class='win'>85:72</td>
+<td class='win'>97:75</td>
+<td class='win'>106:95</td>
+<td class='loss'>58:90</td>
+<td class='loss'>84:108</td>
+<td class='diag'></td>
+<td class=''>07.05.26</td>
+<td class='loss'>82:93</td>
+</tr>
+<tr><th>HD</th>
+<td class='loss'>63:106</td>
+<td class='loss'>54:87</td>
+<td class='loss'>85:99</td>
+<td class='loss'>67:100</td>
+<td class='win'>85:51</td>
+<td class='win'>93:90</td>
+<td class='loss'>76:80</td>
+<td class='loss'>73:83</td>
+<td class=''>10.05.26</td>
+<td class='loss'>70:101</td>
+<td class='loss'>83:90</td>
+<td class='win'>80:78</td>
+<td class='loss'>108:111</td>
+<td class='loss'>75:80</td>
+<td class=''>04.05.26</td>
+<td class='loss'>83:87</td>
+<td class='diag'></td>
+<td class='win'>95:75</td>
+</tr>
+<tr><th>BS</th>
+<td class='loss'>62:91</td>
+<td class='loss'>73:94</td>
+<td class='loss'>75:98</td>
+<td class='win'>89:80</td>
+<td class='loss'>82:87</td>
+<td class='win'>77:67</td>
+<td class='loss'>97:106</td>
+<td class='past'>02.05.26</td>
+<td class='win'>98:77</td>
+<td class='win'>92:71</td>
+<td class=''>10.05.26</td>
+<td class='loss'>68:93</td>
+<td class='win'>85:73</td>
+<td class='loss'>73:95</td>
+<td class='win'>112:93</td>
+<td class='loss'>78:83</td>
+<td class='loss'>94:99</td>
+<td class='diag'></td>
+</tr>
+</table>
+</details>
 <hr>
 <h2>Punktzahl‑Gruppen</h2>
 <details id="pg_34" class="liga-block" open>
