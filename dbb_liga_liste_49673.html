@@ -1,0 +1,3025 @@
+
+<style>
+body { 
+    font-family: Arial, sans-serif; 
+    background:#f4f6f9; 
+    margin:20px; 
+}
+
+table {
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+}
+
+th {
+  background: #e6f0ff !important;
+  color: #000000;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #dddddd;
+  font-size: 13px;
+}
+
+tr:nth-child(even) { background: #f2f6fa; }
+
+.punkte-blau { color:#0057ff; font-weight:bold; text-decoration:none; }
+.punkte-orange { color:#ff8c00; font-weight:bold; text-decoration:none; }
+
+#open_all, #close_all {
+    background:#e6f0ff;
+    border:1px solid #b5c7e0;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+#open_all:hover, #close_all:hover {
+    background:#d9e6ff;
+}
+
+pre { font-family: Consolas, monospace; font-size: 13px; }
+
+
+/* --------------------------------------------- */
+/* KREUZTABELLE – NEUE CSS-KLASSEN                */
+/* --------------------------------------------- */
+
+td.win  { background:#c8f7c5; }     /* hellgrün */
+td.loss { background:#f7c5c5; }     /* hellrot */
+td.past { background:orange; }
+td.nodata { background:#e0e0e0; }
+
+td.diag {
+    background: repeating-linear-gradient(
+        45deg,
+        #ccc,
+        #ccc 4px,
+        #eee 4px,
+        #eee 8px
+    );
+}
+
+</style>
+
+<details>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<p><b>Allgemein</b></p>
+<p>
+Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
+Diese Ligen haben das Format:<br>
+<code>https://www.basketball-bund.net/index.jsp?Action=102&liga_id={LIGA_ID}</code><br><br>
+
+Aktuell wird dies automatisiert für die BBL und für die ProA erzeugt.<br>
+Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).<br><br>
+
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+<b>BBL:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51520.html?nocache=1</a><br>
+<b>ProA:</b> <a href="https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/dbb_liga_liste_51529.html?nocache=1</a><br><br>
+
+Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.
+</p>
+
+<p><b>Tabelle</b></p>
+<p>
+Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
+Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
+Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
+und eine geöffnete Punktzahl-Gruppe schließt.
+</p>
+
+<p><b>Punktzahl‑Gruppen</b></p>
+<p>
+Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
+Hier werden zuerst die Teams aufgeführt.<br>
+Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>
+Anschließend folgt der Restspielplan dieser Teams.<br>
+Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.
+</p>
+
+<p><b>Ergebnisse – ausklappbar</b></p>
+<p>
+Sämtliche bisher gespielten Ergebnisse.<br>
+Aktuellste Ergebnisse stehen oben.
+</p>
+
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+<p>
+Nach Restspielplan<br>
+Welche Spiele stehen noch an?<br>
+Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.
+</p>
+
+<p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
+<p>
+Es werden dann alle Vereine angezeigt.<br>
+Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.
+</p>
+html += "<p style='margin-top:20px; font-size:12px; color:#666;'>Daten entnommen aus öffentlich zugänglichen Informationen auf basketball-bund.net.</p>"
+
+</div>
+</details>
+<div style='margin:10px 0;'>
+<button id='open_all' style='margin-right:10px;'>Alles öffnen</button>
+<button id='close_all'>Alles schließen</button>
+</div>
+<h2>1.Regionalliga Herren (1RLH) (Senioren; Liganr.: 49673)</h2>
+<p><b>Tabelle (DBB) – Stand:</b> 06.05.2026 16:19 Uhr</p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Platz</th>
+      <th>Verein</th>
+      <th>Spiele</th>
+      <th>Siege</th>
+      <th>Niederlagen</th>
+      <th>Punkte</th>
+      <th>Körbe</th>
+      <th>Differenz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>26</td>
+      <td>23</td>
+      <td>3</td>
+      <td>46</td>
+      <td>2422 : 2066</td>
+      <td>356</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>BBA Hagen</td>
+      <td>26</td>
+      <td>20</td>
+      <td>6</td>
+      <td>40</td>
+      <td>2303 : 2058</td>
+      <td>245</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>26</td>
+      <td>18</td>
+      <td>8</td>
+      <td>36</td>
+      <td>2181 : 1937</td>
+      <td>244</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>BBG Herford</td>
+      <td>26</td>
+      <td>16</td>
+      <td>10</td>
+      <td>32</td>
+      <td>2102 : 1955</td>
+      <td>147</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>DTV Basketball Köln</td>
+      <td>26</td>
+      <td>14</td>
+      <td>12</td>
+      <td>28</td>
+      <td>1923 : 1975</td>
+      <td>-52</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>26</td>
+      <td>13</td>
+      <td>13</td>
+      <td><a href="#pg_26" class="punkte-blau">26</a></td>
+      <td>2158 : 2125</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>26</td>
+      <td>13</td>
+      <td>13</td>
+      <td><a href="#pg_26" class="punkte-blau">26</a></td>
+      <td>2100 : 2093</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>SV Haspe 70</td>
+      <td>26</td>
+      <td>12</td>
+      <td>14</td>
+      <td>24</td>
+      <td>2157 : 2162</td>
+      <td>-5</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>26</td>
+      <td>12</td>
+      <td>14</td>
+      <td>23</td>
+      <td>1928 : 1926</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>TuS 59 HammStars</td>
+      <td>26</td>
+      <td>11</td>
+      <td>15</td>
+      <td><a href="#pg_22" class="punkte-orange">22</a></td>
+      <td>2064 : 2112</td>
+      <td>-48</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>26</td>
+      <td>11</td>
+      <td>15</td>
+      <td><a href="#pg_22" class="punkte-orange">22</a></td>
+      <td>2122 : 2205</td>
+      <td>-83</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>LippeBaskets Werne</td>
+      <td>26</td>
+      <td>8</td>
+      <td>18</td>
+      <td><a href="#pg_16" class="punkte-blau">16</a></td>
+      <td>1860 : 2008</td>
+      <td>-148</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>UBC Münster 2</td>
+      <td>26</td>
+      <td>8</td>
+      <td>18</td>
+      <td><a href="#pg_16" class="punkte-blau">16</a></td>
+      <td>1795 : 2044</td>
+      <td>-249</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>BG Aachen</td>
+      <td>26</td>
+      <td>3</td>
+      <td>23</td>
+      <td>6</td>
+      <td>1880 : 2329</td>
+      <td>-449</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Kreuztabelle</h2></summary>
+<table style='font-size:11px;'>
+<tr><th></th>
+<th>BSG</th>
+<th>BBA1H</th>
+<th>TVI</th>
+<th>BBG</th>
+<th>DTV</th>
+<th>BSV</th>
+<th>TSV L</th>
+<th>HAS</th>
+<th>TVS</th>
+<th>TuS</th>
+<th>BG</th>
+<th>LB We</th>
+<th>None</th>
+<th>BG AC</th>
+</tr>
+<tr><th>BSG</th>
+<td class='diag'></td>
+<td class='win'>109:88</td>
+<td class='win'>88:86</td>
+<td class='win'>88:68</td>
+<td class='win'>80:59</td>
+<td class='win'>103:86</td>
+<td class='win'>114:80</td>
+<td class='win'>116:82</td>
+<td class='win'>91:77</td>
+<td class='win'>97:94</td>
+<td class='win'>106:93</td>
+<td class='win'>94:83</td>
+<td class='win'>90:62</td>
+<td class='win'>100:67</td>
+</tr>
+<tr><th>BBA1H</th>
+<td class='loss'>80:96</td>
+<td class='diag'></td>
+<td class='win'>99:83</td>
+<td class='loss'>71:88</td>
+<td class='win'>86:72</td>
+<td class='win'>91:84</td>
+<td class='win'>96:81</td>
+<td class='win'>96:88</td>
+<td class='loss'>77:84</td>
+<td class='loss'>70:85</td>
+<td class='win'>110:84</td>
+<td class='win'>101:64</td>
+<td class='loss'>68:77</td>
+<td class='win'>88:66</td>
+</tr>
+<tr><th>TVI</th>
+<td class='loss'>88:92</td>
+<td class='loss'>80:83</td>
+<td class='diag'></td>
+<td class='loss'>66:74</td>
+<td class='win'>78:68</td>
+<td class='win'>87:56</td>
+<td class='win'>92:67</td>
+<td class='win'>97:74</td>
+<td class='win'>87:67</td>
+<td class='win'>87:73</td>
+<td class='win'>83:77</td>
+<td class='win'>77:76</td>
+<td class='loss'>62:64</td>
+<td class='win'>95:62</td>
+</tr>
+<tr><th>BBG</th>
+<td class='loss'>73:102</td>
+<td class='loss'>62:77</td>
+<td class='loss'>79:89</td>
+<td class='diag'></td>
+<td class='win'>67:42</td>
+<td class='loss'>71:76</td>
+<td class='win'>90:75</td>
+<td class='win'>94:73</td>
+<td class='win'>83:65</td>
+<td class='win'>87:65</td>
+<td class='loss'>75:78</td>
+<td class='loss'>59:65</td>
+<td class='win'>78:57</td>
+<td class='win'>97:68</td>
+</tr>
+<tr><th>DTV</th>
+<td class='win'>90:82</td>
+<td class='loss'>56:90</td>
+<td class='loss'>82:96</td>
+<td class='win'>86:76</td>
+<td class='diag'></td>
+<td class='loss'>59:76</td>
+<td class='loss'>52:86</td>
+<td class='win'>87:85</td>
+<td class='loss'>63:73</td>
+<td class='loss'>78:86</td>
+<td class='win'>83:78</td>
+<td class='win'>87:64</td>
+<td class='loss'>66:74</td>
+<td class='win'>90:76</td>
+</tr>
+<tr><th>BSV</th>
+<td class='win'>97:91</td>
+<td class='loss'>66:75</td>
+<td class='loss'>80:104</td>
+<td class='loss'>78:89</td>
+<td class='loss'>75:81</td>
+<td class='diag'></td>
+<td class='win'>91:84</td>
+<td class='win'>99:84</td>
+<td class='loss'>71:83</td>
+<td class='win'>85:64</td>
+<td class='loss'>81:86</td>
+<td class='win'>101:60</td>
+<td class='win'>88:70</td>
+<td class='win'>87:74</td>
+</tr>
+<tr><th>TSV L</th>
+<td class='win'>92:70</td>
+<td class='loss'>92:114</td>
+<td class='loss'>66:94</td>
+<td class='win'>80:76</td>
+<td class='loss'>73:84</td>
+<td class='loss'>70:73</td>
+<td class='diag'></td>
+<td class='loss'>77:81</td>
+<td class='win'>69:67</td>
+<td class='win'>98:70</td>
+<td class='win'>97:95</td>
+<td class='win'>78:70</td>
+<td class='loss'>76:79</td>
+<td class='win'>101:90</td>
+</tr>
+<tr><th>HAS</th>
+<td class='loss'>66:86</td>
+<td class='loss'>74:79</td>
+<td class='win'>94:78</td>
+<td class='loss'>67:75</td>
+<td class='loss'>62:68</td>
+<td class='win'>99:87</td>
+<td class='loss'>61:90</td>
+<td class='diag'></td>
+<td class='win'>103:89</td>
+<td class='win'>96:88</td>
+<td class='loss'>73:91</td>
+<td class='win'>90:76</td>
+<td class='win'>88:72</td>
+<td class='win'>102:58</td>
+</tr>
+<tr><th>TVS</th>
+<td class='loss'>59:70</td>
+<td class='loss'>77:91</td>
+<td class='win'>86:63</td>
+<td class='loss'>78:84</td>
+<td class='loss'>70:72</td>
+<td class='win'>81:78</td>
+<td class='loss'>68:71</td>
+<td class='win'>82:66</td>
+<td class='diag'></td>
+<td class='loss'>89:92</td>
+<td class='win'>86:67</td>
+<td class='win'>81:60</td>
+<td class='win'>71:60</td>
+<td class='win'>88:74</td>
+</tr>
+<tr><th>TuS</th>
+<td class='loss'>92:101</td>
+<td class='loss'>84:97</td>
+<td class='loss'>76:78</td>
+<td class='loss'>73:87</td>
+<td class='loss'>54:69</td>
+<td class='loss'>92:98</td>
+<td class='win'>72:59</td>
+<td class='loss'>73:93</td>
+<td class='win'>87:76</td>
+<td class='diag'></td>
+<td class='loss'>83:88</td>
+<td class='loss'>53:69</td>
+<td class='win'>73:66</td>
+<td class='win'>92:57</td>
+</tr>
+<tr><th>BG</th>
+<td class='loss'>77:87</td>
+<td class='loss'>86:91</td>
+<td class='loss'>64:79</td>
+<td class='loss'>84:103</td>
+<td class='win'>79:69</td>
+<td class='win'>83:80</td>
+<td class='loss'>83:90</td>
+<td class='loss'>82:107</td>
+<td class='loss'>78:87</td>
+<td class='loss'>80:85</td>
+<td class='diag'></td>
+<td class='win'>88:84</td>
+<td class='win'>76:67</td>
+<td class='win'>78:73</td>
+</tr>
+<tr><th>LB We</th>
+<td class='loss'>78:81</td>
+<td class='loss'>71:86</td>
+<td class='loss'>69:81</td>
+<td class='loss'>76:94</td>
+<td class='loss'>81:89</td>
+<td class='win'>96:86</td>
+<td class='win'>87:78</td>
+<td class='loss'>76:90</td>
+<td class='win'>20:0</td>
+<td class='loss'>71:74</td>
+<td class='win'>79:72</td>
+<td class='diag'></td>
+<td class='win'>78:49</td>
+<td class='win'>75:70</td>
+</tr>
+<tr><th>None</th>
+<td class='loss'>60:81</td>
+<td class='loss'>57:84</td>
+<td class='loss'>67:77</td>
+<td class='win'>86:72</td>
+<td class='loss'>63:80</td>
+<td class='loss'>83:99</td>
+<td class='loss'>62:69</td>
+<td class='loss'>66:91</td>
+<td class='win'>79:68</td>
+<td class='loss'>73:92</td>
+<td class='loss'>70:91</td>
+<td class='win'>74:63</td>
+<td class='diag'></td>
+<td class='loss'>63:73</td>
+</tr>
+<tr><th>BG AC</th>
+<td class='loss'>89:107</td>
+<td class='loss'>92:115</td>
+<td class='loss'>54:94</td>
+<td class='loss'>90:101</td>
+<td class='loss'>65:91</td>
+<td class='loss'>65:80</td>
+<td class='loss'>62:101</td>
+<td class='win'>80:68</td>
+<td class='loss'>70:76</td>
+<td class='loss'>63:92</td>
+<td class='loss'>77:84</td>
+<td class='win'>75:69</td>
+<td class='loss'>90:95</td>
+<td class='diag'></td>
+</tr>
+</table>
+</details>
+<hr>
+<h2>Punktzahl‑Gruppen</h2>
+<details id="pg_26" class="liga-block" open>
+<summary><h3 style='display:inline;'>Teams mit 26 Punkten</h3></summary>
+<pre>
+BSV Münsterland Baskets Wulfen 26  Spiele: 26
+TSV Bayer 04 Leverkusen 2      26  Spiele: 26
+</pre>
+<p><b>Direkte Duelle:</b></p>
+<pre>
+08.11.2025 20:30     TSV Bayer 04 Leverkusen 2      70:73   BSV Münsterland Baskets Wulfen
+21.02.2026 20:00     BSV Münsterland Baskets Wulfen 91:84   TSV Bayer 04 Leverkusen 2
+</pre>
+<p><b>Direkter Vergleich:</b></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>+P</th>
+      <th>-P</th>
+      <th>erzielt</th>
+      <th>erhalten</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>164</td>
+      <td>154</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>154</td>
+      <td>164</td>
+      <td>-10</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>Restspiele:</b></p>
+<pre>
+Keine Restspiele gefunden.
+</pre>
+</details>
+<details id="pg_22" class="liga-block">
+<summary><h3 style='display:inline;'>Teams mit 22 Punkten</h3></summary>
+<pre>
+TuS 59 HammStars               22  Spiele: 26
+BG TVO / TV Jahn               22  Spiele: 26
+</pre>
+<p><b>Direkte Duelle:</b></p>
+<pre>
+20.09.2025 18:30     BG TVO / TV Jahn               80:85   TuS 59 HammStars
+13.12.2025 19:30     TuS 59 HammStars               83:88   BG TVO / TV Jahn
+</pre>
+<p><b>Direkter Vergleich:</b></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>+P</th>
+      <th>-P</th>
+      <th>erzielt</th>
+      <th>erhalten</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TuS 59 HammStars</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>168</td>
+      <td>168</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>168</td>
+      <td>168</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>Restspiele:</b></p>
+<pre>
+Keine Restspiele gefunden.
+</pre>
+</details>
+<details id="pg_16" class="liga-block">
+<summary><h3 style='display:inline;'>Teams mit 16 Punkten</h3></summary>
+<pre>
+LippeBaskets Werne             16  Spiele: 26
+UBC Münster 2                  16  Spiele: 26
+</pre>
+<p><b>Direkte Duelle:</b></p>
+<pre>
+05.12.2025 20:00     UBC Münster 2                  74:63   LippeBaskets Werne
+21.03.2026 19:30     LippeBaskets Werne             78:49   UBC Münster 2
+</pre>
+<p><b>Direkter Vergleich:</b></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Rang</th>
+      <th>Team</th>
+      <th>Spiele</th>
+      <th>+P</th>
+      <th>-P</th>
+      <th>erzielt</th>
+      <th>erhalten</th>
+      <th>Diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>LippeBaskets Werne</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>141</td>
+      <td>123</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>UBC Münster 2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>123</td>
+      <td>141</td>
+      <td>-18</td>
+    </tr>
+  </tbody>
+</table>
+<p><b>Restspiele:</b></p>
+<pre>
+Keine Restspiele gefunden.
+</pre>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Ergebnisse</h2></summary>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>nr</th>
+      <th>sptag</th>
+      <th>date</th>
+      <th>home</th>
+      <th>guest</th>
+      <th>hs</th>
+      <th>gs</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>176</td>
+      <td>26</td>
+      <td>21.03.2026 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>UBC Münster 2</td>
+      <td>78</td>
+      <td>49</td>
+      <td>78:49</td>
+    </tr>
+    <tr>
+      <td>177</td>
+      <td>26</td>
+      <td>21.03.2026 19:30</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>TuS 59 HammStars</td>
+      <td>85</td>
+      <td>64</td>
+      <td>85:64</td>
+    </tr>
+    <tr>
+      <td>178</td>
+      <td>26</td>
+      <td>21.03.2026 19:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>78</td>
+      <td>87</td>
+      <td>78:87</td>
+    </tr>
+    <tr>
+      <td>179</td>
+      <td>26</td>
+      <td>21.03.2026 19:30</td>
+      <td>BG Aachen</td>
+      <td>BBG Herford</td>
+      <td>90</td>
+      <td>101</td>
+      <td>90:101</td>
+    </tr>
+    <tr>
+      <td>180</td>
+      <td>26</td>
+      <td>21.03.2026 19:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>SV Haspe 70</td>
+      <td>87</td>
+      <td>85</td>
+      <td>87:85</td>
+    </tr>
+    <tr>
+      <td>181</td>
+      <td>26</td>
+      <td>21.03.2026 19:30</td>
+      <td>BBA Hagen</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>96</td>
+      <td>81</td>
+      <td>96:81</td>
+    </tr>
+    <tr>
+      <td>182</td>
+      <td>26</td>
+      <td>21.03.2026 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>88</td>
+      <td>86</td>
+      <td>88:86</td>
+    </tr>
+    <tr>
+      <td>169</td>
+      <td>25</td>
+      <td>14.03.2026 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>78</td>
+      <td>81</td>
+      <td>78:81</td>
+    </tr>
+    <tr>
+      <td>170</td>
+      <td>25</td>
+      <td>14.03.2026 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>BBA Hagen</td>
+      <td>80</td>
+      <td>83</td>
+      <td>80:83</td>
+    </tr>
+    <tr>
+      <td>172</td>
+      <td>25</td>
+      <td>14.03.2026 18:30</td>
+      <td>SV Haspe 70</td>
+      <td>BG Aachen</td>
+      <td>102</td>
+      <td>58</td>
+      <td>102:58</td>
+    </tr>
+    <tr>
+      <td>173</td>
+      <td>25</td>
+      <td>14.03.2026 19:30</td>
+      <td>BBG Herford</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>75</td>
+      <td>78</td>
+      <td>75:78</td>
+    </tr>
+    <tr>
+      <td>174</td>
+      <td>25</td>
+      <td>14.03.2026 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>81</td>
+      <td>78</td>
+      <td>81:78</td>
+    </tr>
+    <tr>
+      <td>175</td>
+      <td>25</td>
+      <td>14.03.2026 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>UBC Münster 2</td>
+      <td>73</td>
+      <td>66</td>
+      <td>73:66</td>
+    </tr>
+    <tr>
+      <td>171</td>
+      <td>25</td>
+      <td>13.03.2026 20:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>DTV Basketball Köln</td>
+      <td>73</td>
+      <td>84</td>
+      <td>73:84</td>
+    </tr>
+    <tr>
+      <td>162</td>
+      <td>24</td>
+      <td>07.03.2026 19:30</td>
+      <td>BBA Hagen</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>80</td>
+      <td>96</td>
+      <td>80:96</td>
+    </tr>
+    <tr>
+      <td>163</td>
+      <td>24</td>
+      <td>07.03.2026 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>TuS 59 HammStars</td>
+      <td>71</td>
+      <td>74</td>
+      <td>71:74</td>
+    </tr>
+    <tr>
+      <td>164</td>
+      <td>24</td>
+      <td>07.03.2026 16:00</td>
+      <td>UBC Münster 2</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>79</td>
+      <td>68</td>
+      <td>79:68</td>
+    </tr>
+    <tr>
+      <td>165</td>
+      <td>24</td>
+      <td>07.03.2026 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>BBG Herford</td>
+      <td>78</td>
+      <td>89</td>
+      <td>78:89</td>
+    </tr>
+    <tr>
+      <td>166</td>
+      <td>24</td>
+      <td>07.03.2026 18:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>SV Haspe 70</td>
+      <td>82</td>
+      <td>107</td>
+      <td>82:107</td>
+    </tr>
+    <tr>
+      <td>167</td>
+      <td>24</td>
+      <td>07.03.2026 19:00</td>
+      <td>BG Aachen</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>62</td>
+      <td>101</td>
+      <td>62:101</td>
+    </tr>
+    <tr>
+      <td>168</td>
+      <td>24</td>
+      <td>07.03.2026 18:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>82</td>
+      <td>96</td>
+      <td>82:96</td>
+    </tr>
+    <tr>
+      <td>155</td>
+      <td>23</td>
+      <td>28.02.2026 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>LippeBaskets Werne</td>
+      <td>81</td>
+      <td>60</td>
+      <td>81:60</td>
+    </tr>
+    <tr>
+      <td>156</td>
+      <td>23</td>
+      <td>28.02.2026 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>TuS 59 HammStars</td>
+      <td>97</td>
+      <td>94</td>
+      <td>97:94</td>
+    </tr>
+    <tr>
+      <td>157</td>
+      <td>23</td>
+      <td>28.02.2026 19:30</td>
+      <td>BBA Hagen</td>
+      <td>DTV Basketball Köln</td>
+      <td>86</td>
+      <td>72</td>
+      <td>86:72</td>
+    </tr>
+    <tr>
+      <td>158</td>
+      <td>23</td>
+      <td>28.02.2026 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>BG Aachen</td>
+      <td>95</td>
+      <td>62</td>
+      <td>95:62</td>
+    </tr>
+    <tr>
+      <td>161</td>
+      <td>23</td>
+      <td>28.02.2026 19:30</td>
+      <td>BBG Herford</td>
+      <td>UBC Münster 2</td>
+      <td>78</td>
+      <td>57</td>
+      <td>78:57</td>
+    </tr>
+    <tr>
+      <td>159</td>
+      <td>23</td>
+      <td>27.02.2026 20:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>97</td>
+      <td>95</td>
+      <td>97:95</td>
+    </tr>
+    <tr>
+      <td>160</td>
+      <td>23</td>
+      <td>27.02.2026 20:15</td>
+      <td>SV Haspe 70</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>99</td>
+      <td>87</td>
+      <td>99:87</td>
+    </tr>
+    <tr>
+      <td>148</td>
+      <td>22</td>
+      <td>21.02.2026 20:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>90</td>
+      <td>82</td>
+      <td>90:82</td>
+    </tr>
+    <tr>
+      <td>149</td>
+      <td>22</td>
+      <td>21.02.2026 19:00</td>
+      <td>BG Aachen</td>
+      <td>BBA Hagen</td>
+      <td>92</td>
+      <td>115</td>
+      <td>92:115</td>
+    </tr>
+    <tr>
+      <td>150</td>
+      <td>22</td>
+      <td>21.02.2026 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>87</td>
+      <td>76</td>
+      <td>87:76</td>
+    </tr>
+    <tr>
+      <td>151</td>
+      <td>22</td>
+      <td>21.02.2026 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>BBG Herford</td>
+      <td>76</td>
+      <td>94</td>
+      <td>76:94</td>
+    </tr>
+    <tr>
+      <td>152</td>
+      <td>22</td>
+      <td>21.02.2026 20:00</td>
+      <td>UBC Münster 2</td>
+      <td>SV Haspe 70</td>
+      <td>66</td>
+      <td>91</td>
+      <td>66:91</td>
+    </tr>
+    <tr>
+      <td>153</td>
+      <td>22</td>
+      <td>21.02.2026 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>91</td>
+      <td>84</td>
+      <td>91:84</td>
+    </tr>
+    <tr>
+      <td>154</td>
+      <td>22</td>
+      <td>21.02.2026 16:00</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>64</td>
+      <td>79</td>
+      <td>64:79</td>
+    </tr>
+    <tr>
+      <td>141</td>
+      <td>21</td>
+      <td>07.02.2026 18:30</td>
+      <td>SV Haspe 70</td>
+      <td>LippeBaskets Werne</td>
+      <td>90</td>
+      <td>76</td>
+      <td>90:76</td>
+    </tr>
+    <tr>
+      <td>142</td>
+      <td>21</td>
+      <td>07.02.2026 19:30</td>
+      <td>BBG Herford</td>
+      <td>TuS 59 HammStars</td>
+      <td>87</td>
+      <td>65</td>
+      <td>87:65</td>
+    </tr>
+    <tr>
+      <td>143</td>
+      <td>21</td>
+      <td>07.02.2026 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>91</td>
+      <td>77</td>
+      <td>91:77</td>
+    </tr>
+    <tr>
+      <td>144</td>
+      <td>21</td>
+      <td>07.02.2026 18:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>BG Aachen</td>
+      <td>90</td>
+      <td>76</td>
+      <td>90:76</td>
+    </tr>
+    <tr>
+      <td>145</td>
+      <td>21</td>
+      <td>07.02.2026 19:30</td>
+      <td>BBA Hagen</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>110</td>
+      <td>84</td>
+      <td>110:84</td>
+    </tr>
+    <tr>
+      <td>146</td>
+      <td>21</td>
+      <td>07.02.2026 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>87</td>
+      <td>56</td>
+      <td>87:56</td>
+    </tr>
+    <tr>
+      <td>147</td>
+      <td>21</td>
+      <td>07.02.2026 19:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>UBC Münster 2</td>
+      <td>76</td>
+      <td>79</td>
+      <td>76:79</td>
+    </tr>
+    <tr>
+      <td>134</td>
+      <td>20</td>
+      <td>31.01.2026 19:00</td>
+      <td>BG Aachen</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>89</td>
+      <td>107</td>
+      <td>89:107</td>
+    </tr>
+    <tr>
+      <td>135</td>
+      <td>20</td>
+      <td>31.01.2026 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>BBA Hagen</td>
+      <td>66</td>
+      <td>75</td>
+      <td>66:75</td>
+    </tr>
+    <tr>
+      <td>136</td>
+      <td>20</td>
+      <td>31.01.2026 18:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>DTV Basketball Köln</td>
+      <td>79</td>
+      <td>69</td>
+      <td>79:69</td>
+    </tr>
+    <tr>
+      <td>137</td>
+      <td>20</td>
+      <td>31.01.2026 17:00</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>BBG Herford</td>
+      <td>78</td>
+      <td>84</td>
+      <td>78:84</td>
+    </tr>
+    <tr>
+      <td>138</td>
+      <td>20</td>
+      <td>31.01.2026 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>SV Haspe 70</td>
+      <td>73</td>
+      <td>93</td>
+      <td>73:93</td>
+    </tr>
+    <tr>
+      <td>139</td>
+      <td>20</td>
+      <td>31.01.2026 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>87</td>
+      <td>78</td>
+      <td>87:78</td>
+    </tr>
+    <tr>
+      <td>140</td>
+      <td>20</td>
+      <td>31.01.2026 19:30</td>
+      <td>UBC Münster 2</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>67</td>
+      <td>77</td>
+      <td>67:77</td>
+    </tr>
+    <tr>
+      <td>127</td>
+      <td>19</td>
+      <td>24.01.2026 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>LippeBaskets Werne</td>
+      <td>77</td>
+      <td>76</td>
+      <td>77:76</td>
+    </tr>
+    <tr>
+      <td>128</td>
+      <td>19</td>
+      <td>24.01.2026 19:00</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>TuS 59 HammStars</td>
+      <td>98</td>
+      <td>70</td>
+      <td>98:70</td>
+    </tr>
+    <tr>
+      <td>130</td>
+      <td>19</td>
+      <td>24.01.2026 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>BBG Herford</td>
+      <td>88</td>
+      <td>68</td>
+      <td>88:68</td>
+    </tr>
+    <tr>
+      <td>131</td>
+      <td>19</td>
+      <td>24.01.2026 19:00</td>
+      <td>BG Aachen</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>77</td>
+      <td>84</td>
+      <td>77:84</td>
+    </tr>
+    <tr>
+      <td>132</td>
+      <td>19</td>
+      <td>24.01.2026 18:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>59</td>
+      <td>76</td>
+      <td>59:76</td>
+    </tr>
+    <tr>
+      <td>133</td>
+      <td>19</td>
+      <td>24.01.2026 19:30</td>
+      <td>BBA Hagen</td>
+      <td>UBC Münster 2</td>
+      <td>68</td>
+      <td>77</td>
+      <td>68:77</td>
+    </tr>
+    <tr>
+      <td>129</td>
+      <td>19</td>
+      <td>23.01.2026 20:15</td>
+      <td>SV Haspe 70</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>103</td>
+      <td>89</td>
+      <td>103:89</td>
+    </tr>
+    <tr>
+      <td>115</td>
+      <td>17</td>
+      <td>21.01.2026 20:30</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>87</td>
+      <td>67</td>
+      <td>87:67</td>
+    </tr>
+    <tr>
+      <td>120</td>
+      <td>18</td>
+      <td>17.01.2026 18:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>77</td>
+      <td>87</td>
+      <td>77:87</td>
+    </tr>
+    <tr>
+      <td>122</td>
+      <td>18</td>
+      <td>17.01.2026 20:00</td>
+      <td>UBC Münster 2</td>
+      <td>DTV Basketball Köln</td>
+      <td>63</td>
+      <td>80</td>
+      <td>63:80</td>
+    </tr>
+    <tr>
+      <td>123</td>
+      <td>18</td>
+      <td>17.01.2026 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>BG Aachen</td>
+      <td>87</td>
+      <td>74</td>
+      <td>87:74</td>
+    </tr>
+    <tr>
+      <td>124</td>
+      <td>18</td>
+      <td>17.01.2026 19:30</td>
+      <td>BBG Herford</td>
+      <td>SV Haspe 70</td>
+      <td>94</td>
+      <td>73</td>
+      <td>94:73</td>
+    </tr>
+    <tr>
+      <td>125</td>
+      <td>18</td>
+      <td>17.01.2026 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>68</td>
+      <td>71</td>
+      <td>68:71</td>
+    </tr>
+    <tr>
+      <td>126</td>
+      <td>18</td>
+      <td>17.01.2026 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>76</td>
+      <td>78</td>
+      <td>76:78</td>
+    </tr>
+    <tr>
+      <td>121</td>
+      <td>18</td>
+      <td>16.01.2026 20:00</td>
+      <td>LippeBaskets Werne</td>
+      <td>BBA Hagen</td>
+      <td>71</td>
+      <td>86</td>
+      <td>71:86</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>4</td>
+      <td>10.01.2026 20:30</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>81</td>
+      <td>86</td>
+      <td>81:86</td>
+    </tr>
+    <tr>
+      <td>113</td>
+      <td>17</td>
+      <td>10.01.2026 20:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>LippeBaskets Werne</td>
+      <td>87</td>
+      <td>64</td>
+      <td>87:64</td>
+    </tr>
+    <tr>
+      <td>114</td>
+      <td>17</td>
+      <td>10.01.2026 19:30</td>
+      <td>BBA Hagen</td>
+      <td>TuS 59 HammStars</td>
+      <td>70</td>
+      <td>85</td>
+      <td>70:85</td>
+    </tr>
+    <tr>
+      <td>117</td>
+      <td>17</td>
+      <td>10.01.2026 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>SV Haspe 70</td>
+      <td>116</td>
+      <td>82</td>
+      <td>116:82</td>
+    </tr>
+    <tr>
+      <td>119</td>
+      <td>17</td>
+      <td>10.01.2026 19:00</td>
+      <td>BG Aachen</td>
+      <td>UBC Münster 2</td>
+      <td>90</td>
+      <td>95</td>
+      <td>90:95</td>
+    </tr>
+    <tr>
+      <td>116</td>
+      <td>17</td>
+      <td>09.01.2026 20:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>BBG Herford</td>
+      <td>80</td>
+      <td>76</td>
+      <td>80:76</td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td>16</td>
+      <td>04.01.2026 17:00</td>
+      <td>UBC Münster 2</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>70</td>
+      <td>91</td>
+      <td>70:91</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>16</td>
+      <td>04.01.2026 15:00</td>
+      <td>SV Haspe 70</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>61</td>
+      <td>90</td>
+      <td>61:90</td>
+    </tr>
+    <tr>
+      <td>112</td>
+      <td>16</td>
+      <td>04.01.2026 18:00</td>
+      <td>BBG Herford</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>79</td>
+      <td>89</td>
+      <td>79:89</td>
+    </tr>
+    <tr>
+      <td>106</td>
+      <td>16</td>
+      <td>03.01.2026 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>97</td>
+      <td>91</td>
+      <td>97:91</td>
+    </tr>
+    <tr>
+      <td>107</td>
+      <td>16</td>
+      <td>03.01.2026 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>BBA Hagen</td>
+      <td>77</td>
+      <td>91</td>
+      <td>77:91</td>
+    </tr>
+    <tr>
+      <td>108</td>
+      <td>16</td>
+      <td>03.01.2026 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>DTV Basketball Köln</td>
+      <td>54</td>
+      <td>69</td>
+      <td>54:69</td>
+    </tr>
+    <tr>
+      <td>109</td>
+      <td>16</td>
+      <td>03.01.2026 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>BG Aachen</td>
+      <td>75</td>
+      <td>70</td>
+      <td>75:70</td>
+    </tr>
+    <tr>
+      <td>99</td>
+      <td>15</td>
+      <td>20.12.2025 18:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>LippeBaskets Werne</td>
+      <td>88</td>
+      <td>84</td>
+      <td>88:84</td>
+    </tr>
+    <tr>
+      <td>100</td>
+      <td>15</td>
+      <td>20.12.2025 19:00</td>
+      <td>BG Aachen</td>
+      <td>TuS 59 HammStars</td>
+      <td>63</td>
+      <td>92</td>
+      <td>63:92</td>
+    </tr>
+    <tr>
+      <td>101</td>
+      <td>15</td>
+      <td>20.12.2025 20:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>63</td>
+      <td>73</td>
+      <td>63:73</td>
+    </tr>
+    <tr>
+      <td>103</td>
+      <td>15</td>
+      <td>20.12.2025 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>SV Haspe 70</td>
+      <td>97</td>
+      <td>74</td>
+      <td>97:74</td>
+    </tr>
+    <tr>
+      <td>104</td>
+      <td>15</td>
+      <td>20.12.2025 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>114</td>
+      <td>80</td>
+      <td>114:80</td>
+    </tr>
+    <tr>
+      <td>105</td>
+      <td>15</td>
+      <td>20.12.2025 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>UBC Münster 2</td>
+      <td>88</td>
+      <td>70</td>
+      <td>88:70</td>
+    </tr>
+    <tr>
+      <td>102</td>
+      <td>15</td>
+      <td>19.12.2025 20:15</td>
+      <td>BBA Hagen</td>
+      <td>BBG Herford</td>
+      <td>71</td>
+      <td>88</td>
+      <td>71:88</td>
+    </tr>
+    <tr>
+      <td>92</td>
+      <td>14</td>
+      <td>13.12.2025 18:00</td>
+      <td>UBC Münster 2</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>60</td>
+      <td>81</td>
+      <td>60:81</td>
+    </tr>
+    <tr>
+      <td>94</td>
+      <td>14</td>
+      <td>13.12.2025 19:30</td>
+      <td>BBG Herford</td>
+      <td>DTV Basketball Köln</td>
+      <td>67</td>
+      <td>42</td>
+      <td>67:42</td>
+    </tr>
+    <tr>
+      <td>95</td>
+      <td>14</td>
+      <td>13.12.2025 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>BG Aachen</td>
+      <td>88</td>
+      <td>74</td>
+      <td>88:74</td>
+    </tr>
+    <tr>
+      <td>96</td>
+      <td>14</td>
+      <td>13.12.2025 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>83</td>
+      <td>88</td>
+      <td>83:88</td>
+    </tr>
+    <tr>
+      <td>97</td>
+      <td>14</td>
+      <td>13.12.2025 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>96</td>
+      <td>86</td>
+      <td>96:86</td>
+    </tr>
+    <tr>
+      <td>93</td>
+      <td>14</td>
+      <td>12.12.2025 20:15</td>
+      <td>SV Haspe 70</td>
+      <td>BBA Hagen</td>
+      <td>74</td>
+      <td>79</td>
+      <td>74:79</td>
+    </tr>
+    <tr>
+      <td>98</td>
+      <td>14</td>
+      <td>12.12.2025 20:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>66</td>
+      <td>94</td>
+      <td>66:94</td>
+    </tr>
+    <tr>
+      <td>86</td>
+      <td>13</td>
+      <td>06.12.2025 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>92</td>
+      <td>98</td>
+      <td>92:98</td>
+    </tr>
+    <tr>
+      <td>87</td>
+      <td>13</td>
+      <td>06.12.2025 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>86</td>
+      <td>67</td>
+      <td>86:67</td>
+    </tr>
+    <tr>
+      <td>88</td>
+      <td>13</td>
+      <td>06.12.2025 19:30</td>
+      <td>BBG Herford</td>
+      <td>BG Aachen</td>
+      <td>97</td>
+      <td>68</td>
+      <td>97:68</td>
+    </tr>
+    <tr>
+      <td>91</td>
+      <td>13</td>
+      <td>06.12.2025 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>88</td>
+      <td>92</td>
+      <td>88:92</td>
+    </tr>
+    <tr>
+      <td>85</td>
+      <td>13</td>
+      <td>05.12.2025 20:00</td>
+      <td>UBC Münster 2</td>
+      <td>LippeBaskets Werne</td>
+      <td>74</td>
+      <td>63</td>
+      <td>74:63</td>
+    </tr>
+    <tr>
+      <td>89</td>
+      <td>13</td>
+      <td>05.12.2025 20:15</td>
+      <td>SV Haspe 70</td>
+      <td>DTV Basketball Köln</td>
+      <td>62</td>
+      <td>68</td>
+      <td>62:68</td>
+    </tr>
+    <tr>
+      <td>90</td>
+      <td>13</td>
+      <td>05.12.2025 20:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>BBA Hagen</td>
+      <td>92</td>
+      <td>114</td>
+      <td>92:114</td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>12</td>
+      <td>29.11.2025 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>LippeBaskets Werne</td>
+      <td>94</td>
+      <td>83</td>
+      <td>94:83</td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>12</td>
+      <td>29.11.2025 19:30</td>
+      <td>BBA Hagen</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>99</td>
+      <td>83</td>
+      <td>99:83</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>12</td>
+      <td>29.11.2025 18:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>52</td>
+      <td>86</td>
+      <td>52:86</td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>12</td>
+      <td>29.11.2025 19:00</td>
+      <td>BG Aachen</td>
+      <td>SV Haspe 70</td>
+      <td>80</td>
+      <td>68</td>
+      <td>80:68</td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td>12</td>
+      <td>29.11.2025 18:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>BBG Herford</td>
+      <td>84</td>
+      <td>103</td>
+      <td>84:103</td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td>12</td>
+      <td>29.11.2025 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>71</td>
+      <td>83</td>
+      <td>71:83</td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td>12</td>
+      <td>29.11.2025 20:00</td>
+      <td>UBC Münster 2</td>
+      <td>TuS 59 HammStars</td>
+      <td>73</td>
+      <td>92</td>
+      <td>73:92</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>11</td>
+      <td>22.11.2025 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>BBA Hagen</td>
+      <td>109</td>
+      <td>88</td>
+      <td>109:88</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>11</td>
+      <td>22.11.2025 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>LippeBaskets Werne</td>
+      <td>53</td>
+      <td>69</td>
+      <td>53:69</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>11</td>
+      <td>22.11.2025 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>UBC Münster 2</td>
+      <td>71</td>
+      <td>60</td>
+      <td>71:60</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>11</td>
+      <td>22.11.2025 19:30</td>
+      <td>BBG Herford</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>71</td>
+      <td>76</td>
+      <td>71:76</td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>11</td>
+      <td>22.11.2025 18:00</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>BG Aachen</td>
+      <td>101</td>
+      <td>90</td>
+      <td>101:90</td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td>11</td>
+      <td>22.11.2025 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>DTV Basketball Köln</td>
+      <td>78</td>
+      <td>68</td>
+      <td>78:68</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>11</td>
+      <td>21.11.2025 20:15</td>
+      <td>SV Haspe 70</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>73</td>
+      <td>91</td>
+      <td>73:91</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>10</td>
+      <td>15.11.2025 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>20</td>
+      <td>0</td>
+      <td>20:0</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>10</td>
+      <td>15.11.2025 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>92</td>
+      <td>101</td>
+      <td>92:101</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>10</td>
+      <td>15.11.2025 20:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>BBA Hagen</td>
+      <td>56</td>
+      <td>90</td>
+      <td>56:90</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>10</td>
+      <td>15.11.2025 19:00</td>
+      <td>BG Aachen</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>54</td>
+      <td>94</td>
+      <td>54:94</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>10</td>
+      <td>15.11.2025 16:00</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>83</td>
+      <td>90</td>
+      <td>83:90</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>10</td>
+      <td>15.11.2025 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>SV Haspe 70</td>
+      <td>99</td>
+      <td>84</td>
+      <td>99:84</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>10</td>
+      <td>14.11.2025 20:00</td>
+      <td>UBC Münster 2</td>
+      <td>BBG Herford</td>
+      <td>86</td>
+      <td>72</td>
+      <td>86:72</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>9</td>
+      <td>08.11.2025 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>DTV Basketball Köln</td>
+      <td>80</td>
+      <td>59</td>
+      <td>80:59</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>9</td>
+      <td>08.11.2025 19:30</td>
+      <td>BBA Hagen</td>
+      <td>BG Aachen</td>
+      <td>88</td>
+      <td>66</td>
+      <td>88:66</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>9</td>
+      <td>08.11.2025 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>TuS 59 HammStars</td>
+      <td>89</td>
+      <td>92</td>
+      <td>89:92</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>9</td>
+      <td>08.11.2025 19:30</td>
+      <td>BBG Herford</td>
+      <td>LippeBaskets Werne</td>
+      <td>59</td>
+      <td>65</td>
+      <td>59:65</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>9</td>
+      <td>08.11.2025 18:30</td>
+      <td>SV Haspe 70</td>
+      <td>UBC Münster 2</td>
+      <td>88</td>
+      <td>72</td>
+      <td>88:72</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>9</td>
+      <td>08.11.2025 20:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>70</td>
+      <td>73</td>
+      <td>70:73</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>9</td>
+      <td>08.11.2025 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>83</td>
+      <td>77</td>
+      <td>83:77</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>8</td>
+      <td>02.11.2025 18:00</td>
+      <td>LippeBaskets Werne</td>
+      <td>SV Haspe 70</td>
+      <td>76</td>
+      <td>90</td>
+      <td>76:90</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>8</td>
+      <td>02.11.2025 16:00</td>
+      <td>TuS 59 HammStars</td>
+      <td>BBG Herford</td>
+      <td>73</td>
+      <td>87</td>
+      <td>73:87</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>8</td>
+      <td>02.11.2025 16:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>59</td>
+      <td>70</td>
+      <td>59:70</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>8</td>
+      <td>02.11.2025 17:00</td>
+      <td>BG Aachen</td>
+      <td>DTV Basketball Köln</td>
+      <td>65</td>
+      <td>91</td>
+      <td>65:91</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>8</td>
+      <td>02.11.2025 17:00</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>BBA Hagen</td>
+      <td>86</td>
+      <td>91</td>
+      <td>86:91</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>8</td>
+      <td>02.11.2025 16:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>80</td>
+      <td>104</td>
+      <td>80:104</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>8</td>
+      <td>02.11.2025 17:00</td>
+      <td>UBC Münster 2</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>62</td>
+      <td>69</td>
+      <td>62:69</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>7</td>
+      <td>31.10.2025 20:00</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>BG Aachen</td>
+      <td>100</td>
+      <td>67</td>
+      <td>100:67</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>7</td>
+      <td>31.10.2025 20:15</td>
+      <td>BBA Hagen</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>91</td>
+      <td>84</td>
+      <td>91:84</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>7</td>
+      <td>31.10.2025 20:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>83</td>
+      <td>78</td>
+      <td>83:78</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>7</td>
+      <td>31.10.2025 20:00</td>
+      <td>BBG Herford</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>83</td>
+      <td>65</td>
+      <td>83:65</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>7</td>
+      <td>31.10.2025 20:15</td>
+      <td>SV Haspe 70</td>
+      <td>TuS 59 HammStars</td>
+      <td>96</td>
+      <td>88</td>
+      <td>96:88</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>7</td>
+      <td>31.10.2025 20:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>LippeBaskets Werne</td>
+      <td>78</td>
+      <td>70</td>
+      <td>78:70</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>7</td>
+      <td>31.10.2025 20:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>UBC Münster 2</td>
+      <td>62</td>
+      <td>64</td>
+      <td>62:64</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>6</td>
+      <td>25.10.2025 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>72</td>
+      <td>59</td>
+      <td>72:59</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>6</td>
+      <td>25.10.2025 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>SV Haspe 70</td>
+      <td>82</td>
+      <td>66</td>
+      <td>82:66</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>6</td>
+      <td>25.10.2025 19:30</td>
+      <td>BBG Herford</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>73</td>
+      <td>102</td>
+      <td>73:102</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>6</td>
+      <td>25.10.2025 18:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>BG Aachen</td>
+      <td>78</td>
+      <td>73</td>
+      <td>78:73</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>6</td>
+      <td>25.10.2025 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>DTV Basketball Köln</td>
+      <td>75</td>
+      <td>81</td>
+      <td>75:81</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>6</td>
+      <td>25.10.2025 16:00</td>
+      <td>UBC Münster 2</td>
+      <td>BBA Hagen</td>
+      <td>57</td>
+      <td>84</td>
+      <td>57:84</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>6</td>
+      <td>24.10.2025 20:00</td>
+      <td>LippeBaskets Werne</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>69</td>
+      <td>81</td>
+      <td>69:81</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td>19.10.2025 16:00</td>
+      <td>DTV Basketball Köln</td>
+      <td>BBG Herford</td>
+      <td>86</td>
+      <td>76</td>
+      <td>86:76</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>5</td>
+      <td>19.10.2025 16:00</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>69</td>
+      <td>67</td>
+      <td>69:67</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>5</td>
+      <td>18.10.2025 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>106</td>
+      <td>93</td>
+      <td>106:93</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>5</td>
+      <td>18.10.2025 19:30</td>
+      <td>BBA Hagen</td>
+      <td>LippeBaskets Werne</td>
+      <td>101</td>
+      <td>64</td>
+      <td>101:64</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>5</td>
+      <td>18.10.2025 18:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>UBC Münster 2</td>
+      <td>66</td>
+      <td>74</td>
+      <td>66:74</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>5</td>
+      <td>18.10.2025 19:00</td>
+      <td>BG Aachen</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>65</td>
+      <td>80</td>
+      <td>65:80</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>5</td>
+      <td>18.10.2025 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>TuS 59 HammStars</td>
+      <td>87</td>
+      <td>73</td>
+      <td>87:73</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>5</td>
+      <td>17.10.2025 20:15</td>
+      <td>SV Haspe 70</td>
+      <td>BBG Herford</td>
+      <td>67</td>
+      <td>75</td>
+      <td>67:75</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>4</td>
+      <td>11.10.2025 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>DTV Basketball Köln</td>
+      <td>81</td>
+      <td>89</td>
+      <td>81:89</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>4</td>
+      <td>11.10.2025 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>BBA Hagen</td>
+      <td>84</td>
+      <td>97</td>
+      <td>84:97</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>4</td>
+      <td>11.10.2025 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>86</td>
+      <td>63</td>
+      <td>86:63</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>4</td>
+      <td>11.10.2025 19:30</td>
+      <td>BBG Herford</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>90</td>
+      <td>75</td>
+      <td>90:75</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>4</td>
+      <td>11.10.2025 16:00</td>
+      <td>UBC Münster 2</td>
+      <td>BG Aachen</td>
+      <td>63</td>
+      <td>73</td>
+      <td>63:73</td>
+    </tr>
+    <tr>
+      <td>118</td>
+      <td>17</td>
+      <td>11.10.2025 20:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>83</td>
+      <td>80</td>
+      <td>83:80</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>4</td>
+      <td>10.10.2025 20:15</td>
+      <td>SV Haspe 70</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>66</td>
+      <td>86</td>
+      <td>66:86</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>3</td>
+      <td>04.10.2025 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>103</td>
+      <td>86</td>
+      <td>103:86</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>3</td>
+      <td>04.10.2025 19:30</td>
+      <td>BBA Hagen</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>77</td>
+      <td>84</td>
+      <td>77:84</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>3</td>
+      <td>04.10.2025 20:30</td>
+      <td>DTV Basketball Köln</td>
+      <td>TuS 59 HammStars</td>
+      <td>78</td>
+      <td>86</td>
+      <td>78:86</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>3</td>
+      <td>04.10.2025 19:00</td>
+      <td>BG Aachen</td>
+      <td>LippeBaskets Werne</td>
+      <td>75</td>
+      <td>69</td>
+      <td>75:69</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>3</td>
+      <td>04.10.2025 18:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>UBC Münster 2</td>
+      <td>76</td>
+      <td>67</td>
+      <td>76:67</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>3</td>
+      <td>04.10.2025 20:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>SV Haspe 70</td>
+      <td>77</td>
+      <td>81</td>
+      <td>77:81</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>3</td>
+      <td>04.10.2025 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>BBG Herford</td>
+      <td>66</td>
+      <td>74</td>
+      <td>66:74</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>2</td>
+      <td>27.09.2025 19:30</td>
+      <td>LippeBaskets Werne</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>79</td>
+      <td>72</td>
+      <td>79:72</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>2</td>
+      <td>27.09.2025 19:30</td>
+      <td>TuS 59 HammStars</td>
+      <td>BG Aachen</td>
+      <td>92</td>
+      <td>57</td>
+      <td>92:57</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>2</td>
+      <td>27.09.2025 18:30</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>DTV Basketball Köln</td>
+      <td>70</td>
+      <td>72</td>
+      <td>70:72</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>2</td>
+      <td>27.09.2025 19:30</td>
+      <td>BBG Herford</td>
+      <td>BBA Hagen</td>
+      <td>62</td>
+      <td>77</td>
+      <td>62:77</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2</td>
+      <td>27.09.2025 19:30</td>
+      <td>UBC Münster 2</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>83</td>
+      <td>99</td>
+      <td>83:99</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>2</td>
+      <td>26.09.2025 20:15</td>
+      <td>SV Haspe 70</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>94</td>
+      <td>78</td>
+      <td>94:78</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>2</td>
+      <td>26.09.2025 20:30</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>92</td>
+      <td>70</td>
+      <td>92:70</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>20.09.2025 19:30</td>
+      <td>NEW Elephants Grevenbroich</td>
+      <td>UBC Münster 2</td>
+      <td>90</td>
+      <td>62</td>
+      <td>90:62</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>20.09.2025 19:30</td>
+      <td>BBA Hagen</td>
+      <td>SV Haspe 70</td>
+      <td>96</td>
+      <td>88</td>
+      <td>96:88</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1</td>
+      <td>20.09.2025 19:00</td>
+      <td>BG Aachen</td>
+      <td>ACCENT BASKETS Salzkotten</td>
+      <td>70</td>
+      <td>76</td>
+      <td>70:76</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1</td>
+      <td>20.09.2025 18:30</td>
+      <td>BG TVO / TV Jahn</td>
+      <td>TuS 59 HammStars</td>
+      <td>80</td>
+      <td>85</td>
+      <td>80:85</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1</td>
+      <td>20.09.2025 20:00</td>
+      <td>BSV Münsterland Baskets Wulfen</td>
+      <td>LippeBaskets Werne</td>
+      <td>101</td>
+      <td>60</td>
+      <td>101:60</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>1</td>
+      <td>20.09.2025 19:00</td>
+      <td>BÖRGEL Ballers Ibbenbüren</td>
+      <td>TSV Bayer 04 Leverkusen 2</td>
+      <td>92</td>
+      <td>67</td>
+      <td>92:67</td>
+    </tr>
+  </tbody>
+</table>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Restspielplan</h2></summary>
+<p><i>Keine Restspiele gefunden.</i></p>
+</details>
+<hr>
+<details class='liga-block'>
+<summary><h2 style='display:inline;'>Spiele pro Team</h2></summary>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>NEW Elephants Grevenbroich</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>1</td><td>1</td><td>20.09.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>UBC Münster 2</td><td>90</td><td>62</td><td>90:62</td></tr>
+<tr><td>13</td><td>2</td><td>26.09.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>NEW Elephants Grevenbroich</td><td>92</td><td>70</td><td>92:70</td></tr>
+<tr><td>15</td><td>3</td><td>04.10.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>BSV Münsterland Baskets Wulfen</td><td>103</td><td>86</td><td>103:86</td></tr>
+<tr><td>26</td><td>4</td><td>10.10.2025 20:15</td><td>SV Haspe 70</td><td>NEW Elephants Grevenbroich</td><td>66</td><td>86</td><td>66:86</td></tr>
+<tr><td>29</td><td>5</td><td>18.10.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>BG TVO / TV Jahn</td><td>106</td><td>93</td><td>106:93</td></tr>
+<tr><td>39</td><td>6</td><td>25.10.2025 19:30</td><td>BBG Herford</td><td>NEW Elephants Grevenbroich</td><td>73</td><td>102</td><td>73:102</td></tr>
+<tr><td>43</td><td>7</td><td>31.10.2025 20:00</td><td>NEW Elephants Grevenbroich</td><td>BG Aachen</td><td>100</td><td>67</td><td>100:67</td></tr>
+<tr><td>52</td><td>8</td><td>02.11.2025 16:30</td><td>ACCENT BASKETS Salzkotten</td><td>NEW Elephants Grevenbroich</td><td>59</td><td>70</td><td>59:70</td></tr>
+<tr><td>57</td><td>9</td><td>08.11.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>DTV Basketball Köln</td><td>80</td><td>59</td><td>80:59</td></tr>
+<tr><td>65</td><td>10</td><td>15.11.2025 19:30</td><td>TuS 59 HammStars</td><td>NEW Elephants Grevenbroich</td><td>92</td><td>101</td><td>92:101</td></tr>
+<tr><td>71</td><td>11</td><td>22.11.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>BBA Hagen</td><td>109</td><td>88</td><td>109:88</td></tr>
+<tr><td>78</td><td>12</td><td>29.11.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>LippeBaskets Werne</td><td>94</td><td>83</td><td>94:83</td></tr>
+<tr><td>91</td><td>13</td><td>06.12.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>NEW Elephants Grevenbroich</td><td>88</td><td>92</td><td>88:92</td></tr>
+<tr><td>92</td><td>14</td><td>13.12.2025 18:00</td><td>UBC Münster 2</td><td>NEW Elephants Grevenbroich</td><td>60</td><td>81</td><td>60:81</td></tr>
+<tr><td>104</td><td>15</td><td>20.12.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>TSV Bayer 04 Leverkusen 2</td><td>114</td><td>80</td><td>114:80</td></tr>
+<tr><td>106</td><td>16</td><td>03.01.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>NEW Elephants Grevenbroich</td><td>97</td><td>91</td><td>97:91</td></tr>
+<tr><td>117</td><td>17</td><td>10.01.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>SV Haspe 70</td><td>116</td><td>82</td><td>116:82</td></tr>
+<tr><td>120</td><td>18</td><td>17.01.2026 18:30</td><td>BG TVO / TV Jahn</td><td>NEW Elephants Grevenbroich</td><td>77</td><td>87</td><td>77:87</td></tr>
+<tr><td>130</td><td>19</td><td>24.01.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>BBG Herford</td><td>88</td><td>68</td><td>88:68</td></tr>
+<tr><td>134</td><td>20</td><td>31.01.2026 19:00</td><td>BG Aachen</td><td>NEW Elephants Grevenbroich</td><td>89</td><td>107</td><td>89:107</td></tr>
+<tr><td>143</td><td>21</td><td>07.02.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>ACCENT BASKETS Salzkotten</td><td>91</td><td>77</td><td>91:77</td></tr>
+<tr><td>148</td><td>22</td><td>21.02.2026 20:30</td><td>DTV Basketball Köln</td><td>NEW Elephants Grevenbroich</td><td>90</td><td>82</td><td>90:82</td></tr>
+<tr><td>156</td><td>23</td><td>28.02.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>TuS 59 HammStars</td><td>97</td><td>94</td><td>97:94</td></tr>
+<tr><td>162</td><td>24</td><td>07.03.2026 19:30</td><td>BBA Hagen</td><td>NEW Elephants Grevenbroich</td><td>80</td><td>96</td><td>80:96</td></tr>
+<tr><td>169</td><td>25</td><td>14.03.2026 19:30</td><td>LippeBaskets Werne</td><td>NEW Elephants Grevenbroich</td><td>78</td><td>81</td><td>78:81</td></tr>
+<tr><td>182</td><td>26</td><td>21.03.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>BÖRGEL Ballers Ibbenbüren</td><td>88</td><td>86</td><td>88:86</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BBA Hagen</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2</td><td>1</td><td>20.09.2025 19:30</td><td>BBA Hagen</td><td>SV Haspe 70</td><td>96</td><td>88</td><td>96:88</td></tr>
+<tr><td>11</td><td>2</td><td>27.09.2025 19:30</td><td>BBG Herford</td><td>BBA Hagen</td><td>62</td><td>77</td><td>62:77</td></tr>
+<tr><td>16</td><td>3</td><td>04.10.2025 19:30</td><td>BBA Hagen</td><td>ACCENT BASKETS Salzkotten</td><td>77</td><td>84</td><td>77:84</td></tr>
+<tr><td>23</td><td>4</td><td>11.10.2025 19:30</td><td>TuS 59 HammStars</td><td>BBA Hagen</td><td>84</td><td>97</td><td>84:97</td></tr>
+<tr><td>30</td><td>5</td><td>18.10.2025 19:30</td><td>BBA Hagen</td><td>LippeBaskets Werne</td><td>101</td><td>64</td><td>101:64</td></tr>
+<tr><td>42</td><td>6</td><td>25.10.2025 16:00</td><td>UBC Münster 2</td><td>BBA Hagen</td><td>57</td><td>84</td><td>57:84</td></tr>
+<tr><td>44</td><td>7</td><td>31.10.2025 20:15</td><td>BBA Hagen</td><td>BSV Münsterland Baskets Wulfen</td><td>91</td><td>84</td><td>91:84</td></tr>
+<tr><td>54</td><td>8</td><td>02.11.2025 17:00</td><td>BG TVO / TV Jahn</td><td>BBA Hagen</td><td>86</td><td>91</td><td>86:91</td></tr>
+<tr><td>58</td><td>9</td><td>08.11.2025 19:30</td><td>BBA Hagen</td><td>BG Aachen</td><td>88</td><td>66</td><td>88:66</td></tr>
+<tr><td>66</td><td>10</td><td>15.11.2025 20:30</td><td>DTV Basketball Köln</td><td>BBA Hagen</td><td>56</td><td>90</td><td>56:90</td></tr>
+<tr><td>71</td><td>11</td><td>22.11.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>BBA Hagen</td><td>109</td><td>88</td><td>109:88</td></tr>
+<tr><td>79</td><td>12</td><td>29.11.2025 19:30</td><td>BBA Hagen</td><td>BÖRGEL Ballers Ibbenbüren</td><td>99</td><td>83</td><td>99:83</td></tr>
+<tr><td>90</td><td>13</td><td>05.12.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BBA Hagen</td><td>92</td><td>114</td><td>92:114</td></tr>
+<tr><td>93</td><td>14</td><td>12.12.2025 20:15</td><td>SV Haspe 70</td><td>BBA Hagen</td><td>74</td><td>79</td><td>74:79</td></tr>
+<tr><td>102</td><td>15</td><td>19.12.2025 20:15</td><td>BBA Hagen</td><td>BBG Herford</td><td>71</td><td>88</td><td>71:88</td></tr>
+<tr><td>107</td><td>16</td><td>03.01.2026 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BBA Hagen</td><td>77</td><td>91</td><td>77:91</td></tr>
+<tr><td>114</td><td>17</td><td>10.01.2026 19:30</td><td>BBA Hagen</td><td>TuS 59 HammStars</td><td>70</td><td>85</td><td>70:85</td></tr>
+<tr><td>121</td><td>18</td><td>16.01.2026 20:00</td><td>LippeBaskets Werne</td><td>BBA Hagen</td><td>71</td><td>86</td><td>71:86</td></tr>
+<tr><td>133</td><td>19</td><td>24.01.2026 19:30</td><td>BBA Hagen</td><td>UBC Münster 2</td><td>68</td><td>77</td><td>68:77</td></tr>
+<tr><td>135</td><td>20</td><td>31.01.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>BBA Hagen</td><td>66</td><td>75</td><td>66:75</td></tr>
+<tr><td>145</td><td>21</td><td>07.02.2026 19:30</td><td>BBA Hagen</td><td>BG TVO / TV Jahn</td><td>110</td><td>84</td><td>110:84</td></tr>
+<tr><td>149</td><td>22</td><td>21.02.2026 19:00</td><td>BG Aachen</td><td>BBA Hagen</td><td>92</td><td>115</td><td>92:115</td></tr>
+<tr><td>157</td><td>23</td><td>28.02.2026 19:30</td><td>BBA Hagen</td><td>DTV Basketball Köln</td><td>86</td><td>72</td><td>86:72</td></tr>
+<tr><td>162</td><td>24</td><td>07.03.2026 19:30</td><td>BBA Hagen</td><td>NEW Elephants Grevenbroich</td><td>80</td><td>96</td><td>80:96</td></tr>
+<tr><td>170</td><td>25</td><td>14.03.2026 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BBA Hagen</td><td>80</td><td>83</td><td>80:83</td></tr>
+<tr><td>181</td><td>26</td><td>21.03.2026 19:30</td><td>BBA Hagen</td><td>TSV Bayer 04 Leverkusen 2</td><td>96</td><td>81</td><td>96:81</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BÖRGEL Ballers Ibbenbüren</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>7</td><td>1</td><td>20.09.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>TSV Bayer 04 Leverkusen 2</td><td>92</td><td>67</td><td>92:67</td></tr>
+<tr><td>12</td><td>2</td><td>26.09.2025 20:15</td><td>SV Haspe 70</td><td>BÖRGEL Ballers Ibbenbüren</td><td>94</td><td>78</td><td>94:78</td></tr>
+<tr><td>21</td><td>3</td><td>04.10.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BBG Herford</td><td>66</td><td>74</td><td>66:74</td></tr>
+<tr><td>24</td><td>4</td><td>11.10.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BÖRGEL Ballers Ibbenbüren</td><td>86</td><td>63</td><td>86:63</td></tr>
+<tr><td>35</td><td>5</td><td>18.10.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>TuS 59 HammStars</td><td>87</td><td>73</td><td>87:73</td></tr>
+<tr><td>36</td><td>6</td><td>24.10.2025 20:00</td><td>LippeBaskets Werne</td><td>BÖRGEL Ballers Ibbenbüren</td><td>69</td><td>81</td><td>69:81</td></tr>
+<tr><td>49</td><td>7</td><td>31.10.2025 20:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>UBC Münster 2</td><td>62</td><td>64</td><td>62:64</td></tr>
+<tr><td>55</td><td>8</td><td>02.11.2025 16:00</td><td>BSV Münsterland Baskets Wulfen</td><td>BÖRGEL Ballers Ibbenbüren</td><td>80</td><td>104</td><td>80:104</td></tr>
+<tr><td>63</td><td>9</td><td>08.11.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BG TVO / TV Jahn</td><td>83</td><td>77</td><td>83:77</td></tr>
+<tr><td>67</td><td>10</td><td>15.11.2025 19:00</td><td>BG Aachen</td><td>BÖRGEL Ballers Ibbenbüren</td><td>54</td><td>94</td><td>54:94</td></tr>
+<tr><td>77</td><td>11</td><td>22.11.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>DTV Basketball Köln</td><td>78</td><td>68</td><td>78:68</td></tr>
+<tr><td>79</td><td>12</td><td>29.11.2025 19:30</td><td>BBA Hagen</td><td>BÖRGEL Ballers Ibbenbüren</td><td>99</td><td>83</td><td>99:83</td></tr>
+<tr><td>91</td><td>13</td><td>06.12.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>NEW Elephants Grevenbroich</td><td>88</td><td>92</td><td>88:92</td></tr>
+<tr><td>98</td><td>14</td><td>12.12.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BÖRGEL Ballers Ibbenbüren</td><td>66</td><td>94</td><td>66:94</td></tr>
+<tr><td>103</td><td>15</td><td>20.12.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>SV Haspe 70</td><td>97</td><td>74</td><td>97:74</td></tr>
+<tr><td>112</td><td>16</td><td>04.01.2026 18:00</td><td>BBG Herford</td><td>BÖRGEL Ballers Ibbenbüren</td><td>79</td><td>89</td><td>79:89</td></tr>
+<tr><td>126</td><td>18</td><td>17.01.2026 19:30</td><td>TuS 59 HammStars</td><td>BÖRGEL Ballers Ibbenbüren</td><td>76</td><td>78</td><td>76:78</td></tr>
+<tr><td>115</td><td>17</td><td>21.01.2026 20:30</td><td>BÖRGEL Ballers Ibbenbüren</td><td>ACCENT BASKETS Salzkotten</td><td>87</td><td>67</td><td>87:67</td></tr>
+<tr><td>127</td><td>19</td><td>24.01.2026 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>LippeBaskets Werne</td><td>77</td><td>76</td><td>77:76</td></tr>
+<tr><td>140</td><td>20</td><td>31.01.2026 19:30</td><td>UBC Münster 2</td><td>BÖRGEL Ballers Ibbenbüren</td><td>67</td><td>77</td><td>67:77</td></tr>
+<tr><td>146</td><td>21</td><td>07.02.2026 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BSV Münsterland Baskets Wulfen</td><td>87</td><td>56</td><td>87:56</td></tr>
+<tr><td>154</td><td>22</td><td>21.02.2026 16:00</td><td>BG TVO / TV Jahn</td><td>BÖRGEL Ballers Ibbenbüren</td><td>64</td><td>79</td><td>64:79</td></tr>
+<tr><td>158</td><td>23</td><td>28.02.2026 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BG Aachen</td><td>95</td><td>62</td><td>95:62</td></tr>
+<tr><td>168</td><td>24</td><td>07.03.2026 18:30</td><td>DTV Basketball Köln</td><td>BÖRGEL Ballers Ibbenbüren</td><td>82</td><td>96</td><td>82:96</td></tr>
+<tr><td>170</td><td>25</td><td>14.03.2026 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BBA Hagen</td><td>80</td><td>83</td><td>80:83</td></tr>
+<tr><td>182</td><td>26</td><td>21.03.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>BÖRGEL Ballers Ibbenbüren</td><td>88</td><td>86</td><td>88:86</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BBG Herford</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>11</td><td>2</td><td>27.09.2025 19:30</td><td>BBG Herford</td><td>BBA Hagen</td><td>62</td><td>77</td><td>62:77</td></tr>
+<tr><td>21</td><td>3</td><td>04.10.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BBG Herford</td><td>66</td><td>74</td><td>66:74</td></tr>
+<tr><td>25</td><td>4</td><td>11.10.2025 19:30</td><td>BBG Herford</td><td>TSV Bayer 04 Leverkusen 2</td><td>90</td><td>75</td><td>90:75</td></tr>
+<tr><td>33</td><td>5</td><td>17.10.2025 20:15</td><td>SV Haspe 70</td><td>BBG Herford</td><td>67</td><td>75</td><td>67:75</td></tr>
+<tr><td>3</td><td>1</td><td>19.10.2025 16:00</td><td>DTV Basketball Köln</td><td>BBG Herford</td><td>86</td><td>76</td><td>86:76</td></tr>
+<tr><td>39</td><td>6</td><td>25.10.2025 19:30</td><td>BBG Herford</td><td>NEW Elephants Grevenbroich</td><td>73</td><td>102</td><td>73:102</td></tr>
+<tr><td>46</td><td>7</td><td>31.10.2025 20:00</td><td>BBG Herford</td><td>ACCENT BASKETS Salzkotten</td><td>83</td><td>65</td><td>83:65</td></tr>
+<tr><td>51</td><td>8</td><td>02.11.2025 16:00</td><td>TuS 59 HammStars</td><td>BBG Herford</td><td>73</td><td>87</td><td>73:87</td></tr>
+<tr><td>60</td><td>9</td><td>08.11.2025 19:30</td><td>BBG Herford</td><td>LippeBaskets Werne</td><td>59</td><td>65</td><td>59:65</td></tr>
+<tr><td>70</td><td>10</td><td>14.11.2025 20:00</td><td>UBC Münster 2</td><td>BBG Herford</td><td>86</td><td>72</td><td>86:72</td></tr>
+<tr><td>74</td><td>11</td><td>22.11.2025 19:30</td><td>BBG Herford</td><td>BSV Münsterland Baskets Wulfen</td><td>71</td><td>76</td><td>71:76</td></tr>
+<tr><td>82</td><td>12</td><td>29.11.2025 18:30</td><td>BG TVO / TV Jahn</td><td>BBG Herford</td><td>84</td><td>103</td><td>84:103</td></tr>
+<tr><td>88</td><td>13</td><td>06.12.2025 19:30</td><td>BBG Herford</td><td>BG Aachen</td><td>97</td><td>68</td><td>97:68</td></tr>
+<tr><td>94</td><td>14</td><td>13.12.2025 19:30</td><td>BBG Herford</td><td>DTV Basketball Köln</td><td>67</td><td>42</td><td>67:42</td></tr>
+<tr><td>102</td><td>15</td><td>19.12.2025 20:15</td><td>BBA Hagen</td><td>BBG Herford</td><td>71</td><td>88</td><td>71:88</td></tr>
+<tr><td>112</td><td>16</td><td>04.01.2026 18:00</td><td>BBG Herford</td><td>BÖRGEL Ballers Ibbenbüren</td><td>79</td><td>89</td><td>79:89</td></tr>
+<tr><td>116</td><td>17</td><td>09.01.2026 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BBG Herford</td><td>80</td><td>76</td><td>80:76</td></tr>
+<tr><td>124</td><td>18</td><td>17.01.2026 19:30</td><td>BBG Herford</td><td>SV Haspe 70</td><td>94</td><td>73</td><td>94:73</td></tr>
+<tr><td>130</td><td>19</td><td>24.01.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>BBG Herford</td><td>88</td><td>68</td><td>88:68</td></tr>
+<tr><td>137</td><td>20</td><td>31.01.2026 17:00</td><td>ACCENT BASKETS Salzkotten</td><td>BBG Herford</td><td>78</td><td>84</td><td>78:84</td></tr>
+<tr><td>142</td><td>21</td><td>07.02.2026 19:30</td><td>BBG Herford</td><td>TuS 59 HammStars</td><td>87</td><td>65</td><td>87:65</td></tr>
+<tr><td>151</td><td>22</td><td>21.02.2026 19:30</td><td>LippeBaskets Werne</td><td>BBG Herford</td><td>76</td><td>94</td><td>76:94</td></tr>
+<tr><td>161</td><td>23</td><td>28.02.2026 19:30</td><td>BBG Herford</td><td>UBC Münster 2</td><td>78</td><td>57</td><td>78:57</td></tr>
+<tr><td>165</td><td>24</td><td>07.03.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>BBG Herford</td><td>78</td><td>89</td><td>78:89</td></tr>
+<tr><td>173</td><td>25</td><td>14.03.2026 19:30</td><td>BBG Herford</td><td>BG TVO / TV Jahn</td><td>75</td><td>78</td><td>75:78</td></tr>
+<tr><td>179</td><td>26</td><td>21.03.2026 19:30</td><td>BG Aachen</td><td>BBG Herford</td><td>90</td><td>101</td><td>90:101</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>DTV Basketball Köln</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>10</td><td>2</td><td>27.09.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>DTV Basketball Köln</td><td>70</td><td>72</td><td>70:72</td></tr>
+<tr><td>17</td><td>3</td><td>04.10.2025 20:30</td><td>DTV Basketball Köln</td><td>TuS 59 HammStars</td><td>78</td><td>86</td><td>78:86</td></tr>
+<tr><td>22</td><td>4</td><td>11.10.2025 19:30</td><td>LippeBaskets Werne</td><td>DTV Basketball Köln</td><td>81</td><td>89</td><td>81:89</td></tr>
+<tr><td>31</td><td>5</td><td>18.10.2025 18:30</td><td>DTV Basketball Köln</td><td>UBC Münster 2</td><td>66</td><td>74</td><td>66:74</td></tr>
+<tr><td>3</td><td>1</td><td>19.10.2025 16:00</td><td>DTV Basketball Köln</td><td>BBG Herford</td><td>86</td><td>76</td><td>86:76</td></tr>
+<tr><td>41</td><td>6</td><td>25.10.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>DTV Basketball Köln</td><td>75</td><td>81</td><td>75:81</td></tr>
+<tr><td>45</td><td>7</td><td>31.10.2025 20:30</td><td>DTV Basketball Köln</td><td>BG TVO / TV Jahn</td><td>83</td><td>78</td><td>83:78</td></tr>
+<tr><td>53</td><td>8</td><td>02.11.2025 17:00</td><td>BG Aachen</td><td>DTV Basketball Köln</td><td>65</td><td>91</td><td>65:91</td></tr>
+<tr><td>57</td><td>9</td><td>08.11.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>DTV Basketball Köln</td><td>80</td><td>59</td><td>80:59</td></tr>
+<tr><td>66</td><td>10</td><td>15.11.2025 20:30</td><td>DTV Basketball Köln</td><td>BBA Hagen</td><td>56</td><td>90</td><td>56:90</td></tr>
+<tr><td>77</td><td>11</td><td>22.11.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>DTV Basketball Köln</td><td>78</td><td>68</td><td>78:68</td></tr>
+<tr><td>80</td><td>12</td><td>29.11.2025 18:30</td><td>DTV Basketball Köln</td><td>TSV Bayer 04 Leverkusen 2</td><td>52</td><td>86</td><td>52:86</td></tr>
+<tr><td>89</td><td>13</td><td>05.12.2025 20:15</td><td>SV Haspe 70</td><td>DTV Basketball Köln</td><td>62</td><td>68</td><td>62:68</td></tr>
+<tr><td>94</td><td>14</td><td>13.12.2025 19:30</td><td>BBG Herford</td><td>DTV Basketball Köln</td><td>67</td><td>42</td><td>67:42</td></tr>
+<tr><td>101</td><td>15</td><td>20.12.2025 20:30</td><td>DTV Basketball Köln</td><td>ACCENT BASKETS Salzkotten</td><td>63</td><td>73</td><td>63:73</td></tr>
+<tr><td>108</td><td>16</td><td>03.01.2026 19:30</td><td>TuS 59 HammStars</td><td>DTV Basketball Köln</td><td>54</td><td>69</td><td>54:69</td></tr>
+<tr><td>113</td><td>17</td><td>10.01.2026 20:30</td><td>DTV Basketball Köln</td><td>LippeBaskets Werne</td><td>87</td><td>64</td><td>87:64</td></tr>
+<tr><td>122</td><td>18</td><td>17.01.2026 20:00</td><td>UBC Münster 2</td><td>DTV Basketball Köln</td><td>63</td><td>80</td><td>63:80</td></tr>
+<tr><td>132</td><td>19</td><td>24.01.2026 18:30</td><td>DTV Basketball Köln</td><td>BSV Münsterland Baskets Wulfen</td><td>59</td><td>76</td><td>59:76</td></tr>
+<tr><td>136</td><td>20</td><td>31.01.2026 18:30</td><td>BG TVO / TV Jahn</td><td>DTV Basketball Köln</td><td>79</td><td>69</td><td>79:69</td></tr>
+<tr><td>144</td><td>21</td><td>07.02.2026 18:30</td><td>DTV Basketball Köln</td><td>BG Aachen</td><td>90</td><td>76</td><td>90:76</td></tr>
+<tr><td>148</td><td>22</td><td>21.02.2026 20:30</td><td>DTV Basketball Köln</td><td>NEW Elephants Grevenbroich</td><td>90</td><td>82</td><td>90:82</td></tr>
+<tr><td>157</td><td>23</td><td>28.02.2026 19:30</td><td>BBA Hagen</td><td>DTV Basketball Köln</td><td>86</td><td>72</td><td>86:72</td></tr>
+<tr><td>168</td><td>24</td><td>07.03.2026 18:30</td><td>DTV Basketball Köln</td><td>BÖRGEL Ballers Ibbenbüren</td><td>82</td><td>96</td><td>82:96</td></tr>
+<tr><td>171</td><td>25</td><td>13.03.2026 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>DTV Basketball Köln</td><td>73</td><td>84</td><td>73:84</td></tr>
+<tr><td>180</td><td>26</td><td>21.03.2026 19:30</td><td>DTV Basketball Köln</td><td>SV Haspe 70</td><td>87</td><td>85</td><td>87:85</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BSV Münsterland Baskets Wulfen</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>6</td><td>1</td><td>20.09.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>LippeBaskets Werne</td><td>101</td><td>60</td><td>101:60</td></tr>
+<tr><td>14</td><td>2</td><td>27.09.2025 19:30</td><td>UBC Münster 2</td><td>BSV Münsterland Baskets Wulfen</td><td>83</td><td>99</td><td>83:99</td></tr>
+<tr><td>15</td><td>3</td><td>04.10.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>BSV Münsterland Baskets Wulfen</td><td>103</td><td>86</td><td>103:86</td></tr>
+<tr><td>118</td><td>17</td><td>11.10.2025 20:30</td><td>BG TVO / TV Jahn</td><td>BSV Münsterland Baskets Wulfen</td><td>83</td><td>80</td><td>83:80</td></tr>
+<tr><td>32</td><td>5</td><td>18.10.2025 19:00</td><td>BG Aachen</td><td>BSV Münsterland Baskets Wulfen</td><td>65</td><td>80</td><td>65:80</td></tr>
+<tr><td>41</td><td>6</td><td>25.10.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>DTV Basketball Köln</td><td>75</td><td>81</td><td>75:81</td></tr>
+<tr><td>44</td><td>7</td><td>31.10.2025 20:15</td><td>BBA Hagen</td><td>BSV Münsterland Baskets Wulfen</td><td>91</td><td>84</td><td>91:84</td></tr>
+<tr><td>55</td><td>8</td><td>02.11.2025 16:00</td><td>BSV Münsterland Baskets Wulfen</td><td>BÖRGEL Ballers Ibbenbüren</td><td>80</td><td>104</td><td>80:104</td></tr>
+<tr><td>62</td><td>9</td><td>08.11.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BSV Münsterland Baskets Wulfen</td><td>70</td><td>73</td><td>70:73</td></tr>
+<tr><td>69</td><td>10</td><td>15.11.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>SV Haspe 70</td><td>99</td><td>84</td><td>99:84</td></tr>
+<tr><td>74</td><td>11</td><td>22.11.2025 19:30</td><td>BBG Herford</td><td>BSV Münsterland Baskets Wulfen</td><td>71</td><td>76</td><td>71:76</td></tr>
+<tr><td>83</td><td>12</td><td>29.11.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>ACCENT BASKETS Salzkotten</td><td>71</td><td>83</td><td>71:83</td></tr>
+<tr><td>86</td><td>13</td><td>06.12.2025 19:30</td><td>TuS 59 HammStars</td><td>BSV Münsterland Baskets Wulfen</td><td>92</td><td>98</td><td>92:98</td></tr>
+<tr><td>97</td><td>14</td><td>13.12.2025 19:30</td><td>LippeBaskets Werne</td><td>BSV Münsterland Baskets Wulfen</td><td>96</td><td>86</td><td>96:86</td></tr>
+<tr><td>105</td><td>15</td><td>20.12.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>UBC Münster 2</td><td>88</td><td>70</td><td>88:70</td></tr>
+<tr><td>106</td><td>16</td><td>03.01.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>NEW Elephants Grevenbroich</td><td>97</td><td>91</td><td>97:91</td></tr>
+<tr><td>27</td><td>4</td><td>10.01.2026 20:30</td><td>BSV Münsterland Baskets Wulfen</td><td>BG TVO / TV Jahn</td><td>81</td><td>86</td><td>81:86</td></tr>
+<tr><td>123</td><td>18</td><td>17.01.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>BG Aachen</td><td>87</td><td>74</td><td>87:74</td></tr>
+<tr><td>132</td><td>19</td><td>24.01.2026 18:30</td><td>DTV Basketball Köln</td><td>BSV Münsterland Baskets Wulfen</td><td>59</td><td>76</td><td>59:76</td></tr>
+<tr><td>135</td><td>20</td><td>31.01.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>BBA Hagen</td><td>66</td><td>75</td><td>66:75</td></tr>
+<tr><td>146</td><td>21</td><td>07.02.2026 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BSV Münsterland Baskets Wulfen</td><td>87</td><td>56</td><td>87:56</td></tr>
+<tr><td>153</td><td>22</td><td>21.02.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>TSV Bayer 04 Leverkusen 2</td><td>91</td><td>84</td><td>91:84</td></tr>
+<tr><td>160</td><td>23</td><td>27.02.2026 20:15</td><td>SV Haspe 70</td><td>BSV Münsterland Baskets Wulfen</td><td>99</td><td>87</td><td>99:87</td></tr>
+<tr><td>165</td><td>24</td><td>07.03.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>BBG Herford</td><td>78</td><td>89</td><td>78:89</td></tr>
+<tr><td>174</td><td>25</td><td>14.03.2026 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BSV Münsterland Baskets Wulfen</td><td>81</td><td>78</td><td>81:78</td></tr>
+<tr><td>177</td><td>26</td><td>21.03.2026 19:30</td><td>BSV Münsterland Baskets Wulfen</td><td>TuS 59 HammStars</td><td>85</td><td>64</td><td>85:64</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TSV Bayer 04 Leverkusen 2</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>7</td><td>1</td><td>20.09.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>TSV Bayer 04 Leverkusen 2</td><td>92</td><td>67</td><td>92:67</td></tr>
+<tr><td>13</td><td>2</td><td>26.09.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>NEW Elephants Grevenbroich</td><td>92</td><td>70</td><td>92:70</td></tr>
+<tr><td>20</td><td>3</td><td>04.10.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>SV Haspe 70</td><td>77</td><td>81</td><td>77:81</td></tr>
+<tr><td>25</td><td>4</td><td>11.10.2025 19:30</td><td>BBG Herford</td><td>TSV Bayer 04 Leverkusen 2</td><td>90</td><td>75</td><td>90:75</td></tr>
+<tr><td>34</td><td>5</td><td>19.10.2025 16:00</td><td>TSV Bayer 04 Leverkusen 2</td><td>ACCENT BASKETS Salzkotten</td><td>69</td><td>67</td><td>69:67</td></tr>
+<tr><td>37</td><td>6</td><td>25.10.2025 19:30</td><td>TuS 59 HammStars</td><td>TSV Bayer 04 Leverkusen 2</td><td>72</td><td>59</td><td>72:59</td></tr>
+<tr><td>48</td><td>7</td><td>31.10.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>LippeBaskets Werne</td><td>78</td><td>70</td><td>78:70</td></tr>
+<tr><td>56</td><td>8</td><td>02.11.2025 17:00</td><td>UBC Münster 2</td><td>TSV Bayer 04 Leverkusen 2</td><td>62</td><td>69</td><td>62:69</td></tr>
+<tr><td>62</td><td>9</td><td>08.11.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BSV Münsterland Baskets Wulfen</td><td>70</td><td>73</td><td>70:73</td></tr>
+<tr><td>68</td><td>10</td><td>15.11.2025 16:00</td><td>BG TVO / TV Jahn</td><td>TSV Bayer 04 Leverkusen 2</td><td>83</td><td>90</td><td>83:90</td></tr>
+<tr><td>76</td><td>11</td><td>22.11.2025 18:00</td><td>TSV Bayer 04 Leverkusen 2</td><td>BG Aachen</td><td>101</td><td>90</td><td>101:90</td></tr>
+<tr><td>80</td><td>12</td><td>29.11.2025 18:30</td><td>DTV Basketball Köln</td><td>TSV Bayer 04 Leverkusen 2</td><td>52</td><td>86</td><td>52:86</td></tr>
+<tr><td>90</td><td>13</td><td>05.12.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BBA Hagen</td><td>92</td><td>114</td><td>92:114</td></tr>
+<tr><td>98</td><td>14</td><td>12.12.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BÖRGEL Ballers Ibbenbüren</td><td>66</td><td>94</td><td>66:94</td></tr>
+<tr><td>104</td><td>15</td><td>20.12.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>TSV Bayer 04 Leverkusen 2</td><td>114</td><td>80</td><td>114:80</td></tr>
+<tr><td>111</td><td>16</td><td>04.01.2026 15:00</td><td>SV Haspe 70</td><td>TSV Bayer 04 Leverkusen 2</td><td>61</td><td>90</td><td>61:90</td></tr>
+<tr><td>116</td><td>17</td><td>09.01.2026 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BBG Herford</td><td>80</td><td>76</td><td>80:76</td></tr>
+<tr><td>125</td><td>18</td><td>17.01.2026 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>TSV Bayer 04 Leverkusen 2</td><td>68</td><td>71</td><td>68:71</td></tr>
+<tr><td>128</td><td>19</td><td>24.01.2026 19:00</td><td>TSV Bayer 04 Leverkusen 2</td><td>TuS 59 HammStars</td><td>98</td><td>70</td><td>98:70</td></tr>
+<tr><td>139</td><td>20</td><td>31.01.2026 19:30</td><td>LippeBaskets Werne</td><td>TSV Bayer 04 Leverkusen 2</td><td>87</td><td>78</td><td>87:78</td></tr>
+<tr><td>147</td><td>21</td><td>07.02.2026 19:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>UBC Münster 2</td><td>76</td><td>79</td><td>76:79</td></tr>
+<tr><td>153</td><td>22</td><td>21.02.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>TSV Bayer 04 Leverkusen 2</td><td>91</td><td>84</td><td>91:84</td></tr>
+<tr><td>159</td><td>23</td><td>27.02.2026 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BG TVO / TV Jahn</td><td>97</td><td>95</td><td>97:95</td></tr>
+<tr><td>167</td><td>24</td><td>07.03.2026 19:00</td><td>BG Aachen</td><td>TSV Bayer 04 Leverkusen 2</td><td>62</td><td>101</td><td>62:101</td></tr>
+<tr><td>171</td><td>25</td><td>13.03.2026 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>DTV Basketball Köln</td><td>73</td><td>84</td><td>73:84</td></tr>
+<tr><td>181</td><td>26</td><td>21.03.2026 19:30</td><td>BBA Hagen</td><td>TSV Bayer 04 Leverkusen 2</td><td>96</td><td>81</td><td>96:81</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>SV Haspe 70</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>2</td><td>1</td><td>20.09.2025 19:30</td><td>BBA Hagen</td><td>SV Haspe 70</td><td>96</td><td>88</td><td>96:88</td></tr>
+<tr><td>12</td><td>2</td><td>26.09.2025 20:15</td><td>SV Haspe 70</td><td>BÖRGEL Ballers Ibbenbüren</td><td>94</td><td>78</td><td>94:78</td></tr>
+<tr><td>20</td><td>3</td><td>04.10.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>SV Haspe 70</td><td>77</td><td>81</td><td>77:81</td></tr>
+<tr><td>26</td><td>4</td><td>10.10.2025 20:15</td><td>SV Haspe 70</td><td>NEW Elephants Grevenbroich</td><td>66</td><td>86</td><td>66:86</td></tr>
+<tr><td>33</td><td>5</td><td>17.10.2025 20:15</td><td>SV Haspe 70</td><td>BBG Herford</td><td>67</td><td>75</td><td>67:75</td></tr>
+<tr><td>38</td><td>6</td><td>25.10.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>SV Haspe 70</td><td>82</td><td>66</td><td>82:66</td></tr>
+<tr><td>47</td><td>7</td><td>31.10.2025 20:15</td><td>SV Haspe 70</td><td>TuS 59 HammStars</td><td>96</td><td>88</td><td>96:88</td></tr>
+<tr><td>50</td><td>8</td><td>02.11.2025 18:00</td><td>LippeBaskets Werne</td><td>SV Haspe 70</td><td>76</td><td>90</td><td>76:90</td></tr>
+<tr><td>61</td><td>9</td><td>08.11.2025 18:30</td><td>SV Haspe 70</td><td>UBC Münster 2</td><td>88</td><td>72</td><td>88:72</td></tr>
+<tr><td>69</td><td>10</td><td>15.11.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>SV Haspe 70</td><td>99</td><td>84</td><td>99:84</td></tr>
+<tr><td>75</td><td>11</td><td>21.11.2025 20:15</td><td>SV Haspe 70</td><td>BG TVO / TV Jahn</td><td>73</td><td>91</td><td>73:91</td></tr>
+<tr><td>81</td><td>12</td><td>29.11.2025 19:00</td><td>BG Aachen</td><td>SV Haspe 70</td><td>80</td><td>68</td><td>80:68</td></tr>
+<tr><td>89</td><td>13</td><td>05.12.2025 20:15</td><td>SV Haspe 70</td><td>DTV Basketball Köln</td><td>62</td><td>68</td><td>62:68</td></tr>
+<tr><td>93</td><td>14</td><td>12.12.2025 20:15</td><td>SV Haspe 70</td><td>BBA Hagen</td><td>74</td><td>79</td><td>74:79</td></tr>
+<tr><td>103</td><td>15</td><td>20.12.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>SV Haspe 70</td><td>97</td><td>74</td><td>97:74</td></tr>
+<tr><td>111</td><td>16</td><td>04.01.2026 15:00</td><td>SV Haspe 70</td><td>TSV Bayer 04 Leverkusen 2</td><td>61</td><td>90</td><td>61:90</td></tr>
+<tr><td>117</td><td>17</td><td>10.01.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>SV Haspe 70</td><td>116</td><td>82</td><td>116:82</td></tr>
+<tr><td>124</td><td>18</td><td>17.01.2026 19:30</td><td>BBG Herford</td><td>SV Haspe 70</td><td>94</td><td>73</td><td>94:73</td></tr>
+<tr><td>129</td><td>19</td><td>23.01.2026 20:15</td><td>SV Haspe 70</td><td>ACCENT BASKETS Salzkotten</td><td>103</td><td>89</td><td>103:89</td></tr>
+<tr><td>138</td><td>20</td><td>31.01.2026 19:30</td><td>TuS 59 HammStars</td><td>SV Haspe 70</td><td>73</td><td>93</td><td>73:93</td></tr>
+<tr><td>141</td><td>21</td><td>07.02.2026 18:30</td><td>SV Haspe 70</td><td>LippeBaskets Werne</td><td>90</td><td>76</td><td>90:76</td></tr>
+<tr><td>152</td><td>22</td><td>21.02.2026 20:00</td><td>UBC Münster 2</td><td>SV Haspe 70</td><td>66</td><td>91</td><td>66:91</td></tr>
+<tr><td>160</td><td>23</td><td>27.02.2026 20:15</td><td>SV Haspe 70</td><td>BSV Münsterland Baskets Wulfen</td><td>99</td><td>87</td><td>99:87</td></tr>
+<tr><td>166</td><td>24</td><td>07.03.2026 18:30</td><td>BG TVO / TV Jahn</td><td>SV Haspe 70</td><td>82</td><td>107</td><td>82:107</td></tr>
+<tr><td>172</td><td>25</td><td>14.03.2026 18:30</td><td>SV Haspe 70</td><td>BG Aachen</td><td>102</td><td>58</td><td>102:58</td></tr>
+<tr><td>180</td><td>26</td><td>21.03.2026 19:30</td><td>DTV Basketball Köln</td><td>SV Haspe 70</td><td>87</td><td>85</td><td>87:85</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>ACCENT BASKETS Salzkotten</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>4</td><td>1</td><td>20.09.2025 19:00</td><td>BG Aachen</td><td>ACCENT BASKETS Salzkotten</td><td>70</td><td>76</td><td>70:76</td></tr>
+<tr><td>10</td><td>2</td><td>27.09.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>DTV Basketball Köln</td><td>70</td><td>72</td><td>70:72</td></tr>
+<tr><td>16</td><td>3</td><td>04.10.2025 19:30</td><td>BBA Hagen</td><td>ACCENT BASKETS Salzkotten</td><td>77</td><td>84</td><td>77:84</td></tr>
+<tr><td>24</td><td>4</td><td>11.10.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BÖRGEL Ballers Ibbenbüren</td><td>86</td><td>63</td><td>86:63</td></tr>
+<tr><td>34</td><td>5</td><td>19.10.2025 16:00</td><td>TSV Bayer 04 Leverkusen 2</td><td>ACCENT BASKETS Salzkotten</td><td>69</td><td>67</td><td>69:67</td></tr>
+<tr><td>38</td><td>6</td><td>25.10.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>SV Haspe 70</td><td>82</td><td>66</td><td>82:66</td></tr>
+<tr><td>46</td><td>7</td><td>31.10.2025 20:00</td><td>BBG Herford</td><td>ACCENT BASKETS Salzkotten</td><td>83</td><td>65</td><td>83:65</td></tr>
+<tr><td>52</td><td>8</td><td>02.11.2025 16:30</td><td>ACCENT BASKETS Salzkotten</td><td>NEW Elephants Grevenbroich</td><td>59</td><td>70</td><td>59:70</td></tr>
+<tr><td>59</td><td>9</td><td>08.11.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>TuS 59 HammStars</td><td>89</td><td>92</td><td>89:92</td></tr>
+<tr><td>64</td><td>10</td><td>15.11.2025 19:30</td><td>LippeBaskets Werne</td><td>ACCENT BASKETS Salzkotten</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>73</td><td>11</td><td>22.11.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>UBC Münster 2</td><td>71</td><td>60</td><td>71:60</td></tr>
+<tr><td>83</td><td>12</td><td>29.11.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>ACCENT BASKETS Salzkotten</td><td>71</td><td>83</td><td>71:83</td></tr>
+<tr><td>87</td><td>13</td><td>06.12.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BG TVO / TV Jahn</td><td>86</td><td>67</td><td>86:67</td></tr>
+<tr><td>95</td><td>14</td><td>13.12.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BG Aachen</td><td>88</td><td>74</td><td>88:74</td></tr>
+<tr><td>101</td><td>15</td><td>20.12.2025 20:30</td><td>DTV Basketball Köln</td><td>ACCENT BASKETS Salzkotten</td><td>63</td><td>73</td><td>63:73</td></tr>
+<tr><td>107</td><td>16</td><td>03.01.2026 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BBA Hagen</td><td>77</td><td>91</td><td>77:91</td></tr>
+<tr><td>125</td><td>18</td><td>17.01.2026 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>TSV Bayer 04 Leverkusen 2</td><td>68</td><td>71</td><td>68:71</td></tr>
+<tr><td>115</td><td>17</td><td>21.01.2026 20:30</td><td>BÖRGEL Ballers Ibbenbüren</td><td>ACCENT BASKETS Salzkotten</td><td>87</td><td>67</td><td>87:67</td></tr>
+<tr><td>129</td><td>19</td><td>23.01.2026 20:15</td><td>SV Haspe 70</td><td>ACCENT BASKETS Salzkotten</td><td>103</td><td>89</td><td>103:89</td></tr>
+<tr><td>137</td><td>20</td><td>31.01.2026 17:00</td><td>ACCENT BASKETS Salzkotten</td><td>BBG Herford</td><td>78</td><td>84</td><td>78:84</td></tr>
+<tr><td>143</td><td>21</td><td>07.02.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>ACCENT BASKETS Salzkotten</td><td>91</td><td>77</td><td>91:77</td></tr>
+<tr><td>150</td><td>22</td><td>21.02.2026 19:30</td><td>TuS 59 HammStars</td><td>ACCENT BASKETS Salzkotten</td><td>87</td><td>76</td><td>87:76</td></tr>
+<tr><td>155</td><td>23</td><td>28.02.2026 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>LippeBaskets Werne</td><td>81</td><td>60</td><td>81:60</td></tr>
+<tr><td>164</td><td>24</td><td>07.03.2026 16:00</td><td>UBC Münster 2</td><td>ACCENT BASKETS Salzkotten</td><td>79</td><td>68</td><td>79:68</td></tr>
+<tr><td>174</td><td>25</td><td>14.03.2026 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BSV Münsterland Baskets Wulfen</td><td>81</td><td>78</td><td>81:78</td></tr>
+<tr><td>178</td><td>26</td><td>21.03.2026 19:30</td><td>BG TVO / TV Jahn</td><td>ACCENT BASKETS Salzkotten</td><td>78</td><td>87</td><td>78:87</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>TuS 59 HammStars</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>5</td><td>1</td><td>20.09.2025 18:30</td><td>BG TVO / TV Jahn</td><td>TuS 59 HammStars</td><td>80</td><td>85</td><td>80:85</td></tr>
+<tr><td>9</td><td>2</td><td>27.09.2025 19:30</td><td>TuS 59 HammStars</td><td>BG Aachen</td><td>92</td><td>57</td><td>92:57</td></tr>
+<tr><td>17</td><td>3</td><td>04.10.2025 20:30</td><td>DTV Basketball Köln</td><td>TuS 59 HammStars</td><td>78</td><td>86</td><td>78:86</td></tr>
+<tr><td>23</td><td>4</td><td>11.10.2025 19:30</td><td>TuS 59 HammStars</td><td>BBA Hagen</td><td>84</td><td>97</td><td>84:97</td></tr>
+<tr><td>35</td><td>5</td><td>18.10.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>TuS 59 HammStars</td><td>87</td><td>73</td><td>87:73</td></tr>
+<tr><td>37</td><td>6</td><td>25.10.2025 19:30</td><td>TuS 59 HammStars</td><td>TSV Bayer 04 Leverkusen 2</td><td>72</td><td>59</td><td>72:59</td></tr>
+<tr><td>47</td><td>7</td><td>31.10.2025 20:15</td><td>SV Haspe 70</td><td>TuS 59 HammStars</td><td>96</td><td>88</td><td>96:88</td></tr>
+<tr><td>51</td><td>8</td><td>02.11.2025 16:00</td><td>TuS 59 HammStars</td><td>BBG Herford</td><td>73</td><td>87</td><td>73:87</td></tr>
+<tr><td>59</td><td>9</td><td>08.11.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>TuS 59 HammStars</td><td>89</td><td>92</td><td>89:92</td></tr>
+<tr><td>65</td><td>10</td><td>15.11.2025 19:30</td><td>TuS 59 HammStars</td><td>NEW Elephants Grevenbroich</td><td>92</td><td>101</td><td>92:101</td></tr>
+<tr><td>72</td><td>11</td><td>22.11.2025 19:30</td><td>TuS 59 HammStars</td><td>LippeBaskets Werne</td><td>53</td><td>69</td><td>53:69</td></tr>
+<tr><td>84</td><td>12</td><td>29.11.2025 20:00</td><td>UBC Münster 2</td><td>TuS 59 HammStars</td><td>73</td><td>92</td><td>73:92</td></tr>
+<tr><td>86</td><td>13</td><td>06.12.2025 19:30</td><td>TuS 59 HammStars</td><td>BSV Münsterland Baskets Wulfen</td><td>92</td><td>98</td><td>92:98</td></tr>
+<tr><td>96</td><td>14</td><td>13.12.2025 19:30</td><td>TuS 59 HammStars</td><td>BG TVO / TV Jahn</td><td>83</td><td>88</td><td>83:88</td></tr>
+<tr><td>100</td><td>15</td><td>20.12.2025 19:00</td><td>BG Aachen</td><td>TuS 59 HammStars</td><td>63</td><td>92</td><td>63:92</td></tr>
+<tr><td>108</td><td>16</td><td>03.01.2026 19:30</td><td>TuS 59 HammStars</td><td>DTV Basketball Köln</td><td>54</td><td>69</td><td>54:69</td></tr>
+<tr><td>114</td><td>17</td><td>10.01.2026 19:30</td><td>BBA Hagen</td><td>TuS 59 HammStars</td><td>70</td><td>85</td><td>70:85</td></tr>
+<tr><td>126</td><td>18</td><td>17.01.2026 19:30</td><td>TuS 59 HammStars</td><td>BÖRGEL Ballers Ibbenbüren</td><td>76</td><td>78</td><td>76:78</td></tr>
+<tr><td>128</td><td>19</td><td>24.01.2026 19:00</td><td>TSV Bayer 04 Leverkusen 2</td><td>TuS 59 HammStars</td><td>98</td><td>70</td><td>98:70</td></tr>
+<tr><td>138</td><td>20</td><td>31.01.2026 19:30</td><td>TuS 59 HammStars</td><td>SV Haspe 70</td><td>73</td><td>93</td><td>73:93</td></tr>
+<tr><td>142</td><td>21</td><td>07.02.2026 19:30</td><td>BBG Herford</td><td>TuS 59 HammStars</td><td>87</td><td>65</td><td>87:65</td></tr>
+<tr><td>150</td><td>22</td><td>21.02.2026 19:30</td><td>TuS 59 HammStars</td><td>ACCENT BASKETS Salzkotten</td><td>87</td><td>76</td><td>87:76</td></tr>
+<tr><td>156</td><td>23</td><td>28.02.2026 19:30</td><td>NEW Elephants Grevenbroich</td><td>TuS 59 HammStars</td><td>97</td><td>94</td><td>97:94</td></tr>
+<tr><td>163</td><td>24</td><td>07.03.2026 19:30</td><td>LippeBaskets Werne</td><td>TuS 59 HammStars</td><td>71</td><td>74</td><td>71:74</td></tr>
+<tr><td>175</td><td>25</td><td>14.03.2026 19:30</td><td>TuS 59 HammStars</td><td>UBC Münster 2</td><td>73</td><td>66</td><td>73:66</td></tr>
+<tr><td>177</td><td>26</td><td>21.03.2026 19:30</td><td>BSV Münsterland Baskets Wulfen</td><td>TuS 59 HammStars</td><td>85</td><td>64</td><td>85:64</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BG TVO / TV Jahn</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>5</td><td>1</td><td>20.09.2025 18:30</td><td>BG TVO / TV Jahn</td><td>TuS 59 HammStars</td><td>80</td><td>85</td><td>80:85</td></tr>
+<tr><td>8</td><td>2</td><td>27.09.2025 19:30</td><td>LippeBaskets Werne</td><td>BG TVO / TV Jahn</td><td>79</td><td>72</td><td>79:72</td></tr>
+<tr><td>19</td><td>3</td><td>04.10.2025 18:30</td><td>BG TVO / TV Jahn</td><td>UBC Münster 2</td><td>76</td><td>67</td><td>76:67</td></tr>
+<tr><td>118</td><td>17</td><td>11.10.2025 20:30</td><td>BG TVO / TV Jahn</td><td>BSV Münsterland Baskets Wulfen</td><td>83</td><td>80</td><td>83:80</td></tr>
+<tr><td>29</td><td>5</td><td>18.10.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>BG TVO / TV Jahn</td><td>106</td><td>93</td><td>106:93</td></tr>
+<tr><td>40</td><td>6</td><td>25.10.2025 18:30</td><td>BG TVO / TV Jahn</td><td>BG Aachen</td><td>78</td><td>73</td><td>78:73</td></tr>
+<tr><td>45</td><td>7</td><td>31.10.2025 20:30</td><td>DTV Basketball Köln</td><td>BG TVO / TV Jahn</td><td>83</td><td>78</td><td>83:78</td></tr>
+<tr><td>54</td><td>8</td><td>02.11.2025 17:00</td><td>BG TVO / TV Jahn</td><td>BBA Hagen</td><td>86</td><td>91</td><td>86:91</td></tr>
+<tr><td>63</td><td>9</td><td>08.11.2025 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BG TVO / TV Jahn</td><td>83</td><td>77</td><td>83:77</td></tr>
+<tr><td>68</td><td>10</td><td>15.11.2025 16:00</td><td>BG TVO / TV Jahn</td><td>TSV Bayer 04 Leverkusen 2</td><td>83</td><td>90</td><td>83:90</td></tr>
+<tr><td>75</td><td>11</td><td>21.11.2025 20:15</td><td>SV Haspe 70</td><td>BG TVO / TV Jahn</td><td>73</td><td>91</td><td>73:91</td></tr>
+<tr><td>82</td><td>12</td><td>29.11.2025 18:30</td><td>BG TVO / TV Jahn</td><td>BBG Herford</td><td>84</td><td>103</td><td>84:103</td></tr>
+<tr><td>87</td><td>13</td><td>06.12.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BG TVO / TV Jahn</td><td>86</td><td>67</td><td>86:67</td></tr>
+<tr><td>96</td><td>14</td><td>13.12.2025 19:30</td><td>TuS 59 HammStars</td><td>BG TVO / TV Jahn</td><td>83</td><td>88</td><td>83:88</td></tr>
+<tr><td>99</td><td>15</td><td>20.12.2025 18:30</td><td>BG TVO / TV Jahn</td><td>LippeBaskets Werne</td><td>88</td><td>84</td><td>88:84</td></tr>
+<tr><td>110</td><td>16</td><td>04.01.2026 17:00</td><td>UBC Münster 2</td><td>BG TVO / TV Jahn</td><td>70</td><td>91</td><td>70:91</td></tr>
+<tr><td>27</td><td>4</td><td>10.01.2026 20:30</td><td>BSV Münsterland Baskets Wulfen</td><td>BG TVO / TV Jahn</td><td>81</td><td>86</td><td>81:86</td></tr>
+<tr><td>120</td><td>18</td><td>17.01.2026 18:30</td><td>BG TVO / TV Jahn</td><td>NEW Elephants Grevenbroich</td><td>77</td><td>87</td><td>77:87</td></tr>
+<tr><td>131</td><td>19</td><td>24.01.2026 19:00</td><td>BG Aachen</td><td>BG TVO / TV Jahn</td><td>77</td><td>84</td><td>77:84</td></tr>
+<tr><td>136</td><td>20</td><td>31.01.2026 18:30</td><td>BG TVO / TV Jahn</td><td>DTV Basketball Köln</td><td>79</td><td>69</td><td>79:69</td></tr>
+<tr><td>145</td><td>21</td><td>07.02.2026 19:30</td><td>BBA Hagen</td><td>BG TVO / TV Jahn</td><td>110</td><td>84</td><td>110:84</td></tr>
+<tr><td>154</td><td>22</td><td>21.02.2026 16:00</td><td>BG TVO / TV Jahn</td><td>BÖRGEL Ballers Ibbenbüren</td><td>64</td><td>79</td><td>64:79</td></tr>
+<tr><td>159</td><td>23</td><td>27.02.2026 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>BG TVO / TV Jahn</td><td>97</td><td>95</td><td>97:95</td></tr>
+<tr><td>166</td><td>24</td><td>07.03.2026 18:30</td><td>BG TVO / TV Jahn</td><td>SV Haspe 70</td><td>82</td><td>107</td><td>82:107</td></tr>
+<tr><td>173</td><td>25</td><td>14.03.2026 19:30</td><td>BBG Herford</td><td>BG TVO / TV Jahn</td><td>75</td><td>78</td><td>75:78</td></tr>
+<tr><td>178</td><td>26</td><td>21.03.2026 19:30</td><td>BG TVO / TV Jahn</td><td>ACCENT BASKETS Salzkotten</td><td>78</td><td>87</td><td>78:87</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>LippeBaskets Werne</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>6</td><td>1</td><td>20.09.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>LippeBaskets Werne</td><td>101</td><td>60</td><td>101:60</td></tr>
+<tr><td>8</td><td>2</td><td>27.09.2025 19:30</td><td>LippeBaskets Werne</td><td>BG TVO / TV Jahn</td><td>79</td><td>72</td><td>79:72</td></tr>
+<tr><td>18</td><td>3</td><td>04.10.2025 19:00</td><td>BG Aachen</td><td>LippeBaskets Werne</td><td>75</td><td>69</td><td>75:69</td></tr>
+<tr><td>22</td><td>4</td><td>11.10.2025 19:30</td><td>LippeBaskets Werne</td><td>DTV Basketball Köln</td><td>81</td><td>89</td><td>81:89</td></tr>
+<tr><td>30</td><td>5</td><td>18.10.2025 19:30</td><td>BBA Hagen</td><td>LippeBaskets Werne</td><td>101</td><td>64</td><td>101:64</td></tr>
+<tr><td>36</td><td>6</td><td>24.10.2025 20:00</td><td>LippeBaskets Werne</td><td>BÖRGEL Ballers Ibbenbüren</td><td>69</td><td>81</td><td>69:81</td></tr>
+<tr><td>48</td><td>7</td><td>31.10.2025 20:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>LippeBaskets Werne</td><td>78</td><td>70</td><td>78:70</td></tr>
+<tr><td>50</td><td>8</td><td>02.11.2025 18:00</td><td>LippeBaskets Werne</td><td>SV Haspe 70</td><td>76</td><td>90</td><td>76:90</td></tr>
+<tr><td>60</td><td>9</td><td>08.11.2025 19:30</td><td>BBG Herford</td><td>LippeBaskets Werne</td><td>59</td><td>65</td><td>59:65</td></tr>
+<tr><td>64</td><td>10</td><td>15.11.2025 19:30</td><td>LippeBaskets Werne</td><td>ACCENT BASKETS Salzkotten</td><td>20</td><td>0</td><td>20:0</td></tr>
+<tr><td>72</td><td>11</td><td>22.11.2025 19:30</td><td>TuS 59 HammStars</td><td>LippeBaskets Werne</td><td>53</td><td>69</td><td>53:69</td></tr>
+<tr><td>78</td><td>12</td><td>29.11.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>LippeBaskets Werne</td><td>94</td><td>83</td><td>94:83</td></tr>
+<tr><td>85</td><td>13</td><td>05.12.2025 20:00</td><td>UBC Münster 2</td><td>LippeBaskets Werne</td><td>74</td><td>63</td><td>74:63</td></tr>
+<tr><td>97</td><td>14</td><td>13.12.2025 19:30</td><td>LippeBaskets Werne</td><td>BSV Münsterland Baskets Wulfen</td><td>96</td><td>86</td><td>96:86</td></tr>
+<tr><td>99</td><td>15</td><td>20.12.2025 18:30</td><td>BG TVO / TV Jahn</td><td>LippeBaskets Werne</td><td>88</td><td>84</td><td>88:84</td></tr>
+<tr><td>109</td><td>16</td><td>03.01.2026 19:30</td><td>LippeBaskets Werne</td><td>BG Aachen</td><td>75</td><td>70</td><td>75:70</td></tr>
+<tr><td>113</td><td>17</td><td>10.01.2026 20:30</td><td>DTV Basketball Köln</td><td>LippeBaskets Werne</td><td>87</td><td>64</td><td>87:64</td></tr>
+<tr><td>121</td><td>18</td><td>16.01.2026 20:00</td><td>LippeBaskets Werne</td><td>BBA Hagen</td><td>71</td><td>86</td><td>71:86</td></tr>
+<tr><td>127</td><td>19</td><td>24.01.2026 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>LippeBaskets Werne</td><td>77</td><td>76</td><td>77:76</td></tr>
+<tr><td>139</td><td>20</td><td>31.01.2026 19:30</td><td>LippeBaskets Werne</td><td>TSV Bayer 04 Leverkusen 2</td><td>87</td><td>78</td><td>87:78</td></tr>
+<tr><td>141</td><td>21</td><td>07.02.2026 18:30</td><td>SV Haspe 70</td><td>LippeBaskets Werne</td><td>90</td><td>76</td><td>90:76</td></tr>
+<tr><td>151</td><td>22</td><td>21.02.2026 19:30</td><td>LippeBaskets Werne</td><td>BBG Herford</td><td>76</td><td>94</td><td>76:94</td></tr>
+<tr><td>155</td><td>23</td><td>28.02.2026 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>LippeBaskets Werne</td><td>81</td><td>60</td><td>81:60</td></tr>
+<tr><td>163</td><td>24</td><td>07.03.2026 19:30</td><td>LippeBaskets Werne</td><td>TuS 59 HammStars</td><td>71</td><td>74</td><td>71:74</td></tr>
+<tr><td>169</td><td>25</td><td>14.03.2026 19:30</td><td>LippeBaskets Werne</td><td>NEW Elephants Grevenbroich</td><td>78</td><td>81</td><td>78:81</td></tr>
+<tr><td>176</td><td>26</td><td>21.03.2026 19:30</td><td>LippeBaskets Werne</td><td>UBC Münster 2</td><td>78</td><td>49</td><td>78:49</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>UBC Münster 2</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>1</td><td>1</td><td>20.09.2025 19:30</td><td>NEW Elephants Grevenbroich</td><td>UBC Münster 2</td><td>90</td><td>62</td><td>90:62</td></tr>
+<tr><td>14</td><td>2</td><td>27.09.2025 19:30</td><td>UBC Münster 2</td><td>BSV Münsterland Baskets Wulfen</td><td>83</td><td>99</td><td>83:99</td></tr>
+<tr><td>19</td><td>3</td><td>04.10.2025 18:30</td><td>BG TVO / TV Jahn</td><td>UBC Münster 2</td><td>76</td><td>67</td><td>76:67</td></tr>
+<tr><td>28</td><td>4</td><td>11.10.2025 16:00</td><td>UBC Münster 2</td><td>BG Aachen</td><td>63</td><td>73</td><td>63:73</td></tr>
+<tr><td>31</td><td>5</td><td>18.10.2025 18:30</td><td>DTV Basketball Köln</td><td>UBC Münster 2</td><td>66</td><td>74</td><td>66:74</td></tr>
+<tr><td>42</td><td>6</td><td>25.10.2025 16:00</td><td>UBC Münster 2</td><td>BBA Hagen</td><td>57</td><td>84</td><td>57:84</td></tr>
+<tr><td>49</td><td>7</td><td>31.10.2025 20:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>UBC Münster 2</td><td>62</td><td>64</td><td>62:64</td></tr>
+<tr><td>56</td><td>8</td><td>02.11.2025 17:00</td><td>UBC Münster 2</td><td>TSV Bayer 04 Leverkusen 2</td><td>62</td><td>69</td><td>62:69</td></tr>
+<tr><td>61</td><td>9</td><td>08.11.2025 18:30</td><td>SV Haspe 70</td><td>UBC Münster 2</td><td>88</td><td>72</td><td>88:72</td></tr>
+<tr><td>70</td><td>10</td><td>14.11.2025 20:00</td><td>UBC Münster 2</td><td>BBG Herford</td><td>86</td><td>72</td><td>86:72</td></tr>
+<tr><td>73</td><td>11</td><td>22.11.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>UBC Münster 2</td><td>71</td><td>60</td><td>71:60</td></tr>
+<tr><td>84</td><td>12</td><td>29.11.2025 20:00</td><td>UBC Münster 2</td><td>TuS 59 HammStars</td><td>73</td><td>92</td><td>73:92</td></tr>
+<tr><td>85</td><td>13</td><td>05.12.2025 20:00</td><td>UBC Münster 2</td><td>LippeBaskets Werne</td><td>74</td><td>63</td><td>74:63</td></tr>
+<tr><td>92</td><td>14</td><td>13.12.2025 18:00</td><td>UBC Münster 2</td><td>NEW Elephants Grevenbroich</td><td>60</td><td>81</td><td>60:81</td></tr>
+<tr><td>105</td><td>15</td><td>20.12.2025 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>UBC Münster 2</td><td>88</td><td>70</td><td>88:70</td></tr>
+<tr><td>110</td><td>16</td><td>04.01.2026 17:00</td><td>UBC Münster 2</td><td>BG TVO / TV Jahn</td><td>70</td><td>91</td><td>70:91</td></tr>
+<tr><td>119</td><td>17</td><td>10.01.2026 19:00</td><td>BG Aachen</td><td>UBC Münster 2</td><td>90</td><td>95</td><td>90:95</td></tr>
+<tr><td>122</td><td>18</td><td>17.01.2026 20:00</td><td>UBC Münster 2</td><td>DTV Basketball Köln</td><td>63</td><td>80</td><td>63:80</td></tr>
+<tr><td>133</td><td>19</td><td>24.01.2026 19:30</td><td>BBA Hagen</td><td>UBC Münster 2</td><td>68</td><td>77</td><td>68:77</td></tr>
+<tr><td>140</td><td>20</td><td>31.01.2026 19:30</td><td>UBC Münster 2</td><td>BÖRGEL Ballers Ibbenbüren</td><td>67</td><td>77</td><td>67:77</td></tr>
+<tr><td>147</td><td>21</td><td>07.02.2026 19:30</td><td>TSV Bayer 04 Leverkusen 2</td><td>UBC Münster 2</td><td>76</td><td>79</td><td>76:79</td></tr>
+<tr><td>152</td><td>22</td><td>21.02.2026 20:00</td><td>UBC Münster 2</td><td>SV Haspe 70</td><td>66</td><td>91</td><td>66:91</td></tr>
+<tr><td>161</td><td>23</td><td>28.02.2026 19:30</td><td>BBG Herford</td><td>UBC Münster 2</td><td>78</td><td>57</td><td>78:57</td></tr>
+<tr><td>164</td><td>24</td><td>07.03.2026 16:00</td><td>UBC Münster 2</td><td>ACCENT BASKETS Salzkotten</td><td>79</td><td>68</td><td>79:68</td></tr>
+<tr><td>175</td><td>25</td><td>14.03.2026 19:30</td><td>TuS 59 HammStars</td><td>UBC Münster 2</td><td>73</td><td>66</td><td>73:66</td></tr>
+<tr><td>176</td><td>26</td><td>21.03.2026 19:30</td><td>LippeBaskets Werne</td><td>UBC Münster 2</td><td>78</td><td>49</td><td>78:49</td></tr>
+</table>
+</details>
+<details class='liga-block' style='margin-left:20px;'>
+<summary><b>BG Aachen</b></summary>
+<table>
+<tr><th>Nr</th><th>SpT</th><th>Datum</th><th>Heim</th><th>Gast</th><th>HS</th><th>GS</th><th>Score</th></tr>
+<tr><td>4</td><td>1</td><td>20.09.2025 19:00</td><td>BG Aachen</td><td>ACCENT BASKETS Salzkotten</td><td>70</td><td>76</td><td>70:76</td></tr>
+<tr><td>9</td><td>2</td><td>27.09.2025 19:30</td><td>TuS 59 HammStars</td><td>BG Aachen</td><td>92</td><td>57</td><td>92:57</td></tr>
+<tr><td>18</td><td>3</td><td>04.10.2025 19:00</td><td>BG Aachen</td><td>LippeBaskets Werne</td><td>75</td><td>69</td><td>75:69</td></tr>
+<tr><td>28</td><td>4</td><td>11.10.2025 16:00</td><td>UBC Münster 2</td><td>BG Aachen</td><td>63</td><td>73</td><td>63:73</td></tr>
+<tr><td>32</td><td>5</td><td>18.10.2025 19:00</td><td>BG Aachen</td><td>BSV Münsterland Baskets Wulfen</td><td>65</td><td>80</td><td>65:80</td></tr>
+<tr><td>40</td><td>6</td><td>25.10.2025 18:30</td><td>BG TVO / TV Jahn</td><td>BG Aachen</td><td>78</td><td>73</td><td>78:73</td></tr>
+<tr><td>43</td><td>7</td><td>31.10.2025 20:00</td><td>NEW Elephants Grevenbroich</td><td>BG Aachen</td><td>100</td><td>67</td><td>100:67</td></tr>
+<tr><td>53</td><td>8</td><td>02.11.2025 17:00</td><td>BG Aachen</td><td>DTV Basketball Köln</td><td>65</td><td>91</td><td>65:91</td></tr>
+<tr><td>58</td><td>9</td><td>08.11.2025 19:30</td><td>BBA Hagen</td><td>BG Aachen</td><td>88</td><td>66</td><td>88:66</td></tr>
+<tr><td>67</td><td>10</td><td>15.11.2025 19:00</td><td>BG Aachen</td><td>BÖRGEL Ballers Ibbenbüren</td><td>54</td><td>94</td><td>54:94</td></tr>
+<tr><td>76</td><td>11</td><td>22.11.2025 18:00</td><td>TSV Bayer 04 Leverkusen 2</td><td>BG Aachen</td><td>101</td><td>90</td><td>101:90</td></tr>
+<tr><td>81</td><td>12</td><td>29.11.2025 19:00</td><td>BG Aachen</td><td>SV Haspe 70</td><td>80</td><td>68</td><td>80:68</td></tr>
+<tr><td>88</td><td>13</td><td>06.12.2025 19:30</td><td>BBG Herford</td><td>BG Aachen</td><td>97</td><td>68</td><td>97:68</td></tr>
+<tr><td>95</td><td>14</td><td>13.12.2025 18:30</td><td>ACCENT BASKETS Salzkotten</td><td>BG Aachen</td><td>88</td><td>74</td><td>88:74</td></tr>
+<tr><td>100</td><td>15</td><td>20.12.2025 19:00</td><td>BG Aachen</td><td>TuS 59 HammStars</td><td>63</td><td>92</td><td>63:92</td></tr>
+<tr><td>109</td><td>16</td><td>03.01.2026 19:30</td><td>LippeBaskets Werne</td><td>BG Aachen</td><td>75</td><td>70</td><td>75:70</td></tr>
+<tr><td>119</td><td>17</td><td>10.01.2026 19:00</td><td>BG Aachen</td><td>UBC Münster 2</td><td>90</td><td>95</td><td>90:95</td></tr>
+<tr><td>123</td><td>18</td><td>17.01.2026 20:00</td><td>BSV Münsterland Baskets Wulfen</td><td>BG Aachen</td><td>87</td><td>74</td><td>87:74</td></tr>
+<tr><td>131</td><td>19</td><td>24.01.2026 19:00</td><td>BG Aachen</td><td>BG TVO / TV Jahn</td><td>77</td><td>84</td><td>77:84</td></tr>
+<tr><td>134</td><td>20</td><td>31.01.2026 19:00</td><td>BG Aachen</td><td>NEW Elephants Grevenbroich</td><td>89</td><td>107</td><td>89:107</td></tr>
+<tr><td>144</td><td>21</td><td>07.02.2026 18:30</td><td>DTV Basketball Köln</td><td>BG Aachen</td><td>90</td><td>76</td><td>90:76</td></tr>
+<tr><td>149</td><td>22</td><td>21.02.2026 19:00</td><td>BG Aachen</td><td>BBA Hagen</td><td>92</td><td>115</td><td>92:115</td></tr>
+<tr><td>158</td><td>23</td><td>28.02.2026 19:00</td><td>BÖRGEL Ballers Ibbenbüren</td><td>BG Aachen</td><td>95</td><td>62</td><td>95:62</td></tr>
+<tr><td>167</td><td>24</td><td>07.03.2026 19:00</td><td>BG Aachen</td><td>TSV Bayer 04 Leverkusen 2</td><td>62</td><td>101</td><td>62:101</td></tr>
+<tr><td>172</td><td>25</td><td>14.03.2026 18:30</td><td>SV Haspe 70</td><td>BG Aachen</td><td>102</td><td>58</td><td>102:58</td></tr>
+<tr><td>179</td><td>26</td><td>21.03.2026 19:30</td><td>BG Aachen</td><td>BBG Herford</td><td>90</td><td>101</td><td>90:101</td></tr>
+</table>
+</details>
+</details>
+<p style='margin-top:20px; font-size:12px; color:#666;'>Daten entnommen aus öffentlich zugänglichen Informationen auf basketball-bund.net.</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Punktzahl-Gruppen Navigation
+  document.querySelectorAll("a[href^='#pg_']").forEach(link => {
+    link.addEventListener("click", () => {
+      const id = link.getAttribute("href").substring(1);
+      document.querySelectorAll("details[id^='pg_']").forEach(d => d.removeAttribute("open"));
+      const target = document.getElementById(id);
+      if (target) target.setAttribute("open", "");
+    });
+  });
+
+  // Liga-Blöcke öffnen/schließen
+  const ligaDetails = document.querySelectorAll("details.liga-block");
+
+  document.getElementById("open_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.setAttribute("open", ""));
+  });
+
+  document.getElementById("close_all").addEventListener("click", () => {
+    ligaDetails.forEach(d => d.removeAttribute("open"));
+  });
+
+});
+</script>
