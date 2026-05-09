@@ -111,17 +111,17 @@ td.diag {
 }
 
 /* --------------------------------------------- */
-/* LIVESCORE – OPTISCH VERBESSERT                 */
+/* LIVESCORE – OPTISCH VERBESSERT (ERWEITERT)     */
 /* --------------------------------------------- */
 
 .livescore-box {
     border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 14px 16px;
-    margin: 12px 0;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0;
     background: #ffffff;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    width: 380px;
+    width: 520px;
 }
 
 .ls-row {
@@ -131,25 +131,24 @@ td.diag {
 }
 
 .ls-team {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    width: 45%;
+    width: 48%;
 }
 
 .ls-score {
-    font-size: 36px;
+    font-size: 48px;
     font-weight: bold;
     text-align: center;
-    width: 20%;
+    width: 32%;
 }
 
 .ls-date {
-    font-size: 13px;
+    font-size: 14px;
     color: #666;
-    margin-top: 6px;
+    margin-top: 10px;
     text-align: center;
 }
-
 </style>
 </head>
 <body>
@@ -260,7 +259,7 @@ if (isLiveWindow()) {
         Es läuft möglicherweise ein Spiel, aber die DBB‑API liefert aktuell <b>keine Live‑Daten</b>.<br>
         Das passiert, wenn der Heimverein keinen Live‑Ticker aktiviert hat oder die DBB‑Erfassung nicht läuft.
     </div>
-    </div></details><h2>Tabelle – Stand: 09.05.26 21:56</h2><table><tr><th>Rang</th><th>Team</th><th>Spiele</th><th>S</th><th>N</th><th>Punkte</th><th>Diff</th><th>§</th></tr><tr><td>1.</td><td class='left'>PSV Ingolstadt</td><td>18</td><td>15</td><td>3</td><td class='bluepts'><a href='#pg_30'>30</a></td><td>328</td><td>0</td></tr><tr><td>2.</td><td class='left'>VSC Donauwörth</td><td>18</td><td>15</td><td>3</td><td class='bluepts'><a href='#pg_30'>30</a></td><td>316</td><td>0</td></tr><tr><td>3.</td><td class='left'>MTV Baskets Ingolstadt</td><td>18 <span class='mini-red'>(1)</span></td><td>12</td><td>6</td><td>23</td><td>29</td><td>1</td></tr><tr><td>4.</td><td class='left'>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>18</td><td>11</td><td>7</td><td>22</td><td>50</td><td>0</td></tr><tr><td>5.</td><td class='left'>Sportfreunde Friedberg</td><td>18</td><td>9</td><td>9</td><td>18</td><td>-15</td><td>0</td></tr><tr><td>6.</td><td class='left'>TV Augsburg 2</td><td>18 <span class='mini-red'>(1)</span></td><td>9</td><td>9</td><td>17</td><td>-6</td><td>1</td></tr><tr><td>7.</td><td class='left'>Green Devils Schrobenhausen</td><td>18</td><td>8</td><td>10</td><td>16</td><td>1</td><td>0</td></tr><tr><td>8.</td><td class='left'>TSV Gersthofen</td><td>18</td><td>7</td><td>11</td><td>14</td><td>-55</td><td>0</td></tr><tr><td>9.</td><td class='left'>TSV 1862 Neuburg</td><td>18</td><td>4</td><td>14</td><td>8</td><td>-229</td><td>0</td></tr><tr><td>10.</td><td class='left'>TSV Diedorf</td><td>18</td><td>0</td><td>18</td><td>0</td><td>-419</td><td>0</td></tr></table><h2>Kreuztabelle</h2><details class='liga-block'><summary>Kreuztabelle</summary><div class='section'><table style='font-size:11px;'>
+    </div></details><h2>Tabelle – Stand: 09.05.26 22:21</h2><table><tr><th>Rang</th><th>Team</th><th>Spiele</th><th>S</th><th>N</th><th>Punkte</th><th>Diff</th><th>§</th></tr><tr><td>1.</td><td class='left'>PSV Ingolstadt</td><td>18</td><td>15</td><td>3</td><td class='bluepts'><a href='#pg_30'>30</a></td><td>328</td><td>0</td></tr><tr><td>2.</td><td class='left'>VSC Donauwörth</td><td>18</td><td>15</td><td>3</td><td class='bluepts'><a href='#pg_30'>30</a></td><td>316</td><td>0</td></tr><tr><td>3.</td><td class='left'>MTV Baskets Ingolstadt</td><td>18 <span class='mini-red'>(1)</span></td><td>12</td><td>6</td><td>23</td><td>29</td><td>1</td></tr><tr><td>4.</td><td class='left'>BG powered by BBA Leitershofen/Stadtbergen 3</td><td>18</td><td>11</td><td>7</td><td>22</td><td>50</td><td>0</td></tr><tr><td>5.</td><td class='left'>Sportfreunde Friedberg</td><td>18</td><td>9</td><td>9</td><td>18</td><td>-15</td><td>0</td></tr><tr><td>6.</td><td class='left'>TV Augsburg 2</td><td>18 <span class='mini-red'>(1)</span></td><td>9</td><td>9</td><td>17</td><td>-6</td><td>1</td></tr><tr><td>7.</td><td class='left'>Green Devils Schrobenhausen</td><td>18</td><td>8</td><td>10</td><td>16</td><td>1</td><td>0</td></tr><tr><td>8.</td><td class='left'>TSV Gersthofen</td><td>18</td><td>7</td><td>11</td><td>14</td><td>-55</td><td>0</td></tr><tr><td>9.</td><td class='left'>TSV 1862 Neuburg</td><td>18</td><td>4</td><td>14</td><td>8</td><td>-229</td><td>0</td></tr><tr><td>10.</td><td class='left'>TSV Diedorf</td><td>18</td><td>0</td><td>18</td><td>0</td><td>-419</td><td>0</td></tr></table><h2>Kreuztabelle</h2><details class='liga-block'><summary>Kreuztabelle</summary><div class='section'><table style='font-size:11px;'>
 <tr><th></th>
 <th>PSV</th>
 <th>VSC</th>
