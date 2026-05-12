@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+<meta charset='utf-8'>
+<title>Bezirksoberliga U20 männlich 25/26 (Liganr.: 50503)</title>
+
+<style>
+/* --- Grundlayout --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 15px;
+    background: #f7f7f7;
+    color: #222;
+    font-size: 14px;
+}
+
+h1 { margin-bottom: 4px; font-size: 22px; text-align:left; }
+h2 { margin-top: 20px; font-size: 15px; border-bottom: 1px solid #444; padding-bottom: 2px; text-align:left; }
+h4 { margin-top: 10px; font-size: 14px; text-align:left; }
+
+.section { margin-left: 10px; margin-top: 4px; }
+
+/* --- Tabellen kompakt + rechtsbündig --- */
+table {
+    border-collapse: collapse;
+    margin-top: 6px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 2px 4px;
+    white-space: nowrap;
+    text-align: right;
+}
+
+th {
+    background: #003366;
+    color: white;
+    font-weight: bold;
+    text-align: right;
+}
+
+td.left { text-align: left; }
+
+tr:nth-child(even) { background: #f2f2f2; }
+tr:hover { background: #e8eefc; }
+
+/* --- Punktgruppenfarben --- */
+.bluepts a { color: #1d4ed8; font-weight: bold; }
+.orangepts a { color: #c2410c; font-weight: bold; }
+
+/* --- Highlighting Restspielplan & fehlende Ergebnisse --- */
+.row-today { background: #ffdd99 !important; }
+.cell-past { background: #ff9999 !important; }
+.team-orange { color: #c2410c; font-weight: bold; }
+
+/* --- Mini-Rot für Zusatzwerte --- */
+.mini-red {
+    color: red;
+    font-size: 10px;
+    margin-left: 2px;
+}
+
+/* --- Details / Pfeile --- */
+details summary { list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::marker { display: none; }
+details summary::before {
+    content: "▶ ";
+    font-size: 14px;
+}
+details[open] summary::before { content: "▼ "; }
+details { margin: 6px 0; }
+
+/* --- Buttons --- */
+.toggle-all { margin: 8px 0 4px 0; }
+.toggle-all button {
+    margin-right: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #003366;
+    background: #003366;
+    color: white;
+    cursor: pointer;
+}
+.toggle-all button:hover { background: #002244; }
+
+/* --------------------------------------------- */
+/* KREUZTABELLE – NEUE CSS-KLASSEN                */
+/* --------------------------------------------- */
+
+td.win  { background:#c8f7c5; }
+td.loss { background:#f7c5c5; }
+td.past { background:orange; }
+td.nodata { background:#e0e0e0; }
+
+td.diag {
+    background: repeating-linear-gradient(
+        45deg,
+        #ccc,
+        #ccc 4px,
+        #eee 4px,
+        #eee 8px
+    );
+}
+
+/* --------------------------------------------- */
+/* LIVESCORE – OPTISCH VERBESSERT (ERWEITERT)     */
+/* --------------------------------------------- */
+
+.livescore-box {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    width: 520px;
+}
+
+.ls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ls-team {
+    font-size: 20px;
+    font-weight: bold;
+    width: 48%;
+}
+
+.ls-score {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    width: 32%;
+}
+
+.ls-date {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<details id='wasfindeichhier'>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<h2>Allgemein</h2>
+
+<p>
+Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
+Die entsprechenden Daten werden über die DBB-API ermittelt:<br>
+<a href="https://github.com/OliEder/basketball-bund-api/blob/main/DBB-API-COMPLETE-DOCUMENTATION.md?utm_source=copilot.com" target="_blank">
+https://github.com/OliEder/basketball-bund-api/blob/main/DBB-API-COMPLETE-DOCUMENTATION.md?utm_source=copilot.com
+</a>
+</p>
+
+<p>
+Aktuell wird dies automatisiert u.a. für die BBL und für die ProA erzeugt.<br>
+Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).
+</p>
+
+<p>
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+BBL:
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1
+</a><br>
+ProA:
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1
+</a>
+</p>
+
+
+<p>Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.</p>
+
+<p><b>Tabelle</b></p>
+
+<p>Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
+Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
+Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
+und eine geöffnete Punktzahl-Gruppe schließt.</p>
+
+<p><b>Punktzahl‑Gruppen</b></p>
+
+<p>Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
+Hier werden zuerst die Teams aufgeführt.<br>
+Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>
+Anschließend folgt der Restspielplan dieser Teams.<br>
+Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.</p>
+
+<p><b>Ergebnisse – ausklappbar</b></p>
+
+<p>Sämtliche bisher gespielten Ergebnisse.<br>
+Aktuellste Ergebnisse stehen oben.</p>
+
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+
+<p>Nach Restspielplan<br>
+Welche Spiele stehen noch an?<br>
+Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.</p>
+
+<p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
+
+<p>Es werden dann alle Vereine angezeigt.<br>
+Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.</p>
+
+</div>
+</details>
+
+<div class='toggle-all'>
+  <button onclick="openAllDetails()">Alles öffnen</button>
+  <button onclick="closeAllDetails()">Alles schließen</button>
+</div>
+<hr>
+<p style='color:red; font-style:italic;'>Es sind noch nicht alle aktuellen Spielergebnisse erfasst.</p><h1>Bezirksoberliga U20 männlich 25/26 (Liganr.: 50503)</h1>
+<details><summary><b>Livescore</b></summary>
+<div class='section'>
+
+    <div style='padding:10px; background:#fff3cd; border:1px solid #ffeeba; border-radius:6px; margin:10px 0;'>
+        <b>Hinweis:</b><br>
+        Keine Spiele gestern/heute/morgen gefunden.
+    </div>
+    </div></details><h2>Tabelle – Stand: 12.05.26 11:04</h2><table><tr><th>Rang</th><th>Team</th><th>Spiele</th><th>S</th><th>N</th><th>Punkte</th><th>Diff</th><th>§</th></tr><tr><td>1.</td><td class='left'>BG Illertal</td><td>8</td><td>8</td><td>0</td><td>16</td><td>373</td><td>0</td></tr><tr><td>2.</td><td class='left'>VSC Baskets Donauwörth</td><td>8 <span class='mini-red'>(1)</span></td><td>5</td><td>2</td><td>9</td><td>208</td><td>1</td></tr><tr><td>3.</td><td class='left'>TSV Ottobeuren</td><td>8</td><td>4</td><td>4</td><td>8</td><td>-12</td><td>0</td></tr><tr><td>4.</td><td class='left'>DJK Eichstätt</td><td>8</td><td>2</td><td>6</td><td>4</td><td>-251</td><td>0</td></tr><tr><td>5.</td><td class='left'>SSV Schrobenhausen</td><td>8</td><td>0</td><td>7</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>-318</td><td>0</td></tr><tr><td>6.</td><td class='left'>ESV Ingolstadt-Ringsee</td><td>0</td><td>0</td><td>0</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>0</td><td>0</td></tr><tr><td>7.</td><td class='left'>TSV Diedorf</td><td>0</td><td>0</td><td>0</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>0</td><td>0</td></tr></table><h2>Kreuztabelle</h2><details class='liga-block'><summary>Kreuztabelle</summary><div class='section'><table style='font-size:11px;'>
+<tr><th></th>
+<th>BGI</th>
+<th>VSC</th>
+<th>OTT1</th>
+<th>EIC</th>
+<th>SOB</th>
+<th>ESV</th>
+<th>DIE</th>
+</tr>
+<tr><th>BGI</th>
+<td class='diag'></td>
+<td class='win'>63:60</td>
+<td class='win'>88:55</td>
+<td class='win'>102:36</td>
+<td class='win'>133:36</td>
+<td class='past'>25.01.26</td>
+<td class='past'>07.02.26</td>
+</tr>
+<tr><th>VSC</th>
+<td class='loss'>0:20</td>
+<td class='diag'></td>
+<td class='win'>80:46</td>
+<td class='win'>110:36</td>
+<td class='win'>96:42</td>
+<td class='past'>23.11.25</td>
+<td class='past'>18.01.26</td>
+</tr>
+<tr><th>OTT1</th>
+<td class='loss'>61:84</td>
+<td class='loss'>58:82</td>
+<td class='diag'></td>
+<td class='win'>66:44</td>
+<td class='win'>79:51</td>
+<td class='past'>07.03.26</td>
+<td class='past'>18.10.25</td>
+</tr>
+<tr><th>EIC</th>
+<td class='loss'>35:82</td>
+<td class='loss'>52:97</td>
+<td class='loss'>38:68</td>
+<td class='diag'></td>
+<td class='win'>67:56</td>
+<td class='past'>14.12.25</td>
+<td class='past'>25.01.26</td>
+</tr>
+<tr><th>SOB</th>
+<td class='loss'>40:124</td>
+<td class='loss'>0:0</td>
+<td class='loss'>51:73</td>
+<td class='loss'>63:85</td>
+<td class='diag'></td>
+<td class='past'>26.10.25</td>
+<td class='past'>01.03.26</td>
+</tr>
+<tr><th>ESV</th>
+<td class='past'>08.11.25</td>
+<td class='past'>07.02.26</td>
+<td class='past'>29.11.25</td>
+<td class='past'>18.10.25</td>
+<td class='past'>17.01.26</td>
+<td class='diag'></td>
+<td class='past'>21.03.26</td>
+</tr>
+<tr><th>DIE</th>
+<td class='past'>22.11.25</td>
+<td class='past'>26.10.25</td>
+<td class='past'>14.12.25</td>
+<td class='past'>14.03.26</td>
+<td class='past'>16.11.25</td>
+<td class='past'>06.12.25</td>
+<td class='diag'></td>
+</tr>
+</table></div></details><h2>Punktzahl‑Gruppen</h2><details id='pg_0' class='pg-block'><summary>Teams mit 0 Punkten</summary><div class='section'><table><tr><th>Team</th><th>Punkte</th><th>Spiele</th></tr><tr><td class='left'>SSV Schrobenhausen</td><td>0</td><td>8</td></tr><tr><td class='left'>ESV Ingolstadt-Ringsee</td><td>0</td><td>0</td></tr><tr><td class='left'>TSV Diedorf</td><td>0</td><td>0</td></tr></table><h4>Direkte Duelle</h4><p>Keine direkten Duelle.</p><h4>Direkter Vergleich</h4><p>Kein direkter Vergleich möglich.</p><h4>Restspiele</h4><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th></tr><tr><td class='cell-past'>1</td><td class='cell-past'>18.10.25 17:30</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td><td class='left'>DJK Eichstätt</td></tr><tr><td class='cell-past'>1</td><td class='cell-past'>18.10.25 18:00</td><td class='left'>TSV Ottobeuren</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td></tr><tr><td class='cell-past'>2</td><td class='cell-past'>26.10.25 12:15</td><td class='left'><span class='team-orange'>SSV Schrobenhausen</span></td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td></tr><tr><td class='cell-past'>2</td><td class='cell-past'>26.10.25 16:30</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td><td class='left'>VSC Baskets Donauwörth</td></tr><tr><td class='cell-past'>3</td><td class='cell-past'>08.11.25 17:30</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td><td class='left'>BG Illertal</td></tr><tr><td class='cell-past'>11</td><td class='cell-past'>16.11.25 16:30</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td><td class='left'><span class='team-orange'>SSV Schrobenhausen</span></td></tr><tr><td class='cell-past'>5</td><td class='cell-past'>22.11.25 00:00</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td><td class='left'>BG Illertal</td></tr><tr><td class='cell-past'>5</td><td class='cell-past'>23.11.25 16:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td></tr><tr><td class='cell-past'>6</td><td class='cell-past'>29.11.25 17:30</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td><td class='left'>TSV Ottobeuren</td></tr><tr><td class='cell-past'>7</td><td class='cell-past'>06.12.25 00:00</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td></tr><tr><td class='cell-past'>8</td><td class='cell-past'>14.12.25 14:30</td><td class='left'>DJK Eichstätt</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td></tr><tr><td class='cell-past'>8</td><td class='cell-past'>14.12.25 16:30</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td><td class='left'>TSV Ottobeuren</td></tr><tr><td class='cell-past'>9</td><td class='cell-past'>17.01.26 17:30</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td><td class='left'><span class='team-orange'>SSV Schrobenhausen</span></td></tr><tr><td class='cell-past'>9</td><td class='cell-past'>18.01.26 14:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td></tr><tr><td class='cell-past'>10</td><td class='cell-past'>25.01.26 12:00</td><td class='left'>DJK Eichstätt</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td></tr><tr><td class='cell-past'>10</td><td class='cell-past'>25.01.26 14:30</td><td class='left'>BG Illertal</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td></tr><tr><td class='cell-past'>12</td><td class='cell-past'>07.02.26 16:00</td><td class='left'>BG Illertal</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td></tr><tr><td class='cell-past'>12</td><td class='cell-past'>07.02.26 17:30</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td><td class='left'>VSC Baskets Donauwörth</td></tr><tr><td class='cell-past'>4</td><td class='cell-past'>01.03.26 12:15</td><td class='left'><span class='team-orange'>SSV Schrobenhausen</span></td><td class='left'><span class='team-orange'>TSV Diedorf</span></td></tr><tr><td class='cell-past'>13</td><td class='cell-past'>07.03.26 15:30</td><td class='left'>TSV Ottobeuren</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td></tr><tr><td class='cell-past'>3</td><td class='cell-past'>14.03.26 17:30</td><td class='left'><span class='team-orange'>TSV Diedorf</span></td><td class='left'>DJK Eichstätt</td></tr><tr><td class='cell-past'>14</td><td class='cell-past'>21.03.26 17:30</td><td class='left'><span class='team-orange'>ESV Ingolstadt-Ringsee</span></td><td class='left'><span class='team-orange'>TSV Diedorf</span></td></tr></table></div></details><h2>Ergebnisse</h2><details id='block_ergebnisse'><summary>Ergebnisse</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td>14</td><td>28.03.26 18:00</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>TSV Ottobeuren</td><td>80:46</td></tr><tr><td>14</td><td>22.03.26 14:30</td><td class='left'>BG Illertal</td><td class='left'>SSV Schrobenhausen</td><td>133:36</td></tr><tr><td>13</td><td>08.03.26 14:30</td><td class='left'>SSV Schrobenhausen</td><td class='left'>VSC Baskets Donauwörth</td><td>0:0</td></tr><tr><td>13</td><td>08.03.26 14:30</td><td class='left'>DJK Eichstätt</td><td class='left'>BG Illertal</td><td>35:82</td></tr><tr><td>7</td><td>01.03.26 12:15</td><td class='left'>SSV Schrobenhausen</td><td class='left'>BG Illertal</td><td>40:124</td></tr><tr><td>9</td><td>28.02.26 15:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>DJK Eichstätt</td><td>66:44</td></tr><tr><td>12</td><td>07.02.26 15:00</td><td class='left'>SSV Schrobenhausen</td><td class='left'>DJK Eichstätt</td><td>63:85</td></tr><tr><td>11</td><td>01.02.26 14:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>DJK Eichstätt</td><td>110:36</td></tr><tr><td>11</td><td>31.01.26 15:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>BG Illertal</td><td>61:84</td></tr><tr><td>10</td><td>25.01.26 16:30</td><td class='left'>SSV Schrobenhausen</td><td class='left'>TSV Ottobeuren</td><td>51:73</td></tr><tr><td>8</td><td>14.12.25 16:00</td><td class='left'>BG Illertal</td><td class='left'>VSC Baskets Donauwörth</td><td>63:60</td></tr><tr><td>7</td><td>07.12.25 16:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>VSC Baskets Donauwörth</td><td>58:82</td></tr><tr><td>6</td><td>30.11.25 16:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>SSV Schrobenhausen</td><td>96:42</td></tr><tr><td>6</td><td>30.11.25 13:45</td><td class='left'>BG Illertal</td><td class='left'>DJK Eichstätt</td><td>102:36</td></tr><tr><td>5</td><td>23.11.25 14:30</td><td class='left'>DJK Eichstätt</td><td class='left'>SSV Schrobenhausen</td><td>67:56</td></tr><tr><td>4</td><td>16.11.25 12:15</td><td class='left'>BG Illertal</td><td class='left'>TSV Ottobeuren</td><td>88:55</td></tr><tr><td>4</td><td>15.11.25 15:30</td><td class='left'>DJK Eichstätt</td><td class='left'>VSC Baskets Donauwörth</td><td>52:97</td></tr><tr><td>2</td><td>26.10.25 12:00</td><td class='left'>DJK Eichstätt</td><td class='left'>TSV Ottobeuren</td><td>38:68</td></tr><tr><td>1</td><td>19.10.25 16:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>BG Illertal</td><td>0:20</td></tr><tr><td>3</td><td>18.10.25 18:00</td><td class='left'>TSV Ottobeuren</td><td class='left'>SSV Schrobenhausen</td><td>79:51</td></tr></table></div></details><h2>Restspielplan</h2><details id='block_rest'><summary>Restspielplan</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th></tr><tr><td class='cell-past'>1</td><td class='cell-past'>18.10.25 17:30</td><td class='left'>ESV Ingolstadt-Ringsee</td><td class='left'>DJK Eichstätt</td></tr><tr><td class='cell-past'>1</td><td class='cell-past'>18.10.25 18:00</td><td class='left'>TSV Ottobeuren</td><td class='left'>TSV Diedorf</td></tr><tr><td class='cell-past'>2</td><td class='cell-past'>26.10.25 12:15</td><td class='left'>SSV Schrobenhausen</td><td class='left'>ESV Ingolstadt-Ringsee</td></tr><tr><td class='cell-past'>2</td><td class='cell-past'>26.10.25 16:30</td><td class='left'>TSV Diedorf</td><td class='left'>VSC Baskets Donauwörth</td></tr><tr><td class='cell-past'>3</td><td class='cell-past'>08.11.25 17:30</td><td class='left'>ESV Ingolstadt-Ringsee</td><td class='left'>BG Illertal</td></tr><tr><td class='cell-past'>11</td><td class='cell-past'>16.11.25 16:30</td><td class='left'>TSV Diedorf</td><td class='left'>SSV Schrobenhausen</td></tr><tr><td class='cell-past'>5</td><td class='cell-past'>22.11.25 00:00</td><td class='left'>TSV Diedorf</td><td class='left'>BG Illertal</td></tr><tr><td class='cell-past'>5</td><td class='cell-past'>23.11.25 16:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>ESV Ingolstadt-Ringsee</td></tr><tr><td class='cell-past'>6</td><td class='cell-past'>29.11.25 17:30</td><td class='left'>ESV Ingolstadt-Ringsee</td><td class='left'>TSV Ottobeuren</td></tr><tr><td class='cell-past'>7</td><td class='cell-past'>06.12.25 00:00</td><td class='left'>TSV Diedorf</td><td class='left'>ESV Ingolstadt-Ringsee</td></tr><tr><td class='cell-past'>8</td><td class='cell-past'>14.12.25 14:30</td><td class='left'>DJK Eichstätt</td><td class='left'>ESV Ingolstadt-Ringsee</td></tr><tr><td class='cell-past'>8</td><td class='cell-past'>14.12.25 16:30</td><td class='left'>TSV Diedorf</td><td class='left'>TSV Ottobeuren</td></tr><tr><td class='cell-past'>9</td><td class='cell-past'>17.01.26 17:30</td><td class='left'>ESV Ingolstadt-Ringsee</td><td class='left'>SSV Schrobenhausen</td></tr><tr><td class='cell-past'>9</td><td class='cell-past'>18.01.26 14:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>TSV Diedorf</td></tr><tr><td class='cell-past'>10</td><td class='cell-past'>25.01.26 12:00</td><td class='left'>DJK Eichstätt</td><td class='left'>TSV Diedorf</td></tr><tr><td class='cell-past'>10</td><td class='cell-past'>25.01.26 14:30</td><td class='left'>BG Illertal</td><td class='left'>ESV Ingolstadt-Ringsee</td></tr><tr><td class='cell-past'>12</td><td class='cell-past'>07.02.26 16:00</td><td class='left'>BG Illertal</td><td class='left'>TSV Diedorf</td></tr><tr><td class='cell-past'>12</td><td class='cell-past'>07.02.26 17:30</td><td class='left'>ESV Ingolstadt-Ringsee</td><td class='left'>VSC Baskets Donauwörth</td></tr><tr><td class='cell-past'>4</td><td class='cell-past'>01.03.26 12:15</td><td class='left'>SSV Schrobenhausen</td><td class='left'>TSV Diedorf</td></tr><tr><td class='cell-past'>13</td><td class='cell-past'>07.03.26 15:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>ESV Ingolstadt-Ringsee</td></tr><tr><td class='cell-past'>3</td><td class='cell-past'>14.03.26 17:30</td><td class='left'>TSV Diedorf</td><td class='left'>DJK Eichstätt</td></tr><tr><td class='cell-past'>14</td><td class='cell-past'>21.03.26 17:30</td><td class='left'>ESV Ingolstadt-Ringsee</td><td class='left'>TSV Diedorf</td></tr></table></div></details><h2>Spielplan pro Team</h2><details id='block_teams'><summary>Spielplan pro Team</summary><div class='section'><details><summary>BG Illertal</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>19.10.25 16:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>BG Illertal</td><td>0:20</td></tr><tr><td class=''>4</td><td class=''>16.11.25 12:15</td><td class='left'>BG Illertal</td><td class='left'>TSV Ottobeuren</td><td>88:55</td></tr><tr><td class=''>6</td><td class=''>30.11.25 13:45</td><td class='left'>BG Illertal</td><td class='left'>DJK Eichstätt</td><td>102:36</td></tr><tr><td class=''>8</td><td class=''>14.12.25 16:00</td><td class='left'>BG Illertal</td><td class='left'>VSC Baskets Donauwörth</td><td>63:60</td></tr><tr><td class=''>11</td><td class=''>31.01.26 15:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>BG Illertal</td><td>61:84</td></tr><tr><td class=''>7</td><td class=''>01.03.26 12:15</td><td class='left'>SSV Schrobenhausen</td><td class='left'>BG Illertal</td><td>40:124</td></tr><tr><td class=''>13</td><td class=''>08.03.26 14:30</td><td class='left'>DJK Eichstätt</td><td class='left'>BG Illertal</td><td>35:82</td></tr><tr><td class=''>14</td><td class=''>22.03.26 14:30</td><td class='left'>BG Illertal</td><td class='left'>SSV Schrobenhausen</td><td>133:36</td></tr></table></div></details><details><summary>VSC Baskets Donauwörth</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>19.10.25 16:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>BG Illertal</td><td>0:20</td></tr><tr><td class=''>4</td><td class=''>15.11.25 15:30</td><td class='left'>DJK Eichstätt</td><td class='left'>VSC Baskets Donauwörth</td><td>52:97</td></tr><tr><td class=''>6</td><td class=''>30.11.25 16:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>SSV Schrobenhausen</td><td>96:42</td></tr><tr><td class=''>7</td><td class=''>07.12.25 16:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>VSC Baskets Donauwörth</td><td>58:82</td></tr><tr><td class=''>8</td><td class=''>14.12.25 16:00</td><td class='left'>BG Illertal</td><td class='left'>VSC Baskets Donauwörth</td><td>63:60</td></tr><tr><td class=''>11</td><td class=''>01.02.26 14:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>DJK Eichstätt</td><td>110:36</td></tr><tr><td class=''>13</td><td class=''>08.03.26 14:30</td><td class='left'>SSV Schrobenhausen</td><td class='left'>VSC Baskets Donauwörth</td><td>0:0</td></tr><tr><td class=''>14</td><td class=''>28.03.26 18:00</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>TSV Ottobeuren</td><td>80:46</td></tr></table></div></details><details><summary>TSV Ottobeuren</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>3</td><td class=''>18.10.25 18:00</td><td class='left'>TSV Ottobeuren</td><td class='left'>SSV Schrobenhausen</td><td>79:51</td></tr><tr><td class=''>2</td><td class=''>26.10.25 12:00</td><td class='left'>DJK Eichstätt</td><td class='left'>TSV Ottobeuren</td><td>38:68</td></tr><tr><td class=''>4</td><td class=''>16.11.25 12:15</td><td class='left'>BG Illertal</td><td class='left'>TSV Ottobeuren</td><td>88:55</td></tr><tr><td class=''>7</td><td class=''>07.12.25 16:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>VSC Baskets Donauwörth</td><td>58:82</td></tr><tr><td class=''>10</td><td class=''>25.01.26 16:30</td><td class='left'>SSV Schrobenhausen</td><td class='left'>TSV Ottobeuren</td><td>51:73</td></tr><tr><td class=''>11</td><td class=''>31.01.26 15:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>BG Illertal</td><td>61:84</td></tr><tr><td class=''>9</td><td class=''>28.02.26 15:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>DJK Eichstätt</td><td>66:44</td></tr><tr><td class=''>14</td><td class=''>28.03.26 18:00</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>TSV Ottobeuren</td><td>80:46</td></tr></table></div></details><details><summary>DJK Eichstätt</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>2</td><td class=''>26.10.25 12:00</td><td class='left'>DJK Eichstätt</td><td class='left'>TSV Ottobeuren</td><td>38:68</td></tr><tr><td class=''>4</td><td class=''>15.11.25 15:30</td><td class='left'>DJK Eichstätt</td><td class='left'>VSC Baskets Donauwörth</td><td>52:97</td></tr><tr><td class=''>5</td><td class=''>23.11.25 14:30</td><td class='left'>DJK Eichstätt</td><td class='left'>SSV Schrobenhausen</td><td>67:56</td></tr><tr><td class=''>6</td><td class=''>30.11.25 13:45</td><td class='left'>BG Illertal</td><td class='left'>DJK Eichstätt</td><td>102:36</td></tr><tr><td class=''>11</td><td class=''>01.02.26 14:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>DJK Eichstätt</td><td>110:36</td></tr><tr><td class=''>12</td><td class=''>07.02.26 15:00</td><td class='left'>SSV Schrobenhausen</td><td class='left'>DJK Eichstätt</td><td>63:85</td></tr><tr><td class=''>9</td><td class=''>28.02.26 15:30</td><td class='left'>TSV Ottobeuren</td><td class='left'>DJK Eichstätt</td><td>66:44</td></tr><tr><td class=''>13</td><td class=''>08.03.26 14:30</td><td class='left'>DJK Eichstätt</td><td class='left'>BG Illertal</td><td>35:82</td></tr></table></div></details><details><summary>SSV Schrobenhausen</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>3</td><td class=''>18.10.25 18:00</td><td class='left'>TSV Ottobeuren</td><td class='left'>SSV Schrobenhausen</td><td>79:51</td></tr><tr><td class=''>5</td><td class=''>23.11.25 14:30</td><td class='left'>DJK Eichstätt</td><td class='left'>SSV Schrobenhausen</td><td>67:56</td></tr><tr><td class=''>6</td><td class=''>30.11.25 16:30</td><td class='left'>VSC Baskets Donauwörth</td><td class='left'>SSV Schrobenhausen</td><td>96:42</td></tr><tr><td class=''>10</td><td class=''>25.01.26 16:30</td><td class='left'>SSV Schrobenhausen</td><td class='left'>TSV Ottobeuren</td><td>51:73</td></tr><tr><td class=''>12</td><td class=''>07.02.26 15:00</td><td class='left'>SSV Schrobenhausen</td><td class='left'>DJK Eichstätt</td><td>63:85</td></tr><tr><td class=''>7</td><td class=''>01.03.26 12:15</td><td class='left'>SSV Schrobenhausen</td><td class='left'>BG Illertal</td><td>40:124</td></tr><tr><td class=''>13</td><td class=''>08.03.26 14:30</td><td class='left'>SSV Schrobenhausen</td><td class='left'>VSC Baskets Donauwörth</td><td>0:0</td></tr><tr><td class=''>14</td><td class=''>22.03.26 14:30</td><td class='left'>BG Illertal</td><td class='left'>SSV Schrobenhausen</td><td>133:36</td></tr></table></div></details><details><summary>ESV Ingolstadt-Ringsee</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr></table></div></details><details><summary>TSV Diedorf</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr></table></div></details></div></details>
+<script>
+// =========================================================
+// 1) Zustand der geöffneten Details wiederherstellen
+// =========================================================
+function restoreDetailsState() {
+    const raw = localStorage.getItem("detailsState");
+    if (!raw) return;
+
+    const state = JSON.parse(raw);
+
+    document.querySelectorAll("details").forEach(d => {
+        const key = d.id || d.querySelector("summary")?.textContent.trim();
+        if (state[key]) d.open = true;
+    });
+}
+
+// =========================================================
+// 2) Zustand der geöffneten Details speichern
+// =========================================================
+function saveDetailsState() {
+    const state = {};
+    document.querySelectorAll("details").forEach(d => {
+        state[d.id || d.querySelector("summary")?.textContent.trim()] = d.open;
+    });
+    localStorage.setItem("detailsState", JSON.stringify(state));
+}
+
+window.addEventListener("beforeunload", saveDetailsState);
+window.addEventListener("DOMContentLoaded", restoreDetailsState);
+</script>
+
+
+<script>
+// =========================================================
+// 3) Auto-Refresh nur bei echten Live-Daten
+// =========================================================
+
+async function hasLiveData() {
+    try {
+        const liga = "50503";
+        const url = `https://www.basketball-bund.net/rest/competition/livescore/id/${liga}`;
+        const response = await fetch(url, { cache: "no-store" });
+        const data = await response.json();
+
+        const matches = data?.data?.matches || [];
+        return matches.length > 0;
+    } catch (e) {
+        return false;
+    }
+}
+
+async function conditionalRefresh() {
+    const live = await hasLiveData();
+    if (live) {
+        setTimeout(() => location.reload(), 30000);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", conditionalRefresh);
+</script>
+
+
+<script>
+// =========================================================
+// 4) openAll / closeAll
+// =========================================================
+function openAllDetails() {
+  document.querySelectorAll('details:not(#wasfindeichhier)').forEach(d => d.open = true);
+}
+function closeAllDetails() {
+  document.querySelectorAll('details:not(#wasfindeichhier)').forEach(d => d.open = false);
+}
+
+// =========================================================
+// 5) Punktgruppen-Navigation
+// =========================================================
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll("a[href^='#pg_']").forEach(function(link) {
+    link.addEventListener('click', function(ev) {
+      ev.preventDefault();
+      var targetId = this.getAttribute('href').substring(1);
+      document.querySelectorAll('details.pg-block').forEach(function(d) {
+        d.open = false;
+      });
+      var target = document.getElementById(targetId);
+      if (target) {
+        target.open = true;
+        target.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+    });
+  });
+});
+</script>
+<p style='margin-top:20px; font-size:12px; color:#666;'>Daten entnommen aus öffentlich zugänglichen Informationen auf basketball-bund.net.</p></body></html>
