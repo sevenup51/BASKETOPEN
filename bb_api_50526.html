@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+<meta charset='utf-8'>
+<title>Bezirkspokal Herren 25/26 (Liganr.: 50526)</title>
+
+<style>
+/* --- Grundlayout --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 15px;
+    background: #f7f7f7;
+    color: #222;
+    font-size: 14px;
+}
+
+h1 { margin-bottom: 4px; font-size: 22px; text-align:left; }
+h2 { margin-top: 20px; font-size: 15px; border-bottom: 1px solid #444; padding-bottom: 2px; text-align:left; }
+h4 { margin-top: 10px; font-size: 14px; text-align:left; }
+
+.section { margin-left: 10px; margin-top: 4px; }
+
+/* --- Tabellen kompakt + rechtsbündig --- */
+table {
+    border-collapse: collapse;
+    margin-top: 6px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 2px 4px;
+    white-space: nowrap;
+    text-align: right;
+}
+
+th {
+    background: #003366;
+    color: white;
+    font-weight: bold;
+    text-align: right;
+}
+
+td.left { text-align: left; }
+
+tr:nth-child(even) { background: #f2f2f2; }
+tr:hover { background: #e8eefc; }
+
+/* --- Punktgruppenfarben --- */
+.bluepts a { color: #1d4ed8; font-weight: bold; }
+.orangepts a { color: #c2410c; font-weight: bold; }
+
+/* --- Highlighting Restspielplan & fehlende Ergebnisse --- */
+.row-today { background: #ffdd99 !important; }
+.cell-past { background: #ff9999 !important; }
+.team-orange { color: #c2410c; font-weight: bold; }
+
+/* --- Mini-Rot für Zusatzwerte --- */
+.mini-red {
+    color: red;
+    font-size: 10px;
+    margin-left: 2px;
+}
+
+/* --- Details / Pfeile --- */
+details summary { list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::marker { display: none; }
+details summary::before {
+    content: "▶ ";
+    font-size: 14px;
+}
+details[open] summary::before { content: "▼ "; }
+details { margin: 6px 0; }
+
+/* --- Buttons --- */
+.toggle-all { margin: 8px 0 4px 0; }
+.toggle-all button {
+    margin-right: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #003366;
+    background: #003366;
+    color: white;
+    cursor: pointer;
+}
+.toggle-all button:hover { background: #002244; }
+
+/* --------------------------------------------- */
+/* KREUZTABELLE – NEUE CSS-KLASSEN                */
+/* --------------------------------------------- */
+
+td.win  { background:#c8f7c5; }
+td.loss { background:#f7c5c5; }
+td.past { background:orange; }
+td.nodata { background:#e0e0e0; }
+
+td.diag {
+    background: repeating-linear-gradient(
+        45deg,
+        #ccc,
+        #ccc 4px,
+        #eee 4px,
+        #eee 8px
+    );
+}
+
+/* --------------------------------------------- */
+/* LIVESCORE – OPTISCH VERBESSERT (ERWEITERT)     */
+/* --------------------------------------------- */
+
+.livescore-box {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    width: 520px;
+}
+
+.ls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ls-team {
+    font-size: 20px;
+    font-weight: bold;
+    width: 48%;
+}
+
+.ls-score {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    width: 32%;
+}
+
+.ls-date {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<details id='wasfindeichhier'>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<h2>Allgemein</h2>
+
+<p>
+Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
+Die entsprechenden Daten werden über die DBB-API ermittelt:<br>
+<a href="https://github.com/OliEder/basketball-bund-api/blob/main/DBB-API-COMPLETE-DOCUMENTATION.md?utm_source=copilot.com" target="_blank">
+https://github.com/OliEder/basketball-bund-api/blob/main/DBB-API-COMPLETE-DOCUMENTATION.md?utm_source=copilot.com
+</a>
+</p>
+
+<p>
+Aktuell wird dies automatisiert u.a. für die BBL und für die ProA erzeugt.<br>
+Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).
+</p>
+
+<p>
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+BBL:
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1
+</a><br>
+ProA:
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1
+</a>
+</p>
+
+
+<p>Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.</p>
+
+<p><b>Tabelle</b></p>
+
+<p>Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
+Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
+Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
+und eine geöffnete Punktzahl-Gruppe schließt.</p>
+
+<p><b>Punktzahl‑Gruppen</b></p>
+
+<p>Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
+Hier werden zuerst die Teams aufgeführt.<br>
+Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>
+Anschließend folgt der Restspielplan dieser Teams.<br>
+Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.</p>
+
+<p><b>Ergebnisse – ausklappbar</b></p>
+
+<p>Sämtliche bisher gespielten Ergebnisse.<br>
+Aktuellste Ergebnisse stehen oben.</p>
+
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+
+<p>Nach Restspielplan<br>
+Welche Spiele stehen noch an?<br>
+Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.</p>
+
+<p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
+
+<p>Es werden dann alle Vereine angezeigt.<br>
+Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.</p>
+
+</div>
+</details>
+
+<div class='toggle-all'>
+  <button onclick="openAllDetails()">Alles öffnen</button>
+  <button onclick="closeAllDetails()">Alles schließen</button>
+</div>
+<hr>
+<p style='color:red; font-style:italic;'>Es sind noch nicht alle aktuellen Spielergebnisse erfasst.</p><h1>Bezirkspokal Herren 25/26 (Liganr.: 50526)</h1>
+<details><summary><b>Livescore</b></summary>
+<div class='section'>
+
+    <div style='padding:10px; background:#fff3cd; border:1px solid #ffeeba; border-radius:6px; margin:10px 0;'>
+        <b>Hinweis:</b><br>
+        Keine Spiele gestern/heute/morgen gefunden.
+    </div>
+    </div></details><h2>Tabelle – Stand: 12.05.26 11:07</h2><table><tr><th>Rang</th><th>Team</th><th>Spiele</th><th>S</th><th>N</th><th>Punkte</th><th>Diff</th><th>§</th></tr></table><h2>Kreuztabelle</h2><details class='liga-block'><summary>Kreuztabelle</summary><div class='section'><p><i>Keine Kreuztabelle vorhanden.</i></p></div></details><h2>Punktzahl‑Gruppen</h2><h2>Ergebnisse</h2><details id='block_ergebnisse'><summary>Ergebnisse</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td>5</td><td>28.03.26 18:00</td><td class='left'>TV 1847 Augsburg 2</td><td class='left'>PSV Ingolstadt</td><td>71:73</td></tr><tr><td>4</td><td>28.03.26 13:00</td><td class='left'>Green Devils Schrobenhausen</td><td class='left'>PSV Ingolstadt</td><td>64:76</td></tr><tr><td>4</td><td>28.03.26 10:30</td><td class='left'>TV 1847 Augsburg 2</td><td class='left'>TV Memmingen</td><td>77:62</td></tr><tr><td>3</td><td>28.02.26 19:00</td><td class='left'>TV Memmingen</td><td class='left'>TSV Ottobeuren</td><td>83:75</td></tr><tr><td>3</td><td>21.02.26 19:30</td><td class='left'>VSC Donauwörth</td><td class='left'>TV 1847 Augsburg 2</td><td>72:87</td></tr><tr><td>3</td><td>21.02.26 17:00</td><td class='left'>PSV Ingolstadt</td><td class='left'>Sportfreunde Friedberg</td><td>63:52</td></tr><tr><td>3</td><td>08.02.26 19:00</td><td class='left'>DJK Eichstätt</td><td class='left'>Green Devils Schrobenhausen</td><td>62:70</td></tr><tr><td>2</td><td>25.01.26 15:00</td><td class='left'>Netz16 Baskets Königsbrunn</td><td class='left'>Sportfreunde Friedberg</td><td>63:69</td></tr><tr><td>2</td><td>24.01.26 17:30</td><td class='left'>TSV Diedorf</td><td class='left'>TV 1847 Augsburg 2</td><td>67:71</td></tr><tr><td>2</td><td>10.01.26 20:00</td><td class='left'>TV 1847 Augsburg 4</td><td class='left'>DJK Eichstätt</td><td>49:75</td></tr><tr><td>2</td><td>10.01.26 16:30</td><td class='left'>SSV Schrobenhausen 3</td><td class='left'>VSC Donauwörth</td><td>55:68</td></tr><tr><td>2</td><td>10.01.26 12:30</td><td class='left'>VFL Buchloe</td><td class='left'>TSV Ottobeuren</td><td>72:76</td></tr><tr><td>2</td><td>04.01.26 16:00</td><td class='left'>TV 1846 Isny</td><td class='left'>Green Devils Schrobenhausen</td><td>49:85</td></tr><tr><td>2</td><td>03.01.26 16:15</td><td class='left'>BG Leitershofen/Stadtbergen 4</td><td class='left'>TV Memmingen</td><td>73:99</td></tr><tr><td>2</td><td>20.12.25 17:00</td><td class='left'>TSV Oberstdorf</td><td class='left'>PSV Ingolstadt</td><td>49:75</td></tr><tr><td>1</td><td>23.11.25 12:00</td><td class='left'>PSV Ingolstadt</td><td class='left'>SG Heising-Kottern</td><td>92:57</td></tr><tr><td>1</td><td>08.11.25 17:15</td><td class='left'>SSV Schrobenhausen 2</td><td class='left'>TSV Ottobeuren</td><td>29:96</td></tr><tr><td>1</td><td>08.11.25 16:00</td><td class='left'>TSV Sulzberg</td><td class='left'>Sportfreunde Friedberg</td><td>44:92</td></tr><tr><td>1</td><td>02.11.25 17:00</td><td class='left'>VFL Buchloe</td><td class='left'>TSV Haunstetten</td><td>72:52</td></tr><tr><td>1</td><td>02.11.25 16:30</td><td class='left'>TV 1846 Isny</td><td class='left'>ESV Ingolstadt-Ringsee</td><td>20:0</td></tr><tr><td>1</td><td>02.11.25 16:00</td><td class='left'>PSV Ingolstadt 2</td><td class='left'>DJK Eichstätt</td><td>69:70</td></tr><tr><td>1</td><td>02.11.25 15:00</td><td class='left'>TG Viktoria Augsburg</td><td class='left'>TSV Diedorf</td><td>49:66</td></tr><tr><td>1</td><td>02.11.25 14:30</td><td class='left'>TSV Gersthofen 2</td><td class='left'>TV Memmingen</td><td>49:99</td></tr><tr><td>1</td><td>29.10.25 19:00</td><td class='left'>TSV Meitingen</td><td class='left'>TV 1847 Augsburg 2</td><td>52:69</td></tr><tr><td>1</td><td>25.10.25 17:00</td><td class='left'>Netz16 Baskets Königsbrunn</td><td class='left'>TSV Gersthofen</td><td>20:0</td></tr></table></div></details><h2>Restspielplan</h2><details id='block_rest'><summary>Restspielplan</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th></tr><tr><td class='cell-past'>4</td><td class='cell-past'>28.03.26 18:00</td><td class='left'>SIEGER HF1</td><td class='left'>SIEGER HF2</td></tr></table></div></details><h2>Spielplan pro Team</h2><details id='block_teams'><summary>Spielplan pro Team</summary><div class='section'></div></details>
+<script>
+// =========================================================
+// 1) Zustand der geöffneten Details wiederherstellen
+// =========================================================
+function restoreDetailsState() {
+    const raw = localStorage.getItem("detailsState");
+    if (!raw) return;
+
+    const state = JSON.parse(raw);
+
+    document.querySelectorAll("details").forEach(d => {
+        const key = d.id || d.querySelector("summary")?.textContent.trim();
+        if (state[key]) d.open = true;
+    });
+}
+
+// =========================================================
+// 2) Zustand der geöffneten Details speichern
+// =========================================================
+function saveDetailsState() {
+    const state = {};
+    document.querySelectorAll("details").forEach(d => {
+        state[d.id || d.querySelector("summary")?.textContent.trim()] = d.open;
+    });
+    localStorage.setItem("detailsState", JSON.stringify(state));
+}
+
+window.addEventListener("beforeunload", saveDetailsState);
+window.addEventListener("DOMContentLoaded", restoreDetailsState);
+</script>
+
+
+<script>
+// =========================================================
+// 3) Auto-Refresh nur bei echten Live-Daten
+// =========================================================
+
+async function hasLiveData() {
+    try {
+        const liga = "50526";
+        const url = `https://www.basketball-bund.net/rest/competition/livescore/id/${liga}`;
+        const response = await fetch(url, { cache: "no-store" });
+        const data = await response.json();
+
+        const matches = data?.data?.matches || [];
+        return matches.length > 0;
+    } catch (e) {
+        return false;
+    }
+}
+
+async function conditionalRefresh() {
+    const live = await hasLiveData();
+    if (live) {
+        setTimeout(() => location.reload(), 30000);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", conditionalRefresh);
+</script>
+
+
+<script>
+// =========================================================
+// 4) openAll / closeAll
+// =========================================================
+function openAllDetails() {
+  document.querySelectorAll('details:not(#wasfindeichhier)').forEach(d => d.open = true);
+}
+function closeAllDetails() {
+  document.querySelectorAll('details:not(#wasfindeichhier)').forEach(d => d.open = false);
+}
+
+// =========================================================
+// 5) Punktgruppen-Navigation
+// =========================================================
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll("a[href^='#pg_']").forEach(function(link) {
+    link.addEventListener('click', function(ev) {
+      ev.preventDefault();
+      var targetId = this.getAttribute('href').substring(1);
+      document.querySelectorAll('details.pg-block').forEach(function(d) {
+        d.open = false;
+      });
+      var target = document.getElementById(targetId);
+      if (target) {
+        target.open = true;
+        target.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+    });
+  });
+});
+</script>
+<p style='margin-top:20px; font-size:12px; color:#666;'>Daten entnommen aus öffentlich zugänglichen Informationen auf basketball-bund.net.</p></body></html>
