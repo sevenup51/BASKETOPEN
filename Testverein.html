@@ -62,6 +62,34 @@ p.ligalink { margin:3px 0 3px 0; }
 <script>
 function openAll(){ document.querySelectorAll("details").forEach(d=>d.setAttribute("open","")); }
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
+
+/* Bundesligen öffnen */
+function openBundesligen() {
+    document.querySelectorAll("details").forEach(d => {
+        const s = d.querySelector("summary");
+        if (!s) return;
+        const txt = s.innerText;
+        if (txt.includes("Bundesligen") ||
+            txt.includes("ProA") ||
+            txt.includes("BBL")) {
+            d.setAttribute("open", "");
+        }
+    });
+}
+
+/* Bezirk Schwaben öffnen */
+function openBezirkSchwaben() {
+    document.querySelectorAll("details").forEach(d => {
+        const s = d.querySelector("summary");
+        if (!s) return;
+        const txt = s.innerText;
+        if (txt.includes("Bezirk Schwaben") ||
+            txt.includes("Senioren") ||
+            txt.startsWith("U")) {
+            d.setAttribute("open", "");
+        }
+    });
+}
 </script>
 </head>
 <body>
@@ -82,7 +110,7 @@ Dies ist eine Übersicht über die BBL, die Pro A und sämtliche Ligen des Bezir
 In dieser Übersicht sieht man die Ergebnisse der letzten 8 Tage, die aktuelle<br>
 Tabelle, und die anstehenden Spiel der nächsten 8 Tage, falls vorhanden<br>
 Wenn eine Liga aktiv ist, ist sie grün markiert.<br>
-Wenn man auf DETAIL klickt, bekommt man eine kimplette Übersicht über diese Liga.</p>
+Wenn man auf DETAIL klickt, bekommt man eine komplette Übersicht über diese Liga.</p>
 
 <p>
 Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
@@ -99,7 +127,8 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 </div>
 
 <div class='group-header'>Bundesligen</div>
-<div class='subgroup-header'>Senioren</div>
+<details>
+<summary class='subgroup-header'>Senioren</summary>
 <details id='liga_51520'>
 <summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</b></summary>
 <h3>Tabelle</h3>
@@ -435,7 +464,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <details id='liga_51521'>
 <summary><b>1. Bundesliga (BBL) - Playoff Viertelfinale (Senioren; Liganr.: 2)</b></summary>
 </details>
-<div class='subgroup-header'>Unbekannt</div>
+</details>
+<details>
+<summary class='subgroup-header'>Unbekannt</summary>
 <details id='liga_51522'>
 <summary><b>Unbekannte Liga</b></summary>
 </details>
@@ -445,9 +476,11 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <details id='liga_99999'>
 <summary><b>Unbekannte Liga</b></summary>
 </details>
+</details>
 <hr class='short'>
 <div class='group-header'>Bundesligen – ProA</div>
-<div class='subgroup-header'>Senioren</div>
+<details>
+<summary class='subgroup-header'>Senioren</summary>
 <details id='liga_51529'>
 <summary><b>Herren ProA (Senioren; Liganr.: 10)</b></summary>
 <h3>Tabelle</h3>
@@ -782,16 +815,20 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
   </tbody>
 </table>
 </details>
-<div class='subgroup-header'>Unbekannt</div>
+</details>
+<details>
+<summary class='subgroup-header'>Unbekannt</summary>
 <details id='liga_51531'>
 <summary><b>Unbekannte Liga</b></summary>
 </details>
 <details id='liga_51532'>
 <summary><b>Unbekannte Liga</b></summary>
 </details>
+</details>
 <hr class='short'>
 <div class='group-header'>Bayern – Bezirk Schwaben</div>
-<div class='subgroup-header'>Senioren</div>
+<details>
+<summary class='subgroup-header'>Senioren</summary>
 <details id='liga_50499'>
 <summary><b>Bezirksoberliga Herren 25/26 (Senioren Schwaben; Liganr.: 22004)</b></summary>
 <h3>Tabelle</h3>
@@ -1545,7 +1582,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
   </tbody>
 </table>
 </details>
-<div class='subgroup-header'>U20</div>
+</details>
+<details>
+<summary class='subgroup-header'>U20</summary>
 <details id='liga_50503'>
 <summary><b>Bezirksoberliga U20 männlich 25/26 (U20 Schwaben; Liganr.: 22020)</b></summary>
 <h3>Tabelle</h3>
@@ -1631,7 +1670,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <details id='liga_50504'>
 <summary><b>Bezirksoberliga U20 weiblich 25/26 - siehe BOLU18W (U20 Schwaben; Liganr.: 22021)</b></summary>
 </details>
-<div class='subgroup-header'>U18</div>
+</details>
+<details>
+<summary class='subgroup-header'>U18</summary>
 <details id='liga_50505'>
 <summary><b>Bezirksoberliga U18 männlich 25/26 (U18 Schwaben; Liganr.: 22022)</b></summary>
 <h3>Tabelle</h3>
@@ -1996,7 +2037,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
   </tbody>
 </table>
 </details>
-<div class='subgroup-header'>U16</div>
+</details>
+<details>
+<summary class='subgroup-header'>U16</summary>
 <details id='liga_50507'>
 <summary><b>Bezirksoberliga U16 männlich 25/26 (U16 Schwaben; Liganr.: 22026)</b></summary>
 <h3>Tabelle</h3>
@@ -2461,7 +2504,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
   </tbody>
 </table>
 </details>
-<div class='subgroup-header'>U14</div>
+</details>
+<details>
+<summary class='subgroup-header'>U14</summary>
 <details id='liga_50512'>
 <summary><b>Bezirksoberliga U14 männlich 25/26 (U14 Schwaben; Liganr.: 22030)</b></summary>
 <h3>Tabelle</h3>
@@ -2954,7 +2999,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
   </tbody>
 </table>
 </details>
-<div class='subgroup-header'>U12</div>
+</details>
+<details>
+<summary class='subgroup-header'>U12</summary>
 <details id='liga_50517'>
 <summary><b>Bezirksoberliga U12 gemischt 25/26 (U12 Schwaben; Liganr.: 22034)</b></summary>
 <h3>Tabelle</h3>
@@ -3383,7 +3430,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
   </tbody>
 </table>
 </details>
-<div class='subgroup-header'>U10</div>
+</details>
+<details>
+<summary class='subgroup-header'>U10</summary>
 <details id='liga_50520'>
 <summary><b>Bezirksoberliga U10 gemischt 25/26 (U10 Schwaben; Liganr.: 22038)</b></summary>
 <h3>Tabelle</h3>
@@ -3703,7 +3752,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
   </tbody>
 </table>
 </details>
-<div class='subgroup-header'>U9</div>
+</details>
+<details>
+<summary class='subgroup-header'>U9</summary>
 <details id='liga_51178'>
 <summary><b>Bezirksoberliga U9 gemischt 25/26 (U9 Schwaben; Liganr.: 22039)</b></summary>
 <h3>Tabelle</h3>
@@ -3777,7 +3828,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
   </tbody>
 </table>
 </details>
-<div class='subgroup-header'>U8</div>
+</details>
+<details>
+<summary class='subgroup-header'>U8</summary>
 <details id='liga_50522'>
 <summary><b>Bezirksoberliga U8 gemischt 25/26 (U8 Schwaben; Liganr.: 22041)</b></summary>
 <h3>Tabelle</h3>
@@ -3841,6 +3894,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
     </tr>
   </tbody>
 </table>
+</details>
 </details>
 <hr class='short'>
 
