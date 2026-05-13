@@ -33,6 +33,31 @@ button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-r
          margin-right:5px; font-size:10px; }
 button:hover { background:#163568; }
 p.ligalink { margin:3px 0 3px 0; }
+
+/* ORANGE GRUPPEN-HEADER */
+.group-header {
+    background: orange;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 6px 0 4px 0;
+    font-size: 12px;
+}
+
+/* ORANGE UNTERGRUPPEN */
+.subgroup-header {
+    background: #ffcc80;
+    color: black;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 4px 0;
+    font-size: 11px;
+}
+
 </style>
 <script>
 function openAll(){ document.querySelectorAll("details").forEach(d=>d.setAttribute("open","")); }
@@ -69,10 +94,12 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
+    <button onclick="openBundesligen()">Bundesligen öffnen</button>
+    <button onclick="openBezirkSchwaben()">Bezirk Schwaben öffnen</button>
 </div>
 
-<details open><summary><b>Bundesligen</b></summary>
-<details><summary>BBL</summary>
+<div class='group-header'>Bundesligen</div>
+<div class='subgroup-header'>Senioren</div>
 <details >
 
 <summary>
@@ -443,6 +470,28 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <details >
 
 <summary>
+    <b>BBL-Pokal 1/4-Finale (Senioren; Liganr.: 5) (Liga 51524)</b>
+    <span class='summary-right'>
+        
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51524.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51524.html?nocache=1</a> <span style='color:red; font-weight:bold;'>✖</span></p>
+<hr class='short'>
+</div>
+</details>
+<div class='subgroup-header'>Unbekannt</div>
+<details >
+
+<summary>
     <b>Unbekannte Liga (Liga 51522)</b>
     <span class='summary-right'>
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>Details</a>
@@ -482,29 +531,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-<details >
-
-<summary>
-    <b>Unbekannte Liga (Liga 99999)</b>
-    <span class='summary-right'>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>Details</a>
-        <span class='liga-icon red'></span>
-    </span>
-</summary>
-
-<div style='margin-left:10px;'>
-<h3>Ergebnisse (letzte 8 Tage)</h3>
-<p><i>Keine Ergebnisse.</i></p>
-<h3>Tabelle</h3>
-<p><i>Keine Tabelle vorhanden.</i></p>
-<h3>Nächste Spiele (8 Tage)</h3>
-<p><i>Keine kommenden Spiele.</i></p>
-<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
-</div>
-</details>
-</details>
-<details><summary>ProA</summary>
+<div class='group-header'>Bundesligen – ProA</div>
+<div class='subgroup-header'>Senioren</div>
 <details >
 
 <summary>
@@ -869,6 +898,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
+<div class='subgroup-header'>Unbekannt</div>
 <details >
 
 <summary>
@@ -911,10 +941,9 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-</details>
-<details><summary><b>Bayern – Bezirk Schwaben</b></summary>
-<details><summary>Senioren</summary>
+<hr class='short'>
+<div class='group-header'>Bayern – Bezirk Schwaben</div>
+<div class='subgroup-header'>Senioren</div>
 <details >
 
 <summary>
@@ -1848,8 +1877,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-<details><summary>U20</summary>
+<div class='subgroup-header'>U20</div>
 <details >
 
 <summary>
@@ -1969,8 +1997,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-<details><summary>U18</summary>
+<div class='subgroup-header'>U18</div>
 <details >
 
 <summary>
@@ -2399,8 +2426,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-<details><summary>U16</summary>
+<div class='subgroup-header'>U16</div>
 <details >
 
 <summary>
@@ -2945,8 +2971,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-<details><summary>U14</summary>
+<div class='subgroup-header'>U14</div>
 <details >
 
 <summary>
@@ -3535,8 +3560,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-<details><summary>U12</summary>
+<div class='subgroup-header'>U12</div>
 <details >
 
 <summary>
@@ -4045,8 +4069,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-<details><summary>U10</summary>
+<div class='subgroup-header'>U10</div>
 <details >
 
 <summary>
@@ -4430,8 +4453,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-<details><summary>U9</summary>
+<div class='subgroup-header'>U9</div>
 <details >
 
 <summary>
@@ -4521,8 +4543,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-<details><summary>U8</summary>
+<div class='subgroup-header'>U8</div>
 <details >
 
 <summary>
@@ -4603,8 +4624,7 @@ Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
 <hr class='short'>
 </div>
 </details>
-</details>
-</details>
+<hr class='short'>
 
 </body>
 </html>
