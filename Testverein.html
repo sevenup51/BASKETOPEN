@@ -6,43 +6,37 @@
 <style>
 body { font-family: Arial; font-size: 10px; background:#f4f6f9; margin:18px; color:#222; }
 h1 { margin-bottom:6px; color:#1a3d7c; }
-summary { cursor:pointer; padding:3px 6px; background:#e8eef7; border:1px solid #1a3d7c;
-          border-radius:3px; margin-bottom:4px; font-size:11px; }
-summary::before { content:"▶"; margin-right:5px; }
+summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
+          border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
+          width: 100%; max-width: 650px; box-sizing: border-box; }
+summary::marker { display:none; }
+summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
-
-.group-header { background:orange; color:black; padding:4px 8px; border-radius:4px;
-                font-weight:bold; display:inline-block; margin:6px 0 4px 0; font-size:12px; }
-
-.subgroup-header { background:#ffcc80; color:black; padding:3px 6px; border-radius:3px;
-                   font-weight:bold; display:inline-block; margin:4px 0; font-size:11px; }
-
-.liga-icon { width:12px; height:8px; border-radius:2px; display:inline-block; margin-right:4px; }
-.liga-icon.green { background:#2ecc71; }
-.liga-icon.red   { background:#e74c3c; }
-
+details { margin-bottom:3px; }
+.summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+                 display: flex; flex-direction: row; align-items: center; gap: 6px;
+                 min-width: 90px; justify-content: flex-end; }
+.details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
+               border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap; }
+.liga-icon { width: 12px; height: 8px; border-radius: 2px; }
+.liga-icon.green  { background:#2ecc71; }
+.liga-icon.yellow { background:#f1c40f; }
+.liga-icon.red    { background:#e74c3c; }
 h3 { font-size:11px; margin:5px 0 3px 0; color:#1a3d7c; }
-table { border-collapse:collapse; margin-bottom:6px; background:white; font-size:10px; }
+table { border-collapse:collapse; margin-bottom:6px; background:white; border-radius:2px;
+        overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.06); font-size:10px; white-space:nowrap; }
 th { background:#1a3d7c; color:white; padding:2px 4px; }
 td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
 tr:nth-child(even) { background:#f0f4fa; }
 hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px 0; }
+button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
+         margin-right:5px; font-size:10px; }
+button:hover { background:#163568; }
+p.ligalink { margin:3px 0 3px 0; }
 </style>
 <script>
-function openAll(){
-    document.querySelectorAll("details").forEach(d => d.setAttribute("open",""));
-}
-function closeAll(){
-    document.querySelectorAll("details").forEach(d => d.removeAttribute("open"));
-}
-function openBundesligen(){
-    document.querySelectorAll("details[data-cat='K1'], details[data-cat='K2']")
-        .forEach(d => d.setAttribute("open",""));
-}
-function openBezirkSchwaben(){
-    document.querySelectorAll("details[data-cat='K3']")
-        .forEach(d => d.setAttribute("open",""));
-}
+function openAll(){ document.querySelectorAll("details").forEach(d=>d.setAttribute("open","")); }
+function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
 </script>
 </head>
 <body>
@@ -50,11 +44,24 @@ function openBezirkSchwaben(){
 <h1>Testverein</h1>
 
 
-<details>
-<summary><b>Was finde ich hier?</b></summary>
+<details id='wasfindeichhier'>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
 <div style='margin-left:15px;'>
-<p>Dies ist eine Übersicht über die BBL, ProA und alle Ligen des Bezirks Schwaben.</p>
-<p>Ergebnisse der letzten 8 Tage, Tabelle, Restspielplan.</p>
+
+<h2>Allgemein</h2>
+
+<p>
+Dies ist eine Übersicht über die BBL, die Pro A und sämtliche Ligen des Bezirks Schwaben.<br></p>
+
+<p>
+In dieser Übersicht sieht man die Ergebnisse der letzten 8 Tage, die aktuelle<br>
+Tabelle, und die anstehenden Spiel der nächsten 8 Tage, falls vorhanden<br>
+Wenn eine Liga aktiv ist, ist sie grün markiert.<br>
+Wenn man auf DETAIL klickt, bekommt man eine kimplette Übersicht über diese Liga.</p>
+
+<p>
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+</p>
 </div>
 </details>
 
@@ -62,18 +69,172 @@ function openBezirkSchwaben(){
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
-    <button onclick="openBundesligen()">Bundesligen öffnen</button>
-    <button onclick="openBezirkSchwaben()">Bezirk Schwaben öffnen</button>
 </div>
 
-<details data-cat='K1'>
-<summary class='group-header'>Bundesligen</summary>
-<details data-sub='Senioren'>
-<summary class='subgroup-header'>Senioren</summary>
-<details data-liga='51520'>
-<summary><span class='liga-icon red'></span><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</b></summary>
+<details open>
+
+<summary>
+    <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 51520)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon green'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>nr</th>
+      <th>sptag</th>
+      <th>date</th>
+      <th>home</th>
+      <th>guest</th>
+      <th>score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>289</td>
+      <td>33</td>
+      <td>07.05.2026 18:30</td>
+      <td>NINERS Chemnitz</td>
+      <td>SKYLINERS</td>
+      <td>86 : 82</td>
+    </tr>
+    <tr>
+      <td>290</td>
+      <td>33</td>
+      <td>07.05.2026 18:30</td>
+      <td>MHP RIESEN Ludwigsburg</td>
+      <td>FC Bayern München Basketball</td>
+      <td>78 : 86</td>
+    </tr>
+    <tr>
+      <td>292</td>
+      <td>33</td>
+      <td>07.05.2026 20:00</td>
+      <td>Veolia Towers Hamburg</td>
+      <td>Fitness First Würzburg Baskets</td>
+      <td>73 : 90</td>
+    </tr>
+    <tr>
+      <td>293</td>
+      <td>33</td>
+      <td>07.05.2026 20:00</td>
+      <td>Science City Jena</td>
+      <td>MLP Academics Heidelberg</td>
+      <td>81 : 79</td>
+    </tr>
+    <tr>
+      <td>294</td>
+      <td>33</td>
+      <td>08.05.2026 18:30</td>
+      <td>SYNTAINICS MBC</td>
+      <td>BMA365 Bamberg Baskets</td>
+      <td>82 : 99</td>
+    </tr>
+    <tr>
+      <td>295</td>
+      <td>33</td>
+      <td>08.05.2026 18:30</td>
+      <td>RASTA Vechta</td>
+      <td>ROSTOCK SEAWOLVES</td>
+      <td>78 : 90</td>
+    </tr>
+    <tr>
+      <td>296</td>
+      <td>33</td>
+      <td>08.05.2026 20:00</td>
+      <td>Telekom Baskets Bonn</td>
+      <td>VET-CONCEPT Gladiators Trier</td>
+      <td>102 : 77</td>
+    </tr>
+    <tr>
+      <td>297</td>
+      <td>33</td>
+      <td>08.05.2026 20:00</td>
+      <td>EWE Baskets Oldenburg</td>
+      <td>Basketball Löwen Braunschweig</td>
+      <td>93 : 84</td>
+    </tr>
+    <tr>
+      <td>298</td>
+      <td>34</td>
+      <td>10.05.2026 16:30</td>
+      <td>ALBA BERLIN</td>
+      <td>Science City Jena</td>
+      <td>83 : 65</td>
+    </tr>
+    <tr>
+      <td>299</td>
+      <td>34</td>
+      <td>10.05.2026 16:30</td>
+      <td>Fitness First Würzburg Baskets</td>
+      <td>MHP RIESEN Ludwigsburg</td>
+      <td>75 : 58</td>
+    </tr>
+    <tr>
+      <td>300</td>
+      <td>34</td>
+      <td>10.05.2026 16:30</td>
+      <td>BMA365 Bamberg Baskets</td>
+      <td>Telekom Baskets Bonn</td>
+      <td>102 : 83</td>
+    </tr>
+    <tr>
+      <td>301</td>
+      <td>34</td>
+      <td>10.05.2026 16:30</td>
+      <td>MLP Academics Heidelberg</td>
+      <td>RASTA Vechta</td>
+      <td>89 : 103</td>
+    </tr>
+    <tr>
+      <td>302</td>
+      <td>34</td>
+      <td>10.05.2026 16:30</td>
+      <td>Basketball Löwen Braunschweig</td>
+      <td>NINERS Chemnitz</td>
+      <td>104 : 90</td>
+    </tr>
+    <tr>
+      <td>303</td>
+      <td>34</td>
+      <td>10.05.2026 16:30</td>
+      <td>ROSTOCK SEAWOLVES</td>
+      <td>Veolia Towers Hamburg</td>
+      <td>103 : 71</td>
+    </tr>
+    <tr>
+      <td>304</td>
+      <td>34</td>
+      <td>10.05.2026 16:30</td>
+      <td>SKYLINERS</td>
+      <td>ratiopharm ulm</td>
+      <td>64 : 103</td>
+    </tr>
+    <tr>
+      <td>305</td>
+      <td>34</td>
+      <td>10.05.2026 16:30</td>
+      <td>VET-CONCEPT Gladiators Trier</td>
+      <td>SYNTAINICS MBC</td>
+      <td>85 : 78</td>
+    </tr>
+    <tr>
+      <td>306</td>
+      <td>34</td>
+      <td>10.05.2026 16:30</td>
+      <td>FC Bayern München Basketball</td>
+      <td>EWE Baskets Oldenburg</td>
+      <td>77 : 67</td>
+    </tr>
+  </tbody>
+</table>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -250,184 +411,106 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-<h3>Ergebnisse</h3>
-<table class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>nr</th>
-      <th>sptag</th>
-      <th>date</th>
-      <th>home</th>
-      <th>guest</th>
-      <th>score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>289</td>
-      <td>33</td>
-      <td>07.05.2026 18:30</td>
-      <td>NINERS Chemnitz</td>
-      <td>SKYLINERS</td>
-      <td>86 : 82</td>
-    </tr>
-    <tr>
-      <td>290</td>
-      <td>33</td>
-      <td>07.05.2026 18:30</td>
-      <td>MHP RIESEN Ludwigsburg</td>
-      <td>FC Bayern München Basketball</td>
-      <td>78 : 86</td>
-    </tr>
-    <tr>
-      <td>292</td>
-      <td>33</td>
-      <td>07.05.2026 20:00</td>
-      <td>Veolia Towers Hamburg</td>
-      <td>Fitness First Würzburg Baskets</td>
-      <td>73 : 90</td>
-    </tr>
-    <tr>
-      <td>293</td>
-      <td>33</td>
-      <td>07.05.2026 20:00</td>
-      <td>Science City Jena</td>
-      <td>MLP Academics Heidelberg</td>
-      <td>81 : 79</td>
-    </tr>
-    <tr>
-      <td>294</td>
-      <td>33</td>
-      <td>08.05.2026 18:30</td>
-      <td>SYNTAINICS MBC</td>
-      <td>BMA365 Bamberg Baskets</td>
-      <td>82 : 99</td>
-    </tr>
-    <tr>
-      <td>295</td>
-      <td>33</td>
-      <td>08.05.2026 18:30</td>
-      <td>RASTA Vechta</td>
-      <td>ROSTOCK SEAWOLVES</td>
-      <td>78 : 90</td>
-    </tr>
-    <tr>
-      <td>296</td>
-      <td>33</td>
-      <td>08.05.2026 20:00</td>
-      <td>Telekom Baskets Bonn</td>
-      <td>VET-CONCEPT Gladiators Trier</td>
-      <td>102 : 77</td>
-    </tr>
-    <tr>
-      <td>297</td>
-      <td>33</td>
-      <td>08.05.2026 20:00</td>
-      <td>EWE Baskets Oldenburg</td>
-      <td>Basketball Löwen Braunschweig</td>
-      <td>93 : 84</td>
-    </tr>
-    <tr>
-      <td>298</td>
-      <td>34</td>
-      <td>10.05.2026 16:30</td>
-      <td>ALBA BERLIN</td>
-      <td>Science City Jena</td>
-      <td>83 : 65</td>
-    </tr>
-    <tr>
-      <td>299</td>
-      <td>34</td>
-      <td>10.05.2026 16:30</td>
-      <td>Fitness First Würzburg Baskets</td>
-      <td>MHP RIESEN Ludwigsburg</td>
-      <td>75 : 58</td>
-    </tr>
-    <tr>
-      <td>300</td>
-      <td>34</td>
-      <td>10.05.2026 16:30</td>
-      <td>BMA365 Bamberg Baskets</td>
-      <td>Telekom Baskets Bonn</td>
-      <td>102 : 83</td>
-    </tr>
-    <tr>
-      <td>301</td>
-      <td>34</td>
-      <td>10.05.2026 16:30</td>
-      <td>MLP Academics Heidelberg</td>
-      <td>RASTA Vechta</td>
-      <td>89 : 103</td>
-    </tr>
-    <tr>
-      <td>302</td>
-      <td>34</td>
-      <td>10.05.2026 16:30</td>
-      <td>Basketball Löwen Braunschweig</td>
-      <td>NINERS Chemnitz</td>
-      <td>104 : 90</td>
-    </tr>
-    <tr>
-      <td>303</td>
-      <td>34</td>
-      <td>10.05.2026 16:30</td>
-      <td>ROSTOCK SEAWOLVES</td>
-      <td>Veolia Towers Hamburg</td>
-      <td>103 : 71</td>
-    </tr>
-    <tr>
-      <td>304</td>
-      <td>34</td>
-      <td>10.05.2026 16:30</td>
-      <td>SKYLINERS</td>
-      <td>ratiopharm ulm</td>
-      <td>64 : 103</td>
-    </tr>
-    <tr>
-      <td>305</td>
-      <td>34</td>
-      <td>10.05.2026 16:30</td>
-      <td>VET-CONCEPT Gladiators Trier</td>
-      <td>SYNTAINICS MBC</td>
-      <td>85 : 78</td>
-    </tr>
-    <tr>
-      <td>306</td>
-      <td>34</td>
-      <td>10.05.2026 16:30</td>
-      <td>FC Bayern München Basketball</td>
-      <td>EWE Baskets Oldenburg</td>
-      <td>77 : 67</td>
-    </tr>
-  </tbody>
-</table>
-</details>
-<details data-liga='51521'>
-<summary><span class='liga-icon red'></span><b>1. Bundesliga (BBL) - Playoff Viertelfinale (Senioren; Liganr.: 2)</b></summary>
-</details>
-</details>
-<details data-sub='Unbekannt'>
-<summary class='subgroup-header'>Unbekannt</summary>
-<details data-liga='51522'>
-<summary><span class='liga-icon red'></span><b>Unbekannte Liga</b></summary>
-</details>
-<details data-liga='51523'>
-<summary><span class='liga-icon red'></span><b>Unbekannte Liga</b></summary>
-</details>
-<details data-liga='99999'>
-<summary><span class='liga-icon red'></span><b>Unbekannte Liga</b></summary>
-</details>
-</details>
-</details>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
-<details data-cat='K2'>
-<summary class='group-header'>Bundesligen – ProA</summary>
-<details data-sub='Senioren'>
-<summary class='subgroup-header'>Senioren</summary>
-<details data-liga='51529'>
-<summary><span class='liga-icon red'></span><b>Herren ProA (Senioren; Liganr.: 10)</b></summary>
+</div>
+</details><details >
+
+<summary>
+    <b>1. Bundesliga (BBL) - Playoff Viertelfinale (Senioren; Liganr.: 2) (Liga 51521)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Unbekannte Liga (Liga 51522)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Unbekannte Liga (Liga 51523)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Unbekannte Liga (Liga 99999)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Herren ProA (Senioren; Liganr.: 10) (Liga 51529)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -604,11 +687,24 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='51530'>
-<summary><span class='liga-icon red'></span><b>Herren ProA Play-Off 1/4-Finale (Senioren; Liganr.: 11)</b></summary>
-<h3>Ergebnisse</h3>
-<table class="dataframe">
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Herren ProA Play-Off 1/4-Finale (Senioren; Liganr.: 11) (Liga 51530)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon green'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>nr</th>
@@ -702,8 +798,10 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-<h3>Restspielplan</h3>
-<table class="dataframe">
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>nr</th>
@@ -715,30 +813,6 @@ function openBezirkSchwaben(){
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>2005796</td>
-      <td>3</td>
-      <td>13.05.2026 19:00</td>
-      <td>Eisbären Bremerhaven</td>
-      <td>Artland Dragons</td>
-      <td>Stadthalle Bremerhaven</td>
-    </tr>
-    <tr>
-      <td>2005798</td>
-      <td>3</td>
-      <td>13.05.2026 19:30</td>
-      <td>HAKRO Merlins Crailsheim</td>
-      <td>GIESSEN 46ers</td>
-      <td>Hakro-Arena</td>
-    </tr>
-    <tr>
-      <td>2005801</td>
-      <td>4</td>
-      <td>14.05.2026 19:00</td>
-      <td>Bozic Estriche Knights Kirchheim</td>
-      <td>BG Göttingen</td>
-      <td>Sporthalle Stadtmitte (Alleenschule)</td>
-    </tr>
     <tr>
       <td>2005800</td>
       <td>4</td>
@@ -781,27 +855,64 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='51531'>
-<summary><span class='liga-icon red'></span><b>Herren ProA Play-Off 1/2-Finale (Senioren; Liganr.: 12)</b></summary>
-</details>
-</details>
-<details data-sub='Unbekannt'>
-<summary class='subgroup-header'>Unbekannt</summary>
-<details data-liga='51532'>
-<summary><span class='liga-icon red'></span><b>Unbekannte Liga</b></summary>
-</details>
-</details>
-</details>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
-<details data-cat='K3'>
-<summary class='group-header'>Bayern – Bezirk Schwaben</summary>
-<details data-sub='Senioren'>
-<summary class='subgroup-header'>Senioren</summary>
-<details data-liga='50499'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga Herren 25/26 (Senioren Schwaben; Liganr.: 22004)</b></summary>
+</div>
+</details><details >
+
+<summary>
+    <b>Herren ProA Play-Off 1/2-Finale (Senioren; Liganr.: 12) (Liga 51531)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Unbekannte Liga (Liga 51532)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga Herren 25/26 (Senioren Schwaben; Liganr.: 22004) (Liga 50499)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50499.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -906,11 +1017,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50501'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga Damen Nord 25/26 (Senioren Schwaben; Liganr.: 22013)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50499.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50499.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga Damen Nord 25/26 (Senioren Schwaben; Liganr.: 22013) (Liga 50501)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50501.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -979,11 +1105,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50502'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga Damen Süd 25/26 (Senioren Schwaben; Liganr.: 22014)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50501.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50501.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga Damen Süd 25/26 (Senioren Schwaben; Liganr.: 22014) (Liga 50502)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50502.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1052,11 +1193,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50523'>
-<summary><span class='liga-icon red'></span><b>BOLD Playoffs 25/26 (Senioren Schwaben; Liganr.: 22080)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50502.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50502.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>BOLD Playoffs 25/26 (Senioren Schwaben; Liganr.: 22080) (Liga 50523)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50523.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1107,17 +1263,66 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50526'>
-<summary><span class='liga-icon red'></span><b>Bezirkspokal Herren 25/26 (Senioren Schwaben; Liganr.: 22002)</b></summary>
-</details>
-<details data-liga='50528'>
-<summary><span class='liga-icon red'></span><b>Bezirkspokal Damen 25/26 (Senioren Schwaben; Liganr.: 22001)</b></summary>
-</details>
-<details data-liga='50530'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga Herren Süd 25/26 (Senioren Schwaben; Liganr.: 22011)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50523.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50523.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirkspokal Herren 25/26 (Senioren Schwaben; Liganr.: 22002) (Liga 50526)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50526.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50526.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50526.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirkspokal Damen 25/26 (Senioren Schwaben; Liganr.: 22001) (Liga 50528)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50528.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50528.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50528.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga Herren Süd 25/26 (Senioren Schwaben; Liganr.: 22011) (Liga 50530)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50530.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1204,11 +1409,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50531'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga Herren Nord 25/26 (Senioren Schwaben; Liganr.: 22012)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50530.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50530.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga Herren Nord 25/26 (Senioren Schwaben; Liganr.: 22012) (Liga 50531)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50531.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1295,11 +1515,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50571'>
-<summary><span class='liga-icon red'></span><b>Bezirksklasse Herren Nord 25/26 (Senioren Schwaben; Liganr.: 22006)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50531.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50531.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksklasse Herren Nord 25/26 (Senioren Schwaben; Liganr.: 22006) (Liga 50571)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50571.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1377,11 +1612,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50575'>
-<summary><span class='liga-icon red'></span><b>Bezirksklasse Herren Mitte 25/26 (Senioren Schwaben; Liganr.: 22007)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50571.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50571.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksklasse Herren Mitte 25/26 (Senioren Schwaben; Liganr.: 22007) (Liga 50575)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50575.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1468,11 +1718,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50577'>
-<summary><span class='liga-icon red'></span><b>Bezirksklasse Herren Süd 25/26 (Senioren Schwaben; Liganr.: 22008)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50575.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50575.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksklasse Herren Süd 25/26 (Senioren Schwaben; Liganr.: 22008) (Liga 50577)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50577.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1550,14 +1815,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-</details>
-<details data-sub='U20'>
-<summary class='subgroup-header'>U20</summary>
-<details data-liga='50503'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U20 männlich 25/26 (U20 Schwaben; Liganr.: 22020)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50577.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50577.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U20 männlich 25/26 (U20 Schwaben; Liganr.: 22020) (Liga 50503)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50503.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1635,17 +1912,46 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50504'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U20 weiblich 25/26 - siehe BOLU18W (U20 Schwaben; Liganr.: 22021)</b></summary>
-</details>
-</details>
-<details data-sub='U18'>
-<summary class='subgroup-header'>U18</summary>
-<details data-liga='50505'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U18 männlich 25/26 (U18 Schwaben; Liganr.: 22022)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50503.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50503.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U20 weiblich 25/26 - siehe BOLU18W (U20 Schwaben; Liganr.: 22021) (Liga 50504)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50504.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<p><i>Keine Tabelle vorhanden.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50504.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50504.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U18 männlich 25/26 (U18 Schwaben; Liganr.: 22022) (Liga 50505)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50505.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1750,11 +2056,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50506'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U18 weiblich 25/26 (U18 Schwaben; Liganr.: 22025)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50505.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50505.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U18 weiblich 25/26 (U18 Schwaben; Liganr.: 22025) (Liga 50506)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50506.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1823,11 +2144,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50532'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U18 männlich Nord 25/26 (U18 Schwaben; Liganr.: 22023)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50506.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50506.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U18 männlich Nord 25/26 (U18 Schwaben; Liganr.: 22023) (Liga 50532)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50532.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -1914,11 +2250,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50533'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U18 männlich Süd 25/26 (U18 Schwaben; Liganr.: 22024)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50532.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50532.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U18 männlich Süd 25/26 (U18 Schwaben; Liganr.: 22024) (Liga 50533)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50533.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2005,14 +2356,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-</details>
-<details data-sub='U16'>
-<summary class='subgroup-header'>U16</summary>
-<details data-liga='50507'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U16 männlich 25/26 (U16 Schwaben; Liganr.: 22026)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50533.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50533.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U16 männlich 25/26 (U16 Schwaben; Liganr.: 22026) (Liga 50507)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50507.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2117,11 +2480,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50508'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U16 weiblich 25/26 (U16 Schwaben; Liganr.: 22029)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50507.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50507.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U16 weiblich 25/26 (U16 Schwaben; Liganr.: 22029) (Liga 50508)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50508.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2199,11 +2577,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50534'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U16 männlich Nord 25/26 (U16 Schwaben; Liganr.: 22027)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50508.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50508.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U16 männlich Nord 25/26 (U16 Schwaben; Liganr.: 22027) (Liga 50534)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50534.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2290,11 +2683,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50536'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U16 männlich Süd 25/26 (U16 Schwaben; Liganr.: 22028)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50534.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50534.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U16 männlich Süd 25/26 (U16 Schwaben; Liganr.: 22028) (Liga 50536)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50536.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2381,11 +2789,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50539'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U16 männlich Mitte 25/26 (U16 Schwaben; Liganr.: 22044)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50536.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50536.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U16 männlich Mitte 25/26 (U16 Schwaben; Liganr.: 22044) (Liga 50539)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50539.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2472,14 +2895,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-</details>
-<details data-sub='U14'>
-<summary class='subgroup-header'>U14</summary>
-<details data-liga='50512'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U14 männlich 25/26 (U14 Schwaben; Liganr.: 22030)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50539.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50539.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U14 männlich 25/26 (U14 Schwaben; Liganr.: 22030) (Liga 50512)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50512.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2548,11 +2983,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50513'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U14 weiblich 25/26 (U14 Schwaben; Liganr.: 22033)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50512.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50512.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U14 weiblich 25/26 (U14 Schwaben; Liganr.: 22033) (Liga 50513)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50513.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2639,11 +3089,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50541'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U14 männlich Nord 25/26 (U14 Schwaben; Liganr.: 22031)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50513.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50513.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U14 männlich Nord 25/26 (U14 Schwaben; Liganr.: 22031) (Liga 50541)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50541.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2712,11 +3177,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50542'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U14 männlich Süd 25/26 (U14 Schwaben; Liganr.: 22032)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50541.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50541.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U14 männlich Süd 25/26 (U14 Schwaben; Liganr.: 22032) (Liga 50542)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50542.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2803,11 +3283,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50545'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U14 männlich Mitte Süd 25/26 (U14 Schwaben; Liganr.: 22042)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50542.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50542.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U14 männlich Mitte Süd 25/26 (U14 Schwaben; Liganr.: 22042) (Liga 50545)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50545.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2885,11 +3380,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='51173'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U14 männlich Mitte Nord 25/26 (U14 Schwaben; Liganr.: 22075)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50545.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50545.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U14 männlich Mitte Nord 25/26 (U14 Schwaben; Liganr.: 22075) (Liga 51173)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51173.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -2967,14 +3477,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-</details>
-<details data-sub='U12'>
-<summary class='subgroup-header'>U12</summary>
-<details data-liga='50517'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U12 gemischt 25/26 (U12 Schwaben; Liganr.: 22034)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51173.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51173.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U12 gemischt 25/26 (U12 Schwaben; Liganr.: 22034) (Liga 50517)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50517.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3079,11 +3601,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50519'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U12 weiblich 25/26 (U12 Schwaben; Liganr.: 22037)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50517.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50517.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U12 weiblich 25/26 (U12 Schwaben; Liganr.: 22037) (Liga 50519)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50519.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3152,11 +3689,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50547'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U12 gemischt Nord 25/26 (U12 Schwaben; Liganr.: 22035)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50519.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50519.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U12 gemischt Nord 25/26 (U12 Schwaben; Liganr.: 22035) (Liga 50547)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50547.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3234,11 +3786,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50549'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U12 gemischt Süd 25/26 (U12 Schwaben; Liganr.: 22036)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50547.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50547.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U12 gemischt Süd 25/26 (U12 Schwaben; Liganr.: 22036) (Liga 50549)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50549.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3316,11 +3883,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50551'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U12 gemischt Mitte 25/26 (U12 Schwaben; Liganr.: 22043)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50549.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50549.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U12 gemischt Mitte 25/26 (U12 Schwaben; Liganr.: 22043) (Liga 50551)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50551.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3398,14 +3980,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-</details>
-<details data-sub='U10'>
-<summary class='subgroup-header'>U10</summary>
-<details data-liga='50520'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U10 gemischt 25/26 (U10 Schwaben; Liganr.: 22038)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50551.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50551.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U10 gemischt 25/26 (U10 Schwaben; Liganr.: 22038) (Liga 50520)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50520.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3474,11 +4068,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50521'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U10 weiblich 25/26 (U10 Schwaben; Liganr.: 22040)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50520.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50520.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U10 weiblich 25/26 (U10 Schwaben; Liganr.: 22040) (Liga 50521)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50521.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3529,11 +4138,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50553'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U10 gemischt Nord 25/26 (U10 Schwaben; Liganr.: 22045)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50521.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50521.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U10 gemischt Nord 25/26 (U10 Schwaben; Liganr.: 22045) (Liga 50553)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50553.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3629,11 +4253,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-<details data-liga='50555'>
-<summary><span class='liga-icon red'></span><b>Bezirksliga U10 gemischt Süd 25/26 (U10 Schwaben; Liganr.: 22046)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50553.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50553.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksliga U10 gemischt Süd 25/26 (U10 Schwaben; Liganr.: 22046) (Liga 50555)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50555.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3720,14 +4359,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-</details>
-<details data-sub='U9'>
-<summary class='subgroup-header'>U9</summary>
-<details data-liga='51178'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U9 gemischt 25/26 (U9 Schwaben; Liganr.: 22039)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50555.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50555.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U9 gemischt 25/26 (U9 Schwaben; Liganr.: 22039) (Liga 51178)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51178.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3796,14 +4447,26 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-</details>
-<details data-sub='U8'>
-<summary class='subgroup-header'>U8</summary>
-<details data-liga='50522'>
-<summary><span class='liga-icon red'></span><b>Bezirksoberliga U8 gemischt 25/26 (U8 Schwaben; Liganr.: 22041)</b></summary>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51178.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51178.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details >
+
+<summary>
+    <b>Bezirksoberliga U8 gemischt 25/26 (U8 Schwaben; Liganr.: 22041) (Liga 50522)</b>
+    <span class='summary-right'>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_50522.html?nocache=1' target='_blank'>Details</a>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
-<table class="dataframe">
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th>Platz</th>
@@ -3863,10 +4526,12 @@ function openBezirkSchwaben(){
     </tr>
   </tbody>
 </table>
-</details>
-</details>
-</details>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<p class='ligalink'>Das ICON im Text ist grundsätzlich ein <span style='color:green; font-weight:bold;'>✔</span> (grüner Haken).<br>Wenn die Prüfung negativ ist, erscheint stattdessen ein <span style='color:red; font-weight:bold;'>✖</span> (rotes X).<br><br><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_50522.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_50522.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
+</div>
+</details>
 
 </body>
 </html>
