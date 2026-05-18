@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+<meta charset='utf-8'>
+<title>1. Bundesliga (Toyota DBBL) (Liganr.: 51542)</title>
+
+<style>
+/* --- Grundlayout --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 15px;
+    background: #f7f7f7;
+    color: #222;
+    font-size: 14px;
+}
+
+h1 { margin-bottom: 4px; font-size: 22px; text-align:left; }
+h2 { margin-top: 20px; font-size: 15px; border-bottom: 1px solid #444; padding-bottom: 2px; text-align:left; }
+h4 { margin-top: 10px; font-size: 14px; text-align:left; }
+
+.section { margin-left: 10px; margin-top: 4px; }
+
+/* --- Tabellen kompakt + rechtsbündig --- */
+table {
+    border-collapse: collapse;
+    margin-top: 6px;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 12px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 2px 4px;
+    white-space: nowrap;
+    text-align: right;
+}
+
+th {
+    background: #003366;
+    color: white;
+    font-weight: bold;
+    text-align: right;
+}
+
+td.left { text-align: left; }
+
+tr:nth-child(even) { background: #f2f2f2; }
+tr:hover { background: #e8eefc; }
+
+/* --- Punktgruppenfarben --- */
+.bluepts a { color: #1d4ed8; font-weight: bold; }
+.orangepts a { color: #c2410c; font-weight: bold; }
+
+/* --- Highlighting Restspielplan & fehlende Ergebnisse --- */
+.row-today { background: #ffdd99 !important; }
+.cell-past { background: #ff9999 !important; }
+.team-orange { color: #c2410c; font-weight: bold; }
+
+/* --- Mini-Rot für Zusatzwerte --- */
+.mini-red {
+    color: red;
+    font-size: 10px;
+    margin-left: 2px;
+}
+
+/* --- Details / Pfeile --- */
+details summary { list-style: none; }
+details summary::-webkit-details-marker { display: none; }
+details summary::marker { display: none; }
+details summary::before {
+    content: "▶ ";
+    font-size: 14px;
+}
+details[open] summary::before { content: "▼ "; }
+details { margin: 6px 0; }
+
+/* --- Buttons --- */
+.toggle-all { margin: 8px 0 4px 0; }
+.toggle-all button {
+    margin-right: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid #003366;
+    background: #003366;
+    color: white;
+    cursor: pointer;
+}
+.toggle-all button:hover { background: #002244; }
+
+/* --------------------------------------------- */
+/* KREUZTABELLE – NEUE CSS-KLASSEN                */
+/* --------------------------------------------- */
+
+td.win  { background:#c8f7c5; }
+td.loss { background:#f7c5c5; }
+td.past { background:orange; }
+td.nodata { background:#e0e0e0; }
+
+td.diag {
+    background: repeating-linear-gradient(
+        45deg,
+        #ccc,
+        #ccc 4px,
+        #eee 4px,
+        #eee 8px
+    );
+}
+
+/* --------------------------------------------- */
+/* LIVESCORE – OPTISCH VERBESSERT (ERWEITERT)     */
+/* --------------------------------------------- */
+
+.livescore-box {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    width: 520px;
+}
+
+.ls-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ls-team {
+    font-size: 20px;
+    font-weight: bold;
+    width: 48%;
+}
+
+.ls-score {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    width: 32%;
+}
+
+.ls-date {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.team-winner {
+    background-color: orange;
+    color: black;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+.werbung-box {
+    width: 260px;
+    margin-left: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.werbung-bild {
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.werbung-text {
+    margin-top: 8px;
+    font-style: italic;
+}
+
+</style>
+</head>
+<body>
+
+<details id='wasfindeichhier'>
+<summary><b>Was finde ich hier</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<h2>Allgemein</h2>
+
+<p>
+Diese Auswertung kann man für alle Ligen erstellen, die auf der basketball-bund.net-Seite verfügbar sind.<br>
+Die entsprechenden Daten werden über die DBB-API ermittelt:<br>
+<a href="https://github.com/OliEder/basketball-bund-api/blob/main/DBB-API-COMPLETE-DOCUMENTATION.md?utm_source=copilot.com" target="_blank">
+https://github.com/OliEder/basketball-bund-api/blob/main/DBB-API-COMPLETE-DOCUMENTATION.md?utm_source=copilot.com
+</a>
+</p>
+
+<p>
+Aktuell wird dies automatisiert u.a. für die BBL und für die ProA erzeugt.<br>
+Das Pythonscript verarbeitet eine Eingabedatei, in der die jeweilige Liga‑ID steht (BBL 51520, ProA 51529).
+</p>
+
+<p>
+Die automatisch erzeugten Dateien werden im GitHub‑Repository abgelegt:<br>
+BBL:
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1
+</a><br>
+ProA:
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_51529.html?nocache=1
+</a>
+</p>
+
+
+<p>Die Tabelle und der Reiter in der Punktezahltabelle mit den meisten Punkten ist aufgeklappt.<br>
+Alle anderen muss man händisch aufklappen.</p>
+
+<p><b>Tabelle</b></p>
+
+<p>Die aktuelle Tabelle. In dieser Tabelle wird hervorgehoben, wenn zwei oder mehr Teams punktgleich sind.<br>
+Hierzu werden zwei unterschiedliche Farben benutzt, um die Punktzahl‑Gruppen zu unterscheiden.<br>
+Wenn man auf eine farbige Punktzahl klickt, geht die entsprechende Punktzahl-Gruppe auf<br>
+und eine geöffnete Punktzahl-Gruppe schließt.</p>
+
+<p><b>Punktzahl‑Gruppen</b></p>
+
+<p>Unter Punktzahl‑Gruppe sind Teams mit der gleichen Punktzahl zusammengefasst.<br>
+Hier werden zuerst die Teams aufgeführt.<br>
+Dann werden die gespielten Spiele dieser Teams gegeneinander aufgelistet und daraus eine eigene Tabelle ermittelt.<br>
+Anschließend folgt der Restspielplan dieser Teams.<br>
+Teams aus dieser Punktzahl‑Gruppe werden im Restspielplan farbig dargestellt.</p>
+
+<p><b>Ergebnisse – ausklappbar</b></p>
+
+<p>Sämtliche bisher gespielten Ergebnisse.<br>
+Aktuellste Ergebnisse stehen oben.</p>
+
+<p><b>Restspielplan (alle ausstehenden Spiele) – ausklappbar</b></p>
+
+<p>Nach Restspielplan<br>
+Welche Spiele stehen noch an?<br>
+Spiele, die am Erstellungstag stattfinden, werden farblich (orange) hinterlegt.</p>
+
+<p><b>Spielplan pro Team – incl. Ergebnisse – ausklappbar</b></p>
+
+<p>Es werden dann alle Vereine angezeigt.<br>
+Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan inklusive Ergebnisse zu sehen.</p>
+
+</div>
+</details>
+
+<div class='toggle-all'>
+  <button onclick="openAllDetails()">Alles öffnen</button>
+  <button onclick="closeAllDetails()">Alles schließen</button>
+</div>
+<hr>
+<h1>1. Bundesliga (Toyota DBBL) (Liganr.: 51542)</h1>
+<details><summary><b>Livescore</b></summary>
+<div class='section'>
+
+    <div style='padding:10px; background:#fff3cd; border:1px solid #ffeeba; border-radius:6px; margin:10px 0;'>
+        <b>Hinweis:</b><br>
+        Keine Spiele gestern/heute/morgen gefunden.<br>
+        Livescore wurde noch nicht aktiviert für die LigenID 51542.
+    </div>
+    </div></details><h2>Tabelle – Stand: 18.05.26 11:01</h2><div style='display:flex; align-items:flex-start;'><div style='flex:0 0 auto; margin-right:30px; max-width:750px;'><table><tr><th>Rang</th><th>Team</th><th>Spiele</th><th>S</th><th>N</th><th>Punkte</th><th>Diff</th><th>§</th></tr><tr><td>1.</td><td class='left'>Rutronik Stars Keltern</td><td>22</td><td>21</td><td>1</td><td>42</td><td>294</td><td>0</td></tr><tr><td>2.</td><td class='left'>Saarlouis Royals</td><td>22</td><td>16</td><td>6</td><td>32</td><td>157</td><td>0</td></tr><tr><td>3.</td><td class='left'>TK Hannover Luchse</td><td>22</td><td>13</td><td>9</td><td>26</td><td>57</td><td>0</td></tr><tr><td>4.</td><td class='left'>ALBA Berlin</td><td>22 <span class='mini-red'>(1)</span></td><td>12</td><td>10</td><td>23</td><td>68</td><td>1</td></tr><tr><td>5.</td><td class='left'>GiroLive Panthers Osnabrück</td><td>22</td><td>11</td><td>11</td><td class='bluepts'><a href='#pg_22'>22</a></td><td>-27</td><td>0</td></tr><tr><td>6.</td><td class='left'>SYNTAINICS MBC</td><td>22</td><td>11</td><td>11</td><td class='bluepts'><a href='#pg_22'>22</a></td><td>33</td><td>0</td></tr><tr><td>7.</td><td class='left'>BC Marburg</td><td>22</td><td>11</td><td>11</td><td class='bluepts'><a href='#pg_22'>22</a></td><td>-11</td><td>0</td></tr><tr><td>8.</td><td class='left'>Herner TC</td><td>22</td><td>6</td><td>16</td><td class='orangepts'><a href='#pg_12'>12</a></td><td>-120</td><td>0</td></tr><tr><td>9.</td><td class='left'>Eigner Angels Nördlingen</td><td>22</td><td>6</td><td>16</td><td class='orangepts'><a href='#pg_12'>12</a></td><td>-149</td><td>0</td></tr><tr><td>10.</td><td class='left'>Eisvögel USC Freiburg</td><td>22</td><td>3</td><td>19</td><td>6</td><td>-302</td><td>0</td></tr></table></div>
+<div class="werbung-box">
+    <a href="https://shop.lenahaunstetter.de/" target="_blank">
+        <img src="https://sevenup51.github.io/BASKETOPEN/assets/img/infoshop_kompl.webp"
+             alt="Lena Haunstetter Shop" class="werbung-bild">
+    </a>
+</div>
+</div><h2>Kreuztabelle</h2><details class='liga-block'><summary>Kreuztabelle</summary><div class='section'><table style='font-size:11px;'>
+<tr><th></th>
+<th>RSK</th>
+<th>SLS</th>
+<th>TKH</th>
+<th>ALBA</th>
+<th>OSC</th>
+<th>MBC</th>
+<th>MAR</th>
+<th>HTC</th>
+<th>NOE</th>
+<th>FB</th>
+</tr>
+<tr><th>RSK</th>
+<td class='diag'></td>
+<td class='win'>79:64</td>
+<td class='win'>86:67</td>
+<td class='win'>70:62</td>
+<td class='win'>77:69</td>
+<td class='win'>82:74</td>
+<td class='win'>76:64</td>
+<td class='win'>83:71</td>
+<td class='win'>82:60</td>
+<td class='win'>85:56</td>
+</tr>
+<tr><th>SLS</th>
+<td class='loss'>69:77</td>
+<td class='diag'></td>
+<td class='win'>72:63</td>
+<td class='win'>68:63</td>
+<td class='win'>70:65</td>
+<td class='win'>71:55</td>
+<td class='win'>91:76</td>
+<td class='win'>86:62</td>
+<td class='win'>82:70</td>
+<td class='win'>90:61</td>
+</tr>
+<tr><th>TKH</th>
+<td class='win'>66:63</td>
+<td class='loss'>74:75</td>
+<td class='diag'></td>
+<td class='win'>77:71</td>
+<td class='loss'>72:74</td>
+<td class='win'>71:70</td>
+<td class='loss'>63:71</td>
+<td class='win'>80:76</td>
+<td class='win'>79:56</td>
+<td class='win'>73:47</td>
+</tr>
+<tr><th>ALBA</th>
+<td class='loss'>51:69</td>
+<td class='loss'>58:70</td>
+<td class='win'>76:62</td>
+<td class='diag'></td>
+<td class='win'>73:53</td>
+<td class='win'>72:64</td>
+<td class='win'>77:69</td>
+<td class='win'>70:64</td>
+<td class='loss'>64:66</td>
+<td class='win'>66:47</td>
+</tr>
+<tr><th>OSC</th>
+<td class='loss'>56:68</td>
+<td class='win'>73:65</td>
+<td class='loss'>57:71</td>
+<td class='win'>20:0</td>
+<td class='diag'></td>
+<td class='win'>59:55</td>
+<td class='win'>70:54</td>
+<td class='win'>73:72</td>
+<td class='loss'>66:78</td>
+<td class='win'>92:65</td>
+</tr>
+<tr><th>MBC</th>
+<td class='loss'>60:71</td>
+<td class='loss'>65:74</td>
+<td class='loss'>62:71</td>
+<td class='win'>82:76</td>
+<td class='loss'>79:81</td>
+<td class='diag'></td>
+<td class='win'>75:66</td>
+<td class='win'>71:65</td>
+<td class='win'>78:55</td>
+<td class='win'>78:68</td>
+</tr>
+<tr><th>MAR</th>
+<td class='loss'>60:71</td>
+<td class='loss'>57:61</td>
+<td class='win'>89:61</td>
+<td class='loss'>50:68</td>
+<td class='loss'>70:76</td>
+<td class='win'>79:78</td>
+<td class='diag'></td>
+<td class='win'>83:69</td>
+<td class='win'>67:44</td>
+<td class='win'>88:68</td>
+</tr>
+<tr><th>HTC</th>
+<td class='loss'>60:71</td>
+<td class='loss'>63:76</td>
+<td class='win'>73:63</td>
+<td class='loss'>59:73</td>
+<td class='win'>59:54</td>
+<td class='loss'>71:77</td>
+<td class='loss'>69:72</td>
+<td class='diag'></td>
+<td class='win'>78:70</td>
+<td class='win'>75:62</td>
+</tr>
+<tr><th>NOE</th>
+<td class='loss'>63:83</td>
+<td class='win'>81:61</td>
+<td class='loss'>67:74</td>
+<td class='loss'>65:68</td>
+<td class='loss'>59:67</td>
+<td class='loss'>60:69</td>
+<td class='loss'>67:69</td>
+<td class='loss'>77:79</td>
+<td class='diag'></td>
+<td class='win'>76:75</td>
+</tr>
+<tr><th>FB</th>
+<td class='loss'>67:86</td>
+<td class='loss'>67:85</td>
+<td class='loss'>66:76</td>
+<td class='win'>68:58</td>
+<td class='loss'>52:67</td>
+<td class='loss'>47:72</td>
+<td class='loss'>70:78</td>
+<td class='win'>71:65</td>
+<td class='loss'>64:73</td>
+<td class='diag'></td>
+</tr>
+</table></div></details><h2>Punktzahl‑Gruppen</h2><details id='pg_22' class='pg-block'><summary>Teams mit 22 Punkten</summary><div class='section'><table><tr><th>Team</th><th>Punkte</th><th>Spiele</th></tr><tr><td class='left'>GiroLive Panthers Osnabrück</td><td>22</td><td>22</td></tr><tr><td class='left'>SYNTAINICS MBC</td><td>22</td><td>22</td></tr><tr><td class='left'>BC Marburg</td><td>22</td><td>22</td></tr></table><h4>Direkte Duelle</h4><table><tr><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td>03.10.25 16:00</td><td class='left'><span class='team-orange'>BC Marburg</span></td><td class='left'><span class='team-orange'>SYNTAINICS MBC</span></td><td>79:78</td></tr><tr><td>26.10.25 16:00</td><td class='left'><span class='team-orange'>GiroLive Panthers Osnabrück</span></td><td class='left'><span class='team-orange'>BC Marburg</span></td><td>70:54</td></tr><tr><td>08.11.25 19:00</td><td class='left'><span class='team-orange'>SYNTAINICS MBC</span></td><td class='left'><span class='team-orange'>GiroLive Panthers Osnabrück</span></td><td>79:81</td></tr><tr><td>07.12.25 16:00</td><td class='left'><span class='team-orange'>SYNTAINICS MBC</span></td><td class='left'><span class='team-orange'>BC Marburg</span></td><td>75:66</td></tr><tr><td>25.01.26 16:00</td><td class='left'><span class='team-orange'>GiroLive Panthers Osnabrück</span></td><td class='left'><span class='team-orange'>SYNTAINICS MBC</span></td><td>59:55</td></tr><tr><td>08.02.26 16:00</td><td class='left'><span class='team-orange'>SYNTAINICS MBC</span></td><td class='left'><span class='team-orange'>GiroLive Panthers Osnabrück</span></td><td>69:66</td></tr><tr><td>21.02.26 19:00</td><td class='left'><span class='team-orange'>BC Marburg</span></td><td class='left'><span class='team-orange'>GiroLive Panthers Osnabrück</span></td><td>70:76</td></tr></table><h4>Direkter Vergleich</h4><table><tr><th>Rang</th><th>Team</th><th>Spiele</th><th>+P</th><th>-P</th><th>erzielt</th><th>erhalten</th><th>Diff</th><th>§</th></tr><tr><td>1.</td><td class='left'><span class='team-orange'>GiroLive Panthers Osnabrück</span></td><td>5</td><td>8</td><td>2</td><td>352</td><td>327</td><td>25</td><td>0</td></tr><tr><td>2.</td><td class='left'><span class='team-orange'>SYNTAINICS MBC</span></td><td>5</td><td>4</td><td>6</td><td>356</td><td>351</td><td>5</td><td>0</td></tr><tr><td>3.</td><td class='left'><span class='team-orange'>BC Marburg</span></td><td>4</td><td>2</td><td>6</td><td>269</td><td>299</td><td>-30</td><td>0</td></tr></table><h4>Restspiele</h4><p>Keine Restspiele.</p></div></details><details id='pg_12' class='pg-block'><summary>Teams mit 12 Punkten</summary><div class='section'><table><tr><th>Team</th><th>Punkte</th><th>Spiele</th></tr><tr><td class='left'>Herner TC</td><td>12</td><td>22</td></tr><tr><td class='left'>Eigner Angels Nördlingen</td><td>12</td><td>22</td></tr></table><h4>Direkte Duelle</h4><table><tr><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td>27.09.25 18:00</td><td class='left'><span class='team-orange'>Herner TC</span></td><td class='left'><span class='team-orange'>Eigner Angels Nördlingen</span></td><td>78:70</td></tr><tr><td>07.02.26 18:30</td><td class='left'><span class='team-orange'>Eigner Angels Nördlingen</span></td><td class='left'><span class='team-orange'>Herner TC</span></td><td>77:79</td></tr></table><h4>Direkter Vergleich</h4><table><tr><th>Rang</th><th>Team</th><th>Spiele</th><th>+P</th><th>-P</th><th>erzielt</th><th>erhalten</th><th>Diff</th><th>§</th></tr><tr><td>1.</td><td class='left'><span class='team-orange'>Herner TC</span></td><td>2</td><td>4</td><td>0</td><td>157</td><td>147</td><td>10</td><td>0</td></tr><tr><td>2.</td><td class='left'><span class='team-orange'>Eigner Angels Nördlingen</span></td><td>2</td><td>0</td><td>4</td><td>147</td><td>157</td><td>-10</td><td>0</td></tr></table><h4>Restspiele</h4><p>Keine Restspiele.</p></div></details><h2>Ergebnisse</h2><details id='block_ergebnisse'><summary>Ergebnisse</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td>22</td><td>28.03.26 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>Herner TC</td><td>73:54</td></tr><tr><td>22</td><td>28.03.26 18:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>SYNTAINICS MBC</td><td>82:74</td></tr><tr><td>22</td><td>28.03.26 18:00</td><td class='left'>BC Marburg</td><td class='left'>Saarlouis Royals</td><td>62:95</td></tr><tr><td>22</td><td>28.03.26 18:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Eisvögel USC Freiburg</td><td>75:74</td></tr><tr><td>22</td><td>28.03.26 18:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>TK Hannover Luchse</td><td>59:81</td></tr><tr><td>21</td><td>22.03.26 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>ALBA Berlin</td><td>68:58</td></tr><tr><td>21</td><td>22.03.26 16:00</td><td class='left'>Herner TC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>68:58</td></tr><tr><td>21</td><td>22.03.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>BC Marburg</td><td>87:82</td></tr><tr><td>21</td><td>22.03.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>TK Hannover Luchse</td><td>92:83</td></tr><tr><td>21</td><td>22.03.26 16:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Eigner Angels Nördlingen</td><td>68:49</td></tr><tr><td>20</td><td>27.02.26 19:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Herner TC</td><td>90:67</td></tr><tr><td>20</td><td>22.02.26 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Saarlouis Royals</td><td>76:71</td></tr><tr><td>20</td><td>22.02.26 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Rutronik Stars Keltern</td><td>69:78</td></tr><tr><td>20</td><td>21.02.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>GiroLive Panthers Osnabrück</td><td>70:76</td></tr><tr><td>20</td><td>20.02.26 19:30</td><td class='left'>ALBA Berlin</td><td class='left'>SYNTAINICS MBC</td><td>75:65</td></tr><tr><td>19</td><td>15.02.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Eisvögel USC Freiburg</td><td>81:52</td></tr><tr><td>19</td><td>15.02.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>ALBA Berlin</td><td>58:83</td></tr><tr><td>19</td><td>14.02.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>Eigner Angels Nördlingen</td><td>63:59</td></tr><tr><td>19</td><td>14.02.26 18:00</td><td class='left'>Herner TC</td><td class='left'>SYNTAINICS MBC</td><td>65:71</td></tr><tr><td>19</td><td>13.02.26 19:00</td><td class='left'>Saarlouis Royals</td><td class='left'>TK Hannover Luchse</td><td>72:63</td></tr><tr><td>18</td><td>08.02.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>69:66</td></tr><tr><td>18</td><td>08.02.26 16:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Rutronik Stars Keltern</td><td>65:76</td></tr><tr><td>18</td><td>08.02.26 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>ALBA Berlin</td><td>69:60</td></tr><tr><td>18</td><td>07.02.26 19:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>BC Marburg</td><td>74:89</td></tr><tr><td>18</td><td>07.02.26 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Herner TC</td><td>77:79</td></tr><tr><td>17</td><td>01.02.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Eigner Angels Nördlingen</td><td>82:60</td></tr><tr><td>17</td><td>01.02.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Eisvögel USC Freiburg</td><td>78:68</td></tr><tr><td>17</td><td>01.02.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>TK Hannover Luchse</td><td>57:71</td></tr><tr><td>17</td><td>31.01.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>Herner TC</td><td>83:69</td></tr><tr><td>17</td><td>31.01.26 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>Saarlouis Royals</td><td>58:70</td></tr><tr><td>16</td><td>25.01.26 16:00</td><td class='left'>Herner TC</td><td class='left'>Rutronik Stars Keltern</td><td>60:71</td></tr><tr><td>16</td><td>25.01.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>SYNTAINICS MBC</td><td>59:55</td></tr><tr><td>16</td><td>25.01.26 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>BC Marburg</td><td>63:71</td></tr><tr><td>16</td><td>24.01.26 19:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Eisvögel USC Freiburg</td><td>90:61</td></tr><tr><td>16</td><td>24.01.26 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>ALBA Berlin</td><td>65:68</td></tr><tr><td>15</td><td>18.01.26 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>BC Marburg</td><td>91:76</td></tr><tr><td>15</td><td>18.01.26 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>GiroLive Panthers Osnabrück</td><td>73:53</td></tr><tr><td>15</td><td>18.01.26 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Rutronik Stars Keltern</td><td>67:86</td></tr><tr><td>15</td><td>18.01.26 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Eigner Angels Nördlingen</td><td>79:56</td></tr><tr><td>15</td><td>18.01.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Herner TC</td><td>71:65</td></tr><tr><td>14</td><td>11.01.26 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>SYNTAINICS MBC</td><td>60:69</td></tr><tr><td>14</td><td>11.01.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>TK Hannover Luchse</td><td>86:67</td></tr><tr><td>14</td><td>11.01.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Saarlouis Royals</td><td>73:65</td></tr><tr><td>14</td><td>10.01.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>Eisvögel USC Freiburg</td><td>88:68</td></tr><tr><td>14</td><td>10.01.26 18:00</td><td class='left'>Herner TC</td><td class='left'>ALBA Berlin</td><td>59:73</td></tr><tr><td>13</td><td>30.12.25 19:30</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Eigner Angels Nördlingen</td><td>64:73</td></tr><tr><td>13</td><td>30.12.25 19:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Rutronik Stars Keltern</td><td>56:68</td></tr><tr><td>13</td><td>30.12.25 18:30</td><td class='left'>TK Hannover Luchse</td><td class='left'>SYNTAINICS MBC</td><td>71:70</td></tr><tr><td>13</td><td>28.12.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Herner TC</td><td>86:62</td></tr><tr><td>13</td><td>28.12.25 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>BC Marburg</td><td>77:69</td></tr><tr><td>12</td><td>21.12.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>TK Hannover Luchse</td><td>66:76</td></tr><tr><td>12</td><td>21.12.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Saarlouis Royals</td><td>79:64</td></tr><tr><td>12</td><td>21.12.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>ALBA Berlin</td><td>82:76</td></tr><tr><td>12</td><td>21.12.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>BC Marburg</td><td>67:69</td></tr><tr><td>12</td><td>20.12.25 18:00</td><td class='left'>Herner TC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>59:54</td></tr><tr><td>11</td><td>14.12.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>SYNTAINICS MBC</td><td>71:55</td></tr><tr><td>11</td><td>14.12.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Eigner Angels Nördlingen</td><td>66:78</td></tr><tr><td>11</td><td>14.12.25 16:00</td><td class='left'>BC Marburg</td><td class='left'>Rutronik Stars Keltern</td><td>60:71</td></tr><tr><td>11</td><td>13.12.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>TK Hannover Luchse</td><td>76:62</td></tr><tr><td>11</td><td>13.12.25 18:00</td><td class='left'>Herner TC</td><td class='left'>Eisvögel USC Freiburg</td><td>75:62</td></tr><tr><td>10</td><td>07.12.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>BC Marburg</td><td>75:66</td></tr><tr><td>10</td><td>07.12.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Herner TC</td><td>80:76</td></tr><tr><td>10</td><td>06.12.25 19:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>GiroLive Panthers Osnabrück</td><td>52:67</td></tr><tr><td>10</td><td>06.12.25 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Saarlouis Royals</td><td>81:61</td></tr><tr><td>10</td><td>06.12.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>Rutronik Stars Keltern</td><td>51:69</td></tr><tr><td>9</td><td>30.11.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Rutronik Stars Keltern</td><td>69:77</td></tr><tr><td>9</td><td>30.11.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>GiroLive Panthers Osnabrück</td><td>59:67</td></tr><tr><td>9</td><td>29.11.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>TK Hannover Luchse</td><td>89:61</td></tr><tr><td>9</td><td>29.11.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>Eisvögel USC Freiburg</td><td>66:47</td></tr><tr><td>9</td><td>29.11.25 18:00</td><td class='left'>Herner TC</td><td class='left'>SYNTAINICS MBC</td><td>71:77</td></tr><tr><td>8</td><td>23.11.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Saarlouis Royals</td><td>67:85</td></tr><tr><td>8</td><td>23.11.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>BC Marburg</td><td>76:64</td></tr><tr><td>8</td><td>23.11.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Herner TC</td><td>73:72</td></tr><tr><td>8</td><td>23.11.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>ALBA Berlin</td><td>77:71</td></tr><tr><td>8</td><td>22.11.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Eigner Angels Nördlingen</td><td>78:55</td></tr><tr><td>7</td><td>08.11.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>Saarlouis Royals</td><td>57:61</td></tr><tr><td>7</td><td>08.11.25 19:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>79:81</td></tr><tr><td>7</td><td>08.11.25 18:30</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>ALBA Berlin</td><td>70:62</td></tr><tr><td>7</td><td>08.11.25 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Eisvögel USC Freiburg</td><td>76:75</td></tr><tr><td>7</td><td>08.11.25 18:00</td><td class='left'>Herner TC</td><td class='left'>TK Hannover Luchse</td><td>73:63</td></tr><tr><td>6</td><td>02.11.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>ALBA Berlin</td><td>68:63</td></tr><tr><td>6</td><td>02.11.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>SYNTAINICS MBC</td><td>47:72</td></tr><tr><td>6</td><td>02.11.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Herner TC</td><td>83:71</td></tr><tr><td>6</td><td>02.11.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>GiroLive Panthers Osnabrück</td><td>72:74</td></tr><tr><td>6</td><td>01.11.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>Eigner Angels Nördlingen</td><td>67:44</td></tr><tr><td>5</td><td>26.10.25 16:00</td><td class='left'>Herner TC</td><td class='left'>Saarlouis Royals</td><td>63:76</td></tr><tr><td>5</td><td>26.10.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>BC Marburg</td><td>70:54</td></tr><tr><td>5</td><td>26.10.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Rutronik Stars Keltern</td><td>63:83</td></tr><tr><td>5</td><td>26.10.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Eisvögel USC Freiburg</td><td>73:47</td></tr><tr><td>5</td><td>25.10.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>SYNTAINICS MBC</td><td>72:64</td></tr><tr><td>4</td><td>19.10.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Eigner Angels Nördlingen</td><td>82:70</td></tr><tr><td>4</td><td>19.10.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Herner TC</td><td>71:65</td></tr><tr><td>4</td><td>19.10.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>GiroLive Panthers Osnabrück</td><td>77:69</td></tr><tr><td>4</td><td>19.10.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>TK Hannover Luchse</td><td>62:71</td></tr><tr><td>4</td><td>18.10.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>ALBA Berlin</td><td>50:68</td></tr><tr><td>3</td><td>12.10.25 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>Eigner Angels Nördlingen</td><td>64:66</td></tr><tr><td>3</td><td>12.10.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Rutronik Stars Keltern</td><td>60:71</td></tr><tr><td>3</td><td>12.10.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Eisvögel USC Freiburg</td><td>92:65</td></tr><tr><td>3</td><td>12.10.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Saarlouis Royals</td><td>74:75</td></tr><tr><td>3</td><td>11.10.25 18:00</td><td class='left'>Herner TC</td><td class='left'>BC Marburg</td><td>69:72</td></tr><tr><td>2</td><td>05.10.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>GiroLive Panthers Osnabrück</td><td>70:65</td></tr><tr><td>2</td><td>05.10.25 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>Herner TC</td><td>70:64</td></tr><tr><td>2</td><td>05.10.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>TK Hannover Luchse</td><td>67:74</td></tr><tr><td>2</td><td>03.10.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Eisvögel USC Freiburg</td><td>85:56</td></tr><tr><td>2</td><td>03.10.25 16:00</td><td class='left'>BC Marburg</td><td class='left'>SYNTAINICS MBC</td><td>79:78</td></tr><tr><td>1</td><td>28.09.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>ALBA Berlin</td><td>20:0</td></tr><tr><td>1</td><td>28.09.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Rutronik Stars Keltern</td><td>66:63</td></tr><tr><td>1</td><td>27.09.25 19:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>BC Marburg</td><td>70:78</td></tr><tr><td>1</td><td>27.09.25 19:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Saarlouis Royals</td><td>65:74</td></tr><tr><td>1</td><td>27.09.25 18:00</td><td class='left'>Herner TC</td><td class='left'>Eigner Angels Nördlingen</td><td>78:70</td></tr></table></div></details><h2>Restspielplan</h2><details id='block_rest'><summary>Restspielplan</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th></tr></table></div></details><h2>Spielplan pro Team</h2><details id='block_teams'><summary>Spielplan pro Team</summary><div class='section'><details><summary>Rutronik Stars Keltern</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>28.09.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Rutronik Stars Keltern</td><td>66:63</td></tr><tr><td class=''>2</td><td class=''>03.10.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Eisvögel USC Freiburg</td><td>85:56</td></tr><tr><td class=''>3</td><td class=''>12.10.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Rutronik Stars Keltern</td><td>60:71</td></tr><tr><td class=''>4</td><td class=''>19.10.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>GiroLive Panthers Osnabrück</td><td>77:69</td></tr><tr><td class=''>5</td><td class=''>26.10.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Rutronik Stars Keltern</td><td>63:83</td></tr><tr><td class=''>6</td><td class=''>02.11.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Herner TC</td><td>83:71</td></tr><tr><td class=''>7</td><td class=''>08.11.25 18:30</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>ALBA Berlin</td><td>70:62</td></tr><tr><td class=''>8</td><td class=''>23.11.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>BC Marburg</td><td>76:64</td></tr><tr><td class=''>9</td><td class=''>30.11.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Rutronik Stars Keltern</td><td>69:77</td></tr><tr><td class=''>10</td><td class=''>06.12.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>Rutronik Stars Keltern</td><td>51:69</td></tr><tr><td class=''>11</td><td class=''>14.12.25 16:00</td><td class='left'>BC Marburg</td><td class='left'>Rutronik Stars Keltern</td><td>60:71</td></tr><tr><td class=''>12</td><td class=''>21.12.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Saarlouis Royals</td><td>79:64</td></tr><tr><td class=''>13</td><td class=''>30.12.25 19:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Rutronik Stars Keltern</td><td>56:68</td></tr><tr><td class=''>14</td><td class=''>11.01.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>TK Hannover Luchse</td><td>86:67</td></tr><tr><td class=''>15</td><td class=''>18.01.26 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Rutronik Stars Keltern</td><td>67:86</td></tr><tr><td class=''>16</td><td class=''>25.01.26 16:00</td><td class='left'>Herner TC</td><td class='left'>Rutronik Stars Keltern</td><td>60:71</td></tr><tr><td class=''>17</td><td class=''>01.02.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Eigner Angels Nördlingen</td><td>82:60</td></tr><tr><td class=''>18</td><td class=''>08.02.26 16:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Rutronik Stars Keltern</td><td>65:76</td></tr><tr><td class=''>19</td><td class=''>15.02.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Eisvögel USC Freiburg</td><td>81:52</td></tr><tr><td class=''>20</td><td class=''>22.02.26 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Rutronik Stars Keltern</td><td>69:78</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>BC Marburg</td><td>87:82</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>SYNTAINICS MBC</td><td>82:74</td></tr></table></div></details><details><summary>Saarlouis Royals</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>27.09.25 19:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Saarlouis Royals</td><td>65:74</td></tr><tr><td class=''>2</td><td class=''>05.10.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>GiroLive Panthers Osnabrück</td><td>70:65</td></tr><tr><td class=''>3</td><td class=''>12.10.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Saarlouis Royals</td><td>74:75</td></tr><tr><td class=''>4</td><td class=''>19.10.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Eigner Angels Nördlingen</td><td>82:70</td></tr><tr><td class=''>5</td><td class=''>26.10.25 16:00</td><td class='left'>Herner TC</td><td class='left'>Saarlouis Royals</td><td>63:76</td></tr><tr><td class=''>6</td><td class=''>02.11.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>ALBA Berlin</td><td>68:63</td></tr><tr><td class=''>7</td><td class=''>08.11.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>Saarlouis Royals</td><td>57:61</td></tr><tr><td class=''>8</td><td class=''>23.11.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Saarlouis Royals</td><td>67:85</td></tr><tr><td class=''>9</td><td class=''>30.11.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Rutronik Stars Keltern</td><td>69:77</td></tr><tr><td class=''>10</td><td class=''>06.12.25 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Saarlouis Royals</td><td>81:61</td></tr><tr><td class=''>11</td><td class=''>14.12.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>SYNTAINICS MBC</td><td>71:55</td></tr><tr><td class=''>12</td><td class=''>21.12.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Saarlouis Royals</td><td>79:64</td></tr><tr><td class=''>13</td><td class=''>28.12.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Herner TC</td><td>86:62</td></tr><tr><td class=''>14</td><td class=''>11.01.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Saarlouis Royals</td><td>73:65</td></tr><tr><td class=''>15</td><td class=''>18.01.26 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>BC Marburg</td><td>91:76</td></tr><tr><td class=''>16</td><td class=''>24.01.26 19:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Eisvögel USC Freiburg</td><td>90:61</td></tr><tr><td class=''>17</td><td class=''>31.01.26 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>Saarlouis Royals</td><td>58:70</td></tr><tr><td class=''>18</td><td class=''>08.02.26 16:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Rutronik Stars Keltern</td><td>65:76</td></tr><tr><td class=''>19</td><td class=''>13.02.26 19:00</td><td class='left'>Saarlouis Royals</td><td class='left'>TK Hannover Luchse</td><td>72:63</td></tr><tr><td class=''>20</td><td class=''>22.02.26 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Saarlouis Royals</td><td>76:71</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Eigner Angels Nördlingen</td><td>68:49</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>BC Marburg</td><td class='left'>Saarlouis Royals</td><td>62:95</td></tr></table></div></details><details><summary>TK Hannover Luchse</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>28.09.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Rutronik Stars Keltern</td><td>66:63</td></tr><tr><td class=''>2</td><td class=''>05.10.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>TK Hannover Luchse</td><td>67:74</td></tr><tr><td class=''>3</td><td class=''>12.10.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Saarlouis Royals</td><td>74:75</td></tr><tr><td class=''>4</td><td class=''>19.10.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>TK Hannover Luchse</td><td>62:71</td></tr><tr><td class=''>5</td><td class=''>26.10.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Eisvögel USC Freiburg</td><td>73:47</td></tr><tr><td class=''>6</td><td class=''>02.11.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>GiroLive Panthers Osnabrück</td><td>72:74</td></tr><tr><td class=''>7</td><td class=''>08.11.25 18:00</td><td class='left'>Herner TC</td><td class='left'>TK Hannover Luchse</td><td>73:63</td></tr><tr><td class=''>8</td><td class=''>23.11.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>ALBA Berlin</td><td>77:71</td></tr><tr><td class=''>9</td><td class=''>29.11.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>TK Hannover Luchse</td><td>89:61</td></tr><tr><td class=''>10</td><td class=''>07.12.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Herner TC</td><td>80:76</td></tr><tr><td class=''>11</td><td class=''>13.12.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>TK Hannover Luchse</td><td>76:62</td></tr><tr><td class=''>12</td><td class=''>21.12.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>TK Hannover Luchse</td><td>66:76</td></tr><tr><td class=''>13</td><td class=''>30.12.25 18:30</td><td class='left'>TK Hannover Luchse</td><td class='left'>SYNTAINICS MBC</td><td>71:70</td></tr><tr><td class=''>14</td><td class=''>11.01.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>TK Hannover Luchse</td><td>86:67</td></tr><tr><td class=''>15</td><td class=''>18.01.26 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Eigner Angels Nördlingen</td><td>79:56</td></tr><tr><td class=''>16</td><td class=''>25.01.26 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>BC Marburg</td><td>63:71</td></tr><tr><td class=''>17</td><td class=''>01.02.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>TK Hannover Luchse</td><td>57:71</td></tr><tr><td class=''>18</td><td class=''>08.02.26 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>ALBA Berlin</td><td>69:60</td></tr><tr><td class=''>19</td><td class=''>13.02.26 19:00</td><td class='left'>Saarlouis Royals</td><td class='left'>TK Hannover Luchse</td><td>72:63</td></tr><tr><td class=''>20</td><td class=''>27.02.26 19:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Herner TC</td><td>90:67</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>TK Hannover Luchse</td><td>92:83</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>TK Hannover Luchse</td><td>59:81</td></tr></table></div></details><details><summary>ALBA Berlin</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>28.09.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>ALBA Berlin</td><td>20:0</td></tr><tr><td class=''>2</td><td class=''>05.10.25 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>Herner TC</td><td>70:64</td></tr><tr><td class=''>3</td><td class=''>12.10.25 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>Eigner Angels Nördlingen</td><td>64:66</td></tr><tr><td class=''>4</td><td class=''>18.10.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>ALBA Berlin</td><td>50:68</td></tr><tr><td class=''>5</td><td class=''>25.10.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>SYNTAINICS MBC</td><td>72:64</td></tr><tr><td class=''>6</td><td class=''>02.11.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>ALBA Berlin</td><td>68:63</td></tr><tr><td class=''>7</td><td class=''>08.11.25 18:30</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>ALBA Berlin</td><td>70:62</td></tr><tr><td class=''>8</td><td class=''>23.11.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>ALBA Berlin</td><td>77:71</td></tr><tr><td class=''>9</td><td class=''>29.11.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>Eisvögel USC Freiburg</td><td>66:47</td></tr><tr><td class=''>10</td><td class=''>06.12.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>Rutronik Stars Keltern</td><td>51:69</td></tr><tr><td class=''>11</td><td class=''>13.12.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>TK Hannover Luchse</td><td>76:62</td></tr><tr><td class=''>12</td><td class=''>21.12.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>ALBA Berlin</td><td>82:76</td></tr><tr><td class=''>13</td><td class=''>28.12.25 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>BC Marburg</td><td>77:69</td></tr><tr><td class=''>14</td><td class=''>10.01.26 18:00</td><td class='left'>Herner TC</td><td class='left'>ALBA Berlin</td><td>59:73</td></tr><tr><td class=''>15</td><td class=''>18.01.26 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>GiroLive Panthers Osnabrück</td><td>73:53</td></tr><tr><td class=''>16</td><td class=''>24.01.26 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>ALBA Berlin</td><td>65:68</td></tr><tr><td class=''>17</td><td class=''>31.01.26 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>Saarlouis Royals</td><td>58:70</td></tr><tr><td class=''>18</td><td class=''>08.02.26 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>ALBA Berlin</td><td>69:60</td></tr><tr><td class=''>19</td><td class=''>15.02.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>ALBA Berlin</td><td>58:83</td></tr><tr><td class=''>20</td><td class=''>20.02.26 19:30</td><td class='left'>ALBA Berlin</td><td class='left'>SYNTAINICS MBC</td><td>75:65</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>ALBA Berlin</td><td>68:58</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>Herner TC</td><td>73:54</td></tr></table></div></details><details><summary>GiroLive Panthers Osnabrück</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>28.09.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>ALBA Berlin</td><td>20:0</td></tr><tr><td class=''>2</td><td class=''>05.10.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>GiroLive Panthers Osnabrück</td><td>70:65</td></tr><tr><td class=''>3</td><td class=''>12.10.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Eisvögel USC Freiburg</td><td>92:65</td></tr><tr><td class=''>4</td><td class=''>19.10.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>GiroLive Panthers Osnabrück</td><td>77:69</td></tr><tr><td class=''>5</td><td class=''>26.10.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>BC Marburg</td><td>70:54</td></tr><tr><td class=''>6</td><td class=''>02.11.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>GiroLive Panthers Osnabrück</td><td>72:74</td></tr><tr><td class=''>7</td><td class=''>08.11.25 19:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>79:81</td></tr><tr><td class=''>8</td><td class=''>23.11.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Herner TC</td><td>73:72</td></tr><tr><td class=''>9</td><td class=''>30.11.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>GiroLive Panthers Osnabrück</td><td>59:67</td></tr><tr><td class=''>10</td><td class=''>06.12.25 19:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>GiroLive Panthers Osnabrück</td><td>52:67</td></tr><tr><td class=''>11</td><td class=''>14.12.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Eigner Angels Nördlingen</td><td>66:78</td></tr><tr><td class=''>12</td><td class=''>20.12.25 18:00</td><td class='left'>Herner TC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>59:54</td></tr><tr><td class=''>13</td><td class=''>30.12.25 19:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Rutronik Stars Keltern</td><td>56:68</td></tr><tr><td class=''>14</td><td class=''>11.01.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Saarlouis Royals</td><td>73:65</td></tr><tr><td class=''>15</td><td class=''>18.01.26 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>GiroLive Panthers Osnabrück</td><td>73:53</td></tr><tr><td class=''>16</td><td class=''>25.01.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>SYNTAINICS MBC</td><td>59:55</td></tr><tr><td class=''>17</td><td class=''>01.02.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>TK Hannover Luchse</td><td>57:71</td></tr><tr><td class=''>18</td><td class=''>08.02.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>69:66</td></tr><tr><td class=''>19</td><td class=''>15.02.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>ALBA Berlin</td><td>58:83</td></tr><tr><td class=''>20</td><td class=''>21.02.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>GiroLive Panthers Osnabrück</td><td>70:76</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>Herner TC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>68:58</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>TK Hannover Luchse</td><td>59:81</td></tr></table></div></details><details><summary>SYNTAINICS MBC</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>27.09.25 19:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Saarlouis Royals</td><td>65:74</td></tr><tr><td class=''>2</td><td class=''>03.10.25 16:00</td><td class='left'>BC Marburg</td><td class='left'>SYNTAINICS MBC</td><td>79:78</td></tr><tr><td class=''>3</td><td class=''>12.10.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Rutronik Stars Keltern</td><td>60:71</td></tr><tr><td class=''>4</td><td class=''>19.10.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>TK Hannover Luchse</td><td>62:71</td></tr><tr><td class=''>5</td><td class=''>25.10.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>SYNTAINICS MBC</td><td>72:64</td></tr><tr><td class=''>6</td><td class=''>02.11.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>SYNTAINICS MBC</td><td>47:72</td></tr><tr><td class=''>7</td><td class=''>08.11.25 19:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>79:81</td></tr><tr><td class=''>8</td><td class=''>22.11.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Eigner Angels Nördlingen</td><td>78:55</td></tr><tr><td class=''>9</td><td class=''>29.11.25 18:00</td><td class='left'>Herner TC</td><td class='left'>SYNTAINICS MBC</td><td>71:77</td></tr><tr><td class=''>10</td><td class=''>07.12.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>BC Marburg</td><td>75:66</td></tr><tr><td class=''>11</td><td class=''>14.12.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>SYNTAINICS MBC</td><td>71:55</td></tr><tr><td class=''>12</td><td class=''>21.12.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>ALBA Berlin</td><td>82:76</td></tr><tr><td class=''>13</td><td class=''>30.12.25 18:30</td><td class='left'>TK Hannover Luchse</td><td class='left'>SYNTAINICS MBC</td><td>71:70</td></tr><tr><td class=''>14</td><td class=''>11.01.26 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>SYNTAINICS MBC</td><td>60:69</td></tr><tr><td class=''>15</td><td class=''>18.01.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Herner TC</td><td>71:65</td></tr><tr><td class=''>16</td><td class=''>25.01.26 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>SYNTAINICS MBC</td><td>59:55</td></tr><tr><td class=''>17</td><td class=''>01.02.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Eisvögel USC Freiburg</td><td>78:68</td></tr><tr><td class=''>18</td><td class=''>08.02.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>69:66</td></tr><tr><td class=''>19</td><td class=''>14.02.26 18:00</td><td class='left'>Herner TC</td><td class='left'>SYNTAINICS MBC</td><td>65:71</td></tr><tr><td class=''>20</td><td class=''>20.02.26 19:30</td><td class='left'>ALBA Berlin</td><td class='left'>SYNTAINICS MBC</td><td>75:65</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>TK Hannover Luchse</td><td>92:83</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>SYNTAINICS MBC</td><td>82:74</td></tr></table></div></details><details><summary>BC Marburg</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>27.09.25 19:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>BC Marburg</td><td>70:78</td></tr><tr><td class=''>2</td><td class=''>03.10.25 16:00</td><td class='left'>BC Marburg</td><td class='left'>SYNTAINICS MBC</td><td>79:78</td></tr><tr><td class=''>3</td><td class=''>11.10.25 18:00</td><td class='left'>Herner TC</td><td class='left'>BC Marburg</td><td>69:72</td></tr><tr><td class=''>4</td><td class=''>18.10.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>ALBA Berlin</td><td>50:68</td></tr><tr><td class=''>5</td><td class=''>26.10.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>BC Marburg</td><td>70:54</td></tr><tr><td class=''>6</td><td class=''>01.11.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>Eigner Angels Nördlingen</td><td>67:44</td></tr><tr><td class=''>7</td><td class=''>08.11.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>Saarlouis Royals</td><td>57:61</td></tr><tr><td class=''>8</td><td class=''>23.11.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>BC Marburg</td><td>76:64</td></tr><tr><td class=''>9</td><td class=''>29.11.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>TK Hannover Luchse</td><td>89:61</td></tr><tr><td class=''>10</td><td class=''>07.12.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>BC Marburg</td><td>75:66</td></tr><tr><td class=''>11</td><td class=''>14.12.25 16:00</td><td class='left'>BC Marburg</td><td class='left'>Rutronik Stars Keltern</td><td>60:71</td></tr><tr><td class=''>12</td><td class=''>21.12.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>BC Marburg</td><td>67:69</td></tr><tr><td class=''>13</td><td class=''>28.12.25 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>BC Marburg</td><td>77:69</td></tr><tr><td class=''>14</td><td class=''>10.01.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>Eisvögel USC Freiburg</td><td>88:68</td></tr><tr><td class=''>15</td><td class=''>18.01.26 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>BC Marburg</td><td>91:76</td></tr><tr><td class=''>16</td><td class=''>25.01.26 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>BC Marburg</td><td>63:71</td></tr><tr><td class=''>17</td><td class=''>31.01.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>Herner TC</td><td>83:69</td></tr><tr><td class=''>18</td><td class=''>07.02.26 19:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>BC Marburg</td><td>74:89</td></tr><tr><td class=''>19</td><td class=''>14.02.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>Eigner Angels Nördlingen</td><td>63:59</td></tr><tr><td class=''>20</td><td class=''>21.02.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>GiroLive Panthers Osnabrück</td><td>70:76</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>BC Marburg</td><td>87:82</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>BC Marburg</td><td class='left'>Saarlouis Royals</td><td>62:95</td></tr></table></div></details><details><summary>Herner TC</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>27.09.25 18:00</td><td class='left'>Herner TC</td><td class='left'>Eigner Angels Nördlingen</td><td>78:70</td></tr><tr><td class=''>2</td><td class=''>05.10.25 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>Herner TC</td><td>70:64</td></tr><tr><td class=''>3</td><td class=''>11.10.25 18:00</td><td class='left'>Herner TC</td><td class='left'>BC Marburg</td><td>69:72</td></tr><tr><td class=''>4</td><td class=''>19.10.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Herner TC</td><td>71:65</td></tr><tr><td class=''>5</td><td class=''>26.10.25 16:00</td><td class='left'>Herner TC</td><td class='left'>Saarlouis Royals</td><td>63:76</td></tr><tr><td class=''>6</td><td class=''>02.11.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Herner TC</td><td>83:71</td></tr><tr><td class=''>7</td><td class=''>08.11.25 18:00</td><td class='left'>Herner TC</td><td class='left'>TK Hannover Luchse</td><td>73:63</td></tr><tr><td class=''>8</td><td class=''>23.11.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Herner TC</td><td>73:72</td></tr><tr><td class=''>9</td><td class=''>29.11.25 18:00</td><td class='left'>Herner TC</td><td class='left'>SYNTAINICS MBC</td><td>71:77</td></tr><tr><td class=''>10</td><td class=''>07.12.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Herner TC</td><td>80:76</td></tr><tr><td class=''>11</td><td class=''>13.12.25 18:00</td><td class='left'>Herner TC</td><td class='left'>Eisvögel USC Freiburg</td><td>75:62</td></tr><tr><td class=''>12</td><td class=''>20.12.25 18:00</td><td class='left'>Herner TC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>59:54</td></tr><tr><td class=''>13</td><td class=''>28.12.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Herner TC</td><td>86:62</td></tr><tr><td class=''>14</td><td class=''>10.01.26 18:00</td><td class='left'>Herner TC</td><td class='left'>ALBA Berlin</td><td>59:73</td></tr><tr><td class=''>15</td><td class=''>18.01.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Herner TC</td><td>71:65</td></tr><tr><td class=''>16</td><td class=''>25.01.26 16:00</td><td class='left'>Herner TC</td><td class='left'>Rutronik Stars Keltern</td><td>60:71</td></tr><tr><td class=''>17</td><td class=''>31.01.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>Herner TC</td><td>83:69</td></tr><tr><td class=''>18</td><td class=''>07.02.26 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Herner TC</td><td>77:79</td></tr><tr><td class=''>19</td><td class=''>14.02.26 18:00</td><td class='left'>Herner TC</td><td class='left'>SYNTAINICS MBC</td><td>65:71</td></tr><tr><td class=''>20</td><td class=''>27.02.26 19:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Herner TC</td><td>90:67</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>Herner TC</td><td class='left'>GiroLive Panthers Osnabrück</td><td>68:58</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>Herner TC</td><td>73:54</td></tr></table></div></details><details><summary>Eigner Angels Nördlingen</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>27.09.25 18:00</td><td class='left'>Herner TC</td><td class='left'>Eigner Angels Nördlingen</td><td>78:70</td></tr><tr><td class=''>2</td><td class=''>05.10.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>TK Hannover Luchse</td><td>67:74</td></tr><tr><td class=''>3</td><td class=''>12.10.25 16:00</td><td class='left'>ALBA Berlin</td><td class='left'>Eigner Angels Nördlingen</td><td>64:66</td></tr><tr><td class=''>4</td><td class=''>19.10.25 17:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Eigner Angels Nördlingen</td><td>82:70</td></tr><tr><td class=''>5</td><td class=''>26.10.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Rutronik Stars Keltern</td><td>63:83</td></tr><tr><td class=''>6</td><td class=''>01.11.25 19:00</td><td class='left'>BC Marburg</td><td class='left'>Eigner Angels Nördlingen</td><td>67:44</td></tr><tr><td class=''>7</td><td class=''>08.11.25 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Eisvögel USC Freiburg</td><td>76:75</td></tr><tr><td class=''>8</td><td class=''>22.11.25 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Eigner Angels Nördlingen</td><td>78:55</td></tr><tr><td class=''>9</td><td class=''>30.11.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>GiroLive Panthers Osnabrück</td><td>59:67</td></tr><tr><td class=''>10</td><td class=''>06.12.25 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Saarlouis Royals</td><td>81:61</td></tr><tr><td class=''>11</td><td class=''>14.12.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Eigner Angels Nördlingen</td><td>66:78</td></tr><tr><td class=''>12</td><td class=''>21.12.25 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>BC Marburg</td><td>67:69</td></tr><tr><td class=''>13</td><td class=''>30.12.25 19:30</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Eigner Angels Nördlingen</td><td>64:73</td></tr><tr><td class=''>14</td><td class=''>11.01.26 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>SYNTAINICS MBC</td><td>60:69</td></tr><tr><td class=''>15</td><td class=''>18.01.26 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Eigner Angels Nördlingen</td><td>79:56</td></tr><tr><td class=''>16</td><td class=''>24.01.26 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>ALBA Berlin</td><td>65:68</td></tr><tr><td class=''>17</td><td class=''>01.02.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Eigner Angels Nördlingen</td><td>82:60</td></tr><tr><td class=''>18</td><td class=''>07.02.26 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Herner TC</td><td>77:79</td></tr><tr><td class=''>19</td><td class=''>14.02.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>Eigner Angels Nördlingen</td><td>63:59</td></tr><tr><td class=''>20</td><td class=''>22.02.26 16:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Rutronik Stars Keltern</td><td>69:78</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Eigner Angels Nördlingen</td><td>68:49</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Eisvögel USC Freiburg</td><td>75:74</td></tr></table></div></details><details><summary>Eisvögel USC Freiburg</summary><div class='section'><table><tr><th>Spieltag</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th></tr><tr><td class=''>1</td><td class=''>27.09.25 19:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>BC Marburg</td><td>70:78</td></tr><tr><td class=''>2</td><td class=''>03.10.25 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Eisvögel USC Freiburg</td><td>85:56</td></tr><tr><td class=''>3</td><td class=''>12.10.25 16:00</td><td class='left'>GiroLive Panthers Osnabrück</td><td class='left'>Eisvögel USC Freiburg</td><td>92:65</td></tr><tr><td class=''>4</td><td class=''>19.10.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Herner TC</td><td>71:65</td></tr><tr><td class=''>5</td><td class=''>26.10.25 16:00</td><td class='left'>TK Hannover Luchse</td><td class='left'>Eisvögel USC Freiburg</td><td>73:47</td></tr><tr><td class=''>6</td><td class=''>02.11.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>SYNTAINICS MBC</td><td>47:72</td></tr><tr><td class=''>7</td><td class=''>08.11.25 18:30</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Eisvögel USC Freiburg</td><td>76:75</td></tr><tr><td class=''>8</td><td class=''>23.11.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Saarlouis Royals</td><td>67:85</td></tr><tr><td class=''>9</td><td class=''>29.11.25 18:00</td><td class='left'>ALBA Berlin</td><td class='left'>Eisvögel USC Freiburg</td><td>66:47</td></tr><tr><td class=''>10</td><td class=''>06.12.25 19:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>GiroLive Panthers Osnabrück</td><td>52:67</td></tr><tr><td class=''>11</td><td class=''>13.12.25 18:00</td><td class='left'>Herner TC</td><td class='left'>Eisvögel USC Freiburg</td><td>75:62</td></tr><tr><td class=''>12</td><td class=''>21.12.25 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>TK Hannover Luchse</td><td>66:76</td></tr><tr><td class=''>13</td><td class=''>30.12.25 19:30</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Eigner Angels Nördlingen</td><td>64:73</td></tr><tr><td class=''>14</td><td class=''>10.01.26 19:00</td><td class='left'>BC Marburg</td><td class='left'>Eisvögel USC Freiburg</td><td>88:68</td></tr><tr><td class=''>15</td><td class=''>18.01.26 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Rutronik Stars Keltern</td><td>67:86</td></tr><tr><td class=''>16</td><td class=''>24.01.26 19:00</td><td class='left'>Saarlouis Royals</td><td class='left'>Eisvögel USC Freiburg</td><td>90:61</td></tr><tr><td class=''>17</td><td class=''>01.02.26 16:00</td><td class='left'>SYNTAINICS MBC</td><td class='left'>Eisvögel USC Freiburg</td><td>78:68</td></tr><tr><td class=''>18</td><td class=''>07.02.26 19:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>BC Marburg</td><td>74:89</td></tr><tr><td class=''>19</td><td class=''>15.02.26 16:00</td><td class='left'>Rutronik Stars Keltern</td><td class='left'>Eisvögel USC Freiburg</td><td>81:52</td></tr><tr><td class=''>20</td><td class=''>22.02.26 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>Saarlouis Royals</td><td>76:71</td></tr><tr><td class=''>21</td><td class=''>22.03.26 16:00</td><td class='left'>Eisvögel USC Freiburg</td><td class='left'>ALBA Berlin</td><td>68:58</td></tr><tr><td class=''>22</td><td class=''>28.03.26 18:00</td><td class='left'>Eigner Angels Nördlingen</td><td class='left'>Eisvögel USC Freiburg</td><td>75:74</td></tr></table></div></details></div></details>
+<script>
+// =========================================================
+// 1) Zustand der geöffneten Details wiederherstellen
+// =========================================================
+function restoreDetailsState() {
+    const raw = localStorage.getItem("detailsState");
+    if (!raw) return;
+
+    const state = JSON.parse(raw);
+
+    document.querySelectorAll("details").forEach(d => {
+        const key = d.id || d.querySelector("summary")?.textContent.trim();
+        if (state[key]) d.open = true;
+    });
+}
+
+// =========================================================
+// 2) Zustand der geöffneten Details speichern
+// =========================================================
+function saveDetailsState() {
+    const state = {};
+    document.querySelectorAll("details").forEach(d => {
+        state[d.id || d.querySelector("summary")?.textContent.trim()] = d.open;
+    });
+    localStorage.setItem("detailsState", JSON.stringify(state));
+}
+
+window.addEventListener("beforeunload", saveDetailsState);
+window.addEventListener("DOMContentLoaded", restoreDetailsState);
+</script>
+
+
+<script>
+// =========================================================
+// 3) Auto-Refresh nur bei echten Live-Daten
+// =========================================================
+
+async function hasLiveData() {
+    try {
+        const liga = "51542";
+        const url = `https://www.basketball-bund.net/rest/competition/livescore/id/${liga}`;
+        const response = await fetch(url, { cache: "no-store" });
+        const data = await response.json();
+
+        const matches = data?.data?.matches || [];
+        return matches.length > 0;
+    } catch (e) {
+        return false;
+    }
+}
+
+async function conditionalRefresh() {
+    const live = await hasLiveData();
+    if (live) {
+        setTimeout(() => location.reload(), 30000);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", conditionalRefresh);
+</script>
+
+
+<script>
+// =========================================================
+// 4) openAll / closeAll
+// =========================================================
+function openAllDetails() {
+  document.querySelectorAll('details:not(#wasfindeichhier)').forEach(d => d.open = true);
+}
+function closeAllDetails() {
+  document.querySelectorAll('details:not(#wasfindeichhier)').forEach(d => d.open = false);
+}
+
+// =========================================================
+// 5) Punktgruppen-Navigation
+// =========================================================
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll("a[href^='#pg_']").forEach(function(link) {
+    link.addEventListener('click', function(ev) {
+      ev.preventDefault();
+      var targetId = this.getAttribute('href').substring(1);
+      document.querySelectorAll('details.pg-block').forEach(function(d) {
+        d.open = false;
+      });
+      var target = document.getElementById(targetId);
+      if (target) {
+        target.open = true;
+        target.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+    });
+  });
+});
+</script>
+<p style='margin-top:20px; font-size:12px; color:#666;'>Daten entnommen aus öffentlich zugänglichen Informationen auf basketball-bund.net.</p></body></html>
