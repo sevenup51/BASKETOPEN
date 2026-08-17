@@ -3,76 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <title>Basketball WM Damen 2026 Berlin</title>
-
 <style>
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f3f4f6;
-}
 
-.page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-}
-
-h1 { font-size: 2rem; margin-bottom: 10px; font-weight: 700; color: #1f2937; }
-h2 { font-size: 1.5rem; margin-top: 30px; margin-bottom: 12px; font-weight: 600; color: #374151; }
-h3 { font-size: 1.25rem; margin-top: 18px; margin-bottom: 10px; font-weight: 600; color: #4b5563; }
-h4 { font-size: 1.1rem; margin-top: 14px; margin-bottom: 8px; font-weight: 600; color: #4b5563; }
-
-/* Gruppenlayout */
+/* Gruppenlayout – 50% Breite */
 .gruppenphase-block {
     display: flex;
-    gap: 24px;
+    gap: 20px;
     align-items: flex-start;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-.gruppen-links { flex: 3; }
-
-.gruppen-column {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.gruppen-links {
+    flex: 0 0 50%;
 }
 
-/* Werbung rechts */
+/* Werbung rechts schmal */
 .gruppen-rechts {
     width: 220px;
     flex-shrink: 0;
 }
 
-/* Karten */
-.gruppe-card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 16px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+/* Gruppen untereinander */
+.gruppen-column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
+/* Karten kompakt */
+.gruppe-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Länder-Namen: nur so breit wie nötig */
 .gruppe-teams-2col {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: max-content max-content;
+    gap: 6px 12px;
     margin-top: 10px;
 }
 
 .gruppe-teams-2col span {
     background: #e0e7ff;
-    padding: 6px 8px;
-    border-radius: 10px;
+    padding: 4px 8px;
+    border-radius: 8px;
     font-size: 12px;
     text-align: center;
     font-weight: 500;
     color: #1e3a8a;
     border: 1px solid #c7d2fe;
+    white-space: nowrap;
 }
 
 /* Werbung */
@@ -96,42 +80,14 @@ h4 { font-size: 1.1rem; margin-top: 14px; margin-bottom: 8px; font-weight: 600; 
     text-decoration: none;
 }
 
-/* Tabellen kompakt */
-.tabelle {
-    border-collapse: collapse;
-    margin-top: 12px;
-    font-size: 12px;
-    width: auto;
-    table-layout: auto;
+/* Handy-Optimierung */
+@media (max-width: 768px) {
+    .gruppenphase-block { flex-direction: column; }
+    .gruppen-links { width: 100%; }
+    .gruppen-rechts { width: 100%; margin-top: 20px; }
 }
 
-.tabelle th, .tabelle td {
-    border: 1px solid #cbd5e1;
-    padding: 4px 6px;
-    white-space: nowrap;
-    text-align: center;
-}
-
-.tabelle th {
-    background: #e2e8f0;
-    font-weight: 600;
-}
-
-.tabelle tr:nth-child(even) {
-    background: #f8fafc;
-}
-
-/* Playoffs */
-.playoff-block {
-    margin-top: 18px;
-    padding: 14px;
-    border-radius: 14px;
-    border: 1px solid #e5e7eb;
-    background: #ffffff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
 </style>
-
 </head>
 <body>
 
