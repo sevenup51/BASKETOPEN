@@ -4,30 +4,6 @@
 <meta charset="UTF-8">
 <title>Basketball WM Damen 2026 Berlin</title>
 <style>
-/* dein CSS */
-</style>
-</head>
-<body>
-
-<div class="page">
-
-<div class="wm-info">
-    <details>
-        <summary>Was finde ich hier?</summary>
-        <p>
-            Hier der Versuch, die aktuellen Ereignisse bei der Basketball WM der Damen kompakt darzustellen.
-            Dies ist der erste Entwurf, der weiter angepasst wird.<br><br>
-
-            Es findet sich hier der Spielplan, die Tabellen, die Playoffs.<br>
-            Es wird auch bei Punktgleichheit eine Tabelle „Direkter Vergleich“ erstellt.<br>
-            Eventuell wird auch auf eine Seite verwiesen, wo man sich den Livescore anschauen kann.<br><br>
-
-            <strong>Stand 17.08.26</strong>
-        </p>
-    </details>
-</div>
-
-<style>
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     margin: 0;
@@ -67,7 +43,13 @@ h3 {
     color: #4b5563;
 }
 
-/* --- Gruppenphase --- */
+h4 {
+    font-size: 1.1rem;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4b5563;
+}
 
 .gruppenphase-block {
     display: flex;
@@ -120,8 +102,6 @@ h3 {
     border: 1px solid #c7d2fe;
 }
 
-/* --- Werbung --- */
-
 .gruppen-rechts {
     flex: 1;
 }
@@ -139,14 +119,18 @@ h3 {
     border-radius: 12px;
 }
 
-.werbung-box p {
+.werbung-box a {
+    display: block;
     margin-top: 10px;
     font-size: 1rem;
     font-weight: 600;
     color: #374151;
+    text-decoration: none;
 }
 
-/* --- Tabellen --- */
+.werbung-box a:hover {
+    text-decoration: underline;
+}
 
 .tabelle {
     width: 100%;
@@ -173,8 +157,6 @@ h3 {
     background: #f3f4f6;
 }
 
-/* --- Playoffs --- */
-
 .playoff-block {
     margin-top: 18px;
     padding: 14px;
@@ -183,8 +165,19 @@ h3 {
     background: #ffffff;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
-</style>
 
+.wm-info {
+    margin-bottom: 16px;
+}
+
+.wm-info details {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+}
+</style>
 </head>
 <body>
 
@@ -192,15 +185,27 @@ h3 {
 
 <h1>Basketball WM Damen 2026 Berlin</h1>
 
+<div class="wm-info">
+    <details>
+        <summary>Was finde ich hier?</summary>
+        <p>
+            Hier der Versuch, die aktuellen Ereignisse bei der Basketball WM der Damen kompakt darzustellen.
+            Dies ist der erste Entwurf, der weiter angepasst wird.<br><br>
+            Es findet sich hier der Spielplan, die Tabellen, die Playoffs.<br>
+            Es wird auch bei Punktgleichheit eine Tabelle „Direkter Vergleich“ erstellt.<br>
+            Eventuell wird auch auf eine Seite verwiesen, wo man sich den Livescore anschauen kann.<br><br>
+            <strong>Stand 17.08.26</strong>
+        </p>
+    </details>
+</div>
+
 <h2>Gesamtübersicht Spielplan</h2>
 <p><a href="https://basketball.nationalmannschaft.net/wp-content/uploads/sites/3/2026/05/fwbwc-spielplan-berlin-2026.pdf" target="_blank">Spielplan Flyer</a></p>
 
 <h2>Gruppenphase</h2>
 
 <div class="gruppenphase-block">
-
     <div class="gruppen-links">
-
         <div class="gruppen-row">
 
             <div class="gruppe-card">
@@ -237,7 +242,6 @@ h3 {
 
         </div>
     </div>
-
     <div class="gruppen-rechts">
 
 <div class="werbung-box">
@@ -247,13 +251,11 @@ h3 {
              style="width:100%; height:auto; border-radius:12px;">
     </a>
     <a href="https://shop.lenahaunstetter.de/collections/all" target="_blank">
-    Das richtige Outfit für Berlin
-</a>
-
+        Das richtige Outfit für Berlin
+    </a>
 </div>
 
     </div>
-
 </div>
 
 <h2>Gruppe A</h2>
@@ -425,11 +427,11 @@ h3 {
 </tbody></table>
 
 <h3>Direkter Vergleich</h3>
-
+<h4>Direkter Vergleich 1: SPANIEN vs DEUTSCHLAND</h4>
 <table class="tabelle">
 <thead>
 <tr>
-<th>Rang</th><th>Team</th><th>Spiele</th><th>+P</th><th>-P</th><th>erzielt</th><th>erhalten</th><th>Diff</th><th>§</th>
+<th>Rang</th><th>Team</th><th>Spiele</th><th>+P</th><th>-P</th><th>erzielt</th><th>erhalten</th><th>Diff</th>
 </tr>
 </thead>
 <tbody>
@@ -443,7 +445,6 @@ h3 {
 <td>67</td>
 <td>65</td>
 <td>2</td>
-<td>0</td>
 </tr>
 
 <tr>
@@ -455,9 +456,38 @@ h3 {
 <td>65</td>
 <td>67</td>
 <td>-2</td>
-<td>0</td>
 </tr>
-</tbody></table>
+</tbody></table><br><h4>Direkter Vergleich 2: JAPAN vs MALI</h4>
+<table class="tabelle">
+<thead>
+<tr>
+<th>Rang</th><th>Team</th><th>Spiele</th><th>+P</th><th>-P</th><th>erzielt</th><th>erhalten</th><th>Diff</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>1</td>
+<td>MALI</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>61</td>
+<td>60</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>JAPAN</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>60</td>
+<td>61</td>
+<td>-1</td>
+</tr>
+</tbody></table><br>
 
 <h2>Gruppe B</h2>
 
@@ -580,7 +610,15 @@ h3 {
 </tbody></table>
 
 <h3>Direkter Vergleich</h3>
-<p>Kein direkter Vergleich erforderlich.</p>
+<h4>Direkter Vergleich 1: UNGARN vs KOREA</h4>
+<table class="tabelle">
+<thead>
+<tr>
+<th>Rang</th><th>Team</th><th>Spiele</th><th>+P</th><th>-P</th><th>erzielt</th><th>erhalten</th><th>Diff</th>
+</tr>
+</thead>
+<tbody>
+</tbody></table><br>
 
 <h2>Gruppe C</h2>
 
@@ -703,7 +741,15 @@ h3 {
 </tbody></table>
 
 <h3>Direkter Vergleich</h3>
-<p>Kein direkter Vergleich erforderlich.</p>
+<h4>Direkter Vergleich 1: BELGIEN vs AUSTRALIEN</h4>
+<table class="tabelle">
+<thead>
+<tr>
+<th>Rang</th><th>Team</th><th>Spiele</th><th>+P</th><th>-P</th><th>erzielt</th><th>erhalten</th><th>Diff</th>
+</tr>
+</thead>
+<tbody>
+</tbody></table><br>
 
 <h2>Gruppe D</h2>
 
@@ -826,7 +872,15 @@ h3 {
 </tbody></table>
 
 <h3>Direkter Vergleich</h3>
-<p>Kein direkter Vergleich erforderlich.</p>
+<h4>Direkter Vergleich 1: USA vs TSCHECHIEN</h4>
+<table class="tabelle">
+<thead>
+<tr>
+<th>Rang</th><th>Team</th><th>Spiele</th><th>+P</th><th>-P</th><th>erzielt</th><th>erhalten</th><th>Diff</th>
+</tr>
+</thead>
+<tbody>
+</tbody></table><br>
 
 <h2>Final Phase</h2>
 
