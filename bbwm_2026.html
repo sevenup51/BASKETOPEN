@@ -26,28 +26,19 @@
     flex-shrink: 0;
 }
 
-/* 4 Gruppen nebeneinander */
+/* Gruppen A–D untereinander */
 .gruppen-column {
-    display: grid;
-    grid-template-columns: repeat(4, max-content);
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-/* Karten */
-.gruppe-card {
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 10px 12px;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-/* Teams nebeneinander, automatisch ausgerichtet */
+/* Jede Gruppe hat 4 globale Spalten */
 .gruppe-teams-grid {
     display: grid;
     grid-template-columns: repeat(4, max-content);
-    column-gap: 14px;
-    margin-top: 8px;
+    column-gap: 20px;
+    margin-top: 6px;
 }
 
 /* Teamnamen */
@@ -60,6 +51,15 @@
     color: #1e3a8a;
     border: 1px solid #c7d2fe;
     white-space: nowrap;
+}
+
+/* Karten */
+.gruppe-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 /* Tabellen */
@@ -114,9 +114,6 @@
 
 <h2>Gesamtübersicht Spielplan</h2>
 <p><a href="https://basketball.nationalmannschaft.net/wp-content/uploads/sites/3/2026/05/fwbwc-spielplan-berlin-2026.pdf" target="_blank">Spielplan Flyer</a></p>
-<p><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games" target="_blank">WN 2026 FIBA Seite</a></p>
-
-
 
 <h2>Gruppenphase</h2>
 
