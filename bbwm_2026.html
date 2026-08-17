@@ -3,9 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Basketball WM Damen 2026 Berlin</title>
+
 <style>
 
-/* Gruppenlayout – 50% Breite */
+/* ========================= */
+/*   GRUPPENPHASE LAYOUT     */
+/* ========================= */
+
 .gruppenphase-block {
     display: flex;
     gap: 20px;
@@ -14,45 +18,42 @@
 }
 
 .gruppen-links {
-    flex: 0 0 50%;
+    flex: 0 0 50%;   /* exakt 50% Breite */
 }
 
-/* Werbung rechts schmal */
 .gruppen-rechts {
     width: 220px;
     flex-shrink: 0;
 }
 
-/* Gruppen untereinander */
 .gruppen-column {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
 }
 
-/* Karten kompakt */
+/* Karten */
 .gruppe-card {
     background: #ffffff;
     border-radius: 10px;
-    padding: 12px;
+    padding: 10px 12px;
     border: 1px solid #e5e7eb;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
-/* Länder-Namen: nur so breit wie nötig */
-.gruppe-teams-2col {
-    display: grid;
-    grid-template-columns: max-content max-content;
-    gap: 6px 12px;
-    margin-top: 10px;
+/* Länder in einer Zeile */
+.gruppe-teams-1line {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
 }
 
-.gruppe-teams-2col span {
+.gruppe-teams-1line span {
     background: #e0e7ff;
     padding: 4px 8px;
     border-radius: 8px;
     font-size: 12px;
-    text-align: center;
     font-weight: 500;
     color: #1e3a8a;
     border: 1px solid #c7d2fe;
@@ -74,13 +75,41 @@
 .werbung-box a {
     display: block;
     margin-top: 10px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: #374151;
     text-decoration: none;
 }
 
-/* Handy-Optimierung */
+/* ========================= */
+/*       TABELLEN            */
+/* ========================= */
+
+.tabelle {
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 12px;
+    width: auto;
+    table-layout: auto;
+}
+
+.tabelle th, .tabelle td {
+    border: 1px solid #cbd5e1;
+    padding: 4px 6px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.tabelle th {
+    background: #e2e8f0;
+    font-weight: 600;
+}
+
+.tabelle tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+/* Handy */
 @media (max-width: 768px) {
     .gruppenphase-block { flex-direction: column; }
     .gruppen-links { width: 100%; }
@@ -107,33 +136,41 @@
 
             <div class="gruppe-card">
                 <h3>Gruppe A</h3>
-                <div class="gruppe-teams-2col">
-                    <span>JAPAN</span><span>SPANIEN</span>
-                    <span>DEUTSCHLAND</span><span>MALI</span>
+                <div class="gruppe-teams-1line">
+                    <span>JAPAN</span>
+                    <span>SPANIEN</span>
+                    <span>DEUTSCHLAND</span>
+                    <span>MALI</span>
                 </div>
             </div>
 
             <div class="gruppe-card">
                 <h3>Gruppe B</h3>
-                <div class="gruppe-teams-2col">
-                    <span>UNGARN</span><span>KOREA</span>
-                    <span>NIGERIA</span><span>FRANKREICH</span>
+                <div class="gruppe-teams-1line">
+                    <span>UNGARN</span>
+                    <span>KOREA</span>
+                    <span>NIGERIA</span>
+                    <span>FRANKREICH</span>
                 </div>
             </div>
 
             <div class="gruppe-card">
                 <h3>Gruppe C</h3>
-                <div class="gruppe-teams-2col">
-                    <span>BELGIEN</span><span>AUSTRALIEN</span>
-                    <span>PUERTO RICO</span><span>TÜRKEI</span>
+                <div class="gruppe-teams-1line">
+                    <span>BELGIEN</span>
+                    <span>AUSTRALIEN</span>
+                    <span>PUERTO RICO</span>
+                    <span>TÜRKEI</span>
                 </div>
             </div>
 
             <div class="gruppe-card">
                 <h3>Gruppe D</h3>
-                <div class="gruppe-teams-2col">
-                    <span>USA</span><span>TSCHECHIEN</span>
-                    <span>ITALIEN</span><span>CHINA</span>
+                <div class="gruppe-teams-1line">
+                    <span>USA</span>
+                    <span>TSCHECHIEN</span>
+                    <span>ITALIEN</span>
+                    <span>CHINA</span>
                 </div>
             </div>
 
