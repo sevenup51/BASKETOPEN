@@ -79,6 +79,22 @@
     background: #f8fafc;
 }
 
+.row-past {
+    background-color: #e5e7eb !important;
+}
+
+.row-today {
+    background-color: #fed7aa !important;
+}
+
+.live-active {
+    background-color: #22c55e;
+    color: #000000;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
 @media (max-width: 768px) {
     .gruppenphase-block { flex-direction: column; }
     .gruppen-links { width: 100%; }
@@ -100,13 +116,13 @@
   Eventuell wird auch auf eine Seite verwiesen, wo man sich den Livescore anschauen kann.</p>
 
   <p>Beim Klick auf die Spielnummer in der Spalte „Boxscore“ gelangt man direkt zur FIBA‑Boxscore‑Seite.<br>
-  Dort kann man zusätzlich auch den Bereich „Play by Play“ aufrufen.</p>
+  Aktive Spiele sind in der Spalte Live grün hervorgehoben</p>
 
   <p>Stand 05.09.26</p>
 </details>
 
 
-<h2>Gesamtübersicht Spielplan – Stand: 04.09.26 23:24</h2>
+<h2>Gesamtübersicht Spielplan – Stand: 05.09.26 08:58</h2>
 <p><a href="https://basketball.nationalmannschaft.net/wp-content/uploads/sites/3/2026/05/fwbwc-spielplan-berlin-2026.pdf" target="_blank">Spielplan Flyer</a></p>
 <p><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games" target="_blank">FIBA Seite</a></p>
 
@@ -192,45 +208,49 @@
 <table class="tabelle">
 <thead>
 <tr>
-<th>SpNr</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th><th>Boxscore</th>
+<th>Nr</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Erg</th><th>Live</th><th>Boxscore</th>
 </tr>
 </thead>
 <tbody>
 
-<tr>
+<tr class="row-past">
 <td>01</td>
 <td>04.09.26 11:30</td>
 <td>JAPAN</td>
 <td>MALI</td>
 <td>102:97</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128116-JPN-MLI#boxscore" target="_blank">128116</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128116-JPN-MLI#playByPlay" target="_blank">01</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128116-JPN-MLI#boxscore" target="_blank">01</a></td>
 </tr>
 
-<tr>
+<tr class="row-past">
 <td>02</td>
 <td>04.09.26 17:45</td>
 <td>SPANIEN</td>
 <td>DEUTSCHLAND</td>
 <td>83:53</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128117-ESP-GER#boxscore" target="_blank">128117</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128117-ESP-GER#playByPlay" target="_blank">02</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128117-ESP-GER#boxscore" target="_blank">02</a></td>
 </tr>
 
-<tr>
+<tr class="row-today">
 <td>03</td>
-<td>05.09.26 11:30</td>
+<td>05.09.26 08:50</td>
 <td>MALI</td>
 <td>SPANIEN</td>
 <td>-:-</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128119-MLI-ESP#boxscore" target="_blank">128119</a></td>
+<td><a class="live-active" href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128119-MLI-ESP#playByPlay" target="_blank">03</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128119-MLI-ESP#boxscore" target="_blank">03</a></td>
 </tr>
 
-<tr>
+<tr class="row-today">
 <td>04</td>
 <td>05.09.26 18:00</td>
 <td>DEUTSCHLAND</td>
 <td>JAPAN</td>
 <td>-:-</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128118-GER-JPN#boxscore" target="_blank">128118</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128118-GER-JPN#playByPlay" target="_blank">04</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128118-GER-JPN#boxscore" target="_blank">04</a></td>
 </tr>
 
 <tr>
@@ -240,6 +260,7 @@
 <td>MALI</td>
 <td>-:-</td>
 <td>-</td>
+<td>-</td>
 </tr>
 
 <tr>
@@ -248,6 +269,7 @@
 <td>JAPAN</td>
 <td>SPANIEN</td>
 <td>-:-</td>
+<td>-</td>
 <td>-</td>
 </tr>
 </tbody></table>
@@ -337,44 +359,48 @@
 <table class="tabelle">
 <thead>
 <tr>
-<th>SpNr</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th><th>Boxscore</th>
+<th>Nr</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Erg</th><th>Live</th><th>Boxscore</th>
 </tr>
 </thead>
 <tbody>
 
-<tr>
+<tr class="row-past">
 <td>07</td>
 <td>04.09.26 14:30</td>
 <td>KOREA</td>
 <td>NIGERIA</td>
 <td>99:81</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128123-KOR-NGR#boxscore" target="_blank">128123</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128123-KOR-NGR#playByPlay" target="_blank">07</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128123-KOR-NGR#boxscore" target="_blank">07</a></td>
 </tr>
 
-<tr>
+<tr class="row-past">
 <td>08</td>
 <td>04.09.26 21:00</td>
 <td>UNGARN</td>
 <td>FRANKREICH</td>
 <td>53:99</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128122-HUN-FRA#boxscore" target="_blank">128122</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128122-HUN-FRA#playByPlay" target="_blank">08</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128122-HUN-FRA#boxscore" target="_blank">08</a></td>
 </tr>
 
-<tr>
+<tr class="row-today">
 <td>09</td>
 <td>05.09.26 14:15</td>
 <td>NIGERIA</td>
 <td>UNGARN</td>
 <td>-:-</td>
 <td>-</td>
+<td>-</td>
 </tr>
 
-<tr>
+<tr class="row-today">
 <td>10</td>
 <td>05.09.26 20:45</td>
 <td>FRANKREICH</td>
 <td>KOREA</td>
 <td>-:-</td>
+<td>-</td>
 <td>-</td>
 </tr>
 
@@ -385,6 +411,7 @@
 <td>FRANKREICH</td>
 <td>-:-</td>
 <td>-</td>
+<td>-</td>
 </tr>
 
 <tr>
@@ -393,6 +420,7 @@
 <td>UNGARN</td>
 <td>KOREA</td>
 <td>-:-</td>
+<td>-</td>
 <td>-</td>
 </tr>
 </tbody></table>
@@ -482,27 +510,29 @@
 <table class="tabelle">
 <thead>
 <tr>
-<th>SpNr</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th><th>Boxscore</th>
+<th>Nr</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Erg</th><th>Live</th><th>Boxscore</th>
 </tr>
 </thead>
 <tbody>
 
-<tr>
+<tr class="row-past">
 <td>13</td>
 <td>04.09.26 11:30</td>
 <td>AUSTRALIEN</td>
 <td>PUERTO RICO</td>
 <td>70:54</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128129-AUS-PUR#boxscore" target="_blank">128129</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128129-AUS-PUR#playByPlay" target="_blank">13</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128129-AUS-PUR#boxscore" target="_blank">13</a></td>
 </tr>
 
-<tr>
+<tr class="row-past">
 <td>14</td>
 <td>04.09.26 17:30</td>
 <td>BELGIEN</td>
 <td>TÜRKEI</td>
 <td>89:75</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128128-BEL-TUR#boxscore" target="_blank">128128</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128128-BEL-TUR#playByPlay" target="_blank">14</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128128-BEL-TUR#boxscore" target="_blank">14</a></td>
 </tr>
 
 <tr>
@@ -511,6 +541,7 @@
 <td>TÜRKEI</td>
 <td>AUSTRALIEN</td>
 <td>:</td>
+<td>-</td>
 <td>-</td>
 </tr>
 
@@ -521,6 +552,7 @@
 <td>BELGIEN</td>
 <td>-:-</td>
 <td>-</td>
+<td>-</td>
 </tr>
 
 <tr>
@@ -530,6 +562,7 @@
 <td>AUSTRALIEN</td>
 <td>-:-</td>
 <td>-</td>
+<td>-</td>
 </tr>
 
 <tr>
@@ -538,6 +571,7 @@
 <td>PUERTO RICO</td>
 <td>TÜRKEI</td>
 <td>-:-</td>
+<td>-</td>
 <td>-</td>
 </tr>
 </tbody></table>
@@ -627,27 +661,29 @@
 <table class="tabelle">
 <thead>
 <tr>
-<th>SpNr</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Ergebnis</th><th>Boxscore</th>
+<th>Nr</th><th>Datum</th><th>Heim</th><th>Gast</th><th>Erg</th><th>Live</th><th>Boxscore</th>
 </tr>
 </thead>
 <tbody>
 
-<tr>
+<tr class="row-past">
 <td>19</td>
 <td>04.09.26 14:15</td>
 <td>USA</td>
 <td>CHINA</td>
 <td>94:61</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128134-USA-CHN#boxscore" target="_blank">128134</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128134-USA-CHN#playByPlay" target="_blank">19</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128134-USA-CHN#boxscore" target="_blank">19</a></td>
 </tr>
 
-<tr>
+<tr class="row-past">
 <td>20</td>
 <td>04.09.26 20:15</td>
 <td>TSCHECHIEN</td>
 <td>ITALIEN</td>
 <td>54:63</td>
-<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128135-CZE-ITA#boxscore" target="_blank">128135</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128135-CZE-ITA#playByPlay" target="_blank">20</a></td>
+<td><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games/128135-CZE-ITA#boxscore" target="_blank">20</a></td>
 </tr>
 
 <tr>
@@ -656,6 +692,7 @@
 <td>CHINA</td>
 <td>TSCHECHIEN</td>
 <td>-:-</td>
+<td>-</td>
 <td>-</td>
 </tr>
 
@@ -666,6 +703,7 @@
 <td>USA</td>
 <td>-:-</td>
 <td>-</td>
+<td>-</td>
 </tr>
 
 <tr>
@@ -675,6 +713,7 @@
 <td>TSCHECHIEN</td>
 <td>-:-</td>
 <td>-</td>
+<td>-</td>
 </tr>
 
 <tr>
@@ -683,6 +722,7 @@
 <td>ITALIEN</td>
 <td>CHINA</td>
 <td>-:-</td>
+<td>-</td>
 <td>-</td>
 </tr>
 </tbody></table>
