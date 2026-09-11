@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Basketball WM Damen 2026 Berlin</title>
+<title>Basketball WM Frauen 2026 Berlin</title>
 
 <style>
 .gruppenphase-block {
@@ -108,6 +108,31 @@ summary {
 details[open] summary {
     list-style-type: disclosure-open;   /* geöffneter Pfeil (▼) */
 }
+.button-werbung-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.button-block button {
+    background: #1a3d7c;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.button-block button:hover {
+    background: #274f9e;
+}
+
+.werbung-block {
+    max-width: 260px;
+}
+
 
 
 </style>
@@ -125,7 +150,7 @@ function closeAll() {
 </head>
 <body>
 
-<h1 style="text-align:left; margin-top:20px;">Basketball WM Damen 2026 Berlin</h1>
+<h1 style="text-align:left; margin-top:20px;">Basketball WM Frauen 2026 Berlin</h1>
 
 <div class="page">
 
@@ -135,17 +160,34 @@ function closeAll() {
   <p>Es findet sich hier der Spielplan, die Tabellen, die Playoffs.<br>
   Es wird auch bei Punktgleichheit eine Tabelle „Direkter Vergleich“ erstellt.<br><br>
   Eventuell wird auch auf eine Seite verwiesen, wo man sich den Livescore anschauen kann.</p>
-  <p>Beim Klick auf die Spielnummer in der Spalte „Boxscore“ gelangt man direkt zur FIBA‑Boxscore‑Seite.<br>
-  Dort kann man zusätzlich auch den Bereich „Play by Play“ aufrufen.</p>
+  <p>Beim Klick auf die Spielnummer in den Spalte „Boxscore“  und Livegelangt man direkt zur FIBA‑Boxscore‑Seite
+  bzw. zum Livescore (PlaybyPlay.<br></p>
   <p>Stand 11.09.26</p>
 </details>
 
-<div style="margin-bottom: 20px;">
-    <button onclick="openAll()">Alle öffnen</button>
-    <button onclick="closeAll()">Alle schließen</button>
+<div class="button-werbung-container">
+    <div class="button-block">
+        <button onclick="openAll()">Alle öffnen</button>
+        <button onclick="closeAll()">Alle schließen</button>
+    </div>
+
+    <div class="werbung-block">
+        
+<div class="werbung-box">
+    <a href="https://shop.lenahaunstetter.de/" target="_blank">
+        <img src="https://sevenup51.github.io/BASKETOPEN/assets/img/infoshop_kompl.webp"
+             alt="Lena Haunstetter Shop"
+             style="width:100%; height:auto; border-radius:12px;">
+    </a>
+    <a href="https://shop.lenahaunstetter.de/collections/all" target="_blank">
+        ich will nach Berlin – nimm mich mit
+    </a>
 </div>
 
-<h2>Gesamtübersicht Spielplan – Stand: 11.09.26 19:51</h2>
+    </div>
+</div>
+
+<h2>Gesamtübersicht Spielplan – Stand: 11.09.26 20:35</h2>
 <p><a href="https://basketball.nationalmannschaft.net/wp-content/uploads/sites/3/2026/05/fwbwc-spielplan-berlin-2026.pdf" target="_blank">Spielplan Flyer</a></p>
 <p><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games" target="_blank">FIBA Seite</a></p>
 
@@ -200,18 +242,6 @@ function closeAll() {
     </div>
 
     <div class="gruppen-rechts">
-
-<div class="werbung-box">
-    <a href="https://shop.lenahaunstetter.de/" target="_blank">
-        <img src="https://sevenup51.github.io/BASKETOPEN/assets/img/infoshop_kompl.webp"
-             alt="Lena Haunstetter Shop"
-             style="width:100%; height:auto; border-radius:12px;">
-    </a>
-    <a href="https://shop.lenahaunstetter.de/collections/all" target="_blank">
-        ich will nach Berlin – nimm mich mit
-    </a>
-</div>
-
     </div>
 </div>
 
