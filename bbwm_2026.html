@@ -100,42 +100,40 @@ button:hover {
 summary {
     cursor: pointer;
     font-size: 18px;
-    font-weight: 400;              /* NICHT fett */
-    display: list-item;            /* Pfeil sichtbar */
-    list-style-type: disclosure-closed; /* geschlossener Pfeil (▶) */
+    font-weight: 400;
+    display: list-item;
+    list-style-type: disclosure-closed;
+}
+details[open] summary {
+    list-style-type: disclosure-open;
 }
 
-details[open] summary {
-    list-style-type: disclosure-open;   /* geöffneter Pfeil (▼) */
-}
-.button-werbung-container {
+/* ⭐ NEU: Werbung rechts neben Gesamtübersicht */
+.uebersicht-mit-werbung {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 20px;
     margin-bottom: 20px;
 }
 
-.button-block button {
-    background: #1a3d7c;
-    color: white;
-    padding: 8px 14px;
-    border: none;
-    border-radius: 4px;
-    margin-right: 10px;
-    cursor: pointer;
+.uebersicht-links {
+    flex: 1;
 }
 
-.button-block button:hover {
-    background: #274f9e;
+.uebersicht-werbung {
+    max-width: 220px;
 }
 
-.werbung-block {
-    max-width: 260px;
+.uebersicht-werbung img {
+    width: 100%;
+    height: auto;
 }
 
-
-
+.button-block {
+    margin-bottom: 10px;
+}
 </style>
+
 
 
 <script>
@@ -160,18 +158,24 @@ function closeAll() {
   <p>Es findet sich hier der Spielplan, die Tabellen, die Playoffs.<br>
   Es wird auch bei Punktgleichheit eine Tabelle „Direkter Vergleich“ erstellt.<br><br>
   Eventuell wird auch auf eine Seite verwiesen, wo man sich den Livescore anschauen kann.</p>
-  <p>Beim Klick auf die Spielnummer in den Spalte „Boxscore“  und Livegelangt man direkt zur FIBA‑Boxscore‑Seite
-  bzw. zum Livescore (PlaybyPlay.<br></p>
+  <p>Beim Klick auf die Spielnummer in den Spalte „Boxscore“  und Live gelangt man direkt zur FIBA‑Boxscore‑Seite
+  bzw. zum Livescore (PlaybyPlay).<br></p>
   <p>Stand 11.09.26</p>
 </details>
 
-<div class="button-werbung-container">
-    <div class="button-block">
-        <button onclick="openAll()">Alle öffnen</button>
-        <button onclick="closeAll()">Alle schließen</button>
+<div class="button-block">
+    <button onclick="openAll()">Alle öffnen</button>
+    <button onclick="closeAll()">Alle schließen</button>
+</div>
+
+<div class="uebersicht-mit-werbung">
+    <div class="uebersicht-links">
+        <h2>Gesamtübersicht Spielplan - Stand: 11.09.26 21:00</h2>
+        <p><a href="https://basketball.nationalmannschaft.net/wp-content/uploads/sites/3/2026/05/fwbwc-spielplan-berlin-2026.pdf" target="_blank">Spielplan Flyer</a></p>
+        <p><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games" target="_blank">FIBA Seite</a></p>
     </div>
 
-    <div class="werbung-block">
+    <div class="uebersicht-werbung">
         
 <div class="werbung-box">
     <a href="https://shop.lenahaunstetter.de/" target="_blank">
@@ -186,13 +190,6 @@ function closeAll() {
 
     </div>
 </div>
-
-<h2>Gesamtübersicht Spielplan – Stand: 11.09.26 20:35</h2>
-<p><a href="https://basketball.nationalmannschaft.net/wp-content/uploads/sites/3/2026/05/fwbwc-spielplan-berlin-2026.pdf" target="_blank">Spielplan Flyer</a></p>
-<p><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games" target="_blank">FIBA Seite</a></p>
-
-<details>
-<summary>Gruppenphase</summary>
 
 <div class="gruppenphase-block">
     <div class="gruppen-links">
