@@ -101,11 +101,8 @@ summary {
     cursor: pointer;
     font-size: 20px;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-}
-summary::-webkit-details-marker {
-    margin-right: 8px;
+    display: list-item;   /* Pfeil wieder sichtbar */
+    list-style: none;     /* verhindert doppelte Marker */
 }
 
 </style>
@@ -143,7 +140,7 @@ function closeAll() {
     <button onclick="closeAll()">Alle schließen</button>
 </div>
 
-<h2>Gesamtübersicht Spielplan – Stand: 11.09.26 13:32</h2>
+<h2>Gesamtübersicht Spielplan – Stand: 11.09.26 13:40</h2>
 <p><a href="https://basketball.nationalmannschaft.net/wp-content/uploads/sites/3/2026/05/fwbwc-spielplan-berlin-2026.pdf" target="_blank">Spielplan Flyer</a></p>
 <p><a href="https://www.fiba.basketball/de/events/fiba-womens-basketball-world-cup-2026/games" target="_blank">FIBA Seite</a></p>
 
