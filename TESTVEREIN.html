@@ -47,7 +47,7 @@ function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAtt
 </head>
 <body>
 
-<h1>Uebersicht diverse Ligen fuer Test – Stand: 12.09.26 11:54:40</h1>
+<h1>Uebersicht diverse Ligen fuer Test – Stand: 12.09.26 12:19:04</h1>
 
 
 <details id='wasfindeichhier'>
@@ -76,15 +76,60 @@ https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802
 </p>
 
 <p>
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1
+</a><br>
+
+<a href="https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802" target="_blank">
+https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802
+</a>
+</p>
+
+<p>
 Wenn man sich für eine Liga interessiert, kann man die 5‑stellige Zahl (= LigaNr)
 durch die LigaNr der entsprechenden Liga ersetzen.<br>
 Wenn für diese Liga etwas generiert wurde, ist diese Seite vorhanden.<br>
 Die LigaNr findet ihr auf der basketball‑bund.net Seite.<br>
-Aktuell gibt es Ergebnisse beim BBL-Pokal. Dies ist die LigaNr. 55809. <br>
-Die 55802 im Link durch 55809 ersetzen. Dann sieht man die Pokalergebnise etc. <br>
 Wenn man die Liga gefunden hat (in der Übersicht wird nur „Liga“ angezeigt)
 und diese Liga aufruft, sieht man im aufgebauten Link die LigaNr.
 </p>
+
+<p>
+Wenn Interesse besteht, kann man sich eine eigene Liste zusammenstellen.<br>
+Hierzu benötigt man folgendes:
+</p>
+
+<p>
+Man erstellt eine Liste mit LigaNummern in dieser Form:
+</p>
+
+<pre style="font-size:10px; background:#f0f0f0; padding:6px;">
+LIGA_IDS_NN = [
+    54453, 54485, 54459, 54488, 54491, 54471,
+    55701, 54498, 55699, 54482
+]
+</pre>
+
+<p>
+Zusätzlich muss der Aufruf entsprechend angepasst werden:
+</p>
+
+<pre style="font-size:10px; background:#f0f0f0; padding:6px;">
+REM             Schalter Dateiname                       Im HTML                
+"%PYTHON%" "%SCRIPT%" 12 BBV_SCH_VSC_BASKETS_Donauwoerth "VSC Baskets Donauwoerth"
+</pre>
+
+<p>
+Damit kann man eine eigene Liste erzeugen.<br>
+Zum Testen ist dies vorerst auf Vereine im Bezirk Schwaben (BBV_SCH_...) begrenzt.<br>
+Wenn dies funktioniert, kann man dies später erweitern.
+</p>
+
+<p>
+Interessenten wenden sich an <b>hg2024@web.de</b>.
+</p>
+
+
 
 </div>
 </details>
