@@ -16,10 +16,29 @@ body {
     min-width: 300px;
 }
 
-td:nth-child(1) { width: 22%; word-wrap: break-word; }
-td:nth-child(2) { width: 32%; }
-td:nth-child(3) { width: 30%; word-wrap: break-word; }
-td:nth-child(4) { width: 16%; word-wrap: break-word; }
+/* Verein: maximale Breite wie "Weltmeisterschaft Frauen" */
+td:nth-child(1) {
+    width: 26%;
+    word-wrap: break-word;
+}
+
+/* LigenIDs: endet nach letzter ID */
+td:nth-child(2) {
+    width: 28%;
+    word-wrap: break-word;
+}
+
+/* HTML-Link: endet nach Präfix */
+td:nth-child(3) {
+    width: 30%;
+    word-wrap: break-word;
+}
+
+/* Erklärung: maximale Breite wie "Letzter Spieltag" */
+td:nth-child(4) {
+    width: 16%;
+    word-wrap: break-word;
+}
 
 table { 
     border-collapse: collapse; 
@@ -45,7 +64,7 @@ a { font-size: 10px; }
 </head>
 <body>
 
-<h2>Übersicht erzeugter Ligenlisten</h2>
+<h2>Übersicht erzeugter Ligenlisten – Stand 14.09.26 21:21</h2>
 
 <div class="table-container">
 
@@ -65,7 +84,7 @@ a { font-size: 10px; }
                     bbwm_2026.html?nocache=1
                 </a>
             </td>
-            <td>Letzter Spieltag 13.09.26</td>
+            <td>Letzter Spieltag</td>
         </tr>
 
     </table>
@@ -81,7 +100,7 @@ a { font-size: 10px; }
 
         <tr>
             <td>Bundesligen</td>
-            <td>55802, 55738, 55811, 55749, 55746, 55817, 55815, 55809<br>55743, 55744<br></td>
+            <td>55802, 55738, 55811, 55749, 55746, 55817, 55815, 55809<br>55743, 55743<br></td>
             <td>
                 <a href="https://sevenup51.github.io/BASKETOPEN/Bundesligen.html?nocache=1" target="_blank">
                     https://sevenup51.github.io/BASKETOPEN/<br>
