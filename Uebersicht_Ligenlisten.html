@@ -24,29 +24,29 @@ table {
     font-size: 10px;
 }
 
-/* Automatischer Umbruch auch bei URLs und langen IDs */
+/* Automatischer Umbruch, aber keine Trennung mitten in Zahlen */
 td {
-    word-break: break-all;
+    word-break: break-word;
 }
 
-/* Verein */
+/* Verein: Umbruch nach "Weltmeisterschaft Frauen" */
 td:nth-child(1) {
     width: 155px;
 }
 
-/* LigenIDs */
+/* LigenIDs: Umbruch nach Komma */
 td:nth-child(2) {
-    width: 180px;
+    width: 140px;
 }
 
-/* HTML-Link */
+/* HTML-Link: Umbruch nach Präfix */
 td:nth-child(3) {
-    width: 265px;
+    width: 230px;
 }
 
-/* Erklärung */
+/* Erklärung: Umbruch nach "Letzter Spieltag:" */
 td:nth-child(4) {
-    width: 120px;
+    width: 110px;
 }
 
 th, td {
@@ -68,7 +68,7 @@ a {
 </head>
 <body>
 
-<h2>Übersicht erzeugter Ligenlisten – Stand 14.09.26 22:25</h2>
+<h2>Übersicht erzeugter Ligenlisten – Stand 14.09.26 22:39</h2>
 
 <div class="table-container">
 
