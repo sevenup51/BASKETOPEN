@@ -5,10 +5,10 @@
 <title>Übersicht Ligenlisten</title>
 
 <style>
-body { 
-    font-family: Arial; 
-    font-size: 10px; 
-    margin: 20px; 
+body {
+    font-family: Arial;
+    font-size: 10px;
+    margin: 20px;
 }
 
 .table-container {
@@ -16,59 +16,65 @@ body {
     min-width: 300px;
 }
 
-/* Verein: maximale Breite wie "Weltmeisterschaft Frauen" */
+/* Verein */
 td:nth-child(1) {
-    width: 26%;
+    max-width: 155px;
+    width: 155px;
     word-wrap: break-word;
 }
 
-/* LigenIDs: endet nach letzter ID */
+/* LigenIDs */
 td:nth-child(2) {
-    width: 28%;
+    max-width: 180px;
+    width: 180px;
     word-wrap: break-word;
 }
 
-/* HTML-Link: endet nach Präfix */
+/* HTML-Link */
 td:nth-child(3) {
-    width: 30%;
+    max-width: 265px;
+    width: 265px;
     word-wrap: break-word;
 }
 
-/* Erklärung: maximale Breite wie "Letzter Spieltag" */
+/* Erklärung */
 td:nth-child(4) {
-    width: 16%;
+    max-width: 120px;
+    width: 120px;
     word-wrap: break-word;
 }
 
-table { 
-    border-collapse: collapse; 
+table {
+    border-collapse: collapse;
     width: 100%;
     font-size: 10px;
 }
 
-th, td { 
-    border: 1px solid #ccc; 
-    padding: 3px; 
-    vertical-align: top; 
+th, td {
+    border: 1px solid #ccc;
+    padding: 3px;
+    vertical-align: top;
     font-size: 10px;
 }
 
-th { 
-    background: #e8e8e8; 
+th {
+    background: #e8e8e8;
 }
 
-a { font-size: 10px; }
+a {
+    font-size: 10px;
+}
 
 </style>
 
 </head>
 <body>
 
-<h2>Übersicht erzeugter Ligenlisten – Stand 14.09.26 21:21</h2>
+<h2>Übersicht erzeugter Ligenlisten – Stand 14.09.26 22:01</h2>
 
 <div class="table-container">
 
-
+<!-- Europa & WM -->
 <details open>
     <summary>Europa und Weltmeisterschaften</summary>
 
@@ -84,106 +90,104 @@ a { font-size: 10px; }
                     bbwm_2026.html?nocache=1
                 </a>
             </td>
-            <td>Letzter Spieltag</td>
+            <td>Letzter Spieltag: 13.09.2026</td>
         </tr>
 
     </table>
 </details>
 
-
+<!-- Bundesligen -->
 <details open>
     <summary>Bundesligen inklusive Pokal</summary>
 
     <table>
         <tr><th>Verein</th><th>LigenIDs</th><th>HTML-Link</th><th>Erklärung</th></tr>
 
-
-        <tr>
-            <td>Bundesligen</td>
-            <td>55802, 55738, 55811, 55749, 55746, 55817, 55815, 55809<br>55743, 55743<br></td>
-            <td>
-                <a href="https://sevenup51.github.io/BASKETOPEN/Bundesligen.html?nocache=1" target="_blank">
-                    https://sevenup51.github.io/BASKETOPEN/<br>
-                    Bundesligen.html?nocache=1
-                </a>
-            </td>
-            <td>Saison 26/27</td>
-        </tr>
+        
+<tr>
+    <td>Bundesligen</td>
+    <td>55802, 55738, 55811, 55749, 55746, 55817, 55815, 55809<br>55743, 55743<br></td>
+    <td>
+        <a href="https://sevenup51.github.io/BASKETOPEN/Bundesligen.html?nocache=1" target="_blank">
+            https://sevenup51.github.io/BASKETOPEN/<br>
+            Bundesligen.html?nocache=1
+        </a>
+    </td>
+    <td>Saison 26/27</td>
+</tr>
 
 
     </table>
 </details>
 
-
+<!-- Regionalligen -->
 <details open>
     <summary>Regionalligen</summary>
 
     <table>
         <tr><th>Verein</th><th>LigenIDs</th><th>HTML-Link</th><th>Erklärung</th></tr>
 
-
-        <tr>
-            <td>Regionalliga</td>
-            <td>52514, 52498, 52515, 54820, 52497, 52528, 52527<br></td>
-            <td>
-                <a href="https://sevenup51.github.io/BASKETOPEN/Regionalligen.html?nocache=1" target="_blank">
-                    https://sevenup51.github.io/BASKETOPEN/<br>
-                    Regionalligen.html?nocache=1
-                </a>
-            </td>
-            <td>Saison 26/27</td>
-        </tr>
+        
+<tr>
+    <td>Regionalliga</td>
+    <td>52514, 52498, 52515, 54820, 52497, 52528, 52527<br></td>
+    <td>
+        <a href="https://sevenup51.github.io/BASKETOPEN/Regionalligen.html?nocache=1" target="_blank">
+            https://sevenup51.github.io/BASKETOPEN/<br>
+            Regionalligen.html?nocache=1
+        </a>
+    </td>
+    <td>Saison 26/27</td>
+</tr>
 
 
     </table>
 </details>
 
-
+<!-- Bayern -->
 <details open>
     <summary>Bayern</summary>
 
     <table>
         <tr><th>Verein</th><th>LigenIDs</th><th>HTML-Link</th><th>Erklärung</th></tr>
 
+        
+<tr>
+    <td>Test</td>
+    <td>55802, 55811, 55809, 55743, 55738, 54453, 54457, 54458<br>54459, 54460, 54461, 54462, 54466, 54467, 54472, 54471<br>54474, 54473, 54475, 54476, 54485, 54484, 54486, 54487<br>54490, 54488, 54489, 54493, 54494, 54491, 54492, 55701<br>54497, 54495, 54496, 54498, 54499, 54508, 54507, 54509<br>55699, 54482, 54483, 99999, 54480, 54481<br></td>
+    <td>
+        <a href="https://sevenup51.github.io/BASKETOPEN/TESTVEREIN.html?nocache=1" target="_blank">
+            https://sevenup51.github.io/BASKETOPEN/<br>
+            TESTVEREIN.html?nocache=1
+        </a>
+    </td>
+    <td>Test</td>
+</tr>
 
-        <tr>
-            <td>Test</td>
-            <td>55802, 55811, 55809, 55743, 55738, 54453, 54457, 54458<br>54459, 54460, 54461, 54462, 54466, 54467, 54472, 54471<br>54474, 54473, 54475, 54476, 54485, 54484, 54486, 54487<br>54490, 54488, 54489, 54493, 54494, 54491, 54492, 55701<br>54497, 54495, 54496, 54498, 54499, 54508, 54507, 54509<br>55699, 54482, 54483, 99999, 54480, 54481<br></td>
-            <td>
-                <a href="https://sevenup51.github.io/BASKETOPEN/TESTVEREIN.html?nocache=1" target="_blank">
-                    https://sevenup51.github.io/BASKETOPEN/<br>
-                    TESTVEREIN.html?nocache=1
-                </a>
-            </td>
-            <td>Test</td>
-        </tr>
-    
+<tr>
+    <td>BBV Bezirk Schwaben</td>
+    <td>54453, 54454, 54477, 54457, 54458, 54459, 54460, 54461<br>54462, 54466, 54467, 54472, 54471, 54474, 54473, 54475<br>54476, 54482, 54483, 54485, 54484, 54486, 54487, 54490<br>54488, 54489, 54493, 54494, 54491, 54492, 55701, 54497<br>54495, 54496, 54498, 54499, 54508, 54507, 54509, 55699<br>54480, 54481<br></td>
+    <td>
+        <a href="https://sevenup51.github.io/BASKETOPEN/BBV_SCH.html?nocache=1" target="_blank">
+            https://sevenup51.github.io/BASKETOPEN/<br>
+            BBV_SCH.html?nocache=1
+        </a>
+    </td>
+    <td>Saison 26/27 Bezirk Schwaben</td>
+</tr>
 
-        <tr>
-            <td>BBV Bezirk Schwaben</td>
-            <td>54453, 54454, 54477, 54457, 54458, 54459, 54460, 54461<br>54462, 54466, 54467, 54472, 54471, 54474, 54473, 54475<br>54476, 54482, 54483, 54485, 54484, 54486, 54487, 54490<br>54488, 54489, 54493, 54494, 54491, 54492, 55701, 54497<br>54495, 54496, 54498, 54499, 54508, 54507, 54509, 55699<br>54480, 54481<br></td>
-            <td>
-                <a href="https://sevenup51.github.io/BASKETOPEN/BBV_SCH.html?nocache=1" target="_blank">
-                    https://sevenup51.github.io/BASKETOPEN/<br>
-                    BBV_SCH.html?nocache=1
-                </a>
-            </td>
-            <td>Saison 26/27 Bezirk Schwaben</td>
-        </tr>
-    
+<tr>
+    <td>VSC Baskets Donauwoerth</td>
+    <td>54453, 54485, 54459, 54488, 54491, 54471, 55701, 54498<br>55699, 54482, 54480<br></td>
+    <td>
+        <a href="https://sevenup51.github.io/BASKETOPEN/BBV_SCH_VSC_BASKETS_Donauwoerth.html?nocache=1" target="_blank">
+            https://sevenup51.github.io/BASKETOPEN/<br>
+            BBV_SCH_VSC_BASKETS_Donauwoerth.html?nocache=1
+        </a>
+    </td>
+    <td>Saison 26/27 VSC</td>
+</tr>
 
-        <tr>
-            <td>VSC Baskets Donauwoerth</td>
-            <td>54453, 54485, 54459, 54488, 54491, 54471, 55701, 54498<br>55699, 54482, 54480<br></td>
-            <td>
-                <a href="https://sevenup51.github.io/BASKETOPEN/BBV_SCH_VSC_BASKETS_Donauwoerth.html?nocache=1" target="_blank">
-                    https://sevenup51.github.io/BASKETOPEN/<br>
-                    BBV_SCH_VSC_BASKETS_Donauwoerth.html?nocache=1
-                </a>
-            </td>
-            <td>Saison 26/27 VSC</td>
-        </tr>
-    
 
     </table>
 </details>
