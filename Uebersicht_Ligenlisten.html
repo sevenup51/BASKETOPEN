@@ -11,15 +11,16 @@ body {
     margin: 20px;
 }
 
+/* Lösung A: Container NICHT auf 100% */
 .table-container {
-    width: 100%;
+    width: auto;
     min-width: 300px;
 }
 
-/* Tabellenlayout fixieren, damit Spaltenbreiten EXAKT greifen */
+/* Lösung A: Tabelle NICHT auf 100% */
 table {
     border-collapse: collapse;
-    width: 60%;
+    width: auto;
     table-layout: fixed;
     font-size: 10px;
 }
@@ -34,17 +35,17 @@ td:nth-child(1) {
     width: 155px;
 }
 
-/* LigenIDs: Umbruch nach Komma */
+/* LigenIDs */
 td:nth-child(2) {
     width: 140px;
 }
 
-/* HTML-Link: Umbruch nach Präfix */
+/* HTML-Link */
 td:nth-child(3) {
     width: 230px;
 }
 
-/* Erklärung: Umbruch nach "Letzter Spieltag:" */
+/* Erklärung */
 td:nth-child(4) {
     width: 110px;
 }
@@ -68,7 +69,7 @@ a {
 </head>
 <body>
 
-<h2>Übersicht erzeugter Ligenlisten – Stand 15.09.26 06:44</h2>
+<h2>Übersicht erzeugter Ligenlisten – Stand 15.09.26 07:11</h2>
 
 <div class="table-container">
 
@@ -80,7 +81,7 @@ a {
         <tr><th>Verein</th><th>LigenIDs</th><th>HTML-Link</th><th>Erklärung</th></tr>
 
         <tr>
-            <td>Weltmeisterschaft Frauen <br>2026 Berlin</br></td>
+            <td>Weltmeisterschaft Frauen 2026 Berlin</td>
             <td>--</td>
             <td>
                 <a href="https://sevenup51.github.io/BASKETOPEN/bbwm_2026.html?nocache=1" target="_blank">
@@ -88,7 +89,7 @@ a {
                     bbwm_2026.html?nocache=1
                 </a>
             </td>
-            <td>Letzter Spieltag:<BR> 13.09.2026</BR></td>
+            <td>Letzter Spieltag: 13.09.2026</td>
         </tr>
 
     </table>
@@ -152,7 +153,7 @@ a {
         
 <tr>
     <td>Test</td>
-    <td>55802, 55811, 55809, 55743, 55738, 54453, 54457, 54458<br>54459, 54460, 54461, 54462, 54466, 54467, 54472, 54471<br>54474, 54473, 54475, 54476, 54485, 54484, 54486, 54487<br>54490, 54488, 54489, 54493, 54494, 54491, 54492, 55701<br>54497, 54495, 54496, 54498, 54499, 54508, 54507, 54509<br>55699, 54482, 54483, 99999, 54480, 54481<br></td>
+    <td>55802, 55811, 55809, 55743, 55738, 54453, 54457, 54458<br>54460, 54461, 54462, 54464, 54467, 54472, 54471, 54474<br>54473, 54475, 54476, 54478, 54481, 54480, 54484, 54489<br>54493, 54494, 54491, 54497, 54499, 54500, 54501, 54507<br>54509, 55569, 54482, 54483, 9999, 54480, 54481<br></td>
     <td>
         <a href="https://sevenup51.github.io/BASKETOPEN/TESTVEREIN.html?nocache=1" target="_blank">
             https://sevenup51.github.io/BASKETOPEN/<br>
@@ -164,7 +165,7 @@ a {
 
 <tr>
     <td>BBV Bezirk Schwaben</td>
-    <td>54453, 54454, 54477, 54457, 54458, 54459, 54460, 54461<br>54462, 54466, 54467, 54472, 54471, 54474, 54473, 54475<br>54476, 54482, 54483, 54485, 54484, 54486, 54487, 54490<br>54488, 54489, 54493, 54494, 54491, 54492, 55701, 54497<br>54495, 54496, 54498, 54499, 54508, 54507, 54509, 55699<br>54480, 54481<br></td>
+    <td>54453, 54454, 54477, 54457, 54458, 54460, 54461, 54462<br>54464, 54467, 54472, 54475, 54476, 54478, 54481, 54480<br>54484, 54489, 54493, 54494, 54491, 54497, 54499, 54500<br>54501, 54507, 54509, 55569, 54482, 54483, 9999, 54480<br>54481<br></td>
     <td>
         <a href="https://sevenup51.github.io/BASKETOPEN/BBV_SCH.html?nocache=1" target="_blank">
             https://sevenup51.github.io/BASKETOPEN/<br>
@@ -175,8 +176,8 @@ a {
 </tr>
 
 <tr>
-    <td>VSC Baskets Donauwoerth</td>
-    <td>54453, 54485, 54459, 54488, 54491, 54471, 55701, 54498<br>55699, 54482, 54480<br></td>
+    <td>VSC Baskets Donauwörth</td>
+    <td>54453, 54485, 54459, 54488, 54491, 54471, 55701, 54498<br>55609, 54482, 54480<br></td>
     <td>
         <a href="https://sevenup51.github.io/BASKETOPEN/BBV_SCH_VSC_BASKETS_Donauwoerth.html?nocache=1" target="_blank">
             https://sevenup51.github.io/BASKETOPEN/<br>
