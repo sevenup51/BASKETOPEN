@@ -1,0 +1,207 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- Cache vollständig deaktivieren -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<title>Regionalliga Nord</title>
+<style>
+body { font-family: Arial; font-size: 10px; background:#f4f6f9; margin:18px; color:#222; }
+h1 { margin-bottom:6px; color:#1a3d7c; }
+summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
+          border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
+          width: 100%; max-width: 650px; box-sizing: border-box; }
+summary::marker { display:none; }
+summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
+details[open] summary::before { content:"▼"; }
+details { margin-bottom:3px; }
+.summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+                 display: flex; flex-direction: row; align-items: center; gap: 6px;
+                 min-width: 90px; justify-content: flex-end; }
+.details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
+               border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap; }
+.liga-icon { width: 12px; height: 8px; border-radius: 2px; }
+.liga-icon.green  { background:#2ecc71; }
+.liga-icon.yellow { background:#f1c40f; }
+.liga-icon.red    { background:#e74c3c; }
+h3 { font-size:11px; margin:5px 0 3px 0; color:#1a3d7c; }
+table { border-collapse:collapse; margin-bottom:6px; background:white; border-radius:2px;
+        overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.06); font-size:10px; white-space:nowrap; }
+th { background:#1a3d7c; color:white; padding:2px 4px; }
+td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
+tr:nth-child(even) { background:#f0f4fa; }
+hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px 0; }
+button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
+         margin-right:5px; font-size:10px; }
+button:hover { background:#163568; }
+p.ligalink { margin:3px 0 3px 0; }
+</style>
+<script>
+function openAll(){ document.querySelectorAll("details").forEach(d=>d.setAttribute("open","")); }
+function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
+</script>
+</head>
+<body>
+
+<h1>Regionalliga Nord – Stand: 15.09.26 21:36:21</h1>
+
+
+<details id='wasfindeichhier'>
+<summary><b>Was finde ich hier - Stand 13.09.26 11:40</b> (ausklappbar)</summary>
+<div style='margin-left:15px;'>
+
+<p>Übersicht über die Ligen von <b>Regionalliga Nord</b>.</p>
+
+<p>Ergebnisse der letzten 8 Tage, aktuelle Tabelle (falls vorhanden) 
+und Spiele der nächsten 8 Tage.</p>
+
+<p>Aktive Ligen sind grün markiert.<br>
+Gelb bedeutet: Es stehen Spiele an, aber es wurden noch keine Ergebnisse gemeldet.</p>
+
+<p>Unten sieht man zwei Links.<br>
+Beispiel für die BBL Saison 26/27:</p>
+
+<p>
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1
+</a><br>
+
+<a href="https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802" target="_blank">
+https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802
+</a>
+</p>
+
+<p>
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1
+</a><br>
+
+<a href="https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802" target="_blank">
+https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802
+</a>
+</p>
+
+<p>
+Da das Generieren der Listen nicht alle 30 Minuten geschieht – es sind mehr als 100 Ligen – 
+kann es vorkommen, dass nach der Erstellung der Liste <br>
+noch aktuelle Ergebnisse eingetragen werden. Den Zeitpunkt der Erstellung erkennt man in der Überschriftszeile.
+</p>
+
+<p>
+Ganz aktuelle Daten findet man über den Link auf die basketball‑bund.net‑Seite.<br>
+Wenn eine andere Liga interessiert, kann man die 5‑stellige Zahl (= LigaNr) durch die LigaNr 
+der gewünschten Liga ersetzen.<br>
+Wenn für diese Liga bereits etwas generiert wurde, ist die entsprechende Seite vorhanden.
+</p>
+
+<p>
+Die LigaNr findet ihr auf der basketball‑bund.net‑Seite.<br>
+Wenn man die Liga gefunden hat (in der Übersicht wird nur „Liga“ angezeigt) und diese Liga aufruft, 
+sieht man im aufgebauten Link die LigaNr.
+</p>
+
+<p>
+Wenn Interesse besteht, kann man sich für Vereine eine eigene Liste zusammenstellen lassen.<br>
+Hierzu benötigt man folgendes:
+</p>
+
+<p>
+Man erstellt eine Liste mit LigaNummern in dieser Form:
+</p>
+
+<pre style="font-size:10px; background:#f0f0f0; padding:6px;">
+LIGA_IDS_NN = [
+    54453, 54485, 54459, 54488, 54491, 54471,
+    55701, 54498, 55699, 54482
+]
+</pre>
+
+<p>
+Zusätzlich muss der Aufruf entsprechend angepasst werden:
+</p>
+
+<pre style="font-size:10px; background:#f0f0f0; padding:6px;">
+REM             Schalter Dateiname                       Im HTML                
+"%PYTHON%" "%SCRIPT%" NN BBV_SCH_VSC_BASKETS_Donauwoerth "VSC Baskets Donauwoerth"
+</pre>
+
+<p>
+Damit kann man eine eigene Liste erzeugen.<br>
+Zum Testen ist dies vorerst auf Vereine im Bezirk Schwaben (BBV_SCH_...) begrenzt.<br>
+Wenn dies funktioniert, kann man dies später erweitern.
+</p>
+
+<p>
+Interessenten wenden sich an <b>hg2024@web.de</b>.
+</p>
+
+<p>
+Hier findet sich eine Übersicht (wird noch aufgebaut), in der man die aktuellen Listen findet:<br>
+<a href="https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=1" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=1
+</a>
+</p>
+
+</div>
+</details>
+
+
+<div style="margin-bottom:8px;">
+    <button onclick="openAll()">Alle öffnen</button>
+    <button onclick="closeAll()">Alle schließen</button>
+</div>
+
+<details open>
+
+<summary>
+    <b>Unbekannte Liga (Liga 4586)</b>
+    <span class='summary-right'>
+        <span style='color:red; font-weight:bold;'>keineTab</span>
+        
+        <span style='color:red; font-weight:bold;'>✖</span>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden – weil es eine Pokalrunde ist, oder beim Teamsl bei der Spielplanerfassung der Schalter „Tabelle“ nicht gesetzt wurde.<br>Daher ist es auf der bb_api_...‑Seite nicht möglich, den Spielplan pro Team zu erstellen.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+<h3>Weitere Zahlen</h3>
+<p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_4586.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_4586.html?nocache=1</a> <span style='color:red; font-weight:bold;'>✖</span></p>
+<p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=103&liga_id=4586' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=103&liga_id=4586</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details>
+
+<hr class='short'>
+
+<p style="font-size:10px; color:#1a3d7c; margin-top:10px;">
+<b>Daten entnommen aus öffentlich zugänglichen Informationen auf basketball-bund.net.</b>
+</p>
+
+<p style="font-size:10px; color:white; margin-top:6px;">
+Startdatei: Verzeichnis\Python_Prod_Modul\cronobs\test_vereinsergebnisse.bat
+</p>
+
+<p style="font-size:10px; color:white;">
+Phyton1:   Verzeichnis\Python_Prod_Modul\test_vereinsergebnisse.py
+</p>
+
+<p style="font-size:10px; color:white;">
+Eingabe:   C:\Stapel\***keine**
+</p>
+
+<p style="font-size:10px; color:white;">
+Phyton2:   Verzeichnis\Python_Prod_Modul\test_vereinsergebnisse.py
+</p>
+
+</body>
+</html>
