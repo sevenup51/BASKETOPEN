@@ -47,7 +47,7 @@ function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAtt
 </head>
 <body>
 
-<h1>Ligenuebersicht Bezirk Schwaben – Stand: 26.09.26 21:06:14</h1>
+<h1>Ligenuebersicht Bezirk Schwaben – Stand: 26.09.26 21:21:29</h1>
 
 
 <details id='wasfindeichhier'>
@@ -807,13 +807,34 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html?nocache=1' target='_blank'>Details</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:orange;'></span>
+        <span class='liga-icon green'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
-<p><i>Keine Ergebnisse.</i></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>nr</th>
+      <th>sptag</th>
+      <th>date</th>
+      <th>home</th>
+      <th>guest</th>
+      <th>result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>7014</td>
+      <td>4</td>
+      <td>26.09.2026 19:30</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>TV 1847 Augsburg 3</td>
+      <td>55 : 71</td>
+    </tr>
+  </tbody>
+</table>
 <h3>Tabelle</h3>
 <table border="1" class="dataframe">
   <thead>
@@ -830,6 +851,15 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
   <tbody>
     <tr>
       <td>1</td>
+      <td>TV 1847 Augsburg 3</td>
+      <td>1</td>
+      <td>1/0</td>
+      <td>2</td>
+      <td>71 : 55</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>2</td>
       <td>MTV Baskets Ingolstadt 3</td>
       <td>0</td>
       <td>0/0</td>
@@ -838,17 +868,8 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
       <td>0</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>Netz16 Baskets Königsbrunn 2</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
       <td>3</td>
-      <td>SSV Schrobenhausen 2</td>
+      <td>Netz16 Baskets Königsbrunn 2</td>
       <td>0</td>
       <td>0/0</td>
       <td>0</td>
@@ -884,12 +905,12 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
     </tr>
     <tr>
       <td>7</td>
-      <td>TV 1847 Augsburg 3</td>
+      <td>SSV Schrobenhausen 2</td>
+      <td>1</td>
+      <td>0/1</td>
       <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
+      <td>55 : 71</td>
+      <td>-16</td>
     </tr>
   </tbody>
 </table>
