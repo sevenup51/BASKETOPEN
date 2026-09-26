@@ -34,6 +34,8 @@ table { border-collapse:collapse; margin-bottom:6px; background:white; border-ra
 th { background:#1a3d7c; color:white; padding:2px 4px; }
 td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
 tr:nth-child(even) { background:#f0f4fa; }
+tr[style] { background-image: none; }
+
 hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px 0; }
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
@@ -47,7 +49,7 @@ function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAtt
 </head>
 <body>
 
-<h1>Bayernliga – Stand: 26.09.26 22:08:55</h1>
+<h1>Bayernliga – Stand: 26.09.26 22:33:17</h1>
 
 
 <details id='wasfindeichhier'>
@@ -86,7 +88,7 @@ https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802
 </p>
 
 <p>
-Da das Generieren der Listen nicht alle 30 Minuten geschieht – es sind mehr als 100 Ligen – 
+Da das Generieren der Listen nicht alle 15 Minuten geschieht – es sind mehr als 100 Ligen – 
 kann es vorkommen, dass nach der Erstellung der Liste <br>
 noch aktuelle Ergebnisse eingetragen werden. Den Zeitpunkt der Erstellung erkennt man in der Überschriftszeile.
 </p>
@@ -184,73 +186,66 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
 <p><i>Keine Tabelle vorhanden – weil es eine Pokalrunde ist, oder beim Teamsl bei der Spielplanerfassung der Schalter „Tabelle“ nicht gesetzt wurde.<br>Daher ist es auf der bb_api_...‑Seite nicht möglich, den Spielplan pro Team zu erstellen.</i></p>
 <h3>Nächste Spiele (8 Tage)</h3>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>nr</th>
-      <th>sptag</th>
-      <th>date</th>
-      <th>home</th>
-      <th>guest</th>
-      <th>halle</th>
-      <th>highlight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>10669</td>
-      <td>1</td>
-      <td>03.10.2026 19:00</td>
-      <td>TB 1888 Erlangen</td>
-      <td>SV Oberdürrbach 1959</td>
-      <td>Gerd-Lohwasser-Halle</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>10673</td>
-      <td>1</td>
-      <td>03.10.2026 19:00</td>
-      <td>TB Weiden</td>
-      <td>DJK Pressath</td>
-      <td>Mehrzweckhalle</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>10670</td>
-      <td>1</td>
-      <td>04.10.2026 12:00</td>
-      <td>TTL Basketball Bamberg 2</td>
-      <td>TG 1877 Veitshöchheim 2</td>
-      <td>Graf-Stauffenberg-Schule</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>10671</td>
-      <td>1</td>
-      <td>04.10.2026 15:00</td>
-      <td>BSC Bayreuth Saas</td>
-      <td>DJK Neustadt a. d. Waldnaab 2</td>
-      <td>Sportzentrum</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>10672</td>
-      <td>1</td>
-      <td>04.10.2026 15:45</td>
-      <td>TG 48 Würzburg 2</td>
-      <td>CVJM Erlangen</td>
-      <td>Heuchelhof-Halle</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>10674</td>
-      <td>1</td>
-      <td>04.10.2026 17:00</td>
-      <td>TuSpo Heroldsberg</td>
-      <td>TSV Breitengüßbach 2</td>
-      <td>Gründlachhalle</td>
-      <td></td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>halle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10669</td>
+<td>1</td>
+<td>03.10.2026 19:00</td>
+<td>TB 1888 Erlangen</td>
+<td>SV Oberdürrbach 1959</td>
+<td>Gerd-Lohwasser-Halle</td>
+</tr>
+<tr>
+<td>10673</td>
+<td>1</td>
+<td>03.10.2026 19:00</td>
+<td>TB Weiden</td>
+<td>DJK Pressath</td>
+<td>Mehrzweckhalle</td>
+</tr>
+<tr>
+<td>10670</td>
+<td>1</td>
+<td>04.10.2026 12:00</td>
+<td>TTL Basketball Bamberg 2</td>
+<td>TG 1877 Veitshöchheim 2</td>
+<td>Graf-Stauffenberg-Schule</td>
+</tr>
+<tr>
+<td>10671</td>
+<td>1</td>
+<td>04.10.2026 15:00</td>
+<td>BSC Bayreuth Saas</td>
+<td>DJK Neustadt a. d. Waldnaab 2</td>
+<td>Sportzentrum</td>
+</tr>
+<tr>
+<td>10672</td>
+<td>1</td>
+<td>04.10.2026 15:45</td>
+<td>TG 48 Würzburg 2</td>
+<td>CVJM Erlangen</td>
+<td>Heuchelhof-Halle</td>
+</tr>
+<tr>
+<td>10674</td>
+<td>1</td>
+<td>04.10.2026 17:00</td>
+<td>TuSpo Heroldsberg</td>
+<td>TSV Breitengüßbach 2</td>
+<td>Gründlachhalle</td>
+</tr>
+</tbody>
 </table>
 <h3>Weitere Zahlen</h3>
 <p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_52530.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_52530.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
@@ -272,34 +267,34 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>nr</th>
-      <th>sptag</th>
-      <th>date</th>
-      <th>home</th>
-      <th>guest</th>
-      <th>result</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>20612</td>
-      <td>6</td>
-      <td>26.09.2026 17:30</td>
-      <td>Fibalon Baskets Neumarkt</td>
-      <td>TSV Jahn Freising</td>
-      <td>65 : 108</td>
-    </tr>
-    <tr>
-      <td>20630</td>
-      <td>9</td>
-      <td>26.09.2026 20:00</td>
-      <td>TG Landshut</td>
-      <td>TV 1881 Altdorf</td>
-      <td>119 : 64</td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color:#ffe066; font-weight:bold;">
+<td>20612</td>
+<td>6</td>
+<td>26.09.2026 17:30</td>
+<td>Fibalon Baskets Neumarkt</td>
+<td>TSV Jahn Freising</td>
+<td>65 : 108</td>
+</tr>
+<tr style="background-color:#ffe066; font-weight:bold;">
+<td>20630</td>
+<td>9</td>
+<td>26.09.2026 20:00</td>
+<td>TG Landshut</td>
+<td>TV 1881 Altdorf</td>
+<td>119 : 64</td>
+</tr>
+</tbody>
 </table>
 <h3>Tabelle</h3>
 <table border="1" class="dataframe">
@@ -427,82 +422,74 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>nr</th>
-      <th>sptag</th>
-      <th>date</th>
-      <th>home</th>
-      <th>guest</th>
-      <th>halle</th>
-      <th>highlight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style='background-color:orange; font-weight:bold;'>
-      <td>20612</td>
-      <td>6</td>
-      <td>26.09.2026 17:30</td>
-      <td>Fibalon Baskets Neumarkt</td>
-      <td>TSV Jahn Freising</td>
-      <td>Mittelschule West</td>
-      <td>Heute</td>
-    </tr>
-    <tr style='background-color:orange; font-weight:bold;'>
-      <td>20630</td>
-      <td>9</td>
-      <td>26.09.2026 20:00</td>
-      <td>TG Landshut</td>
-      <td>TV 1881 Altdorf</td>
-      <td>Sportzentrum West</td>
-      <td>Heute</td>
-    </tr>
-    <tr>
-      <td>20582</td>
-      <td>1</td>
-      <td>03.10.2026 17:30</td>
-      <td>Fibalon Baskets Neumarkt</td>
-      <td>Dukes Dingolfing</td>
-      <td>Mittelschule West</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>20584</td>
-      <td>1</td>
-      <td>03.10.2026 17:30</td>
-      <td>PSV Ingolstadt</td>
-      <td>TSV Milbertshofen</td>
-      <td>August-Horch-Schule</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>20580</td>
-      <td>1</td>
-      <td>03.10.2026 19:30</td>
-      <td>TSV Neuötting</td>
-      <td>TG Landshut</td>
-      <td>Max-Fellermeier-Volksschule</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>20581</td>
-      <td>1</td>
-      <td>04.10.2026 15:30</td>
-      <td>TSV Jahn Freising</td>
-      <td>FC Bayern München 3</td>
-      <td>Steinpark-Halle</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>20583</td>
-      <td>1</td>
-      <td>04.10.2026 17:00</td>
-      <td>TV 1881 Altdorf</td>
-      <td>Nürnberger Basketball Club</td>
-      <td>Klaus Wolfermann Halle</td>
-      <td></td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>halle</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color:#2ecc71; font-weight:bold;">
+<td>20612</td>
+<td>6</td>
+<td>26.09.2026 17:30</td>
+<td>Fibalon Baskets Neumarkt</td>
+<td>TSV Jahn Freising</td>
+<td>Mittelschule West</td>
+</tr>
+<tr style="background-color:#2ecc71; font-weight:bold;">
+<td>20630</td>
+<td>9</td>
+<td>26.09.2026 20:00</td>
+<td>TG Landshut</td>
+<td>TV 1881 Altdorf</td>
+<td>Sportzentrum West</td>
+</tr>
+<tr>
+<td>20582</td>
+<td>1</td>
+<td>03.10.2026 17:30</td>
+<td>Fibalon Baskets Neumarkt</td>
+<td>Dukes Dingolfing</td>
+<td>Mittelschule West</td>
+</tr>
+<tr>
+<td>20584</td>
+<td>1</td>
+<td>03.10.2026 17:30</td>
+<td>PSV Ingolstadt</td>
+<td>TSV Milbertshofen</td>
+<td>August-Horch-Schule</td>
+</tr>
+<tr>
+<td>20580</td>
+<td>1</td>
+<td>03.10.2026 19:30</td>
+<td>TSV Neuötting</td>
+<td>TG Landshut</td>
+<td>Max-Fellermeier-Volksschule</td>
+</tr>
+<tr>
+<td>20581</td>
+<td>1</td>
+<td>04.10.2026 15:30</td>
+<td>TSV Jahn Freising</td>
+<td>FC Bayern München 3</td>
+<td>Steinpark-Halle</td>
+</tr>
+<tr>
+<td>20583</td>
+<td>1</td>
+<td>04.10.2026 17:00</td>
+<td>TV 1881 Altdorf</td>
+<td>Nürnberger Basketball Club</td>
+<td>Klaus Wolfermann Halle</td>
+</tr>
+</tbody>
 </table>
 <h3>Weitere Zahlen</h3>
 <p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
@@ -650,73 +637,66 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>nr</th>
-      <th>sptag</th>
-      <th>date</th>
-      <th>home</th>
-      <th>guest</th>
-      <th>halle</th>
-      <th>highlight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>30669</td>
-      <td>1</td>
-      <td>03.10.2026 18:00</td>
-      <td>Uniqform Baskets Sonthofen</td>
-      <td>DJK Traunstein</td>
-      <td>Gymnasium</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>30672</td>
-      <td>1</td>
-      <td>03.10.2026 19:00</td>
-      <td>SV Wacker Burghausen</td>
-      <td>DJK SB München 2</td>
-      <td>Sportparkhalle</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>30670</td>
-      <td>1</td>
-      <td>03.10.2026 19:30</td>
-      <td>Haching Baskets 2</td>
-      <td>ESV Staffelsee</td>
-      <td>Lise-Meitner-Gymnasium</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>30673</td>
-      <td>1</td>
-      <td>03.10.2026 20:00</td>
-      <td>BC Hellenen München</td>
-      <td>DJK Kaufbeuren</td>
-      <td>Adolf-Weber-Gymnasium</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>30671</td>
-      <td>1</td>
-      <td>04.10.2026 17:00</td>
-      <td>TSV OH Deisenhofen 2</td>
-      <td>TSV Vaterstetten</td>
-      <td>Kyberghalle</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>30740</td>
-      <td>12</td>
-      <td>04.10.2026 19:30</td>
-      <td>TSV München Ost</td>
-      <td>TSV Weilheim</td>
-      <td>Ost-Dome 1</td>
-      <td></td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>halle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30669</td>
+<td>1</td>
+<td>03.10.2026 18:00</td>
+<td>Uniqform Baskets Sonthofen</td>
+<td>DJK Traunstein</td>
+<td>Gymnasium</td>
+</tr>
+<tr>
+<td>30672</td>
+<td>1</td>
+<td>03.10.2026 19:00</td>
+<td>SV Wacker Burghausen</td>
+<td>DJK SB München 2</td>
+<td>Sportparkhalle</td>
+</tr>
+<tr>
+<td>30670</td>
+<td>1</td>
+<td>03.10.2026 19:30</td>
+<td>Haching Baskets 2</td>
+<td>ESV Staffelsee</td>
+<td>Lise-Meitner-Gymnasium</td>
+</tr>
+<tr>
+<td>30673</td>
+<td>1</td>
+<td>03.10.2026 20:00</td>
+<td>BC Hellenen München</td>
+<td>DJK Kaufbeuren</td>
+<td>Adolf-Weber-Gymnasium</td>
+</tr>
+<tr>
+<td>30671</td>
+<td>1</td>
+<td>04.10.2026 17:00</td>
+<td>TSV OH Deisenhofen 2</td>
+<td>TSV Vaterstetten</td>
+<td>Kyberghalle</td>
+</tr>
+<tr>
+<td>30740</td>
+<td>12</td>
+<td>04.10.2026 19:30</td>
+<td>TSV München Ost</td>
+<td>TSV Weilheim</td>
+<td>Ost-Dome 1</td>
+</tr>
+</tbody>
 </table>
 <h3>Weitere Zahlen</h3>
 <p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_52532.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_52532.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
@@ -846,64 +826,58 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>nr</th>
-      <th>sptag</th>
-      <th>date</th>
-      <th>home</th>
-      <th>guest</th>
-      <th>halle</th>
-      <th>highlight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>40454</td>
-      <td>1</td>
-      <td>03.10.2026 16:00</td>
-      <td>MSG TSV Grombühl / TG Veitshöchheim 1877</td>
-      <td>Post SV Nürnberg 2</td>
-      <td>Dreifachhalle Schulzentrum</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>40452</td>
-      <td>1</td>
-      <td>03.10.2026 16:30</td>
-      <td>TV Marktheidenfeld</td>
-      <td>DJK Neustadt a. d. Waldnaab</td>
-      <td>Hans-Wilhelm-Renkhoff-Halle</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>40455</td>
-      <td>1</td>
-      <td>03.10.2026 16:30</td>
-      <td>ONLINEPRINTERS Neustadt a.d. Aisch</td>
-      <td>TG 48 Würzburg 3</td>
-      <td>Markgrafenhalle</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>40451</td>
-      <td>1</td>
-      <td>03.10.2026 17:00</td>
-      <td>TS Herzogenaurach</td>
-      <td>Regensburg Baskets</td>
-      <td>Gymnasium</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>40453</td>
-      <td>1</td>
-      <td>04.10.2026 11:00</td>
-      <td>SC Kemmern 1930</td>
-      <td>TV 48 Schwabach</td>
-      <td>Hans-Jung-Halle</td>
-      <td></td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>halle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40454</td>
+<td>1</td>
+<td>03.10.2026 16:00</td>
+<td>MSG TSV Grombühl / TG Veitshöchheim 1877</td>
+<td>Post SV Nürnberg 2</td>
+<td>Dreifachhalle Schulzentrum</td>
+</tr>
+<tr>
+<td>40452</td>
+<td>1</td>
+<td>03.10.2026 16:30</td>
+<td>TV Marktheidenfeld</td>
+<td>DJK Neustadt a. d. Waldnaab</td>
+<td>Hans-Wilhelm-Renkhoff-Halle</td>
+</tr>
+<tr>
+<td>40455</td>
+<td>1</td>
+<td>03.10.2026 16:30</td>
+<td>ONLINEPRINTERS Neustadt a.d. Aisch</td>
+<td>TG 48 Würzburg 3</td>
+<td>Markgrafenhalle</td>
+</tr>
+<tr>
+<td>40451</td>
+<td>1</td>
+<td>03.10.2026 17:00</td>
+<td>TS Herzogenaurach</td>
+<td>Regensburg Baskets</td>
+<td>Gymnasium</td>
+</tr>
+<tr>
+<td>40453</td>
+<td>1</td>
+<td>04.10.2026 11:00</td>
+<td>SC Kemmern 1930</td>
+<td>TV 48 Schwabach</td>
+<td>Hans-Jung-Halle</td>
+</tr>
+</tbody>
 </table>
 <h3>Weitere Zahlen</h3>
 <p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_52533.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_52533.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
@@ -929,46 +903,42 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
 <p><i>Keine Tabelle vorhanden – weil es eine Pokalrunde ist, oder beim Teamsl bei der Spielplanerfassung der Schalter „Tabelle“ nicht gesetzt wurde.<br>Daher ist es auf der bb_api_...‑Seite nicht möglich, den Spielplan pro Team zu erstellen.</i></p>
 <h3>Nächste Spiele (8 Tage)</h3>
 <table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>nr</th>
-      <th>sptag</th>
-      <th>date</th>
-      <th>home</th>
-      <th>guest</th>
-      <th>halle</th>
-      <th>highlight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>50455</td>
-      <td>1</td>
-      <td>03.10.2026 15:00</td>
-      <td>TS Jahn München 2</td>
-      <td>BC Hellenen München</td>
-      <td>TS Jahn München (alt)</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>50451</td>
-      <td>1</td>
-      <td>03.10.2026 16:00</td>
-      <td>DJK Landsberg</td>
-      <td>TSV Schwaben Augsburg</td>
-      <td>Isidor-Hipper-Halle</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>50453</td>
-      <td>1</td>
-      <td>04.10.2026 13:30</td>
-      <td>TSV 1880 Wasserburg 2</td>
-      <td>TSV 1861 Nördlingen</td>
-      <td>Badria</td>
-      <td></td>
-    </tr>
-  </tbody>
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>halle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50455</td>
+<td>1</td>
+<td>03.10.2026 15:00</td>
+<td>TS Jahn München 2</td>
+<td>BC Hellenen München</td>
+<td>TS Jahn München (alt)</td>
+</tr>
+<tr>
+<td>50451</td>
+<td>1</td>
+<td>03.10.2026 16:00</td>
+<td>DJK Landsberg</td>
+<td>TSV Schwaben Augsburg</td>
+<td>Isidor-Hipper-Halle</td>
+</tr>
+<tr>
+<td>50453</td>
+<td>1</td>
+<td>04.10.2026 13:30</td>
+<td>TSV 1880 Wasserburg 2</td>
+<td>TSV 1861 Nördlingen</td>
+<td>Badria</td>
+</tr>
+</tbody>
 </table>
 <h3>Weitere Zahlen</h3>
 <p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
