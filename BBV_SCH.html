@@ -49,7 +49,7 @@ function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAtt
 </head>
 <body>
 
-<h1>Ligenuebersicht Bezirk Schwaben – Stand: 27.09.26 17:51:22</h1>
+<h1>Ligenuebersicht Bezirk Schwaben – Stand: 27.09.26 18:06:06</h1>
 
 
 <details id='wasfindeichhier'>
@@ -1459,13 +1459,34 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54460.html?nocache=1' target='_blank'>Details</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:orange;'></span>
+        <span class='liga-icon green'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
-<p><i>Keine Ergebnisse.</i></p>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color:orange; font-weight:bold;">
+<td>25016</td>
+<td>6</td>
+<td>27.09.2026 16:00</td>
+<td>TSV Schwaben Augsburg (BOLU20W)</td>
+<td>TSV Etting-Ingolstadt (BOLU20W)</td>
+<td>77 : 42</td>
+</tr>
+</tbody>
+</table>
 <h3>Tabelle</h3>
 <table border="1" class="dataframe">
   <thead>
@@ -1482,6 +1503,15 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
   <tbody>
     <tr>
       <td>1</td>
+      <td>TSV Schwaben Augsburg (BOLU20W)</td>
+      <td>1</td>
+      <td>1/0</td>
+      <td>2</td>
+      <td>77 : 42</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>2</td>
       <td>DJK Eichstätt</td>
       <td>0</td>
       <td>0/0</td>
@@ -1490,25 +1520,7 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
       <td>0</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>TSV Etting-Ingolstadt (BOLU20W)</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
       <td>3</td>
-      <td>TSV Schwaben Augsburg (BOLU20W)</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>4</td>
       <td>TSV 1862 Neuburg</td>
       <td>0</td>
       <td>0/0</td>
@@ -1517,13 +1529,22 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
       <td>0</td>
     </tr>
     <tr>
-      <td>5</td>
+      <td>4</td>
       <td>TV Augsburg</td>
       <td>0</td>
       <td>0/0</td>
       <td>0</td>
       <td>0 : 0</td>
       <td>0</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>TSV Etting-Ingolstadt (BOLU20W)</td>
+      <td>1</td>
+      <td>0/1</td>
+      <td>0</td>
+      <td>42 : 77</td>
+      <td>-35</td>
     </tr>
   </tbody>
 </table>
@@ -1540,7 +1561,7 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:orange; font-weight:bold;">
+<tr style="background-color:#2ecc71; font-weight:bold;">
 <td>25016</td>
 <td>6</td>
 <td>27.09.2026 16:00</td>
