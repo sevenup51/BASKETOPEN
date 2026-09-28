@@ -14,16 +14,17 @@ body { font-family: Arial; font-size: 10px; background:#f4f6f9; margin:18px; col
 h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
-          width: 100%; max-width: 650px; box-sizing: border-box; }
+          width: 100%; max-width: 780px; box-sizing: border-box; }
 summary::marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
 details { margin-bottom:3px; }
 .summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
-                 min-width: 90px; justify-content: flex-end; }
+                 min-width: 168px; justify-content: flex-end; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
-               border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap; }
+               border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
+               display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
 .liga-icon { width: 12px; height: 8px; border-radius: 2px; }
 .liga-icon.green  { background:#2ecc71; }
 .liga-icon.yellow { background:#f1c40f; }
@@ -43,17 +44,22 @@ button:hover { background:#163568; }
 p.ligalink { margin:3px 0 3px 0; }
 </style>
 <script>
-function openAll(){ document.querySelectorAll("details").forEach(d=>d.setAttribute("open","")); }
+function openAll(){
+  document.querySelectorAll("details").forEach(d=>{
+    if(d.id==="wasfindeichhier") return;
+    d.setAttribute("open","");
+  });
+}
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
 </script>
 </head>
 <body>
 
-<h1>Regionalliga West – Stand: 28.09.26 08:09:43</h1>
+<h1>Regionalliga West – Stand: 28.09.26 08:17:07</h1>
 
 
 <details id='wasfindeichhier'>
-<summary><b>Was finde ich hier - Stand 26.09.26 20:00</b> (ausklappbar)</summary>
+<summary><b>Was finde ich hier - Stand 28.09.26 08:10</b> (ausklappbar)</summary>
 <div style='margin-left:15px;'>
 
 <p>Übersicht über die Ligen von <b>Regionalliga West</b>.</p>
@@ -162,6 +168,18 @@ Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfol
 <b>26.09.26</b><br>
 Bei den Ergebnissen werden Zeilen des aktuellen Tages auf orange gesetzt.<br>
 Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergebnis vorliegt, auf grün gesetzt.
+
+<br><br>
+
+<b>28.09.26</b><br>
+Wenn man auf Alle öffnen klickt, wird der Block „Was finde ich hier“ nicht explizit mit geöffnet.<br>
+Das muss man selbst machen.<br>
+Wenn ein Ergebnis nicht gemeldet wurde, kann man dies ab 1 Tag nach dem Spieldatum leider nicht
+erkennen, weil dies in dieser Übersicht nicht geliefert wird. Viel mehr Infos erhält man, wenn man unter
+der Überschrift „Weitere Zahlen“ den entsprechenden …/bb_api_…-Link anklickt, noch besser auf das
+ICON Details … klickt. Unter Restspielplan sieht man, wenn ein Spiel nicht gespielt wurde. Spiele ohne
+Ergebnisse sind farblich markiert. Was man sonst noch auf dieser Seite findet, erkennt man, wenn man
+auf Alle öffnen geht.
 </p>
 
 </div>
@@ -179,7 +197,7 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
     <b>1.Regionalliga Herren (1RLH) (Senioren; Liganr.: 220) (Liga 54569)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54569.html?nocache=1' target='_blank'>Details</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54569.html?nocache=1' target='_blank'>Details ( 27.09. 05:11)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -481,7 +499,7 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
     <b>Regionalliga Damen (RLD) (Senioren; Liganr.: 500300) (Liga 54586)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54586.html?nocache=1' target='_blank'>Details</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54586.html?nocache=1' target='_blank'>Details ( 27.09. 05:11)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -765,7 +783,7 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
     <b>2.Regionalliga 1 Herren (2RL1H) (Senioren; Liganr.: 500100) (Liga 54570)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54570.html?nocache=1' target='_blank'>Details</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54570.html?nocache=1' target='_blank'>Details ( 27.09. 05:11)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1025,7 +1043,7 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
     <b>2.Regionalliga 2 Herren (2RL2H) (Senioren; Liganr.: 500200) (Liga 54571)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54571.html?nocache=1' target='_blank'>Details</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54571.html?nocache=1' target='_blank'>Details ( 27.09. 05:11)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1292,8 +1310,8 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
 <summary>
     <b>WBV-Pokal Herren (PKH) (Senioren; Liganr.: 500900) (Liga 54572)</b>
     <span class='summary-right'>
-        <span style='color:red; font-weight:bold;'>keineTab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54572.html?nocache=1' target='_blank'>Details</a>
+        
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54572.html?nocache=1' target='_blank'>Details ( 27.09. 05:11)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -1317,8 +1335,8 @@ Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergeb
 <summary>
     <b>WBV-Pokal Damen (PKD) (Senioren; Liganr.: 500950) (Liga 54573)</b>
     <span class='summary-right'>
-        <span style='color:red; font-weight:bold;'>keineTab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54573.html?nocache=1' target='_blank'>Details</a>
+        
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54573.html?nocache=1' target='_blank'>Details ( 27.09. 05:12)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
