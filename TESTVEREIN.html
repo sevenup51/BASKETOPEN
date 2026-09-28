@@ -51,11 +51,15 @@ function openAll(){
   });
 }
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
+function liveHref(a){
+  var base = a.getAttribute("data-base") || a.href.split("?")[0];
+  a.href = base + "?nocache=" + Date.now();
+}
 </script>
 </head>
 <body>
 
-<h1>Uebersicht diverse Ligen fuer Test – Stand: 28.09.26 09:05:12</h1>
+<h1>Uebersicht diverse Ligen fuer Test – Stand: 28.09.26 09:35:10</h1>
 
 
 <details id='wasfindeichhier'>
@@ -74,8 +78,8 @@ Gelb bedeutet: Es stehen Spiele an, aber es wurden noch keine Ergebnisse gemelde
 Beispiel für die BBL Saison 26/27:</p>
 
 <p>
-<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1" target="_blank">
-https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html" data-base="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html" onclick="liveHref(this)" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=
 </a><br>
 
 <a href="https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802" target="_blank">
@@ -84,8 +88,8 @@ https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802
 </p>
 
 <p>
-<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1" target="_blank">
-https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=1
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html" data-base="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html" onclick="liveHref(this)" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=
 </a><br>
 
 <a href="https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802" target="_blank">
@@ -149,8 +153,8 @@ Interessenten wenden sich an <b>hg2024@web.de</b>.
 
 <p>
 Hier findet sich eine Übersicht (wird noch aufgebaut), in der man die aktuellen Listen findet:<br>
-<a href="https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=1" target="_blank">
-https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=1
+<a href="https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html" data-base="https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html" onclick="liveHref(this)" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=
 </a>
 <br><br>
 
@@ -197,7 +201,7 @@ auf Alle öffnen geht.
     <b>Unbekannte Liga (Liga 99999)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>Details ( 22.06. 04:00)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html' onclick='liveHref(this)' target='_blank'>Details</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -212,7 +216,7 @@ auf Alle öffnen geht.
 <p><i>Keine kommenden Spiele.</i></p>
 
 <h3>Weitere Zahlen</h3>
-<p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=1</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html' onclick='liveHref(this)' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=99999' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=99999</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
