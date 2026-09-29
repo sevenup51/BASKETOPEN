@@ -114,39 +114,63 @@ td.diag {
 /* LIVESCORE – OPTISCH VERBESSERT (ERWEITERT)     */
 /* --------------------------------------------- */
 
+.livescore-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-start;
+    max-width: calc(2 * 280px + 12px);
+}
+
+.livescore-list > :not(.livescore-box) {
+    flex: 1 0 100%;
+}
+
 .livescore-box {
+    box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 12px;
-    padding: 18px 22px;
-    margin: 16px 0;
+    padding: 10px 10px;
+    margin: 0;
     background: #ffffff;
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    width: 520px;
+    width: 280px;
+    flex: 0 0 280px;
+    max-width: 280px;
+    overflow: hidden;
 }
 
 .ls-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 4px;
 }
 
 .ls-team {
-    font-size: 20px;
+    font-size: 12px;
     font-weight: bold;
-    width: 48%;
+    width: 36%;
+    line-height: 1.2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow-wrap: break-word;
 }
 
 .ls-score {
-    font-size: 48px;
+    font-size: 26px;
     font-weight: bold;
     text-align: center;
-    width: 32%;
+    width: 28%;
+    flex-shrink: 0;
 }
 
 .ls-date {
-    font-size: 14px;
+    font-size: 11px;
     color: #666;
-    margin-top: 10px;
+    margin-top: 6px;
     text-align: center;
 }
 
@@ -254,17 +278,8 @@ Man kann anschließend einen Verein auswählen, um dessen gesamten Spielplan ink
 <hr>
 <p style='color:red; font-style:italic;'>Es sind noch nicht alle aktuellen Spielergebnisse erfasst.</p><h1>2. Regionalliga Herren West (Liganr.: 54826)</h1>
 <details><summary><b>Livescore</b></summary>
-<div class='section'>
-
-            <div class='livescore-box' style=''>
-                <div class='ls-row'>
-                    <div class='ls-team'>Oldenburger TB 2</div>
-                    <div class='ls-score'>54:94</div>
-                    <div class='ls-team' style='text-align:right;'>CVJM Hannover</div>
-                </div>
-                <div class='ls-date'>27.09.2026 16:00</div>
-            </div>
-            </div></details><h2>Tabelle – Stand: 28.09.26 13:08</h2><div style='display:flex; align-items:flex-start;'><div style='flex:0 0 auto; margin-right:30px; max-width:750px;'><table><tr><th>Rang</th><th>Team</th><th>Spiele</th><th>S</th><th>N</th><th>Punkte</th><th>Diff</th><th>§</th></tr><tr><td>1.</td><td class='left'>CVJM Hannover</td><td>2</td><td>2</td><td>0</td><td class='bluepts'><a href='#pg_4'>4</a></td><td>73</td><td>0</td></tr><tr><td>2.</td><td class='left'>Pro Basketball Göttingen</td><td>2</td><td>2</td><td>0</td><td class='bluepts'><a href='#pg_4'>4</a></td><td>56</td><td>0</td></tr><tr><td>3.</td><td class='left'>BTS Neustadt</td><td>2</td><td>2</td><td>0</td><td class='bluepts'><a href='#pg_4'>4</a></td><td>19</td><td>0</td></tr><tr><td>4.</td><td class='left'>ASC 46 Göttingen</td><td>1</td><td>1</td><td>0</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>57</td><td>0</td></tr><tr><td>5.</td><td class='left'>TSV Quakenbrück</td><td>1</td><td>1</td><td>0</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>15</td><td>0</td></tr><tr><td>6.</td><td class='left'>Bremerhaven United</td><td>2</td><td>1</td><td>1</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>7</td><td>0</td></tr><tr><td>7.</td><td class='left'>BG 74 Göttingen</td><td>2</td><td>1</td><td>1</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>-17</td><td>0</td></tr><tr><td>8.</td><td class='left'>FORTE Energie RW Cuxhaven BasCats</td><td>2</td><td>1</td><td>1</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>-6</td><td>0</td></tr><tr><td>9.</td><td class='left'>TuS Bothfeld</td><td>2</td><td>0</td><td>2</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>-42</td><td>0</td></tr><tr><td>10.</td><td class='left'>Oldenburger TB 2</td><td>2</td><td>0</td><td>2</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>-44</td><td>0</td></tr><tr><td>11.</td><td class='left'>Kleene Trockenbau Baskets Fortuna Logabirum</td><td>2</td><td>0</td><td>2</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>-45</td><td>0</td></tr><tr><td>12.</td><td class='left'>SC Rasta Vechta 3</td><td>2</td><td>0</td><td>2</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>-73</td><td>0</td></tr></table></div><div style='width:260px; display:flex; flex-direction:column;'>
+<div class='section livescore-list'>
+</div></details><h2>Tabelle – Stand: 29.09.26 08:14</h2><div style='display:flex; align-items:flex-start;'><div style='flex:0 0 auto; margin-right:30px; max-width:750px;'><table><tr><th>Rang</th><th>Team</th><th>Spiele</th><th>S</th><th>N</th><th>Punkte</th><th>Diff</th><th>§</th></tr><tr><td>1.</td><td class='left'>CVJM Hannover</td><td>2</td><td>2</td><td>0</td><td class='bluepts'><a href='#pg_4'>4</a></td><td>73</td><td>0</td></tr><tr><td>2.</td><td class='left'>Pro Basketball Göttingen</td><td>2</td><td>2</td><td>0</td><td class='bluepts'><a href='#pg_4'>4</a></td><td>56</td><td>0</td></tr><tr><td>3.</td><td class='left'>BTS Neustadt</td><td>2</td><td>2</td><td>0</td><td class='bluepts'><a href='#pg_4'>4</a></td><td>19</td><td>0</td></tr><tr><td>4.</td><td class='left'>ASC 46 Göttingen</td><td>1</td><td>1</td><td>0</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>57</td><td>0</td></tr><tr><td>5.</td><td class='left'>TSV Quakenbrück</td><td>1</td><td>1</td><td>0</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>15</td><td>0</td></tr><tr><td>6.</td><td class='left'>Bremerhaven United</td><td>2</td><td>1</td><td>1</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>7</td><td>0</td></tr><tr><td>7.</td><td class='left'>BG 74 Göttingen</td><td>2</td><td>1</td><td>1</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>-17</td><td>0</td></tr><tr><td>8.</td><td class='left'>FORTE Energie RW Cuxhaven BasCats</td><td>2</td><td>1</td><td>1</td><td class='orangepts'><a href='#pg_2'>2</a></td><td>-6</td><td>0</td></tr><tr><td>9.</td><td class='left'>TuS Bothfeld</td><td>2</td><td>0</td><td>2</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>-42</td><td>0</td></tr><tr><td>10.</td><td class='left'>Oldenburger TB 2</td><td>2</td><td>0</td><td>2</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>-44</td><td>0</td></tr><tr><td>11.</td><td class='left'>Kleene Trockenbau Baskets Fortuna Logabirum</td><td>2</td><td>0</td><td>2</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>-45</td><td>0</td></tr><tr><td>12.</td><td class='left'>SC Rasta Vechta 3</td><td>2</td><td>0</td><td>2</td><td class='bluepts'><a href='#pg_0'>0</a></td><td>-73</td><td>0</td></tr></table></div><div style='width:260px; display:flex; flex-direction:column;'>
 <div class="werbung-box">
     <a href="https://shop.lenahaunstetter.de/" target="_blank">
         <img src="https://sevenup51.github.io/BASKETOPEN/assets/img/infoshop_kompl.webp"
