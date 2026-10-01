@@ -62,6 +62,15 @@ function openAll(){
   });
 }
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
+function openLivescore(){
+  document.querySelectorAll("details").forEach(d=>{
+    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+      d.setAttribute("open","");
+    } else {
+      d.removeAttribute("open");
+    }
+  });
+}
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
@@ -70,7 +79,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>Regionalliga Nord – Stand: 01.10.26 23:07:55</h1>
+<h1>Regionalliga Nord – Stand: 01.10.26 23:22:36</h1>
 
 
 <details id='wasfindeichhier'>
@@ -229,6 +238,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
+    
 </div>
 
 <details open>
@@ -567,7 +577,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54819' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54819</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>1. Regionalliga Damen (Senioren; Liganr.: 2001) (Liga 54820)</b>
@@ -785,7 +795,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54820' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54820</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2. Regionalliga Herren Nord (Senioren; Liganr.: 2002) (Liga 54834)</b>
@@ -1045,7 +1055,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54834' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54834</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2. Regionalliga Herren Ost (Senioren; Liganr.: 2003) (Liga 54831)</b>
@@ -1305,7 +1315,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54831' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54831</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2. Regionalliga Herren West (Senioren; Liganr.: 2004) (Liga 54826)</b>
@@ -1557,7 +1567,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54826' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54826</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2. Regionalliga Herren West (Senioren; Liganr.: 2004) (Liga 54826)</b>
@@ -1809,7 +1819,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54826' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54826</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2. Regionalliga Damen Ost (Senioren; Liganr.: 2006) (Liga 54822)</b>
@@ -2019,7 +2029,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54822' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54822</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2. Regionalliga Damen West (Senioren; Liganr.: 2007) (Liga 54823)</b>
