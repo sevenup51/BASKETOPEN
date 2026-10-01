@@ -62,6 +62,15 @@ function openAll(){
   });
 }
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
+function openLivescore(){
+  document.querySelectorAll("details").forEach(d=>{
+    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+      d.setAttribute("open","");
+    } else {
+      d.removeAttribute("open");
+    }
+  });
+}
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
@@ -70,7 +79,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>Uebersicht diverse Ligen fuer Test – Stand: 01.10.26 23:05:09</h1>
+<h1>Uebersicht diverse Ligen fuer Test – Stand: 01.10.26 23:20:12</h1>
 
 
 <details id='wasfindeichhier'>
@@ -229,6 +238,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
+    
 </div>
 
 <details open>
