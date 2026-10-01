@@ -57,7 +57,7 @@ function openAll(){
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
-  a.href = base + "?nocache=" + Date.now();
+  a.href = base + "?nocache=";
 }
 </script>
 </head>
