@@ -62,6 +62,10 @@ function openAll(){
   });
 }
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
+function openLive(){
+  closeAll();
+  document.querySelectorAll("details.ist-live").forEach(d=>d.setAttribute("open",""));
+}
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
@@ -70,7 +74,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 01.10.26 23:07:04</h1>
+<h1>Bundesligen – Stand: 01.10.26 23:09:07</h1>
 
 
 <details id='wasfindeichhier'>
@@ -229,6 +233,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
+    <button onclick="openLive()">Live öffnen</button>
 </div>
 
 <details open>
@@ -714,7 +719,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.liveticker.com/basketball/deutschland/bbl/#/0GcMvNrK/tabelle/gesamt/' target='_blank'>https://www.liveticker.com/basketball/deutschland/bbl/#/0GcMvNrK/tabelle/gesamt/</a></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b>
@@ -953,7 +958,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.liveticker.com/basketball/deutschland/dbbl-frauen/#/zR3Ki0SP/tabelle/gesamt/' target='_blank'>https://www.liveticker.com/basketball/deutschland/dbbl-frauen/#/zR3Ki0SP/tabelle/gesamt/</a></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b>
@@ -1514,7 +1519,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://live.2basketballbundesliga.de/' target='_blank'>https://live.2basketballbundesliga.de/</a></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2. DBBL Süd (Senioren; Liganr.: 43) (Liga 55749)</b>
@@ -1782,7 +1787,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55749' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55749</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2. DBBL Nord (Senioren; Liganr.: 40) (Liga 55746)</b>
@@ -2050,7 +2055,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55746' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55746</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b>
@@ -2426,7 +2431,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://live.2basketballbundesliga.de/?l=probs' target='_blank'>https://live.2basketballbundesliga.de/?l=probs</a></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Herren ProB Nord (Senioren; Liganr.: 20) (Liga 55815)</b>
@@ -2816,7 +2821,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://live.2basketballbundesliga.de/?l=probn' target='_blank'>https://live.2basketballbundesliga.de/?l=probn</a></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>BBL-Pokal 1. Runde (Senioren; Liganr.: 8) (Liga 55809)</b>
@@ -2841,7 +2846,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55809' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55809</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b>
@@ -2866,7 +2871,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55807' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55807</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>DBBL-Pokal Runde 1 (Senioren; Liganr.: 35) (Liga 55743)</b>
@@ -2891,7 +2896,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55743' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55743</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>DBBL-Pokal Runde 2 (Senioren; Liganr.: 37) (Liga 55744)</b>
