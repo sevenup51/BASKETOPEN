@@ -62,9 +62,14 @@ function openAll(){
   });
 }
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
-function openLive(){
-  closeAll();
-  document.querySelectorAll("details.ist-live").forEach(d=>d.setAttribute("open",""));
+function openLivescore(){
+  document.querySelectorAll("details").forEach(d=>{
+    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+      d.setAttribute("open","");
+    } else {
+      d.removeAttribute("open");
+    }
+  });
 }
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
@@ -74,7 +79,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 01.10.26 23:09:07</h1>
+<h1>Bundesligen – Stand: 01.10.26 23:19:12</h1>
 
 
 <details id='wasfindeichhier'>
@@ -233,16 +238,16 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
-    <button onclick="openLive()">Live öffnen</button>
+    <button onclick="openLivescore()">Livescore</button>
 </div>
 
-<details open>
+<details class='hat-livescore' open>
 
 <summary>
     <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:13)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -272,6 +277,9 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
                 
             </div>
             </div></details>
+<details class='liga-rest' open>
+<summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
+<div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <table border="1" class="dataframe">
 <thead>
@@ -719,13 +727,15 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.liveticker.com/basketball/deutschland/bbl/#/0GcMvNrK/tabelle/gesamt/' target='_blank'>https://www.liveticker.com/basketball/deutschland/bbl/#/0GcMvNrK/tabelle/gesamt/</a></p>
 <hr class='short'>
 </div>
-</details><details>
+</details>
+</div>
+</details><details class='hat-livescore'>
 
 <summary>
     <b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:34)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:orange;'></span>
     </span>
@@ -788,6 +798,9 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
                 
             </div>
             </div></details>
+<details class='liga-rest' open>
+<summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
+<div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
@@ -958,13 +971,15 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.liveticker.com/basketball/deutschland/dbbl-frauen/#/zR3Ki0SP/tabelle/gesamt/' target='_blank'>https://www.liveticker.com/basketball/deutschland/dbbl-frauen/#/zR3Ki0SP/tabelle/gesamt/</a></p>
 <hr class='short'>
 </div>
-</details><details>
+</details>
+</div>
+</details><details class='hat-livescore'>
 
 <summary>
     <b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:20)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1071,6 +1086,9 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
                 
             </div>
             </div></details>
+<details class='liga-rest' open>
+<summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
+<div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <table border="1" class="dataframe">
 <thead>
@@ -1519,13 +1537,15 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://live.2basketballbundesliga.de/' target='_blank'>https://live.2basketballbundesliga.de/</a></p>
 <hr class='short'>
 </div>
+</details>
+</div>
 </details><details>
 
 <summary>
     <b>2. DBBL Süd (Senioren; Liganr.: 43) (Liga 55749)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1793,7 +1813,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
     <b>2. DBBL Nord (Senioren; Liganr.: 40) (Liga 55746)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2055,13 +2075,13 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55746' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55746</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details>
+</details><details class='hat-livescore'>
 
 <summary>
     <b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2113,6 +2133,9 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
                 
             </div>
             </div></details>
+<details class='liga-rest' open>
+<summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
+<div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <table border="1" class="dataframe">
 <thead>
@@ -2431,13 +2454,15 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://live.2basketballbundesliga.de/?l=probs' target='_blank'>https://live.2basketballbundesliga.de/?l=probs</a></p>
 <hr class='short'>
 </div>
-</details><details>
+</details>
+</div>
+</details><details class='hat-livescore'>
 
 <summary>
     <b>Herren ProB Nord (Senioren; Liganr.: 20) (Liga 55815)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2522,6 +2547,9 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
                 
             </div>
             </div></details>
+<details class='liga-rest' open>
+<summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
+<div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <table border="1" class="dataframe">
 <thead>
@@ -2821,13 +2849,15 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://live.2basketballbundesliga.de/?l=probn' target='_blank'>https://live.2basketballbundesliga.de/?l=probn</a></p>
 <hr class='short'>
 </div>
+</details>
+</div>
 </details><details>
 
 <summary>
     <b>BBL-Pokal 1. Runde (Senioren; Liganr.: 8) (Liga 55809)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -2852,7 +2882,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
     <b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -2877,7 +2907,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
     <b>DBBL-Pokal Runde 1 (Senioren; Liganr.: 35) (Liga 55743)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -2902,7 +2932,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
     <b>DBBL-Pokal Runde 2 (Senioren; Liganr.: 37) (Liga 55744)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 22:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 01.10. 23:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:orange;'></span>
     </span>
