@@ -27,6 +27,13 @@ details { margin-bottom:3px; }
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
 .liga-icon { width: 12px; height: 8px; border-radius: 2px; }
 .liga-icon.green  { background:#2ecc71; }
+.livescore-list { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; max-width:calc(2 * 280px + 12px); margin:6px 0 8px 0; }
+.livescore-list > :not(.livescore-box) { flex:1 0 100%; }
+.livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
+.ls-row { display:flex; justify-content:space-between; align-items:center; gap:4px; }
+.ls-team { font-size:12px; font-weight:bold; flex:1; }
+.ls-score { font-size:16px; font-weight:bold; padding:0 6px; }
+.ls-date { font-size:11px; color:#555; text-align:center; margin-top:4px; }
 .liga-icon.yellow { background:#f1c40f; }
 .liga-icon.red    { background:#e74c3c; }
 h3 { font-size:11px; margin:5px 0 3px 0; color:#1a3d7c; }
@@ -63,7 +70,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>VSC Baskets Donauwoerth – Stand: 01.10.26 22:51:27</h1>
+<h1>VSC Baskets Donauwoerth – Stand: 01.10.26 23:06:32</h1>
 
 
 <details id='wasfindeichhier'>
