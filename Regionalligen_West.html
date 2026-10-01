@@ -62,9 +62,14 @@ function openAll(){
   });
 }
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
-function openLive(){
-  closeAll();
-  document.querySelectorAll("details.ist-live").forEach(d=>d.setAttribute("open",""));
+function openLivescore(){
+  document.querySelectorAll("details").forEach(d=>{
+    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+      d.setAttribute("open","");
+    } else {
+      d.removeAttribute("open");
+    }
+  });
 }
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
@@ -74,7 +79,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>Regionalliga West – Stand: 01.10.26 23:09:01</h1>
+<h1>Regionalliga West – Stand: 01.10.26 23:23:11</h1>
 
 
 <details id='wasfindeichhier'>
