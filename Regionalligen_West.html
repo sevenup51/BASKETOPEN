@@ -27,6 +27,13 @@ details { margin-bottom:3px; }
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
 .liga-icon { width: 12px; height: 8px; border-radius: 2px; }
 .liga-icon.green  { background:#2ecc71; }
+.livescore-list { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; max-width:calc(2 * 280px + 12px); margin:6px 0 8px 0; }
+.livescore-list > :not(.livescore-box) { flex:1 0 100%; }
+.livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
+.ls-row { display:flex; justify-content:space-between; align-items:center; gap:4px; }
+.ls-team { font-size:12px; font-weight:bold; flex:1; }
+.ls-score { font-size:16px; font-weight:bold; padding:0 6px; }
+.ls-date { font-size:11px; color:#555; text-align:center; margin-top:4px; }
 .liga-icon.yellow { background:#f1c40f; }
 .liga-icon.red    { background:#e74c3c; }
 h3 { font-size:11px; margin:5px 0 3px 0; color:#1a3d7c; }
@@ -55,6 +62,10 @@ function openAll(){
   });
 }
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
+function openLive(){
+  closeAll();
+  document.querySelectorAll("details.ist-live").forEach(d=>d.setAttribute("open",""));
+}
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
@@ -63,7 +74,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>Regionalliga West – Stand: 01.10.26 22:54:14</h1>
+<h1>Regionalliga West – Stand: 01.10.26 23:09:01</h1>
 
 
 <details id='wasfindeichhier'>
@@ -222,6 +233,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
+    
 </div>
 
 <details open>
@@ -582,7 +594,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54569' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54569</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Regionalliga Damen (RLD) (Senioren; Liganr.: 500300) (Liga 54586)</b>
@@ -850,7 +862,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54586' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54586</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2.Regionalliga 1 Herren (2RL1H) (Senioren; Liganr.: 500100) (Liga 54570)</b>
@@ -1110,7 +1122,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54570' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54570</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>2.Regionalliga 2 Herren (2RL2H) (Senioren; Liganr.: 500200) (Liga 54571)</b>
@@ -1378,7 +1390,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54571' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54571</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>WBV-Pokal Herren (PKH) (Senioren; Liganr.: 500900) (Liga 54572)</b>
@@ -1403,7 +1415,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54572' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54572</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>WBV-Pokal Damen (PKD) (Senioren; Liganr.: 500950) (Liga 54573)</b>
