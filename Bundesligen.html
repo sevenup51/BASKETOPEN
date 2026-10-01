@@ -27,6 +27,13 @@ details { margin-bottom:3px; }
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
 .liga-icon { width: 12px; height: 8px; border-radius: 2px; }
 .liga-icon.green  { background:#2ecc71; }
+.livescore-list { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; max-width:calc(2 * 280px + 12px); margin:6px 0 8px 0; }
+.livescore-list > :not(.livescore-box) { flex:1 0 100%; }
+.livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
+.ls-row { display:flex; justify-content:space-between; align-items:center; gap:4px; }
+.ls-team { font-size:12px; font-weight:bold; flex:1; }
+.ls-score { font-size:16px; font-weight:bold; padding:0 6px; }
+.ls-date { font-size:11px; color:#555; text-align:center; margin-top:4px; }
 .liga-icon.yellow { background:#f1c40f; }
 .liga-icon.red    { background:#e74c3c; }
 h3 { font-size:11px; margin:5px 0 3px 0; color:#1a3d7c; }
@@ -63,7 +70,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 01.10.26 22:51:51</h1>
+<h1>Bundesligen – Stand: 01.10.26 23:01:35</h1>
 
 
 <details id='wasfindeichhier'>
@@ -237,6 +244,29 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 </summary>
 
 <div style='margin-left:10px;'>
+<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>easyCredit BBL, gestern bis morgen</div>
+            <div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-row'>
+                    <div class='ls-team'>Science City Jena</div>
+                    <div class='ls-score'>79:71</div>
+                    <div class='ls-team' style='text-align:right;'>RASTA Vechta</div>
+                </div>
+                <div class='ls-date'>01.10.2026 20:00</div>
+                <div class='ls-date'>Q1 18-11 | Q2 18-21 | Q3 26-28 | Q4 17-11</div>
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Fitness First Würzburg Baskets</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Telekom Baskets Bonn</div>
+                </div>
+                <div class='ls-date'>02.10.2026 20:00</div>
+                
+                
+            </div>
+            </div></details>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <table border="1" class="dataframe">
 <thead>
@@ -386,7 +416,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <td>Veolia Towers Hamburg</td>
 <td>75 : 74</td>
 </tr>
-<tr style="background-color:orange; font-weight:bold;">
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>9</td>
 <td>1</td>
 <td>01.10.2026 20:00</td>
@@ -587,7 +617,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#2ecc71; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>9</td>
 <td>1</td>
 <td>01.10.2026 20:00</td>
@@ -697,6 +727,62 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 </summary>
 
 <div style='margin-left:10px;'>
+<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>DBBL, bis 4.10.</div>
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Eigner Angels Nördlingen</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Rutronik Stars Keltern</div>
+                </div>
+                <div class='ls-date'>04.10.2026 16:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Eisvögel USC Freiburg</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Herner TC</div>
+                </div>
+                <div class='ls-date'>04.10.2026 16:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Alba Berlin</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>BC Pharmaserv Marburg</div>
+                </div>
+                <div class='ls-date'>04.10.2026 16:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>GiroLive Panthers Osnabrück</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Saarlouis Royals</div>
+                </div>
+                <div class='ls-date'>04.10.2026 16:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Syntainics MBC</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>TK Hannover</div>
+                </div>
+                <div class='ls-date'>04.10.2026 17:00</div>
+                
+                
+            </div>
+            </div></details>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
@@ -880,6 +966,106 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 </summary>
 
 <div style='margin-left:10px;'>
+<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProA, gestern bis morgen</div>
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Medikamente per Klick Bayreuth</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>PS Karlsruhe LIONS</div>
+                </div>
+                <div class='ls-date'>02.10.2026 19:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Nürnberg Falcons</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>EPG Baskets Koblenz</div>
+                </div>
+                <div class='ls-date'>02.10.2026 19:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>OrangeAcademy</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Kreisbau Kirchheim Knights</div>
+                </div>
+                <div class='ls-date'>02.10.2026 19:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Artland Dragons</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>BG Göttingen</div>
+                </div>
+                <div class='ls-date'>02.10.2026 19:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>VfL SparkassenStars Bochum</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Eisbären Bremerhaven</div>
+                </div>
+                <div class='ls-date'>02.10.2026 19:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>MLP Academics Heidelberg</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>ETB Miners</div>
+                </div>
+                <div class='ls-date'>02.10.2026 19:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>SBB Börde Baskets </div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>GIESSEN 46ers</div>
+                </div>
+                <div class='ls-date'>02.10.2026 19:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Paderborn Baskets</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>RheinStars Köln</div>
+                </div>
+                <div class='ls-date'>02.10.2026 19:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>HAKRO Merlins Crailsheim</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Tigers Tübingen</div>
+                </div>
+                <div class='ls-date'>02.10.2026 20:00</div>
+                
+                
+            </div>
+            </div></details>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <table border="1" class="dataframe">
 <thead>
@@ -1877,6 +2063,51 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 </summary>
 
 <div style='margin-left:10px;'>
+<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Süd, bis 03.10.</div>
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Porsche BBA Ludwigsburg</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>TSV Oberhaching Tropics</div>
+                </div>
+                <div class='ls-date'>03.10.2026 16:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>FC Bayern Basketball II</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Dragons Rhöndorf</div>
+                </div>
+                <div class='ls-date'>03.10.2026 16:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>TSG Schöller SI Ravens Reutlingen</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Culture City Weimar</div>
+                </div>
+                <div class='ls-date'>03.10.2026 19:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>BG Hessing Leitershofen</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Ahorn Camp Baskets</div>
+                </div>
+                <div class='ls-date'>03.10.2026 19:30</div>
+                
+                
+            </div>
+            </div></details>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <table border="1" class="dataframe">
 <thead>
@@ -2208,6 +2439,84 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 </summary>
 
 <div style='margin-left:10px;'>
+<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Nord, bis 03.10.</div>
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>BSW Sixers</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>SG Braunschweig</div>
+                </div>
+                <div class='ls-date'>03.10.2026 18:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Seawolves Academy</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>TSV Neustadt temps Shooters</div>
+                </div>
+                <div class='ls-date'>03.10.2026 18:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Iserlohn Kangaroos</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Baskets Juniors TSG Westerstede</div>
+                </div>
+                <div class='ls-date'>03.10.2026 19:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>LOK BERNAU</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>ART Giants Düsseldorf</div>
+                </div>
+                <div class='ls-date'>03.10.2026 19:00</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>Itzehoe Eagles</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Hertener Löwen</div>
+                </div>
+                <div class='ls-date'>03.10.2026 19:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>EN BASKETS Schwelm</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Uni Baskets Münster</div>
+                </div>
+                <div class='ls-date'>03.10.2026 19:30</div>
+                
+                
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-row'>
+                    <div class='ls-team'>BBA Hagen</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>SC Rist Wedel</div>
+                </div>
+                <div class='ls-date'>03.10.2026 19:30</div>
+                
+                
+            </div>
+            </div></details>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <table border="1" class="dataframe">
 <thead>
