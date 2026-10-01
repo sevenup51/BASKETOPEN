@@ -62,6 +62,15 @@ function openAll(){
   });
 }
 function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
+function openLivescore(){
+  document.querySelectorAll("details").forEach(d=>{
+    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+      d.setAttribute("open","");
+    } else {
+      d.removeAttribute("open");
+    }
+  });
+}
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
@@ -70,7 +79,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>Ligenuebersicht Bezirk Schwaben – Stand: 01.10.26 23:06:05</h1>
+<h1>Ligenuebersicht Bezirk Schwaben – Stand: 01.10.26 23:21:12</h1>
 
 
 <details id='wasfindeichhier'>
@@ -229,6 +238,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
+    
 </div>
 
 <details open>
@@ -433,7 +443,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54453' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54453</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga Damen 26/27 (Senioren Schwaben; Liganr.: 22003) (Liga 54454)</b>
@@ -593,7 +603,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54454' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54454</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga Herren Nord 26/27 (Senioren Schwaben; Liganr.: 22012) (Liga 54485)</b>
@@ -724,7 +734,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54485' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54485</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga Herren Süd 26/27 (Senioren Schwaben; Liganr.: 22011) (Liga 54484)</b>
@@ -864,7 +874,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54484' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54484</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksklasse Herren Mitte 26/27 (Senioren Schwaben; Liganr.: 22007) (Liga 54508)</b>
@@ -1015,7 +1025,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54508' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54508</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksklasse Herren Nord 26/27 (Senioren Schwaben; Liganr.: 22006) (Liga 54507)</b>
@@ -1108,7 +1118,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54507' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54507</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksklasse Herren Süd 26/27 (Senioren Schwaben; Liganr.: 22008) (Liga 54509)</b>
@@ -1230,7 +1240,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54509' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54509</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U20 männlich 26/27 (U20 Schwaben; Liganr.: 22020) (Liga 54457)</b>
@@ -1343,7 +1353,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54457' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54457</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U20 weiblich 26/27 - siehe BOLU18W (U20 Schwaben; Liganr.: 22021) (Liga 54458)</b>
@@ -1400,7 +1410,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54458' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54458</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U18 männlich 26/27 (U18 Schwaben; Liganr.: 22022) (Liga 54459)</b>
@@ -1531,7 +1541,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54459' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54459</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U18 weiblich 26/27 (U18 Schwaben; Liganr.: 22025) (Liga 54460)</b>
@@ -1656,7 +1666,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54460' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54460</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U16 männlich 26/27 (U16 Schwaben; Liganr.: 22026) (Liga 54461)</b>
@@ -1837,7 +1847,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54461' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54461</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U16 weiblich 26/27 (U16 Schwaben; Liganr.: 22029) (Liga 54462)</b>
@@ -1959,7 +1969,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54462' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54462</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U14 männlich 26/27 (U14 Schwaben; Liganr.: 22030) (Liga 54466)</b>
@@ -2089,7 +2099,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54466' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54466</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U14 weiblich 26/27 (U14 Schwaben; Liganr.: 22033) (Liga 54467)</b>
@@ -2211,7 +2221,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54467' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54467</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U12 weiblich 26/27 (U12 Schwaben; Liganr.: 22037) (Liga 54472)</b>
@@ -2295,7 +2305,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54472' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54472</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U12 gemischt 26/27 (U12 Schwaben; Liganr.: 22034) (Liga 54471)</b>
@@ -2476,7 +2486,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54471' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54471</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U10 weiblich 26/27 (U10 Schwaben; Liganr.: 22040) (Liga 54474)</b>
@@ -2542,7 +2552,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54474' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54474</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U10 gemischt 26/27 (U10 Schwaben; Liganr.: 22038) (Liga 54473)</b>
@@ -2655,7 +2665,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54473' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54473</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U9 gemischt 26/27 (U9 Schwaben; Liganr.: 22039) (Liga 54475)</b>
@@ -2730,7 +2740,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54475' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54475</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksoberliga U8 gemischt 26/27 (U8 Schwaben; Liganr.: 22041) (Liga 54476)</b>
@@ -2805,7 +2815,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54476' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54476</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirkspokal Herren 26/27 (Senioren Schwaben; Liganr.: 22002) (Liga 54482)</b>
@@ -2871,7 +2881,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54482' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54482</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirkspokal Damen 26/27 (Senioren Schwaben; Liganr.: 22001) (Liga 54483)</b>
@@ -2896,7 +2906,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54483' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54483</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U18 männlich Nord 26/27 (U18 Schwaben; Liganr.: 22023) (Liga 54486)</b>
@@ -3009,7 +3019,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54486' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54486</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U18 männlich Süd 26/27 (U18 Schwaben; Liganr.: 22024) (Liga 54487)</b>
@@ -3102,7 +3112,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54487' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54487</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U16 männlich Mitte 26/27 (U16 Schwaben; Liganr.: 22044) (Liga 54490)</b>
@@ -3241,7 +3251,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54490' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54490</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U16 männlich Nord 26/27 (U16 Schwaben; Liganr.: 22027) (Liga 54488)</b>
@@ -3343,7 +3353,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54488' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54488</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U16 männlich Süd 26/27 (U16 Schwaben; Liganr.: 22028) (Liga 54489)</b>
@@ -3456,7 +3466,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54489' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54489</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U14 männlich Mitte Süd 25/26 (U14 Schwaben; Liganr.: 22042) (Liga 54493)</b>
@@ -3558,7 +3568,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54493' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54493</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U14 männlich Mitte 26/27 (U14 Schwaben; Liganr.: 22075) (Liga 54494)</b>
@@ -3680,7 +3690,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54494' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54494</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U14 männlich Nord 26/27 (U14 Schwaben; Liganr.: 22031) (Liga 54491)</b>
@@ -3803,7 +3813,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54491' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54491</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U14 männlich Süd 26/27 (U14 Schwaben; Liganr.: 22032) (Liga 54492)</b>
@@ -3905,7 +3915,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54492' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54492</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U12 gemischt Mitte Nord 26/27 (U12 Schwaben; Liganr.: 22077) (Liga 55701)</b>
@@ -4007,7 +4017,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55701' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55701</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U12 gemischt Mitte 26/27 (U12 Schwaben; Liganr.: 22043) (Liga 54497)</b>
@@ -4109,7 +4119,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54497' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54497</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U12 gemischt Nord 26/27 (U12 Schwaben; Liganr.: 22035) (Liga 54495)</b>
@@ -4202,7 +4212,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54495' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54495</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U12 gemischt Süd 26/27 (U12 Schwaben; Liganr.: 22036) (Liga 54496)</b>
@@ -4304,7 +4314,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54496' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54496</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U10 gemischt Nord 26/27 (U10 Schwaben; Liganr.: 22045) (Liga 54498)</b>
@@ -4406,7 +4416,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54498' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54498</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksliga U10 gemischt Süd 26/27 (U10 Schwaben; Liganr.: 22046) (Liga 54499)</b>
@@ -4517,7 +4527,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54499' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54499</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Bezirksklasse U10 gemischt 26/27 (U10 Schwaben; Liganr.: 22076) (Liga 55699)</b>
@@ -4639,7 +4649,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55699' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55699</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Schwaben Vorbereitung Herren 26/27 (Senioren Schwaben; Liganr.: 22097) (Liga 54480)</b>
@@ -4841,7 +4851,7 @@ Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffn
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54480' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54480</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details >
+</details><details>
 
 <summary>
     <b>Schwaben Vorbereitung Damen 26/27 (Senioren Schwaben; Liganr.: 22098) (Liga 54481)</b>
