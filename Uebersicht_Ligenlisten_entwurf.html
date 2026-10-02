@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Übersicht Ligenlisten – Entwurf</title>
+<style>
+  :root {
+    --navy: #122033;
+    --ink: #1c2430;
+    --orange: #e36a12;
+    --cream: #f4efe6;
+    --card: #fffdf9;
+    --line: #e4d8c8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+  }
+  a { color: inherit; }
+  .hero {
+    position: relative;
+    min-height: 280px;
+    color: white;
+    background: #122033;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(10,16,28,.88) 0%, rgba(10,16,28,.45) 55%, rgba(10,16,28,.2) 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 48px 24px 36px;
+  }
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .mark img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #f0b429;
+  }
+  h1 {
+    margin: 14px 0 6px;
+    font-size: 34px;
+    line-height: 1.15;
+    font-weight: 700;
+  }
+  .stand { margin: 0; opacity: .9; }
+  .hinweis {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(227,106,18,.92);
+    font-size: 13px;
+  }
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 28px 24px 64px;
+  }
+  section { margin-bottom: 34px; }
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  h2 { margin: 0; font-size: 22px; }
+  .section-head img {
+    width: 180px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(18,32,51,.06);
+  }
+  .card .bild {
+    height: 92px;
+    background: #c9843a center / cover no-repeat;
+  }
+  .card .body {
+    padding: 14px 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .card h3 { margin: 0; font-size: 17px; }
+  .meta { margin: 0; color: #5c6570; font-size: 13px; }
+  .ids { margin: 0; color: #7a684f; font-size: 12px; line-height: 1.4; }
+  .oeffnen {
+    margin-top: auto;
+    align-self: flex-start;
+    text-decoration: none;
+    background: var(--navy);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .oeffnen:hover { background: var(--orange); }
+  .breit { display: block; }
+  @media (max-width: 700px) {
+    .breit { grid-template-columns: 1fr; }
+    .breit .bild { height: 120px; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="mark"><img src="bb_ball.jpg" alt="Basketball">Basketopen</div>
+    <h1>Übersicht erzeugter Ligenlisten</h1>
+    <p class="stand">Inhalt wie auf der Seite vom 02.10.26 12:37</p>
+    <span class="hinweis">Entwurf</span>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="section-head">
+    <h2>Europa und Weltmeisterschaften</h2>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="body">
+        <h3>Weltmeisterschaft Frauen 2026 Berlin</h3>
+        <p class="meta">Letzter Spieltag: 13.09.2026</p>
+        <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/bbwm_2026.html?nocache=1" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="body">
+        <h3>euroleaguebasketball LIVE</h3>
+        <p class="meta">Start 24.09.26</p>
+        <a class="oeffnen" href="https://www.euroleaguebasketball.net/de/euroleague/game-center/" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="body">
+        <h3>championsleague.basketball LIVE</h3>
+        <p class="meta">Start 06.10.26</p>
+        <a class="oeffnen" href="https://www.championsleague.basketball/en/games" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="body">
+        <h3>eurocup LIVE</h3>
+        <p class="meta">Start 29.09.26</p>
+        <a class="oeffnen" href="https://www.euroleaguebasketball.net/de/eurocup/game-center/" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Bundesligen inklusive Pokal</h2>
+  </div>
+  <article class="card breit">
+    <div class="body">
+      <h3>Bundesligen</h3>
+      <p class="meta">Saison 26/27<br>Livescore,<br>Live, Re-Live</p>
+      <p class="ids">55802, 55738, 55811, 55749, 55746, 55817, 55815, 55809, 55807, 55743, 55744</p>
+      <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/Bundesligen.html?nocache=1" target="_blank">Liste öffnen</a>
+    </div>
+  </article>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Regionalligen</h2>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="body">
+        <h3>Regionalliga Südost</h3>
+        <p class="meta">Saison 26/27</p>
+        <p class="ids">52514, 52515, 52497, 52498, 52528, 52527</p>
+        <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/Regionalligen_Suedost.html?nocache=1" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="body">
+        <h3>Regionalliga Nord</h3>
+        <p class="meta">Saison 26/27</p>
+        <p class="ids">54819, 54820, 54834, 54831, 54826, 54822, 54823</p>
+        <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/Regionalligen_Nord.html?nocache=1" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="body">
+        <h3>Regionalliga Südwest</h3>
+        <p class="meta">Saison 26/27</p>
+        <p class="ids">53088, 52860, 53229, 53230, 52859</p>
+        <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/Regionalligen_Suedwest.html?nocache=1" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="body">
+        <h3>Regionalliga West</h3>
+        <p class="meta">Saison 26/27</p>
+        <p class="ids">54569, 54586, 54570, 54571, 54572, 54573</p>
+        <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/Regionalligen_West.html?nocache=1" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>Bayern</h2>
+    <img src="bb_ball.jpg" alt="">
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="body">
+        <h3>Bayernliga</h3>
+        <p class="meta">Saison 26/27</p>
+        <p class="ids">52530, 52531, 52532, 52533, 52534</p>
+        <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/Bayernligen.html?nocache=1" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="body">
+        <h3>BBV Bezirk Schwaben</h3>
+        <p class="meta">Saison 26/27 Bezirk Schwaben</p>
+        <p class="ids">54453, 54454, 54485, 54484, 54508, 54507, 54509, 54457, 54458, 54459, 54460, 54461, 54462, 54466, 54467, 54472, 54471, 54474, 54473, 54475, 54476, 54482, 54483, 54486, 54487, 54490, 54488, 54489, 54493, 54494, 54491, 54492, 55701, 54497, 54495, 54496, 54498, 54499, 55699, 54480, 54481</p>
+        <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/BBV_SCH.html?nocache=1" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="body">
+        <h3>VSC Baskets Donauwörth</h3>
+        <p class="meta">Saison 26/27 VSC</p>
+        <p class="ids">54453, 54485, 54459, 54488, 54491, 54471, 55701, 54498, 55609, 54482, 54480</p>
+        <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/BBV_SCH_VSC_BASKETS_Donauwoerth.html?nocache=1" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+    <article class="card">
+      <div class="body">
+        <h3>Test</h3>
+        <p class="meta">Test</p>
+        <p class="ids">99999</p>
+        <a class="oeffnen" href="https://sevenup51.github.io/BASKETOPEN/TESTVEREIN.html?nocache=1" target="_blank">Liste öffnen</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+</body>
+</html>
