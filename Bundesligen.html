@@ -93,34 +93,11 @@ function boxscoreHinweis(){
   if(boxscoreHinweisTimer) clearTimeout(boxscoreHinweisTimer);
   boxscoreHinweisTimer = setTimeout(function(){ try{ fenster.close(); }catch(e){} }, 5000);
 }
-function boxscorePdf(url){
-  var fenster = window.open("", "_blank");
-  if(!fenster) return;
-  fenster.document.open();
-  fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title></head><body style='font-family:Arial,sans-serif;margin:24px'>Boxscore wird geladen …</body></html>");
-  fenster.document.close();
-  fetch(url).then(function(antwort){
-    if(!antwort.ok) throw new Error();
-    return antwort.blob();
-  }).then(function(blob){
-    var leser = new FileReader();
-    leser.onload = function(){
-      fenster.document.open();
-      fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title><style>html,body{margin:0;height:100%;overflow:hidden}</style></head><body><embed type='application/pdf' src='"+leser.result+"' style='width:100%;height:100%'></embed></body></html>");
-      fenster.document.close();
-    };
-    leser.readAsDataURL(new Blob([blob], {type:"application/pdf"}));
-  }).catch(function(){
-    fenster.document.open();
-    fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title></head><body style='font-family:Arial,sans-serif;margin:24px'>Das PDF kann im Browser nicht angezeigt werden.</body></html>");
-    fenster.document.close();
-  });
-}
 </script>
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 03.10.26 23:14:39</h1>
+<h1>Bundesligen – Stand: 03.10.26 23:24:20</h1>
 
 
 <details id='wasfindeichhier'>
@@ -314,95 +291,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </summary>
 
 <div style='margin-left:10px;'>
-<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>easyCredit BBL, gestern bis morgen</div>
-            <div class='livescore-box' style=''>
-                <div class='ls-row'>
-                    <div class='ls-team'>Fitness First Würzburg Baskets</div>
-                    <div class='ls-score'>83:76</div>
-                    <div class='ls-team' style='text-align:right;'>Telekom Baskets Bonn</div>
-                </div>
-                <div class='ls-date'>02.10.2026 20:00</div>
-                <div class='ls-date'>Q1 21-17 | Q2 15-19 | Q3 21-19 | Q4 26-21</div>
-                
-            </div>
-            
-            <div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>Veolia Towers Hamburg</div>
-                    <div class='ls-score'>84:91</div>
-                    <div class='ls-team' style='text-align:right;'>ROSTOCK SEAWOLVES</div>
-                </div>
-                <div class='ls-date'>03.10.2026 16:30</div>
-                <div class='ls-date'>Q1 13-21 | Q2 19-25 | Q3 19-21 | Q4 33-24</div>
-                
-            </div>
-            
-            <div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>ALBA BERLIN</div>
-                    <div class='ls-score'>83:98</div>
-                    <div class='ls-team' style='text-align:right;'>BMA365 Bamberg Baskets</div>
-                </div>
-                <div class='ls-date'>03.10.2026 18:30</div>
-                <div class='ls-date'>Q1 11-22 | Q2 28-24 | Q3 19-25 | Q4 25-27</div>
-                
-            </div>
-            
-            <div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>SYNTAINICS MBC</div>
-                    <div class='ls-score'>89:72</div>
-                    <div class='ls-team' style='text-align:right;'>ratiopharm ulm</div>
-                </div>
-                <div class='ls-date'>03.10.2026 20:00</div>
-                <div class='ls-date'>Q1 20-24 | Q2 18-17 | Q3 23-16 | Q4 28-15</div>
-                
-            </div>
-            
-            <div class='livescore-box' style=''>
-                <div class='ls-row'>
-                    <div class='ls-team'>Phoenix Hagen</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>SKYLINERS</div>
-                </div>
-                <div class='ls-date'>04.10.2026 15:00</div>
-                
-                
-            </div>
-            
-            <div class='livescore-box' style=''>
-                <div class='ls-row'>
-                    <div class='ls-team'>FC Bayern München Basketball</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>EWE Baskets Oldenburg</div>
-                </div>
-                <div class='ls-date'>04.10.2026 15:00</div>
-                
-                
-            </div>
-            
-            <div class='livescore-box' style=''>
-                <div class='ls-row'>
-                    <div class='ls-team'>Science City Jena</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>NINERS Chemnitz</div>
-                </div>
-                <div class='ls-date'>04.10.2026 16:30</div>
-                
-                
-            </div>
-            
-            <div class='livescore-box' style=''>
-                <div class='ls-row'>
-                    <div class='ls-team'>MHP RIESEN Ludwigsburg</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>VET-CONCEPT Gladiators Trier</div>
-                </div>
-                <div class='ls-date'>04.10.2026 18:00</div>
-                
-                
-            </div>
-            </div></details>
+<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><p><i>Keine Spiele.</i></p></div></details>
 <details class='liga-rest' open>
 <summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
 <div style='margin-left:10px;'>
@@ -424,7 +313,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <tbody>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=0VBjWIFjVqo" target="_blank">30</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/428/2006885/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">4</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>03.10.2026 20:00</td>
 <td>SYNTAINICS MBC</td>
 <td>ratiopharm ulm</td>
@@ -432,7 +321,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=SgsOR5P4i84" target="_blank">31</a></td>
-<td style="border:2px solid blue;" title="Es gibt kein PDF-File. Es gibt aber eine Webseite."><a href="https://www.easycredit-bbl.de/spiele/2006884#boxscore" target="_blank" title="Es gibt kein PDF-File. Es gibt aber eine Webseite.">4</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>03.10.2026 18:30</td>
 <td>ALBA BERLIN</td>
 <td>BMA365 Bamberg Baskets</td>
@@ -440,7 +329,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=QuEuB-UZTRs" target="_blank">29</a></td>
-<td style="border:2px solid blue;" title="Es gibt kein PDF-File. Es gibt aber eine Webseite."><a href="https://www.easycredit-bbl.de/spiele/2006886#boxscore" target="_blank" title="Es gibt kein PDF-File. Es gibt aber eine Webseite.">4</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>03.10.2026 16:30</td>
 <td>Veolia Towers Hamburg</td>
 <td>ROSTOCK SEAWOLVES</td>
@@ -448,7 +337,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=3F1MYfAA41E" target="_blank">28</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/540/2006883/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">4</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>02.10.2026 20:00</td>
 <td>Fitness First Würzburg Baskets</td>
 <td>Telekom Baskets Bonn</td>
@@ -456,7 +345,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=9K4IM5EqMBk" target="_blank">9</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/483/2006927/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">1</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">1</a></td>
 <td>01.10.2026 20:00</td>
 <td>Science City Jena</td>
 <td>RASTA Vechta</td>
@@ -464,7 +353,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=xv6i3jp4IHk" target="_blank">22</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/418/2006906/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">3</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>27.09.2026 18:00</td>
 <td>ratiopharm ulm</td>
 <td>Fitness First Würzburg Baskets</td>
@@ -472,7 +361,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=1KsIDtNnw3s" target="_blank">21</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/485/2006905/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">3</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>27.09.2026 16:30</td>
 <td>NINERS Chemnitz</td>
 <td>Phoenix Hagen</td>
@@ -480,7 +369,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=_qdIDsE1lwg" target="_blank">25</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/430/2006907/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">3</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>27.09.2026 16:30</td>
 <td>EWE Baskets Oldenburg</td>
 <td>Veolia Towers Hamburg</td>
@@ -488,7 +377,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=3ZnEGGve6rw" target="_blank">208</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/422/2007009/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">24</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">24</a></td>
 <td>27.09.2026 15:00</td>
 <td>Basketball Löwen Braunschweig</td>
 <td>ROSTOCK SEAWOLVES</td>
@@ -496,7 +385,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=xiNFxDlpCpc" target="_blank">23</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/414/2006903/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">3</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>27.09.2026 15:00</td>
 <td>VET-CONCEPT Gladiators Trier</td>
 <td>Science City Jena</td>
@@ -504,7 +393,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=e45zfRFCBkI" target="_blank">24</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/415/2006904/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">3</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>27.09.2026 15:00</td>
 <td>Telekom Baskets Bonn</td>
 <td>SYNTAINICS MBC</td>
@@ -512,7 +401,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=MoutLcRZoj0" target="_blank">20</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/420/2006901/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">3</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>26.09.2026 20:00</td>
 <td>BMA365 Bamberg Baskets</td>
 <td>MHP RIESEN Ludwigsburg</td>
@@ -520,7 +409,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=bm-LHvjdv_A" target="_blank">19</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/426/2006902/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">3</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>26.09.2026 18:30</td>
 <td>SKYLINERS</td>
 <td>RASTA Vechta</td>
@@ -528,7 +417,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=MqTEfUQDKDY" target="_blank">199</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/486/2006910/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">23</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">23</a></td>
 <td>26.09.2026 15:40</td>
 <td>FC Bayern München Basketball</td>
 <td>ALBA BERLIN</td>
@@ -536,7 +425,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=7Tq1Jd8b26c" target="_blank">13</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/540/2007031/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">2</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>25.09.2026 20:00</td>
 <td>Fitness First Würzburg Baskets</td>
 <td>EWE Baskets Oldenburg</td>
@@ -544,7 +433,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=pgft9jfNwt4" target="_blank">16</a></td>
-<td style="border:2px solid blue;" title="Es gibt kein PDF-File. Es gibt aber eine Webseite."><a href="https://www.easycredit-bbl.de/spiele/2007033#boxscore" target="_blank" title="Es gibt kein PDF-File. Es gibt aber eine Webseite.">2</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>25.09.2026 20:00</td>
 <td>Veolia Towers Hamburg</td>
 <td>NINERS Chemnitz</td>
@@ -552,7 +441,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=80U043YCxgg" target="_blank">17</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/428/2007032/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">2</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>25.09.2026 20:00</td>
 <td>SYNTAINICS MBC</td>
 <td>Science City Jena</td>
@@ -560,7 +449,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=sB3mUZm1ggk" target="_blank">14</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/414/2007034/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">2</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>25.09.2026 18:30</td>
 <td>VET-CONCEPT Gladiators Trier</td>
 <td>Telekom Baskets Bonn</td>
@@ -568,7 +457,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=5k0PCfahRRs" target="_blank">15</a></td>
-<td><a href="https://api.basketball-bundesliga.de/reports/473/2007030/boxscore" onclick="boxscorePdf(this.href); return false;" target="_blank">2</a></td>
+<td style="border:2px solid red;"><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>25.09.2026 18:30</td>
 <td>Phoenix Hagen</td>
 <td>ratiopharm ulm</td>
@@ -1207,7 +1096,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 22:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 23:12)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1931,7 +1820,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>2. DBBL Süd (Senioren; Liganr.: 43) (Liga 55749)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 22:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 23:12)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2242,7 +2131,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>2. DBBL Nord (Senioren; Liganr.: 40) (Liga 55746)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 22:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 23:12)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2553,7 +2442,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 22:18)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 23:13)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3058,7 +2947,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Herren ProB Nord (Senioren; Liganr.: 20) (Liga 55815)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 22:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 23:13)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3560,7 +3449,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>BBL-Pokal 1. Runde (Senioren; Liganr.: 8) (Liga 55809)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 22:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 23:13)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3585,7 +3474,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 22:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 23:13)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3610,7 +3499,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>DBBL-Pokal Runde 1 (Senioren; Liganr.: 35) (Liga 55743)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 22:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 23:14)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3635,7 +3524,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>DBBL-Pokal Runde 2 (Senioren; Liganr.: 37) (Liga 55744)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 22:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 23:14)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
