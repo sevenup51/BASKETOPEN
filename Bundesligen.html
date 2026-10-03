@@ -26,7 +26,7 @@ details { margin-bottom:3px; }
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
 .liga-icon { width: 12px; height: 8px; border-radius: 2px; }
-.liga-icon.green  { background:#2ecc71; }
+.liga-icon.green  { background:#b7ebc6; }
 .livescore-list { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; max-width:calc(2 * 280px + 12px); margin:6px 0 8px 0; }
 .livescore-list > :not(.livescore-box) { flex:1 0 100%; }
 .livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
@@ -39,6 +39,8 @@ details { margin-bottom:3px; }
 h3 { font-size:11px; margin:5px 0 3px 0; color:#1a3d7c; }
 table { border-collapse:collapse; margin-bottom:6px; background:white; border-radius:2px;
         overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.06); font-size:10px; white-space:nowrap; }
+table.plan { table-layout:fixed; width:760px; max-width:100%; white-space:normal; }
+table.plan th:nth-child(2), table.plan td:nth-child(2) { white-space:nowrap; overflow-wrap:normal; }
 th { background:#1a3d7c; color:white; padding:2px 4px; }
 td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
 tr:nth-child(even) { background:#f0f4fa; }
@@ -85,7 +87,7 @@ function liveHref(a){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 03.10.26 12:10:29</h1>
+<h1>Bundesligen – Stand: 03.10.26 13:12:30</h1>
 
 
 <details id='wasfindeichhier'>
@@ -272,14 +274,14 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:35)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
-<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>easyCredit BBL, gestern bis morgen</div>
+<details class='livescore-block' open><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>easyCredit BBL, gestern bis morgen</div>
             <div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Fitness First Würzburg Baskets</div>
@@ -291,15 +293,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 
             </div>
             
-            <div class='livescore-box' style='background:#ffdd99;'>
+            <div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Veolia Towers Hamburg</div>
-                    <div class='ls-score'>–</div>
+                    <div class='ls-score'>0:0</div>
                     <div class='ls-team' style='text-align:right;'>ROSTOCK SEAWOLVES</div>
                 </div>
                 <div class='ls-date'>03.10.2026 16:30</div>
                 
-                
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 13:11</span><span>Q1</span></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
@@ -859,9 +861,9 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:36)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:orange;'></span>
+        <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
 </summary>
 
@@ -1145,7 +1147,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:37)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1866,7 +1868,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>2. DBBL Süd (Senioren; Liganr.: 43) (Liga 55749)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:37)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2136,7 +2138,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>2. DBBL Nord (Senioren; Liganr.: 40) (Liga 55746)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:38)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2406,7 +2408,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:38)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2876,7 +2878,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Herren ProB Nord (Senioren; Liganr.: 20) (Liga 55815)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:39)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3319,7 +3321,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>BBL-Pokal 1. Runde (Senioren; Liganr.: 8) (Liga 55809)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:39)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3344,7 +3346,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 11:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:39)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3369,7 +3371,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>DBBL-Pokal Runde 1 (Senioren; Liganr.: 35) (Liga 55743)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 11:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:39)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3394,9 +3396,9 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>DBBL-Pokal Runde 2 (Senioren; Liganr.: 37) (Liga 55744)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 11:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 03.10. 12:40)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:orange;'></span>
+        <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
 </summary>
 
