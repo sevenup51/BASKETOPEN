@@ -83,11 +83,21 @@ function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
 }
+var boxscoreHinweisTimer;
+function boxscoreHinweis(){
+  var fenster = window.open("", "boxscoreHinweis", "width=360,height=120,resizable=no,scrollbars=no");
+  if(!fenster) return;
+  fenster.document.open();
+  fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title></head><body style='font-family:Arial,sans-serif;font-size:16px;margin:28px 16px;text-align:center;'>aktuell noch nicht vorhanden</body></html>");
+  fenster.document.close();
+  if(boxscoreHinweisTimer) clearTimeout(boxscoreHinweisTimer);
+  boxscoreHinweisTimer = setTimeout(function(){ try{ fenster.close(); }catch(e){} }, 5000);
+}
 </script>
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 03.10.26 18:55:33</h1>
+<h1>Bundesligen – Stand: 03.10.26 18:56:53</h1>
 
 
 <details id='wasfindeichhier'>
@@ -307,12 +317,12 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
             <div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>ALBA BERLIN</div>
-                    <div class='ls-score'>11:22</div>
+                    <div class='ls-score'>12:24</div>
                     <div class='ls-team' style='text-align:right;'>BMA365 Bamberg Baskets</div>
                 </div>
                 <div class='ls-date'>03.10.2026 18:30</div>
-                <div class='ls-date'>Q1 11-22</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:54</span><span>Q2 0:20</span></div>
+                <div class='ls-date'>Q1 11-22 | Q2 1-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:56</span><span>Q2 9:23</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
@@ -323,7 +333,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>03.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:54</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:56</span><span>Q1</span></div>
             </div>
             
             <div class='livescore-box' style=''>
@@ -728,7 +738,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>31</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/413/2006884/boxscore" target="_blank">4</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>03.10.2026 18:30</td>
 <td>ALBA BERLIN</td>
 <td>BMA365 Bamberg Baskets</td>
@@ -736,7 +746,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>30</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/428/2006885/boxscore" target="_blank">4</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>03.10.2026 20:00</td>
 <td>SYNTAINICS MBC</td>
 <td>ratiopharm ulm</td>
@@ -744,7 +754,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>34</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/486/2006888/boxscore" target="_blank">4</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>04.10.2026 15:00</td>
 <td>FC Bayern München Basketball</td>
 <td>EWE Baskets Oldenburg</td>
@@ -752,7 +762,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>35</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/473/2006889/boxscore" target="_blank">4</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>04.10.2026 15:00</td>
 <td>Phoenix Hagen</td>
 <td>SKYLINERS</td>
@@ -760,7 +770,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>33</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/483/2006890/boxscore" target="_blank">4</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>04.10.2026 16:30</td>
 <td>Science City Jena</td>
 <td>NINERS Chemnitz</td>
@@ -768,7 +778,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>32</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/433/2006887/boxscore" target="_blank">4</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>04.10.2026 18:00</td>
 <td>MHP RIESEN Ludwigsburg</td>
 <td>VET-CONCEPT Gladiators Trier</td>
@@ -776,7 +786,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>36</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/541/2006891/boxscore" target="_blank">4</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">4</a></td>
 <td>05.10.2026 20:00</td>
 <td>RASTA Vechta</td>
 <td>Basketball Löwen Braunschweig</td>
@@ -784,7 +794,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>37</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/415/2006874/boxscore" target="_blank">5</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">5</a></td>
 <td>09.10.2026 20:00</td>
 <td>Telekom Baskets Bonn</td>
 <td>Science City Jena</td>
@@ -792,7 +802,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>43</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/485/2006882/boxscore" target="_blank">5</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">5</a></td>
 <td>10.10.2026 16:00</td>
 <td>NINERS Chemnitz</td>
 <td>FC Bayern München Basketball</td>
@@ -800,7 +810,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>41</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/420/2006875/boxscore" target="_blank">5</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">5</a></td>
 <td>10.10.2026 18:30</td>
 <td>BMA365 Bamberg Baskets</td>
 <td>SYNTAINICS MBC</td>
@@ -808,7 +818,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>42</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/551/2006878/boxscore" target="_blank">5</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">5</a></td>
 <td>10.10.2026 18:30</td>
 <td>ROSTOCK SEAWOLVES</td>
 <td>Fitness First Würzburg Baskets</td>
@@ -816,7 +826,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>38</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/541/2006879/boxscore" target="_blank">5</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">5</a></td>
 <td>10.10.2026 20:00</td>
 <td>RASTA Vechta</td>
 <td>ratiopharm ulm</td>
@@ -824,7 +834,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>39</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/430/2006877/boxscore" target="_blank">5</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">5</a></td>
 <td>10.10.2026 20:00</td>
 <td>EWE Baskets Oldenburg</td>
 <td>Phoenix Hagen</td>
@@ -832,7 +842,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>40</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/414/2006876/boxscore" target="_blank">5</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">5</a></td>
 <td>10.10.2026 20:00</td>
 <td>VET-CONCEPT Gladiators Trier</td>
 <td>ALBA BERLIN</td>
@@ -840,7 +850,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>44</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/422/2006880/boxscore" target="_blank">5</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">5</a></td>
 <td>11.10.2026 15:00</td>
 <td>Basketball Löwen Braunschweig</td>
 <td>MHP RIESEN Ludwigsburg</td>
@@ -848,7 +858,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>45</td>
-<td><a href="https://api.basketball-bundesliga.de/reports/426/2006881/boxscore" target="_blank">5</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">5</a></td>
 <td>11.10.2026 16:30</td>
 <td>SKYLINERS</td>
 <td>Veolia Towers Hamburg</td>
@@ -1064,7 +1074,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <tbody>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=2ySverbQqjs" target="_blank">1002</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11202/" target="_blank">1</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">1</a></td>
 <td>04.10.2026 16:00</td>
 <td>Eigner Angels Nördlingen</td>
 <td>Rutronik Stars Keltern</td>
@@ -1072,7 +1082,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=Evu53unQsEQ" target="_blank">1003</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11203/" target="_blank">1</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">1</a></td>
 <td>04.10.2026 16:00</td>
 <td>Eisvögel USC Freiburg</td>
 <td>Herner TC</td>
@@ -1080,7 +1090,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=KoUh0MrPqkU" target="_blank">1001</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11201/" target="_blank">1</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">1</a></td>
 <td>04.10.2026 16:30</td>
 <td>GiroLive Panthers Osnabrück</td>
 <td>Saarlouis Royals</td>
@@ -1088,7 +1098,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=dnsNd3pkE8Q" target="_blank">1004</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11204/" target="_blank">1</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">1</a></td>
 <td>04.10.2026 16:30</td>
 <td>ALBA Berlin</td>
 <td>BC Marburg</td>
@@ -1096,7 +1106,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=5Q-qD2OAego" target="_blank">1005</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11205/" target="_blank">1</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">1</a></td>
 <td>04.10.2026 17:00</td>
 <td>halfit LIONS</td>
 <td>TK Hannover Luchse</td>
@@ -1104,7 +1114,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>1006</td>
-<td><a href="https://toyota-dbbl.de/spiel/11206/" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>10.10.2026 18:00</td>
 <td>Herner TC</td>
 <td>ALBA Berlin</td>
@@ -1112,7 +1122,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>1007</td>
-<td><a href="https://toyota-dbbl.de/spiel/11207/" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>10.10.2026 19:00</td>
 <td>BC Marburg</td>
 <td>GiroLive Panthers Osnabrück</td>
@@ -1120,7 +1130,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>1008</td>
-<td><a href="https://toyota-dbbl.de/spiel/11208/" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>11.10.2026 16:00</td>
 <td>Rutronik Stars Keltern</td>
 <td>halfit LIONS</td>
@@ -1128,7 +1138,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>1009</td>
-<td><a href="https://toyota-dbbl.de/spiel/11209/" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>11.10.2026 16:30</td>
 <td>TK Hannover Luchse</td>
 <td>Eigner Angels Nördlingen</td>
@@ -1136,7 +1146,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>1010</td>
-<td><a href="https://toyota-dbbl.de/spiel/11210/" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>11.10.2026 17:00</td>
 <td>Saarlouis Royals</td>
 <td>Eisvögel USC Freiburg</td>
@@ -1731,7 +1741,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <tbody>
 <tr>
 <td>2005839</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2005839?s=boxscore" target="_blank">3</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>04.10.2026 15:00</td>
 <td>BG Göttingen</td>
 <td>SBB Börde Baskets</td>
@@ -1739,7 +1749,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2005841</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2005841?s=boxscore" target="_blank">3</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>04.10.2026 15:00</td>
 <td>Eisbären Bremerhaven</td>
 <td>Paderborn Baskets</td>
@@ -1747,7 +1757,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2005843</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2005843?s=boxscore" target="_blank">3</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>04.10.2026 15:00</td>
 <td>GIESSEN 46ers</td>
 <td>VfL SparkassenStars Bochum</td>
@@ -1755,7 +1765,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2005838</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2005838?s=boxscore" target="_blank">3</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>04.10.2026 16:00</td>
 <td>ETB Miners</td>
 <td>RheinStars Köln</td>
@@ -1763,7 +1773,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2005840</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2005840?s=boxscore" target="_blank">3</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>04.10.2026 17:00</td>
 <td>Kreisbau Kirchheim Knights</td>
 <td>Medikamente per Klick Bayreuth</td>
@@ -1771,7 +1781,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2005842</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2005842?s=boxscore" target="_blank">3</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>04.10.2026 17:00</td>
 <td>EPG Baskets Koblenz</td>
 <td>Artland Dragons</td>
@@ -1779,7 +1789,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2005844</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2005844?s=boxscore" target="_blank">3</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>04.10.2026 17:00</td>
 <td>OrangeAcademy</td>
 <td>MLP Academics Heidelberg</td>
@@ -1787,7 +1797,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2005846</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2005846?s=boxscore" target="_blank">3</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>04.10.2026 17:00</td>
 <td>Tigers Tübingen</td>
 <td>Nürnberg Falcons</td>
@@ -1795,7 +1805,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2005845</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2005845?s=boxscore" target="_blank">3</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">3</a></td>
 <td>04.10.2026 17:30</td>
 <td>PS Karlsruhe LIONS</td>
 <td>HAKRO Merlins Crailsheim</td>
@@ -1905,6 +1915,14 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </thead>
 <tbody>
 <tr style="background-color:#ffdd99; font-weight:bold;">
+<td><a href="https://www.youtube.com/watch?v=RCKU0hHSnKI" target="_blank">3008</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11450/" target="_blank">2</a></td>
+<td>03.10.2026 17:00</td>
+<td>ASC Theresianum Mainz</td>
+<td>Falcons Bad Homburg</td>
+<td>64 : 68</td>
+</tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=MPO7j79hh3s" target="_blank">3007</a></td>
 <td><a href="https://toyota-dbbl.de/spiel/11449/" target="_blank">2</a></td>
 <td>03.10.2026 16:00</td>
@@ -1995,12 +2013,12 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>2</td>
-      <td>ASC Theresianum Mainz</td>
-      <td>1</td>
-      <td>1/0</td>
+      <td>Falcons Bad Homburg</td>
       <td>2</td>
-      <td>69 : 53</td>
-      <td>16</td>
+      <td>2/0</td>
+      <td>4</td>
+      <td>142 : 134</td>
+      <td>8</td>
     </tr>
     <tr>
       <td>3</td>
@@ -2031,21 +2049,21 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>6</td>
-      <td>Falcons Bad Homburg</td>
-      <td>1</td>
-      <td>1/0</td>
-      <td>2</td>
-      <td>74 : 70</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <td>7</td>
       <td>USC BasCats Heidelberg</td>
       <td>2</td>
       <td>1/1</td>
       <td>2</td>
       <td>151 : 124</td>
       <td>27</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>ASC Theresianum Mainz</td>
+      <td>2</td>
+      <td>1/1</td>
+      <td>2</td>
+      <td>133 : 121</td>
+      <td>12</td>
     </tr>
     <tr>
       <td>8</td>
@@ -2125,7 +2143,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>USC BasCats Heidelberg</td>
 <td>Lobeda/West</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=RCKU0hHSnKI" target="_blank">3008</a></td>
 <td><a href="https://toyota-dbbl.de/spiel/11450/" target="_blank">2</a></td>
 <td>03.10.2026 17:00</td>
@@ -2151,7 +2169,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=mae8Mcb7pVw" target="_blank">3012</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11454/" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>04.10.2026 16:30</td>
 <td>TSV 1880 Wasserburg</td>
 <td>Lou's Foodtruck MTV Stuttgart</td>
@@ -2407,7 +2425,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=aijIVIGqHxc" target="_blank">2010</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11320/" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:00</td>
 <td>BG 74 Veilchen Ladies Göttingen</td>
 <td>BBC Osnabrück</td>
@@ -2415,7 +2433,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=sjZw5WCm4Ac" target="_blank">2011</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11321/" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:30</td>
 <td>New Basket 92 Oberhausen e.V.</td>
 <td>TuS Lichterfelde</td>
@@ -2423,7 +2441,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=QwIIhAXHUKQ" target="_blank">2012</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11322/" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:30</td>
 <td>UBC Münster</td>
 <td>VfL VIACTIV-AstroLadies Bochum</td>
@@ -2819,7 +2837,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2006135</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006135?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:00</td>
 <td>TSG Schöller SI Ravens Reutlingen</td>
 <td>Culture City Weimar</td>
@@ -2827,7 +2845,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2006133</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006133?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:30</td>
 <td>BG Hessing Leitershofen</td>
 <td>Ahorn Camp Baskets</td>
@@ -2835,7 +2853,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2006138</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006138?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>04.10.2026 16:00</td>
 <td>Dresden Titans</td>
 <td>TV Langen</td>
@@ -2843,7 +2861,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2006139</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006139?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>04.10.2026 16:00</td>
 <td>Bayer Giants Leverkusen</td>
 <td>Basketball Löwen</td>
@@ -2851,7 +2869,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr>
 <td>2006137</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006137?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>04.10.2026 17:30</td>
 <td>SV Fellbach Flashers</td>
 <td>BBC Coburg</td>
@@ -2946,7 +2964,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>03.10.2026 18:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:55</span><span>Q2 00:07</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:56</span><span>Q2</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
@@ -2957,7 +2975,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>03.10.2026 18:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:55</span><span>Q1 00:27</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:56</span><span>Q1 00:27</span></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
@@ -3264,7 +3282,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2006346</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006346?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:00</td>
 <td>Iserlohn Kangaroos</td>
 <td>Baskets Juniors TSG Westerstede</td>
@@ -3272,7 +3290,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2006348</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006348?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:00</td>
 <td>LOK BERNAU</td>
 <td>ART Giants Düsseldorf</td>
@@ -3280,7 +3298,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2006344</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006344?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:30</td>
 <td>BBA Hagen</td>
 <td>SC Rist Wedel</td>
@@ -3288,7 +3306,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2006345</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006345?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:30</td>
 <td>EN BASKETS Schwelm</td>
 <td>Uni Baskets Münster</td>
@@ -3296,7 +3314,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2006347</td>
-<td><a href="https://live.2basketballbundesliga.de/g/2006347?s=boxscore" target="_blank">2</a></td>
+<td><a href="#" onclick="boxscoreHinweis(); return false;">2</a></td>
 <td>03.10.2026 19:30</td>
 <td>Itzehoe Eagles</td>
 <td>Hertener Löwen</td>
