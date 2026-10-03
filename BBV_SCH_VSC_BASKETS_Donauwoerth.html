@@ -93,11 +93,34 @@ function boxscoreHinweis(){
   if(boxscoreHinweisTimer) clearTimeout(boxscoreHinweisTimer);
   boxscoreHinweisTimer = setTimeout(function(){ try{ fenster.close(); }catch(e){} }, 5000);
 }
+function boxscorePdf(url){
+  var fenster = window.open("", "_blank");
+  if(!fenster) return;
+  fenster.document.open();
+  fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title></head><body style='font-family:Arial,sans-serif;margin:24px'>Boxscore wird geladen …</body></html>");
+  fenster.document.close();
+  fetch(url).then(function(antwort){
+    if(!antwort.ok) throw new Error();
+    return antwort.blob();
+  }).then(function(blob){
+    var leser = new FileReader();
+    leser.onload = function(){
+      fenster.document.open();
+      fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title><style>html,body{margin:0;height:100%;overflow:hidden}</style></head><body><embed type='application/pdf' src='"+leser.result+"' style='width:100%;height:100%'></embed></body></html>");
+      fenster.document.close();
+    };
+    leser.readAsDataURL(new Blob([blob], {type:"application/pdf"}));
+  }).catch(function(){
+    fenster.document.open();
+    fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title></head><body style='font-family:Arial,sans-serif;margin:24px'>Das PDF kann im Browser nicht angezeigt werden.</body></html>");
+    fenster.document.close();
+  });
+}
 </script>
 </head>
 <body>
 
-<h1>VSC Baskets Donauwoerth – Stand: 03.10.26 23:01:32</h1>
+<h1>VSC Baskets Donauwoerth – Stand: 03.10.26 23:22:49</h1>
 
 
 <details id='wasfindeichhier'>
@@ -278,7 +301,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     
 </div>
 
-<details open><summary><b>Spielplan VSC Baskets Donauwörth vom 03.10.26 bis 11.10.26</b><span class='summary-right'>Stand 03.10.26 23:01:32</span></summary><div style='margin-left:10px;'><table><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54453</td><td>Herren</td><td>03.10.2026 19:30</td><td>VSC Donauwörth</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>04.10.2026 12:30</td><td>VSC Baskets Donauwörth</td><td>BG Leitershofen/Stadtbergen</td><td>Stauferpark Halle</td></tr><tr><td>54471</td><td>U12</td><td>10.10.2026 10:00</td><td>Netz16 Baskets Königsbrunn</td><td>VSC Baskets Donauwörth</td><td>Gymnasium</td></tr><tr style='background-color:#ffdd99;'><td>55701</td><td>U12</td><td>10.10.2026 14:30</td><td>VSC Donauwörth 2</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>10.10.2026 17:00</td><td>VSC Baskets Donauwörth 2</td><td>TSV Meitingen</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54498</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth</td><td>TSV Etting-Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>55699</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth 2</td><td>TSV Haunstetten</td><td>Stauferpark Halle</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td>PSV Ingolstadt</td><td>VSC Baskets Donauwörth</td><td>August-Horch-Schule</td></tr><tr style='background-color:#ffdd99;'><td>54491</td><td>U14</td><td>11.10.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Etting-Ingolstadt</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54488</td><td>U16</td><td>11.10.2026 16:30</td><td>VSC Baskets Donauwörth</td><td>PSV Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr><td>54453</td><td>Herren</td><td>11.10.2026 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>Paul-Klee-Gymnasium (neu)</td></tr></tbody></table></div></details><details>
+<details open><summary><b>Spielplan VSC Baskets Donauwörth vom 03.10.26 bis 11.10.26</b><span class='summary-right'>Stand 03.10.26 23:22:49</span></summary><div style='margin-left:10px;'><table><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54453</td><td>Herren</td><td>03.10.2026 19:30</td><td>VSC Donauwörth</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>04.10.2026 12:30</td><td>VSC Baskets Donauwörth</td><td>BG Leitershofen/Stadtbergen</td><td>Stauferpark Halle</td></tr><tr><td>54471</td><td>U12</td><td>10.10.2026 10:00</td><td>Netz16 Baskets Königsbrunn</td><td>VSC Baskets Donauwörth</td><td>Gymnasium</td></tr><tr style='background-color:#ffdd99;'><td>55701</td><td>U12</td><td>10.10.2026 14:30</td><td>VSC Donauwörth 2</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>10.10.2026 17:00</td><td>VSC Baskets Donauwörth 2</td><td>TSV Meitingen</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54498</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth</td><td>TSV Etting-Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>55699</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth 2</td><td>TSV Haunstetten</td><td>Stauferpark Halle</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td>PSV Ingolstadt</td><td>VSC Baskets Donauwörth</td><td>August-Horch-Schule</td></tr><tr style='background-color:#ffdd99;'><td>54491</td><td>U14</td><td>11.10.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Etting-Ingolstadt</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54488</td><td>U16</td><td>11.10.2026 16:30</td><td>VSC Baskets Donauwörth</td><td>PSV Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr><td>54453</td><td>Herren</td><td>11.10.2026 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>Paul-Klee-Gymnasium (neu)</td></tr></tbody></table></div></details><details>
 
 <summary>
     <b>Bezirksoberliga Herren 26/27 (Senioren Schwaben; Liganr.: 22004) (Liga 54453)</b>
