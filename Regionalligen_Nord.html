@@ -93,11 +93,34 @@ function boxscoreHinweis(){
   if(boxscoreHinweisTimer) clearTimeout(boxscoreHinweisTimer);
   boxscoreHinweisTimer = setTimeout(function(){ try{ fenster.close(); }catch(e){} }, 5000);
 }
+function boxscorePdf(url){
+  var fenster = window.open("", "_blank");
+  if(!fenster) return;
+  fenster.document.open();
+  fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title></head><body style='font-family:Arial,sans-serif;margin:24px'>Boxscore wird geladen …</body></html>");
+  fenster.document.close();
+  fetch(url).then(function(antwort){
+    if(!antwort.ok) throw new Error();
+    return antwort.blob();
+  }).then(function(blob){
+    var leser = new FileReader();
+    leser.onload = function(){
+      fenster.document.open();
+      fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title><style>html,body{margin:0;height:100%;overflow:hidden}</style></head><body><embed type='application/pdf' src='"+leser.result+"' style='width:100%;height:100%'></embed></body></html>");
+      fenster.document.close();
+    };
+    leser.readAsDataURL(new Blob([blob], {type:"application/pdf"}));
+  }).catch(function(){
+    fenster.document.open();
+    fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title></head><body style='font-family:Arial,sans-serif;margin:24px'>Das PDF kann im Browser nicht angezeigt werden.</body></html>");
+    fenster.document.close();
+  });
+}
 </script>
 </head>
 <body>
 
-<h1>Regionalliga Nord – Stand: 03.10.26 23:03:13</h1>
+<h1>Regionalliga Nord – Stand: 03.10.26 23:15:31</h1>
 
 
 <details id='wasfindeichhier'>
