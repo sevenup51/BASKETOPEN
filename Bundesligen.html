@@ -26,10 +26,12 @@ details { margin-bottom:3px; }
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
 .liga-icon { width: 12px; height: 8px; border-radius: 2px; }
-.liga-icon.green  { background:#b7ebc6; }
+.liga-icon.green  { background:#2ecc71; }
 .livescore-list { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; max-width:calc(2 * 280px + 12px); margin:6px 0 8px 0; }
 .livescore-list > :not(.livescore-box) { flex:1 0 100%; }
 .livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
+.ls-nicht-heute { display:none; }
+body.zeige-drei-tage .ls-nicht-heute { display:block; }
 .ls-row { display:flex; justify-content:space-between; align-items:center; gap:4px; }
 .ls-team { font-size:12px; font-weight:bold; flex:1; }
 .ls-score { font-size:16px; font-weight:bold; padding:0 6px; }
@@ -69,8 +71,12 @@ function openAll(){
     d.setAttribute("open","");
   });
 }
-function closeAll(){ document.querySelectorAll("details").forEach(d=>d.removeAttribute("open")); }
+function closeAll(){
+  document.body.classList.remove("zeige-drei-tage");
+  document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
+}
 function openLivescore(){
+  document.body.classList.add("zeige-drei-tage");
   document.querySelectorAll("details").forEach(d=>{
     if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
       d.setAttribute("open","");
@@ -80,6 +86,7 @@ function openLivescore(){
   });
 }
 function openLivescoreHeute(){
+  document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(function(d){
     var heute = d.classList.contains("spielt-heute");
     var block = d.classList.contains("livescore-block") && d.closest("details.spielt-heute");
@@ -105,7 +112,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 04.10.26 07:38:54</h1>
+<h1>Bundesligen – Stand: 04.10.26 08:08:44</h1>
 
 
 <details id='wasfindeichhier'>
@@ -300,7 +307,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>easyCredit BBL, gestern bis morgen</div>
-            <div class='livescore-box' style=''>
+            <div class='livescore-box ls-nicht-heute' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Veolia Towers Hamburg</div>
                     <div class='ls-score'>84:91</div>
@@ -311,7 +318,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box ls-nicht-heute' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>ALBA BERLIN</div>
                     <div class='ls-score'>83:98</div>
@@ -322,7 +329,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box ls-nicht-heute' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>SYNTAINICS MBC</div>
                     <div class='ls-score'>89:72</div>
@@ -377,7 +384,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box ls-nicht-heute' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>RASTA Vechta</div>
                     <div class='ls-score'>–</div>
@@ -1020,7 +1027,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Livebericht des Spieles.</p>
-<p>Spalte Boxscore: html. Spalte Video: dyn-Live mit Link, sonst der Text siehe dyn.</p>
+<p>Spalte Boxscore: html. Spalte Video: Live bei Toyota DBBL. Ist der Link nicht erreichbar, steht dort Link fehlt.</p>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
@@ -1034,21 +1041,21 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </thead>
 <tbody>
 <tr style="background-color:#ffdd99; font-weight:bold;">
-<td><a href="https://www.youtube.com/watch?v=2ySverbQqjs" target="_blank">1002</a></td>
+<td>1002</td>
 <td>1</td>
 <td>04.10.2026 16:00</td>
 <td>Eigner Angels Nördlingen</td>
 <td>Rutronik Stars Keltern</td>
 <td>Hermann-Keßler-Halle</td>
-<td>html</td><td><a href="https://www.youtube.com/watch?v=2ySverbQqjs" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td>Link fehlt</td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
-<td><a href="https://www.youtube.com/watch?v=Evu53unQsEQ" target="_blank">1003</a></td>
+<td>1003</td>
 <td>1</td>
 <td>04.10.2026 16:00</td>
 <td>Eisvögel USC Freiburg</td>
 <td>Herner TC</td>
 <td>Sportzentrum der Universität, Halle 2</td>
-<td>html</td><td><a href="https://www.youtube.com/watch?v=Evu53unQsEQ" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td>Link fehlt</td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=KoUh0MrPqkU" target="_blank">1001</a></td>
 <td>1</td>
@@ -1056,7 +1063,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>GiroLive Panthers Osnabrück</td>
 <td>Saarlouis Royals</td>
 <td>OSC-Halle A</td>
-<td>html</td><td><a href="https://www.youtube.com/watch?v=KoUh0MrPqkU" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://www.youtube.com/watch?v=KoUh0MrPqkU" target="_blank">Live</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://www.youtube.com/watch?v=dnsNd3pkE8Q" target="_blank">1004</a></td>
 <td>1</td>
@@ -1064,15 +1071,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>ALBA Berlin</td>
 <td>BC Marburg</td>
 <td>Sporthalle Charlottenburg</td>
-<td>html</td><td><a href="https://www.youtube.com/watch?v=dnsNd3pkE8Q" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://www.youtube.com/watch?v=dnsNd3pkE8Q" target="_blank">Live</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
-<td><a href="https://www.youtube.com/watch?v=5Q-qD2OAego" target="_blank">1005</a></td>
+<td>1005</td>
 <td>1</td>
 <td>04.10.2026 17:00</td>
 <td>halfit LIONS</td>
 <td>TK Hannover Luchse</td>
 <td>SWH.arena</td>
-<td>html</td><td><a href="https://www.youtube.com/watch?v=5Q-qD2OAego" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td>Link fehlt</td></tr>
 <tr>
 <td>1006</td>
 <td>2</td>
@@ -1080,7 +1087,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Herner TC</td>
 <td>ALBA Berlin</td>
 <td>MCG-Arena</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Live</td></tr>
 <tr>
 <td>1007</td>
 <td>2</td>
@@ -1088,7 +1095,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>BC Marburg</td>
 <td>GiroLive Panthers Osnabrück</td>
 <td>Sporthalle G.-Gaßmann-Stadion</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Live</td></tr>
 <tr>
 <td>1008</td>
 <td>2</td>
@@ -1096,7 +1103,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Rutronik Stars Keltern</td>
 <td>halfit LIONS</td>
 <td>Sporthalle Schulzentrum Dietlingen</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Live</td></tr>
 <tr>
 <td>1009</td>
 <td>2</td>
@@ -1104,7 +1111,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TK Hannover Luchse</td>
 <td>Eigner Angels Nördlingen</td>
 <td>Sporthalle Birkenstraße / Otfried-Preußler-Schule</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Live</td></tr>
 <tr>
 <td>1010</td>
 <td>2</td>
@@ -1112,7 +1119,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Saarlouis Royals</td>
 <td>Eisvögel USC Freiburg</td>
 <td>Sporthalle am Stadtgarten</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Live</td></tr>
 </tbody>
 </table>
 <h3>Weitere Zahlen</h3>
@@ -1583,7 +1590,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Video des Spieles.</p>
-<p>Spalte Boxscore: html. Spalte Video: dyn-Live mit Link, sonst der Text siehe dyn.</p>
+<p>Spalte Boxscore: html. Spalte Video: Video, wenn ein Link da ist.</p>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
@@ -1603,7 +1610,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>BG Göttingen</td>
 <td>SBB Börde Baskets</td>
 <td>Sparkassenarena</td>
-<td>html</td><td><a href="https://sporteurope.tv/bg-goettingen/bg-goettingen-vs-sbb-baskets-wolmirstedt" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/bg-goettingen/bg-goettingen-vs-sbb-baskets-wolmirstedt" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/eisbaerenbremerhaven/eisbaeren-bremerhaven-vs-paderborn-baskets" target="_blank">2005841</a></td>
 <td>3</td>
@@ -1611,7 +1618,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Eisbären Bremerhaven</td>
 <td>Paderborn Baskets</td>
 <td>OeVB-Arena</td>
-<td>html</td><td><a href="https://sporteurope.tv/eisbaerenbremerhaven/eisbaeren-bremerhaven-vs-paderborn-baskets" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/eisbaerenbremerhaven/eisbaeren-bremerhaven-vs-paderborn-baskets" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/giessen-46er/giessen-46ers-vs-vfl-sparkassenstars-bochum" target="_blank">2005843</a></td>
 <td>3</td>
@@ -1619,7 +1626,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>GIESSEN 46ers</td>
 <td>VfL SparkassenStars Bochum</td>
 <td>Sporthalle Ost</td>
-<td>html</td><td><a href="https://sporteurope.tv/giessen-46er/giessen-46ers-vs-vfl-sparkassenstars-bochum" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/giessen-46er/giessen-46ers-vs-vfl-sparkassenstars-bochum" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/etb-miners/etb-miners-vs-rheinstars-koeln" target="_blank">2005838</a></td>
 <td>3</td>
@@ -1627,7 +1634,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>ETB Miners</td>
 <td>RheinStars Köln</td>
 <td>Sporthalle Am Hallo</td>
-<td>html</td><td><a href="https://sporteurope.tv/etb-miners/etb-miners-vs-rheinstars-koeln" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/etb-miners/etb-miners-vs-rheinstars-koeln" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/kreisbau-kirchheim-knights/kreisbau-kirchheim-knights-vs-medikamente-per-klick-bayreuth" target="_blank">2005840</a></td>
 <td>3</td>
@@ -1635,7 +1642,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Kreisbau Kirchheim Knights</td>
 <td>Medikamente per Klick Bayreuth</td>
 <td>Sporthalle Stadtmitte (Alleenschule)</td>
-<td>html</td><td><a href="https://sporteurope.tv/kreisbau-kirchheim-knights/kreisbau-kirchheim-knights-vs-medikamente-per-klick-bayreuth" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/kreisbau-kirchheim-knights/kreisbau-kirchheim-knights-vs-medikamente-per-klick-bayreuth" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/epgbasketskoblenz/epg-baskets-koblenz-vs-artland-dragons" target="_blank">2005842</a></td>
 <td>3</td>
@@ -1643,7 +1650,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>EPG Baskets Koblenz</td>
 <td>Artland Dragons</td>
 <td>EPG Arena</td>
-<td>html</td><td><a href="https://sporteurope.tv/epgbasketskoblenz/epg-baskets-koblenz-vs-artland-dragons" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/epgbasketskoblenz/epg-baskets-koblenz-vs-artland-dragons" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/orangeacademy/orangeacademy-vs-mlp-academics-heidelberg" target="_blank">2005844</a></td>
 <td>3</td>
@@ -1651,7 +1658,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>OrangeAcademy</td>
 <td>MLP Academics Heidelberg</td>
 <td>Main Court</td>
-<td>html</td><td><a href="https://sporteurope.tv/orangeacademy/orangeacademy-vs-mlp-academics-heidelberg" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/orangeacademy/orangeacademy-vs-mlp-academics-heidelberg" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/tigers-tuebingen/tigers-tuebingen-vs-nuernberg-falcons-bc" target="_blank">2005846</a></td>
 <td>3</td>
@@ -1659,7 +1666,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Tigers Tübingen</td>
 <td>Nürnberg Falcons</td>
 <td>Paul-Horn-Arena</td>
-<td>html</td><td><a href="https://sporteurope.tv/tigers-tuebingen/tigers-tuebingen-vs-nuernberg-falcons-bc" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/tigers-tuebingen/tigers-tuebingen-vs-nuernberg-falcons-bc" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/ps-karlsruhe-lions/ps-karlsruhe-lions-vs-hakro-merlins-crailsheim" target="_blank">2005845</a></td>
 <td>3</td>
@@ -1667,7 +1674,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>PS Karlsruhe LIONS</td>
 <td>HAKRO Merlins Crailsheim</td>
 <td>Europahalle</td>
-<td>html</td><td><a href="https://sporteurope.tv/ps-karlsruhe-lions/ps-karlsruhe-lions-vs-hakro-merlins-crailsheim" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/ps-karlsruhe-lions/ps-karlsruhe-lions-vs-hakro-merlins-crailsheim" target="_blank">Video</a></td></tr>
 <tr>
 <td>2005847</td>
 <td>4</td>
@@ -1675,7 +1682,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>HAKRO Merlins Crailsheim</td>
 <td>GIESSEN 46ers</td>
 <td>Arena Hohenlohe</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2005850</td>
 <td>4</td>
@@ -1683,7 +1690,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Nürnberg Falcons</td>
 <td>Kreisbau Kirchheim Knights</td>
 <td>KIA Metropol Arena</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2005853</td>
 <td>4</td>
@@ -1691,7 +1698,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>VfL SparkassenStars Bochum</td>
 <td>BG Göttingen</td>
 <td>Rundsporthalle</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2005848</td>
 <td>4</td>
@@ -1699,7 +1706,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Artland Dragons</td>
 <td>Tigers Tübingen</td>
 <td>Artland-Arena</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2005849</td>
 <td>4</td>
@@ -1707,7 +1714,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>ETB Miners</td>
 <td>PS Karlsruhe LIONS</td>
 <td>Sporthalle Am Hallo</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2005851</td>
 <td>4</td>
@@ -1715,7 +1722,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Paderborn Baskets</td>
 <td>EPG Baskets Koblenz</td>
 <td>Phoenix Contact Arena</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2005852</td>
 <td>4</td>
@@ -1723,7 +1730,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>MLP Academics Heidelberg</td>
 <td>SBB Börde Baskets</td>
 <td>SNP dome Heidelberg</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2005854</td>
 <td>4</td>
@@ -1731,7 +1738,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>RheinStars Köln</td>
 <td>Eisbären Bremerhaven</td>
 <td>Motorworld Köln</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 </tbody>
 </table>
 <h3>Weitere Zahlen</h3>
@@ -1759,6 +1766,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Re-Live des Spieles.</p>
 <p>Link in der Spalte sptag führt zum Spiel.</p>
+<p>Spalte Boxscore: html. Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht. fehlt ohne Link, wenn es nichts gibt.</p>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
@@ -1768,97 +1776,97 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <th>home</th>
 <th>guest</th>
 <th>result</th>
-</tr>
+<th>Boxscore</th><th>Video</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=HsBqeEIZFwY" target="_blank">3011</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11453/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11453/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 18:00</td>
 <td>Eisvögel USC Freiburg 2</td>
 <td>Bender Baskets Grünberg</td>
 <td>56 : 51</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11453/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=HsBqeEIZFwY" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=SjktHUp6IWI" target="_blank">3009</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11451/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11451/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 17:15</td>
 <td>TS Jahn München</td>
 <td>Medikamente per Klick Bamberg Baskets</td>
 <td>79 : 89</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11451/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=SjktHUp6IWI" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=RCKU0hHSnKI" target="_blank">3008</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11450/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11450/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 17:00</td>
 <td>ASC Theresianum Mainz</td>
 <td>Falcons Bad Homburg</td>
 <td>64 : 68</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11450/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=RCKU0hHSnKI" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=MPO7j79hh3s" target="_blank">3007</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11449/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11449/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 16:00</td>
 <td>Rhein-Main Baskets</td>
 <td>KB Sharks Würzburg</td>
 <td>45 : 89</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11449/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=MPO7j79hh3s" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=Br8roRCmE-A" target="_blank">3010</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11452/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11452/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 16:00</td>
 <td>VIMODROM Baskets Jena</td>
 <td>USC BasCats Heidelberg</td>
 <td>49 : 86</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11452/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=Br8roRCmE-A" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=1lwbvbdHsuE" target="_blank">3005</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11447/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11447/#boxscore" target="_blank">1</a></td>
 <td>27.09.2026 16:30</td>
 <td>Falcons Bad Homburg</td>
 <td>Medikamente per Klick Bamberg Baskets</td>
 <td>74 : 70</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11447/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=1lwbvbdHsuE" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=18FtNtoM_90" target="_blank">3006</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11448/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11448/#boxscore" target="_blank">1</a></td>
 <td>27.09.2026 16:30</td>
 <td>Bender Baskets Grünberg</td>
 <td>TSV 1880 Wasserburg</td>
 <td>71 : 56</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11448/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=18FtNtoM_90" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=lzbktINkeyA" target="_blank">3003</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11445/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11445/#boxscore" target="_blank">1</a></td>
 <td>26.09.2026 17:00</td>
 <td>USC BasCats Heidelberg</td>
 <td>TS Jahn München</td>
 <td>65 : 75</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11445/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=lzbktINkeyA" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=hwBnpOCjGUQ" target="_blank">3004</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11446/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11446/#boxscore" target="_blank">1</a></td>
 <td>26.09.2026 17:00</td>
 <td>Eisvögel USC Freiburg 2</td>
 <td>VIMODROM Baskets Jena</td>
 <td>65 : 51</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11446/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=hwBnpOCjGUQ" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=E7JjKgfcP5w" target="_blank">3002</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11444/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11444/#boxscore" target="_blank">1</a></td>
 <td>26.09.2026 16:30</td>
 <td>Lou's Foodtruck MTV Stuttgart</td>
 <td>KB Sharks Würzburg</td>
 <td>59 : 77</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11444/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=E7JjKgfcP5w" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=BZIZENDCaco" target="_blank">3001</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11443/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11443/#boxscore" target="_blank">1</a></td>
 <td>26.09.2026 16:00</td>
 <td>Rhein-Main Baskets</td>
 <td>ASC Theresianum Mainz</td>
 <td>53 : 69</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11443/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=BZIZENDCaco" target="_blank">Re-Live</a></td></tr>
 </tbody>
 </table>
 <h3>Tabelle</h3>
@@ -1987,6 +1995,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Livebericht des Spieles.</p>
+<p>Spalte Boxscore: html. Spalte Video: Live.</p>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
@@ -1996,7 +2005,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <th>home</th>
 <th>guest</th>
 <th>halle</th>
-</tr>
+<th>Boxscore</th><th>Video</th></tr>
 </thead>
 <tbody>
 <tr style="background-color:#ffdd99; font-weight:bold;">
@@ -2006,7 +2015,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TSV 1880 Wasserburg</td>
 <td>Lou's Foodtruck MTV Stuttgart</td>
 <td>Badria</td>
-</tr>
+<td>html</td><td><a href="https://www.youtube.com/watch?v=mae8Mcb7pVw" target="_blank">Live</a></td></tr>
 </tbody>
 </table>
 <h3>Weitere Zahlen</h3>
@@ -2030,6 +2039,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Re-Live des Spieles.</p>
 <p>Link in der Spalte sptag führt zum Spiel.</p>
+<p>Spalte Boxscore: html. Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht. fehlt ohne Link, wenn es nichts gibt.</p>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
@@ -2039,97 +2049,97 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <th>home</th>
 <th>guest</th>
 <th>result</th>
-</tr>
+<th>Boxscore</th><th>Video</th></tr>
 </thead>
 <tbody>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=sjZw5WCm4Ac" target="_blank">2011</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11321/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11321/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 19:30</td>
 <td>New Basket 92 Oberhausen e.V.</td>
 <td>TuS Lichterfelde</td>
 <td>82 : 53</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11321/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=sjZw5WCm4Ac" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=aijIVIGqHxc" target="_blank">2010</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11320/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11320/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 19:00</td>
 <td>BG 74 Veilchen Ladies Göttingen</td>
 <td>BBC Osnabrück</td>
 <td>68 : 55</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11320/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=aijIVIGqHxc" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=6QZ_b7yvP4U" target="_blank">2009</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11319/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11319/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 18:30</td>
 <td>BG 89 AVIDES Hurricanes</td>
 <td>Eimsbütteler Turnverband</td>
 <td>91 : 68</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11319/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=6QZ_b7yvP4U" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=J85Lj31jD8A" target="_blank">2008</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11318/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11318/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 18:00</td>
 <td>WINGS Leverkusen</td>
 <td>ChemCats Chemnitz</td>
 <td>91 : 58</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11318/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=J85Lj31jD8A" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=mWQdukWJE7Q" target="_blank">2007</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11317/" target="_blank">2</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11317/#boxscore" target="_blank">2</a></td>
 <td>03.10.2026 17:15</td>
 <td>SCALA Hamburg</td>
 <td>Talents BonnRhöndorf</td>
 <td>44 : 82</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11317/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=mWQdukWJE7Q" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=WsGvY8zW_1o" target="_blank">2006</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11316/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11316/#boxscore" target="_blank">1</a></td>
 <td>27.09.2026 17:00</td>
 <td>VfL VIACTIV-AstroLadies Bochum</td>
 <td>BG 89 AVIDES Hurricanes</td>
 <td>70 : 62</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11316/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=WsGvY8zW_1o" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=Y7L2IvnpO7o" target="_blank">2005</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11315/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11315/#boxscore" target="_blank">1</a></td>
 <td>27.09.2026 16:00</td>
 <td>BBC Osnabrück</td>
 <td>WINGS Leverkusen</td>
 <td>78 : 64</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11315/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=Y7L2IvnpO7o" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=QjAO9FDoyxg" target="_blank">2004</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11314/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11314/#boxscore" target="_blank">1</a></td>
 <td>26.09.2026 19:00</td>
 <td>ChemCats Chemnitz</td>
 <td>BG 74 Veilchen Ladies Göttingen</td>
 <td>67 : 82</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11314/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=QjAO9FDoyxg" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=TB9cTxLRjaA" target="_blank">2003</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11313/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11313/#boxscore" target="_blank">1</a></td>
 <td>26.09.2026 17:00</td>
 <td>Talents BonnRhöndorf</td>
 <td>New Basket 92 Oberhausen e.V.</td>
 <td>73 : 63</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11313/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=TB9cTxLRjaA" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td><a href="https://www.youtube.com/watch?v=FbpSDlxehWA" target="_blank">2002</a></td>
-<td><a href="https://toyota-dbbl.de/spiel/11312/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11312/#boxscore" target="_blank">1</a></td>
 <td>26.09.2026 16:00</td>
 <td>Eimsbütteler Turnverband</td>
 <td>SCALA Hamburg</td>
 <td>90 : 43</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11312/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=FbpSDlxehWA" target="_blank">Re-Live</a></td></tr>
 <tr>
 <td>2001</td>
-<td><a href="https://toyota-dbbl.de/spiel/11311/" target="_blank">1</a></td>
+<td><a href="https://toyota-dbbl.de/spiel/11311/#boxscore" target="_blank">1</a></td>
 <td>26.09.2026 15:00</td>
 <td>TuS Lichterfelde</td>
 <td>UBC Münster</td>
 <td>79 : 56</td>
-</tr>
+<td><a href="https://toyota-dbbl.de/spiel/11311/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td></td></tr>
 </tbody>
 </table>
 <h3>Tabelle</h3>
@@ -2258,6 +2268,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Livebericht des Spieles.</p>
+<p>Spalte Boxscore: html. Spalte Video: Live.</p>
 <p><i>Keine kommenden Spiele.</i></p>
 
 <h3>Weitere Zahlen</h3>
@@ -2636,7 +2647,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Video des Spieles.</p>
-<p>Spalte Boxscore: html. Spalte Video: dyn-Live mit Link, sonst der Text siehe dyn.</p>
+<p>Spalte Boxscore: html. Spalte Video: Video, wenn ein Link da ist.</p>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
@@ -2656,7 +2667,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Dresden Titans</td>
 <td>TV Langen</td>
 <td>Margon Arena</td>
-<td>html</td><td><a href="https://sporteurope.tv/dresden-titans/dresden-titans-vs-tv-langen" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/dresden-titans/dresden-titans-vs-tv-langen" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/bayer-giants-leverkusen/bayer-giants-leverkusen-vs-catl-basketball-loewen" target="_blank">2006139</a></td>
 <td>2</td>
@@ -2664,7 +2675,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Bayer Giants Leverkusen</td>
 <td>Basketball Löwen</td>
 <td>Ostermann-Arena</td>
-<td>html</td><td><a href="https://sporteurope.tv/bayer-giants-leverkusen/bayer-giants-leverkusen-vs-catl-basketball-loewen" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/bayer-giants-leverkusen/bayer-giants-leverkusen-vs-catl-basketball-loewen" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td><a href="https://sporteurope.tv/sv-fellbach-flashers/sv-fellbach-flashers-vs-bbc-coburg" target="_blank">2006137</a></td>
 <td>2</td>
@@ -2672,7 +2683,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>SV Fellbach Flashers</td>
 <td>BBC Coburg</td>
 <td>Gäuäckersporthalle I</td>
-<td>html</td><td><a href="https://sporteurope.tv/sv-fellbach-flashers/sv-fellbach-flashers-vs-bbc-coburg" target="_blank">dyn-Live</a></td></tr>
+<td>html</td><td><a href="https://sporteurope.tv/sv-fellbach-flashers/sv-fellbach-flashers-vs-bbc-coburg" target="_blank">Video</a></td></tr>
 <tr>
 <td>2006140</td>
 <td>3</td>
@@ -2680,7 +2691,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Ahorn Camp Baskets</td>
 <td>Dresden Titans</td>
 <td>PSD Bank-Halle Nord</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006142</td>
 <td>3</td>
@@ -2688,7 +2699,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Dragons Rhöndorf</td>
 <td>BG Hessing Leitershofen</td>
 <td>SH des Sportzentrums Menzenberg</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006141</td>
 <td>3</td>
@@ -2696,7 +2707,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TV Langen</td>
 <td>FC Bayern Basketball II</td>
 <td>Georg-Sehring-Halle</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006145</td>
 <td>3</td>
@@ -2704,7 +2715,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TSV Oberhaching Tropics</td>
 <td>BBC Coburg</td>
 <td>Grundschule</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006146</td>
 <td>3</td>
@@ -2712,7 +2723,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Culture City Weimar</td>
 <td>Bayer Giants Leverkusen</td>
 <td>Asbach Sporthalle</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006143</td>
 <td>3</td>
@@ -2720,7 +2731,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Basketball Löwen</td>
 <td>Porsche BBA Ludwigsburg</td>
 <td>Riethsporthalle</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006144</td>
 <td>3</td>
@@ -2728,7 +2739,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>SV Fellbach Flashers</td>
 <td>SKYLINERS Juniors</td>
 <td>Gäuäckersporthalle I</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 </tbody>
 </table>
 <h3>Weitere Zahlen</h3>
@@ -3108,7 +3119,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Video des Spieles.</p>
-<p>Spalte Boxscore: html. Spalte Video: dyn-Live mit Link, sonst der Text siehe dyn.</p>
+<p>Spalte Boxscore: html. Spalte Video: Video, wenn ein Link da ist.</p>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
@@ -3128,7 +3139,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Baskets Juniors TSG Westerstede</td>
 <td>Itzehoe Eagles</td>
 <td>Hössensporthalle</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006352</td>
 <td>3</td>
@@ -3136,7 +3147,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>BSW Sixers</td>
 <td>Iserlohn Kangaroos</td>
 <td>Ballsporthalle im Freizeitzentrum</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006354</td>
 <td>3</td>
@@ -3144,7 +3155,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>SC Rist Wedel</td>
 <td>EN BASKETS Schwelm</td>
 <td>Am Steinberg</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006351</td>
 <td>3</td>
@@ -3152,7 +3163,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>ART Giants Düsseldorf</td>
 <td>SG Braunschweig</td>
 <td>Sporthalle Comenius-Gymnasium</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006353</td>
 <td>3</td>
@@ -3160,7 +3171,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Uni Baskets Münster</td>
 <td>BBA Hagen</td>
 <td>Sporthalle Berg Fidel</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006355</td>
 <td>3</td>
@@ -3168,7 +3179,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Hertener Löwen</td>
 <td>Seawolves Academy</td>
 <td>Rosa-Parks-Gesamtschule</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 <tr>
 <td>2006356</td>
 <td>3</td>
@@ -3176,7 +3187,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TSV Neustadt temps Shooters</td>
 <td>LOK BERNAU</td>
 <td>Gymnasium Neustadt</td>
-<td>html</td><td>siehe dyn</td></tr>
+<td>html</td><td>Video</td></tr>
 </tbody>
 </table>
 <h3>Weitere Zahlen</h3>
@@ -3219,7 +3230,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 07:16)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 08:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3244,7 +3255,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>DBBL-Pokal Runde 1 (Senioren; Liganr.: 35) (Liga 55743)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 07:17)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 08:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3269,7 +3280,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>DBBL-Pokal Runde 2 (Senioren; Liganr.: 37) (Liga 55744)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 07:17)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 08:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
