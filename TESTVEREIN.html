@@ -65,25 +65,68 @@ p.ligalink { margin:3px 0 3px 0; }
 #wasfindeichhier pre { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; box-sizing: border-box; }
 </style>
 <script>
+function blockPfad(d){
+  var summe = d.querySelector(":scope > summary");
+  var name = summe ? summe.textContent.replace(/\s+/g, " ").trim().slice(0, 80) : "";
+  var eltern = d.parentElement ? d.parentElement.closest("details") : null;
+  return (eltern ? blockPfad(eltern) + ">" : "") + name;
+}
+var bloeckeWerdenHergestellt = false;
+function speichereBloecke(){
+  if(bloeckeWerdenHergestellt) return;
+  var offen = [];
+  document.querySelectorAll("details[open]").forEach(function(d){
+    offen.push(blockPfad(d));
+  });
+  sessionStorage.setItem("bbBloecke:" + location.pathname, JSON.stringify({
+    offen: offen,
+    drei: document.body.classList.contains("zeige-drei-tage")
+  }));
+}
+function stelleBloeckeHer(){
+  var roh = sessionStorage.getItem("bbBloecke:" + location.pathname);
+  if(!roh) return;
+  var stand;
+  try { stand = JSON.parse(roh); } catch(e) { return; }
+  if(!stand || !stand.offen) return;
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details").forEach(function(d){
+    if(stand.offen.indexOf(blockPfad(d)) >= 0) d.setAttribute("open", "");
+    else d.removeAttribute("open");
+  });
+  if(stand.drei) document.body.classList.add("zeige-drei-tage");
+  else document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = false;
+}
+function livescoreOeffnen(dreiTage){
+  if(dreiTage) document.body.classList.add("zeige-drei-tage");
+  else document.body.classList.remove("zeige-drei-tage");
+  document.querySelectorAll("details").forEach(function(d){
+    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+      d.setAttribute("open", "");
+    } else {
+      d.removeAttribute("open");
+    }
+  });
+  speichereBloecke();
+}
 function openAll(){
   document.querySelectorAll("details").forEach(d=>{
     if(d.id==="wasfindeichhier") return;
     d.setAttribute("open","");
   });
+  speichereBloecke();
 }
 function closeAll(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
+  speichereBloecke();
 }
 function openLivescore(){
-  document.body.classList.add("zeige-drei-tage");
-  document.querySelectorAll("details").forEach(d=>{
-    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
-      d.setAttribute("open","");
-    } else {
-      d.removeAttribute("open");
-    }
-  });
+  livescoreOeffnen(false);
+}
+function openLivescoreDrei(){
+  livescoreOeffnen(true);
 }
 function openLivescoreHeute(){
   document.body.classList.remove("zeige-drei-tage");
@@ -93,7 +136,14 @@ function openLivescoreHeute(){
     if(heute || block) d.setAttribute("open","");
     else d.removeAttribute("open");
   });
+  speichereBloecke();
 }
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll("details").forEach(function(d){
+    d.addEventListener("toggle", speichereBloecke);
+  });
+  stelleBloeckeHer();
+});
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
@@ -112,7 +162,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Uebersicht diverse Ligen fuer Test – Stand: 04.10.26 15:05:14</h1>
+<h1>Uebersicht diverse Ligen fuer Test – Stand: 04.10.26 15:20:40</h1>
 
 
 <details id='wasfindeichhier'>
