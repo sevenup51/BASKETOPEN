@@ -2,6 +2,22 @@
 <html>
 <head>
 <meta charset="utf-8">
+<script>
+/* Dieselbe Adresse bleibt auf dem iPad gespeichert. Eine neue nocache-Zahl holt die Seite neu. */
+(function () {
+  var jetzt = Date.now();
+  var token = "";
+  try { token = new URLSearchParams(location.search).get("nocache") || ""; } catch (e) { token = ""; }
+  var schluessel = "seiteFrisch:" + location.pathname;
+  var merker = "";
+  try { merker = sessionStorage.getItem(schluessel) || ""; } catch (e) { return; }
+  var teile = merker.split("|");
+  if (token && token === teile[0] && (jetzt - Number(teile[1] || 0)) < 15000) return;
+  var neu = String(jetzt);
+  try { sessionStorage.setItem(schluessel, neu + "|" + jetzt); } catch (e) { return; }
+  location.replace(location.pathname + "?nocache=" + neu + location.hash);
+})();
+</script>
 
 <!-- Cache vollständig deaktivieren -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -58,6 +74,7 @@ hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
 button:hover { background:#163568; }
+button.heute-aktiv, button.heute-aktiv:hover { color:#2ecc71; }
 p.ligalink { margin:3px 0 3px 0; }
 #wasfindeichhier { max-width: 780px; }
 #wasfindeichhier > .intro-body { box-sizing: border-box; padding-left: 15px; overflow-wrap: break-word; word-wrap: break-word; }
@@ -102,7 +119,7 @@ function livescoreOeffnen(dreiTage){
   if(dreiTage) document.body.classList.add("zeige-drei-tage");
   else document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+    if(d.classList.contains("live-sammel") || d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
       d.setAttribute("open", "");
     } else {
       d.removeAttribute("open");
@@ -131,7 +148,7 @@ function openLivescoreDrei(){
 function openLivescoreHeute(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(function(d){
-    var heute = d.classList.contains("spielt-heute");
+    var heute = d.classList.contains("spielt-heute") || d.classList.contains("live-sammel");
     var block = d.classList.contains("livescore-block") && d.closest("details.spielt-heute");
     if(heute || block) d.setAttribute("open","");
     else d.removeAttribute("open");
@@ -162,7 +179,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bayernliga – Stand: 04.10.26 15:16:34</h1>
+<h1>Bayernliga – Stand: 04.10.26 15:46:59</h1>
 
 
 <details id='wasfindeichhier'>
@@ -1415,6 +1432,14 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>50453</td>
+<td>1</td>
+<td>04.10.2026 13:30</td>
+<td>TSV 1880 Wasserburg 2</td>
+<td>TSV 1861 Nördlingen</td>
+<td>71 : 62</td>
+</tr>
 <tr>
 <td>50451</td>
 <td>1</td>
@@ -1467,6 +1492,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>3</td>
+      <td>TSV 1880 Wasserburg 2</td>
+      <td>1</td>
+      <td>1/0</td>
+      <td>2</td>
+      <td>71 : 62</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>4</td>
       <td>Haching Baskets</td>
       <td>0</td>
       <td>0/0</td>
@@ -1475,7 +1509,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>0</td>
     </tr>
     <tr>
-      <td>4</td>
+      <td>5</td>
       <td>MTV 1879 München 2</td>
       <td>0</td>
       <td>0/0</td>
@@ -1484,7 +1518,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>0</td>
     </tr>
     <tr>
-      <td>5</td>
+      <td>6</td>
       <td>TSV Etting-Ingolstadt</td>
       <td>0</td>
       <td>0/0</td>
@@ -1493,17 +1527,8 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>0</td>
     </tr>
     <tr>
-      <td>6</td>
-      <td>TSV 1861 Nördlingen</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
       <td>7</td>
-      <td>TSV 1880 Wasserburg 2</td>
+      <td>TV 1847 Augsburg 2</td>
       <td>0</td>
       <td>0/0</td>
       <td>0</td>
@@ -1512,12 +1537,12 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>8</td>
-      <td>TV 1847 Augsburg 2</td>
+      <td>TSV 1861 Nördlingen</td>
+      <td>1</td>
+      <td>0/1</td>
       <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
+      <td>62 : 71</td>
+      <td>-9</td>
     </tr>
     <tr>
       <td>9</td>
@@ -1552,7 +1577,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>50453</td>
 <td>1</td>
 <td>04.10.2026 13:30</td>
@@ -1608,6 +1633,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <hr class='short'>
 </div>
 </details>
+
 
 <hr class='short'>
 
