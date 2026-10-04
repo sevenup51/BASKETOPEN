@@ -83,8 +83,16 @@ p.ligalink { margin:3px 0 3px 0; }
 </style>
 <script>
 function blockPfad(d){
-  var summe = d.querySelector(":scope > summary");
-  var name = summe ? summe.textContent.replace(/\s+/g, " ").trim().slice(0, 80) : "";
+  var fest = d.getAttribute("data-block");
+  var name = fest ? fest : "";
+  if(!name){
+    var summe = d.querySelector(":scope > summary");
+    if(summe){
+      var klon = summe.cloneNode(true);
+      klon.querySelectorAll(".summary-right").forEach(function(el){ el.remove(); });
+      name = klon.textContent.replace(/\s+/g, " ").trim().slice(0, 80);
+    }
+  }
   var eltern = d.parentElement ? d.parentElement.closest("details") : null;
   return (eltern ? blockPfad(eltern) + ">" : "") + name;
 }
@@ -119,7 +127,7 @@ function livescoreOeffnen(dreiTage){
   if(dreiTage) document.body.classList.add("zeige-drei-tage");
   else document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga") || d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
       d.setAttribute("open", "");
     } else {
       d.removeAttribute("open");
@@ -144,10 +152,12 @@ function openLivescoreDrei(){
 }
 function openLivescoreHeute(){
   document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = true;
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel")) d.setAttribute("open","");
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
     else d.removeAttribute("open");
   });
+  bloeckeWerdenHergestellt = false;
   speichereBloecke();
 }
 document.addEventListener("DOMContentLoaded", function(){
@@ -174,7 +184,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 04.10.26 16:00:47</h1>
+<h1>Bundesligen – Stand: 04.10.26 16:04:07</h1>
 
 
 <details id='wasfindeichhier'>
@@ -355,7 +365,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-sammel' open><summary><b>Live</b><span class='summary-right'>Stand: 04.10 16:00:47</span></summary><div style='margin-left:10px;'><h3>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
+<details class='live-sammel' data-block='Live' open><summary><b>Live</b><span class='summary-right'>Stand: 04.10 16:04:07</span></summary><div style='margin-left:10px;'><details class='live-liga' data-block='live-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Phoenix Hagen</div>
                     <div class='ls-score'>40:41</div>
@@ -363,7 +373,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 <div class='ls-date'>Q1 18-22 | Q2 22-19</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:58</span><span>Q2 Pause</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q2 Pause</span></div>
             </div><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern München Basketball</div>
@@ -372,7 +382,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 <div class='ls-date'>Q1 17-18 | Q2 40-13</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:58</span><span>Q2 Pause</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q3 9:47</span></div>
             </div><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Science City Jena</div>
@@ -381,16 +391,16 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:58</span><span>Q1</span></div>
-            </div></div><h3>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30)</h3><div class='livescore-list'><p><i>Ein heutiges stattfindendes Spiel ist noch nicht LIVE.</i></p></div><h3>Herren ProA (Senioren; Liganr.: 10)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q1</span></div>
+            </div></div></details><details class='live-liga' data-block='live-55738' open><summary><b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30)</b></summary><div class='livescore-list'><p><i>Ein heutiges stattfindendes Spiel ist noch nicht LIVE.</i></p></div></details><details class='live-liga' data-block='live-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Göttingen</div>
-                    <div class='ls-score'>27:48</div>
+                    <div class='ls-score'>27:51</div>
                     <div class='ls-team' style='text-align:right;'>SBB Börde Baskets </div>
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:59</span><span>Q2</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q3 09:25</span></div>
             </div><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Eisbären Bremerhaven</div>
@@ -399,23 +409,32 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:59</span><span>Q2</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q2</span></div>
             </div><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>GIESSEN 46ers</div>
-                    <div class='ls-score'>40:44</div>
+                    <div class='ls-score'>46:46</div>
                     <div class='ls-team' style='text-align:right;'>VfL SparkassenStars Bochum</div>
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:59</span><span>Q3 09:12</span></div>
-            </div></div><h3>Herren ProB Süd (Senioren; Liganr.: 22)</h3><div class='livescore-list'><p><i>Ein heutiges stattfindendes Spiel ist noch nicht LIVE.</i></p></div></div></details><details class='hat-livescore spielt-heute' open>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q3 07:57</span></div>
+            </div></div></details><details class='live-liga' data-block='live-55817' open><summary><b>Herren ProB Süd (Senioren; Liganr.: 22)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
+                <div class='ls-row'>
+                    <div class='ls-team'>Dresden Titans</div>
+                    <div class='ls-score'>0:2</div>
+                    <div class='ls-team' style='text-align:right;'>TV Langen</div>
+                </div>
+                <div class='ls-date'>04.10.2026 16:00</div>
+                
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q1 09:21</span></div>
+            </div></div></details></div></details><details class='hat-livescore spielt-heute' open>
 
 <summary>
     <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 15:53)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 15:58)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -464,7 +483,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 <div class='ls-date'>Q1 18-22 | Q2 22-19</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:58</span><span>Q2 Pause</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q2 Pause</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
@@ -475,7 +494,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 <div class='ls-date'>Q1 17-18 | Q2 40-13</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:58</span><span>Q2 Pause</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q3 9:47</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
@@ -486,7 +505,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:58</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q1</span></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
@@ -1160,7 +1179,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Eigner Angels Nördlingen</td>
 <td>Rutronik Stars Keltern</td>
 <td>Hermann-Keßler-Halle</td>
-<td>html</td><td><a href="https://www.youtube.com/watch?v=SwV80YPkxK0" target="_blank">Live</a></td></tr>
+<td><a href="https://toyota-dbbl.de/spiel/11202/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=SwV80YPkxK0" target="_blank">Live</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>1003</td>
 <td>1</td>
@@ -1168,7 +1187,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Eisvögel USC Freiburg</td>
 <td>Herner TC</td>
 <td>Sportzentrum der Universität, Halle 2</td>
-<td>html</td><td><a href="https://www.youtube.com/watch?v=mNZKAzkwzjo" target="_blank">Live</a></td></tr>
+<td><a href="https://toyota-dbbl.de/spiel/11203/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=mNZKAzkwzjo" target="_blank">Live</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>1001</td>
 <td>1</td>
@@ -1250,7 +1269,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 15:53)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 15:58)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1261,12 +1280,12 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
             <div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Göttingen</div>
-                    <div class='ls-score'>27:48</div>
+                    <div class='ls-score'>27:51</div>
                     <div class='ls-team' style='text-align:right;'>SBB Börde Baskets </div>
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:59</span><span>Q2</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q3 09:25</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
@@ -1277,18 +1296,18 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:59</span><span>Q2</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q2</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>GIESSEN 46ers</div>
-                    <div class='ls-score'>40:44</div>
+                    <div class='ls-score'>46:46</div>
                     <div class='ls-team' style='text-align:right;'>VfL SparkassenStars Bochum</div>
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:59</span><span>Q3 09:12</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:02</span><span>Q3 07:57</span></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
@@ -2401,14 +2420,14 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 15:55)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 16:02)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
-<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Süd, gestern bis morgen</div>
+<details class='livescore-block' open><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Süd, gestern bis morgen</div>
             <div class='livescore-box ls-nicht-heute' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Porsche BBA Ludwigsburg</div>
@@ -2453,15 +2472,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 
             </div>
             
-            <div class='livescore-box' style='background:#ffdd99;'>
+            <div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dresden Titans</div>
-                    <div class='ls-score'>–</div>
+                    <div class='ls-score'>0:2</div>
                     <div class='ls-team' style='text-align:right;'>TV Langen</div>
                 </div>
                 <div class='ls-date'>04.10.2026 16:00</div>
                 
-                
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q1 09:21</span></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
@@ -2783,7 +2802,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Dresden Titans</td>
 <td>TV Langen</td>
 <td>Margon Arena</td>
-<td>html</td><td><a href="https://sporteurope.tv/dresden-titans/dresden-titans-vs-tv-langen" target="_blank">Video</a></td></tr>
+<td><a href="https://live.2basketballbundesliga.de/g/2006138?s=boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://sporteurope.tv/dresden-titans/dresden-titans-vs-tv-langen" target="_blank">Video</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2006139</td>
 <td>2</td>
