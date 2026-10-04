@@ -74,7 +74,7 @@ hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
 button:hover { background:#163568; }
-button.livescore-heute, button.livescore-heute:hover { background:#2ecc71; color:#fff; }
+button.heute-aktiv, button.heute-aktiv:hover { color:#2ecc71; }
 p.ligalink { margin:3px 0 3px 0; }
 #wasfindeichhier { max-width: 780px; }
 #wasfindeichhier > .intro-body { box-sizing: border-box; padding-left: 15px; overflow-wrap: break-word; word-wrap: break-word; }
@@ -139,13 +139,18 @@ function closeAll(){
   document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
   speichereBloecke();
 }
+function openLivescore(){
+  livescoreOeffnen(false);
+}
 function openLivescoreDrei(){
   livescoreOeffnen(true);
 }
 function openLivescoreHeute(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel")) d.setAttribute("open","");
+    var heute = d.classList.contains("spielt-heute") || d.classList.contains("live-sammel");
+    var block = d.classList.contains("livescore-block") && d.closest("details.spielt-heute");
+    if(heute || block) d.setAttribute("open","");
     else d.removeAttribute("open");
   });
   speichereBloecke();
@@ -174,7 +179,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 04.10.26 15:52:20</h1>
+<h1>Bundesligen – Stand: 04.10.26 15:53:09</h1>
 
 
 <details id='wasfindeichhier'>
@@ -352,10 +357,10 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
-    <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
+    <button onclick="openLivescore()">Livescore</button><button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute heute-aktiv" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-sammel' open><summary><b>Live</b><span class='summary-right'>Stand: 04.10 15:52:20</span></summary><div style='margin-left:10px;'><h3>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
+<details class='live-sammel' open><summary><b>Live</b></summary><div style='margin-left:10px;'><h3>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Phoenix Hagen</div>
                     <div class='ls-score'>38:41</div>
@@ -382,7 +387,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 <div class='ls-date'>04.10.2026 16:30</div>
                 
                 <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:50</span><span>Q1</span></div>
-            </div></div><h3>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30)</h3><div class='livescore-list'><p><i>Ein heutiges stattfindendes Spiel ist noch nicht LIVE.</i></p></div><h3>Herren ProA (Senioren; Liganr.: 10)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
+            </div></div><h3>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30)</h3><div class='livescore-list'><p><i>Heute noch kein Spiel grün.</i></p></div><h3>Herren ProA (Senioren; Liganr.: 10)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Göttingen</div>
                     <div class='ls-score'>27:48</div>
@@ -409,7 +414,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
                 <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:51</span><span>Q2</span></div>
-            </div></div><h3>Herren ProB Süd (Senioren; Liganr.: 22)</h3><div class='livescore-list'><p><i>Ein heutiges stattfindendes Spiel ist noch nicht LIVE.</i></p></div></div></details><details class='hat-livescore spielt-heute' open>
+            </div></div><h3>Herren ProB Süd (Senioren; Liganr.: 22)</h3><div class='livescore-list'><p><i>Heute noch kein Spiel grün.</i></p></div></div></details><details class='hat-livescore spielt-heute' open>
 
 <summary>
     <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b>
