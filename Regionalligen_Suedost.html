@@ -79,6 +79,14 @@ function openLivescore(){
     }
   });
 }
+function openLivescoreHeute(){
+  document.querySelectorAll("details").forEach(function(d){
+    var heute = d.classList.contains("spielt-heute");
+    var block = d.classList.contains("livescore-block") && d.closest("details.spielt-heute");
+    if(heute || block) d.setAttribute("open","");
+    else d.removeAttribute("open");
+  });
+}
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
@@ -97,7 +105,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedost – Stand: 04.10.26 06:38:56</h1>
+<h1>Regionalliga Suedost – Stand: 04.10.26 07:11:13</h1>
 
 
 <details id='wasfindeichhier'>
