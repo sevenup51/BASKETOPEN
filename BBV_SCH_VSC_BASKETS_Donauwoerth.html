@@ -2,6 +2,22 @@
 <html>
 <head>
 <meta charset="utf-8">
+<script>
+/* Dieselbe Adresse bleibt auf dem iPad gespeichert. Eine neue nocache-Zahl holt die Seite neu. */
+(function () {
+  var jetzt = Date.now();
+  var token = "";
+  try { token = new URLSearchParams(location.search).get("nocache") || ""; } catch (e) { token = ""; }
+  var schluessel = "seiteFrisch:" + location.pathname;
+  var merker = "";
+  try { merker = sessionStorage.getItem(schluessel) || ""; } catch (e) { return; }
+  var teile = merker.split("|");
+  if (token && token === teile[0] && (jetzt - Number(teile[1] || 0)) < 15000) return;
+  var neu = String(jetzt);
+  try { sessionStorage.setItem(schluessel, neu + "|" + jetzt); } catch (e) { return; }
+  location.replace(location.pathname + "?nocache=" + neu + location.hash);
+})();
+</script>
 
 <!-- Cache vollständig deaktivieren -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -58,6 +74,7 @@ hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
 button:hover { background:#163568; }
+button.heute-aktiv, button.heute-aktiv:hover { color:#2ecc71; }
 p.ligalink { margin:3px 0 3px 0; }
 #wasfindeichhier { max-width: 780px; }
 #wasfindeichhier > .intro-body { box-sizing: border-box; padding-left: 15px; overflow-wrap: break-word; word-wrap: break-word; }
@@ -65,25 +82,68 @@ p.ligalink { margin:3px 0 3px 0; }
 #wasfindeichhier pre { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; box-sizing: border-box; }
 </style>
 <script>
+function blockPfad(d){
+  var summe = d.querySelector(":scope > summary");
+  var name = summe ? summe.textContent.replace(/\s+/g, " ").trim().slice(0, 80) : "";
+  var eltern = d.parentElement ? d.parentElement.closest("details") : null;
+  return (eltern ? blockPfad(eltern) + ">" : "") + name;
+}
+var bloeckeWerdenHergestellt = false;
+function speichereBloecke(){
+  if(bloeckeWerdenHergestellt) return;
+  var offen = [];
+  document.querySelectorAll("details[open]").forEach(function(d){
+    offen.push(blockPfad(d));
+  });
+  sessionStorage.setItem("bbBloecke:" + location.pathname, JSON.stringify({
+    offen: offen,
+    drei: document.body.classList.contains("zeige-drei-tage")
+  }));
+}
+function stelleBloeckeHer(){
+  var roh = sessionStorage.getItem("bbBloecke:" + location.pathname);
+  if(!roh) return;
+  var stand;
+  try { stand = JSON.parse(roh); } catch(e) { return; }
+  if(!stand || !stand.offen) return;
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details").forEach(function(d){
+    if(stand.offen.indexOf(blockPfad(d)) >= 0) d.setAttribute("open", "");
+    else d.removeAttribute("open");
+  });
+  if(stand.drei) document.body.classList.add("zeige-drei-tage");
+  else document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = false;
+}
+function livescoreOeffnen(dreiTage){
+  if(dreiTage) document.body.classList.add("zeige-drei-tage");
+  else document.body.classList.remove("zeige-drei-tage");
+  document.querySelectorAll("details").forEach(function(d){
+    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+      d.setAttribute("open", "");
+    } else {
+      d.removeAttribute("open");
+    }
+  });
+  speichereBloecke();
+}
 function openAll(){
   document.querySelectorAll("details").forEach(d=>{
     if(d.id==="wasfindeichhier") return;
     d.setAttribute("open","");
   });
+  speichereBloecke();
 }
 function closeAll(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
+  speichereBloecke();
 }
 function openLivescore(){
-  document.body.classList.add("zeige-drei-tage");
-  document.querySelectorAll("details").forEach(d=>{
-    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
-      d.setAttribute("open","");
-    } else {
-      d.removeAttribute("open");
-    }
-  });
+  livescoreOeffnen(false);
+}
+function openLivescoreDrei(){
+  livescoreOeffnen(true);
 }
 function openLivescoreHeute(){
   document.body.classList.remove("zeige-drei-tage");
@@ -93,7 +153,14 @@ function openLivescoreHeute(){
     if(heute || block) d.setAttribute("open","");
     else d.removeAttribute("open");
   });
+  speichereBloecke();
 }
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll("details").forEach(function(d){
+    d.addEventListener("toggle", speichereBloecke);
+  });
+  stelleBloeckeHer();
+});
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
@@ -112,7 +179,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>VSC Baskets Donauwoerth – Stand: 04.10.26 15:08:08</h1>
+<h1>VSC Baskets Donauwoerth – Stand: 04.10.26 15:25:43</h1>
 
 
 <details id='wasfindeichhier'>
@@ -293,7 +360,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     
 </div>
 
-<details open><summary><b>Spielplan VSC Baskets Donauwörth vom 04.10.26 bis 12.10.26</b><span class='summary-right'>Stand 04.10.26 15:08:08</span></summary><div style='margin-left:10px;'><table><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54471</td><td>U12</td><td>04.10.2026 12:30</td><td>VSC Baskets Donauwörth</td><td>BG Leitershofen/Stadtbergen</td><td>Stauferpark Halle</td></tr><tr><td>54471</td><td>U12</td><td>10.10.2026 10:00</td><td>Netz16 Baskets Königsbrunn</td><td>VSC Baskets Donauwörth</td><td>Gymnasium</td></tr><tr style='background-color:#ffdd99;'><td>55701</td><td>U12</td><td>10.10.2026 14:30</td><td>VSC Donauwörth 2</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>10.10.2026 17:00</td><td>VSC Baskets Donauwörth 2</td><td>TSV Meitingen</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54498</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth</td><td>TSV Etting-Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>55699</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth 2</td><td>TSV Haunstetten</td><td>Stauferpark Halle</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td>PSV Ingolstadt</td><td>VSC Baskets Donauwörth</td><td>August-Horch-Schule</td></tr><tr style='background-color:#ffdd99;'><td>54491</td><td>U14</td><td>11.10.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Etting-Ingolstadt</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54488</td><td>U16</td><td>11.10.2026 16:30</td><td>VSC Baskets Donauwörth</td><td>PSV Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr><td>54453</td><td>Herren</td><td>11.10.2026 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>Paul-Klee-Gymnasium (neu)</td></tr></tbody></table></div></details><details>
+<details open><summary><b>Spielplan VSC Baskets Donauwörth vom 04.10.26 bis 12.10.26</b><span class='summary-right'>Stand 04.10.26 15:25:43</span></summary><div style='margin-left:10px;'><table><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54471</td><td>U12</td><td>04.10.2026 12:30</td><td>VSC Baskets Donauwörth</td><td>BG Leitershofen/Stadtbergen</td><td>Stauferpark Halle</td></tr><tr><td>54471</td><td>U12</td><td>10.10.2026 10:00</td><td>Netz16 Baskets Königsbrunn</td><td>VSC Baskets Donauwörth</td><td>Gymnasium</td></tr><tr style='background-color:#ffdd99;'><td>55701</td><td>U12</td><td>10.10.2026 14:30</td><td>VSC Donauwörth 2</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>10.10.2026 17:00</td><td>VSC Baskets Donauwörth 2</td><td>TSV Meitingen</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54498</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth</td><td>TSV Etting-Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>55699</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth 2</td><td>TSV Haunstetten</td><td>Stauferpark Halle</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td>PSV Ingolstadt</td><td>VSC Baskets Donauwörth</td><td>August-Horch-Schule</td></tr><tr style='background-color:#ffdd99;'><td>54491</td><td>U14</td><td>11.10.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Etting-Ingolstadt</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54488</td><td>U16</td><td>11.10.2026 16:30</td><td>VSC Baskets Donauwörth</td><td>PSV Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr><td>54453</td><td>Herren</td><td>11.10.2026 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>Paul-Klee-Gymnasium (neu)</td></tr></tbody></table></div></details><details>
 
 <summary>
     <b>Bezirksoberliga Herren 26/27 (Senioren Schwaben; Liganr.: 22004) (Liga 54453)</b>
@@ -2033,6 +2100,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <hr class='short'>
 </div>
 </details>
+
 
 <hr class='short'>
 
