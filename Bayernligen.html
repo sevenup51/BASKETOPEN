@@ -83,8 +83,16 @@ p.ligalink { margin:3px 0 3px 0; }
 </style>
 <script>
 function blockPfad(d){
-  var summe = d.querySelector(":scope > summary");
-  var name = summe ? summe.textContent.replace(/\s+/g, " ").trim().slice(0, 80) : "";
+  var fest = d.getAttribute("data-block");
+  var name = fest ? fest : "";
+  if(!name){
+    var summe = d.querySelector(":scope > summary");
+    if(summe){
+      var klon = summe.cloneNode(true);
+      klon.querySelectorAll(".summary-right").forEach(function(el){ el.remove(); });
+      name = klon.textContent.replace(/\s+/g, " ").trim().slice(0, 80);
+    }
+  }
   var eltern = d.parentElement ? d.parentElement.closest("details") : null;
   return (eltern ? blockPfad(eltern) + ">" : "") + name;
 }
@@ -119,7 +127,7 @@ function livescoreOeffnen(dreiTage){
   if(dreiTage) document.body.classList.add("zeige-drei-tage");
   else document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga") || d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
       d.setAttribute("open", "");
     } else {
       d.removeAttribute("open");
@@ -144,10 +152,12 @@ function openLivescoreDrei(){
 }
 function openLivescoreHeute(){
   document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = true;
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel")) d.setAttribute("open","");
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
     else d.removeAttribute("open");
   });
+  bloeckeWerdenHergestellt = false;
   speichereBloecke();
 }
 document.addEventListener("DOMContentLoaded", function(){
@@ -174,7 +184,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bayernliga – Stand: 04.10.26 15:58:53</h1>
+<h1>Bayernliga – Stand: 04.10.26 16:16:25</h1>
 
 
 <details id='wasfindeichhier'>
