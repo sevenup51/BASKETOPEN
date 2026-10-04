@@ -180,7 +180,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 04.10.26 20:12:19</h1>
+<h1>Bundesligen – Stand: 04.10.26 20:20:38</h1>
 
 
 <details id='wasfindeichhier'>
@@ -361,7 +361,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-sammel' data-block='Live' open><summary><b>Live</b><span class='summary-right'>Stand: 04.10 20:12:19</span></summary><div style='margin-left:10px;'><details class='live-liga' data-block='live-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><p><i>Es sind heute keine Spiele mehr.</i></p></div></details><details class='live-liga' data-block='live-55738' open><summary><b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b></summary><div class='livescore-list'><p><i>Es sind heute keine Spiele mehr.</i></p></div></details><details class='live-liga' data-block='live-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><p><i>Es sind heute keine Spiele mehr.</i></p></div></details><details class='live-liga' data-block='live-55817' open><summary><b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b></summary><div class='livescore-list'><p><i>Es sind heute keine Spiele mehr.</i></p></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>3 Tage</b><span class='summary-right'>Stand: 04.10 20:12:19</span></summary><div style='margin-left:10px;'><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+<details class='live-sammel' data-block='Live' open><summary><b>Live</b><span class='summary-right'><span id='live-refresh'></span>Stand: 04.10 20:20:38</span></summary><div style='margin-left:10px;'><details class='live-liga' data-block='live-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><p><i>Es sind heute keine Spiele mehr.</i></p></div></details><details class='live-liga' data-block='live-55738' open><summary><b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b></summary><div class='livescore-list'><p><i>Es sind heute keine Spiele mehr.</i></p></div></details><details class='live-liga' data-block='live-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><p><i>Es sind heute keine Spiele mehr.</i></p></div></details><details class='live-liga' data-block='live-55817' open><summary><b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b></summary><div class='livescore-list'><p><i>Es sind heute keine Spiele mehr.</i></p></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 04.10 20:20:38</span></summary><div style='margin-left:10px;'><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Veolia Towers Hamburg</div>
                     <div class='ls-score'>84:91</div>
@@ -3979,6 +3979,39 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </div>
 </details>
 
+<script>
+/* Uhr und Refresh nur bei grünem Livescore_heute und einem laufenden Spiel. */
+(function () {
+  var ziel = 0;
+  function zwei(zahl) { return (zahl < 10 ? "0" : "") + zahl; }
+  function laufendesSpiel() {
+    var block = document.querySelector("details.live-sammel");
+    if (!block || !block.hasAttribute("open")) return false;
+    return !!block.querySelector(".livescore-box[style*='b7ebc6']");
+  }
+  function zeige() {
+    var el = document.getElementById("live-refresh");
+    if (!el) return;
+    if (!laufendesSpiel()) {
+      el.textContent = "";
+      ziel = 0;
+      return;
+    }
+    if (!ziel) ziel = Date.now() + 120000;
+    var zeit = new Date(ziel);
+    el.textContent = "Refresh " + zwei(zeit.getHours()) + ":" + zwei(zeit.getMinutes()) + ":" + zwei(zeit.getSeconds());
+  }
+  zeige();
+  setInterval(function () {
+    zeige();
+    if (!ziel || Date.now() < ziel || !laufendesSpiel()) return;
+    var jetzt = Date.now();
+    var neu = String(jetzt);
+    try { sessionStorage.setItem("seiteFrisch:" + location.pathname, neu + "|" + jetzt); } catch (e) {}
+    location.replace(location.pathname + "?nocache=" + neu + location.hash);
+  }, 1000);
+})();
+</script>
 
 <hr class='short'>
 
