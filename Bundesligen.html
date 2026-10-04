@@ -74,7 +74,7 @@ hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
 button:hover { background:#163568; }
-button.heute-aktiv, button.heute-aktiv:hover { color:#2ecc71; }
+button.livescore-heute, button.livescore-heute:hover { background:#2ecc71; color:#fff; }
 p.ligalink { margin:3px 0 3px 0; }
 #wasfindeichhier { max-width: 780px; }
 #wasfindeichhier > .intro-body { box-sizing: border-box; padding-left: 15px; overflow-wrap: break-word; word-wrap: break-word; }
@@ -139,18 +139,13 @@ function closeAll(){
   document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
   speichereBloecke();
 }
-function openLivescore(){
-  livescoreOeffnen(false);
-}
 function openLivescoreDrei(){
   livescoreOeffnen(true);
 }
 function openLivescoreHeute(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(function(d){
-    var heute = d.classList.contains("spielt-heute") || d.classList.contains("live-sammel");
-    var block = d.classList.contains("livescore-block") && d.closest("details.spielt-heute");
-    if(heute || block) d.setAttribute("open","");
+    if(d.classList.contains("live-sammel")) d.setAttribute("open","");
     else d.removeAttribute("open");
   });
   speichereBloecke();
@@ -179,7 +174,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 04.10.26 15:53:09</h1>
+<h1>Bundesligen – Stand: 04.10.26 15:55:21</h1>
 
 
 <details id='wasfindeichhier'>
@@ -357,18 +352,18 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
-    <button onclick="openLivescore()">Livescore</button><button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute heute-aktiv" onclick="openLivescoreHeute()">livescore_heute</button>
+    <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-sammel' open><summary><b>Live</b></summary><div style='margin-left:10px;'><h3>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
+<details class='live-sammel' open><summary><b>Live</b><span class='summary-right'>Stand: 04.10 15:55:21</span></summary><div style='margin-left:10px;'><h3>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Phoenix Hagen</div>
-                    <div class='ls-score'>38:41</div>
+                    <div class='ls-score'>40:41</div>
                     <div class='ls-team' style='text-align:right;'>SKYLINERS</div>
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
-                <div class='ls-date'>Q1 18-22 | Q2 20-19</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:50</span><span>Q2 0:51</span></div>
+                <div class='ls-date'>Q1 18-22 | Q2 22-19</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2 Pause</span></div>
             </div><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern München Basketball</div>
@@ -377,7 +372,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 <div class='ls-date'>Q1 17-18 | Q2 40-13</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:50</span><span>Q2 Pause</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2 Pause</span></div>
             </div><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Science City Jena</div>
@@ -386,8 +381,8 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:50</span><span>Q1</span></div>
-            </div></div><h3>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30)</h3><div class='livescore-list'><p><i>Heute noch kein Spiel grün.</i></p></div><h3>Herren ProA (Senioren; Liganr.: 10)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q1</span></div>
+            </div></div><h3>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30)</h3><div class='livescore-list'><p><i>Ein heutiges stattfindendes Spiel ist noch nicht LIVE.</i></p></div><h3>Herren ProA (Senioren; Liganr.: 10)</h3><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Göttingen</div>
                     <div class='ls-score'>27:48</div>
@@ -395,7 +390,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:51</span><span>Q2</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2</span></div>
             </div><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Eisbären Bremerhaven</div>
@@ -404,7 +399,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:51</span><span>Q2</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2</span></div>
             </div><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>GIESSEN 46ers</div>
@@ -413,8 +408,8 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:51</span><span>Q2</span></div>
-            </div></div><h3>Herren ProB Süd (Senioren; Liganr.: 22)</h3><div class='livescore-list'><p><i>Heute noch kein Spiel grün.</i></p></div></div></details><details class='hat-livescore spielt-heute' open>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2</span></div>
+            </div></div><h3>Herren ProB Süd (Senioren; Liganr.: 22)</h3><div class='livescore-list'><p><i>Ein heutiges stattfindendes Spiel ist noch nicht LIVE.</i></p></div></div></details><details class='hat-livescore spielt-heute' open>
 
 <summary>
     <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b>
@@ -464,12 +459,12 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
             <div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>Phoenix Hagen</div>
-                    <div class='ls-score'>38:41</div>
+                    <div class='ls-score'>40:41</div>
                     <div class='ls-team' style='text-align:right;'>SKYLINERS</div>
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
-                <div class='ls-date'>Q1 18-22 | Q2 20-19</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:50</span><span>Q2 0:51</span></div>
+                <div class='ls-date'>Q1 18-22 | Q2 22-19</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2 Pause</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
@@ -480,7 +475,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 <div class='ls-date'>Q1 17-18 | Q2 40-13</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:50</span><span>Q2 Pause</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2 Pause</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
@@ -491,7 +486,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:50</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q1</span></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
@@ -1255,7 +1250,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 15:47)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 15:53)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1271,7 +1266,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:51</span><span>Q2</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
@@ -1282,7 +1277,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:51</span><span>Q2</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2</span></div>
             </div>
             
             <div class='livescore-box' style='background:#b7ebc6;'>
@@ -1293,7 +1288,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
                 </div>
                 <div class='ls-date'>04.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:51</span><span>Q2</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:54</span><span>Q2</span></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
