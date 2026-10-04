@@ -2,6 +2,22 @@
 <html>
 <head>
 <meta charset="utf-8">
+<script>
+/* Dieselbe Adresse bleibt auf dem iPad gespeichert. Eine neue nocache-Zahl holt die Seite neu. */
+(function () {
+  var jetzt = Date.now();
+  var token = "";
+  try { token = new URLSearchParams(location.search).get("nocache") || ""; } catch (e) { token = ""; }
+  var schluessel = "seiteFrisch:" + location.pathname;
+  var merker = "";
+  try { merker = sessionStorage.getItem(schluessel) || ""; } catch (e) { return; }
+  var teile = merker.split("|");
+  if (token && token === teile[0] && (jetzt - Number(teile[1] || 0)) < 15000) return;
+  var neu = String(jetzt);
+  try { sessionStorage.setItem(schluessel, neu + "|" + jetzt); } catch (e) { return; }
+  location.replace(location.pathname + "?nocache=" + neu + location.hash);
+})();
+</script>
 
 <!-- Cache vollständig deaktivieren -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -58,6 +74,7 @@ hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
 button:hover { background:#163568; }
+button.heute-aktiv, button.heute-aktiv:hover { color:#2ecc71; }
 p.ligalink { margin:3px 0 3px 0; }
 #wasfindeichhier { max-width: 780px; }
 #wasfindeichhier > .intro-body { box-sizing: border-box; padding-left: 15px; overflow-wrap: break-word; word-wrap: break-word; }
@@ -162,7 +179,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga West – Stand: 04.10.26 15:16:12</h1>
+<h1>Regionalliga West – Stand: 04.10.26 15:29:42</h1>
 
 
 <details id='wasfindeichhier'>
@@ -1764,6 +1781,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <hr class='short'>
 </div>
 </details>
+
 
 <hr class='short'>
 
