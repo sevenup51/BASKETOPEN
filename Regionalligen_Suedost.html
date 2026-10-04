@@ -119,7 +119,7 @@ function livescoreOeffnen(dreiTage){
   if(dreiTage) document.body.classList.add("zeige-drei-tage");
   else document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
+    if(d.classList.contains("live-sammel") || d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
       d.setAttribute("open", "");
     } else {
       d.removeAttribute("open");
@@ -148,7 +148,7 @@ function openLivescoreDrei(){
 function openLivescoreHeute(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(function(d){
-    var heute = d.classList.contains("spielt-heute");
+    var heute = d.classList.contains("spielt-heute") || d.classList.contains("live-sammel");
     var block = d.classList.contains("livescore-block") && d.closest("details.spielt-heute");
     if(heute || block) d.setAttribute("open","");
     else d.removeAttribute("open");
@@ -179,7 +179,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedost – Stand: 04.10.26 15:28:27</h1>
+<h1>Regionalliga Suedost – Stand: 04.10.26 15:45:05</h1>
 
 
 <details id='wasfindeichhier'>
