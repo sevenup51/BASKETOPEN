@@ -38,6 +38,7 @@ details { margin-bottom:3px; }
 .summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
+#live-refresh { margin-right: 10px; font-weight: bold; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
@@ -123,18 +124,22 @@ function stelleBloeckeHer(){
   else document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = false;
 }
-function livescoreOeffnen(dreiTage){
-  if(dreiTage) document.body.classList.add("zeige-drei-tage");
-  else document.body.classList.remove("zeige-drei-tage");
+function openLivescoreDrei(){
+  document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")){
-      d.removeAttribute("open");
-    } else if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
-      d.setAttribute("open", "");
-    } else {
-      d.removeAttribute("open");
-    }
+    if(d.classList.contains("live-drei") || d.classList.contains("live-drei-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
+  });
+  bloeckeWerdenHergestellt = false;
+  speichereBloecke();
+}
+function openLivescoreHeute(){
+  document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details").forEach(function(d){
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
@@ -149,19 +154,6 @@ function openAll(){
 function closeAll(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
-  speichereBloecke();
-}
-function openLivescoreDrei(){
-  livescoreOeffnen(true);
-}
-function openLivescoreHeute(){
-  document.body.classList.remove("zeige-drei-tage");
-  bloeckeWerdenHergestellt = true;
-  document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
-    else d.removeAttribute("open");
-  });
-  bloeckeWerdenHergestellt = false;
   speichereBloecke();
 }
 document.addEventListener("DOMContentLoaded", function(){
@@ -188,11 +180,11 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>VSC Baskets Donauwoerth – Stand: 04.10.26 18:38:00</h1>
+<h1>VSC Baskets Donauwoerth – Stand: 05.10.26 07:17:03</h1>
 
 
 <details id='wasfindeichhier'>
-<summary><b>Was finde ich hier - Stand 02.10.26 13:05</b> (ausklappbar)</summary>
+<summary><b>Was finde ich hier - Stand 04.10.26 21:49</b> (ausklappbar)</summary>
 <div class='intro-body'>
 
 <p>Übersicht über die Ligen von <b>VSC Baskets Donauwoerth</b>.</p>
@@ -357,6 +349,35 @@ Bei der easyCredit BBL steht in der Spalte nr der Ergebnisse ein Link auf die Yo
 wenn Dyn den Film schon hochgeladen hat.<br>
 Heutige und kommende BBL-Spiele bleiben ohne Link, die liegen im Bezahlfernsehen.<br>
 Ein bereits gefundener Link wird nicht erneut gesucht.
+
+<br><br>
+
+<b>04.10.26</b><br>
+Auf Bundesligen stehen neben Alle schließen die Knöpfe livescore_3days<br>
+und livescore_heute. livescore_heute ist weiß auf grün.<br>
+livescore_heute öffnet den Block Live und schließt die übrigen Blöcke.<br>
+Unter Live steht jede Liga mit ihrer Liga-ID. Darunter nur die grünen,<br>
+also laufenden Spiele von heute.<br>
+Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
+Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
+Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
+Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
+livescore_3days öffnet den Block Spiele von gestern, heute und morgen<br>
+und schließt Live. Dort stehen die gespielten und die anstehenden Spiele.<br>
+Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
+Boxscore bei der BBL: pdf, wenn die PDF-Datei da ist, sonst html.<br>
+Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht.<br>
+fehlt ohne Link, wenn es nichts gibt. Bei DBBL, ProA und ProB steht html,<br>
+mit demselben Haken.<br>
+Video bei der BBL führt zum Kurzbericht, sobald Dyn den Film hat.<br>
+Heutige und kommende BBL-Spiele haben diesen Link nicht.<br>
+Bei den nächsten BBL-Spielen steht dyn-Live mit Link, sonst siehe dyn.<br>
+Bei der DBBL führt Video beim Ergebnis zum Re-Live.<br>
+Bei den nächsten Spielen steht Live, sonst Link fehlt.<br>
+Link fehlt wird bei jedem Lauf neu geprüft.<br>
+Bei ProA steht Pay, solange der Stream kostenpflichtig ist, sonst Video.<br>
+Der Link bleibt derselbe. Ohne Link steht Link fehlt.<br>
+Bei ProB steht Video, wenn ein Link da ist.
 </p>
 
 </div>
@@ -369,13 +390,13 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     
 </div>
 
-<details open><summary><b>Spielplan VSC Baskets Donauwörth vom 04.10.26 bis 12.10.26</b><span class='summary-right'>Stand 04.10.26 18:38:00</span></summary><div style='margin-left:10px;'><table><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54471</td><td>U12</td><td>04.10.2026 12:30</td><td>VSC Baskets Donauwörth</td><td>BG Leitershofen/Stadtbergen</td><td>Stauferpark Halle</td></tr><tr><td>54471</td><td>U12</td><td>10.10.2026 10:00</td><td>Netz16 Baskets Königsbrunn</td><td>VSC Baskets Donauwörth</td><td>Gymnasium</td></tr><tr style='background-color:#ffdd99;'><td>55701</td><td>U12</td><td>10.10.2026 14:30</td><td>VSC Donauwörth 2</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>10.10.2026 17:00</td><td>VSC Baskets Donauwörth 2</td><td>TSV Meitingen</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54498</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth</td><td>TSV Etting-Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>55699</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth 2</td><td>TSV Haunstetten</td><td>Stauferpark Halle</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td>PSV Ingolstadt</td><td>VSC Baskets Donauwörth</td><td>August-Horch-Schule</td></tr><tr style='background-color:#ffdd99;'><td>54491</td><td>U14</td><td>11.10.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Etting-Ingolstadt</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54488</td><td>U16</td><td>11.10.2026 16:30</td><td>VSC Baskets Donauwörth</td><td>PSV Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr><td>54453</td><td>Herren</td><td>11.10.2026 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>Paul-Klee-Gymnasium (neu)</td></tr></tbody></table></div></details><details>
+<details open><summary><b>Spielplan VSC Baskets Donauwörth vom 05.10.26 bis 13.10.26</b><span class='summary-right'>Stand 05.10.26 07:17:03</span></summary><div style='margin-left:10px;'><table><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr><td>54471</td><td>U12</td><td>10.10.2026 10:00</td><td>Netz16 Baskets Königsbrunn</td><td>VSC Baskets Donauwörth</td><td>Gymnasium</td></tr><tr style='background-color:#ffdd99;'><td>55701</td><td>U12</td><td>10.10.2026 14:30</td><td>VSC Donauwörth 2</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>10.10.2026 17:00</td><td>VSC Baskets Donauwörth 2</td><td>TSV Meitingen</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54498</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth</td><td>TSV Etting-Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>55699</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth 2</td><td>TSV Haunstetten</td><td>Stauferpark Halle</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td>PSV Ingolstadt</td><td>VSC Baskets Donauwörth</td><td>August-Horch-Schule</td></tr><tr style='background-color:#ffdd99;'><td>54491</td><td>U14</td><td>11.10.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Etting-Ingolstadt</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54488</td><td>U16</td><td>11.10.2026 16:30</td><td>VSC Baskets Donauwörth</td><td>PSV Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr><td>54453</td><td>Herren</td><td>11.10.2026 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>Paul-Klee-Gymnasium (neu)</td></tr></tbody></table></div></details><details>
 
 <summary>
     <b>Bezirksoberliga Herren 26/27 (Senioren Schwaben; Liganr.: 22004) (Liga 54453)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:13)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:24)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -395,6 +416,22 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>4004</td>
+<td>1</td>
+<td>04.10.2026 18:00</td>
+<td>MTV Baskets Ingolstadt</td>
+<td>TV Augsburg 2</td>
+<td>66 : 56</td>
+</tr>
+<tr>
+<td>4050</td>
+<td>10</td>
+<td>04.10.2026 17:00</td>
+<td>TSV Gersthofen</td>
+<td>TSV Schwaben Augsburg</td>
+<td>88 : 69</td>
+</tr>
 <tr>
 <td>4002</td>
 <td>1</td>
@@ -437,6 +474,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
   <tbody>
     <tr>
       <td>1</td>
+      <td>MTV Baskets Ingolstadt</td>
+      <td>2</td>
+      <td>2/0</td>
+      <td>4</td>
+      <td>132 : 113</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <td>2</td>
       <td>VSC Donauwörth</td>
       <td>1</td>
       <td>1/0</td>
@@ -445,16 +491,16 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>45</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>MTV Baskets Ingolstadt</td>
+      <td>3</td>
+      <td>TSV Gersthofen</td>
       <td>1</td>
       <td>1/0</td>
       <td>2</td>
-      <td>66 : 57</td>
-      <td>9</td>
+      <td>88 : 69</td>
+      <td>19</td>
     </tr>
     <tr>
-      <td>3</td>
+      <td>4</td>
       <td>BG powered by BBA Leitershofen/Stadtbergen 3</td>
       <td>2</td>
       <td>1/1</td>
@@ -463,7 +509,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>-4</td>
     </tr>
     <tr>
-      <td>4</td>
+      <td>5</td>
       <td>Green Devils Schrobenhausen</td>
       <td>0</td>
       <td>0/0</td>
@@ -472,40 +518,31 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>0</td>
     </tr>
     <tr>
-      <td>5</td>
-      <td>TSV Gersthofen</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
       <td>6</td>
-      <td>TSV Schwaben Augsburg</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>TV Augsburg 2</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>8</td>
       <td>DJK Eichstätt</td>
       <td>1</td>
       <td>0/1</td>
       <td>0</td>
       <td>74 : 79</td>
       <td>-5</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>TV Augsburg 2</td>
+      <td>1</td>
+      <td>0/1</td>
+      <td>0</td>
+      <td>56 : 66</td>
+      <td>-10</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>TSV Schwaben Augsburg</td>
+      <td>1</td>
+      <td>0/1</td>
+      <td>0</td>
+      <td>69 : 88</td>
+      <td>-19</td>
     </tr>
     <tr>
       <td>9</td>
@@ -541,22 +578,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>4050</td>
-<td>10</td>
-<td>04.10.2026 17:00</td>
-<td>TSV Gersthofen</td>
-<td>TSV Schwaben Augsburg</td>
-<td>Paul-Klee-Gymnasium (neu)</td>
-</tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>4004</td>
-<td>1</td>
-<td>04.10.2026 18:00</td>
-<td>MTV Baskets Ingolstadt</td>
-<td>TV Augsburg 2</td>
-<td>MTV-Halle</td>
-</tr>
 <tr>
 <td>4006</td>
 <td>2</td>
@@ -602,15 +623,36 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bezirksliga Herren Nord 26/27 (Senioren Schwaben; Liganr.: 22012) (Liga 54485)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:17)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:32)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:#ffdd99;'></span>
+        <span class='liga-icon green'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
-<p><i>Keine Ergebnisse.</i></p>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12018</td>
+<td>5</td>
+<td>04.10.2026 18:00</td>
+<td>TSV Diedorf</td>
+<td>TSV Meitingen</td>
+<td>59 : 60</td>
+</tr>
+</tbody>
+</table>
 <h3>Tabelle</h3>
 <table border="1" class="dataframe">
   <thead>
@@ -627,6 +669,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
   <tbody>
     <tr>
       <td>1</td>
+      <td>TSV Meitingen</td>
+      <td>1</td>
+      <td>1/0</td>
+      <td>2</td>
+      <td>60 : 59</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
       <td>DJK Augsburg Nord</td>
       <td>0</td>
       <td>0/0</td>
@@ -635,17 +686,8 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>0</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>ESV Ingolstadt-Ringsee</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
       <td>3</td>
-      <td>TSV Diedorf</td>
+      <td>ESV Ingolstadt-Ringsee</td>
       <td>0</td>
       <td>0/0</td>
       <td>0</td>
@@ -663,15 +705,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>5</td>
-      <td>TSV Meitingen</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>6</td>
       <td>TSV Nördlingen 2</td>
       <td>0</td>
       <td>0/0</td>
@@ -680,13 +713,22 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>0</td>
     </tr>
     <tr>
-      <td>7</td>
+      <td>6</td>
       <td>VSC Baskets Donauwörth 2</td>
       <td>0</td>
       <td>0/0</td>
       <td>0</td>
       <td>0 : 0</td>
       <td>0</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>TSV Diedorf</td>
+      <td>1</td>
+      <td>0/1</td>
+      <td>0</td>
+      <td>59 : 60</td>
+      <td>-1</td>
     </tr>
     <tr>
       <td>8</td>
@@ -712,14 +754,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>12018</td>
-<td>5</td>
-<td>04.10.2026 18:00</td>
-<td>TSV Diedorf</td>
-<td>TSV Meitingen</td>
-<td>Schmuttertalhalle</td>
-</tr>
 <tr>
 <td>12002</td>
 <td>1</td>
@@ -757,7 +791,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bezirksoberliga U18 männlich 26/27 (U18 Schwaben; Liganr.: 22022) (Liga 54459)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:14)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:26)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -777,7 +811,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>22006</td>
 <td>2</td>
 <td>04.10.2026 14:45</td>
@@ -888,14 +922,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>22006</td>
-<td>2</td>
-<td>04.10.2026 14:45</td>
-<td>BG Leitershofen/Stadtbergen</td>
-<td>BG Illertal</td>
-<td>MZWH Stadtbergen</td>
-</tr>
 <tr>
 <td>22004</td>
 <td>1</td>
@@ -925,7 +951,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bezirksliga U16 männlich Nord 26/27 (U16 Schwaben; Liganr.: 22027) (Liga 54488)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:18)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:33)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1068,36 +1094,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bezirksliga U14 männlich Nord 26/27 (U14 Schwaben; Liganr.: 22031) (Liga 54491)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54491.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54491.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:19)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54491.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54491.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:35)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon green'></span>
+        <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>nr</th>
-<th>sptag</th>
-<th>date</th>
-<th>home</th>
-<th>guest</th>
-<th>result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>31046</td>
-<td>12</td>
-<td>26.09.2026 15:15</td>
-<td>TSV Meitingen</td>
-<td>MTV Baskets Ingolstadt</td>
-<td>32 : 67</td>
-</tr>
-</tbody>
-</table>
+<p><i>Keine Ergebnisse.</i></p>
 <h3>Tabelle</h3>
 <table border="1" class="dataframe">
   <thead>
@@ -1227,7 +1232,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bezirksoberliga U12 gemischt 26/27 (U12 Schwaben; Liganr.: 22034) (Liga 54471)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:16)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:29)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1247,13 +1252,21 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>34005</td>
 <td>1</td>
 <td>04.10.2026 16:00</td>
 <td>TSV Schwaben Augsburg</td>
 <td>Netz16 Baskets Königsbrunn</td>
 <td>104 : 45</td>
+</tr>
+<tr>
+<td>34003</td>
+<td>1</td>
+<td>04.10.2026 12:30</td>
+<td>TV 1847 Augsburg</td>
+<td>TSV Nördlingen</td>
+<td>103 : 62</td>
 </tr>
 <tr>
 <td>34002</td>
@@ -1289,21 +1302,21 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
   <tbody>
     <tr>
       <td>1</td>
+      <td>TV 1847 Augsburg</td>
+      <td>2</td>
+      <td>2/0</td>
+      <td>4</td>
+      <td>213 : 125</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <td>2</td>
       <td>TSV Schwaben Augsburg</td>
       <td>1</td>
       <td>1/0</td>
       <td>2</td>
       <td>104 : 45</td>
       <td>59</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>TV 1847 Augsburg</td>
-      <td>1</td>
-      <td>1/0</td>
-      <td>2</td>
-      <td>110 : 63</td>
-      <td>47</td>
     </tr>
     <tr>
       <td>3</td>
@@ -1334,15 +1347,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>6</td>
-      <td>TSV Nördlingen</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>7</td>
       <td>VSC Baskets Donauwörth</td>
       <td>0</td>
       <td>0/0</td>
@@ -1351,13 +1355,22 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>0</td>
     </tr>
     <tr>
-      <td>8</td>
+      <td>7</td>
       <td>TSV Etting-Ingolstadt</td>
       <td>1</td>
       <td>0/1</td>
       <td>0</td>
       <td>71 : 108</td>
       <td>-37</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>TSV Nördlingen</td>
+      <td>1</td>
+      <td>0/1</td>
+      <td>0</td>
+      <td>62 : 103</td>
+      <td>-41</td>
     </tr>
     <tr>
       <td>9</td>
@@ -1392,38 +1405,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>34004</td>
-<td>1</td>
-<td>04.10.2026 10:30</td>
-<td>BBU'01 Sektion BY e.V.</td>
-<td>SSV Schrobenhausen</td>
-<td>Allianz Court</td>
-</tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>34001</td>
-<td>1</td>
-<td>04.10.2026 12:30</td>
-<td>VSC Baskets Donauwörth</td>
-<td>BG Leitershofen/Stadtbergen</td>
-<td>Stauferpark Halle</td>
-</tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>34003</td>
-<td>1</td>
-<td>04.10.2026 12:30</td>
-<td>TV 1847 Augsburg</td>
-<td>TSV Nördlingen</td>
-<td>TVA Halle</td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>34005</td>
-<td>1</td>
-<td>04.10.2026 16:00</td>
-<td>TSV Schwaben Augsburg</td>
-<td>Netz16 Baskets Königsbrunn</td>
-<td>Berufsschule VI</td>
-</tr>
 <tr>
 <td>34006</td>
 <td>2</td>
@@ -1477,7 +1458,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bezirksliga U12 gemischt Mitte Nord 26/27 (U12 Schwaben; Liganr.: 22077) (Liga 55701)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:19)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:35)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -1607,7 +1588,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bezirksliga U10 gemischt Nord 26/27 (U10 Schwaben; Liganr.: 22045) (Liga 54498)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:20)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:37)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -1745,7 +1726,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bezirksklasse U10 gemischt 26/27 (U10 Schwaben; Liganr.: 22076) (Liga 55699)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:21)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:39)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1765,7 +1746,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>76002</td>
 <td>1</td>
 <td>04.10.2026 12:30</td>
@@ -1867,14 +1848,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>76002</td>
-<td>1</td>
-<td>04.10.2026 12:30</td>
-<td>MTV Baskets Ingolstadt</td>
-<td>BSC Wertingen</td>
-<td>MTV-Halle</td>
-</tr>
 <tr>
 <td>76001</td>
 <td>1</td>
@@ -1896,52 +1869,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bezirkspokal Herren 26/27 (Senioren Schwaben; Liganr.: 22002) (Liga 54482)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:17)</a>
-        <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:#ffdd99;'></span>
-    </span>
-</summary>
-
-<div style='margin-left:10px;'>
-<h3>Ergebnisse (letzte 8 Tage)</h3>
-<p><i>Keine Ergebnisse.</i></p>
-<h3>Tabelle</h3>
-<p><i>Keine Tabelle vorhanden – weil es eine Pokalrunde ist, oder beim Teamsl bei der Spielplanerfassung der Schalter „Tabelle“ nicht gesetzt wurde.<br>Daher ist es auf der bb_api_...‑Seite nicht möglich, den Spielplan pro Team zu erstellen.</i></p>
-<h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>nr</th>
-<th>sptag</th>
-<th>date</th>
-<th>home</th>
-<th>guest</th>
-<th>halle</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>2003</td>
-<td>1</td>
-<td>04.10.2026 17:00</td>
-<td>TSV 1850 Lindau</td>
-<td>TSV Ottobeuren</td>
-<td>Dreifachhalle</td>
-</tr>
-</tbody>
-</table>
-<h3>Weitere Zahlen</h3>
-<p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html' onclick='liveHref(this)' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html?nocache=</a> <span style='color:green; font-weight:bold;'>✔</span></p>
-<p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54482' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54482</a> <span style='color:green; font-weight:bold;'>✔</span></p>
-<hr class='short'>
-</div>
-</details><details>
-
-<summary>
-    <b>Schwaben Vorbereitung Herren 26/27 (Senioren Schwaben; Liganr.: 22097) (Liga 54480)</b>
-    <span class='summary-right'>
-        <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54480.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54480.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:13)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:31)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1961,6 +1889,60 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>2003</td>
+<td>1</td>
+<td>04.10.2026 17:00</td>
+<td>TSV 1850 Lindau</td>
+<td>TSV Ottobeuren</td>
+<td>30 : 93</td>
+</tr>
+</tbody>
+</table>
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden – weil es eine Pokalrunde ist, oder beim Teamsl bei der Spielplanerfassung der Schalter „Tabelle“ nicht gesetzt wurde.<br>Daher ist es auf der bb_api_...‑Seite nicht möglich, den Spielplan pro Team zu erstellen.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+
+<h3>Weitere Zahlen</h3>
+<p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html' onclick='liveHref(this)' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_54482.html?nocache=</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54482' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54482</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details>
+
+<summary>
+    <b>Schwaben Vorbereitung Herren 26/27 (Senioren Schwaben; Liganr.: 22097) (Liga 54480)</b>
+    <span class='summary-right'>
+        <span style='color:red; font-weight:bold;'>Keine Tab</span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54480.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54480.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:24)</a>
+        <span style='color:green; font-weight:bold;'>✔</span>
+        <span class='liga-icon green'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>99035</td>
+<td>7</td>
+<td>04.10.2026 09:00</td>
+<td>TSV Schwaben Augsburg U10G1</td>
+<td>TSV Schwaben Augsburg U10G2</td>
+<td>23 : 50</td>
+</tr>
 <tr>
 <td>99037</td>
 <td>5</td>
@@ -2009,129 +1991,13 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TV Senden-Ay U16 m</td>
 <td>36 : 94</td>
 </tr>
-<tr>
-<td>99029</td>
-<td>4</td>
-<td>26.09.2026 17:30</td>
-<td>TuS Bad Aibling Fireballs</td>
-<td>Regensburg Baskets 2</td>
-<td>62 : 43</td>
-</tr>
-<tr>
-<td>99036</td>
-<td>4</td>
-<td>26.09.2026 17:30</td>
-<td>TSV Meitingen U16M</td>
-<td>TSV Gersthofen U16M</td>
-<td>67 : 59</td>
-</tr>
-<tr>
-<td>99032</td>
-<td>6</td>
-<td>26.09.2026 17:00</td>
-<td>TSV Wasserburg/Günzburg U20 m</td>
-<td>TV Senden-Ay</td>
-<td>77 : 61</td>
-</tr>
-<tr>
-<td>99028</td>
-<td>4</td>
-<td>26.09.2026 16:15</td>
-<td>DJK Eichstätt</td>
-<td>Regensburg Baskets 2</td>
-<td>46 : 59</td>
-</tr>
-<tr>
-<td>99027</td>
-<td>4</td>
-<td>26.09.2026 15:00</td>
-<td>DJK Eichstätt</td>
-<td>TuS Bad Aibling Fireballs</td>
-<td>44 : 69</td>
-</tr>
-<tr>
-<td>99031</td>
-<td>6</td>
-<td>26.09.2026 15:00</td>
-<td>TSV Wasserburg/Günzburg U18 m</td>
-<td>TV Senden-Ay U18 m</td>
-<td>83 : 40</td>
-</tr>
-<tr>
-<td>99025</td>
-<td>4</td>
-<td>26.09.2026 14:00</td>
-<td>SSV Schrobenhausen U10G</td>
-<td>SSV Schrobenhausen U12G</td>
-<td>38 : 36</td>
-</tr>
-<tr>
-<td>99024</td>
-<td>4</td>
-<td>26.09.2026 13:00</td>
-<td>SSV Schrobenhausen U10G</td>
-<td>SSV Schrobenhausen U9G</td>
-<td>15 : 30</td>
-</tr>
-<tr>
-<td>99016</td>
-<td>4</td>
-<td>26.09.2026 12:00</td>
-<td>TSV 1862 Neuburg U10m</td>
-<td>ESV Ingolstadt-Ringsee 2 U10m</td>
-<td>102 : 38</td>
-</tr>
-<tr>
-<td>99023</td>
-<td>4</td>
-<td>26.09.2026 12:00</td>
-<td>SSV Schrobenhausen U9G</td>
-<td>SSV Schrobenhausen U10G</td>
-<td>51 : 42</td>
-</tr>
-<tr>
-<td>99022</td>
-<td>4</td>
-<td>26.09.2026 11:00</td>
-<td>SSV Schrobenhausen U9G</td>
-<td>SSV Schrobenhausen U8-1</td>
-<td>71 : 2</td>
-</tr>
-<tr>
-<td>99021</td>
-<td>4</td>
-<td>26.09.2026 10:00</td>
-<td>SSV Schrobenhausen U8-1</td>
-<td>SSV Schrobenhausen U9G</td>
-<td>24 : 13</td>
-</tr>
 </tbody>
 </table>
 <h3>Tabelle</h3>
 <p><i>Keine Tabelle vorhanden – weil es eine Pokalrunde ist, oder beim Teamsl bei der Spielplanerfassung der Schalter „Tabelle“ nicht gesetzt wurde.<br>Daher ist es auf der bb_api_...‑Seite nicht möglich, den Spielplan pro Team zu erstellen.</i></p>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>nr</th>
-<th>sptag</th>
-<th>date</th>
-<th>home</th>
-<th>guest</th>
-<th>halle</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>99035</td>
-<td>7</td>
-<td>04.10.2026 09:00</td>
-<td>TSV Schwaben Augsburg U10G1</td>
-<td>TSV Schwaben Augsburg U10G2</td>
-<td>Vereinsturnhalle</td>
-</tr>
-</tbody>
-</table>
+<p><i>Keine kommenden Spiele.</i></p>
+
 <h3>Weitere Zahlen</h3>
 <p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_54480.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54480.html' onclick='liveHref(this)' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_54480.html?nocache=</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54480' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54480</a> <span style='color:green; font-weight:bold;'>✔</span></p>
