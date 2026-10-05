@@ -60,6 +60,9 @@ table { border-collapse:collapse; margin-bottom:6px; background:white; border-ra
         overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.06); font-size:10px; white-space:nowrap; }
 table.plan { table-layout:fixed; width:760px; max-width:100%; white-space:normal; }
 table.plan th:nth-child(2), table.plan td:nth-child(2) { white-space:nowrap; overflow-wrap:normal; }
+table.naechste td { vertical-align: top; }
+table.naechste .mannschaft { max-width: 130px; white-space: normal; overflow-wrap: anywhere; }
+table.naechste .sr-verein { display: inline-block; max-width: 150px; white-space: normal; overflow-wrap: break-word; }
 th { background:#1a3d7c; color:white; padding:2px 4px; }
 td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
 tr:nth-child(even) { background:#f0f4fa; }
@@ -180,7 +183,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedwest – Stand: 05.10.26 13:40:36</h1>
+<h1>Regionalliga Suedwest – Stand: 05.10.26 14:13:10</h1>
 
 
 <details id='wasfindeichhier'>
@@ -633,7 +636,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -650,64 +653,64 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>15</td>
 <td>3</td>
 <td>10.10.2026 18:30</td>
-<td>ACT Kassel</td>
-<td>PKF Titans Stuttgart</td>
+<td><div class="mannschaft">ACT Kassel</div></td>
+<td><div class="mannschaft">PKF Titans Stuttgart</div></td>
 <td>Emil-Junghenn-Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Dr. Felix Eiwen<br/><b>SR2</b> Kai Koal</td>
+<td class="schiedsrichter"><b>SR1</b> Dr. Felix Eiwen<br/><b>SR2</b> Kai Koal</td>
 </tr>
 <tr>
 <td>17</td>
 <td>3</td>
 <td>10.10.2026 18:30</td>
-<td>ROTH Energie Gießen Pointers</td>
-<td>Black Forest Panthers</td>
+<td><div class="mannschaft">ROTH Energie Gießen Pointers</div></td>
+<td><div class="mannschaft">Black Forest Panthers</div></td>
 <td>Sporthalle Ost</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Alexander Werner<br/><b>SR2</b> Christian Bremer</td>
+<td class="schiedsrichter"><b>SR1</b> Alexander Werner<br/><b>SR2</b> Christian Bremer</td>
 </tr>
 <tr>
 <td>19</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
-<td>Lich Basketball</td>
-<td>TEAM EHINGEN URSPRING</td>
+<td><div class="mannschaft">Lich Basketball</div></td>
+<td><div class="mannschaft">TEAM EHINGEN URSPRING</div></td>
 <td>Dietrich-Bonhoeffer-Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Luka Zilic<br/><b>SR2</b> Kevin Ketzer</td>
+<td class="schiedsrichter"><b>SR1</b> Luka Zilic<br/><b>SR2</b> Kevin Ketzer</td>
 </tr>
 <tr>
 <td>20</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
-<td>SV Möhringen 1887</td>
-<td>BBU 01 Ulm</td>
+<td><div class="mannschaft">SV Möhringen 1887</div></td>
+<td><div class="mannschaft">BBU 01 Ulm</div></td>
 <td>Sporthalle Fasanenhofschule</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Hakan Senkesen<br/><b>SR2</b> Felix Roth</td>
+<td class="schiedsrichter"><b>SR1</b> Hakan Senkesen<br/><b>SR2</b> Felix Roth</td>
 </tr>
 <tr>
 <td>18</td>
 <td>3</td>
 <td>10.10.2026 19:30</td>
-<td>Lou's Foodtruck MTV Stuttgart</td>
-<td>io College Wizards</td>
+<td><div class="mannschaft">Lou's Foodtruck MTV Stuttgart</div></td>
+<td><div class="mannschaft">io College Wizards</div></td>
 <td>Sporthalle West</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Benis Cehic<br/><b>SR2</b> Mehmet Demirtas</td>
+<td class="schiedsrichter"><b>SR1</b> Benis Cehic<br/><b>SR2</b> Mehmet Demirtas</td>
 </tr>
 <tr>
 <td>16</td>
 <td>3</td>
 <td>11.10.2026 17:30</td>
-<td>PS Karlsruhe LIONS 2</td>
-<td>VfL Bensheim</td>
+<td><div class="mannschaft">PS Karlsruhe LIONS 2</div></td>
+<td><div class="mannschaft">VfL Bensheim</div></td>
 <td>Lina-Radke-Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Giorgos Diktapanidis<br/><b>SR2</b> Bernd Neumann</td>
+<td class="schiedsrichter"><b>SR1</b> Giorgos Diktapanidis<br/><b>SR2</b> Bernd Neumann</td>
 </tr>
 <tr>
 <td>21</td>
 <td>3</td>
 <td>11.10.2026 17:30</td>
-<td>VfL Kirchheim Knights</td>
-<td>Artemis Sunkings Saarlouis</td>
+<td><div class="mannschaft">VfL Kirchheim Knights</div></td>
+<td><div class="mannschaft">Artemis Sunkings Saarlouis</div></td>
 <td>Sporthalle Stadtmitte (Alleenschule)</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Felix Rüttler<br/><b>SR2</b> Silas Hemberger<br/><b>COA</b> Marco Marzi (VID)</td>
+<td class="schiedsrichter"><b>SR1</b> Felix Rüttler<br/><b>SR2</b> Silas Hemberger<br/><b>COA</b> Marco Marzi (VID)</td>
 </tr>
 </tbody>
 </table>
@@ -925,7 +928,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -942,10 +945,10 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>4</td>
 <td>1</td>
 <td>09.10.2026 20:00</td>
-<td>DJK Nieder-Olm</td>
-<td>TV Hofheim</td>
+<td><div class="mannschaft">DJK Nieder-Olm</div></td>
+<td><div class="mannschaft">TV Hofheim</div></td>
 <td>Staatl. Gymnasium Nieder-Olm</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Arne Riester<br/><b>SR2</b> Vaios Ourgantzidis</td>
+<td class="schiedsrichter"><b>SR1</b> Arne Riester<br/><b>SR2</b> Vaios Ourgantzidis</td>
 </tr>
 </tbody>
 </table>
