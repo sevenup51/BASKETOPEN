@@ -194,7 +194,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 05.10.26 19:38:02</h1>
+<h1>Bundesligen – Stand: 05.10.26 19:56:17</h1>
 
 
 <details id='wasfindeichhier'>
@@ -404,7 +404,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-sammel' data-block='Live' open><summary><b>Live</b><span class='summary-right'><span id='live-refresh'></span>Stand: 05.10 19:38:02</span></summary><div style='margin-left:10px;'><details class='live-liga' data-block='live-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
+<details class='live-sammel' data-block='Live' open><summary><b>Live</b><span class='summary-right'><span id='live-refresh'></span>Stand: 05.10 19:56:17</span></summary><div style='margin-left:10px;'><details class='live-liga' data-block='live-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>RASTA Vechta</div>
                     <div class='ls-score'>0:0</div>
@@ -412,8 +412,8 @@ Bei ProB steht Video, wenn ein Link da ist.
                 </div>
                 <div class='ls-date'>05.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 19:36</span><span>Q1</span></div>
-            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 05.10 19:38:02</span></summary><div style='margin-left:10px;'><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 19:55</span><span>10:00</span></div>
+            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 05.10 19:56:17</span></summary><div style='margin-left:10px;'><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Phoenix Hagen</div>
                     <div class='ls-score'>88:93</div>
@@ -449,6 +449,15 @@ Bei ProB steht Video, wenn ein Link da ist.
                 <div class='ls-date'>04.10.2026 18:00</div>
                 <div class='ls-date'>Q1 13-29 | Q2 14-18 | Q3 33-23 | Q4 20-24</div>
                 
+            </div><div class='livescore-box' style='background:#b7ebc6;'>
+                <div class='ls-row'>
+                    <div class='ls-team'>RASTA Vechta</div>
+                    <div class='ls-score'>0:0</div>
+                    <div class='ls-team' style='text-align:right;'>Basketball Löwen Braunschweig</div>
+                </div>
+                <div class='ls-date'>05.10.2026 20:00</div>
+                
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 19:55</span><span>10:00</span></div>
             </div></div></details><details class='live-drei-liga' data-block='drei-55738' open><summary><b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Eigner Angels Nördlingen</div>
@@ -731,7 +740,7 @@ Bei ProB steht Video, wenn ein Link da ist.
                 </div>
                 <div class='ls-date'>05.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 19:36</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 19:55</span><span>10:00</span></div>
             </div>
             </div></details>
 <details class='liga-rest' open>
@@ -3535,10 +3544,14 @@ Bei ProB steht Video, wenn ein Link da ist.
 </details>
 
 <script>
-/* Uhr und Refresh nur bei grünem Livescore_heute und einem laufenden Spiel. */
+/* Uhr und Refresh nur bei offenem Live-Block und einer grünen Karte. */
 (function () {
   var ziel = 0;
+  var geladen = new Date();
   function zwei(zahl) { return (zahl < 10 ? "0" : "") + zahl; }
+  function uhr(zeit) {
+    return zwei(zeit.getHours()) + ":" + zwei(zeit.getMinutes()) + ":" + zwei(zeit.getSeconds());
+  }
   function laufendesSpiel() {
     var block = document.querySelector("details.live-sammel");
     if (!block || !block.hasAttribute("open")) return false;
@@ -3553,8 +3566,7 @@ Bei ProB steht Video, wenn ein Link da ist.
       return;
     }
     if (!ziel) ziel = Date.now() + 120000;
-    var zeit = new Date(ziel);
-    el.textContent = "Refresh " + zwei(zeit.getHours()) + ":" + zwei(zeit.getMinutes()) + ":" + zwei(zeit.getSeconds());
+    el.textContent = "geladen " + uhr(geladen) + " · Refresh " + uhr(new Date(ziel));
   }
   zeige();
   setInterval(function () {
