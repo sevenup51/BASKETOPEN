@@ -42,6 +42,11 @@ details { margin-bottom:3px; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
+.sr-leiste { position: relative; font-size: 11px; padding: 3px 6px 3px 22px; background: #e8eef7;
+             border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px;
+             width: 100%; max-width: 780px; box-sizing: border-box; }
+.sr-leiste > b { display: inline-block; max-width: 460px; line-height: 1.3; }
+.sr-sprung { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; }
 .liga-icon { width: 12px; height: 8px; border-radius: 2px; }
 .liga-icon.green  { background:#2ecc71; }
 .livescore-list { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; max-width:calc(2 * 280px + 12px); margin:6px 0 8px 0; }
@@ -61,8 +66,10 @@ table { border-collapse:collapse; margin-bottom:6px; background:white; border-ra
 table.plan { table-layout:fixed; width:760px; max-width:100%; white-space:normal; }
 table.plan th:nth-child(2), table.plan td:nth-child(2) { white-space:nowrap; overflow-wrap:normal; }
 table.naechste td { vertical-align: top; }
-table.naechste .mannschaft { max-width: 130px; white-space: normal; overflow-wrap: anywhere; }
-table.naechste .sr-verein { display: inline-block; max-width: 150px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .mannschaft { display: block; max-width: 110px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .halle { display: block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .sr-zeile { display: inline-block; max-width: 130px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .sr-verein { display: inline-block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
 th { background:#1a3d7c; color:white; padding:2px 4px; }
 td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
 tr:nth-child(even) { background:#f0f4fa; }
@@ -183,7 +190,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bundesligen – Stand: 05.10.26 16:42:37</h1>
+<h1>Bundesligen – Stand: 05.10.26 17:17:16</h1>
 
 
 <details id='wasfindeichhier'>
@@ -393,7 +400,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-sammel' data-block='Live' open><summary><b>Live</b><span class='summary-right'><span id='live-refresh'></span>Stand: 05.10 16:42:37</span></summary><div style='margin-left:10px;'><details class='live-liga' data-block='live-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
+<details class='live-sammel' data-block='Live' open><summary><b>Live</b><span class='summary-right'><span id='live-refresh'></span>Stand: 05.10 17:17:16</span></summary><div style='margin-left:10px;'><details class='live-liga' data-block='live-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#b7ebc6;'>
                 <div class='ls-row'>
                     <div class='ls-team'>RASTA Vechta</div>
                     <div class='ls-score'>0:0</div>
@@ -401,8 +408,8 @@ Bei ProB steht Video, wenn ein Link da ist.
                 </div>
                 <div class='ls-date'>05.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:40</span><span>Q1</span></div>
-            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 05.10 16:42:37</span></summary><div style='margin-left:10px;'><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 17:15</span><span>Q1</span></div>
+            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 05.10 17:17:16</span></summary><div style='margin-left:10px;'><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Phoenix Hagen</div>
                     <div class='ls-score'>88:93</div>
@@ -660,7 +667,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -720,7 +727,7 @@ Bei ProB steht Video, wenn ein Link da ist.
                 </div>
                 <div class='ls-date'>05.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:40</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 17:15</span><span>Q1</span></div>
             </div>
             </div></details>
 <details class='liga-rest' open>
@@ -1152,7 +1159,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1399,46 +1406,46 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>1006</td>
 <td>2</td>
 <td>10.10.2026 18:00</td>
-<td><div class="mannschaft">Herner TC</div></td>
-<td><div class="mannschaft">ALBA Berlin</div></td>
-<td>MCG-Arena</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Dr. Alper Aksit<br/><b>SR3</b> Michel Kremer</td>
+<td class="mannschaft"><div class="mannschaft">Herner TC</div></td>
+<td class="mannschaft"><div class="mannschaft">ALBA Berlin</div></td>
+<td class="halle"><div class="halle">MCG-Arena</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Dr. Alper Aksit</span><br/><span class="sr-zeile"><b>SR3</b> Michel Kremer</span></td>
 <td>html</td><td>Link fehlt</td></tr>
 <tr>
 <td>1007</td>
 <td>2</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">BC Marburg</div></td>
-<td><div class="mannschaft">GiroLive Panthers Osnabrück</div></td>
-<td>Sporthalle G.-Gaßmann-Stadion</td>
-<td class="schiedsrichter"><b>SR1</b> Nemanja Damjanovic<br/><b>SR2</b> Süleyman Çagri Nakilcioglu<br/><b>SR3</b> Azur Lusija</td>
+<td class="mannschaft"><div class="mannschaft">BC Marburg</div></td>
+<td class="mannschaft"><div class="mannschaft">GiroLive Panthers Osnabrück</div></td>
+<td class="halle"><div class="halle">Sporthalle G.-Gaßmann-Stadion</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Nemanja Damjanovic</span><br/><span class="sr-zeile"><b>SR2</b> Süleyman Çagri Nakilcioglu</span><br/><span class="sr-zeile"><b>SR3</b> Azur Lusija</span></td>
 <td>html</td><td>Link fehlt</td></tr>
 <tr>
 <td>1008</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">Rutronik Stars Keltern</div></td>
-<td><div class="mannschaft">halfit LIONS</div></td>
-<td>Sporthalle Schulzentrum Dietlingen</td>
-<td class="schiedsrichter"><b>SR1</b> Hessam Khorassani<br/><b>SR2</b> Nikola Krajacic<br/><b>SR3</b> David Messmer<br/><b>KOM</b> Michael Walter<br/><b>COA</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">Rutronik Stars Keltern</div></td>
+<td class="mannschaft"><div class="mannschaft">halfit LIONS</div></td>
+<td class="halle"><div class="halle">Sporthalle Schulzentrum Dietlingen</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Hessam Khorassani</span><br/><span class="sr-zeile"><b>SR2</b> Nikola Krajacic</span><br/><span class="sr-zeile"><b>SR3</b> David Messmer</span><br/><span class="sr-zeile"><b>KOM</b> Michael Walter</span><br/><span class="sr-zeile"><b>COA</b> *** ****</span></td>
 <td>html</td><td>Link fehlt</td></tr>
 <tr>
 <td>1009</td>
 <td>2</td>
 <td>11.10.2026 16:30</td>
-<td><div class="mannschaft">TK Hannover Luchse</div></td>
-<td><div class="mannschaft">Eigner Angels Nördlingen</div></td>
-<td>Sporthalle Birkenstraße / Otfried-Preußler-Schule</td>
-<td class="schiedsrichter"><b>SR1</b> Sascha Alan Gilbert<br/><b>SR2</b> *** ****<br/><b>SR3</b> Mario Müller</td>
+<td class="mannschaft"><div class="mannschaft">TK Hannover Luchse</div></td>
+<td class="mannschaft"><div class="mannschaft">Eigner Angels Nördlingen</div></td>
+<td class="halle"><div class="halle">Sporthalle Birkenstraße /<wbr/> Otfried-Preußler-Schule</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Sascha Alan Gilbert</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span><br/><span class="sr-zeile"><b>SR3</b> Mario Müller</span></td>
 <td>html</td><td>Link fehlt</td></tr>
 <tr>
 <td>1010</td>
 <td>2</td>
 <td>11.10.2026 17:00</td>
-<td><div class="mannschaft">Saarlouis Royals</div></td>
-<td><div class="mannschaft">Eisvögel USC Freiburg</div></td>
-<td>Sporthalle am Stadtgarten</td>
-<td class="schiedsrichter"><b>SR1</b> Milutin Jelenic<br/><b>SR2</b> Vytautas Steckas<br/><b>SR3</b> Nemanja Damjanovic</td>
+<td class="mannschaft"><div class="mannschaft">Saarlouis Royals</div></td>
+<td class="mannschaft"><div class="mannschaft">Eisvögel USC Freiburg</div></td>
+<td class="halle"><div class="halle">Sporthalle am Stadtgarten</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Milutin Jelenic</span><br/><span class="sr-zeile"><b>SR2</b> Vytautas Steckas</span><br/><span class="sr-zeile"><b>SR3</b> Nemanja Damjanovic</span></td>
 <td>html</td><td>Link fehlt</td></tr>
 </tbody>
 </table>
@@ -1457,7 +1464,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1950,73 +1957,73 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>2005847</td>
 <td>4</td>
 <td>09.10.2026 20:00</td>
-<td><div class="mannschaft">HAKRO Merlins Crailsheim</div></td>
-<td><div class="mannschaft">GIESSEN 46ers</div></td>
-<td>Arena Hohenlohe</td>
-<td class="schiedsrichter"><b>SR1</b> Jens Rupprecht<br/><b>SR2</b> Peter Wolff<br/><b>SR3</b> *** ****<br/><b>KOM</b> Marco Kapitz<br/><b>COA</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">HAKRO Merlins Crailsheim</div></td>
+<td class="mannschaft"><div class="mannschaft">GIESSEN 46ers</div></td>
+<td class="halle"><div class="halle">Arena Hohenlohe</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jens Rupprecht</span><br/><span class="sr-zeile"><b>SR2</b> Peter Wolff</span><br/><span class="sr-zeile"><b>SR3</b> *** ****</span><br/><span class="sr-zeile"><b>KOM</b> Marco Kapitz</span><br/><span class="sr-zeile"><b>COA</b> *** ****</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/hakromerlins/hakro-merlins-crailsheim-vs-giessen-46ers" target="_blank">Pay</a></td></tr>
 <tr>
 <td>2005850</td>
 <td>4</td>
 <td>10.10.2026 18:30</td>
-<td><div class="mannschaft">Nürnberg Falcons</div></td>
-<td><div class="mannschaft">Kreisbau Kirchheim Knights</div></td>
-<td>KIA Metropol Arena</td>
-<td class="schiedsrichter"><b>SR1</b> Milutin Jelenic<br/><b>SR2</b> Hessam Khorassani<br/><b>SR3</b> Daniel Krüger<br/><b>KOM</b> Klaus Wolff<br/><b>COA</b> Thomas Hofmann</td>
+<td class="mannschaft"><div class="mannschaft">Nürnberg Falcons</div></td>
+<td class="mannschaft"><div class="mannschaft">Kreisbau Kirchheim Knights</div></td>
+<td class="halle"><div class="halle">KIA Metropol Arena</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Milutin Jelenic</span><br/><span class="sr-zeile"><b>SR2</b> Hessam Khorassani</span><br/><span class="sr-zeile"><b>SR3</b> Daniel Krüger</span><br/><span class="sr-zeile"><b>KOM</b> Klaus Wolff</span><br/><span class="sr-zeile"><b>COA</b> Thomas Hofmann</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/nuernberg-falcons-bc/nuernberg-falcons-bc-vs-kreisbau-kirchheim-knights" target="_blank">Pay</a></td></tr>
 <tr>
 <td>2005853</td>
 <td>4</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">VfL SparkassenStars Bochum</div></td>
-<td><div class="mannschaft">BG Göttingen</div></td>
-<td>Rundsporthalle</td>
-<td class="schiedsrichter"><b>SR1</b> Stefan Fingerling<br/><b>SR2</b> Dietmar Damm<br/><b>SR3</b> Luisa Schumacher<br/><b>KOM</b> *** ****<br/><b>COA</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">VfL SparkassenStars Bochum</div></td>
+<td class="mannschaft"><div class="mannschaft">BG Göttingen</div></td>
+<td class="halle"><div class="halle">Rundsporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Stefan Fingerling</span><br/><span class="sr-zeile"><b>SR2</b> Dietmar Damm</span><br/><span class="sr-zeile"><b>SR3</b> Luisa Schumacher</span><br/><span class="sr-zeile"><b>KOM</b> *** ****</span><br/><span class="sr-zeile"><b>COA</b> *** ****</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/sparkassenstars-bochum/vfl-sparkassenstars-bochum-vs-bg-goettingen" target="_blank">Pay</a></td></tr>
 <tr>
 <td>2005848</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
-<td><div class="mannschaft">Artland Dragons</div></td>
-<td><div class="mannschaft">Tigers Tübingen</div></td>
-<td>Artland-Arena</td>
-<td class="schiedsrichter"><b>SR1</b> Sascha Alan Gilbert<br/><b>SR2</b> Sören Rucht<br/><b>SR3</b> Christian Pott<br/><b>KOM</b> Matthias Oehlmann<br/><b>COA</b> Jörg Gitzler (VID)</td>
+<td class="mannschaft"><div class="mannschaft">Artland Dragons</div></td>
+<td class="mannschaft"><div class="mannschaft">Tigers Tübingen</div></td>
+<td class="halle"><div class="halle">Artland-Arena</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Sascha Alan Gilbert</span><br/><span class="sr-zeile"><b>SR2</b> Sören Rucht</span><br/><span class="sr-zeile"><b>SR3</b> Christian Pott</span><br/><span class="sr-zeile"><b>KOM</b> Matthias Oehlmann</span><br/><span class="sr-zeile"><b>COA</b> Jörg Gitzler (VID)</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/artland-dragons/artland-dragons-vs-tigers-tuebingen" target="_blank">Pay</a></td></tr>
 <tr>
 <td>2005849</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
-<td><div class="mannschaft">ETB Miners</div></td>
-<td><div class="mannschaft">PS Karlsruhe LIONS</div></td>
-<td>Sporthalle Am Hallo</td>
-<td class="schiedsrichter"><b>SR1</b> Danjana Rey<br/><b>SR2</b> *** ****<br/><b>SR3</b> *** ****<br/><b>KOM</b> Stefan Tietz<br/><b>COA</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">ETB Miners</div></td>
+<td class="mannschaft"><div class="mannschaft">PS Karlsruhe LIONS</div></td>
+<td class="halle"><div class="halle">Sporthalle Am Hallo</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Danjana Rey</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span><br/><span class="sr-zeile"><b>SR3</b> *** ****</span><br/><span class="sr-zeile"><b>KOM</b> Stefan Tietz</span><br/><span class="sr-zeile"><b>COA</b> *** ****</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/etb-miners/etb-miners-vs-ps-karlsruhe-lions" target="_blank">Pay</a></td></tr>
 <tr>
 <td>2005851</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
-<td><div class="mannschaft">Paderborn Baskets</div></td>
-<td><div class="mannschaft">EPG Baskets Koblenz</div></td>
-<td>Phoenix Contact Arena</td>
-<td class="schiedsrichter"><b>SR1</b> Nils Kremer<br/><b>SR2</b> Kerstin Kammann<br/><b>SR3</b> *** ****<br/><b>KOM</b> Niels Hennig<br/><b>COA</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">Paderborn Baskets</div></td>
+<td class="mannschaft"><div class="mannschaft">EPG Baskets Koblenz</div></td>
+<td class="halle"><div class="halle">Phoenix Contact Arena</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Nils Kremer</span><br/><span class="sr-zeile"><b>SR2</b> Kerstin Kammann</span><br/><span class="sr-zeile"><b>SR3</b> *** ****</span><br/><span class="sr-zeile"><b>KOM</b> Niels Hennig</span><br/><span class="sr-zeile"><b>COA</b> *** ****</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/paderborn-baskets/paderborn-baskets-vs-epg-baskets-koblenz" target="_blank">Pay</a></td></tr>
 <tr>
 <td>2005852</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
-<td><div class="mannschaft">MLP Academics Heidelberg</div></td>
-<td><div class="mannschaft">SBB Börde Baskets</div></td>
-<td>SNP dome Heidelberg</td>
-<td class="schiedsrichter"><b>SR1</b> Nicolai Bohn<br/><b>SR2</b> Vytautas Steckas<br/><b>SR3</b> David Messmer<br/><b>KOM</b> Frank Bleicher</td>
+<td class="mannschaft"><div class="mannschaft">MLP Academics Heidelberg</div></td>
+<td class="mannschaft"><div class="mannschaft">SBB Börde Baskets</div></td>
+<td class="halle"><div class="halle">SNP dome Heidelberg</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Nicolai Bohn</span><br/><span class="sr-zeile"><b>SR2</b> Vytautas Steckas</span><br/><span class="sr-zeile"><b>SR3</b> David Messmer</span><br/><span class="sr-zeile"><b>KOM</b> Frank Bleicher</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/mlp-academics-heidelberg/mlp-academics-heidelberg-vs-sbb-baskets-wolmirstedt" target="_blank">Pay</a></td></tr>
 <tr>
 <td>2005854</td>
 <td>4</td>
 <td>11.10.2026 18:00</td>
-<td><div class="mannschaft">RheinStars Köln</div></td>
-<td><div class="mannschaft">Eisbären Bremerhaven</div></td>
-<td>Motorworld Köln</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Danjana Rey<br/><b>SR3</b> Michael Oesterle<br/><b>KOM</b> Amirhossein Safarzadeh</td>
+<td class="mannschaft"><div class="mannschaft">RheinStars Köln</div></td>
+<td class="mannschaft"><div class="mannschaft">Eisbären Bremerhaven</div></td>
+<td class="halle"><div class="halle">Motorworld Köln</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Danjana Rey</span><br/><span class="sr-zeile"><b>SR3</b> Michael Oesterle</span><br/><span class="sr-zeile"><b>KOM</b> Amirhossein Safarzadeh</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/rheinstars-koeln/rheinstars-koeln-vs-eisbaeren-bremerhaven" target="_blank">Pay</a></td></tr>
 </tbody>
 </table>
@@ -2035,7 +2042,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>2. DBBL Süd (Senioren; Liganr.: 43) (Liga 55749)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2264,7 +2271,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>2. DBBL Nord (Senioren; Liganr.: 40) (Liga 55746)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2493,7 +2500,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2829,73 +2836,73 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>2006140</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">Ahorn Camp Baskets</div></td>
-<td><div class="mannschaft">Dresden Titans</div></td>
-<td>PSD Bank-Halle Nord</td>
-<td class="schiedsrichter"><b>SR1</b> Sameh Farho<br/><b>SR2</b> Josip Filipovic<br/><b>COA</b> Julian Groll</td>
+<td class="mannschaft"><div class="mannschaft">Ahorn Camp Baskets</div></td>
+<td class="mannschaft"><div class="mannschaft">Dresden Titans</div></td>
+<td class="halle"><div class="halle">PSD Bank-Halle Nord</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Sameh Farho</span><br/><span class="sr-zeile"><b>SR2</b> Josip Filipovic</span><br/><span class="sr-zeile"><b>COA</b> Julian Groll</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/ahorn-camp-baskets/ahorn-camp-baskets-vs-dresden-titans" target="_blank">Video</a></td></tr>
 <tr>
 <td>2006142</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">Dragons Rhöndorf</div></td>
-<td><div class="mannschaft">BG Hessing Leitershofen</div></td>
-<td>SH des Sportzentrums Menzenberg</td>
-<td class="schiedsrichter"><b>SR1</b> Dr. Daniel Lagudka<br/><b>SR2</b> Sebastian Glosemeier<br/><b>COA</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">Dragons Rhöndorf</div></td>
+<td class="mannschaft"><div class="mannschaft">BG Hessing Leitershofen</div></td>
+<td class="halle"><div class="halle">SH des Sportzentrums Menzenberg</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Dr. Daniel Lagudka</span><br/><span class="sr-zeile"><b>SR2</b> Sebastian Glosemeier</span><br/><span class="sr-zeile"><b>COA</b> *** ****</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/dragons-rhoendorf/dragons-rhoendorf-vs-bg-hessing-leitershofen" target="_blank">Video</a></td></tr>
 <tr>
 <td>2006141</td>
 <td>3</td>
 <td>10.10.2026 19:30</td>
-<td><div class="mannschaft">TV Langen</div></td>
-<td><div class="mannschaft">FC Bayern Basketball II</div></td>
-<td>Georg-Sehring-Halle</td>
-<td class="schiedsrichter"><b>SR1</b> Sebastian Harth<br/><b>SR2</b> *** ****<br/><b>COA</b> Florian Möllmann (VID)</td>
+<td class="mannschaft"><div class="mannschaft">TV Langen</div></td>
+<td class="mannschaft"><div class="mannschaft">FC Bayern Basketball II</div></td>
+<td class="halle"><div class="halle">Georg-Sehring-Halle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Sebastian Harth</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span><br/><span class="sr-zeile"><b>COA</b> Florian Möllmann (VID)</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/tv-langen/tv-langen-vs-fc-bayern-basketball-ii" target="_blank">Video</a></td></tr>
 <tr>
 <td>2006145</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">TSV Oberhaching Tropics</div></td>
-<td><div class="mannschaft">BBC Coburg</div></td>
-<td>Grundschule</td>
-<td class="schiedsrichter"><b>SR1</b> Patrick Meier<br/><b>SR2</b> Kushtrim Shala</td>
+<td class="mannschaft"><div class="mannschaft">TSV Oberhaching Tropics</div></td>
+<td class="mannschaft"><div class="mannschaft">BBC Coburg</div></td>
+<td class="halle"><div class="halle">Grundschule</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Patrick Meier</span><br/><span class="sr-zeile"><b>SR2</b> Kushtrim Shala</span></td>
 <td>html</td><td>Video</td></tr>
 <tr>
 <td>2006146</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">Culture City Weimar</div></td>
-<td><div class="mannschaft">Bayer Giants Leverkusen</div></td>
-<td>Asbach Sporthalle</td>
-<td class="schiedsrichter"><b>SR1</b> Süleyman Çagri Nakilcioglu<br/><b>SR2</b> Lasse Gebauer<br/><b>COA</b> Sascha Janzen (VID)</td>
+<td class="mannschaft"><div class="mannschaft">Culture City Weimar</div></td>
+<td class="mannschaft"><div class="mannschaft">Bayer Giants Leverkusen</div></td>
+<td class="halle"><div class="halle">Asbach Sporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Süleyman Çagri Nakilcioglu</span><br/><span class="sr-zeile"><b>SR2</b> Lasse Gebauer</span><br/><span class="sr-zeile"><b>COA</b> Sascha Janzen (VID)</span></td>
 <td>html</td><td>Video</td></tr>
 <tr>
 <td>2006143</td>
 <td>3</td>
 <td>11.10.2026 17:00</td>
-<td><div class="mannschaft">Basketball Löwen</div></td>
-<td><div class="mannschaft">Porsche BBA Ludwigsburg</div></td>
-<td>Riethsporthalle</td>
-<td class="schiedsrichter"><b>SR1</b> Jonas von Palubitzki<br/><b>SR2</b> Dennis Kaufhold<br/><b>COA</b> Matthias Oehlmann (VID)</td>
+<td class="mannschaft"><div class="mannschaft">Basketball Löwen</div></td>
+<td class="mannschaft"><div class="mannschaft">Porsche BBA Ludwigsburg</div></td>
+<td class="halle"><div class="halle">Riethsporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jonas von Palubitzki</span><br/><span class="sr-zeile"><b>SR2</b> Dennis Kaufhold</span><br/><span class="sr-zeile"><b>COA</b> Matthias Oehlmann (VID)</span></td>
 <td>html</td><td>Video</td></tr>
 <tr>
 <td>2006144</td>
 <td>3</td>
 <td>11.10.2026 17:30</td>
-<td><div class="mannschaft">SV Fellbach Flashers</div></td>
-<td><div class="mannschaft">SKYLINERS Juniors</div></td>
-<td>Gäuäckersporthalle I</td>
-<td class="schiedsrichter"><b>SR1</b> Marko Petricevic<br/><b>SR2</b> Josip Filipovic</td>
+<td class="mannschaft"><div class="mannschaft">SV Fellbach Flashers</div></td>
+<td class="mannschaft"><div class="mannschaft">SKYLINERS Juniors</div></td>
+<td class="halle"><div class="halle">Gäuäckersporthalle I</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Marko Petricevic</span><br/><span class="sr-zeile"><b>SR2</b> Josip Filipovic</span></td>
 <td>html</td><td>Video</td></tr>
 <tr>
 <td>2006152</td>
 <td>27</td>
 <td>13.10.2026 19:00</td>
-<td><div class="mannschaft">TV Langen</div></td>
-<td><div class="mannschaft">Basketball Löwen</div></td>
-<td>Georg-Sehring-Halle</td>
-<td class="schiedsrichter"><b>SR1</b> Nemanja Damjanovic<br/><b>SR2</b> Azur Lusija</td>
+<td class="mannschaft"><div class="mannschaft">TV Langen</div></td>
+<td class="mannschaft"><div class="mannschaft">Basketball Löwen</div></td>
+<td class="halle"><div class="halle">Georg-Sehring-Halle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Nemanja Damjanovic</span><br/><span class="sr-zeile"><b>SR2</b> Azur Lusija</span></td>
 <td>html</td><td>Video</td></tr>
 </tbody>
 </table>
@@ -2914,7 +2921,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>Herren ProB Nord (Senioren; Liganr.: 20) (Liga 55815)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3251,64 +3258,64 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>2006350</td>
 <td>3</td>
 <td>09.10.2026 20:00</td>
-<td><div class="mannschaft">Baskets Juniors TSG Westerstede</div></td>
-<td><div class="mannschaft">Itzehoe Eagles</div></td>
-<td>Hössensporthalle</td>
-<td class="schiedsrichter"><b>SR1</b> Mario Müller<br/><b>SR2</b> Johannes Pütter</td>
+<td class="mannschaft"><div class="mannschaft">Baskets Juniors TSG Westerstede</div></td>
+<td class="mannschaft"><div class="mannschaft">Itzehoe Eagles</div></td>
+<td class="halle"><div class="halle">Hössensporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Mario Müller</span><br/><span class="sr-zeile"><b>SR2</b> Johannes Pütter</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/baskets-juniors-tsg-westerstede/baskets-juniors-tsg-westerstede-vs-itzehoe-eagles" target="_blank">Video</a></td></tr>
 <tr>
 <td>2006352</td>
 <td>3</td>
 <td>10.10.2026 18:00</td>
-<td><div class="mannschaft">BSW Sixers</div></td>
-<td><div class="mannschaft">Iserlohn Kangaroos</div></td>
-<td>Ballsporthalle im Freizeitzentrum</td>
-<td class="schiedsrichter"><b>SR1</b> Patrice von Garnier<br/><b>SR2</b> Roman Nedostup</td>
+<td class="mannschaft"><div class="mannschaft">BSW Sixers</div></td>
+<td class="mannschaft"><div class="mannschaft">Iserlohn Kangaroos</div></td>
+<td class="halle"><div class="halle">Ballsporthalle im Freizeitzentrum</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Patrice von Garnier</span><br/><span class="sr-zeile"><b>SR2</b> Roman Nedostup</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/bsw-sixers/bsw-sixers-vs-iserlohn-kangaroos" target="_blank">Video</a></td></tr>
 <tr>
 <td>2006354</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">SC Rist Wedel</div></td>
-<td><div class="mannschaft">EN BASKETS Schwelm</div></td>
-<td>Am Steinberg</td>
-<td class="schiedsrichter"><b>SR1</b> Manuel-Mark Lücke<br/><b>SR2</b> Bjarne Braun</td>
+<td class="mannschaft"><div class="mannschaft">SC Rist Wedel</div></td>
+<td class="mannschaft"><div class="mannschaft">EN BASKETS Schwelm</div></td>
+<td class="halle"><div class="halle">Am Steinberg</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Manuel-Mark Lücke</span><br/><span class="sr-zeile"><b>SR2</b> Bjarne Braun</span></td>
 <td>html</td><td><a href="https://sporteurope.tv/sc-rist-wedel/sc-rist-wedel-vs-en-baskets-schwelm" target="_blank">Video</a></td></tr>
 <tr>
 <td>2006351</td>
 <td>3</td>
 <td>10.10.2026 19:15</td>
-<td><div class="mannschaft">ART Giants Düsseldorf</div></td>
-<td><div class="mannschaft">SG Braunschweig</div></td>
-<td>Sporthalle Comenius-Gymnasium</td>
-<td class="schiedsrichter"><b>SR1</b> Ahmet Sirtmac<br/><b>SR2</b> Simon Schmid</td>
+<td class="mannschaft"><div class="mannschaft">ART Giants Düsseldorf</div></td>
+<td class="mannschaft"><div class="mannschaft">SG Braunschweig</div></td>
+<td class="halle"><div class="halle">Sporthalle Comenius-Gymnasium</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Ahmet Sirtmac</span><br/><span class="sr-zeile"><b>SR2</b> Simon Schmid</span></td>
 <td>html</td><td>Video</td></tr>
 <tr>
 <td>2006353</td>
 <td>3</td>
 <td>10.10.2026 19:30</td>
-<td><div class="mannschaft">Uni Baskets Münster</div></td>
-<td><div class="mannschaft">BBA Hagen</div></td>
-<td>Sporthalle Berg Fidel</td>
-<td class="schiedsrichter"><b>SR1</b> Holger Lohmüller<br/><b>SR2</b> Daniel Blitz</td>
+<td class="mannschaft"><div class="mannschaft">Uni Baskets Münster</div></td>
+<td class="mannschaft"><div class="mannschaft">BBA Hagen</div></td>
+<td class="halle"><div class="halle">Sporthalle Berg Fidel</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Holger Lohmüller</span><br/><span class="sr-zeile"><b>SR2</b> Daniel Blitz</span></td>
 <td>html</td><td>Video</td></tr>
 <tr>
 <td>2006355</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">Hertener Löwen</div></td>
-<td><div class="mannschaft">Seawolves Academy</div></td>
-<td>Rosa-Parks-Gesamtschule</td>
-<td class="schiedsrichter"><b>SR1</b> Simon Schmid<br/><b>SR2</b> Ahmet Sirtmac</td>
+<td class="mannschaft"><div class="mannschaft">Hertener Löwen</div></td>
+<td class="mannschaft"><div class="mannschaft">Seawolves Academy</div></td>
+<td class="halle"><div class="halle">Rosa-Parks-Gesamtschule</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Simon Schmid</span><br/><span class="sr-zeile"><b>SR2</b> Ahmet Sirtmac</span></td>
 <td>html</td><td>Video</td></tr>
 <tr>
 <td>2006356</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">TSV Neustadt temps Shooters</div></td>
-<td><div class="mannschaft">LOK BERNAU</div></td>
-<td>Gymnasium Neustadt</td>
-<td class="schiedsrichter"><b>SR1</b> Dr. Alper Aksit<br/><b>SR2</b> Michel Kremer<br/><b>COA</b> Stefan Tietz</td>
+<td class="mannschaft"><div class="mannschaft">TSV Neustadt temps Shooters</div></td>
+<td class="mannschaft"><div class="mannschaft">LOK BERNAU</div></td>
+<td class="halle"><div class="halle">Gymnasium Neustadt</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Dr. Alper Aksit</span><br/><span class="sr-zeile"><b>SR2</b> Michel Kremer</span><br/><span class="sr-zeile"><b>COA</b> Stefan Tietz</span></td>
 <td>html</td><td>Video</td></tr>
 </tbody>
 </table>
@@ -3327,7 +3334,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>BBL-Pokal 1. Runde (Senioren; Liganr.: 8) (Liga 55809)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3352,7 +3359,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3377,7 +3384,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>DBBL-Pokal Runde 1 (Senioren; Liganr.: 35) (Liga 55743)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:12)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3402,7 +3409,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <b>DBBL-Pokal Runde 2 (Senioren; Liganr.: 37) (Liga 55744)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 16:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 17:13)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
