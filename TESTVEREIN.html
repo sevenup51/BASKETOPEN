@@ -66,8 +66,8 @@ table { border-collapse:collapse; margin-bottom:6px; background:white; border-ra
 table.plan { table-layout:fixed; width:760px; max-width:100%; white-space:normal; }
 table.plan th:nth-child(2), table.plan td:nth-child(2) { white-space:nowrap; overflow-wrap:normal; }
 table.naechste td { vertical-align: top; }
-table.naechste .mannschaft { display: block; max-width: 110px; white-space: normal; overflow-wrap: break-word; }
-table.naechste .halle { display: block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
+table.naechste div.mannschaft { display: block; max-width: 110px; white-space: normal; overflow-wrap: break-word; }
+table.naechste div.halle { display: block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
 table.naechste .sr-zeile { display: inline-block; max-width: 130px; white-space: normal; overflow-wrap: break-word; }
 table.naechste .sr-verein { display: inline-block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
 th { background:#1a3d7c; color:white; padding:2px 4px; }
@@ -120,6 +120,7 @@ function speichereBloecke(){
   }));
 }
 function stelleBloeckeHer(){
+  if(document.body.getAttribute("data-start") === "nur-datum") return;
   var roh = sessionStorage.getItem("bbBloecke:" + location.pathname);
   if(!roh) return;
   var stand;
@@ -190,7 +191,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Uebersicht diverse Ligen fuer Test – Stand: 05.10.26 17:13:48</h1>
+<h1>Uebersicht diverse Ligen fuer Test – Stand: 05.10.26 17:48:48</h1>
 
 
 <details id='wasfindeichhier'>
