@@ -61,8 +61,10 @@ table { border-collapse:collapse; margin-bottom:6px; background:white; border-ra
 table.plan { table-layout:fixed; width:760px; max-width:100%; white-space:normal; }
 table.plan th:nth-child(2), table.plan td:nth-child(2) { white-space:nowrap; overflow-wrap:normal; }
 table.naechste td { vertical-align: top; }
-table.naechste .mannschaft { max-width: 130px; white-space: normal; overflow-wrap: anywhere; }
-table.naechste .sr-verein { display: inline-block; max-width: 150px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .mannschaft { display: block; max-width: 110px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .halle { display: block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .sr-zeile { display: inline-block; max-width: 130px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .sr-verein { display: inline-block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
 th { background:#1a3d7c; color:white; padding:2px 4px; }
 td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
 tr:nth-child(even) { background:#f0f4fa; }
@@ -183,7 +185,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga West – Stand: 05.10.26 16:09:17</h1>
+<h1>Regionalliga West – Stand: 05.10.26 16:45:38</h1>
 
 
 <details id='wasfindeichhier'>
@@ -637,127 +639,127 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>22</td>
 <td>4</td>
 <td>09.10.2026 20:00</td>
-<td><div class="mannschaft">LippeBaskets Werne</div></td>
-<td><div class="mannschaft">BBG Herford</div></td>
-<td>Ballspielhalle neben der Marga Spiegel Sekundarschule</td>
-<td class="schiedsrichter"><b>SR1</b> Dominik Weege<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">LippeBaskets Werne</div></td>
+<td class="mannschaft"><div class="mannschaft">BBG Herford</div></td>
+<td class="halle"><div class="halle">Ballspielhalle neben der Marga Spiegel Sekundarschule</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Dominik Weege</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 <tr>
 <td>23</td>
 <td>4</td>
 <td>09.10.2026 20:00</td>
-<td><div class="mannschaft">BÖRGEL Ballers Ibbenbüren</div></td>
-<td><div class="mannschaft">BG TVO / TV Jahn</div></td>
-<td>SH Ost</td>
-<td class="schiedsrichter"><b>SR1</b> Alexander Prahm<br/><b>SR2</b> Andreas Vasiliu</td>
+<td class="mannschaft"><div class="mannschaft">BÖRGEL Ballers Ibbenbüren</div></td>
+<td class="mannschaft"><div class="mannschaft">BG TVO /<wbr/> TV Jahn</div></td>
+<td class="halle"><div class="halle">SH Ost</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Alexander Prahm</span><br/><span class="sr-zeile"><b>SR2</b> Andreas Vasiliu</span></td>
 </tr>
 <tr>
 <td>25</td>
 <td>4</td>
 <td>09.10.2026 20:00</td>
-<td><div class="mannschaft">BSV Münsterland Baskets Wulfen</div></td>
-<td><div class="mannschaft">Citybasket Recklinghausen</div></td>
-<td>SH der Gesamtschule Wulfen</td>
-<td class="schiedsrichter"><b>SR1</b> Fayed Qureshi<br/><b>SR2</b> Louis Lennard Iker</td>
+<td class="mannschaft"><div class="mannschaft">BSV Münsterland Baskets Wulfen</div></td>
+<td class="mannschaft"><div class="mannschaft">Citybasket Recklinghausen</div></td>
+<td class="halle"><div class="halle">SH der Gesamtschule Wulfen</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Fayed Qureshi</span><br/><span class="sr-zeile"><b>SR2</b> Louis Lennard Iker</span></td>
 </tr>
 <tr>
 <td>26</td>
 <td>4</td>
 <td>09.10.2026 20:00</td>
-<td><div class="mannschaft">TuS 59 HammStars</div></td>
-<td><div class="mannschaft">RheinStars Köln 2</div></td>
-<td>Märkische Sporthalle</td>
-<td class="schiedsrichter"><b>SR1</b> Henning Wentzien<br/><b>SR2</b> Fynn Brune</td>
+<td class="mannschaft"><div class="mannschaft">TuS 59 HammStars</div></td>
+<td class="mannschaft"><div class="mannschaft">RheinStars Köln 2</div></td>
+<td class="halle"><div class="halle">Märkische Sporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Henning Wentzien</span><br/><span class="sr-zeile"><b>SR2</b> Fynn Brune</span></td>
 </tr>
 <tr>
 <td>27</td>
 <td>4</td>
 <td>09.10.2026 20:00</td>
-<td><div class="mannschaft">Rheingas Elephants Grevenbroich</div></td>
-<td><div class="mannschaft">TSV Bayer 04 Leverkusen 2</div></td>
-<td>Gross-Sporthalle Gustorf</td>
-<td class="schiedsrichter"><b>SR1</b> Elisa Martin<br/><b>SR2</b> Eva Maria Tolksdorf</td>
+<td class="mannschaft"><div class="mannschaft">Rheingas Elephants Grevenbroich</div></td>
+<td class="mannschaft"><div class="mannschaft">TSV Bayer 04 Leverkusen 2</div></td>
+<td class="halle"><div class="halle">Gross-Sporthalle Gustorf</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Elisa Martin</span><br/><span class="sr-zeile"><b>SR2</b> Eva Maria Tolksdorf</span></td>
 </tr>
 <tr>
 <td>28</td>
 <td>4</td>
 <td>09.10.2026 20:00</td>
-<td><div class="mannschaft">TV Gerthe</div></td>
-<td><div class="mannschaft">ACCENT BASKETS Salzkotten</div></td>
-<td>Schulzentrum Gerthe</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">TV Gerthe</div></td>
+<td class="mannschaft"><div class="mannschaft">ACCENT BASKETS Salzkotten</div></td>
+<td class="halle"><div class="halle">Schulzentrum Gerthe</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 <tr>
 <td>24</td>
 <td>4</td>
 <td>09.10.2026 20:15</td>
-<td><div class="mannschaft">SV Haspe 70</div></td>
-<td><div class="mannschaft">DTV Basketball Köln</div></td>
-<td>Rundsporthalle Haspe</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Thomas Pohl</td>
+<td class="mannschaft"><div class="mannschaft">SV Haspe 70</div></td>
+<td class="mannschaft"><div class="mannschaft">DTV Basketball Köln</div></td>
+<td class="halle"><div class="halle">Rundsporthalle Haspe</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Thomas Pohl</span></td>
 </tr>
 <tr>
 <td>30</td>
 <td>5</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">BG TVO / TV Jahn</div></td>
-<td><div class="mannschaft">LippeBaskets Werne</div></td>
-<td>SH der Realschule</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Maximilian Rademacher</td>
+<td class="mannschaft"><div class="mannschaft">BG TVO /<wbr/> TV Jahn</div></td>
+<td class="mannschaft"><div class="mannschaft">LippeBaskets Werne</div></td>
+<td class="halle"><div class="halle">SH der Realschule</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Maximilian Rademacher</span></td>
 </tr>
 <tr>
 <td>33</td>
 <td>5</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">TuS 59 HammStars</div></td>
-<td><div class="mannschaft">BSV Münsterland Baskets Wulfen</div></td>
-<td>Märkische Sporthalle</td>
-<td class="schiedsrichter"><b>SR1</b> Elisa Martin<br/><b>SR2</b> Denis Brtka</td>
+<td class="mannschaft"><div class="mannschaft">TuS 59 HammStars</div></td>
+<td class="mannschaft"><div class="mannschaft">BSV Münsterland Baskets Wulfen</div></td>
+<td class="halle"><div class="halle">Märkische Sporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Elisa Martin</span><br/><span class="sr-zeile"><b>SR2</b> Denis Brtka</span></td>
 </tr>
 <tr>
 <td>35</td>
 <td>5</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">DTV Basketball Köln</div></td>
-<td><div class="mannschaft">BÖRGEL Ballers Ibbenbüren</div></td>
-<td>SH der Fachhochschule Deutz</td>
-<td class="schiedsrichter"><b>SR1</b> Benjamin Pakmor<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">DTV Basketball Köln</div></td>
+<td class="mannschaft"><div class="mannschaft">BÖRGEL Ballers Ibbenbüren</div></td>
+<td class="halle"><div class="halle">SH der Fachhochschule Deutz</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Benjamin Pakmor</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 <tr>
 <td>32</td>
 <td>5</td>
 <td>11.10.2026 16:30</td>
-<td><div class="mannschaft">ACCENT BASKETS Salzkotten</div></td>
-<td><div class="mannschaft">Rheingas Elephants Grevenbroich</div></td>
-<td>Hederauenhalle</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Thomas Pohl<br/><b>COA</b> Florian Möllmann (VID)</td>
+<td class="mannschaft"><div class="mannschaft">ACCENT BASKETS Salzkotten</div></td>
+<td class="mannschaft"><div class="mannschaft">Rheingas Elephants Grevenbroich</div></td>
+<td class="halle"><div class="halle">Hederauenhalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Thomas Pohl</span><br/><span class="sr-zeile"><b>COA</b> Florian Möllmann (VID)</span></td>
 </tr>
 <tr>
 <td>34</td>
 <td>5</td>
 <td>11.10.2026 16:30</td>
-<td><div class="mannschaft">Citybasket Recklinghausen</div></td>
-<td><div class="mannschaft">SV Haspe 70</div></td>
-<td>Vestische Arena Alfons Schütt</td>
-<td class="schiedsrichter"><b>SR1</b> Alexander Prahm<br/><b>SR2</b> Henning Wentzien</td>
+<td class="mannschaft"><div class="mannschaft">Citybasket Recklinghausen</div></td>
+<td class="mannschaft"><div class="mannschaft">SV Haspe 70</div></td>
+<td class="halle"><div class="halle">Vestische Arena Alfons Schütt</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Alexander Prahm</span><br/><span class="sr-zeile"><b>SR2</b> Henning Wentzien</span></td>
 </tr>
 <tr>
 <td>31</td>
 <td>5</td>
 <td>11.10.2026 18:00</td>
-<td><div class="mannschaft">BBG Herford</div></td>
-<td><div class="mannschaft">TV Gerthe</div></td>
-<td>SH Ravensberger Gymnasium</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Dominik Weege</td>
+<td class="mannschaft"><div class="mannschaft">BBG Herford</div></td>
+<td class="mannschaft"><div class="mannschaft">TV Gerthe</div></td>
+<td class="halle"><div class="halle">SH Ravensberger Gymnasium</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Dominik Weege</span></td>
 </tr>
 <tr>
 <td>29</td>
 <td>5</td>
 <td>13.10.2026 20:00</td>
-<td><div class="mannschaft">RheinStars Köln 2</div></td>
-<td><div class="mannschaft">TSV Bayer 04 Leverkusen 2</div></td>
-<td>Basketball Campus Köln 2 powered by Flossbach von Storch</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Simon Kirchhoff<br/><b>COA</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">RheinStars Köln 2</div></td>
+<td class="mannschaft"><div class="mannschaft">TSV Bayer 04 Leverkusen 2</div></td>
+<td class="halle"><div class="halle">Basketball Campus Köln 2 powered by Flossbach von Storch</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Simon Kirchhoff</span><br/><span class="sr-zeile"><b>COA</b> *** ****</span></td>
 </tr>
 </tbody>
 </table>
@@ -1008,46 +1010,46 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>19</td>
 <td>4</td>
 <td>10.10.2026 16:00</td>
-<td><div class="mannschaft">New Basket Oberhausen 2</div></td>
-<td><div class="mannschaft">Citybasket Recklinghausen</div></td>
-<td>SH Ost</td>
-<td class="schiedsrichter"><b>SR1</b> Jochen Buschke<br/><b>SR2</b> Henrique Damasio dos Santos</td>
+<td class="mannschaft"><div class="mannschaft">New Basket Oberhausen 2</div></td>
+<td class="mannschaft"><div class="mannschaft">Citybasket Recklinghausen</div></td>
+<td class="halle"><div class="halle">SH Ost</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jochen Buschke</span><br/><span class="sr-zeile"><b>SR2</b> Henrique Damasio dos Santos</span></td>
 </tr>
 <tr>
 <td>24</td>
 <td>4</td>
 <td>10.10.2026 17:00</td>
-<td><div class="mannschaft">BC Langendreer</div></td>
-<td><div class="mannschaft">Hürther BC</div></td>
-<td>SZ Langendreer (3-fach-Halle)</td>
-<td class="schiedsrichter"><b>SR1</b> Jannick Niessner<br/><b>SR2</b> Henrik Stachowicz</td>
+<td class="mannschaft"><div class="mannschaft">BC Langendreer</div></td>
+<td class="mannschaft"><div class="mannschaft">Hürther BC</div></td>
+<td class="halle"><div class="halle">SZ Langendreer (3-fach-Halle)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jannick Niessner</span><br/><span class="sr-zeile"><b>SR2</b> Henrik Stachowicz</span></td>
 </tr>
 <tr>
 <td>21</td>
 <td>4</td>
 <td>10.10.2026 18:00</td>
-<td><div class="mannschaft">DTV Basketball Köln</div></td>
-<td><div class="mannschaft">Talents BonnRhöndorf 2</div></td>
-<td>SH der Fachhochschule Deutz</td>
-<td class="schiedsrichter"><b>SR1</b> Marcus Frank<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">DTV Basketball Köln</div></td>
+<td class="mannschaft"><div class="mannschaft">Talents BonnRhöndorf 2</div></td>
+<td class="halle"><div class="halle">SH der Fachhochschule Deutz</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Marcus Frank</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 <tr>
 <td>22</td>
 <td>4</td>
 <td>10.10.2026 18:00</td>
-<td><div class="mannschaft">VfL AstroStars Bochum 2</div></td>
-<td><div class="mannschaft">WINGS Leverkusen 2</div></td>
-<td>3-fach Sporthalle Märkisches Gymnasium (Hauptfeld)</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Maximilian Rademacher</td>
+<td class="mannschaft"><div class="mannschaft">VfL AstroStars Bochum 2</div></td>
+<td class="mannschaft"><div class="mannschaft">WINGS Leverkusen 2</div></td>
+<td class="halle"><div class="halle">3-fach Sporthalle Märkisches Gymnasium (Hauptfeld)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Maximilian Rademacher</span></td>
 </tr>
 <tr>
 <td>20</td>
 <td>4</td>
 <td>11.10.2026 14:00</td>
-<td><div class="mannschaft">DJK Frankenberg</div></td>
-<td><div class="mannschaft">TSV Hagen</div></td>
-<td>Sporthalle der Montessori Gesamtschule</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">DJK Frankenberg</div></td>
+<td class="mannschaft"><div class="mannschaft">TSV Hagen</div></td>
+<td class="halle"><div class="halle">Sporthalle der Montessori Gesamtschule</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 </tbody>
 </table>
@@ -1266,55 +1268,55 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>21</td>
 <td>4</td>
 <td>10.10.2026 16:00</td>
-<td><div class="mannschaft">DTV Basketball Köln 2</div></td>
-<td><div class="mannschaft">Future Sports Meckenheim</div></td>
-<td>SH der Fachhochschule Deutz</td>
-<td class="schiedsrichter"><b>SR1</b> Daniel Casado<br/><b>SR2</b> Max Schneevoigt<br/><b>COA</b> Alexander Sauer (VID)</td>
+<td class="mannschaft"><div class="mannschaft">DTV Basketball Köln 2</div></td>
+<td class="mannschaft"><div class="mannschaft">Future Sports Meckenheim</div></td>
+<td class="halle"><div class="halle">SH der Fachhochschule Deutz</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Daniel Casado</span><br/><span class="sr-zeile"><b>SR2</b> Max Schneevoigt</span><br/><span class="sr-zeile"><b>COA</b> Alexander Sauer (VID)</span></td>
 </tr>
 <tr>
 <td>19</td>
 <td>4</td>
 <td>10.10.2026 18:15</td>
-<td><div class="mannschaft">SG Sechtem</div></td>
-<td><div class="mannschaft">Barmer TV</div></td>
-<td>Sporthalle des Humboldt-Gymnasiums</td>
-<td class="schiedsrichter"><b>SR1</b> Marco Krause<br/><b>SR2</b> Eva Maria Tolksdorf</td>
+<td class="mannschaft"><div class="mannschaft">SG Sechtem</div></td>
+<td class="mannschaft"><div class="mannschaft">Barmer TV</div></td>
+<td class="halle"><div class="halle">Sporthalle des Humboldt-Gymnasiums</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Marco Krause</span><br/><span class="sr-zeile"><b>SR2</b> Eva Maria Tolksdorf</span></td>
 </tr>
 <tr>
 <td>20</td>
 <td>4</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">SC Fast-Break Leverkusen</div></td>
-<td><div class="mannschaft">Telekom Baskets Bonn 2</div></td>
-<td>Grundschule Steinbüchel-West</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">SC Fast-Break Leverkusen</div></td>
+<td class="mannschaft"><div class="mannschaft">Telekom Baskets Bonn 2</div></td>
+<td class="halle"><div class="halle">Grundschule Steinbüchel-West</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 <tr>
 <td>24</td>
 <td>4</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">BG Aachen</div></td>
-<td><div class="mannschaft">TG Düsseldorf</div></td>
-<td>Schulzentrum Laurensberg (Halle 1)</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Louis Lennard Iker<br/><b>COA</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">BG Aachen</div></td>
+<td class="mannschaft"><div class="mannschaft">TG Düsseldorf</div></td>
+<td class="halle"><div class="halle">Schulzentrum Laurensberg (Halle 1)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Louis Lennard Iker</span><br/><span class="sr-zeile"><b>COA</b> *** ****</span></td>
 </tr>
 <tr>
 <td>23</td>
 <td>4</td>
 <td>10.10.2026 20:30</td>
-<td><div class="mannschaft">TSV Bayer 04 Leverkusen 3</div></td>
-<td><div class="mannschaft">Südwest Baskets Wuppertal</div></td>
-<td>Herbert-Grunewald-Halle 9</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Aeneas Eckstein</td>
+<td class="mannschaft"><div class="mannschaft">TSV Bayer 04 Leverkusen 3</div></td>
+<td class="mannschaft"><div class="mannschaft">Südwest Baskets Wuppertal</div></td>
+<td class="halle"><div class="halle">Herbert-Grunewald-Halle 9</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Aeneas Eckstein</span></td>
 </tr>
 <tr>
 <td>22</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">Sportclub Krefeld</div></td>
-<td><div class="mannschaft">DJK Südwest Köln</div></td>
-<td>Heinz-Melcher-Halle (E:Lise-Meitner-Weg)</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> *** ****<br/><b>COA</b> Alexander Sauer</td>
+<td class="mannschaft"><div class="mannschaft">Sportclub Krefeld</div></td>
+<td class="mannschaft"><div class="mannschaft">DJK Südwest Köln</div></td>
+<td class="halle"><div class="halle">Heinz-Melcher-Halle (E:Lise-Meitner-Weg)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span><br/><span class="sr-zeile"><b>COA</b> Alexander Sauer</span></td>
 </tr>
 </tbody>
 </table>
@@ -1541,55 +1543,55 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>20</td>
 <td>4</td>
 <td>10.10.2026 16:00</td>
-<td><div class="mannschaft">SV Haspe 70 2</div></td>
-<td><div class="mannschaft">BG Dorsten</div></td>
-<td>Rundsporthalle Haspe</td>
-<td class="schiedsrichter"><b>SR1</b> Thomas Schilling<br/><b>SR2</b> *** ****<br/><b>COA</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">SV Haspe 70 2</div></td>
+<td class="mannschaft"><div class="mannschaft">BG Dorsten</div></td>
+<td class="halle"><div class="halle">Rundsporthalle Haspe</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Thomas Schilling</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span><br/><span class="sr-zeile"><b>COA</b> *** ****</span></td>
 </tr>
 <tr>
 <td>23</td>
 <td>4</td>
 <td>10.10.2026 18:00</td>
-<td><div class="mannschaft">TSVE 1890 Bielefeld</div></td>
-<td><div class="mannschaft">Paderborn Baskets 2</div></td>
-<td>SH 1 der Carl-Severing-Schule</td>
-<td class="schiedsrichter"><b>SR1</b> Andreas Wildenauer<br/><b>SR2</b> Marcus Wagenführ</td>
+<td class="mannschaft"><div class="mannschaft">TSVE 1890 Bielefeld</div></td>
+<td class="mannschaft"><div class="mannschaft">Paderborn Baskets 2</div></td>
+<td class="halle"><div class="halle">SH 1 der Carl-Severing-Schule</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Andreas Wildenauer</span><br/><span class="sr-zeile"><b>SR2</b> Marcus Wagenführ</span></td>
 </tr>
 <tr>
 <td>19</td>
 <td>4</td>
 <td>10.10.2026 18:30</td>
-<td><div class="mannschaft">UBC Münster 2</div></td>
-<td><div class="mannschaft">BBG Herford 2</div></td>
-<td>Ballsporthalle Pascal-Gymnasium</td>
-<td class="schiedsrichter"><b>SR1</b> Sebastian Kremer<br/><b>SR2</b> *** ****<br/><b>COA</b> Dirk Thomas</td>
+<td class="mannschaft"><div class="mannschaft">UBC Münster 2</div></td>
+<td class="mannschaft"><div class="mannschaft">BBG Herford 2</div></td>
+<td class="halle"><div class="halle">Ballsporthalle Pascal-Gymnasium</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Sebastian Kremer</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span><br/><span class="sr-zeile"><b>COA</b> Dirk Thomas</span></td>
 </tr>
 <tr>
 <td>21</td>
 <td>4</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">Baskets Lüdenscheid</div></td>
-<td><div class="mannschaft">TuS Iserlohn Kangaroos</div></td>
-<td>Sporthalle Zeppelin Gymnasium</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">Baskets Lüdenscheid</div></td>
+<td class="mannschaft"><div class="mannschaft">TuS Iserlohn Kangaroos</div></td>
+<td class="halle"><div class="halle">Sporthalle Zeppelin Gymnasium</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 <tr>
 <td>22</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
-<td><div class="mannschaft">Witten Baskets</div></td>
-<td><div class="mannschaft">ETB Miners Essen 2</div></td>
-<td>Otto-Schott-Realschule (Großfeld)</td>
-<td class="schiedsrichter"><b>SR1</b> Radu Catalin Calcan<br/><b>SR2</b> Thorsten Watzek<br/><b>COA</b> Alexander Sauer (VID)</td>
+<td class="mannschaft"><div class="mannschaft">Witten Baskets</div></td>
+<td class="mannschaft"><div class="mannschaft">ETB Miners Essen 2</div></td>
+<td class="halle"><div class="halle">Otto-Schott-Realschule (Großfeld)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Radu Catalin Calcan</span><br/><span class="sr-zeile"><b>SR2</b> Thorsten Watzek</span><br/><span class="sr-zeile"><b>COA</b> Alexander Sauer (VID)</span></td>
 </tr>
 <tr>
 <td>24</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
-<td><div class="mannschaft">BC Soest</div></td>
-<td><div class="mannschaft">TuS Breckerfeld</div></td>
-<td>Aldegrever-Gymnasium Zweifach-SH</td>
-<td class="schiedsrichter"><b>SR1</b> Malte Dedek<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">BC Soest</div></td>
+<td class="mannschaft"><div class="mannschaft">TuS Breckerfeld</div></td>
+<td class="halle"><div class="halle">Aldegrever-Gymnasium Zweifach-SH</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Malte Dedek</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 </tbody>
 </table>
@@ -1633,19 +1635,19 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>225</td>
 <td>2</td>
 <td>12.10.2026 20:00</td>
-<td><div class="mannschaft">TuSG Augustdorf</div></td>
-<td><div class="mannschaft">BSV Münsterland Baskets Wulfen</div></td>
-<td>Sporthalle Inselweg</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Rocco Wons</td>
+<td class="mannschaft"><div class="mannschaft">TuSG Augustdorf</div></td>
+<td class="mannschaft"><div class="mannschaft">BSV Münsterland Baskets Wulfen</div></td>
+<td class="halle"><div class="halle">Sporthalle Inselweg</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Rocco Wons</span></td>
 </tr>
 <tr>
 <td>217</td>
 <td>2</td>
 <td>13.10.2026 20:15</td>
-<td><div class="mannschaft">Witten Baskets</div></td>
-<td><div class="mannschaft">SV Haspe 70</div></td>
-<td>Otto-Schott-Realschule (Großfeld)</td>
-<td class="schiedsrichter"><b>SR1</b> Jochen Buschke<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">Witten Baskets</div></td>
+<td class="mannschaft"><div class="mannschaft">SV Haspe 70</div></td>
+<td class="halle"><div class="halle">Otto-Schott-Realschule (Großfeld)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jochen Buschke</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 </tbody>
 </table>
@@ -1689,19 +1691,19 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>206</td>
 <td>2</td>
 <td>12.10.2026 20:30</td>
-<td><div class="mannschaft">Mettmann-Sport</div></td>
-<td><div class="mannschaft">DTV Basketball Köln</div></td>
-<td>Sporthalle der Kreisberufsschule</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Mayar Faraj</td>
+<td class="mannschaft"><div class="mannschaft">Mettmann-Sport</div></td>
+<td class="mannschaft"><div class="mannschaft">DTV Basketball Köln</div></td>
+<td class="halle"><div class="halle">Sporthalle der Kreisberufsschule</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Mayar Faraj</span></td>
 </tr>
 <tr>
 <td>208</td>
 <td>2</td>
 <td>13.10.2026 20:15</td>
-<td><div class="mannschaft">TVE Dortmund Barop</div></td>
-<td><div class="mannschaft">TV Gerthe</div></td>
-<td>Sporthalle Wischlingen</td>
-<td class="schiedsrichter"><b>SR1</b> Max Schneevoigt<br/><b>SR2</b> Daniela Hagebölling</td>
+<td class="mannschaft"><div class="mannschaft">TVE Dortmund Barop</div></td>
+<td class="mannschaft"><div class="mannschaft">TV Gerthe</div></td>
+<td class="halle"><div class="halle">Sporthalle Wischlingen</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Max Schneevoigt</span><br/><span class="sr-zeile"><b>SR2</b> Daniela Hagebölling</span></td>
 </tr>
 </tbody>
 </table>
