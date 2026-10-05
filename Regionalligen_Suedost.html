@@ -61,8 +61,10 @@ table { border-collapse:collapse; margin-bottom:6px; background:white; border-ra
 table.plan { table-layout:fixed; width:760px; max-width:100%; white-space:normal; }
 table.plan th:nth-child(2), table.plan td:nth-child(2) { white-space:nowrap; overflow-wrap:normal; }
 table.naechste td { vertical-align: top; }
-table.naechste .mannschaft { max-width: 130px; white-space: normal; overflow-wrap: anywhere; }
-table.naechste .sr-verein { display: inline-block; max-width: 150px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .mannschaft { display: block; max-width: 110px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .halle { display: block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .sr-zeile { display: inline-block; max-width: 130px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .sr-verein { display: inline-block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
 th { background:#1a3d7c; color:white; padding:2px 4px; }
 td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
 tr:nth-child(even) { background:#f0f4fa; }
@@ -183,7 +185,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedost – Stand: 05.10.26 16:08:21</h1>
+<h1>Regionalliga Suedost – Stand: 05.10.26 16:43:36</h1>
 
 
 <details id='wasfindeichhier'>
@@ -567,37 +569,37 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>11026</td>
 <td>3</td>
 <td>10.10.2026 17:30</td>
-<td><div class="mannschaft">MTSV Schwabing</div></td>
-<td><div class="mannschaft">TSV 1861 Nördlingen</div></td>
-<td>Asam-Gymnasium</td>
-<td class="schiedsrichter"><b>SR1</b> Felix Arnold<br/><b>SR2</b> *** ****<br/><b>COA</b> Peter Wolff</td>
+<td class="mannschaft"><div class="mannschaft">MTSV Schwabing</div></td>
+<td class="mannschaft"><div class="mannschaft">TSV 1861 Nördlingen</div></td>
+<td class="halle"><div class="halle">Asam-Gymnasium</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Felix Arnold</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span><br/><span class="sr-zeile"><b>COA</b> Peter Wolff</span></td>
 </tr>
 <tr>
 <td>11028</td>
 <td>3</td>
 <td>10.10.2026 19:30</td>
-<td><div class="mannschaft">hapa Ansbach</div></td>
-<td><div class="mannschaft">TS Jahn München</div></td>
-<td>Weinberghalle</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Moritz Hellmann</td>
+<td class="mannschaft"><div class="mannschaft">hapa Ansbach</div></td>
+<td class="mannschaft"><div class="mannschaft">TS Jahn München</div></td>
+<td class="halle"><div class="halle">Weinberghalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Moritz Hellmann</span></td>
 </tr>
 <tr>
 <td>11025</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">BG Illertal</div></td>
-<td><div class="mannschaft">Haching Baskets</div></td>
-<td>Vöhlinhalle</td>
-<td class="schiedsrichter"><b>SR1</b> Tobias Reischl<br/><b>SR2</b> Markus Wicht</td>
+<td class="mannschaft"><div class="mannschaft">BG Illertal</div></td>
+<td class="mannschaft"><div class="mannschaft">Haching Baskets</div></td>
+<td class="halle"><div class="halle">Vöhlinhalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Tobias Reischl</span><br/><span class="sr-zeile"><b>SR2</b> Markus Wicht</span></td>
 </tr>
 <tr>
 <td>11027</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">TSV Vilsbiburg</div></td>
-<td><div class="mannschaft">MÜNCHEN BASKET</div></td>
-<td>Ballsporthalle</td>
-<td class="schiedsrichter"><b>SR1</b> Belmin Telalovic<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">TSV Vilsbiburg</div></td>
+<td class="mannschaft"><div class="mannschaft">MÜNCHEN BASKET</div></td>
+<td class="halle"><div class="halle">Ballsporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Belmin Telalovic</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 </tbody>
 </table>
@@ -788,37 +790,37 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>10970</td>
 <td>3</td>
 <td>10.10.2026 15:00</td>
-<td><div class="mannschaft">Dresden Titans 2</div></td>
-<td><div class="mannschaft">TTL Basketball Bamberg</div></td>
-<td>Gymnasium Tolkewitz</td>
-<td class="schiedsrichter"><b>SR1</b> Denis Winkler<br/><b>SR2</b> Anna Spalke</td>
+<td class="mannschaft"><div class="mannschaft">Dresden Titans 2</div></td>
+<td class="mannschaft"><div class="mannschaft">TTL Basketball Bamberg</div></td>
+<td class="halle"><div class="halle">Gymnasium Tolkewitz</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Denis Winkler</span><br/><span class="sr-zeile"><b>SR2</b> Anna Spalke</span></td>
 </tr>
 <tr>
 <td>10971</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">TG 1877 Veitshöchheim</div></td>
-<td><div class="mannschaft">CYBEX Talents BBC Bayreuth</div></td>
-<td>Dreifachhalle Schulzentrum</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Jens Klee</td>
+<td class="mannschaft"><div class="mannschaft">TG 1877 Veitshöchheim</div></td>
+<td class="mannschaft"><div class="mannschaft">CYBEX Talents BBC Bayreuth</div></td>
+<td class="halle"><div class="halle">Dreifachhalle Schulzentrum</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Jens Klee</span></td>
 </tr>
 <tr>
 <td>10972</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">Würzburg Baskets Akademie</div></td>
-<td><div class="mannschaft">BAURADO UniRiesen Leipzig</div></td>
-<td>Sprintis Sportpark @ SPORTINGHOUSE</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> *** ****<br/><b>COA</b> Michael Schmitt</td>
+<td class="mannschaft"><div class="mannschaft">Würzburg Baskets Akademie</div></td>
+<td class="mannschaft"><div class="mannschaft">BAURADO UniRiesen Leipzig</div></td>
+<td class="halle"><div class="halle">Sprintis Sportpark @ SPORTINGHOUSE</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span><br/><span class="sr-zeile"><b>COA</b> Michael Schmitt</span></td>
 </tr>
 <tr>
 <td>10969</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">TSV Tröster Breitengüßbach</div></td>
-<td><div class="mannschaft">BIG Basketball in Gotha</div></td>
-<td>Hans-Jung-Halle</td>
-<td class="schiedsrichter"><b>SR1</b> Georg Blüher<br/><b>SR2</b> Curt Kindler</td>
+<td class="mannschaft"><div class="mannschaft">TSV Tröster Breitengüßbach</div></td>
+<td class="mannschaft"><div class="mannschaft">BIG Basketball in Gotha</div></td>
+<td class="halle"><div class="halle">Hans-Jung-Halle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Georg Blüher</span><br/><span class="sr-zeile"><b>SR2</b> Curt Kindler</span></td>
 </tr>
 </tbody>
 </table>
@@ -1009,37 +1011,37 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>20949</td>
 <td>3</td>
 <td>10.10.2026 15:30</td>
-<td><div class="mannschaft">Leipzig Lakers</div></td>
-<td><div class="mannschaft">Post SV Nürnberg</div></td>
-<td>SH am Dösner Weg (Halle rechts)</td>
-<td class="schiedsrichter"><b>SR1</b> Georg Blüher<br/><b>SR2</b> Matthias Schmidt</td>
+<td class="mannschaft"><div class="mannschaft">Leipzig Lakers</div></td>
+<td class="mannschaft"><div class="mannschaft">Post SV Nürnberg</div></td>
+<td class="halle"><div class="halle">SH am Dösner Weg (Halle rechts)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Georg Blüher</span><br/><span class="sr-zeile"><b>SR2</b> Matthias Schmidt</span></td>
 </tr>
 <tr>
 <td>20950</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
-<td><div class="mannschaft">TB 1888 Erlangen</div></td>
-<td><div class="mannschaft">DJK Don Bosco Bamberg</div></td>
-<td>Gerd-Lohwasser-Halle</td>
-<td class="schiedsrichter"><b>SR1</b> Dirk Rothberger<br/><b>SR2</b> Tobias Reinhardt</td>
+<td class="mannschaft"><div class="mannschaft">TB 1888 Erlangen</div></td>
+<td class="mannschaft"><div class="mannschaft">DJK Don Bosco Bamberg</div></td>
+<td class="halle"><div class="halle">Gerd-Lohwasser-Halle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Dirk Rothberger</span><br/><span class="sr-zeile"><b>SR2</b> Tobias Reinhardt</span></td>
 </tr>
 <tr>
 <td>20951</td>
 <td>3</td>
 <td>10.10.2026 20:00</td>
-<td><div class="mannschaft">BG Litzendorf</div></td>
-<td><div class="mannschaft">TG 48 Würzburg 2</div></td>
-<td>Ellertalhalle</td>
-<td class="schiedsrichter"><b>SR1</b> Florian Löffler<br/><b>SR2</b> Julian Kaltenecker</td>
+<td class="mannschaft"><div class="mannschaft">BG Litzendorf</div></td>
+<td class="mannschaft"><div class="mannschaft">TG 48 Würzburg 2</div></td>
+<td class="halle"><div class="halle">Ellertalhalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Florian Löffler</span><br/><span class="sr-zeile"><b>SR2</b> Julian Kaltenecker</span></td>
 </tr>
 <tr>
 <td>20948</td>
 <td>3</td>
 <td>11.10.2026 13:00</td>
-<td><div class="mannschaft">CATL Basketball Löwinnen Erfurt</div></td>
-<td><div class="mannschaft">BC Dresden</div></td>
-<td>Riethsporthalle</td>
-<td class="schiedsrichter"><b>SR1</b> Matthias Schmidt<br/><b>SR2</b> Leo Trost</td>
+<td class="mannschaft"><div class="mannschaft">CATL Basketball Löwinnen Erfurt</div></td>
+<td class="mannschaft"><div class="mannschaft">BC Dresden</div></td>
+<td class="halle"><div class="halle">Riethsporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Matthias Schmidt</span><br/><span class="sr-zeile"><b>SR2</b> Leo Trost</span></td>
 </tr>
 </tbody>
 </table>
@@ -1206,37 +1208,37 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>21005</td>
 <td>3</td>
 <td>10.10.2026 15:00</td>
-<td><div class="mannschaft">MTV 1879 München</div></td>
-<td><div class="mannschaft">TV 1847 Augsburg</div></td>
-<td>Berufsfachschule Kinderpflege</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Elena Bistrian</td>
+<td class="mannschaft"><div class="mannschaft">MTV 1879 München</div></td>
+<td class="mannschaft"><div class="mannschaft">TV 1847 Augsburg</div></td>
+<td class="halle"><div class="halle">Berufsfachschule Kinderpflege</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Elena Bistrian</span></td>
 </tr>
 <tr>
 <td>21006</td>
 <td>3</td>
 <td>10.10.2026 15:15</td>
-<td><div class="mannschaft">MÜNCHEN BASKET</div></td>
-<td><div class="mannschaft">SB DJK Rosenheim</div></td>
-<td>Städt. Sporthalle Dachauer Str.</td>
-<td class="schiedsrichter"><b>SR1</b> Bünyamin Yildiz<br/><b>SR2</b> Stephan Simmeth</td>
+<td class="mannschaft"><div class="mannschaft">MÜNCHEN BASKET</div></td>
+<td class="mannschaft"><div class="mannschaft">SB DJK Rosenheim</div></td>
+<td class="halle"><div class="halle">Städt. Sporthalle Dachauer Str.</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Bünyamin Yildiz</span><br/><span class="sr-zeile"><b>SR2</b> Stephan Simmeth</span></td>
 </tr>
 <tr>
 <td>21007</td>
 <td>3</td>
 <td>10.10.2026 17:00</td>
-<td><div class="mannschaft">ESV Staffelsee</div></td>
-<td><div class="mannschaft">FC Bayern München</div></td>
-<td>Staffelsee-Gymnasium</td>
-<td class="schiedsrichter"><b>SR1</b> Andreas Gecse Kost<br/><b>SR2</b> Sebastian Wolz</td>
+<td class="mannschaft"><div class="mannschaft">ESV Staffelsee</div></td>
+<td class="mannschaft"><div class="mannschaft">FC Bayern München</div></td>
+<td class="halle"><div class="halle">Staffelsee-Gymnasium</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Andreas Gecse Kost</span><br/><span class="sr-zeile"><b>SR2</b> Sebastian Wolz</span></td>
 </tr>
 <tr>
 <td>21004</td>
 <td>3</td>
 <td>10.10.2026 17:30</td>
-<td><div class="mannschaft">TG Landshut</div></td>
-<td><div class="mannschaft">TSV München Ost</div></td>
-<td>Sportzentrum West</td>
-<td class="schiedsrichter"><b>SR1</b> Martin Jobst<br/><b>SR2</b> Valon Duraku</td>
+<td class="mannschaft"><div class="mannschaft">TG Landshut</div></td>
+<td class="mannschaft"><div class="mannschaft">TSV München Ost</div></td>
+<td class="halle"><div class="halle">Sportzentrum West</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Martin Jobst</span><br/><span class="sr-zeile"><b>SR2</b> Valon Duraku</span></td>
 </tr>
 </tbody>
 </table>
@@ -1463,46 +1465,46 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>50414</td>
 <td>2</td>
 <td>09.10.2026 19:00</td>
-<td><div class="mannschaft">Nürnberg Falcons</div></td>
-<td><div class="mannschaft">TS Herzogenaurach</div></td>
-<td>Bertolt-Brecht-Schule</td>
-<td class="schiedsrichter"><b>SR1</b> Marco Pflaum<br/><b>SR2</b> Johannes Machui</td>
+<td class="mannschaft"><div class="mannschaft">Nürnberg Falcons</div></td>
+<td class="mannschaft"><div class="mannschaft">TS Herzogenaurach</div></td>
+<td class="halle"><div class="halle">Bertolt-Brecht-Schule</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Marco Pflaum</span><br/><span class="sr-zeile"><b>SR2</b> Johannes Machui</span></td>
 </tr>
 <tr>
 <td>50411</td>
 <td>2</td>
 <td>10.10.2026 15:00</td>
-<td><div class="mannschaft">MTSV Schwabing 2</div></td>
-<td><div class="mannschaft">TS Jahn München 2</div></td>
-<td>Asam-Gymnasium</td>
-<td class="schiedsrichter"><b>SR1</b> Felix Holzheu<br/><b>SR2</b> Maurice Zeisberger</td>
+<td class="mannschaft"><div class="mannschaft">MTSV Schwabing 2</div></td>
+<td class="mannschaft"><div class="mannschaft">TS Jahn München 2</div></td>
+<td class="halle"><div class="halle">Asam-Gymnasium</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Felix Holzheu</span><br/><span class="sr-zeile"><b>SR2</b> Maurice Zeisberger</span></td>
 </tr>
 <tr>
 <td>50412</td>
 <td>2</td>
 <td>10.10.2026 20:00</td>
-<td><div class="mannschaft">DJK SB München</div></td>
-<td><div class="mannschaft">SB DJK Rosenheim</div></td>
-<td>Grundschule Hermine-von-Parish</td>
-<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Maximilian Rammler</td>
+<td class="mannschaft"><div class="mannschaft">DJK SB München</div></td>
+<td class="mannschaft"><div class="mannschaft">SB DJK Rosenheim</div></td>
+<td class="halle"><div class="halle">Grundschule Hermine-von-Parish</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Maximilian Rammler</span></td>
 </tr>
 <tr>
 <td>50416</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">Regensburg Baskets</div></td>
-<td><div class="mannschaft">BG Leitershofen/Stadtbergen 2</div></td>
-<td>Sporthalle Königswiesen</td>
-<td class="schiedsrichter"><b>SR1</b> Elena Bistrian<br/><b>SR2</b> Celine Nguyen</td>
+<td class="mannschaft"><div class="mannschaft">Regensburg Baskets</div></td>
+<td class="mannschaft"><div class="mannschaft">BG Leitershofen/<wbr/>Stadtbergen 2</div></td>
+<td class="halle"><div class="halle">Sporthalle Königswiesen</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Elena Bistrian</span><br/><span class="sr-zeile"><b>SR2</b> Celine Nguyen</span></td>
 </tr>
 <tr>
 <td>50413</td>
 <td>2</td>
 <td>11.10.2026 17:30</td>
-<td><div class="mannschaft">MTV 1879 München</div></td>
-<td><div class="mannschaft">TV Traunstein</div></td>
-<td>MTV München</td>
-<td class="schiedsrichter"><b>SR1</b> Christoph Tietje<br/><b>SR2</b> Markus Wildemann</td>
+<td class="mannschaft"><div class="mannschaft">MTV 1879 München</div></td>
+<td class="mannschaft"><div class="mannschaft">TV Traunstein</div></td>
+<td class="halle"><div class="halle">MTV München</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Christoph Tietje</span><br/><span class="sr-zeile"><b>SR2</b> Markus Wildemann</span></td>
 </tr>
 </tbody>
 </table>
@@ -1721,46 +1723,46 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>40379</td>
 <td>2</td>
 <td>10.10.2026 16:00</td>
-<td><div class="mannschaft">Science City Jena 3</div></td>
-<td><div class="mannschaft">Dresden Titans 3</div></td>
-<td>meTecno court</td>
-<td class="schiedsrichter"><b>SR1</b> Ann-Christin Jakobi<br/><b>SR2</b> Leo Trost</td>
+<td class="mannschaft"><div class="mannschaft">Science City Jena 3</div></td>
+<td class="mannschaft"><div class="mannschaft">Dresden Titans 3</div></td>
+<td class="halle"><div class="halle">meTecno court</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Ann-Christin Jakobi</span><br/><span class="sr-zeile"><b>SR2</b> Leo Trost</span></td>
 </tr>
 <tr>
 <td>40382</td>
 <td>2</td>
 <td>10.10.2026 17:00</td>
-<td><div class="mannschaft">GGZ Baskets Zwickau</div></td>
-<td><div class="mannschaft">DJK Eggolsheim</div></td>
-<td>Sporthalle Mosel</td>
-<td class="schiedsrichter"><b>SR1</b> Sebastian Klinder<br/><b>SR2</b> *** ****</td>
+<td class="mannschaft"><div class="mannschaft">GGZ Baskets Zwickau</div></td>
+<td class="mannschaft"><div class="mannschaft">DJK Eggolsheim</div></td>
+<td class="halle"><div class="halle">Sporthalle Mosel</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Sebastian Klinder</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
 </tr>
 <tr>
 <td>40380</td>
 <td>2</td>
 <td>10.10.2026 18:30</td>
-<td><div class="mannschaft">Leipzig Lakers</div></td>
-<td><div class="mannschaft">Baunach Young Pikes</div></td>
-<td>SH am Dösner Weg (Halle rechts)</td>
-<td class="schiedsrichter"><b>SR1</b> Rüdiger Spalteholz<br/><b>SR2</b> Kartik Sekhar</td>
+<td class="mannschaft"><div class="mannschaft">Leipzig Lakers</div></td>
+<td class="mannschaft"><div class="mannschaft">Baunach Young Pikes</div></td>
+<td class="halle"><div class="halle">SH am Dösner Weg (Halle rechts)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Rüdiger Spalteholz</span><br/><span class="sr-zeile"><b>SR2</b> Kartik Sekhar</span></td>
 </tr>
 <tr>
 <td>40377</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">BB Akademie Bayerischer Untermain</div></td>
-<td><div class="mannschaft">TG Pfauen Würzburg</div></td>
-<td>TV Sporthalle</td>
-<td class="schiedsrichter"><b>SR1</b> Tobias Ebert<br/><b>SR2</b> Georgios Papadopoulos</td>
+<td class="mannschaft"><div class="mannschaft">BB Akademie Bayerischer Untermain</div></td>
+<td class="mannschaft"><div class="mannschaft">TG Pfauen Würzburg</div></td>
+<td class="halle"><div class="halle">TV Sporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Tobias Ebert</span><br/><span class="sr-zeile"><b>SR2</b> Georgios Papadopoulos</span></td>
 </tr>
 <tr>
 <td>40381</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
-<td><div class="mannschaft">SV Automation 61 Leipzig</div></td>
-<td><div class="mannschaft">ONLINEPRINTERS Neustadt a.d. Aisch</div></td>
-<td>SH am Dösner Weg (Halle links)</td>
-<td class="schiedsrichter"><b>SR1</b> Sebastian Klinder<br/><b>SR2</b> Philipp Kaniuth</td>
+<td class="mannschaft"><div class="mannschaft">SV Automation 61 Leipzig</div></td>
+<td class="mannschaft"><div class="mannschaft">ONLINEPRINTERS Neustadt a.d. Aisch</div></td>
+<td class="halle"><div class="halle">SH am Dösner Weg (Halle links)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Sebastian Klinder</span><br/><span class="sr-zeile"><b>SR2</b> Philipp Kaniuth</span></td>
 </tr>
 </tbody>
 </table>
