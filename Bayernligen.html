@@ -60,6 +60,9 @@ table { border-collapse:collapse; margin-bottom:6px; background:white; border-ra
         overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.06); font-size:10px; white-space:nowrap; }
 table.plan { table-layout:fixed; width:760px; max-width:100%; white-space:normal; }
 table.plan th:nth-child(2), table.plan td:nth-child(2) { white-space:nowrap; overflow-wrap:normal; }
+table.naechste td { vertical-align: top; }
+table.naechste .mannschaft { max-width: 130px; white-space: normal; overflow-wrap: anywhere; }
+table.naechste .sr-verein { display: inline-block; max-width: 150px; white-space: normal; overflow-wrap: break-word; }
 th { background:#1a3d7c; color:white; padding:2px 4px; }
 td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
 tr:nth-child(even) { background:#f0f4fa; }
@@ -180,7 +183,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bayernliga – Stand: 05.10.26 13:41:52</h1>
+<h1>Bayernliga – Stand: 05.10.26 14:14:04</h1>
 
 
 <details id='wasfindeichhier'>
@@ -591,7 +594,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -608,55 +611,55 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>10679</td>
 <td>2</td>
 <td>10.10.2026 15:00</td>
-<td>TSV Breitengüßbach 2</td>
-<td>TB 1888 Erlangen</td>
+<td><div class="mannschaft">TSV Breitengüßbach 2</div></td>
+<td><div class="mannschaft">TB 1888 Erlangen</div></td>
 <td>Hans-Jung-Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Hannes Dittrich<br/><b>SR2</b> Paul Wefelscheid</td>
+<td class="schiedsrichter"><b>SR1</b> Hannes Dittrich<br/><b>SR2</b> Paul Wefelscheid</td>
 </tr>
 <tr>
 <td>10678</td>
 <td>2</td>
 <td>10.10.2026 16:00</td>
-<td>TG 1877 Veitshöchheim 2</td>
-<td>TuSpo Heroldsberg</td>
+<td><div class="mannschaft">TG 1877 Veitshöchheim 2</div></td>
+<td><div class="mannschaft">TuSpo Heroldsberg</div></td>
 <td>Dreifachhalle Schulzentrum</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Dirk Fröhlich<br/><b>SR2</b> Jasmin Hochrein</td>
+<td class="schiedsrichter"><b>SR1</b> Dirk Fröhlich<br/><b>SR2</b> Jasmin Hochrein</td>
 </tr>
 <tr>
 <td>10676</td>
 <td>2</td>
 <td>10.10.2026 17:30</td>
-<td>CVJM Erlangen</td>
-<td>BSC Bayreuth Saas</td>
+<td><div class="mannschaft">CVJM Erlangen</div></td>
+<td><div class="mannschaft">BSC Bayreuth Saas</div></td>
 <td>Friedrich-Sponsel-Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Vincent Clifford<br/><b>SR2</b> Marlene Babl</td>
+<td class="schiedsrichter"><b>SR1</b> Vincent Clifford<br/><b>SR2</b> Marlene Babl</td>
 </tr>
 <tr>
 <td>10746</td>
 <td>13</td>
 <td>10.10.2026 19:00</td>
-<td>TB Weiden</td>
-<td>SV Oberdürrbach 1959</td>
+<td><div class="mannschaft">TB Weiden</div></td>
+<td><div class="mannschaft">SV Oberdürrbach 1959</div></td>
 <td>Mehrzweckhalle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Konstantin Roppelt<br/><b>SR2</b> *** ****</td>
+<td class="schiedsrichter"><b>SR1</b> Konstantin Roppelt<br/><b>SR2</b> *** ****</td>
 </tr>
 <tr>
 <td>10677</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
-<td>DJK Neustadt a. d. Waldnaab 2</td>
-<td>TTL Basketball Bamberg 2</td>
+<td><div class="mannschaft">DJK Neustadt a. d. Waldnaab 2</div></td>
+<td><div class="mannschaft">TTL Basketball Bamberg 2</div></td>
 <td>Gymnasium</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Rudolf Salvetr<br/><b>SR2</b> Matthias Wadenstorfer</td>
+<td class="schiedsrichter"><b>SR1</b> Rudolf Salvetr<br/><b>SR2</b> Matthias Wadenstorfer</td>
 </tr>
 <tr>
 <td>10675</td>
 <td>2</td>
 <td>11.10.2026 17:00</td>
-<td>DJK Pressath</td>
-<td>TG 48 Würzburg 2</td>
+<td><div class="mannschaft">DJK Pressath</div></td>
+<td><div class="mannschaft">TG 48 Würzburg 2</div></td>
 <td>Schulturnhalle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Matthias Wolf<br/><b>SR2</b> Laura Treml</td>
+<td class="schiedsrichter"><b>SR1</b> Matthias Wolf<br/><b>SR2</b> Laura Treml</td>
 </tr>
 </tbody>
 </table>
@@ -858,7 +861,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -875,55 +878,55 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>20586</td>
 <td>2</td>
 <td>10.10.2026 16:00</td>
-<td>Dukes Dingolfing</td>
-<td>TSV Jahn Freising</td>
+<td><div class="mannschaft">Dukes Dingolfing</div></td>
+<td><div class="mannschaft">TSV Jahn Freising</div></td>
 <td>Dreifachturnhalle Höll-Ost</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Andreas Köhler<br/><b>SR2</b> Analena Wilhelm</td>
+<td class="schiedsrichter"><b>SR1</b> Andreas Köhler<br/><b>SR2</b> Analena Wilhelm</td>
 </tr>
 <tr>
 <td>20585</td>
 <td>2</td>
 <td>10.10.2026 19:30</td>
-<td>Nürnberger Basketball Club</td>
-<td>Fibalon Baskets Neumarkt</td>
+<td><div class="mannschaft">Nürnberger Basketball Club</div></td>
+<td><div class="mannschaft">Fibalon Baskets Neumarkt</div></td>
 <td>Schulcampus Werderau</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Kürsat Yildiz<br/><b>SR2</b> Daniel Dobler</td>
+<td class="schiedsrichter"><b>SR1</b> Kürsat Yildiz<br/><b>SR2</b> Daniel Dobler</td>
 </tr>
 <tr>
 <td>20588</td>
 <td>2</td>
 <td>10.10.2026 20:00</td>
-<td>TG Landshut</td>
-<td>PSV Ingolstadt</td>
+<td><div class="mannschaft">TG Landshut</div></td>
+<td><div class="mannschaft">PSV Ingolstadt</div></td>
 <td>Sportzentrum West</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Fabian Wallmann<br/><b>SR2</b> Lukas Moritz</td>
+<td class="schiedsrichter"><b>SR1</b> Fabian Wallmann<br/><b>SR2</b> Lukas Moritz</td>
 </tr>
 <tr>
 <td>20589</td>
 <td>2</td>
 <td>10.10.2026 20:00</td>
-<td>TSV Milbertshofen</td>
-<td>TSV 1865 Dachau</td>
+<td><div class="mannschaft">TSV Milbertshofen</div></td>
+<td><div class="mannschaft">TSV 1865 Dachau</div></td>
 <td>Gebrüder-Apfelbeck-Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Stefan Rösel<br/><b>SR2</b> Lorenz Vogt</td>
+<td class="schiedsrichter"><b>SR1</b> Stefan Rösel<br/><b>SR2</b> Lorenz Vogt</td>
 </tr>
 <tr>
 <td>20587</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
-<td>FC Bayern München 3</td>
-<td>TSV Neuötting</td>
+<td><div class="mannschaft">FC Bayern München 3</div></td>
+<td><div class="mannschaft">TSV Neuötting</div></td>
 <td>Städt. Sporthalle Säbener Str.</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Eduard Safont Balaguer<br/><b>SR2</b> Zakhar Dziubishin</td>
+<td class="schiedsrichter"><b>SR1</b> Eduard Safont Balaguer<br/><b>SR2</b> Zakhar Dziubishin</td>
 </tr>
 <tr>
 <td>20590</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
-<td>TSV 1884 Wolnzach</td>
-<td>TV 1881 Altdorf</td>
+<td><div class="mannschaft">TSV 1884 Wolnzach</div></td>
+<td><div class="mannschaft">TV 1881 Altdorf</div></td>
 <td>Hallertau-Gymnasium</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Jure Odak<br/><b>SR2</b> Lukas Moritz</td>
+<td class="schiedsrichter"><b>SR1</b> Jure Odak<br/><b>SR2</b> Lukas Moritz</td>
 </tr>
 </tbody>
 </table>
@@ -1133,7 +1136,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -1150,55 +1153,55 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>30677</td>
 <td>2</td>
 <td>10.10.2026 16:30</td>
-<td>TSV Vaterstetten</td>
-<td>Haching Baskets 2</td>
+<td><div class="mannschaft">TSV Vaterstetten</div></td>
+<td><div class="mannschaft">Haching Baskets 2</div></td>
 <td>Realschule Baldham</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Sören Pudack<br/><b>SR2</b> Martin Kursawe<br/><b>COA</b> Julius Pichlmüller</td>
+<td class="schiedsrichter"><b>SR1</b> Sören Pudack<br/><b>SR2</b> Martin Kursawe<br/><b>COA</b> Julius Pichlmüller</td>
 </tr>
 <tr>
 <td>30676</td>
 <td>2</td>
 <td>10.10.2026 17:00</td>
-<td>DJK SB München 2</td>
-<td>TSV OH Deisenhofen 2</td>
+<td><div class="mannschaft">DJK SB München 2</div></td>
+<td><div class="mannschaft">TSV OH Deisenhofen 2</div></td>
 <td>Grundschule Hermine-von-Parish</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Shadi Malouk<br/><b>SR2</b> Raphael Kursawe</td>
+<td class="schiedsrichter"><b>SR1</b> Shadi Malouk<br/><b>SR2</b> Raphael Kursawe</td>
 </tr>
 <tr>
 <td>30675</td>
 <td>2</td>
 <td>10.10.2026 19:00</td>
-<td>DJK Kaufbeuren</td>
-<td>SV Wacker Burghausen</td>
+<td><div class="mannschaft">DJK Kaufbeuren</div></td>
+<td><div class="mannschaft">SV Wacker Burghausen</div></td>
 <td>Schraderhalle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Jonathan Mac Quarrie<br/><b>SR2</b> Moritz Moser</td>
+<td class="schiedsrichter"><b>SR1</b> Jonathan Mac Quarrie<br/><b>SR2</b> Moritz Moser</td>
 </tr>
 <tr>
 <td>30679</td>
 <td>2</td>
 <td>10.10.2026 19:15</td>
-<td>TSV Weilheim</td>
-<td>Uniqform Baskets Sonthofen</td>
+<td><div class="mannschaft">TSV Weilheim</div></td>
+<td><div class="mannschaft">Uniqform Baskets Sonthofen</div></td>
 <td>Sportzentrum</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Christopher Kollmann<br/><b>SR2</b> Malte Müller</td>
+<td class="schiedsrichter"><b>SR1</b> Christopher Kollmann<br/><b>SR2</b> Malte Müller</td>
 </tr>
 <tr>
 <td>30678</td>
 <td>2</td>
 <td>10.10.2026 19:30</td>
-<td>ESV Staffelsee</td>
-<td>TSV München Ost</td>
+<td><div class="mannschaft">ESV Staffelsee</div></td>
+<td><div class="mannschaft">TSV München Ost</div></td>
 <td>Staffelsee-Gymnasium</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Bartholomäus Daisenberger<br/><b>SR2</b> Dominik Kroiss</td>
+<td class="schiedsrichter"><b>SR1</b> Bartholomäus Daisenberger<br/><b>SR2</b> Dominik Kroiss</td>
 </tr>
 <tr>
 <td>30680</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
-<td>DJK Traunstein</td>
-<td>BC Hellenen München</td>
+<td><div class="mannschaft">DJK Traunstein</div></td>
+<td><div class="mannschaft">BC Hellenen München</div></td>
 <td>Hans-Dierl-Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Raphael Kursawe<br/><b>SR2</b> Martin Kursawe</td>
+<td class="schiedsrichter"><b>SR1</b> Raphael Kursawe<br/><b>SR2</b> Martin Kursawe</td>
 </tr>
 </tbody>
 </table>
@@ -1382,7 +1385,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -1399,28 +1402,28 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>40459</td>
 <td>2</td>
 <td>10.10.2026 17:15</td>
-<td>TG 48 Würzburg 3</td>
-<td>TS Herzogenaurach</td>
+<td><div class="mannschaft">TG 48 Würzburg 3</div></td>
+<td><div class="mannschaft">TS Herzogenaurach</div></td>
 <td>Sportzentrum Feggrube</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Marco Pflaum<br/><b>SR2</b> Tim Eichelsdörfer</td>
+<td class="schiedsrichter"><b>SR1</b> Marco Pflaum<br/><b>SR2</b> Tim Eichelsdörfer</td>
 </tr>
 <tr>
 <td>40458</td>
 <td>2</td>
 <td>10.10.2026 17:30</td>
-<td>DJK Neustadt a. d. Waldnaab</td>
-<td>ONLINEPRINTERS Neustadt a.d. Aisch</td>
+<td><div class="mannschaft">DJK Neustadt a. d. Waldnaab</div></td>
+<td><div class="mannschaft">ONLINEPRINTERS Neustadt a.d. Aisch</div></td>
 <td>Gymnasium</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Sebastian Zierl<br/><b>SR2</b> Laura Treml</td>
+<td class="schiedsrichter"><b>SR1</b> Sebastian Zierl<br/><b>SR2</b> Laura Treml</td>
 </tr>
 <tr>
 <td>40456</td>
 <td>2</td>
 <td>11.10.2026 12:30</td>
-<td>Post SV Nürnberg 2</td>
-<td>SC Kemmern 1930</td>
+<td><div class="mannschaft">Post SV Nürnberg 2</div></td>
+<td><div class="mannschaft">SC Kemmern 1930</div></td>
 <td>Paul-Moor-Schule</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Marlene Babl<br/><b>SR2</b> Gordon Collie</td>
+<td class="schiedsrichter"><b>SR1</b> Marlene Babl<br/><b>SR2</b> Gordon Collie</td>
 </tr>
 </tbody>
 </table>
@@ -1588,7 +1591,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -1605,46 +1608,46 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>50456</td>
 <td>2</td>
 <td>10.10.2026 17:45</td>
-<td>TSV Etting-Ingolstadt</td>
-<td>TSV 1880 Wasserburg 2</td>
+<td><div class="mannschaft">TSV Etting-Ingolstadt</div></td>
+<td><div class="mannschaft">TSV 1880 Wasserburg 2</div></td>
 <td>Ballspielhalle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Andrey Gattsouk<br/><b>SR2</b> Richard Fieber</td>
+<td class="schiedsrichter"><b>SR1</b> Andrey Gattsouk<br/><b>SR2</b> Richard Fieber</td>
 </tr>
 <tr>
 <td>50457</td>
 <td>2</td>
 <td>10.10.2026 19:00</td>
-<td>TSV 1861 Nördlingen</td>
-<td>Haching Baskets</td>
+<td><div class="mannschaft">TSV 1861 Nördlingen</div></td>
+<td><div class="mannschaft">Haching Baskets</div></td>
 <td>Mehrzweckhalle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Kübra Simsek<br/><b>SR2</b> Emre Dede</td>
+<td class="schiedsrichter"><b>SR1</b> Kübra Simsek<br/><b>SR2</b> Emre Dede</td>
 </tr>
 <tr>
 <td>50460</td>
 <td>2</td>
 <td>10.10.2026 19:30</td>
-<td>TSV Schwaben Augsburg</td>
-<td>MTV 1879 München 2</td>
+<td><div class="mannschaft">TSV Schwaben Augsburg</div></td>
+<td><div class="mannschaft">MTV 1879 München 2</div></td>
 <td>Berufsschule VI</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Andreas Kainzinger<br/><b>SR2</b> Leo Geese</td>
+<td class="schiedsrichter"><b>SR1</b> Andreas Kainzinger<br/><b>SR2</b> Leo Geese</td>
 </tr>
 <tr>
 <td>50459</td>
 <td>2</td>
 <td>10.10.2026 20:00</td>
-<td>BC Hellenen München</td>
-<td>DJK Landsberg</td>
+<td><div class="mannschaft">BC Hellenen München</div></td>
+<td><div class="mannschaft">DJK Landsberg</div></td>
 <td>Adolf-Weber-Gymnasium</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Amir Karadzic<br/><b>SR2</b> Kristijan Wirnsberger</td>
+<td class="schiedsrichter"><b>SR1</b> Amir Karadzic<br/><b>SR2</b> Kristijan Wirnsberger</td>
 </tr>
 <tr>
 <td>50458</td>
 <td>2</td>
 <td>11.10.2026 14:00</td>
-<td>TV 1847 Augsburg 2</td>
-<td>TS Jahn München 2</td>
+<td><div class="mannschaft">TV 1847 Augsburg 2</div></td>
+<td><div class="mannschaft">TS Jahn München 2</div></td>
 <td>TVA Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Leo Geese<br/><b>SR2</b> Kübra Simsek</td>
+<td class="schiedsrichter"><b>SR1</b> Leo Geese<br/><b>SR2</b> Kübra Simsek</td>
 </tr>
 </tbody>
 </table>
