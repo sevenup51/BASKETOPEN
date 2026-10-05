@@ -38,6 +38,7 @@ details { margin-bottom:3px; }
 .summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
+#live-refresh { margin-right: 10px; font-weight: bold; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
@@ -123,18 +124,22 @@ function stelleBloeckeHer(){
   else document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = false;
 }
-function livescoreOeffnen(dreiTage){
-  if(dreiTage) document.body.classList.add("zeige-drei-tage");
-  else document.body.classList.remove("zeige-drei-tage");
+function openLivescoreDrei(){
+  document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")){
-      d.removeAttribute("open");
-    } else if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
-      d.setAttribute("open", "");
-    } else {
-      d.removeAttribute("open");
-    }
+    if(d.classList.contains("live-drei") || d.classList.contains("live-drei-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
+  });
+  bloeckeWerdenHergestellt = false;
+  speichereBloecke();
+}
+function openLivescoreHeute(){
+  document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details").forEach(function(d){
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
@@ -149,19 +154,6 @@ function openAll(){
 function closeAll(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
-  speichereBloecke();
-}
-function openLivescoreDrei(){
-  livescoreOeffnen(true);
-}
-function openLivescoreHeute(){
-  document.body.classList.remove("zeige-drei-tage");
-  bloeckeWerdenHergestellt = true;
-  document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
-    else d.removeAttribute("open");
-  });
-  bloeckeWerdenHergestellt = false;
   speichereBloecke();
 }
 document.addEventListener("DOMContentLoaded", function(){
@@ -188,11 +180,11 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bayernliga – Stand: 04.10.26 18:54:59</h1>
+<h1>Bayernliga – Stand: 05.10.26 07:21:30</h1>
 
 
 <details id='wasfindeichhier'>
-<summary><b>Was finde ich hier - Stand 02.10.26 13:05</b> (ausklappbar)</summary>
+<summary><b>Was finde ich hier - Stand 04.10.26 21:49</b> (ausklappbar)</summary>
 <div class='intro-body'>
 
 <p>Übersicht über die Ligen von <b>Bayernliga</b>.</p>
@@ -357,6 +349,35 @@ Bei der easyCredit BBL steht in der Spalte nr der Ergebnisse ein Link auf die Yo
 wenn Dyn den Film schon hochgeladen hat.<br>
 Heutige und kommende BBL-Spiele bleiben ohne Link, die liegen im Bezahlfernsehen.<br>
 Ein bereits gefundener Link wird nicht erneut gesucht.
+
+<br><br>
+
+<b>04.10.26</b><br>
+Auf Bundesligen stehen neben Alle schließen die Knöpfe livescore_3days<br>
+und livescore_heute. livescore_heute ist weiß auf grün.<br>
+livescore_heute öffnet den Block Live und schließt die übrigen Blöcke.<br>
+Unter Live steht jede Liga mit ihrer Liga-ID. Darunter nur die grünen,<br>
+also laufenden Spiele von heute.<br>
+Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
+Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
+Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
+Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
+livescore_3days öffnet den Block Spiele von gestern, heute und morgen<br>
+und schließt Live. Dort stehen die gespielten und die anstehenden Spiele.<br>
+Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
+Boxscore bei der BBL: pdf, wenn die PDF-Datei da ist, sonst html.<br>
+Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht.<br>
+fehlt ohne Link, wenn es nichts gibt. Bei DBBL, ProA und ProB steht html,<br>
+mit demselben Haken.<br>
+Video bei der BBL führt zum Kurzbericht, sobald Dyn den Film hat.<br>
+Heutige und kommende BBL-Spiele haben diesen Link nicht.<br>
+Bei den nächsten BBL-Spielen steht dyn-Live mit Link, sonst siehe dyn.<br>
+Bei der DBBL führt Video beim Ergebnis zum Re-Live.<br>
+Bei den nächsten Spielen steht Live, sonst Link fehlt.<br>
+Link fehlt wird bei jedem Lauf neu geprüft.<br>
+Bei ProA steht Pay, solange der Stream kostenpflichtig ist, sonst Video.<br>
+Der Link bleibt derselbe. Ohne Link steht Link fehlt.<br>
+Bei ProB steht Video, wenn ein Link da ist.
 </p>
 
 </div>
@@ -375,7 +396,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bayernliga Herren  Nord (ByLHN) (Senioren; Liganr.: 20001) (Liga 52530)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52530.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52530.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:12)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52530.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52530.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:22)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -395,7 +416,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>10674</td>
 <td>1</td>
 <td>04.10.2026 17:00</td>
@@ -403,7 +424,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TSV Breitengüßbach 2</td>
 <td>64 : 90</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>10672</td>
 <td>1</td>
 <td>04.10.2026 15:45</td>
@@ -411,7 +432,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>CVJM Erlangen</td>
 <td>80 : 100</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>10671</td>
 <td>1</td>
 <td>04.10.2026 15:00</td>
@@ -419,7 +440,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>DJK Neustadt a. d. Waldnaab 2</td>
 <td>80 : 71</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>10670</td>
 <td>1</td>
 <td>04.10.2026 12:00</td>
@@ -582,38 +603,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>10670</td>
-<td>1</td>
-<td>04.10.2026 12:00</td>
-<td>TTL Basketball Bamberg 2</td>
-<td>TG 1877 Veitshöchheim 2</td>
-<td>Graf-Stauffenberg-Schule</td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>10671</td>
-<td>1</td>
-<td>04.10.2026 15:00</td>
-<td>BSC Bayreuth Saas</td>
-<td>DJK Neustadt a. d. Waldnaab 2</td>
-<td>Sportzentrum</td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>10672</td>
-<td>1</td>
-<td>04.10.2026 15:45</td>
-<td>TG 48 Würzburg 2</td>
-<td>CVJM Erlangen</td>
-<td>Heuchelhof-Halle</td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>10674</td>
-<td>1</td>
-<td>04.10.2026 17:00</td>
-<td>TuSpo Heroldsberg</td>
-<td>TSV Breitengüßbach 2</td>
-<td>Gründlachhalle</td>
-</tr>
 <tr>
 <td>10679</td>
 <td>2</td>
@@ -675,7 +664,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bayernliga Herren Mitte (ByLHM) (Senioren; Liganr.: 20002) (Liga 52531)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:12)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:22)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -695,7 +684,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
+<td>20583</td>
+<td>1</td>
+<td>04.10.2026 17:00</td>
+<td>TV 1881 Altdorf</td>
+<td>Nürnberger Basketball Club</td>
+<td>56 : 103</td>
+</tr>
+<tr>
 <td>20581</td>
 <td>1</td>
 <td>04.10.2026 15:30</td>
@@ -726,22 +723,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>PSV Ingolstadt</td>
 <td>TSV Milbertshofen</td>
 <td>82 : 70</td>
-</tr>
-<tr>
-<td>20630</td>
-<td>9</td>
-<td>26.09.2026 20:00</td>
-<td>TG Landshut</td>
-<td>TV 1881 Altdorf</td>
-<td>119 : 64</td>
-</tr>
-<tr>
-<td>20612</td>
-<td>6</td>
-<td>26.09.2026 17:30</td>
-<td>Fibalon Baskets Neumarkt</td>
-<td>TSV Jahn Freising</td>
-<td>65 : 108</td>
 </tr>
 </tbody>
 </table>
@@ -779,6 +760,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>3</td>
+      <td>Nürnberger Basketball Club</td>
+      <td>1</td>
+      <td>1/0</td>
+      <td>2</td>
+      <td>103 : 56</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <td>4</td>
       <td>PSV Ingolstadt</td>
       <td>1</td>
       <td>1/0</td>
@@ -787,22 +777,13 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>12</td>
     </tr>
     <tr>
-      <td>4</td>
+      <td>5</td>
       <td>Dukes Dingolfing</td>
       <td>1</td>
       <td>1/0</td>
       <td>2</td>
       <td>90 : 79</td>
       <td>11</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>Nürnberger Basketball Club</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
     </tr>
     <tr>
       <td>6</td>
@@ -851,21 +832,21 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>11</td>
-      <td>TV 1881 Altdorf</td>
-      <td>1</td>
-      <td>0/1</td>
-      <td>0</td>
-      <td>64 : 119</td>
-      <td>-55</td>
-    </tr>
-    <tr>
-      <td>12</td>
       <td>Fibalon Baskets Neumarkt</td>
       <td>2</td>
       <td>0/2</td>
       <td>0</td>
       <td>144 : 198</td>
       <td>-54</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>TV 1881 Altdorf</td>
+      <td>2</td>
+      <td>0/2</td>
+      <td>0</td>
+      <td>120 : 222</td>
+      <td>-102</td>
     </tr>
   </tbody>
 </table>
@@ -882,22 +863,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>20581</td>
-<td>1</td>
-<td>04.10.2026 15:30</td>
-<td>TSV Jahn Freising</td>
-<td>FC Bayern München 3</td>
-<td>Steinpark-Halle</td>
-</tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>20583</td>
-<td>1</td>
-<td>04.10.2026 17:00</td>
-<td>TV 1881 Altdorf</td>
-<td>Nürnberger Basketball Club</td>
-<td>Klaus Wolfermann Halle</td>
-</tr>
 <tr>
 <td>20586</td>
 <td>2</td>
@@ -959,7 +924,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bayernliga Herren Süd (ByLHS) (Senioren; Liganr.: 20006) (Liga 52532)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52532.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52532.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:12)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52532.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52532.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:23)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -979,7 +944,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
+<td>30740</td>
+<td>12</td>
+<td>04.10.2026 19:30</td>
+<td>TSV München Ost</td>
+<td>TSV Weilheim</td>
+<td>90 : 63</td>
+</tr>
+<tr>
 <td>30671</td>
 <td>1</td>
 <td>04.10.2026 17:00</td>
@@ -1037,6 +1010,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
   <tbody>
     <tr>
       <td>1</td>
+      <td>TSV München Ost</td>
+      <td>1</td>
+      <td>1/0</td>
+      <td>2</td>
+      <td>90 : 63</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>2</td>
       <td>TSV Vaterstetten</td>
       <td>1</td>
       <td>1/0</td>
@@ -1045,7 +1027,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>27</td>
     </tr>
     <tr>
-      <td>2</td>
+      <td>3</td>
       <td>BC Hellenen München</td>
       <td>1</td>
       <td>1/0</td>
@@ -1054,7 +1036,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>18</td>
     </tr>
     <tr>
-      <td>3</td>
+      <td>4</td>
       <td>Haching Baskets 2</td>
       <td>1</td>
       <td>1/0</td>
@@ -1063,7 +1045,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>17</td>
     </tr>
     <tr>
-      <td>4</td>
+      <td>5</td>
       <td>Uniqform Baskets Sonthofen</td>
       <td>1</td>
       <td>1/0</td>
@@ -1072,7 +1054,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>15</td>
     </tr>
     <tr>
-      <td>5</td>
+      <td>6</td>
       <td>DJK SB München 2</td>
       <td>1</td>
       <td>1/0</td>
@@ -1081,25 +1063,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>11</td>
     </tr>
     <tr>
-      <td>6</td>
-      <td>TSV München Ost</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
       <td>7</td>
-      <td>TSV Weilheim</td>
-      <td>0</td>
-      <td>0/0</td>
-      <td>0</td>
-      <td>0 : 0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>8</td>
       <td>SV Wacker Burghausen</td>
       <td>1</td>
       <td>0/1</td>
@@ -1108,7 +1072,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>-11</td>
     </tr>
     <tr>
-      <td>9</td>
+      <td>8</td>
       <td>DJK Traunstein</td>
       <td>1</td>
       <td>0/1</td>
@@ -1117,7 +1081,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>-15</td>
     </tr>
     <tr>
-      <td>10</td>
+      <td>9</td>
       <td>ESV Staffelsee</td>
       <td>1</td>
       <td>0/1</td>
@@ -1126,7 +1090,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>-17</td>
     </tr>
     <tr>
-      <td>11</td>
+      <td>10</td>
       <td>DJK Kaufbeuren</td>
       <td>1</td>
       <td>0/1</td>
@@ -1135,12 +1099,21 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>-18</td>
     </tr>
     <tr>
-      <td>12</td>
+      <td>11</td>
       <td>TSV OH Deisenhofen 2</td>
       <td>1</td>
       <td>0/1</td>
       <td>0</td>
       <td>70 : 97</td>
+      <td>-27</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>TSV Weilheim</td>
+      <td>1</td>
+      <td>0/1</td>
+      <td>0</td>
+      <td>63 : 90</td>
       <td>-27</td>
     </tr>
   </tbody>
@@ -1158,22 +1131,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>30671</td>
-<td>1</td>
-<td>04.10.2026 17:00</td>
-<td>TSV OH Deisenhofen 2</td>
-<td>TSV Vaterstetten</td>
-<td>Kyberghalle</td>
-</tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>30740</td>
-<td>12</td>
-<td>04.10.2026 19:30</td>
-<td>TSV München Ost</td>
-<td>TSV Weilheim</td>
-<td>Ost-Dome 1</td>
-</tr>
 <tr>
 <td>30677</td>
 <td>2</td>
@@ -1235,7 +1192,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bayernliga Nord Damen (ByLND) (Senioren; Liganr.: 20004) (Liga 52533)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52533.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52533.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:12)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52533.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52533.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:23)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1255,7 +1212,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>40453</td>
 <td>1</td>
 <td>04.10.2026 11:00</td>
@@ -1416,14 +1373,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>40453</td>
-<td>1</td>
-<td>04.10.2026 11:00</td>
-<td>SC Kemmern 1930</td>
-<td>TV 48 Schwabach</td>
-<td>Hans-Jung-Halle</td>
-</tr>
 <tr>
 <td>40459</td>
 <td>2</td>
@@ -1461,7 +1410,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Bayernliga Süd Damen (ByLSD) (Senioren; Liganr.: 20005) (Liga 52534)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:13)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:24)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1481,7 +1430,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>50453</td>
 <td>1</td>
 <td>04.10.2026 13:30</td>
@@ -1626,14 +1575,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>50453</td>
-<td>1</td>
-<td>04.10.2026 13:30</td>
-<td>TSV 1880 Wasserburg 2</td>
-<td>TSV 1861 Nördlingen</td>
-<td>Badria</td>
-</tr>
 <tr>
 <td>50456</td>
 <td>2</td>
