@@ -60,6 +60,9 @@ table { border-collapse:collapse; margin-bottom:6px; background:white; border-ra
         overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.06); font-size:10px; white-space:nowrap; }
 table.plan { table-layout:fixed; width:760px; max-width:100%; white-space:normal; }
 table.plan th:nth-child(2), table.plan td:nth-child(2) { white-space:nowrap; overflow-wrap:normal; }
+table.naechste td { vertical-align: top; }
+table.naechste .mannschaft { max-width: 130px; white-space: normal; overflow-wrap: anywhere; }
+table.naechste .sr-verein { display: inline-block; max-width: 150px; white-space: normal; overflow-wrap: break-word; }
 th { background:#1a3d7c; color:white; padding:2px 4px; }
 td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
 tr:nth-child(even) { background:#f0f4fa; }
@@ -180,7 +183,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Nord – Stand: 05.10.26 13:40:13</h1>
+<h1>Regionalliga Nord – Stand: 05.10.26 14:12:46</h1>
 
 
 <details id='wasfindeichhier'>
@@ -651,7 +654,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -668,73 +671,73 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>1025</td>
 <td>4</td>
 <td>10.10.2026 18:00</td>
-<td>TSG Westerstede 2</td>
-<td>Berlin Dreams DBV Charlottenburg</td>
+<td><div class="mannschaft">TSG Westerstede 2</div></td>
+<td><div class="mannschaft">Berlin Dreams DBV Charlottenburg</div></td>
 <td>Hössensporthalle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Shoun Schröder<br/><b>SR2</b> Noah Scherpenbach</td>
+<td class="schiedsrichter"><b>SR1</b> Shoun Schröder<br/><b>SR2</b> Noah Scherpenbach</td>
 </tr>
 <tr>
 <td>1027</td>
 <td>4</td>
 <td>10.10.2026 18:00</td>
-<td>TSG Bergedorf Stargazers</td>
-<td>TuS ADEMAX Red Devils Bramsche</td>
+<td><div class="mannschaft">TSG Bergedorf Stargazers</div></td>
+<td><div class="mannschaft">TuS ADEMAX Red Devils Bramsche</div></td>
 <td>Sporthalle Fährbuernfleet</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Maximilian Rinke<br/><b>SR2</b> Maik Czubera<br/><b>COA</b> Stephen Alan Gilbert</td>
+<td class="schiedsrichter"><b>SR1</b> Maximilian Rinke<br/><b>SR2</b> Maik Czubera<br/><b>COA</b> Stephen Alan Gilbert</td>
 </tr>
 <tr>
 <td>1029</td>
 <td>4</td>
 <td>10.10.2026 18:30</td>
-<td>MTV/BG Wolfenbüttel</td>
-<td>TuS Lichterfelde</td>
+<td><div class="mannschaft">MTV/BG Wolfenbüttel</div></td>
+<td><div class="mannschaft">TuS Lichterfelde</div></td>
 <td>Landeshuter Platz</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Lucas Bemfert<br/><b>SR2</b> Nico Merck<br/><b>COA</b> Harald Block</td>
+<td class="schiedsrichter"><b>SR1</b> Lucas Bemfert<br/><b>SR2</b> Nico Merck<br/><b>COA</b> Harald Block</td>
 </tr>
 <tr>
 <td>1028</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
-<td>BG Zehlendorf</td>
-<td>Eisbären Bremerhaven 2</td>
+<td><div class="mannschaft">BG Zehlendorf</div></td>
+<td><div class="mannschaft">Eisbären Bremerhaven 2</div></td>
 <td>J.-F.-Kennedy-Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Jonathan Xander<br/><b>SR2</b> Elisabeth Ziegler</td>
+<td class="schiedsrichter"><b>SR1</b> Jonathan Xander<br/><b>SR2</b> Elisabeth Ziegler</td>
 </tr>
 <tr>
 <td>1032</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
-<td>VfL Stade</td>
-<td>RSV Eintracht 1949</td>
+<td><div class="mannschaft">VfL Stade</div></td>
+<td><div class="mannschaft">RSV Eintracht 1949</div></td>
 <td>Sportcampus Stade</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Mykola Ambrosov<br/><b>SR2</b> Lorenz Falk</td>
+<td class="schiedsrichter"><b>SR1</b> Mykola Ambrosov<br/><b>SR2</b> Lorenz Falk</td>
 </tr>
 <tr>
 <td>1026</td>
 <td>4</td>
 <td>10.10.2026 20:00</td>
-<td>SC Rasta Vechta 2</td>
-<td>Oldenburger TB</td>
+<td><div class="mannschaft">SC Rasta Vechta 2</div></td>
+<td><div class="mannschaft">Oldenburger TB</div></td>
 <td>RASTA Gym</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Christoph Franke<br/><b>SR2</b> Jan-Willem van Zütphen<br/><b>COA</b> Tomas Zaklika</td>
+<td class="schiedsrichter"><b>SR1</b> Christoph Franke<br/><b>SR2</b> Jan-Willem van Zütphen<br/><b>COA</b> Tomas Zaklika</td>
 </tr>
 <tr>
 <td>1030</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>Freibeuter 2010</td>
-<td>TSV Bargteheide Bees</td>
+<td><div class="mannschaft">Freibeuter 2010</div></td>
+<td><div class="mannschaft">TSV Bargteheide Bees</div></td>
 <td>Palisadenstraße, oben</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Malte Kuon<br/><b>SR2</b> Oliver Krösch</td>
+<td class="schiedsrichter"><b>SR1</b> Malte Kuon<br/><b>SR2</b> Oliver Krösch</td>
 </tr>
 <tr>
 <td>1031</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>Humanas BASKETS Rookie Academy</td>
-<td>KK Nikola Tesla MTEL</td>
+<td><div class="mannschaft">Humanas BASKETS Rookie Academy</div></td>
+<td><div class="mannschaft">KK Nikola Tesla MTEL</div></td>
 <td>Halle der Freundschaft</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Sebastian Günther<br/><b>SR2</b> Paul Haring</td>
+<td class="schiedsrichter"><b>SR1</b> Sebastian Günther<br/><b>SR2</b> Paul Haring</td>
 </tr>
 </tbody>
 </table>
@@ -918,7 +921,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -935,37 +938,37 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>2011</td>
 <td>3</td>
 <td>10.10.2026 14:30</td>
-<td>Oldenburger TB</td>
-<td>ASC 46 Göttingen</td>
+<td><div class="mannschaft">Oldenburger TB</div></td>
+<td><div class="mannschaft">ASC 46 Göttingen</div></td>
 <td>Halle Haarenufer</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Marco Büttner<br/><b>SR2</b> Lutz Wegener</td>
+<td class="schiedsrichter"><b>SR1</b> Marco Büttner<br/><b>SR2</b> Lutz Wegener</td>
 </tr>
 <tr>
 <td>2015</td>
 <td>3</td>
 <td>10.10.2026 17:00</td>
-<td>City Basket Berlin</td>
-<td>Ahrensburger TSV</td>
+<td><div class="mannschaft">City Basket Berlin</div></td>
+<td><div class="mannschaft">Ahrensburger TSV</div></td>
 <td>Schillerstraße, oben</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Danny Püschel<br/><b>SR2</b> Fabian Ament</td>
+<td class="schiedsrichter"><b>SR1</b> Danny Püschel<br/><b>SR2</b> Fabian Ament</td>
 </tr>
 <tr>
 <td>2013</td>
 <td>3</td>
 <td>10.10.2026 18:00</td>
-<td>Hamburg Towers</td>
-<td>Rostock Seawolves</td>
+<td><div class="mannschaft">Hamburg Towers</div></td>
+<td><div class="mannschaft">Rostock Seawolves</div></td>
 <td>Stadtteilschule Willhelmsburg</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Ken Karstens<br/><b>SR2</b> Tobias Kölling</td>
+<td class="schiedsrichter"><b>SR1</b> Ken Karstens<br/><b>SR2</b> Tobias Kölling</td>
 </tr>
 <tr>
 <td>2012</td>
 <td>3</td>
 <td>11.10.2026 15:00</td>
-<td>Eintracht Braunschweig</td>
-<td>TuS Neukölln</td>
+<td><div class="mannschaft">Eintracht Braunschweig</div></td>
+<td><div class="mannschaft">TuS Neukölln</div></td>
 <td>Sporthalle Alte Waage</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Lucas Bemfert<br/><b>SR2</b> Elisabeth Ziegler</td>
+<td class="schiedsrichter"><b>SR1</b> Lucas Bemfert<br/><b>SR2</b> Elisabeth Ziegler</td>
 </tr>
 </tbody>
 </table>
@@ -1191,7 +1194,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -1208,55 +1211,55 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>3024</td>
 <td>4</td>
 <td>10.10.2026 19:15</td>
-<td>Kieler TB</td>
-<td>Bramfelder SV</td>
+<td><div class="mannschaft">Kieler TB</div></td>
+<td><div class="mannschaft">Bramfelder SV</div></td>
 <td>Reventlou Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Reza Nawroozzada<br/><b>SR2</b> Markus Reppenhagen</td>
+<td class="schiedsrichter"><b>SR1</b> Reza Nawroozzada<br/><b>SR2</b> Markus Reppenhagen</td>
 </tr>
 <tr>
 <td>3088</td>
 <td>4</td>
 <td>10.10.2026 19:15</td>
-<td>BBC Rendsburg Twisters</td>
-<td>SC Rist Wedel 2</td>
+<td><div class="mannschaft">BBC Rendsburg Twisters</div></td>
+<td><div class="mannschaft">SC Rist Wedel 2</div></td>
 <td>Herdergymnasium</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Ulf Gollnick<br/><b>SR2</b> Milovan Lalic</td>
+<td class="schiedsrichter"><b>SR1</b> Ulf Gollnick<br/><b>SR2</b> Milovan Lalic</td>
 </tr>
 <tr>
 <td>3019</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>FC St. Pauli</td>
-<td>ATSV Kieser Altona Basketball</td>
+<td><div class="mannschaft">FC St. Pauli</div></td>
+<td><div class="mannschaft">ATSV Kieser Altona Basketball</div></td>
 <td>Berufliche Schule St. Pauli</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> *** ****<br/><b>SR2</b> Lasse Schäfer<br/><b>COA</b> Michael Pieper</td>
+<td class="schiedsrichter"><b>SR1</b> *** ****<br/><b>SR2</b> Lasse Schäfer<br/><b>COA</b> Michael Pieper</td>
 </tr>
 <tr>
 <td>3020</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>Lübecker TS</td>
-<td>Hamburg Towers 2</td>
+<td><div class="mannschaft">Lübecker TS</div></td>
+<td><div class="mannschaft">Hamburg Towers 2</div></td>
 <td>LT Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Tobias Kölling<br/><b>SR2</b> Jan-Willem van Zütphen</td>
+<td class="schiedsrichter"><b>SR1</b> Tobias Kölling<br/><b>SR2</b> Jan-Willem van Zütphen</td>
 </tr>
 <tr>
 <td>3021</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>TSV Reinbek</td>
-<td>Eimsbütteler TV</td>
+<td><div class="mannschaft">TSV Reinbek</div></td>
+<td><div class="mannschaft">Eimsbütteler TV</div></td>
 <td>Sachsenwald Gymnasium</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Benjamin Maier<br/><b>SR2</b> Ken Karstens</td>
+<td class="schiedsrichter"><b>SR1</b> Benjamin Maier<br/><b>SR2</b> Ken Karstens</td>
 </tr>
 <tr>
 <td>3023</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>Itzehoe Eagles 2</td>
-<td>Kieler Förde Baskets</td>
+<td><div class="mannschaft">Itzehoe Eagles 2</div></td>
+<td><div class="mannschaft">Kieler Förde Baskets</div></td>
 <td>Sophie-Scholl-Gymnasium</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Marco Büttner<br/><b>SR2</b> Feng Feng</td>
+<td class="schiedsrichter"><b>SR1</b> Marco Büttner<br/><b>SR2</b> Feng Feng</td>
 </tr>
 </tbody>
 </table>
@@ -1466,7 +1469,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -1483,55 +1486,55 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>5019</td>
 <td>4</td>
 <td>10.10.2026 16:00</td>
-<td>Tiergarten ISC 99</td>
-<td>Rostock Seawolves 3</td>
+<td><div class="mannschaft">Tiergarten ISC 99</div></td>
+<td><div class="mannschaft">Rostock Seawolves 3</div></td>
 <td>Rathenower Straße</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Daniel Zühlke<br/><b>SR2</b> Toni Luge<br/><b>COA</b> Susanne Winking</td>
+<td class="schiedsrichter"><b>SR1</b> Daniel Zühlke<br/><b>SR2</b> Toni Luge<br/><b>COA</b> Susanne Winking</td>
 </tr>
 <tr>
 <td>5024</td>
 <td>4</td>
 <td>10.10.2026 18:00</td>
-<td>USV Halle Rhinos</td>
-<td>RSV Eintracht 1949 2</td>
+<td><div class="mannschaft">USV Halle Rhinos</div></td>
+<td><div class="mannschaft">RSV Eintracht 1949 2</div></td>
 <td>Dreifelderhalle der Sportschulen Halle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Witas Kerlach<br/><b>SR2</b> Malte Maercker</td>
+<td class="schiedsrichter"><b>SR1</b> Witas Kerlach<br/><b>SR2</b> Malte Maercker</td>
 </tr>
 <tr>
 <td>5021</td>
 <td>4</td>
 <td>10.10.2026 19:00</td>
-<td>RedHawks Potsdam</td>
-<td>SV Empor Berlin</td>
+<td><div class="mannschaft">RedHawks Potsdam</div></td>
+<td><div class="mannschaft">SV Empor Berlin</div></td>
 <td>Pierre-de-Coubertin-Oberschule</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Reza Haghshenas<br/><b>SR2</b> Regina Lenz</td>
+<td class="schiedsrichter"><b>SR1</b> Reza Haghshenas<br/><b>SR2</b> Regina Lenz</td>
 </tr>
 <tr>
 <td>5022</td>
 <td>4</td>
 <td>10.10.2026 19:00</td>
-<td>KINGS&amp;QUEENS Basketball Potsdam</td>
-<td>Berliner SC</td>
+<td><div class="mannschaft">KINGS&amp;QUEENS Basketball Potsdam</div></td>
+<td><div class="mannschaft">Berliner SC</div></td>
 <td>Grundschule im Bornstedter Feld</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Jano Petrowski<br/><b>SR2</b> Jan Peter Schlund<br/><b>COA</b> Bernd Michael</td>
+<td class="schiedsrichter"><b>SR1</b> Jano Petrowski<br/><b>SR2</b> Jan Peter Schlund<br/><b>COA</b> Bernd Michael</td>
 </tr>
 <tr>
 <td>5023</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
-<td>DBV Charlottenburg 2</td>
-<td>USV Potsdam</td>
+<td><div class="mannschaft">DBV Charlottenburg 2</div></td>
+<td><div class="mannschaft">USV Potsdam</div></td>
 <td>Schillerstraße, oben</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Manuel Westermann<br/><b>SR2</b> Julian Pokorny</td>
+<td class="schiedsrichter"><b>SR1</b> Manuel Westermann<br/><b>SR2</b> Julian Pokorny</td>
 </tr>
 <tr>
 <td>5020</td>
 <td>4</td>
 <td>11.10.2026 19:00</td>
-<td>Weddinger Wiesel</td>
-<td>ALBA BERLIN Basketballteam 2</td>
+<td><div class="mannschaft">Weddinger Wiesel</div></td>
+<td><div class="mannschaft">ALBA BERLIN Basketballteam 2</div></td>
 <td>Herbert-Hoover-Oberschule</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Salam Al Assadi<br/><b>SR2</b> Leonhard Schieck</td>
+<td class="schiedsrichter"><b>SR1</b> Salam Al Assadi<br/><b>SR2</b> Leonhard Schieck</td>
 </tr>
 </tbody>
 </table>
@@ -1741,7 +1744,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -1758,55 +1761,55 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>7019</td>
 <td>4</td>
 <td>10.10.2026 15:00</td>
-<td>TSV Quakenbrück</td>
-<td>FORTE Energie RW Cuxhaven BasCats</td>
+<td><div class="mannschaft">TSV Quakenbrück</div></td>
+<td><div class="mannschaft">FORTE Energie RW Cuxhaven BasCats</div></td>
 <td>Artland - Sporthalle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Pelle Weiß<br/><b>SR2</b> Paulina Kümper<br/><b>COA</b> Matthias Oehlmann</td>
+<td class="schiedsrichter"><b>SR1</b> Pelle Weiß<br/><b>SR2</b> Paulina Kümper<br/><b>COA</b> Matthias Oehlmann</td>
 </tr>
 <tr>
 <td>7024</td>
 <td>4</td>
 <td>10.10.2026 15:00</td>
-<td>Pro Basketball Göttingen</td>
-<td>BTS Neustadt</td>
+<td><div class="mannschaft">Pro Basketball Göttingen</div></td>
+<td><div class="mannschaft">BTS Neustadt</div></td>
 <td>Sartorius Basketball Lab</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Emil Staude<br/><b>SR2</b> Jan-Hendrik Böttcher</td>
+<td class="schiedsrichter"><b>SR1</b> Emil Staude<br/><b>SR2</b> Jan-Hendrik Böttcher</td>
 </tr>
 <tr>
 <td>7020</td>
 <td>4</td>
 <td>10.10.2026 17:00</td>
-<td>SC Rasta Vechta 3</td>
-<td>CVJM Hannover</td>
+<td><div class="mannschaft">SC Rasta Vechta 3</div></td>
+<td><div class="mannschaft">CVJM Hannover</div></td>
 <td>RASTA Gym</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Jan-Martin Hinck<br/><b>SR2</b> Fabian Strate</td>
+<td class="schiedsrichter"><b>SR1</b> Jan-Martin Hinck<br/><b>SR2</b> Fabian Strate</td>
 </tr>
 <tr>
 <td>7021</td>
 <td>4</td>
 <td>10.10.2026 17:00</td>
-<td>Bremerhaven United</td>
-<td>TuS Bothfeld</td>
+<td><div class="mannschaft">Bremerhaven United</div></td>
+<td><div class="mannschaft">TuS Bothfeld</div></td>
 <td>Sporthalle Gaußschulen</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Talha Dis<br/><b>SR2</b> Myrko Sternbeck</td>
+<td class="schiedsrichter"><b>SR1</b> Talha Dis<br/><b>SR2</b> Myrko Sternbeck</td>
 </tr>
 <tr>
 <td>7022</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>Oldenburger TB 2</td>
-<td>BG 74 Göttingen</td>
+<td><div class="mannschaft">Oldenburger TB 2</div></td>
+<td><div class="mannschaft">BG 74 Göttingen</div></td>
 <td>Halle Haarenufer</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Lars Tiedemann<br/><b>SR2</b> Kianusch Pour Rahimi<br/><b>COA</b> Tomas Zaklika</td>
+<td class="schiedsrichter"><b>SR1</b> Lars Tiedemann<br/><b>SR2</b> Kianusch Pour Rahimi<br/><b>COA</b> Tomas Zaklika</td>
 </tr>
 <tr>
 <td>7023</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>Kleene Trockenbau Baskets Fortuna Logabirum</td>
-<td>ASC 46 Göttingen</td>
+<td><div class="mannschaft">Kleene Trockenbau Baskets Fortuna Logabirum</div></td>
+<td><div class="mannschaft">ASC 46 Göttingen</div></td>
 <td>Berufsbildende Schule</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Michael Hanke<br/><b>SR2</b> Lutz Wegener</td>
+<td class="schiedsrichter"><b>SR1</b> Michael Hanke<br/><b>SR2</b> Lutz Wegener</td>
 </tr>
 </tbody>
 </table>
@@ -2016,7 +2019,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -2033,55 +2036,55 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>7019</td>
 <td>4</td>
 <td>10.10.2026 15:00</td>
-<td>TSV Quakenbrück</td>
-<td>FORTE Energie RW Cuxhaven BasCats</td>
+<td><div class="mannschaft">TSV Quakenbrück</div></td>
+<td><div class="mannschaft">FORTE Energie RW Cuxhaven BasCats</div></td>
 <td>Artland - Sporthalle</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Pelle Weiß<br/><b>SR2</b> Paulina Kümper<br/><b>COA</b> Matthias Oehlmann</td>
+<td class="schiedsrichter"><b>SR1</b> Pelle Weiß<br/><b>SR2</b> Paulina Kümper<br/><b>COA</b> Matthias Oehlmann</td>
 </tr>
 <tr>
 <td>7024</td>
 <td>4</td>
 <td>10.10.2026 15:00</td>
-<td>Pro Basketball Göttingen</td>
-<td>BTS Neustadt</td>
+<td><div class="mannschaft">Pro Basketball Göttingen</div></td>
+<td><div class="mannschaft">BTS Neustadt</div></td>
 <td>Sartorius Basketball Lab</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Emil Staude<br/><b>SR2</b> Jan-Hendrik Böttcher</td>
+<td class="schiedsrichter"><b>SR1</b> Emil Staude<br/><b>SR2</b> Jan-Hendrik Böttcher</td>
 </tr>
 <tr>
 <td>7020</td>
 <td>4</td>
 <td>10.10.2026 17:00</td>
-<td>SC Rasta Vechta 3</td>
-<td>CVJM Hannover</td>
+<td><div class="mannschaft">SC Rasta Vechta 3</div></td>
+<td><div class="mannschaft">CVJM Hannover</div></td>
 <td>RASTA Gym</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Jan-Martin Hinck<br/><b>SR2</b> Fabian Strate</td>
+<td class="schiedsrichter"><b>SR1</b> Jan-Martin Hinck<br/><b>SR2</b> Fabian Strate</td>
 </tr>
 <tr>
 <td>7021</td>
 <td>4</td>
 <td>10.10.2026 17:00</td>
-<td>Bremerhaven United</td>
-<td>TuS Bothfeld</td>
+<td><div class="mannschaft">Bremerhaven United</div></td>
+<td><div class="mannschaft">TuS Bothfeld</div></td>
 <td>Sporthalle Gaußschulen</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Talha Dis<br/><b>SR2</b> Myrko Sternbeck</td>
+<td class="schiedsrichter"><b>SR1</b> Talha Dis<br/><b>SR2</b> Myrko Sternbeck</td>
 </tr>
 <tr>
 <td>7022</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>Oldenburger TB 2</td>
-<td>BG 74 Göttingen</td>
+<td><div class="mannschaft">Oldenburger TB 2</div></td>
+<td><div class="mannschaft">BG 74 Göttingen</div></td>
 <td>Halle Haarenufer</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Lars Tiedemann<br/><b>SR2</b> Kianusch Pour Rahimi<br/><b>COA</b> Tomas Zaklika</td>
+<td class="schiedsrichter"><b>SR1</b> Lars Tiedemann<br/><b>SR2</b> Kianusch Pour Rahimi<br/><b>COA</b> Tomas Zaklika</td>
 </tr>
 <tr>
 <td>7023</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
-<td>Kleene Trockenbau Baskets Fortuna Logabirum</td>
-<td>ASC 46 Göttingen</td>
+<td><div class="mannschaft">Kleene Trockenbau Baskets Fortuna Logabirum</div></td>
+<td><div class="mannschaft">ASC 46 Göttingen</div></td>
 <td>Berufsbildende Schule</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Michael Hanke<br/><b>SR2</b> Lutz Wegener</td>
+<td class="schiedsrichter"><b>SR1</b> Michael Hanke<br/><b>SR2</b> Lutz Wegener</td>
 </tr>
 </tbody>
 </table>
@@ -2257,7 +2260,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -2274,46 +2277,46 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>6011</td>
 <td>3</td>
 <td>10.10.2026 16:00</td>
-<td>SSV Lok Bernau</td>
-<td>BASS BERLIN</td>
+<td><div class="mannschaft">SSV Lok Bernau</div></td>
+<td><div class="mannschaft">BASS BERLIN</div></td>
 <td>Sporthalle am Wasserturm</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Paul Rode<br/><b>SR2</b> Marcus Burde</td>
+<td class="schiedsrichter"><b>SR1</b> Paul Rode<br/><b>SR2</b> Marcus Burde</td>
 </tr>
 <tr>
 <td>6014</td>
 <td>3</td>
 <td>10.10.2026 16:00</td>
-<td>KINGS&amp;QUEENS Basketball Potsdam</td>
-<td>TuS Lichterfelde 2</td>
+<td><div class="mannschaft">KINGS&amp;QUEENS Basketball Potsdam</div></td>
+<td><div class="mannschaft">TuS Lichterfelde 2</div></td>
 <td>Grundschule im Bornstedter Feld</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Ömer Emre Cetin<br/><b>SR2</b> Fatih Pinarcik</td>
+<td class="schiedsrichter"><b>SR1</b> Ömer Emre Cetin<br/><b>SR2</b> Fatih Pinarcik</td>
 </tr>
 <tr>
 <td>6012</td>
 <td>3</td>
 <td>10.10.2026 17:00</td>
-<td>Türkiyemspor Berlin</td>
-<td>Berlin Dreams DBV Charlottenburg</td>
+<td><div class="mannschaft">Türkiyemspor Berlin</div></td>
+<td><div class="mannschaft">Berlin Dreams DBV Charlottenburg</div></td>
 <td>Nostitzstraße (oben)</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Martin Helms<br/><b>SR2</b> Linus Janzen</td>
+<td class="schiedsrichter"><b>SR1</b> Martin Helms<br/><b>SR2</b> Linus Janzen</td>
 </tr>
 <tr>
 <td>6013</td>
 <td>3</td>
 <td>10.10.2026 17:30</td>
-<td>Weddinger Wiesel</td>
-<td>USC Magdeburg</td>
+<td><div class="mannschaft">Weddinger Wiesel</div></td>
+<td><div class="mannschaft">USC Magdeburg</div></td>
 <td>Herbert-Hoover-Oberschule</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Mark Ney<br/><b>SR2</b> Ebenazer Amponsim</td>
+<td class="schiedsrichter"><b>SR1</b> Mark Ney<br/><b>SR2</b> Ebenazer Amponsim</td>
 </tr>
 <tr>
 <td>6015</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
-<td>ALBA BERLIN Basketballteam 2</td>
-<td>City Basket Berlin 2</td>
+<td><div class="mannschaft">ALBA BERLIN Basketballteam 2</div></td>
+<td><div class="mannschaft">City Basket Berlin 2</div></td>
 <td>Max-Schmeling-Halle C</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR2</b> Danny Püschel</td>
+<td class="schiedsrichter"><b>SR2</b> Danny Püschel</td>
 </tr>
 </tbody>
 </table>
@@ -2456,7 +2459,7 @@ Bei ProB steht Video, wenn ein Link da ist.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
+<table border="1" class="dataframe naechste">
 <thead>
 <tr style="text-align: right;">
 <th>nr</th>
@@ -2473,37 +2476,37 @@ Bei ProB steht Video, wenn ein Link da ist.
 <td>8013</td>
 <td>3</td>
 <td>10.10.2026 18:00</td>
-<td>TV Vörden</td>
-<td>MTV/BG Wolfenbüttel</td>
+<td><div class="mannschaft">TV Vörden</div></td>
+<td><div class="mannschaft">MTV/BG Wolfenbüttel</div></td>
 <td>Grundschule Vörden</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Malte Pohl<br/><b>SR2</b> Alexander Lüdtke</td>
+<td class="schiedsrichter"><b>SR1</b> Malte Pohl<br/><b>SR2</b> Alexander Lüdtke</td>
 </tr>
 <tr>
 <td>8012</td>
 <td>3</td>
 <td>11.10.2026 12:30</td>
-<td>Eintracht Braunschweig 2</td>
-<td>TSV Quakenbrück</td>
+<td><div class="mannschaft">Eintracht Braunschweig 2</div></td>
+<td><div class="mannschaft">TSV Quakenbrück</div></td>
 <td>Sporthalle Alte Waage</td>
-<td style="vertical-align:top; white-space:normal;"></td>
+<td class="schiedsrichter"></td>
 </tr>
 <tr>
 <td>8011</td>
 <td>3</td>
 <td>11.10.2026 15:00</td>
-<td>BG '89 Rotenburg/Scheeßel 2</td>
-<td>Hanover Basketball Dragons</td>
+<td><div class="mannschaft">BG '89 Rotenburg/Scheeßel 2</div></td>
+<td><div class="mannschaft">Hanover Basketball Dragons</div></td>
 <td>Sporthalle der Eichenschule</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Peter Kühn<br/><b>SR2</b> Jan-Hendrik Böttcher</td>
+<td class="schiedsrichter"><b>SR1</b> Peter Kühn<br/><b>SR2</b> Jan-Hendrik Böttcher</td>
 </tr>
 <tr>
 <td>8014</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
-<td>Osnabrücker SC 2</td>
-<td>TK Hannover 2</td>
+<td><div class="mannschaft">Osnabrücker SC 2</div></td>
+<td><div class="mannschaft">TK Hannover 2</div></td>
 <td>OSC-Halle A</td>
-<td style="vertical-align:top; white-space:normal;"><b>SR1</b> Talha Dis<br/><b>SR2</b> Emil Staude</td>
+<td class="schiedsrichter"><b>SR1</b> Talha Dis<br/><b>SR2</b> Emil Staude</td>
 </tr>
 </tbody>
 </table>
