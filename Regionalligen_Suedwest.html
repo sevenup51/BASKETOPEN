@@ -38,6 +38,7 @@ details { margin-bottom:3px; }
 .summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
+#live-refresh { margin-right: 10px; font-weight: bold; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
@@ -123,18 +124,22 @@ function stelleBloeckeHer(){
   else document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = false;
 }
-function livescoreOeffnen(dreiTage){
-  if(dreiTage) document.body.classList.add("zeige-drei-tage");
-  else document.body.classList.remove("zeige-drei-tage");
+function openLivescoreDrei(){
+  document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")){
-      d.removeAttribute("open");
-    } else if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
-      d.setAttribute("open", "");
-    } else {
-      d.removeAttribute("open");
-    }
+    if(d.classList.contains("live-drei") || d.classList.contains("live-drei-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
+  });
+  bloeckeWerdenHergestellt = false;
+  speichereBloecke();
+}
+function openLivescoreHeute(){
+  document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details").forEach(function(d){
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
@@ -149,19 +154,6 @@ function openAll(){
 function closeAll(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
-  speichereBloecke();
-}
-function openLivescoreDrei(){
-  livescoreOeffnen(true);
-}
-function openLivescoreHeute(){
-  document.body.classList.remove("zeige-drei-tage");
-  bloeckeWerdenHergestellt = true;
-  document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
-    else d.removeAttribute("open");
-  });
-  bloeckeWerdenHergestellt = false;
   speichereBloecke();
 }
 document.addEventListener("DOMContentLoaded", function(){
@@ -188,11 +180,11 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedwest – Stand: 04.10.26 18:50:41</h1>
+<h1>Regionalliga Suedwest – Stand: 05.10.26 07:19:54</h1>
 
 
 <details id='wasfindeichhier'>
-<summary><b>Was finde ich hier - Stand 02.10.26 13:05</b> (ausklappbar)</summary>
+<summary><b>Was finde ich hier - Stand 04.10.26 21:49</b> (ausklappbar)</summary>
 <div class='intro-body'>
 
 <p>Übersicht über die Ligen von <b>Regionalliga Suedwest</b>.</p>
@@ -357,6 +349,35 @@ Bei der easyCredit BBL steht in der Spalte nr der Ergebnisse ein Link auf die Yo
 wenn Dyn den Film schon hochgeladen hat.<br>
 Heutige und kommende BBL-Spiele bleiben ohne Link, die liegen im Bezahlfernsehen.<br>
 Ein bereits gefundener Link wird nicht erneut gesucht.
+
+<br><br>
+
+<b>04.10.26</b><br>
+Auf Bundesligen stehen neben Alle schließen die Knöpfe livescore_3days<br>
+und livescore_heute. livescore_heute ist weiß auf grün.<br>
+livescore_heute öffnet den Block Live und schließt die übrigen Blöcke.<br>
+Unter Live steht jede Liga mit ihrer Liga-ID. Darunter nur die grünen,<br>
+also laufenden Spiele von heute.<br>
+Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
+Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
+Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
+Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
+livescore_3days öffnet den Block Spiele von gestern, heute und morgen<br>
+und schließt Live. Dort stehen die gespielten und die anstehenden Spiele.<br>
+Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
+Boxscore bei der BBL: pdf, wenn die PDF-Datei da ist, sonst html.<br>
+Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht.<br>
+fehlt ohne Link, wenn es nichts gibt. Bei DBBL, ProA und ProB steht html,<br>
+mit demselben Haken.<br>
+Video bei der BBL führt zum Kurzbericht, sobald Dyn den Film hat.<br>
+Heutige und kommende BBL-Spiele haben diesen Link nicht.<br>
+Bei den nächsten BBL-Spielen steht dyn-Live mit Link, sonst siehe dyn.<br>
+Bei der DBBL führt Video beim Ergebnis zum Re-Live.<br>
+Bei den nächsten Spielen steht Live, sonst Link fehlt.<br>
+Link fehlt wird bei jedem Lauf neu geprüft.<br>
+Bei ProA steht Pay, solange der Stream kostenpflichtig ist, sonst Video.<br>
+Der Link bleibt derselbe. Ohne Link steht Link fehlt.<br>
+Bei ProB steht Video, wenn ein Link da ist.
 </p>
 
 </div>
@@ -375,7 +396,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>1. Regionalliga Südwest (Senioren; Liganr.: 21018190) (Liga 53088)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53088.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53088.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53088.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53088.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:14)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -395,7 +416,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
+<td>14</td>
+<td>2</td>
+<td>04.10.2026 17:30</td>
+<td>TEAM EHINGEN URSPRING</td>
+<td>PKF Titans Stuttgart</td>
+<td>91 : 67</td>
+</tr>
+<tr>
 <td>9</td>
 <td>2</td>
 <td>04.10.2026 17:00</td>
@@ -459,46 +488,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>SV Möhringen 1887</td>
 <td>71 : 59</td>
 </tr>
-<tr>
-<td>4</td>
-<td>1</td>
-<td>26.09.2026 19:30</td>
-<td>Lou's Foodtruck MTV Stuttgart</td>
-<td>VfL Bensheim</td>
-<td>82 : 62</td>
-</tr>
-<tr>
-<td>6</td>
-<td>1</td>
-<td>26.09.2026 19:00</td>
-<td>PKF Titans Stuttgart</td>
-<td>io College Wizards</td>
-<td>59 : 54</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>26.09.2026 18:30</td>
-<td>ACT Kassel</td>
-<td>TEAM EHINGEN URSPRING</td>
-<td>60 : 76</td>
-</tr>
-<tr>
-<td>3</td>
-<td>1</td>
-<td>26.09.2026 18:30</td>
-<td>ROTH Energie Gießen Pointers</td>
-<td>Artemis Sunkings Saarlouis</td>
-<td>92 : 87</td>
-</tr>
-<tr>
-<td>5</td>
-<td>1</td>
-<td>26.09.2026 18:00</td>
-<td>Black Forest Panthers</td>
-<td>Lich Basketball</td>
-<td>70 : 65</td>
-</tr>
 </tbody>
 </table>
 <h3>Tabelle</h3>
@@ -517,6 +506,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
   <tbody>
     <tr>
       <td>1</td>
+      <td>TEAM EHINGEN URSPRING</td>
+      <td>2</td>
+      <td>2/0</td>
+      <td>4</td>
+      <td>167 : 127</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>2</td>
       <td>ROTH Energie Gießen Pointers</td>
       <td>2</td>
       <td>2/0</td>
@@ -525,7 +523,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>19</td>
     </tr>
     <tr>
-      <td>2</td>
+      <td>3</td>
       <td>Black Forest Panthers</td>
       <td>2</td>
       <td>2/0</td>
@@ -534,31 +532,22 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>7</td>
     </tr>
     <tr>
-      <td>3</td>
-      <td>TEAM EHINGEN URSPRING</td>
-      <td>1</td>
-      <td>1/0</td>
-      <td>2</td>
-      <td>76 : 60</td>
-      <td>16</td>
-    </tr>
-    <tr>
       <td>4</td>
-      <td>PKF Titans Stuttgart</td>
-      <td>1</td>
-      <td>1/0</td>
-      <td>2</td>
-      <td>59 : 54</td>
-      <td>5</td>
-    </tr>
-    <tr>
-      <td>5</td>
       <td>Artemis Sunkings Saarlouis</td>
       <td>2</td>
       <td>1/1</td>
       <td>2</td>
       <td>178 : 150</td>
       <td>28</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>PKF Titans Stuttgart</td>
+      <td>2</td>
+      <td>1/1</td>
+      <td>2</td>
+      <td>126 : 145</td>
+      <td>-19</td>
     </tr>
     <tr>
       <td>6</td>
@@ -589,15 +578,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>9</td>
-      <td>io College Wizards</td>
-      <td>2</td>
-      <td>1/1</td>
-      <td>2</td>
-      <td>132 : 135</td>
-      <td>-3</td>
-    </tr>
-    <tr>
-      <td>10</td>
       <td>ACT Kassel</td>
       <td>2</td>
       <td>1/1</td>
@@ -606,13 +586,22 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>-12</td>
     </tr>
     <tr>
-      <td>11</td>
+      <td>10</td>
       <td>VfL Kirchheim Knights</td>
       <td>2</td>
       <td>1/1</td>
       <td>2</td>
       <td>150 : 143</td>
       <td>7</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>io College Wizards</td>
+      <td>2</td>
+      <td>1/1</td>
+      <td>2</td>
+      <td>132 : 135</td>
+      <td>-3</td>
     </tr>
     <tr>
       <td>12</td>
@@ -656,22 +645,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>9</td>
-<td>2</td>
-<td>04.10.2026 17:00</td>
-<td>Black Forest Panthers</td>
-<td>Lou's Foodtruck MTV Stuttgart</td>
-<td>Deutenberghalle</td>
-</tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>14</td>
-<td>2</td>
-<td>04.10.2026 17:30</td>
-<td>TEAM EHINGEN URSPRING</td>
-<td>PKF Titans Stuttgart</td>
-<td>Johann-Vanotti-Gymnasium</td>
-</tr>
 <tr>
 <td>15</td>
 <td>3</td>
@@ -741,7 +714,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Regionalliga Damen Nord (Senioren Nord; Liganr.: 602) (Liga 52860)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52860.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52860.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52860.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52860.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:15)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -761,7 +734,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
+<td>23</td>
+<td>4</td>
+<td>04.10.2026 18:00</td>
+<td>BC Marburg 2</td>
+<td>DJK Nieder-Olm</td>
+<td>101 : 50</td>
+</tr>
+<tr>
 <td>21</td>
 <td>4</td>
 <td>04.10.2026 16:00</td>
@@ -808,30 +789,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>FTG Frankfurt</td>
 <td>TSV Krofdorf-Gleiberg</td>
 <td>45 : 65</td>
-</tr>
-<tr>
-<td>18</td>
-<td>3</td>
-<td>26.09.2026 20:00</td>
-<td>Eintracht Frankfurt</td>
-<td>ASC Theresianum Mainz 2</td>
-<td>62 : 51</td>
-</tr>
-<tr>
-<td>13</td>
-<td>3</td>
-<td>26.09.2026 19:30</td>
-<td>ATSV Saarbrücken</td>
-<td>BC Marburg 2</td>
-<td>43 : 86</td>
-</tr>
-<tr>
-<td>15</td>
-<td>3</td>
-<td>26.09.2026 17:30</td>
-<td>MJC Trier</td>
-<td>HTG Bad Homburg 2</td>
-<td>83 : 60</td>
 </tr>
 </tbody>
 </table>
@@ -887,6 +844,15 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>5</td>
+      <td>BC Marburg 2</td>
+      <td>4</td>
+      <td>2/2</td>
+      <td>4</td>
+      <td>291 : 199</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <td>6</td>
       <td>Eintracht Frankfurt</td>
       <td>4</td>
       <td>2/2</td>
@@ -895,22 +861,13 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>-25</td>
     </tr>
     <tr>
-      <td>6</td>
+      <td>7</td>
       <td>TV Hofheim</td>
       <td>2</td>
       <td>1/1</td>
       <td>2</td>
       <td>131 : 123</td>
       <td>8</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>BC Marburg 2</td>
-      <td>3</td>
-      <td>1/2</td>
-      <td>2</td>
-      <td>190 : 149</td>
-      <td>41</td>
     </tr>
     <tr>
       <td>8</td>
@@ -932,21 +889,21 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>10</td>
-      <td>DJK Nieder-Olm</td>
-      <td>2</td>
-      <td>0/2</td>
-      <td>0</td>
-      <td>90 : 146</td>
-      <td>-56</td>
-    </tr>
-    <tr>
-      <td>11</td>
       <td>ATSV Saarbrücken</td>
       <td>3</td>
       <td>0/3</td>
       <td>0</td>
       <td>164 : 231</td>
       <td>-67</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>DJK Nieder-Olm</td>
+      <td>3</td>
+      <td>0/3</td>
+      <td>0</td>
+      <td>140 : 247</td>
+      <td>-107</td>
     </tr>
     <tr>
       <td>12</td>
@@ -972,30 +929,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>21</td>
-<td>4</td>
-<td>04.10.2026 16:00</td>
-<td>ASC Theresianum Mainz 2</td>
-<td>FTG Frankfurt</td>
-<td>Theresianum Mainz</td>
-</tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>19</td>
-<td>4</td>
-<td>04.10.2026 18:00</td>
-<td>HTG Bad Homburg 2</td>
-<td>SG Saarlouis-Roden/Dillingen</td>
-<td>TFP Sportpark</td>
-</tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>23</td>
-<td>4</td>
-<td>04.10.2026 18:00</td>
-<td>BC Marburg 2</td>
-<td>DJK Nieder-Olm</td>
-<td>Sporthalle G.-Gaßmann-Stadion</td>
-</tr>
 <tr>
 <td>4</td>
 <td>1</td>
@@ -1017,7 +950,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>1. Regionalliga Südwest Halbfinale (Senioren; Liganr.: 210181901) (Liga 53229)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53229.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53229.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53229.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53229.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:17)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -1042,7 +975,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>1. Regionalliga Südwest Finale (Senioren; Liganr.: 210181902) (Liga 53230)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53230.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53230.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53230.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53230.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:17)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -1067,7 +1000,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>2. Regionalliga Herren Nord (Senioren Nord; Liganr.: 6010010) (Liga 52859)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:17)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1087,6 +1020,14 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>23</td>
+<td>4</td>
+<td>04.10.2026 17:30</td>
+<td>SG TV Dürkheim-BI Speyer 2</td>
+<td>TV Bad Bergzabern</td>
+<td>83 : 75</td>
+</tr>
 <tr>
 <td>22</td>
 <td>4</td>
@@ -1142,38 +1083,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Eintracht Frankfurt</td>
 <td>TV Bad Bergzabern</td>
 <td>96 : 53</td>
-</tr>
-<tr>
-<td>15</td>
-<td>3</td>
-<td>26.09.2026 19:30</td>
-<td>Bona Baskets Limburg</td>
-<td>Eintracht Frankfurt</td>
-<td>106 : 76</td>
-</tr>
-<tr>
-<td>16</td>
-<td>3</td>
-<td>26.09.2026 18:00</td>
-<td>TV Bad Bergzabern</td>
-<td>BBC Horchheim</td>
-<td>77 : 71</td>
-</tr>
-<tr>
-<td>18</td>
-<td>3</td>
-<td>26.09.2026 18:00</td>
-<td>BC Neu-Isenburg</td>
-<td>ASC Theresianum Mainz</td>
-<td>56 : 71</td>
-</tr>
-<tr>
-<td>14</td>
-<td>3</td>
-<td>26.09.2026 17:30</td>
-<td>SKG Roßdorf</td>
-<td>1. FCK epsotech Baskets</td>
-<td>89 : 69</td>
 </tr>
 </tbody>
 </table>
@@ -1256,15 +1165,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     </tr>
     <tr>
       <td>8</td>
-      <td>TV Bad Bergzabern</td>
-      <td>3</td>
-      <td>1/2</td>
-      <td>2</td>
-      <td>200 : 269</td>
-      <td>-69</td>
-    </tr>
-    <tr>
-      <td>9</td>
       <td>BBC Horchheim</td>
       <td>4</td>
       <td>1/3</td>
@@ -1273,22 +1173,31 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
       <td>-2</td>
     </tr>
     <tr>
+      <td>9</td>
+      <td>TV Bad Bergzabern</td>
+      <td>4</td>
+      <td>1/3</td>
+      <td>2</td>
+      <td>275 : 352</td>
+      <td>-77</td>
+    </tr>
+    <tr>
       <td>10</td>
+      <td>SG TV Dürkheim-BI Speyer 2</td>
+      <td>4</td>
+      <td>1/3</td>
+      <td>2</td>
+      <td>283 : 350</td>
+      <td>-67</td>
+    </tr>
+    <tr>
+      <td>11</td>
       <td>TuS Makkabi Frankfurt</td>
       <td>4</td>
       <td>1/3</td>
       <td>2</td>
       <td>241 : 291</td>
       <td>-50</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>SG TV Dürkheim-BI Speyer 2</td>
-      <td>3</td>
-      <td>0/3</td>
-      <td>0</td>
-      <td>200 : 275</td>
-      <td>-75</td>
     </tr>
     <tr>
       <td>12</td>
@@ -1302,28 +1211,8 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
   </tbody>
 </table>
 <h3>Nächste Spiele (8 Tage)</h3>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th>nr</th>
-<th>sptag</th>
-<th>date</th>
-<th>home</th>
-<th>guest</th>
-<th>halle</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>23</td>
-<td>4</td>
-<td>04.10.2026 17:30</td>
-<td>SG TV Dürkheim-BI Speyer 2</td>
-<td>TV Bad Bergzabern</td>
-<td>TVD - Halle</td>
-</tr>
-</tbody>
-</table>
+<p><i>Keine kommenden Spiele.</i></p>
+
 <h3>Weitere Zahlen</h3>
 <p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html' onclick='liveHref(this)' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html?nocache=</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=52859' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=52859</a> <span style='color:green; font-weight:bold;'>✔</span></p>
