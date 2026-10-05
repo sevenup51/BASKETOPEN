@@ -38,6 +38,7 @@ details { margin-bottom:3px; }
 .summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
+#live-refresh { margin-right: 10px; font-weight: bold; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
@@ -123,18 +124,22 @@ function stelleBloeckeHer(){
   else document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = false;
 }
-function livescoreOeffnen(dreiTage){
-  if(dreiTage) document.body.classList.add("zeige-drei-tage");
-  else document.body.classList.remove("zeige-drei-tage");
+function openLivescoreDrei(){
+  document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")){
-      d.removeAttribute("open");
-    } else if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
-      d.setAttribute("open", "");
-    } else {
-      d.removeAttribute("open");
-    }
+    if(d.classList.contains("live-drei") || d.classList.contains("live-drei-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
+  });
+  bloeckeWerdenHergestellt = false;
+  speichereBloecke();
+}
+function openLivescoreHeute(){
+  document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details").forEach(function(d){
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
@@ -149,19 +154,6 @@ function openAll(){
 function closeAll(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
-  speichereBloecke();
-}
-function openLivescoreDrei(){
-  livescoreOeffnen(true);
-}
-function openLivescoreHeute(){
-  document.body.classList.remove("zeige-drei-tage");
-  bloeckeWerdenHergestellt = true;
-  document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
-    else d.removeAttribute("open");
-  });
-  bloeckeWerdenHergestellt = false;
   speichereBloecke();
 }
 document.addEventListener("DOMContentLoaded", function(){
@@ -188,11 +180,11 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Uebersicht diverse Ligen fuer Test – Stand: 04.10.26 18:35:26</h1>
+<h1>Uebersicht diverse Ligen fuer Test – Stand: 05.10.26 07:15:05</h1>
 
 
 <details id='wasfindeichhier'>
-<summary><b>Was finde ich hier - Stand 02.10.26 13:05</b> (ausklappbar)</summary>
+<summary><b>Was finde ich hier - Stand 04.10.26 21:49</b> (ausklappbar)</summary>
 <div class='intro-body'>
 
 <p>Übersicht über die Ligen von <b>Uebersicht diverse Ligen fuer Test</b>.</p>
@@ -357,6 +349,35 @@ Bei der easyCredit BBL steht in der Spalte nr der Ergebnisse ein Link auf die Yo
 wenn Dyn den Film schon hochgeladen hat.<br>
 Heutige und kommende BBL-Spiele bleiben ohne Link, die liegen im Bezahlfernsehen.<br>
 Ein bereits gefundener Link wird nicht erneut gesucht.
+
+<br><br>
+
+<b>04.10.26</b><br>
+Auf Bundesligen stehen neben Alle schließen die Knöpfe livescore_3days<br>
+und livescore_heute. livescore_heute ist weiß auf grün.<br>
+livescore_heute öffnet den Block Live und schließt die übrigen Blöcke.<br>
+Unter Live steht jede Liga mit ihrer Liga-ID. Darunter nur die grünen,<br>
+also laufenden Spiele von heute.<br>
+Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
+Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
+Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
+Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
+livescore_3days öffnet den Block Spiele von gestern, heute und morgen<br>
+und schließt Live. Dort stehen die gespielten und die anstehenden Spiele.<br>
+Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
+Boxscore bei der BBL: pdf, wenn die PDF-Datei da ist, sonst html.<br>
+Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht.<br>
+fehlt ohne Link, wenn es nichts gibt. Bei DBBL, ProA und ProB steht html,<br>
+mit demselben Haken.<br>
+Video bei der BBL führt zum Kurzbericht, sobald Dyn den Film hat.<br>
+Heutige und kommende BBL-Spiele haben diesen Link nicht.<br>
+Bei den nächsten BBL-Spielen steht dyn-Live mit Link, sonst siehe dyn.<br>
+Bei der DBBL führt Video beim Ergebnis zum Re-Live.<br>
+Bei den nächsten Spielen steht Live, sonst Link fehlt.<br>
+Link fehlt wird bei jedem Lauf neu geprüft.<br>
+Bei ProA steht Pay, solange der Stream kostenpflichtig ist, sonst Video.<br>
+Der Link bleibt derselbe. Ohne Link steht Link fehlt.<br>
+Bei ProB steht Video, wenn ein Link da ist.
 </p>
 
 </div>
