@@ -38,6 +38,7 @@ details { margin-bottom:3px; }
 .summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
+#live-refresh { margin-right: 10px; font-weight: bold; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
@@ -123,18 +124,22 @@ function stelleBloeckeHer(){
   else document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = false;
 }
-function livescoreOeffnen(dreiTage){
-  if(dreiTage) document.body.classList.add("zeige-drei-tage");
-  else document.body.classList.remove("zeige-drei-tage");
+function openLivescoreDrei(){
+  document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
   document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")){
-      d.removeAttribute("open");
-    } else if(d.classList.contains("hat-livescore") || d.classList.contains("livescore-block")){
-      d.setAttribute("open", "");
-    } else {
-      d.removeAttribute("open");
-    }
+    if(d.classList.contains("live-drei") || d.classList.contains("live-drei-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
+  });
+  bloeckeWerdenHergestellt = false;
+  speichereBloecke();
+}
+function openLivescoreHeute(){
+  document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details").forEach(function(d){
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
@@ -149,19 +154,6 @@ function openAll(){
 function closeAll(){
   document.body.classList.remove("zeige-drei-tage");
   document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
-  speichereBloecke();
-}
-function openLivescoreDrei(){
-  livescoreOeffnen(true);
-}
-function openLivescoreHeute(){
-  document.body.classList.remove("zeige-drei-tage");
-  bloeckeWerdenHergestellt = true;
-  document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
-    else d.removeAttribute("open");
-  });
-  bloeckeWerdenHergestellt = false;
   speichereBloecke();
 }
 document.addEventListener("DOMContentLoaded", function(){
@@ -188,11 +180,11 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga West – Stand: 04.10.26 18:52:31</h1>
+<h1>Regionalliga West – Stand: 05.10.26 07:20:41</h1>
 
 
 <details id='wasfindeichhier'>
-<summary><b>Was finde ich hier - Stand 02.10.26 13:05</b> (ausklappbar)</summary>
+<summary><b>Was finde ich hier - Stand 04.10.26 21:49</b> (ausklappbar)</summary>
 <div class='intro-body'>
 
 <p>Übersicht über die Ligen von <b>Regionalliga West</b>.</p>
@@ -357,6 +349,35 @@ Bei der easyCredit BBL steht in der Spalte nr der Ergebnisse ein Link auf die Yo
 wenn Dyn den Film schon hochgeladen hat.<br>
 Heutige und kommende BBL-Spiele bleiben ohne Link, die liegen im Bezahlfernsehen.<br>
 Ein bereits gefundener Link wird nicht erneut gesucht.
+
+<br><br>
+
+<b>04.10.26</b><br>
+Auf Bundesligen stehen neben Alle schließen die Knöpfe livescore_3days<br>
+und livescore_heute. livescore_heute ist weiß auf grün.<br>
+livescore_heute öffnet den Block Live und schließt die übrigen Blöcke.<br>
+Unter Live steht jede Liga mit ihrer Liga-ID. Darunter nur die grünen,<br>
+also laufenden Spiele von heute.<br>
+Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
+Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
+Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
+Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
+livescore_3days öffnet den Block Spiele von gestern, heute und morgen<br>
+und schließt Live. Dort stehen die gespielten und die anstehenden Spiele.<br>
+Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
+Boxscore bei der BBL: pdf, wenn die PDF-Datei da ist, sonst html.<br>
+Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht.<br>
+fehlt ohne Link, wenn es nichts gibt. Bei DBBL, ProA und ProB steht html,<br>
+mit demselben Haken.<br>
+Video bei der BBL führt zum Kurzbericht, sobald Dyn den Film hat.<br>
+Heutige und kommende BBL-Spiele haben diesen Link nicht.<br>
+Bei den nächsten BBL-Spielen steht dyn-Live mit Link, sonst siehe dyn.<br>
+Bei der DBBL führt Video beim Ergebnis zum Re-Live.<br>
+Bei den nächsten Spielen steht Live, sonst Link fehlt.<br>
+Link fehlt wird bei jedem Lauf neu geprüft.<br>
+Bei ProA steht Pay, solange der Stream kostenpflichtig ist, sonst Video.<br>
+Der Link bleibt derselbe. Ohne Link steht Link fehlt.<br>
+Bei ProB steht Video, wenn ein Link da ist.
 </p>
 
 </div>
@@ -375,7 +396,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>1.Regionalliga Herren (1RLH) (Senioren; Liganr.: 220) (Liga 54569)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54569.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54569.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:11)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54569.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54569.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:20)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -450,62 +471,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TSV Bayer 04 Leverkusen 2</td>
 <td>TV Gerthe</td>
 <td>74 : 83</td>
-</tr>
-<tr>
-<td>11</td>
-<td>2</td>
-<td>26.09.2026 20:00</td>
-<td>BSV Münsterland Baskets Wulfen</td>
-<td>BG TVO / TV Jahn</td>
-<td>104 : 88</td>
-</tr>
-<tr>
-<td>10</td>
-<td>2</td>
-<td>26.09.2026 19:30</td>
-<td>SV Haspe 70</td>
-<td>BBG Herford</td>
-<td>81 : 105</td>
-</tr>
-<tr>
-<td>12</td>
-<td>2</td>
-<td>26.09.2026 19:30</td>
-<td>TuS 59 HammStars</td>
-<td>DTV Basketball Köln</td>
-<td>75 : 66</td>
-</tr>
-<tr>
-<td>13</td>
-<td>2</td>
-<td>26.09.2026 19:30</td>
-<td>Citybasket Recklinghausen</td>
-<td>RheinStars Köln 2</td>
-<td>72 : 69</td>
-</tr>
-<tr>
-<td>8</td>
-<td>2</td>
-<td>26.09.2026 19:30</td>
-<td>LippeBaskets Werne</td>
-<td>TSV Bayer 04 Leverkusen 2</td>
-<td>90 : 72</td>
-</tr>
-<tr>
-<td>9</td>
-<td>2</td>
-<td>26.09.2026 19:00</td>
-<td>BÖRGEL Ballers Ibbenbüren</td>
-<td>ACCENT BASKETS Salzkotten</td>
-<td>66 : 76</td>
-</tr>
-<tr>
-<td>14</td>
-<td>2</td>
-<td>26.09.2026 18:30</td>
-<td>TV Gerthe</td>
-<td>Rheingas Elephants Grevenbroich</td>
-<td>66 : 83</td>
 </tr>
 </tbody>
 </table>
@@ -768,6 +733,14 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TV Gerthe</td>
 <td>SH Ravensberger Gymnasium</td>
 </tr>
+<tr>
+<td>29</td>
+<td>5</td>
+<td>13.10.2026 20:00</td>
+<td>RheinStars Köln 2</td>
+<td>TSV Bayer 04 Leverkusen 2</td>
+<td>Basketball Campus Köln 2 powered by Flossbach von Storch</td>
+</tr>
 </tbody>
 </table>
 <h3>Weitere Zahlen</h3>
@@ -781,7 +754,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>Regionalliga Damen (RLD) (Senioren; Liganr.: 500300) (Liga 54586)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54586.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54586.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:11)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54586.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54586.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:20)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -801,7 +774,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>17</td>
 <td>3</td>
 <td>04.10.2026 12:00</td>
@@ -872,30 +845,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Talents BonnRhöndorf 2</td>
 <td>WINGS Leverkusen 2</td>
 <td>67 : 59</td>
-</tr>
-<tr>
-<td>10</td>
-<td>2</td>
-<td>26.09.2026 18:00</td>
-<td>VfL AstroStars Bochum 2</td>
-<td>TSV Hagen</td>
-<td>71 : 79</td>
-</tr>
-<tr>
-<td>9</td>
-<td>2</td>
-<td>26.09.2026 18:00</td>
-<td>DTV Basketball Köln</td>
-<td>Citybasket Recklinghausen</td>
-<td>93 : 61</td>
-</tr>
-<tr>
-<td>12</td>
-<td>2</td>
-<td>26.09.2026 17:00</td>
-<td>BC Langendreer</td>
-<td>TSVE 1890 Bielefeld</td>
-<td>53 : 58</td>
 </tr>
 </tbody>
 </table>
@@ -1036,14 +985,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>17</td>
-<td>3</td>
-<td>04.10.2026 12:00</td>
-<td>Talents BonnRhöndorf 2</td>
-<td>VfL AstroStars Bochum 2</td>
-<td>SH des Sportzentrums Menzenberg</td>
-</tr>
 <tr>
 <td>19</td>
 <td>4</td>
@@ -1097,7 +1038,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>2.Regionalliga 1 Herren (2RL1H) (Senioren; Liganr.: 500100) (Liga 54570)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54570.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54570.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:11)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54570.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54570.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:21)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1117,7 +1058,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>14</td>
 <td>3</td>
 <td>04.10.2026 16:00</td>
@@ -1125,7 +1066,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>SC Fast-Break Leverkusen</td>
 <td>68 : 72</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>15</td>
 <td>3</td>
 <td>04.10.2026 16:00</td>
@@ -1156,46 +1097,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Telekom Baskets Bonn 2</td>
 <td>DTV Basketball Köln 2</td>
 <td>95 : 93</td>
-</tr>
-<tr>
-<td>10</td>
-<td>2</td>
-<td>26.09.2026 20:00</td>
-<td>Sportclub Krefeld</td>
-<td>Telekom Baskets Bonn 2</td>
-<td>74 : 99</td>
-</tr>
-<tr>
-<td>12</td>
-<td>2</td>
-<td>26.09.2026 19:00</td>
-<td>BG Aachen</td>
-<td>TSV Bayer 04 Leverkusen 3</td>
-<td>73 : 77</td>
-</tr>
-<tr>
-<td>8</td>
-<td>2</td>
-<td>26.09.2026 19:00</td>
-<td>SC Fast-Break Leverkusen</td>
-<td>TG Düsseldorf</td>
-<td>85 : 107</td>
-</tr>
-<tr>
-<td>7</td>
-<td>2</td>
-<td>26.09.2026 18:15</td>
-<td>SG Sechtem</td>
-<td>Südwest Baskets Wuppertal</td>
-<td>72 : 83</td>
-</tr>
-<tr>
-<td>9</td>
-<td>2</td>
-<td>26.09.2026 16:00</td>
-<td>DTV Basketball Köln 2</td>
-<td>Barmer TV</td>
-<td>54 : 64</td>
 </tr>
 </tbody>
 </table>
@@ -1336,22 +1237,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>14</td>
-<td>3</td>
-<td>04.10.2026 16:00</td>
-<td>Barmer TV</td>
-<td>SC Fast-Break Leverkusen</td>
-<td>TH Heckinghausen</td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>15</td>
-<td>3</td>
-<td>04.10.2026 16:00</td>
-<td>TG Düsseldorf</td>
-<td>SG Sechtem</td>
-<td>Ljubav Basketball-Arena</td>
-</tr>
 <tr>
 <td>21</td>
 <td>4</td>
@@ -1413,7 +1298,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>2.Regionalliga 2 Herren (2RL2H) (Senioren; Liganr.: 500200) (Liga 54571)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54571.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54571.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:11)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54571.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54571.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:21)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1480,46 +1365,6 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>TuS Iserlohn Kangaroos</td>
 <td>Witten Baskets</td>
 <td>84 : 64</td>
-</tr>
-<tr>
-<td>10</td>
-<td>2</td>
-<td>26.09.2026 19:30</td>
-<td>Witten Baskets</td>
-<td>BG Dorsten</td>
-<td>81 : 76</td>
-</tr>
-<tr>
-<td>12</td>
-<td>2</td>
-<td>26.09.2026 19:30</td>
-<td>BC Soest</td>
-<td>TSVE 1890 Bielefeld</td>
-<td>90 : 60</td>
-</tr>
-<tr>
-<td>9</td>
-<td>2</td>
-<td>26.09.2026 19:00</td>
-<td>Baskets Lüdenscheid</td>
-<td>BBG Herford 2</td>
-<td>84 : 93</td>
-</tr>
-<tr>
-<td>7</td>
-<td>2</td>
-<td>26.09.2026 18:30</td>
-<td>UBC Münster 2</td>
-<td>Paderborn Baskets 2</td>
-<td>71 : 62</td>
-</tr>
-<tr>
-<td>8</td>
-<td>2</td>
-<td>26.09.2026 16:00</td>
-<td>SV Haspe 70 2</td>
-<td>TuS Breckerfeld</td>
-<td>60 : 82</td>
 </tr>
 </tbody>
 </table>
@@ -1721,7 +1566,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>WBV-Pokal Herren (PKH) (Senioren; Liganr.: 500900) (Liga 54572)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54572.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54572.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:12)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54572.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54572.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:22)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -1753,6 +1598,14 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>BSV Münsterland Baskets Wulfen</td>
 <td>Sporthalle Inselweg</td>
 </tr>
+<tr>
+<td>217</td>
+<td>2</td>
+<td>13.10.2026 20:15</td>
+<td>Witten Baskets</td>
+<td>SV Haspe 70</td>
+<td>Otto-Schott-Realschule (Großfeld)</td>
+</tr>
 </tbody>
 </table>
 <h3>Weitere Zahlen</h3>
@@ -1766,7 +1619,7 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
     <b>WBV-Pokal Damen (PKD) (Senioren; Liganr.: 500950) (Liga 54573)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54573.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54573.html' onclick='liveHref(this)' target='_blank'>Details ( 04.10. 14:12)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54573.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54573.html' onclick='liveHref(this)' target='_blank'>Details ( 05.10. 05:22)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -1797,6 +1650,14 @@ Ein bereits gefundener Link wird nicht erneut gesucht.
 <td>Mettmann-Sport</td>
 <td>DTV Basketball Köln</td>
 <td>Sporthalle der Kreisberufsschule</td>
+</tr>
+<tr>
+<td>208</td>
+<td>2</td>
+<td>13.10.2026 20:15</td>
+<td>TVE Dortmund Barop</td>
+<td>TV Gerthe</td>
+<td>Sporthalle Wischlingen</td>
 </tr>
 </tbody>
 </table>
