@@ -37,7 +37,8 @@ tr.offen td { background: #fff6d8; }
 .einsaetze table.fit th:nth-child(8),
 .einsaetze table.fit td:nth-child(8) { width: 12%; white-space: normal; }
 .schalter { margin: 8px 0 4px; }
-.schalter button { font-family: "Segoe UI", Calibri, sans-serif; font-size: 11px; margin-right: 8px; padding: 3px 8px; cursor: pointer; }
+.schalter button { font-family: "Segoe UI", Calibri, sans-serif; font-size: 12px; margin-right: 6px; padding: 4px 10px; cursor: pointer; border-radius: 4px; border: 1px solid #003366; background: #003366; color: white; }
+.schalter button:hover { background: #002244; }
 details.gruppe { margin: 8px 0 14px; }
 details.gruppe > summary { font-family: "Segoe UI", Calibri, sans-serif; font-size: 14px; font-weight: bold; cursor: pointer; margin: 6px 0; }
 details.woche, details.person { margin: 2px 0 8px 14px; }
@@ -50,7 +51,7 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 </head>
 <body>
 <h1>Bezirk Schwaben – Schiedsrichter-Einteilung</h1>
-<p class="stand">Stand 06.10.26 23:00</p>
+<p class="stand">Stand 06.10.26 23:15</p>
 <p class="schalter">
 <button type="button" id="alle-auf">Alles öffnen</button>
 <button type="button" id="alle-zu">Alles schließen</button>
@@ -62,10 +63,10 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 <p><b>191 Spiele</b>, davon <b>69 mit Schiedsrichter</b> und <b>122 noch offen</b>. Ligen mit Einteilung: 13. Ligen ohne Einteilung: 28.</p>
 </details>
 
-<details class="gruppe">
+<details class="gruppe" id="spiele-gruppe" open>
 <summary>Spiele Mo. 05.10.26 bis Mo. 30.11.26</summary>
 <p class="schmal">Gelbe Zeilen haben noch keinen Schiedsrichter-Eintrag. „eingetragen, Name nicht öffentlich“ bedeutet: in TeamSL steht ein Schiedsrichter, der Name wird öffentlich nicht gezeigt. „Verein …“ ist eine Vereinsansetzung. Jede Woche läuft von Montag bis Sonntag.</p>
-<details class="woche">
+<details class="woche" id="erste-woche" open>
 <summary>Mo. 05.10.26 – So. 11.10.26</summary>
 <table class='fit spiele'>
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR1</th><th class="wrap">SR2</th><th class="wrap">weitere</th><th>Status</th><th>TeamSL</th></tr>
@@ -720,6 +721,10 @@ document.getElementById("alle-auf").addEventListener("click", function () {
 });
 document.getElementById("alle-zu").addEventListener("click", function () {
   document.querySelectorAll("details").forEach(function (knoten) { knoten.open = false; });
+  var spiele = document.getElementById("spiele-gruppe");
+  var woche = document.getElementById("erste-woche");
+  if (spiele) spiele.open = true;
+  if (woche) woche.open = true;
 });
 </script>
 </body>
