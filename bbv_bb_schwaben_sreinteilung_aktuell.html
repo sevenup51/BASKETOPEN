@@ -17,6 +17,9 @@ table.spiele td.wrap, table.spiele th.wrap { white-space: normal; max-width: 8em
 table.fit th.liga, table.fit td.liga { white-space: normal; max-width: 7.5em; line-height: 1.25; }
 table.spiele td.halle, table.spiele th.halle { white-space: normal; max-width: 11em; line-height: 1.25; }
 tr.offen td { background: #fff6d8; }
+td.pruefen { background: #cfe8ff; }
+tr.pruef-einsatz td { background: #ffd8b0; }
+details:not([open]) > *:not(summary) { display: none !important; }
 .einsaetze table.fit { width: 70em; table-layout: fixed; }
 .einsaetze table.fit th,
 .einsaetze table.fit td { max-width: none; }
@@ -41,6 +44,8 @@ tr.offen td { background: #fff6d8; }
 .schalter button:hover { background: #002244; }
 details.gruppe { margin: 8px 0 14px; }
 details.gruppe > summary { font-family: "Segoe UI", Calibri, sans-serif; font-size: 14px; font-weight: bold; cursor: pointer; margin: 6px 0; }
+details.unter { margin: 8px 0 12px 8px; }
+details.unter > summary { font-family: "Segoe UI", Calibri, sans-serif; font-size: 13px; font-weight: bold; cursor: pointer; }
 details.woche, details.person { margin: 2px 0 8px 14px; }
 details.woche > summary, details.person > summary { font-family: "Segoe UI", Calibri, sans-serif; font-size: 12px; font-weight: bold; cursor: pointer; }
 .wochen-luecke { height: 1.45em; }
@@ -51,7 +56,7 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 </head>
 <body>
 <h1>Bezirk Schwaben – Schiedsrichter-Einteilung</h1>
-<p class="stand">Stand 07.10.26 12:00</p>
+<p class="stand">Stand 07.10.26 13:00</p>
 <p class="schalter">
 <button type="button" id="alle-auf">Alles öffnen</button>
 <button type="button" id="alle-zu">Alles schließen</button>
@@ -59,13 +64,13 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 
 <details class="gruppe">
 <summary>Erläuterungen</summary>
-<p class="schmal">Quelle: zuerst die öffentliche TeamSL-Schnittstelle, danach der Spielplan auf basketball-bund.net (Action=101) für jede Liga. Ein Name aus TeamSL bleibt stehen. Fehlt er dort, kommt der Eintrag aus dem Spielplan, auch eine Vereinsansetzung. Aufgenommen sind Ligen mit mindestens einem Schiedsrichter-Eintrag vom Mo. 05.10.26 bis Mo. 30.11.26. Die Spielliste ist nach Datum, Halle und Uhrzeit sortiert. Spiele mit Verzicht oder Absage fehlen.</p>
+<p class="schmal">Quelle: zuerst die öffentliche TeamSL-Schnittstelle, danach der Spielplan auf basketball-bund.net (Action=101) für jede Liga. Ein Name aus TeamSL bleibt stehen. Fehlt er dort, kommt der Eintrag aus dem Spielplan, auch eine Vereinsansetzung. Aufgenommen sind Ligen mit mindestens einem Schiedsrichter-Eintrag vom aktuellen Montag bis Mo. 30.11.26. Die Spielliste ist nach Datum, Halle und Uhrzeit sortiert. Spiele mit Verzicht oder Absage fehlen. Spiele der abgelaufenen Woche stehen in keiner Liste mehr.</p>
 <p><b>191 Spiele</b>, davon <b>69 mit Schiedsrichter</b> und <b>122 noch offen</b>. Ligen mit Einteilung: 13. Ligen ohne Einteilung: 28.</p>
 </details>
 
 <details class="gruppe" id="spiele-gruppe" open>
 <summary>Spiele Mo. 05.10.26 bis Mo. 30.11.26</summary>
-<p class="schmal">Gelbe Zeilen haben noch keinen Schiedsrichter-Eintrag. „eingetragen, Name nicht öffentlich“ bedeutet: in TeamSL steht ein Schiedsrichter, der Name wird öffentlich nicht gezeigt. „Verein …“ ist eine Vereinsansetzung. Jede Woche läuft von Montag bis Sonntag.</p>
+<p class="schmal">Gelbe Zeilen haben noch keinen Schiedsrichter-Eintrag. „eingetragen, Name nicht öffentlich“ bedeutet: in TeamSL steht ein Schiedsrichter, der Name wird öffentlich nicht gezeigt. „Verein …“ ist eine Vereinsansetzung. Jede Woche läuft von Montag bis Sonntag. Wenn SR1, SR2 und weitere alle einen Eintrag haben, sind diese drei Felder blau. Bitte diese Spiele prüfen. Steht der Verein in einer Spalte und zusätzlich ein einzelner Name, kommt das daher: TeamSL liefert den Namen, der Spielplan dieselbe Rolle als Vereinsansetzung. Der Name bleibt in SR1 oder SR2, der Verein steht in weitere.</p>
 <details class="woche" id="erste-woche" open>
 <summary>Mo. 05.10.26 – So. 11.10.26</summary>
 <table class='fit spiele'>
@@ -87,13 +92,13 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 <tr class='belegt'><td>So. 11.10.26</td><td>16:00</td><td class="wrap">PSV Ingolstadt 2</td><td class="wrap">DJK Eichstätt 2</td><td class="liga">Bezirksklasse<br>Herren Nord<br>26/27</td><td class="halle">August-Horch-Schule<br>Stinnesstraße<br>85057 Ingolstadt</td><td class="wrap">Faris Hot</td><td class="wrap">Kristijan Wirnsberger</td><td class="wrap">-</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924629/matchInfo'>Spiel</a></td></tr>
 <tr class='belegt'><td>So. 11.10.26</td><td>17:00</td><td class="wrap">TSV Lindau</td><td class="wrap">BG Illertal 3</td><td class="liga">Bezirksklasse<br>Herren Süd<br>26/27</td><td class="halle">Dreifachhalle<br>Reutinerstr<br>88131 Lindau</td><td class="wrap">Markus Maurer</td><td class="wrap">eingetragen, Name nicht öffentlich</td><td class="wrap">-</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924661/matchInfo'>Spiel</a></td></tr>
 <tr class='belegt'><td>So. 11.10.26</td><td>12:15</td><td class="wrap">TSV 1861 Nördlingen 2</td><td class="wrap">TSV Meitingen</td><td class="liga">Bezirksliga<br>U12 gemischt Mitte Nord<br>26/27</td><td class="halle">Mehrzweckhalle<br>Gerhart-Hauptmann-Str. 3<br>86720 Nördlingen</td><td class="wrap">Verein TSV 1861 Nördlingen (220226)</td><td class="wrap">Verein TSV 1861 Nördlingen (220226)</td><td class="wrap">-</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2926176/matchInfo'>Spiel</a></td></tr>
-<tr class='belegt'><td>So. 11.10.26</td><td>17:00</td><td class="wrap">TSV Nördlingen 2</td><td class="wrap">TSV Etting-Ingolstadt</td><td class="liga">Bezirksliga<br>Herren Nord<br>26/27</td><td class="halle">Mehrzweckhalle<br>Gerhart-Hauptmann-Str. 3<br>86720 Nördlingen</td><td class="wrap">Verein VSC Donauwörth (220208)</td><td class="wrap">Niklas Schindele</td><td class="wrap">SR2 Verein VSC Donauwörth (220208)</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924361/matchInfo'>Spiel</a></td></tr>
+<tr class='belegt'><td>So. 11.10.26</td><td>17:00</td><td class="wrap">TSV Nördlingen 2</td><td class="wrap">TSV Etting-Ingolstadt</td><td class="liga">Bezirksliga<br>Herren Nord<br>26/27</td><td class="halle">Mehrzweckhalle<br>Gerhart-Hauptmann-Str. 3<br>86720 Nördlingen</td><td class="wrap pruefen">Verein VSC Donauwörth (220208)</td><td class="wrap pruefen">Niklas Schindele</td><td class="wrap pruefen">SR2 Verein VSC Donauwörth (220208)</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924361/matchInfo'>Spiel</a></td></tr>
 <tr class='belegt'><td>So. 11.10.26</td><td>15:00</td><td class="wrap">Kissinger SC a.K.</td><td class="wrap">TSV Schwaben Augsburg 2</td><td class="liga">Bezirksliga<br>U14 männlich Mitte<br>26/27</td><td class="halle">Paartalhalle<br>Mergenthauerweg<br>86438 Kissing</td><td class="wrap">Verein Kissinger SC (220217)</td><td class="wrap">Verein Kissinger SC (220217)</td><td class="wrap">-</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2926230/matchInfo'>Spiel</a></td></tr>
 <tr class='belegt'><td>So. 11.10.26</td><td>17:00</td><td class="wrap">TSV Gersthofen</td><td class="wrap">VSC Donauwörth</td><td class="liga">Bezirksoberliga<br>Herren<br>26/27</td><td class="halle">Paul-Klee-Gymnasium (neu)<br>Schubertstr. 68<br>86368 Gersthofen</td><td class="wrap">Darko Lepej</td><td class="wrap">Severin Seifert</td><td class="wrap">-</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924178/matchInfo'>Spiel</a></td></tr>
 <tr class='belegt'><td>So. 11.10.26</td><td>16:30</td><td class="wrap">FC Gerolfing 1930 e.V.</td><td class="wrap">SSV Schrobenhausen</td><td class="liga">Bezirksoberliga<br>U20 männlich<br>26/27</td><td class="halle">Sporthalle Gerolfing<br>Wolfsgartenstr. 1<br>85049 Ingolstadt</td><td class="wrap">Verein ESV Ingolstadt-Ringsee (220246)</td><td class="wrap">Verein ESV Ingolstadt-Ringsee (220246)</td><td class="wrap">-</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924826/matchInfo'>Spiel</a></td></tr>
 <tr class='belegt'><td>So. 11.10.26</td><td>14:30</td><td class="wrap">Sportfreunde Friedberg</td><td class="wrap">TSV Diedorf</td><td class="liga">Bezirksliga<br>U14 männlich Mitte<br>26/27</td><td class="halle">Stadthalle<br>Aichacher Str. 7<br>86316 Friedberg</td><td class="wrap">Verein Sportfreunde Friedberg (220266)</td><td class="wrap">Verein Sportfreunde Friedberg (220266)</td><td class="wrap">-</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2926232/matchInfo'>Spiel</a></td></tr>
 <tr class='belegt'><td>So. 11.10.26</td><td>17:00</td><td class="wrap">Sportfreunde Friedberg</td><td class="wrap">MTV Baskets Ingolstadt</td><td class="liga">Bezirksoberliga<br>Herren<br>26/27</td><td class="halle">Stadthalle<br>Aichacher Str. 7<br>86316 Friedberg</td><td class="wrap">Erkan Türkay</td><td class="wrap">Felix Holzheu</td><td class="wrap">-</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924179/matchInfo'>Spiel</a></td></tr>
-<tr class='belegt'><td>So. 11.10.26</td><td>16:30</td><td class="wrap">TV 1847 Augsburg 3</td><td class="wrap">MTV Baskets Ingolstadt 3</td><td class="liga">Bezirksklasse<br>Herren Mitte<br>26/27</td><td class="halle">TVA Halle<br>Gabelsbergerstr. 64<br>86199 Augsburg</td><td class="wrap">Kübra Simsek</td><td class="wrap">Verein TSV Schwaben Augsburg (220205)</td><td class="wrap">SR1 Verein TSV Schwaben Augsburg (220205)</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924572/matchInfo'>Spiel</a></td></tr>
+<tr class='belegt'><td>So. 11.10.26</td><td>16:30</td><td class="wrap">TV 1847 Augsburg 3</td><td class="wrap">MTV Baskets Ingolstadt 3</td><td class="liga">Bezirksklasse<br>Herren Mitte<br>26/27</td><td class="halle">TVA Halle<br>Gabelsbergerstr. 64<br>86199 Augsburg</td><td class="wrap pruefen">Kübra Simsek</td><td class="wrap pruefen">Verein TSV Schwaben Augsburg (220205)</td><td class="wrap pruefen">SR1 Verein TSV Schwaben Augsburg (220205)</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924572/matchInfo'>Spiel</a></td></tr>
 <tr class='belegt'><td>So. 11.10.26</td><td>10:00</td><td class="wrap">BG Illertal</td><td class="wrap">VFL Buchloe</td><td class="liga">Bezirksoberliga<br>U18 männlich<br>26/27</td><td class="halle">Vöhlinhalle<br>Gottfried-Hart-Str. 8<br>89257 Illertissen</td><td class="wrap">Luca Tillinger</td><td class="wrap">Dominik Zürnstein</td><td class="wrap">-</td><td>belegt</td><td><a href='https://www.basketball-bund.net/rest/match/id/2924861/matchInfo'>Spiel</a></td></tr>
 </table>
 </details><div class="wochen-luecke"></div><details class="woche">
@@ -300,9 +305,15 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 </details>
 </details>
 
-<details class="gruppe einsaetze">
+<details class="gruppe einsaetze" id="gruppe-einsaetze">
 <summary>Einsätze der Schiedsrichter ab Mo. 05.10.26</summary>
-<p class="schmal">Je Schiedsrichter die Spiele aus der Liste oben, sortiert nach Datum, Halle und Uhrzeit. Die Blöcke stehen nach Nachname, danach „eingetragen, Name nicht öffentlich“, danach die Vereine alphabetisch. Gelbe Zeilen sind ein Doppeleinsatz am selben Tag in derselben Halle. Hinter dem Kollegen steht in Klammern die eigene Rolle.</p>
+<p class="schmal">Je Schiedsrichter die Spiele aus der Liste oben, sortiert nach Datum, Halle und Uhrzeit. Gelbe Zeilen sind ein Doppeleinsatz am selben Tag in derselben Halle. Hinter dem Kollegen steht in Klammern die eigene Rolle. Orange Zeilen: in SR1, SR2 und weitere steht etwas – bitte prüfen. Die zusätzliche Vereinszeile steht hier nicht noch einmal in weitere.</p>
+<details class="unter" id="gruppe-namen">
+<summary>Einteilung nach Name</summary>
+<p class="schalter">
+<button type="button" class="block-auf" data-block="gruppe-namen">Alles öffnen</button>
+<button type="button" class="block-zu" data-block="gruppe-namen">Alles schließen</button>
+</p>
 <details class="person">
 <summary>Argintaru, Robert</summary>
 <table class='fit spiele'>
@@ -462,7 +473,7 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 <summary>Schindele, Niklas</summary>
 <table class='fit spiele'>
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th></tr>
-<tr><td>So. 11.10.26</td><td>17:00</td><td class="wrap">TSV Nördlingen 2</td><td class="wrap">TSV Etting-Ingolstadt</td><td class="liga">Bezirksliga<br>Herren Nord<br>26/27</td><td class="halle">Mehrzweckhalle<br>Gerhart-Hauptmann-Str. 3<br>86720 Nördlingen</td><td class="wrap">Verein VSC Donauwörth (220208) (SR2)</td><td class="wrap">SR2 Verein VSC Donauwörth (220208)</td></tr>
+<tr class='pruef-einsatz'><td>So. 11.10.26</td><td>17:00</td><td class="wrap">TSV Nördlingen 2</td><td class="wrap">TSV Etting-Ingolstadt</td><td class="liga">Bezirksliga<br>Herren Nord<br>26/27</td><td class="halle">Mehrzweckhalle<br>Gerhart-Hauptmann-Str. 3<br>86720 Nördlingen</td><td class="wrap">Verein VSC Donauwörth (220208) (SR2)</td><td class="wrap">-</td></tr>
 </table>
 </details><details class="person">
 <summary>Seifert, Severin</summary>
@@ -475,7 +486,7 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 <summary>Simsek, Kübra</summary>
 <table class='fit spiele'>
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th></tr>
-<tr><td>So. 11.10.26</td><td>16:30</td><td class="wrap">TV 1847 Augsburg 3</td><td class="wrap">MTV Baskets Ingolstadt 3</td><td class="liga">Bezirksklasse<br>Herren Mitte<br>26/27</td><td class="halle">TVA Halle<br>Gabelsbergerstr. 64<br>86199 Augsburg</td><td class="wrap">Verein TSV Schwaben Augsburg (220205) (SR1)</td><td class="wrap">SR1 Verein TSV Schwaben Augsburg (220205)</td></tr>
+<tr class='pruef-einsatz'><td>So. 11.10.26</td><td>16:30</td><td class="wrap">TV 1847 Augsburg 3</td><td class="wrap">MTV Baskets Ingolstadt 3</td><td class="liga">Bezirksklasse<br>Herren Mitte<br>26/27</td><td class="halle">TVA Halle<br>Gabelsbergerstr. 64<br>86199 Augsburg</td><td class="wrap">Verein TSV Schwaben Augsburg (220205) (SR1)</td><td class="wrap">-</td></tr>
 <tr><td>Sa. 31.10.26</td><td>20:00</td><td class="wrap">TV Augsburg 2</td><td class="wrap">TSV Gersthofen</td><td class="liga">Bezirksoberliga<br>Herren<br>26/27</td><td class="halle">TVA Halle<br>Gabelsbergerstr. 64<br>86199 Augsburg</td><td class="wrap">Berisha, Valerian (SR2)</td><td class="wrap">-</td></tr>
 </table>
 </details><details class="person">
@@ -533,7 +544,16 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 <tr><td>So. 22.11.26</td><td>10:00</td><td class="wrap">TSV Wasserburg/Günzburg</td><td class="wrap">TSV Diedorf</td><td class="liga">Bezirksliga<br>U14 männlich Mitte<br>26/27</td><td class="halle">Bruno-Merk-Sporthalle<br>Am südlichen Burgfrieden 2<br>89312 Günzburg</td><td class="wrap">eingetragen, Name nicht öffentlich (SR1)</td><td class="wrap">-</td></tr>
 <tr><td>So. 22.11.26</td><td>10:00</td><td class="wrap">TSV Wasserburg/Günzburg</td><td class="wrap">TSV Diedorf</td><td class="liga">Bezirksliga<br>U14 männlich Mitte<br>26/27</td><td class="halle">Bruno-Merk-Sporthalle<br>Am südlichen Burgfrieden 2<br>89312 Günzburg</td><td class="wrap">eingetragen, Name nicht öffentlich (SR2)</td><td class="wrap">-</td></tr>
 </table>
-</details><details class="person">
+</details>
+</details>
+<details class="unter" id="gruppe-vereine">
+<summary>Einteilung Vereine</summary>
+<p class="schmal">Farblich hervorgehobene Spiele (orange, wie oben die drei blauen Spalten) haben Einträge in SR1, SR2 und weitere. Diese Spiele prüfen. Darunter alle Vereine.</p>
+<p class="schalter">
+<button type="button" class="block-auf" data-block="gruppe-vereine">Alles öffnen</button>
+<button type="button" class="block-zu" data-block="gruppe-vereine">Alles schließen</button>
+</p>
+<details class="person">
 <summary>Verein BG Leitershofen/Stadtbergen (220263)</summary>
 <table class='fit spiele'>
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th></tr>
@@ -657,7 +677,7 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 <summary>Verein TSV Schwaben Augsburg (220205)</summary>
 <table class='fit spiele'>
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th></tr>
-<tr><td>So. 11.10.26</td><td>16:30</td><td class="wrap">TV 1847 Augsburg 3</td><td class="wrap">MTV Baskets Ingolstadt 3</td><td class="liga">Bezirksklasse<br>Herren Mitte<br>26/27</td><td class="halle">TVA Halle<br>Gabelsbergerstr. 64<br>86199 Augsburg</td><td class="wrap">Simsek, Kübra (SR2)</td><td class="wrap">SR1 Verein TSV Schwaben Augsburg (220205)</td></tr>
+<tr class='pruef-einsatz'><td>So. 11.10.26</td><td>16:30</td><td class="wrap">TV 1847 Augsburg 3</td><td class="wrap">MTV Baskets Ingolstadt 3</td><td class="liga">Bezirksklasse<br>Herren Mitte<br>26/27</td><td class="halle">TVA Halle<br>Gabelsbergerstr. 64<br>86199 Augsburg</td><td class="wrap">Simsek, Kübra (SR2)</td><td class="wrap">-</td></tr>
 <tr><td>Sa. 17.10.26</td><td>12:00</td><td class="wrap">TSV Schwaben Augsburg 2</td><td class="wrap">Sportfreunde Friedberg</td><td class="liga">Bezirksliga<br>U14 männlich Mitte<br>26/27</td><td class="halle">Berufsschule VI<br>Haunstetter Str. 59<br>86161 Augsburg</td><td class="wrap">Verein TSV Schwaben Augsburg (220205) (SR1)</td><td class="wrap">-</td></tr>
 <tr><td>Sa. 17.10.26</td><td>12:00</td><td class="wrap">TSV Schwaben Augsburg 2</td><td class="wrap">Sportfreunde Friedberg</td><td class="liga">Bezirksliga<br>U14 männlich Mitte<br>26/27</td><td class="halle">Berufsschule VI<br>Haunstetter Str. 59<br>86161 Augsburg</td><td class="wrap">Verein TSV Schwaben Augsburg (220205) (SR2)</td><td class="wrap">-</td></tr>
 </table>
@@ -667,10 +687,11 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th></tr>
 <tr><td>Sa. 10.10.26</td><td>14:30</td><td class="wrap">VSC Donauwörth 2</td><td class="wrap">Sportfreunde Friedberg</td><td class="liga">Bezirksliga<br>U12 gemischt Mitte Nord<br>26/27</td><td class="halle">Stauferpark Halle<br>Neudegger Allee 4<br>86609 Donauwörth</td><td class="wrap">Verein VSC Donauwörth (220208) (SR1)</td><td class="wrap">-</td></tr>
 <tr><td>Sa. 10.10.26</td><td>14:30</td><td class="wrap">VSC Donauwörth 2</td><td class="wrap">Sportfreunde Friedberg</td><td class="liga">Bezirksliga<br>U12 gemischt Mitte Nord<br>26/27</td><td class="halle">Stauferpark Halle<br>Neudegger Allee 4<br>86609 Donauwörth</td><td class="wrap">Verein VSC Donauwörth (220208) (SR2)</td><td class="wrap">-</td></tr>
-<tr><td>So. 11.10.26</td><td>17:00</td><td class="wrap">TSV Nördlingen 2</td><td class="wrap">TSV Etting-Ingolstadt</td><td class="liga">Bezirksliga<br>Herren Nord<br>26/27</td><td class="halle">Mehrzweckhalle<br>Gerhart-Hauptmann-Str. 3<br>86720 Nördlingen</td><td class="wrap">Schindele, Niklas (SR1)</td><td class="wrap">SR2 Verein VSC Donauwörth (220208)</td></tr>
+<tr class='pruef-einsatz'><td>So. 11.10.26</td><td>17:00</td><td class="wrap">TSV Nördlingen 2</td><td class="wrap">TSV Etting-Ingolstadt</td><td class="liga">Bezirksliga<br>Herren Nord<br>26/27</td><td class="halle">Mehrzweckhalle<br>Gerhart-Hauptmann-Str. 3<br>86720 Nördlingen</td><td class="wrap">Schindele, Niklas (SR1)</td><td class="wrap">-</td></tr>
 <tr><td>Sa. 24.10.26</td><td>16:00</td><td class="wrap">VSC Donauwörth 2</td><td class="wrap">TSV 1861 Nördlingen 2</td><td class="liga">Bezirksliga<br>U12 gemischt Mitte Nord<br>26/27</td><td class="halle">Stauferpark Halle<br>Neudegger Allee 4<br>86609 Donauwörth</td><td class="wrap">Verein VSC Donauwörth (220208) (SR1)</td><td class="wrap">-</td></tr>
 <tr><td>Sa. 24.10.26</td><td>16:00</td><td class="wrap">VSC Donauwörth 2</td><td class="wrap">TSV 1861 Nördlingen 2</td><td class="liga">Bezirksliga<br>U12 gemischt Mitte Nord<br>26/27</td><td class="halle">Stauferpark Halle<br>Neudegger Allee 4<br>86609 Donauwörth</td><td class="wrap">Verein VSC Donauwörth (220208) (SR2)</td><td class="wrap">-</td></tr>
 </table>
+</details>
 </details>
 </details>
 
@@ -716,15 +737,38 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 </div>
 </details>
 <script>
+function ersteWocheOffen() {
+  var spiele = document.getElementById("spiele-gruppe");
+  var woche = document.getElementById("erste-woche");
+  if (spiele) spiele.open = true;
+  if (woche) woche.open = true;
+}
 document.getElementById("alle-auf").addEventListener("click", function () {
   document.querySelectorAll("details").forEach(function (knoten) { knoten.open = true; });
 });
 document.getElementById("alle-zu").addEventListener("click", function () {
   document.querySelectorAll("details").forEach(function (knoten) { knoten.open = false; });
-  var spiele = document.getElementById("spiele-gruppe");
-  var woche = document.getElementById("erste-woche");
-  if (spiele) spiele.open = true;
-  if (woche) woche.open = true;
+  ersteWocheOffen();
+});
+document.querySelectorAll(".block-auf").forEach(function (knopf) {
+  knopf.addEventListener("click", function (ereignis) {
+    ereignis.stopPropagation();
+    var kasten = document.getElementById(knopf.getAttribute("data-block"));
+    var aussen = document.getElementById("gruppe-einsaetze");
+    if (aussen) aussen.open = true;
+    if (!kasten) return;
+    kasten.open = true;
+    kasten.querySelectorAll("details").forEach(function (knoten) { knoten.open = true; });
+  });
+});
+document.querySelectorAll(".block-zu").forEach(function (knopf) {
+  knopf.addEventListener("click", function (ereignis) {
+    ereignis.stopPropagation();
+    var kasten = document.getElementById(knopf.getAttribute("data-block"));
+    if (!kasten) return;
+    kasten.querySelectorAll("details").forEach(function (knoten) { knoten.open = false; });
+    kasten.open = true;
+  });
 });
 </script>
 </body>
