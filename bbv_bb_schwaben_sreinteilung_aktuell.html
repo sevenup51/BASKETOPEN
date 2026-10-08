@@ -60,7 +60,7 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 </head>
 <body>
 <h1>Bezirk Schwaben – Schiedsrichter-Einteilung</h1>
-<p class="stand">Stand 08.10.26 22:00</p>
+<p class="stand">Stand 08.10.26 22:37</p>
 <p class="schalter">
 <button type="button" id="alle-auf">Alles öffnen</button>
 <button type="button" id="alle-zu">Alles schließen</button>
@@ -76,6 +76,10 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 
 <details class="gruppe" id="spiele-gruppe" open>
 <summary>Spiele Mo. 05.10.26 bis Do. 31.12.26</summary>
+<p class="schalter">
+<button type="button" class="block-auf" data-block="spiele-gruppe">Alles öffnen</button>
+<button type="button" class="block-zu" data-block="spiele-gruppe">Alles schließen</button>
+</p>
 <details class="woche" id="erste-woche" open>
 <summary>Mo. 05.10.26 – So. 11.10.26</summary>
 <table class='fit spiele'>
@@ -1856,9 +1860,9 @@ document.querySelectorAll(".block-auf").forEach(function (knopf) {
   knopf.addEventListener("click", function (ereignis) {
     ereignis.stopPropagation();
     var kasten = document.getElementById(knopf.getAttribute("data-block"));
-    var aussen = document.getElementById("gruppe-einsaetze");
-    if (aussen) aussen.open = true;
     if (!kasten) return;
+    var aussen = kasten.parentElement ? kasten.parentElement.closest("details") : null;
+    if (aussen) aussen.open = true;
     kasten.open = true;
     kasten.querySelectorAll("details").forEach(function (knoten) { knoten.open = true; });
   });
