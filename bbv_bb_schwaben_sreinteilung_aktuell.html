@@ -25,6 +25,15 @@ details.woche table.spiele td {
   overflow-wrap: anywhere;
   box-sizing: border-box;
 }
+details.woche table.spiele { width: 100%; table-layout: fixed; }
+details.woche table.spiele th,
+details.woche table.spiele td {
+  width: calc(100% / 11);
+  max-width: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  box-sizing: border-box;
+}
 tr.offen td { background: #fff6d8; }
 tr.verein-name td { background: #d9f2e3; }
 tr.pruefen td { background: #cfe8ff; }
@@ -69,7 +78,7 @@ a { font-family: "Segoe UI", Calibri, sans-serif; color: #0645ad; }
 </head>
 <body>
 <h1>Bezirk Schwaben – Schiedsrichter-Einteilung</h1>
-<p class="stand">Stand 08.10.26 23:00</p>
+<p class="stand">Stand 09.10.26 00:00</p>
 <p class="schalter">
 <button type="button" id="alle-auf">Alles öffnen</button>
 <button type="button" id="alle-zu">Alles schließen</button>
