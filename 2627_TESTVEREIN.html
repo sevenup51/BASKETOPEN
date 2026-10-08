@@ -56,6 +56,7 @@ details { margin-bottom:3px; }
 .livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
+.livescore-block .ls-nicht-heute { display:block; }
 .ls-row { display:flex; justify-content:space-between; align-items:center; gap:4px; }
 .ls-team { font-size:12px; font-weight:bold; flex:1; }
 .ls-score { font-size:16px; font-weight:bold; padding:0 6px; }
@@ -141,9 +142,11 @@ function stelleBloeckeHer(){
 function openLivescoreDrei(){
   document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
-  document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-drei") || d.classList.contains("live-drei-liga")) d.setAttribute("open","");
-    else d.removeAttribute("open");
+  document.querySelectorAll("details.live-drei, details.live-drei-liga").forEach(function(d){
+    d.setAttribute("open","");
+  });
+  document.querySelectorAll("details.live-sammel, details.live-liga").forEach(function(d){
+    d.removeAttribute("open");
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
@@ -194,7 +197,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Uebersicht diverse Ligen fuer Test – Stand: 08.10.26 19:35:03</h1>
+<h1>Uebersicht diverse Ligen fuer Test – Stand: 08.10.26 20:05:04</h1>
 
 
 <details id='wasfindeichhier'>
@@ -376,8 +379,9 @@ Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
 Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
 Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
-livescore_3days öffnet den Block Spiele von gestern, heute und morgen<br>
-und schließt Live. Dort stehen die gespielten und die anstehenden Spiele.<br>
+livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
+und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: pdf, wenn die PDF-Datei da ist, sonst html.<br>
 Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht.<br>
