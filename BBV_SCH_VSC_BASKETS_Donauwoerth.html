@@ -56,6 +56,7 @@ details { margin-bottom:3px; }
 .livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
+.livescore-block .ls-nicht-heute { display:block; }
 .ls-row { display:flex; justify-content:space-between; align-items:center; gap:4px; }
 .ls-team { font-size:12px; font-weight:bold; flex:1; }
 .ls-score { font-size:16px; font-weight:bold; padding:0 6px; }
@@ -141,9 +142,11 @@ function stelleBloeckeHer(){
 function openLivescoreDrei(){
   document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
-  document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-drei") || d.classList.contains("live-drei-liga")) d.setAttribute("open","");
-    else d.removeAttribute("open");
+  document.querySelectorAll("details.live-drei, details.live-drei-liga").forEach(function(d){
+    d.setAttribute("open","");
+  });
+  document.querySelectorAll("details.live-sammel, details.live-liga").forEach(function(d){
+    d.removeAttribute("open");
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
@@ -194,7 +197,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>VSC Baskets Donauwoerth – Stand: 08.10.26 19:36:04</h1>
+<h1>VSC Baskets Donauwoerth – Stand: 08.10.26 20:06:05</h1>
 
 
 <details id='wasfindeichhier'>
@@ -376,8 +379,9 @@ Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
 Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
 Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
-livescore_3days öffnet den Block Spiele von gestern, heute und morgen<br>
-und schließt Live. Dort stehen die gespielten und die anstehenden Spiele.<br>
+livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
+und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: pdf, wenn die PDF-Datei da ist, sonst html.<br>
 Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht.<br>
@@ -404,7 +408,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     
 </div>
 
-<details open><summary><b>Spielplan VSC Baskets Donauwörth vom 08.10.26 bis 16.10.26</b><span class='summary-right'>Stand 08.10.26 19:36:04</span></summary><div style='margin-left:10px;'><table><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr><td>54471</td><td>U12</td><td>10.10.2026 10:00</td><td>Netz16 Baskets Königsbrunn</td><td>VSC Baskets Donauwörth</td><td>Gymnasium</td></tr><tr style='background-color:#ffdd99;'><td>55701</td><td>U12</td><td>10.10.2026 14:30</td><td>VSC Donauwörth 2</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>10.10.2026 17:00</td><td>VSC Baskets Donauwörth 2</td><td>TSV Meitingen</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54498</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth</td><td>TSV Etting-Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td>PSV Ingolstadt</td><td>VSC Baskets Donauwörth</td><td>August-Horch-Schule</td></tr><tr style='background-color:#ffdd99;'><td>54491</td><td>U14</td><td>11.10.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Etting-Ingolstadt</td><td>Stauferpark Halle</td></tr><tr><td>54453</td><td>Herren</td><td>11.10.2026 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>Paul-Klee-Gymnasium (neu)</td></tr></tbody></table></div></details><details>
+<details open><summary><b>Spielplan VSC Baskets Donauwörth vom 08.10.26 bis 16.10.26</b><span class='summary-right'>Stand 08.10.26 20:06:05</span></summary><div style='margin-left:10px;'><table><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr><td>54471</td><td>U12</td><td>10.10.2026 10:00</td><td>Netz16 Baskets Königsbrunn</td><td>VSC Baskets Donauwörth</td><td>Gymnasium</td></tr><tr style='background-color:#ffdd99;'><td>55701</td><td>U12</td><td>10.10.2026 14:30</td><td>VSC Donauwörth 2</td><td>Sportfreunde Friedberg</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>10.10.2026 17:00</td><td>VSC Baskets Donauwörth 2</td><td>TSV Meitingen</td><td>Stauferpark Halle</td></tr><tr style='background-color:#ffdd99;'><td>54498</td><td>U10</td><td>11.10.2026 10:00</td><td>VSC Donauwörth</td><td>TSV Etting-Ingolstadt 2</td><td>Stauferpark Halle</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td>PSV Ingolstadt</td><td>VSC Baskets Donauwörth</td><td>August-Horch-Schule</td></tr><tr style='background-color:#ffdd99;'><td>54491</td><td>U14</td><td>11.10.2026 14:30</td><td>VSC Baskets Donauwörth</td><td>TSV Etting-Ingolstadt</td><td>Stauferpark Halle</td></tr><tr><td>54453</td><td>Herren</td><td>11.10.2026 17:00</td><td>TSV Gersthofen</td><td>VSC Donauwörth</td><td>Paul-Klee-Gymnasium (neu)</td></tr></tbody></table></div></details><details>
 
 <summary>
     <b>Bezirksoberliga Herren 26/27 (Senioren Schwaben; Liganr.: 22004) (Liga 54453)</b>

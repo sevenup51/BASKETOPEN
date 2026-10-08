@@ -56,6 +56,7 @@ details { margin-bottom:3px; }
 .livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
+.livescore-block .ls-nicht-heute { display:block; }
 .ls-row { display:flex; justify-content:space-between; align-items:center; gap:4px; }
 .ls-team { font-size:12px; font-weight:bold; flex:1; }
 .ls-score { font-size:16px; font-weight:bold; padding:0 6px; }
@@ -141,9 +142,11 @@ function stelleBloeckeHer(){
 function openLivescoreDrei(){
   document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
-  document.querySelectorAll("details").forEach(function(d){
-    if(d.classList.contains("live-drei") || d.classList.contains("live-drei-liga")) d.setAttribute("open","");
-    else d.removeAttribute("open");
+  document.querySelectorAll("details.live-drei, details.live-drei-liga").forEach(function(d){
+    d.setAttribute("open","");
+  });
+  document.querySelectorAll("details.live-sammel, details.live-liga").forEach(function(d){
+    d.removeAttribute("open");
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
@@ -194,7 +197,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 08.10.26 19:37:17</h1>
+<h1>Bundesligen – Stand: 08.10.26 20:07:01</h1>
 
 
 <details id='wasfindeichhier'>
@@ -376,8 +379,9 @@ Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
 Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
 Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
-livescore_3days öffnet den Block Spiele von gestern, heute und morgen<br>
-und schließt Live. Dort stehen die gespielten und die anstehenden Spiele.<br>
+livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
+und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: pdf, wenn die PDF-Datei da ist, sonst html.<br>
 Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht.<br>
@@ -404,7 +408,7 @@ Bei ProB steht Video, wenn ein Link da ist.
     <button onclick="openLivescoreDrei()">livescore_3days</button><button onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 08.10 19:37:17</span></summary><div style='margin-left:10px;'><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 08.10 20:07:01</span></summary><div style='margin-left:10px;'><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Telekom Baskets Bonn</div>
                     <div class='ls-score'>–</div>
@@ -445,7 +449,7 @@ Bei ProB steht Video, wenn ein Link da ist.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>easyCredit BBL, gestern bis morgen</div>
-            <div class='livescore-box ls-nicht-heute' style=''>
+            <div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Telekom Baskets Bonn</div>
                     <div class='ls-score'>–</div>
@@ -1095,7 +1099,7 @@ Bei ProB steht Video, wenn ein Link da ist.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProA, gestern bis morgen</div>
-            <div class='livescore-box ls-nicht-heute' style=''>
+            <div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>HAKRO Merlins Crailsheim</div>
                     <div class='ls-score'>–</div>
@@ -2441,7 +2445,7 @@ Bei ProB steht Video, wenn ein Link da ist.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Nord, gestern bis morgen</div>
-            <div class='livescore-box ls-nicht-heute' style=''>
+            <div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Baskets Juniors TSG Westerstede</div>
                     <div class='ls-score'>–</div>
