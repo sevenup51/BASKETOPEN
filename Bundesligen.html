@@ -215,7 +215,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 11.10.26 00:07:02</h1>
+<h1>Bundesligen – Stand: 11.10.26 00:37:09</h1>
 
 
 <details id='wasfindeichhier'>
@@ -421,10 +421,13 @@ Bei ProB steht Video, wenn ein Link da ist.
 Vor den Ligen in Live und in Spiele von gestern, heute und morgen stehen<br>
 Alles öffnen und Alles schließen. Die gelten nur für diese Gruppe.<br>
 Ein Refresh zeigt die Seite wieder so, wie sie vorher offen oder zu war.<br>
-Unter Live stehen die heutigen Spiele. Die Karte bleibt orange,<br>
-nur Datum und Uhrzeit sind grün. Das gilt auch, wenn die API live meldet.<br>
-In den 15 Minuten vor der Anpfiffzeit auf der Kachel wird die ganze Kachel grün.<br>
-Meldet die API das Ende, bleibt das Spiel noch 10 Minuten unter Live.<br>
+Unter Live steht ein Spiel erst 30 Minuten vor seinem eigenen Anpfiff.<br>
+Damit kommt der Block Live und der Refresh erst, wenn die früheste Liga soweit ist.<br>
+Bis zum ersten Zwischenstand der Liga bleiben nur Datum und Uhrzeit grün.<br>
+Kommt ein Zwischenstand, wird diese Kachel ganz grün.<br>
+140 Minuten nach dem Anpfiff fällt das Spiel weg, wenn es keine Verlängerung gab.<br>
+Meldet die API das Ende früher, bleibt es noch 10 Minuten, aber nur wenn es vorher aktiv war.<br>
+Der Refresh läuft, solange so eine Kachel unter Live steht.<br>
 Die Refresh-Zeile steht direkt hinter Live.<br>
 Darin steht ULT und die nächste Upload-Zeit. Der Upload läuft alle 6 Minuten.<br>
 Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
@@ -441,115 +444,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-sammel' data-block='Live' open><summary><b>Live</b><span id='live-refresh'></span><span class='summary-right'>Stand: 11.10 00:07:02</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-liga' data-block='live-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>Basketball Löwen Braunschweig</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>MHP RIESEN Ludwigsburg</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 15:00</div>
-                
-                
-            </div><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>SKYLINERS</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>Veolia Towers Hamburg</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 16:30</div>
-                
-                
-            </div></div></details><details class='live-liga' data-block='live-55738' open><summary><b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>Rutronik Stars Keltern</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>Syntainics MBC</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 16:00</div>
-                
-                
-            </div><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>TK Hannover</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>Eigner Angels Nördlingen</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 16:30</div>
-                
-                
-            </div><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>Saarlouis Royals</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>Eisvögel USC Freiburg</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 17:00</div>
-                
-                
-            </div></div></details><details class='live-liga' data-block='live-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>RheinStars Köln</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>Eisbären Bremerhaven</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 18:00</div>
-                
-                
-            </div></div></details><details class='live-liga' data-block='live-55817' open><summary><b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>Culture City Weimar</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>Bayer Giants Leverkusen</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 16:00</div>
-                
-                
-            </div><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>TSV Oberhaching Tropics</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>BBC Coburg</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 16:00</div>
-                
-                
-            </div><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>Basketball Löwen</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>Porsche BBA Ludwigsburg</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 17:00</div>
-                
-                
-            </div><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>SV Fellbach Flashers</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>SKYLINERS Juniors</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 17:30</div>
-                
-                
-            </div></div></details><details class='live-liga' data-block='live-55815' open><summary><b>Herren ProB Nord (Senioren; Liganr.: 20) (Liga 55815)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>Hertener Löwen</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>Seawolves Academy</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 16:00</div>
-                
-                
-            </div><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>TSV Neustadt temps Shooters</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>LOK BERNAU</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>11.10.2026 16:00</div>
-                
-                
-            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 11.10 00:07:02</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 11.10 00:37:09</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>NINERS Chemnitz</div>
                     <div class='ls-score'>83:87</div>
@@ -852,7 +747,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1313,7 +1208,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1661,7 +1556,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2212,7 +2107,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>2. DBBL Süd (Senioren; Liganr.: 43) (Liga 55749)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2492,7 +2387,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>2. DBBL Nord (Senioren; Liganr.: 40) (Liga 55746)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2772,7 +2667,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3319,7 +3214,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>Herren ProB Nord (Senioren; Liganr.: 20) (Liga 55815)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3763,7 +3658,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>BBL-Pokal 1. Runde (Senioren; Liganr.: 8) (Liga 55809)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3788,7 +3683,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -3889,7 +3784,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>DBBL-Pokal Runde 1 (Senioren; Liganr.: 35) (Liga 55743)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -3914,7 +3809,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <b>DBBL-Pokal Runde 2 (Senioren; Liganr.: 37) (Liga 55744)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 10.10. 23:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 11.10. 00:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -4049,7 +3944,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </details>
 
 <script>
-/* Uhr und Refresh, solange der Block Live offen ist und eine Karte enthält. */
+/* Uhr und Refresh nur bei offenem Live-Block und einer aktiven Kachel. */
 (function () {
   var ziel = 0;
   var geladen = new Date();
@@ -4061,7 +3956,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
   function laufendesSpiel() {
     var block = document.querySelector("details.live-sammel");
     if (!block || !block.hasAttribute("open")) return false;
-    return !!block.querySelector(".livescore-box");
+    return !!block.querySelector(".livescore-box.ls-aktiv");
   }
   function naechsterUpload(ab) {
     var slot = new Date(ab);
