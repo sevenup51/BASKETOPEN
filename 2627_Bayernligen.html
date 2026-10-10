@@ -215,7 +215,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bayernliga – Stand: 10.10.26 23:52:53</h1>
+<h1>Bayernliga – Stand: 11.10.26 00:07:52</h1>
 
 
 <details id='wasfindeichhier'>
@@ -421,9 +421,13 @@ Bei ProB steht Video, wenn ein Link da ist.
 Vor den Ligen in Live und in Spiele von gestern, heute und morgen stehen<br>
 Alles öffnen und Alles schließen. Die gelten nur für diese Gruppe.<br>
 Ein Refresh zeigt die Seite wieder so, wie sie vorher offen oder zu war.<br>
-Unter Live stehen die heutigen Spiele. Die Karte bleibt orange.<br>
-Nur Datum und Uhrzeit sind grün, bis das Spiel live ist. Dann wird die Karte grün.<br>
-Ein beendetes Spiel bleibt etwa 15 Minuten unter Live.<br>
+Unter Live stehen die heutigen Spiele. Die Karte bleibt orange,<br>
+nur Datum und Uhrzeit sind grün. Das gilt auch, wenn die API live meldet.<br>
+In den 15 Minuten vor der Anpfiffzeit auf der Kachel wird die ganze Kachel grün.<br>
+140 Minuten nach dem Anpfiff fällt das Spiel weg, wenn es keine Verlängerung gab.<br>
+Meldet die API das Ende früher, bleibt es noch 10 Minuten, aber nur wenn es vorher aktiv war.<br>
+Der Refresh läuft nur bei einem aktiven Spiel: in den 15 Minuten vor dem Anpfiff<br>
+und solange die API live meldet. Sonst nicht.<br>
 Die Refresh-Zeile steht direkt hinter Live.<br>
 Darin steht ULT und die nächste Upload-Zeit. Der Upload läuft alle 6 Minuten.<br>
 Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
@@ -466,7 +470,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>10746</td>
 <td>13</td>
 <td>10.10.2026 19:00</td>
@@ -474,7 +478,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>SV Oberdürrbach 1959</td>
 <td>80 : 78</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>10676</td>
 <td>2</td>
 <td>10.10.2026 17:30</td>
@@ -482,7 +486,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>BSC Bayreuth Saas</td>
 <td>76 : 68</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>10678</td>
 <td>2</td>
 <td>10.10.2026 16:00</td>
@@ -490,7 +494,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>TuSpo Heroldsberg</td>
 <td>69 : 66</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>10679</td>
 <td>2</td>
 <td>10.10.2026 15:00</td>
@@ -686,43 +690,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>10679</td>
-<td>2</td>
-<td>10.10.2026 15:00</td>
-<td><div class="mannschaft">TSV Breitengüßbach 2</div></td>
-<td><div class="mannschaft">TB 1888 Erlangen</div></td>
-<td><div class="halle">Hans-Jung-Halle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Hannes Dittrich</span><br/><span class="sr-zeile"><b>SR2</b> Paul Wefelscheid</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>10678</td>
-<td>2</td>
-<td>10.10.2026 16:00</td>
-<td><div class="mannschaft">TG 1877 Veitshöchheim 2</div></td>
-<td><div class="mannschaft">TuSpo Heroldsberg</div></td>
-<td><div class="halle">Dreifachhalle Schulzentrum</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Dirk Fröhlich</span><br/><span class="sr-zeile"><b>SR2</b> Jasmin Hochrein</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>10676</td>
-<td>2</td>
-<td>10.10.2026 17:30</td>
-<td><div class="mannschaft">CVJM Erlangen</div></td>
-<td><div class="mannschaft">BSC Bayreuth Saas</div></td>
-<td><div class="halle">Friedrich-Sponsel-Halle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Vincent Clifford</span><br/><span class="sr-zeile"><b>SR2</b> Marlene Babl</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>10746</td>
-<td>13</td>
-<td>10.10.2026 19:00</td>
-<td><div class="mannschaft">TB Weiden</div></td>
-<td><div class="mannschaft">SV Oberdürrbach 1959</div></td>
-<td><div class="halle">Mehrzweckhalle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Konstantin Roppelt</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>10677</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
@@ -731,7 +699,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Gymnasium</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Rudolf Salvetr</span><br/><span class="sr-zeile"><b>SR2</b> Matthias Wadenstorfer</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>10675</td>
 <td>2</td>
 <td>11.10.2026 17:00</td>
@@ -827,7 +795,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>20588</td>
 <td>2</td>
 <td>10.10.2026 20:00</td>
@@ -835,7 +803,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>PSV Ingolstadt</td>
 <td>108 : 92</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>20589</td>
 <td>2</td>
 <td>10.10.2026 20:00</td>
@@ -843,7 +811,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>TSV 1865 Dachau</td>
 <td>57 : 70</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>20585</td>
 <td>2</td>
 <td>10.10.2026 19:30</td>
@@ -851,7 +819,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Fibalon Baskets Neumarkt</td>
 <td>102 : 87</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>20586</td>
 <td>2</td>
 <td>10.10.2026 16:00</td>
@@ -1039,43 +1007,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>20586</td>
-<td>2</td>
-<td>10.10.2026 16:00</td>
-<td><div class="mannschaft">Dukes Dingolfing</div></td>
-<td><div class="mannschaft">TSV Jahn Freising</div></td>
-<td><div class="halle">Dreifachturnhalle Höll-Ost</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Andreas Köhler</span><br/><span class="sr-zeile"><b>SR2</b> Analena Wilhelm</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>20585</td>
-<td>2</td>
-<td>10.10.2026 19:30</td>
-<td><div class="mannschaft">Nürnberger Basketball Club</div></td>
-<td><div class="mannschaft">Fibalon Baskets Neumarkt</div></td>
-<td><div class="halle">Schulcampus Werderau</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Kürsat Yildiz</span><br/><span class="sr-zeile"><b>SR2</b> Daniel Dobler</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>20588</td>
-<td>2</td>
-<td>10.10.2026 20:00</td>
-<td><div class="mannschaft">TG Landshut</div></td>
-<td><div class="mannschaft">PSV Ingolstadt</div></td>
-<td><div class="halle">Sportzentrum West</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Fabian Wallmann</span><br/><span class="sr-zeile"><b>SR2</b> Lukas Moritz</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>20589</td>
-<td>2</td>
-<td>10.10.2026 20:00</td>
-<td><div class="mannschaft">TSV Milbertshofen</div></td>
-<td><div class="mannschaft">TSV 1865 Dachau</div></td>
-<td><div class="halle">Gebrüder-Apfelbeck-Halle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Stefan Rösel</span><br/><span class="sr-zeile"><b>SR2</b> Lorenz Vogt</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>20587</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
@@ -1084,7 +1016,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Städt. Sporthalle Säbener Str.</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Eduard Safont Balaguer</span><br/><span class="sr-zeile"><b>SR2</b> Zakhar Dziubishin</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>20590</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
@@ -1171,7 +1103,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>30678</td>
 <td>2</td>
 <td>10.10.2026 19:30</td>
@@ -1179,7 +1111,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>TSV München Ost</td>
 <td>71 : 77</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>30679</td>
 <td>2</td>
 <td>10.10.2026 19:15</td>
@@ -1187,7 +1119,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Uniqform Baskets Sonthofen</td>
 <td>66 : 72</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>30675</td>
 <td>2</td>
 <td>10.10.2026 19:00</td>
@@ -1195,7 +1127,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>SV Wacker Burghausen</td>
 <td>94 : 91</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>30676</td>
 <td>2</td>
 <td>10.10.2026 17:00</td>
@@ -1203,7 +1135,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>TSV OH Deisenhofen 2</td>
 <td>86 : 67</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>30677</td>
 <td>2</td>
 <td>10.10.2026 16:30</td>
@@ -1399,52 +1331,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>30677</td>
-<td>2</td>
-<td>10.10.2026 16:30</td>
-<td><div class="mannschaft">TSV Vaterstetten</div></td>
-<td><div class="mannschaft">Haching Baskets 2</div></td>
-<td><div class="halle">Realschule Baldham</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Sören Pudack</span><br/><span class="sr-zeile"><b>SR2</b> Martin Kursawe</span><br/><span class="sr-zeile"><b>COA</b> Julius Pichlmüller</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>30676</td>
-<td>2</td>
-<td>10.10.2026 17:00</td>
-<td><div class="mannschaft">DJK SB München 2</div></td>
-<td><div class="mannschaft">TSV OH Deisenhofen 2</div></td>
-<td><div class="halle">Grundschule Hermine-von-Parish</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Shadi Malouk</span><br/><span class="sr-zeile"><b>SR2</b> Raphael Kursawe</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>30675</td>
-<td>2</td>
-<td>10.10.2026 19:00</td>
-<td><div class="mannschaft">DJK Kaufbeuren</div></td>
-<td><div class="mannschaft">SV Wacker Burghausen</div></td>
-<td><div class="halle">Schraderhalle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jonathan Mac Quarrie</span><br/><span class="sr-zeile"><b>SR2</b> Moritz Moser</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>30679</td>
-<td>2</td>
-<td>10.10.2026 19:15</td>
-<td><div class="mannschaft">TSV Weilheim</div></td>
-<td><div class="mannschaft">Uniqform Baskets Sonthofen</div></td>
-<td><div class="halle">Sportzentrum</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Christopher Kollmann</span><br/><span class="sr-zeile"><b>SR2</b> Malte Müller</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>30678</td>
-<td>2</td>
-<td>10.10.2026 19:30</td>
-<td><div class="mannschaft">ESV Staffelsee</div></td>
-<td><div class="mannschaft">TSV München Ost</div></td>
-<td><div class="halle">Staffelsee-Gymnasium</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Bartholomäus Daisenberger</span><br/><span class="sr-zeile"><b>SR2</b> Dominik Kroiss</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>30680</td>
 <td>2</td>
 <td>11.10.2026 16:00</td>
@@ -1540,7 +1427,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>40458</td>
 <td>2</td>
 <td>10.10.2026 17:30</td>
@@ -1548,7 +1435,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>ONLINEPRINTERS Neustadt a.d. Aisch</td>
 <td>51 : 55</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>40459</td>
 <td>2</td>
 <td>10.10.2026 16:00</td>
@@ -1718,25 +1605,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>40459</td>
-<td>2</td>
-<td>10.10.2026 16:00</td>
-<td><div class="mannschaft">TG 48 Würzburg 3</div></td>
-<td><div class="mannschaft">TS Herzogenaurach</div></td>
-<td><div class="halle">Deutschhaus Gymnasium</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Marco Pflaum</span><br/><span class="sr-zeile"><b>SR2</b> Tim Eichelsdörfer</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>40458</td>
-<td>2</td>
-<td>10.10.2026 17:30</td>
-<td><div class="mannschaft">DJK Neustadt a. d. Waldnaab</div></td>
-<td><div class="mannschaft">ONLINEPRINTERS Neustadt a.d. Aisch</div></td>
-<td><div class="halle">Gymnasium</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Sebastian Zierl</span><br/><span class="sr-zeile"><b>SR2</b> Laura Treml</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>40456</td>
 <td>2</td>
 <td>11.10.2026 12:30</td>
@@ -1823,7 +1692,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>50459</td>
 <td>2</td>
 <td>10.10.2026 20:00</td>
@@ -1831,7 +1700,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>DJK Landsberg</td>
 <td>60 : 58</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>50460</td>
 <td>2</td>
 <td>10.10.2026 19:30</td>
@@ -1839,7 +1708,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>MTV 1879 München 2</td>
 <td>58 : 67</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>50457</td>
 <td>2</td>
 <td>10.10.2026 19:00</td>
@@ -1847,7 +1716,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Haching Baskets</td>
 <td>67 : 41</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>50456</td>
 <td>2</td>
 <td>10.10.2026 17:45</td>
@@ -2001,43 +1870,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>50456</td>
-<td>2</td>
-<td>10.10.2026 17:45</td>
-<td><div class="mannschaft">TSV Etting-Ingolstadt</div></td>
-<td><div class="mannschaft">TSV 1880 Wasserburg 2</div></td>
-<td><div class="halle">Ballspielhalle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Andrey Gattsouk</span><br/><span class="sr-zeile"><b>SR2</b> Richard Fieber</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>50457</td>
-<td>2</td>
-<td>10.10.2026 19:00</td>
-<td><div class="mannschaft">TSV 1861 Nördlingen</div></td>
-<td><div class="mannschaft">Haching Baskets</div></td>
-<td><div class="halle">Mehrzweckhalle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Kübra Simsek</span><br/><span class="sr-zeile"><b>SR2</b> Emre Dede</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>50460</td>
-<td>2</td>
-<td>10.10.2026 19:30</td>
-<td><div class="mannschaft">TSV Schwaben Augsburg</div></td>
-<td><div class="mannschaft">MTV 1879 München 2</div></td>
-<td><div class="halle">Berufsschule VI</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Andreas Kainzinger</span><br/><span class="sr-zeile"><b>SR2</b> Leo Geese</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>50459</td>
-<td>2</td>
-<td>10.10.2026 20:00</td>
-<td><div class="mannschaft">BC Hellenen München</div></td>
-<td><div class="mannschaft">DJK Landsberg</div></td>
-<td><div class="halle">Adolf-Weber-Gymnasium</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Amir Karadzic</span><br/><span class="sr-zeile"><b>SR2</b> Kristijan Wirnsberger</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>50458</td>
 <td>2</td>
 <td>11.10.2026 14:00</td>

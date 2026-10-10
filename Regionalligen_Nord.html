@@ -215,7 +215,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Nord – Stand: 10.10.26 23:52:31</h1>
+<h1>Regionalliga Nord – Stand: 11.10.26 00:07:22</h1>
 
 
 <details id='wasfindeichhier'>
@@ -421,9 +421,13 @@ Bei ProB steht Video, wenn ein Link da ist.
 Vor den Ligen in Live und in Spiele von gestern, heute und morgen stehen<br>
 Alles öffnen und Alles schließen. Die gelten nur für diese Gruppe.<br>
 Ein Refresh zeigt die Seite wieder so, wie sie vorher offen oder zu war.<br>
-Unter Live stehen die heutigen Spiele. Die Karte bleibt orange.<br>
-Nur Datum und Uhrzeit sind grün, bis das Spiel live ist. Dann wird die Karte grün.<br>
-Ein beendetes Spiel bleibt etwa 15 Minuten unter Live.<br>
+Unter Live stehen die heutigen Spiele. Die Karte bleibt orange,<br>
+nur Datum und Uhrzeit sind grün. Das gilt auch, wenn die API live meldet.<br>
+In den 15 Minuten vor der Anpfiffzeit auf der Kachel wird die ganze Kachel grün.<br>
+140 Minuten nach dem Anpfiff fällt das Spiel weg, wenn es keine Verlängerung gab.<br>
+Meldet die API das Ende früher, bleibt es noch 10 Minuten, aber nur wenn es vorher aktiv war.<br>
+Der Refresh läuft nur bei einem aktiven Spiel: in den 15 Minuten vor dem Anpfiff<br>
+und solange die API live meldet. Sonst nicht.<br>
 Die Refresh-Zeile steht direkt hinter Live.<br>
 Darin steht ULT und die nächste Upload-Zeit. Der Upload läuft alle 6 Minuten.<br>
 Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
@@ -466,7 +470,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>1026</td>
 <td>4</td>
 <td>10.10.2026 20:00</td>
@@ -474,7 +478,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Oldenburger TB</td>
 <td>98 : 61</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>1028</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
@@ -482,7 +486,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Eisbären Bremerhaven 2</td>
 <td>96 : 76</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>1032</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
@@ -490,7 +494,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>RSV Eintracht 1949</td>
 <td>86 : 78</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>1029</td>
 <td>4</td>
 <td>10.10.2026 18:30</td>
@@ -498,7 +502,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>TuS Lichterfelde</td>
 <td>75 : 82</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>1025</td>
 <td>4</td>
 <td>10.10.2026 18:00</td>
@@ -506,7 +510,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Berlin Dreams DBV Charlottenburg</td>
 <td>102 : 106</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>1027</td>
 <td>4</td>
 <td>10.10.2026 18:00</td>
@@ -754,61 +758,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>1025</td>
-<td>4</td>
-<td>10.10.2026 18:00</td>
-<td><div class="mannschaft">TSG Westerstede 2</div></td>
-<td><div class="mannschaft">Berlin Dreams DBV Charlottenburg</div></td>
-<td><div class="halle">Hössensporthalle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Shoun Schröder</span><br/><span class="sr-zeile"><b>SR2</b> Noah Scherpenbach</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>1027</td>
-<td>4</td>
-<td>10.10.2026 18:00</td>
-<td><div class="mannschaft">TSG Bergedorf Stargazers</div></td>
-<td><div class="mannschaft">TuS ADEMAX Red Devils Bramsche</div></td>
-<td><div class="halle">Sporthalle Fährbuernfleet</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Maximilian Rinke</span><br/><span class="sr-zeile"><b>SR2</b> Maik Czubera</span><br/><span class="sr-zeile"><b>COA</b> Stephen Alan Gilbert</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>1029</td>
-<td>4</td>
-<td>10.10.2026 18:30</td>
-<td><div class="mannschaft">MTV/<wbr/>BG Wolfenbüttel</div></td>
-<td><div class="mannschaft">TuS Lichterfelde</div></td>
-<td><div class="halle">Landeshuter Platz</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Lucas Bemfert</span><br/><span class="sr-zeile"><b>SR2</b> Nico Merck</span><br/><span class="sr-zeile"><b>COA</b> Harald Block</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>1028</td>
-<td>4</td>
-<td>10.10.2026 19:30</td>
-<td><div class="mannschaft">BG Zehlendorf</div></td>
-<td><div class="mannschaft">Eisbären Bremerhaven 2</div></td>
-<td><div class="halle">J.-F.-Kennedy-Halle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jonathan Xander</span><br/><span class="sr-zeile"><b>SR2</b> Elisabeth Ziegler</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>1032</td>
-<td>4</td>
-<td>10.10.2026 19:30</td>
-<td><div class="mannschaft">VfL Stade</div></td>
-<td><div class="mannschaft">RSV Eintracht 1949</div></td>
-<td><div class="halle">Sportcampus Stade</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Mykola Ambrosov</span><br/><span class="sr-zeile"><b>SR2</b> *** ****</span><br/><span class="sr-zeile"><b>COA</b> Manuel-Mark Lücke</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>1026</td>
-<td>4</td>
-<td>10.10.2026 20:00</td>
-<td><div class="mannschaft">SC Rasta Vechta 2</div></td>
-<td><div class="mannschaft">Oldenburger TB</div></td>
-<td><div class="halle">RASTA Gym</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Christoph Franke</span><br/><span class="sr-zeile"><b>SR2</b> Jan-Willem van Zütphen</span><br/><span class="sr-zeile"><b>COA</b> Tomas Zaklika</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>1030</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -817,7 +767,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Palisadenstraße, oben</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Malte Kuon</span><br/><span class="sr-zeile"><b>SR2</b> Oliver Krösch</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>1031</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -931,7 +881,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>2013</td>
 <td>3</td>
 <td>10.10.2026 18:00</td>
@@ -939,7 +889,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Rostock Seawolves</td>
 <td>41 : 107</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>2015</td>
 <td>3</td>
 <td>10.10.2026 17:00</td>
@@ -947,7 +897,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Ahrensburger TSV</td>
 <td>57 : 62</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>2011</td>
 <td>3</td>
 <td>10.10.2026 14:30</td>
@@ -1109,34 +1059,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>2011</td>
-<td>3</td>
-<td>10.10.2026 14:30</td>
-<td><div class="mannschaft">Oldenburger TB</div></td>
-<td><div class="mannschaft">ASC 46 Göttingen</div></td>
-<td><div class="halle">Halle Haarenufer</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Marco Büttner</span><br/><span class="sr-zeile"><b>SR2</b> Lutz Wegener</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>2015</td>
-<td>3</td>
-<td>10.10.2026 17:00</td>
-<td><div class="mannschaft">City Basket Berlin</div></td>
-<td><div class="mannschaft">Ahrensburger TSV</div></td>
-<td><div class="halle">Schillerstraße, oben</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Danny Püschel</span><br/><span class="sr-zeile"><b>SR2</b> Fabian Ament</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>2013</td>
-<td>3</td>
-<td>10.10.2026 18:00</td>
-<td><div class="mannschaft">Hamburg Towers</div></td>
-<td><div class="mannschaft">Rostock Seawolves</div></td>
-<td><div class="halle">Stadtteilschule Willhelmsburg</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Ken Karstens</span><br/><span class="sr-zeile"><b>SR2</b> Tobias Kölling</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2012</td>
 <td>3</td>
 <td>11.10.2026 15:00</td>
@@ -1187,7 +1110,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>3024</td>
 <td>4</td>
 <td>10.10.2026 19:15</td>
@@ -1195,7 +1118,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Bramfelder SV</td>
 <td>80 : 56</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>3088</td>
 <td>4</td>
 <td>10.10.2026 19:15</td>
@@ -1391,25 +1314,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>3024</td>
-<td>4</td>
-<td>10.10.2026 19:15</td>
-<td><div class="mannschaft">Kieler TB</div></td>
-<td><div class="mannschaft">Bramfelder SV</div></td>
-<td><div class="halle">Reventlou Halle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Reza Nawroozzada</span><br/><span class="sr-zeile"><b>SR2</b> Markus Reppenhagen</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>3088</td>
-<td>4</td>
-<td>10.10.2026 19:15</td>
-<td><div class="mannschaft">BBC Rendsburg Twisters</div></td>
-<td><div class="mannschaft">SC Rist Wedel 2</div></td>
-<td><div class="halle">Herdergymnasium</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Ulf Gollnick</span><br/><span class="sr-zeile"><b>SR2</b> Milovan Lalic</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>3019</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -1418,7 +1323,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Berufliche Schule St. Pauli</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Lasse Schäfer</span><br/><span class="sr-zeile"><b>COA</b> Michael Pieper</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>3020</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -1427,7 +1332,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">LT Halle</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Tobias Kölling</span><br/><span class="sr-zeile"><b>SR2</b> Jan-Willem van Zütphen</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>3021</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -1436,7 +1341,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Sachsenwald Gymnasium</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Benjamin Maier</span><br/><span class="sr-zeile"><b>SR2</b> Ken Karstens</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>3023</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -1478,7 +1383,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>5023</td>
 <td>4</td>
 <td>10.10.2026 19:30</td>
@@ -1486,7 +1391,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>USV Potsdam</td>
 <td>64 : 67</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>5021</td>
 <td>4</td>
 <td>10.10.2026 19:00</td>
@@ -1494,7 +1399,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>SV Empor Berlin</td>
 <td>91 : 70</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>5022</td>
 <td>4</td>
 <td>10.10.2026 19:00</td>
@@ -1502,7 +1407,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Berliner SC</td>
 <td>93 : 87</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>5024</td>
 <td>4</td>
 <td>10.10.2026 18:00</td>
@@ -1510,7 +1415,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>RSV Eintracht 1949 2</td>
 <td>64 : 77</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>5019</td>
 <td>4</td>
 <td>10.10.2026 16:00</td>
@@ -1706,52 +1611,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>5019</td>
-<td>4</td>
-<td>10.10.2026 16:00</td>
-<td><div class="mannschaft">Tiergarten ISC 99</div></td>
-<td><div class="mannschaft">Rostock Seawolves 3</div></td>
-<td><div class="halle">Max-Schmeling-Halle C</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Daniel Zühlke</span><br/><span class="sr-zeile"><b>SR2</b> Toni Luge</span><br/><span class="sr-zeile"><b>COA</b> Susanne Winking</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>5024</td>
-<td>4</td>
-<td>10.10.2026 18:00</td>
-<td><div class="mannschaft">USV Halle Rhinos</div></td>
-<td><div class="mannschaft">RSV Eintracht 1949 2</div></td>
-<td><div class="halle">Dreifelderhalle der Sportschulen Halle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Witas Kerlach</span><br/><span class="sr-zeile"><b>SR2</b> Malte Maercker</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>5021</td>
-<td>4</td>
-<td>10.10.2026 19:00</td>
-<td><div class="mannschaft">RedHawks Potsdam</div></td>
-<td><div class="mannschaft">SV Empor Berlin</div></td>
-<td><div class="halle">Pierre-de-Coubertin-Oberschule</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Reza Haghshenas</span><br/><span class="sr-zeile"><b>SR2</b> Regina Lenz</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>5022</td>
-<td>4</td>
-<td>10.10.2026 19:00</td>
-<td><div class="mannschaft">KINGS&amp;QUEENS Basketball Potsdam</div></td>
-<td><div class="mannschaft">Berliner SC</div></td>
-<td><div class="halle">Grundschule im Bornstedter Feld</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jano Petrowski</span><br/><span class="sr-zeile"><b>SR2</b> Jan Peter Schlund</span><br/><span class="sr-zeile"><b>COA</b> Bernd Michael</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>5023</td>
-<td>4</td>
-<td>10.10.2026 19:30</td>
-<td><div class="mannschaft">DBV Charlottenburg 2</div></td>
-<td><div class="mannschaft">USV Potsdam</div></td>
-<td><div class="halle">Schillerstraße, oben</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Manuel Westermann</span><br/><span class="sr-zeile"><b>SR2</b> Julian Pokorny</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>5020</td>
 <td>4</td>
 <td>11.10.2026 19:00</td>
@@ -1811,7 +1671,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>7020</td>
 <td>4</td>
 <td>10.10.2026 17:00</td>
@@ -1819,7 +1679,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>CVJM Hannover</td>
 <td>67 : 73</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>7021</td>
 <td>4</td>
 <td>10.10.2026 17:00</td>
@@ -1827,7 +1687,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>TuS Bothfeld</td>
 <td>74 : 65</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>7019</td>
 <td>4</td>
 <td>10.10.2026 15:00</td>
@@ -1835,7 +1695,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>FORTE Energie RW Cuxhaven BasCats</td>
 <td>103 : 70</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>7024</td>
 <td>4</td>
 <td>10.10.2026 15:00</td>
@@ -2023,43 +1883,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>7019</td>
-<td>4</td>
-<td>10.10.2026 15:00</td>
-<td><div class="mannschaft">TSV Quakenbrück</div></td>
-<td><div class="mannschaft">FORTE Energie RW Cuxhaven BasCats</div></td>
-<td><div class="halle">Artland - Sporthalle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Pelle Weiß</span><br/><span class="sr-zeile"><b>SR2</b> Paulina Kümper</span><br/><span class="sr-zeile"><b>COA</b> Matthias Oehlmann</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>7024</td>
-<td>4</td>
-<td>10.10.2026 15:00</td>
-<td><div class="mannschaft">Pro Basketball Göttingen</div></td>
-<td><div class="mannschaft">BTS Neustadt</div></td>
-<td><div class="halle">Sartorius Basketball Lab</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Emil Staude</span><br/><span class="sr-zeile"><b>SR2</b> Jan-Hendrik Böttcher</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>7020</td>
-<td>4</td>
-<td>10.10.2026 17:00</td>
-<td><div class="mannschaft">SC Rasta Vechta 3</div></td>
-<td><div class="mannschaft">CVJM Hannover</div></td>
-<td><div class="halle">RASTA Gym</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jan-Martin Hinck</span><br/><span class="sr-zeile"><b>SR2</b> Fabian Strate</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>7021</td>
-<td>4</td>
-<td>10.10.2026 17:00</td>
-<td><div class="mannschaft">Bremerhaven United</div></td>
-<td><div class="mannschaft">TuS Bothfeld</div></td>
-<td><div class="halle">Sporthalle Gaußschulen</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Talha Dis</span><br/><span class="sr-zeile"><b>SR2</b> Myrko Sternbeck</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>7022</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -2068,7 +1892,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Halle Haarenufer</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Lars Tiedemann</span><br/><span class="sr-zeile"><b>SR2</b> Kianusch Pour Rahimi</span><br/><span class="sr-zeile"><b>COA</b> Tomas Zaklika</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>7023</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -2110,7 +1934,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>7020</td>
 <td>4</td>
 <td>10.10.2026 17:00</td>
@@ -2118,7 +1942,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>CVJM Hannover</td>
 <td>67 : 73</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>7021</td>
 <td>4</td>
 <td>10.10.2026 17:00</td>
@@ -2126,7 +1950,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>TuS Bothfeld</td>
 <td>74 : 65</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>7019</td>
 <td>4</td>
 <td>10.10.2026 15:00</td>
@@ -2134,7 +1958,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>FORTE Energie RW Cuxhaven BasCats</td>
 <td>103 : 70</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>7024</td>
 <td>4</td>
 <td>10.10.2026 15:00</td>
@@ -2322,43 +2146,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>7019</td>
-<td>4</td>
-<td>10.10.2026 15:00</td>
-<td><div class="mannschaft">TSV Quakenbrück</div></td>
-<td><div class="mannschaft">FORTE Energie RW Cuxhaven BasCats</div></td>
-<td><div class="halle">Artland - Sporthalle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Pelle Weiß</span><br/><span class="sr-zeile"><b>SR2</b> Paulina Kümper</span><br/><span class="sr-zeile"><b>COA</b> Matthias Oehlmann</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>7024</td>
-<td>4</td>
-<td>10.10.2026 15:00</td>
-<td><div class="mannschaft">Pro Basketball Göttingen</div></td>
-<td><div class="mannschaft">BTS Neustadt</div></td>
-<td><div class="halle">Sartorius Basketball Lab</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Emil Staude</span><br/><span class="sr-zeile"><b>SR2</b> Jan-Hendrik Böttcher</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>7020</td>
-<td>4</td>
-<td>10.10.2026 17:00</td>
-<td><div class="mannschaft">SC Rasta Vechta 3</div></td>
-<td><div class="mannschaft">CVJM Hannover</div></td>
-<td><div class="halle">RASTA Gym</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Jan-Martin Hinck</span><br/><span class="sr-zeile"><b>SR2</b> Fabian Strate</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>7021</td>
-<td>4</td>
-<td>10.10.2026 17:00</td>
-<td><div class="mannschaft">Bremerhaven United</div></td>
-<td><div class="mannschaft">TuS Bothfeld</div></td>
-<td><div class="halle">Sporthalle Gaußschulen</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Talha Dis</span><br/><span class="sr-zeile"><b>SR2</b> Myrko Sternbeck</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>7022</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -2367,7 +2155,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Halle Haarenufer</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Lars Tiedemann</span><br/><span class="sr-zeile"><b>SR2</b> Kianusch Pour Rahimi</span><br/><span class="sr-zeile"><b>COA</b> Tomas Zaklika</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>7023</td>
 <td>4</td>
 <td>11.10.2026 16:00</td>
@@ -2409,7 +2197,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>6013</td>
 <td>3</td>
 <td>10.10.2026 17:30</td>
@@ -2417,7 +2205,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>USC Magdeburg</td>
 <td>51 : 45</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>6012</td>
 <td>3</td>
 <td>10.10.2026 17:00</td>
@@ -2425,7 +2213,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>Berlin Dreams DBV Charlottenburg</td>
 <td>64 : 57</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>6011</td>
 <td>3</td>
 <td>10.10.2026 16:00</td>
@@ -2433,7 +2221,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>BASS BERLIN</td>
 <td>46 : 43</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>6014</td>
 <td>3</td>
 <td>10.10.2026 16:00</td>
@@ -2579,43 +2367,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>6011</td>
-<td>3</td>
-<td>10.10.2026 16:00</td>
-<td><div class="mannschaft">SSV Lok Bernau</div></td>
-<td><div class="mannschaft">BASS BERLIN</div></td>
-<td><div class="halle">Sporthalle am Wasserturm</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Paul Rode</span><br/><span class="sr-zeile"><b>SR2</b> Marcus Burde</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>6014</td>
-<td>3</td>
-<td>10.10.2026 16:00</td>
-<td><div class="mannschaft">KINGS&amp;QUEENS Basketball Potsdam</div></td>
-<td><div class="mannschaft">TuS Lichterfelde 2</div></td>
-<td><div class="halle">Grundschule im Bornstedter Feld</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Ömer Emre Cetin</span><br/><span class="sr-zeile"><b>SR2</b> Fatih Pinarcik</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>6012</td>
-<td>3</td>
-<td>10.10.2026 17:00</td>
-<td><div class="mannschaft">Türkiyemspor Berlin</div></td>
-<td><div class="mannschaft">Berlin Dreams DBV Charlottenburg</div></td>
-<td><div class="halle">Nostitzstraße (oben)</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Martin Helms</span><br/><span class="sr-zeile"><b>SR2</b> Linus Janzen</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>6013</td>
-<td>3</td>
-<td>10.10.2026 17:30</td>
-<td><div class="mannschaft">Weddinger Wiesel</div></td>
-<td><div class="mannschaft">USC Magdeburg</div></td>
-<td><div class="halle">Herbert-Hoover-Oberschule</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Mark Ney</span><br/><span class="sr-zeile"><b>SR2</b> Leonhard Schieck</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>6015</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>
@@ -2657,7 +2409,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>8013</td>
 <td>3</td>
 <td>10.10.2026 18:00</td>
@@ -2786,16 +2538,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>8013</td>
-<td>3</td>
-<td>10.10.2026 18:00</td>
-<td><div class="mannschaft">TV Vörden</div></td>
-<td><div class="mannschaft">MTV/<wbr/>BG Wolfenbüttel</div></td>
-<td><div class="halle">Grundschule Vörden</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Malte Pohl</span><br/><span class="sr-zeile"><b>SR2</b> Alexander Lüdtke</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>8012</td>
 <td>3</td>
 <td>11.10.2026 12:30</td>
@@ -2804,7 +2547,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Sporthalle Alte Waage</div></td>
 <td class="schiedsrichter"></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>8011</td>
 <td>3</td>
 <td>11.10.2026 15:00</td>
@@ -2813,7 +2556,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Sporthalle der Eichenschule</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Peter Kühn</span><br/><span class="sr-zeile"><b>SR2</b> Jan-Hendrik Böttcher</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>8014</td>
 <td>3</td>
 <td>11.10.2026 16:00</td>

@@ -215,7 +215,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedwest – Stand: 10.10.26 23:52:37</h1>
+<h1>Regionalliga Suedwest – Stand: 11.10.26 00:07:34</h1>
 
 
 <details id='wasfindeichhier'>
@@ -421,9 +421,13 @@ Bei ProB steht Video, wenn ein Link da ist.
 Vor den Ligen in Live und in Spiele von gestern, heute und morgen stehen<br>
 Alles öffnen und Alles schließen. Die gelten nur für diese Gruppe.<br>
 Ein Refresh zeigt die Seite wieder so, wie sie vorher offen oder zu war.<br>
-Unter Live stehen die heutigen Spiele. Die Karte bleibt orange.<br>
-Nur Datum und Uhrzeit sind grün, bis das Spiel live ist. Dann wird die Karte grün.<br>
-Ein beendetes Spiel bleibt etwa 15 Minuten unter Live.<br>
+Unter Live stehen die heutigen Spiele. Die Karte bleibt orange,<br>
+nur Datum und Uhrzeit sind grün. Das gilt auch, wenn die API live meldet.<br>
+In den 15 Minuten vor der Anpfiffzeit auf der Kachel wird die ganze Kachel grün.<br>
+140 Minuten nach dem Anpfiff fällt das Spiel weg, wenn es keine Verlängerung gab.<br>
+Meldet die API das Ende früher, bleibt es noch 10 Minuten, aber nur wenn es vorher aktiv war.<br>
+Der Refresh läuft nur bei einem aktiven Spiel: in den 15 Minuten vor dem Anpfiff<br>
+und solange die API live meldet. Sonst nicht.<br>
 Die Refresh-Zeile steht direkt hinter Live.<br>
 Darin steht ULT und die nächste Upload-Zeit. Der Upload läuft alle 6 Minuten.<br>
 Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
@@ -466,7 +470,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>18</td>
 <td>3</td>
 <td>10.10.2026 19:30</td>
@@ -474,7 +478,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>io College Wizards</td>
 <td>66 : 70</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>19</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
@@ -482,7 +486,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>TEAM EHINGEN URSPRING</td>
 <td>101 : 86</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>20</td>
 <td>3</td>
 <td>10.10.2026 19:00</td>
@@ -490,7 +494,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>BBU 01 Ulm</td>
 <td>93 : 102</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>15</td>
 <td>3</td>
 <td>10.10.2026 18:30</td>
@@ -498,7 +502,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td>PKF Titans Stuttgart</td>
 <td>88 : 82</td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr>
 <td>17</td>
 <td>3</td>
 <td>10.10.2026 18:30</td>
@@ -720,52 +724,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>15</td>
-<td>3</td>
-<td>10.10.2026 18:30</td>
-<td><div class="mannschaft">ACT Kassel</div></td>
-<td><div class="mannschaft">PKF Titans Stuttgart</div></td>
-<td><div class="halle">Emil-Junghenn-Halle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Dr. Felix Eiwen</span><br/><span class="sr-zeile"><b>SR2</b> Kai Koal</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>17</td>
-<td>3</td>
-<td>10.10.2026 18:30</td>
-<td><div class="mannschaft">ROTH Energie Gießen Pointers</div></td>
-<td><div class="mannschaft">Black Forest Panthers</div></td>
-<td><div class="halle">Sporthalle Ost</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Silas Hemberger</span><br/><span class="sr-zeile"><b>SR2</b> Christian Bremer</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>19</td>
-<td>3</td>
-<td>10.10.2026 19:00</td>
-<td><div class="mannschaft">MERZ LICH Basketball</div></td>
-<td><div class="mannschaft">TEAM EHINGEN URSPRING</div></td>
-<td><div class="halle">Dietrich-Bonhoeffer-Halle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Luka Zilic</span><br/><span class="sr-zeile"><b>SR2</b> Kevin Ketzer</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>20</td>
-<td>3</td>
-<td>10.10.2026 19:00</td>
-<td><div class="mannschaft">SV Möhringen 1887</div></td>
-<td><div class="mannschaft">BBU 01 Ulm</div></td>
-<td><div class="halle">Sporthalle Fasanenhofschule</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Mark Grohar</span><br/><span class="sr-zeile"><b>SR2</b> Felix Roth</span></td>
-</tr>
-<tr style="background-color:#b7ebc6; font-weight:bold;">
-<td>18</td>
-<td>3</td>
-<td>10.10.2026 19:30</td>
-<td><div class="mannschaft">Lou's Foodtruck MTV Stuttgart</div></td>
-<td><div class="mannschaft">io College Wizards</div></td>
-<td><div class="halle">Sporthalle West</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Moritz Müller</span><br/><span class="sr-zeile"><b>SR2</b> Mehmet Demirtas</span></td>
-</tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>16</td>
 <td>3</td>
 <td>11.10.2026 17:30</td>
@@ -774,7 +733,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <td><div class="halle">Lina-Radke-Halle</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Giorgos Diktapanidis</span><br/><span class="sr-zeile"><b>SR2</b> Bernd Neumann</span></td>
 </tr>
-<tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>21</td>
 <td>3</td>
 <td>11.10.2026 17:30</td>
