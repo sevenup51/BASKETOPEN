@@ -38,7 +38,8 @@ details { margin-bottom:3px; }
 .summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
-#live-refresh { margin-right: 10px; font-weight: bold; }
+#live-refresh { margin-left: 8px; font-weight: bold; }
+details.live-sammel > summary { padding-right: 230px; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
                display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
@@ -111,20 +112,22 @@ function blockPfad(d){
   return (eltern ? blockPfad(eltern) + ">" : "") + name;
 }
 var bloeckeWerdenHergestellt = false;
+var bloeckeStehen = false;
 function speichereBloecke(){
-  if(bloeckeWerdenHergestellt) return;
+  if(bloeckeWerdenHergestellt || !bloeckeStehen) return;
   var offen = [];
   document.querySelectorAll("details[open]").forEach(function(d){
     offen.push(blockPfad(d));
   });
   sessionStorage.setItem("bbBloecke:" + location.pathname, JSON.stringify({
     offen: offen,
-    drei: document.body.classList.contains("zeige-drei-tage")
+    drei: document.body.classList.contains("zeige-drei-tage"),
+    scroll: window.scrollY
   }));
 }
 function stelleBloeckeHer(){
   var start = document.body.getAttribute("data-start");
-  if(start === "nur-datum" || start === "bundesliga") return;
+  if(start === "nur-datum") return;
   var roh = sessionStorage.getItem("bbBloecke:" + location.pathname);
   if(!roh) return;
   var stand;
@@ -138,6 +141,19 @@ function stelleBloeckeHer(){
   if(stand.drei) document.body.classList.add("zeige-drei-tage");
   else document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = false;
+  if(typeof stand.scroll === "number") window.scrollTo(0, stand.scroll);
+}
+function gruppeAuf(knopf){
+  var box = knopf.closest("details");
+  if(!box) return;
+  box.querySelectorAll("details").forEach(function(d){ d.setAttribute("open",""); });
+  speichereBloecke();
+}
+function gruppeZu(knopf){
+  var box = knopf.closest("details");
+  if(!box) return;
+  box.querySelectorAll("details").forEach(function(d){ d.removeAttribute("open"); });
+  speichereBloecke();
 }
 function openLivescoreDrei(){
   document.body.classList.remove("zeige-drei-tage");
@@ -178,7 +194,9 @@ document.addEventListener("DOMContentLoaded", function(){
     d.addEventListener("toggle", speichereBloecke);
   });
   stelleBloeckeHer();
+  bloeckeStehen = true;
 });
+window.addEventListener("beforeunload", speichereBloecke);
 function liveHref(a){
   var base = a.getAttribute("data-base") || a.href.split("?")[0];
   a.href = base + "?nocache=";
@@ -197,7 +215,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Uebersicht diverse Ligen fuer Test – Stand: 10.10.26 23:35:04</h1>
+<h1>Uebersicht diverse Ligen fuer Test – Stand: 10.10.26 23:50:04</h1>
 
 
 <details id='wasfindeichhier'>
@@ -396,6 +414,20 @@ Link fehlt wird bei jedem Lauf neu geprüft.<br>
 Bei ProA steht Pay, solange der Film kostenpflichtig ist, sonst Re-Live.<br>
 Darunter steht Kurzbericht, wenn ein kostenfreier Highlight-Clip da ist.<br>
 Bei ProB steht Video, wenn ein Link da ist.
+
+<br><br>
+
+<b>10.10.26</b><br>
+Vor den Ligen in Live und in Spiele von gestern, heute und morgen stehen<br>
+Alles öffnen und Alles schließen. Die gelten nur für diese Gruppe.<br>
+Ein Refresh zeigt die Seite wieder so, wie sie vorher offen oder zu war.<br>
+Unter Live stehen die heutigen Spiele. Die Karte bleibt orange.<br>
+Nur Datum und Uhrzeit sind grün, bis das Spiel live ist. Dann wird die Karte grün.<br>
+Ein beendetes Spiel bleibt etwa 15 Minuten unter Live.<br>
+Die Refresh-Zeile steht direkt hinter Live.<br>
+Darin steht ULT und die nächste Upload-Zeit. Der Upload läuft alle 6 Minuten.<br>
+Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
+30 Sekunden nach dem Upload neu. Danach gilt wieder die Frist von 6 Minuten.
 </p>
 
 </div>
