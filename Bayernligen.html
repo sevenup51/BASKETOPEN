@@ -157,6 +157,19 @@ function gruppeZu(knopf){
   box.querySelectorAll("details").forEach(function(d){ d.removeAttribute("open"); });
   speichereBloecke();
 }
+function vereinDetails(knopf, ereignis){
+  if(ereignis){
+    ereignis.preventDefault();
+    ereignis.stopPropagation();
+  }
+  var box = knopf.closest("details");
+  if(!box) return;
+  box.setAttribute("open", "");
+  box.querySelectorAll(":scope > div > details").forEach(function(d){
+    d.setAttribute("open", "");
+  });
+  speichereBloecke();
+}
 function openLivescoreDrei(){
   document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
@@ -217,7 +230,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bayernliga – Stand: 11.10.26 10:40:42</h1>
+<h1>Bayernliga – Stand: 11.10.26 11:07:44</h1>
 
 
 <details id='wasfindeichhier'>
