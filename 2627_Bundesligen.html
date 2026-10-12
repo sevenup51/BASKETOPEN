@@ -230,12 +230,43 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 12.10.26 08:37:25</h1>
+<h1>Bundesligen – Stand: 12.10.26 09:07:26</h1>
 
 
 <details id='wasfindeichhier'>
-<summary><b>Was finde ich hier - Stand 04.10.26 21:49</b> (ausklappbar)</summary>
+<summary><b>Was finde ich hier - Stand 12.10.26 08:35</b> (ausklappbar)</summary>
 <div class='intro-body'>
+
+<p><b>Inhalt</b></p>
+<ol>
+<li><a href="#a1">Überblick</a></li>
+<li><a href="#a2">Eigene Vereinsliste</a></li>
+<li><a href="#a3">Übersicht der Listen</a></li>
+<li><a href="#a4">Geschichte</a>
+<ol>
+<li><a href="#a41">Die alte Anwendung</a></li>
+<li><a href="#a42">Wo komme ich zu den Listen?</a>
+<ol>
+<li><a href="#a421">Verbände</a></li>
+<li><a href="#a422">Altersklassen</a></li>
+<li><a href="#a423">Jugend und Senioren</a></li>
+<li><a href="#a424">Gebiete in Bayern</a></li>
+<li><a href="#a425">Spielklassen</a></li>
+<li><a href="#a426">Geschlecht</a></li>
+<li><a href="#a427">Liganummer und LigaId, Beispiel Bayern</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="#a5">Änderungen</a></li>
+<li><a href="#a6">Fehler</a>
+<ol>
+<li><a href="#a61">Falscher MBC-Name beim Re-Live</a></li>
+</ol>
+</li>
+</ol>
+
+<h3 id="a1">1. Überblick</h3>
 
 <p>Übersicht über die Ligen von <b>Bundesligen</b>.</p>
 
@@ -287,6 +318,8 @@ Wenn man die Liga gefunden hat (in der Übersicht wird nur „Liga“ angezeigt)
 sieht man im aufgebauten Link die LigaNr.
 </p>
 
+<h3 id="a2">2. Eigene Vereinsliste</h3>
+
 <p>
 Wenn Interesse besteht, kann man sich für Vereine eine eigene Liste zusammenstellen lassen.<br>
 Hierzu benötigt man folgendes:
@@ -322,6 +355,8 @@ Wenn dies funktioniert, kann man dies später erweitern.
 Interessenten wenden sich an <b>hg2024@web.de</b>.
 </p>
 
+<h3 id="a3">3. Übersicht der Listen</h3>
+
 <p>
 Hier findet sich eine Übersicht (wird noch aufgebaut), in der man die aktuellen Listen findet:<br>
 <a href="https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=" data-base="https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html" onclick="liveHref(this)" target="_blank">
@@ -331,9 +366,11 @@ https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=
 Erklärung dazu:<br>
 Hier sieht man hinter dem Text Stand, von wann diese Listen sind. Diese sind eventuell<br>
 aktueller als die Infos unter Details bei den entsprechenden Ligen, da dies öfters erstellt wird.
-<br><br>
+</p>
 
-<b>Historie</b><br>
+<h3 id="a4">4. Geschichte</h3>
+<h4 id="a41">4.1 Die alte Anwendung</h4>
+<p>
 Grundlage dieser Seiten sind meine alte Basketballanwendung,<br>
 die ich für den Bezirk Schwaben einmal mit dBASE realisiert hatte.<br>
 Da wurden Spielpläne erfasst, daraus das Terminheft für den Bezirk Schwaben erstellt. Während
@@ -459,7 +496,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <button onclick="openLivescoreDrei()">livescore_3days</button>
 </div>
 
-<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 12.10 08:37:25</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 12.10 09:07:26</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Basketball Löwen Braunschweig</div>
                     <div class='ls-score'>98:107</div>
@@ -3217,6 +3254,31 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <h3>Weitere Zahlen</h3>
 <p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_55758.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55758.html' onclick='liveHref(this)' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_55758.html?nocache=</a> <span style='color:red; font-weight:bold;'>✖</span></p>
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55758' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55758</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details><details>
+
+<summary>
+    <b>DBBL-Pokal Top4 (Senioren; Liganr.: 56) (Liga 55757)</b>
+    <span class='summary-right'>
+        <span style='color:red; font-weight:bold;'>Keine Tab</span>
+        
+        <span style='color:red; font-weight:bold;'>✖</span>
+        <span class='liga-icon red'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<p><i>Keine Ergebnisse.</i></p>
+<h3>Tabelle</h3>
+<p><i>Keine Tabelle vorhanden – weil es eine Pokalrunde ist, oder beim Teamsl bei der Spielplanerfassung der Schalter „Tabelle“ nicht gesetzt wurde.<br>Daher ist es auf der bb_api_...‑Seite nicht möglich, den Spielplan pro Team zu erstellen.</i></p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<p><i>Keine kommenden Spiele.</i></p>
+
+<h3>Weitere Zahlen</h3>
+<p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_55757.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55757.html' onclick='liveHref(this)' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_55757.html?nocache=</a> <span style='color:red; font-weight:bold;'>✖</span></p>
+<p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55757' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55757</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
 </details>
