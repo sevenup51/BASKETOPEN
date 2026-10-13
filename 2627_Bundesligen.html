@@ -82,6 +82,10 @@ tr:nth-child(even) { background:#f0f4fa; }
 tr[style] { background-image: none; }
 table.sr-verein { white-space: normal; width: 780px; max-width: 100%; table-layout: fixed; }
 table.sr-verein th, table.sr-verein td { white-space: normal; vertical-align: top; overflow-wrap: break-word; }
+table.sr-verein th:nth-child(1), table.sr-verein td:nth-child(1) { width: 84px; white-space: nowrap; }
+table.sr-verein th:nth-child(2), table.sr-verein td:nth-child(2) { width: 52px; white-space: nowrap; }
+table.sr-verein th:nth-child(8), table.sr-verein td:nth-child(8) { width: 54px; white-space: nowrap; }
+table.sr-verein th:nth-child(9), table.sr-verein td:nth-child(9) { width: 64px; white-space: nowrap; }
 table.sr-verein tr.offen td { background: #fff6d8; }
 table.sr-verein tr.verein-name td { background: #d9f2e3; }
 table.sr-verein tr.pruefen td, table.sr-verein tr.pruef-einsatz td { background: #cfe8ff; }
@@ -235,7 +239,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 13.10.26 21:45:10</h1>
+<h1>Bundesligen – Stand: 13.10.26 21:56:44</h1>
 
 
 <details id='wasfindeichhier'>
@@ -347,7 +351,7 @@ Zusätzlich muss der Aufruf entsprechend angepasst werden:
 
 <pre style="font-size:10px; background:#f0f0f0; padding:6px;">
 REM             Schalter Dateiname                       Im HTML                
-"%PYTHON%" "%SCRIPT%" NN BBV_SCH_VSC_BASKETS_Donauwoerth "Donauwoerth VSC Baskets "
+"%PYTHON%" "%SCRIPT%" NN BBV_SCH_VSC_BASKETS_Donauwoerth "VSC Baskets Donauwoerth"
 </pre>
 
 <p>
@@ -501,7 +505,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <button onclick="openLivescoreDrei()">livescore_3days</button>
 </div>
 
-<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 13.10 21:45:10</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 13.10 21:56:44</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-row'>
                     <div class='ls-team'>Medikamente per Klick Bayreuth</div>
                     <div class='ls-score'>–</div>

@@ -82,6 +82,10 @@ tr:nth-child(even) { background:#f0f4fa; }
 tr[style] { background-image: none; }
 table.sr-verein { white-space: normal; width: 780px; max-width: 100%; table-layout: fixed; }
 table.sr-verein th, table.sr-verein td { white-space: normal; vertical-align: top; overflow-wrap: break-word; }
+table.sr-verein th:nth-child(1), table.sr-verein td:nth-child(1) { width: 84px; white-space: nowrap; }
+table.sr-verein th:nth-child(2), table.sr-verein td:nth-child(2) { width: 52px; white-space: nowrap; }
+table.sr-verein th:nth-child(8), table.sr-verein td:nth-child(8) { width: 54px; white-space: nowrap; }
+table.sr-verein th:nth-child(9), table.sr-verein td:nth-child(9) { width: 64px; white-space: nowrap; }
 table.sr-verein tr.offen td { background: #fff6d8; }
 table.sr-verein tr.verein-name td { background: #d9f2e3; }
 table.sr-verein tr.pruefen td, table.sr-verein tr.pruef-einsatz td { background: #cfe8ff; }
@@ -235,7 +239,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Nord – Stand: 13.10.26 21:45:26</h1>
+<h1>Regionalliga Nord – Stand: 13.10.26 21:57:01</h1>
 
 
 <details id='wasfindeichhier'>
@@ -347,7 +351,7 @@ Zusätzlich muss der Aufruf entsprechend angepasst werden:
 
 <pre style="font-size:10px; background:#f0f0f0; padding:6px;">
 REM             Schalter Dateiname                       Im HTML                
-"%PYTHON%" "%SCRIPT%" NN BBV_SCH_VSC_BASKETS_Donauwoerth "Donauwoerth VSC Baskets "
+"%PYTHON%" "%SCRIPT%" NN BBV_SCH_VSC_BASKETS_Donauwoerth "VSC Baskets Donauwoerth"
 </pre>
 
 <p>
