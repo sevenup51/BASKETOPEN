@@ -1,0 +1,717 @@
+
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+/* Dieselbe Adresse bleibt auf dem iPad gespeichert. Eine neue nocache-Zahl holt die Seite neu. */
+(function () {
+  var jetzt = Date.now();
+  var token = "";
+  try { token = new URLSearchParams(location.search).get("nocache") || ""; } catch (e) { token = ""; }
+  var schluessel = "seiteFrisch:" + location.pathname;
+  var merker = "";
+  try { merker = sessionStorage.getItem(schluessel) || ""; } catch (e) { return; }
+  var teile = merker.split("|");
+  if (token && token === teile[0] && (jetzt - Number(teile[1] || 0)) < 15000) return;
+  var neu = String(jetzt);
+  try { sessionStorage.setItem(schluessel, neu + "|" + jetzt); } catch (e) { return; }
+  location.replace(location.pathname + "?nocache=" + neu + location.hash);
+})();
+</script>
+
+<!-- Cache vollständig deaktivieren -->
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<title>Isny TV 1846</title>
+<style>
+body { font-family: Arial; font-size: 10px; background:#f4f6f9; margin:18px; color:#222; }
+h1 { margin-bottom:6px; color:#1a3d7c; }
+summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
+          border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
+          width: 100%; max-width: 780px; box-sizing: border-box; }
+summary::marker { display:none; }
+summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
+details[open] summary::before { content:"▼"; }
+details { margin-bottom:3px; }
+.summary-right { position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+                 display: flex; flex-direction: row; align-items: center; gap: 6px;
+                 min-width: 220px; justify-content: flex-end; }
+#live-refresh { margin-left: 8px; font-weight: bold; }
+details.live-sammel > summary { padding-right: 230px; }
+.details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
+               border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
+               display: inline-block; min-width: 132px; text-align: center; box-sizing: border-box; }
+details.verein-zeile > summary { padding-right: 150px; }
+details.verein-zeile > summary .summary-right { min-width: 0; }
+.sr-leiste { position: relative; font-size: 11px; padding: 3px 230px 3px 6px; background: #e8eef7;
+             border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px;
+             width: 100%; max-width: 780px; box-sizing: border-box; }
+.sr-leiste::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 5px;
+                     background: gray; vertical-align: -1px; }
+.sr-leiste > b { display: inline; line-height: 1.3; }
+.sr-sprung { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; }
+.liga-icon { width: 12px; height: 8px; border-radius: 2px; }
+.liga-icon.green  { background:#2ecc71; }
+.livescore-list { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; max-width:calc(2 * 280px + 12px); margin:6px 0 8px 0; }
+.livescore-list > :not(.livescore-box) { flex:1 0 100%; }
+.livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
+.ls-nicht-heute { display:none; }
+body.zeige-drei-tage .ls-nicht-heute { display:block; }
+.livescore-block .ls-nicht-heute { display:block; }
+.ls-row { display:flex; justify-content:space-between; align-items:center; gap:4px; }
+.ls-team { font-size:12px; font-weight:bold; flex:1; }
+.ls-score { font-size:16px; font-weight:bold; padding:0 6px; }
+.ls-date { font-size:11px; color:#555; text-align:center; margin-top:4px; }
+.liga-icon.yellow { background:#f1c40f; }
+.liga-icon.red    { background:#e74c3c; }
+h3 { font-size:11px; margin:5px 0 3px 0; color:#1a3d7c; }
+table { border-collapse:collapse; margin-bottom:6px; background:white; border-radius:2px;
+        overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,0.06); font-size:10px; white-space:nowrap; }
+table.plan { table-layout:fixed; width:auto; max-width:100%; white-space:normal; }
+table.plan th, table.plan td { white-space:normal; overflow-wrap:normal; vertical-align:top; }
+table.naechste td { vertical-align: top; }
+table.naechste div.mannschaft { display: block; max-width: 110px; white-space: normal; overflow-wrap: break-word; }
+table.naechste div.halle { display: block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .sr-zeile { display: inline-block; max-width: 130px; white-space: normal; overflow-wrap: break-word; }
+table.naechste .sr-verein { display: inline-block; max-width: 120px; white-space: normal; overflow-wrap: break-word; }
+th { background:#1a3d7c; color:white; padding:2px 4px; }
+td { padding:2px 4px; border-bottom:1px solid #e0e0e0; }
+tr:nth-child(even) { background:#f0f4fa; }
+tr[style] { background-image: none; }
+table.sr-verein { white-space: normal; width: 780px; max-width: 100%; table-layout: fixed; }
+table.sr-verein th, table.sr-verein td { white-space: normal; vertical-align: top; overflow-wrap: break-word; }
+table.sr-verein th:nth-child(1), table.sr-verein td:nth-child(1) { width: 84px; white-space: nowrap; }
+table.sr-verein th:nth-child(2), table.sr-verein td:nth-child(2) { width: 52px; white-space: nowrap; }
+table.sr-verein th:nth-child(8), table.sr-verein td:nth-child(8) { width: 54px; white-space: nowrap; }
+table.sr-verein th:nth-child(9), table.sr-verein td:nth-child(9) { width: 64px; white-space: nowrap; }
+table.sr-verein tr.offen td { background: #fff6d8; }
+table.sr-verein tr.verein-name td { background: #d9f2e3; }
+table.sr-verein tr.pruefen td, table.sr-verein tr.pruef-einsatz td { background: #cfe8ff; }
+
+hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px 0; }
+.seitenende { display:flex; align-items:flex-start; gap:24px; margin-top:16px; max-width:780px; }
+.werbung-box { width:260px; flex:0 0 260px; }
+.werbung-bild { width:100%; height:auto; border-radius:8px; display:block; }
+.qr-box { text-align:center; }
+.qr-box img { width:140px; height:140px; }
+.qr-box p { margin:6px 0 0 0; font-size:12px; font-weight:bold; color:#1a3d7c; }
+button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
+         margin-right:5px; font-size:10px; }
+button:hover { background:#163568; }
+button.livescore-heute, button.livescore-heute:hover { background:#2ecc71; color:#fff; }
+p.ligalink { margin:3px 0 3px 0; }
+#wasfindeichhier { max-width: 780px; }
+#wasfindeichhier > .intro-body { box-sizing: border-box; padding-left: 15px; overflow-wrap: break-word; word-wrap: break-word; }
+#wasfindeichhier a { overflow-wrap: anywhere; word-break: break-all; }
+#wasfindeichhier pre { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; box-sizing: border-box; }
+</style>
+<script>
+function blockPfad(d){
+  var fest = d.getAttribute("data-block");
+  var name = fest ? fest : "";
+  if(!name){
+    var summe = d.querySelector(":scope > summary");
+    if(summe){
+      var klon = summe.cloneNode(true);
+      klon.querySelectorAll(".summary-right").forEach(function(el){ el.remove(); });
+      name = klon.textContent.replace(/\s+/g, " ").trim().slice(0, 80);
+    }
+  }
+  var eltern = d.parentElement ? d.parentElement.closest("details") : null;
+  return (eltern ? blockPfad(eltern) + ">" : "") + name;
+}
+var bloeckeWerdenHergestellt = false;
+var bloeckeStehen = false;
+function speichereBloecke(){
+  if(bloeckeWerdenHergestellt || !bloeckeStehen) return;
+  var offen = [];
+  document.querySelectorAll("details[open]").forEach(function(d){
+    offen.push(blockPfad(d));
+  });
+  sessionStorage.setItem("bbBloecke:" + location.pathname, JSON.stringify({
+    offen: offen,
+    drei: document.body.classList.contains("zeige-drei-tage"),
+    scroll: window.scrollY
+  }));
+}
+function stelleBloeckeHer(){
+  var start = document.body.getAttribute("data-start");
+  if(start === "nur-datum") return;
+  var roh = sessionStorage.getItem("bbBloecke:" + location.pathname);
+  if(!roh) return;
+  var stand;
+  try { stand = JSON.parse(roh); } catch(e) { return; }
+  if(!stand || !stand.offen) return;
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details").forEach(function(d){
+    if(stand.offen.indexOf(blockPfad(d)) >= 0) d.setAttribute("open", "");
+    else d.removeAttribute("open");
+  });
+  if(stand.drei) document.body.classList.add("zeige-drei-tage");
+  else document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = false;
+  if(typeof stand.scroll === "number") window.scrollTo(0, stand.scroll);
+}
+function gruppeAuf(knopf){
+  var box = knopf.closest("details");
+  if(!box) return;
+  box.querySelectorAll("details").forEach(function(d){ d.setAttribute("open",""); });
+  speichereBloecke();
+}
+function gruppeZu(knopf){
+  var box = knopf.closest("details");
+  if(!box) return;
+  box.querySelectorAll("details").forEach(function(d){ d.removeAttribute("open"); });
+  speichereBloecke();
+}
+function vereinDetails(knopf, ereignis){
+  if(ereignis){
+    ereignis.preventDefault();
+    ereignis.stopPropagation();
+  }
+  var box = knopf.closest("details");
+  if(!box) return;
+  box.setAttribute("open", "");
+  box.querySelectorAll(":scope > div > details").forEach(function(d){
+    d.setAttribute("open", "");
+  });
+  speichereBloecke();
+}
+function openLivescoreDrei(){
+  document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details.live-drei, details.live-drei-liga").forEach(function(d){
+    d.setAttribute("open","");
+  });
+  document.querySelectorAll("details.live-sammel, details.live-liga").forEach(function(d){
+    d.removeAttribute("open");
+  });
+  bloeckeWerdenHergestellt = false;
+  speichereBloecke();
+}
+function openLivescoreHeute(){
+  document.body.classList.remove("zeige-drei-tage");
+  bloeckeWerdenHergestellt = true;
+  document.querySelectorAll("details").forEach(function(d){
+    if(d.classList.contains("live-sammel") || d.classList.contains("live-liga")) d.setAttribute("open","");
+    else d.removeAttribute("open");
+  });
+  bloeckeWerdenHergestellt = false;
+  speichereBloecke();
+}
+function openAll(){
+  document.querySelectorAll("details").forEach(d=>{
+    if(d.id==="wasfindeichhier") return;
+    d.setAttribute("open","");
+  });
+  speichereBloecke();
+}
+function closeAll(){
+  document.body.classList.remove("zeige-drei-tage");
+  document.querySelectorAll("details").forEach(d=>d.removeAttribute("open"));
+  speichereBloecke();
+}
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll("details").forEach(function(d){
+    d.addEventListener("toggle", speichereBloecke);
+  });
+  stelleBloeckeHer();
+  bloeckeStehen = true;
+});
+window.addEventListener("beforeunload", speichereBloecke);
+function liveHref(a){
+  var base = a.getAttribute("data-base") || a.href.split("?")[0];
+  a.href = base + "?nocache=";
+}
+var boxscoreHinweisTimer;
+function boxscoreHinweis(){
+  var fenster = window.open("", "boxscoreHinweis", "width=360,height=120,resizable=no,scrollbars=no");
+  if(!fenster) return;
+  fenster.document.open();
+  fenster.document.write("<!DOCTYPE html><html><head><meta charset='utf-8'><title>Boxscore</title></head><body style='font-family:Arial,sans-serif;font-size:16px;margin:28px 16px;text-align:center;'>aktuell noch nicht vorhanden</body></html>");
+  fenster.document.close();
+  if(boxscoreHinweisTimer) clearTimeout(boxscoreHinweisTimer);
+  boxscoreHinweisTimer = setTimeout(function(){ try{ fenster.close(); }catch(e){} }, 5000);
+}
+</script>
+</head>
+<body>
+
+<h1>Isny TV 1846 – Stand: 13.10.26 22:29:19</h1>
+
+
+<details id='wasfindeichhier'>
+<summary><b>Was finde ich hier - Stand 12.10.26 08:35</b> (ausklappbar)</summary>
+<div class='intro-body'>
+
+<p><b>Inhalt</b></p>
+<ol>
+<li><a href="#a1">Überblick</a></li>
+<li><a href="#a2">Eigene Vereinsliste</a></li>
+<li><a href="#a3">Übersicht der Listen</a></li>
+<li><a href="#a4">Geschichte</a>
+<ol>
+<li><a href="#a41">Die alte Anwendung</a></li>
+<li><a href="#a42">Wo komme ich zu den Listen?</a>
+<ol>
+<li><a href="#a421">Verbände</a></li>
+<li><a href="#a422">Altersklassen</a></li>
+<li><a href="#a423">Jugend und Senioren</a></li>
+<li><a href="#a424">Gebiete in Bayern</a></li>
+<li><a href="#a425">Spielklassen</a></li>
+<li><a href="#a426">Geschlecht</a></li>
+<li><a href="#a427">Liganummer und LigaId, Beispiel Bayern</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="#a5">Änderungen</a></li>
+<li><a href="#a6">Fehler</a>
+<ol>
+<li><a href="#a61">Falscher MBC-Name beim Re-Live</a></li>
+</ol>
+</li>
+</ol>
+
+<h3 id="a1">1. Überblick</h3>
+
+<p>Übersicht über die Ligen von <b>Isny TV 1846</b>.</p>
+
+<p>Ergebnisse der letzten 8 Tage, aktuelle Tabelle (falls vorhanden) 
+und Spiele der nächsten 8 Tage.</p>
+
+<p>Aktive Ligen sind grün markiert.<br>
+Gelb bedeutet: Es stehen Spiele an, aber es wurden noch keine Ergebnisse gemeldet.</p>
+
+<p>Unten sieht man zwei Links.<br>
+Beispiel für die BBL Saison 26/27:</p>
+
+<p>
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=" data-base="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html" onclick="liveHref(this)" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=
+</a><br>
+
+<a href="https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802" target="_blank">
+https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802
+</a>
+</p>
+
+<p>
+<a href="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=" data-base="https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html" onclick="liveHref(this)" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=
+</a><br>
+
+<a href="https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802" target="_blank">
+https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55802
+</a>
+</p>
+
+<p>
+Da das Generieren der Listen nicht alle 15 Minuten geschieht – es sind mehr als 100 Ligen – 
+kann es vorkommen, dass nach der Erstellung der Liste <br>
+noch aktuelle Ergebnisse eingetragen werden. Den Zeitpunkt der Erstellung erkennt man in der Überschriftszeile.
+</p>
+
+<p>
+Ganz aktuelle Daten findet man über den Link auf die basketball‑bund.net‑Seite.<br>
+Wenn eine andere Liga interessiert, kann man die 5‑stellige Zahl (= LigaNr) durch die LigaNr 
+der gewünschten Liga ersetzen.<br>
+Wenn für diese Liga bereits etwas generiert wurde, ist die entsprechende Seite vorhanden.
+</p>
+
+<p>
+Die LigaNr findet ihr auf der basketball‑bund.net‑Seite.<br>
+Wenn man die Liga gefunden hat (in der Übersicht wird nur „Liga“ angezeigt) und diese Liga aufruft, 
+sieht man im aufgebauten Link die LigaNr.
+</p>
+
+<h3 id="a2">2. Eigene Vereinsliste</h3>
+
+<p>
+Wenn Interesse besteht, kann man sich für Vereine eine eigene Liste zusammenstellen lassen.<br>
+Hierzu benötigt man folgendes:
+</p>
+
+<p>
+Man erstellt eine Liste mit LigaNummern in dieser Form:
+</p>
+
+<pre style="font-size:10px; background:#f0f0f0; padding:6px;">
+LIGA_IDS_NN = [
+    54453, 54485, 54459, 54488, 54491, 54471,
+    55701, 54498, 55699, 54482
+]
+</pre>
+
+<p>
+Zusätzlich muss der Aufruf entsprechend angepasst werden:
+</p>
+
+<pre style="font-size:10px; background:#f0f0f0; padding:6px;">
+REM             Schalter Dateiname                       Im HTML                
+"%PYTHON%" "%SCRIPT%" NN BBV_SCH_VSC_BASKETS_Donauwoerth "VSC Baskets Donauwoerth"
+</pre>
+
+<p>
+Damit kann man eine eigene Liste erzeugen.<br>
+Zum Testen ist dies vorerst auf Vereine im Bezirk Schwaben (BBV_SCH_...) begrenzt.<br>
+Wenn dies funktioniert, kann man dies später erweitern.
+</p>
+
+<p>
+Interessenten wenden sich an <b>hg2024@web.de</b>.
+</p>
+
+<h3 id="a3">3. Übersicht der Listen</h3>
+
+<p>
+Hier findet sich eine Übersicht (wird noch aufgebaut), in der man die aktuellen Listen findet:<br>
+<a href="https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=" data-base="https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html" onclick="liveHref(this)" target="_blank">
+https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=
+</a>
+<br>
+Erklärung dazu:<br>
+Hier sieht man hinter dem Text Stand, von wann diese Listen sind. Diese sind eventuell<br>
+aktueller als die Infos unter Details bei den entsprechenden Ligen, da dies öfters erstellt wird.
+</p>
+
+<h3 id="a4">4. Geschichte</h3>
+<h4 id="a41">4.1 Die alte Anwendung</h4>
+<p>
+Grundlage dieser Seiten sind meine alte Basketballanwendung,<br>
+die ich für den Bezirk Schwaben einmal mit dBASE realisiert hatte.<br>
+Da wurden Spielpläne erfasst, daraus das Terminheft für den Bezirk Schwaben erstellt. Während
+der Saison meldeten die Vereine ihre Ergebnisse. Auf Knopfdruck wurden dann Ergebnislisten
+und die dazugehörigen Tabellen erzeugt. Die gingen dann per Mail an Vereine und an die Presse.<br>
+Am Monatsende dann das gleiche für den zurückliegenden Zeitraum erstellt. Dies war dann
+Grundlage für den Schwabenreport bzw. bayernbasket.<br>
+Da ich mich mit KI beschäftigen wollte, mich auch etwas in Python einarbeiten wollte, kam ich
+auf die Idee, meine damalige Anwendung in Python umzusetzen. Hierbei war mir Anfangs
+Copilot eine große Hilfe, wobei ich sagen muss, dass dies teilweise sehr umständlich war.<br>
+Aber es hat funktioniert. Dann gab es letzte Woche nach einem Copilot-Update erhebliche
+Probleme, da Copilot den Pythoncode in bestimmten Bereichen (hat Copilot ja selbst
+erstellt) fehlerhaft bearbeitet hat.<br>
+Da bin ich auf cursor.ai gestossen. Und man sieht, wie sich das ganze entwickelt. Jetzt brauche
+ich keine Daten mehr hin und her schieben. Ich stelle meine Anforderungen, cursor.ai passt den Sourcecode
+direkt in der *.py-Datei an, testet seine Änderungen, und gibt sie dann frei. Dies ist a) eine erhebliche Erleichterung und<br>
+b) geht wesentlich schneller und c) es funktioniert.
+
+<br><br>
+
+<b>24.09.26</b><br>
+Es gibt einen neuen Link in der Spalte "euroleaguebasketball<br>LIVE".<br>
+Hier kann man die aktuellen Spiele live verfolgen.
+
+<br><br>
+
+<b>25.09.26</b><br>
+Bei einigen Ligen (alle im Block Bundesligen) kann man nun auch Livescore verfolgen.
+
+<br><br>
+
+<b>26.09.26</b><br>
+Bei den Ergebnissen werden Zeilen des aktuellen Tages auf orange gesetzt.<br>
+Bei den nächsten Spielen werden Zeilen des aktuellen Tages, bei denen ein Ergebnis vorliegt, auf grün gesetzt.
+
+<br><br>
+
+<b>28.09.26</b><br>
+Wenn man auf Alle öffnen klickt, wird der Block „Was finde ich hier“ nicht explizit mit geöffnet.<br>
+Das muss man selbst machen.<br>
+Wenn ein Ergebnis nicht gemeldet wurde, kann man dies ab 1 Tag nach dem Spieldatum leider nicht
+erkennen, weil dies in dieser Übersicht nicht geliefert wird. Viel mehr Infos erhält man, wenn man unter
+der Überschrift „Weitere Zahlen“ den entsprechenden …/bb_api_…-Link anklickt, noch besser auf das
+ICON Details … klickt. Unter Restspielplan sieht man, wenn ein Spiel nicht gespielt wurde.<br>
+Spiele ohne Ergebnisse sind farblich markiert.<br>
+Was man sonst noch auf dieser Seite findet, erkennt man, wenn man auf Alle öffnen geht.
+
+<br><br>
+
+<b>02.10.26</b><br>
+Auf der Seite Bundesligen gibt es bei easyCredit BBL, DBBL, ProA, ProB Süd und ProB Nord
+vor den Ergebnissen einen Block Livescore.<br>
+Live ist grün, heute und nicht live ist orange.<br>
+Neben Alle schließen steht der Knopf Livescore.<br>
+Ein Klick schließt die Ligen ohne Livescore.<br>
+Bei Ligen mit Livescore bleiben die Liga und der Block Livescore offen.<br>
+Ergebnisse, Tabelle und die nächsten Spiele liegen dort in einem eigenen Block und gehen dabei zu.<br>
+Bei den Ergebnissen steht das jüngste Spiel oben.<br>
+Bei der DBBL, der 2. DBBL Süd und der 2. DBBL Nord gibt es in der Spalte nr einen Link
+auf die YouTube-Übertragung, wenn eine vorliegt.<br>
+Das gilt für die Ergebnisse der letzten 8 Tage und für alle nächsten Spiele.<br>
+Bei der easyCredit BBL steht in der Spalte nr der Ergebnisse ein Link auf die YouTube-Highlights,
+wenn Dyn den Film schon hochgeladen hat.<br>
+Heutige und kommende BBL-Spiele bleiben ohne Link, die liegen im Bezahlfernsehen.<br>
+Ein bereits gefundener Link wird nicht erneut gesucht.
+
+<br><br>
+
+<b>04.10.26</b><br>
+Auf Bundesligen stehen neben Alle schließen die Knöpfe livescore_3days<br>
+und livescore_heute. livescore_heute ist weiß auf grün.<br>
+livescore_heute öffnet den Block Live und schließt die übrigen Blöcke.<br>
+Unter Live steht jede Liga mit ihrer Liga-ID. Darunter nur die grünen,<br>
+also laufenden Spiele von heute.<br>
+Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
+Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
+Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
+Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
+livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
+und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
+Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
+Boxscore bei der BBL: pdf, wenn die PDF-Datei da ist, sonst html.<br>
+Grüner Haken, wenn der Link antwortet, roter Haken, wenn nicht.<br>
+fehlt ohne Link, wenn es nichts gibt. Bei DBBL, ProA und ProB steht html,<br>
+mit demselben Haken.<br>
+Video bei der BBL führt zum Kurzbericht, sobald Dyn den Film hat.<br>
+Heutige und kommende BBL-Spiele haben diesen Link nicht.<br>
+Bei den nächsten BBL-Spielen steht dyn-Live mit Link, sonst siehe dyn.<br>
+Bei der DBBL führt Video beim Ergebnis zum Re-Live.<br>
+Bei den nächsten Spielen steht Live, sonst Link fehlt.<br>
+Link fehlt wird bei jedem Lauf neu geprüft.<br>
+Bei ProA steht Pay, solange der Film kostenpflichtig ist, sonst Re-Live.<br>
+Darunter steht Kurzbericht, wenn ein kostenfreier Highlight-Clip da ist.<br>
+Bei ProB steht Video, wenn ein Link da ist.
+
+<br><br>
+
+<b>10.10.26</b><br>
+Vor den Ligen in Live und in Spiele von gestern, heute und morgen stehen<br>
+Alles öffnen und Alles schließen. Die gelten nur für diese Gruppe.<br>
+Ein Refresh zeigt die Seite wieder so, wie sie vorher offen oder zu war.<br>
+Unter Live steht ein Spiel erst 30 Minuten vor seinem eigenen Anpfiff.<br>
+Damit kommt der Block Live und der Refresh erst, wenn die früheste Liga soweit ist.<br>
+Ist der Schalter live gesetzt, werden nur Datum und Uhrzeit grün.<br>
+Unter livescore_heute ist die ganze Kachel grün.<br>
+140 Minuten nach dem Anpfiff fällt das Spiel weg, wenn es keine Verlängerung gab.<br>
+Meldet die API das Ende früher, bleibt es noch 10 Minuten, aber nur wenn es vorher aktiv war.<br>
+Der Refresh läuft, solange so eine Kachel unter Live steht.<br>
+Die Refresh-Zeile steht direkt hinter Live.<br>
+Darin steht ULT und die nächste Upload-Zeit. Der Upload läuft alle 6 Minuten.<br>
+Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
+30 Sekunden nach dem Upload neu. Danach gilt wieder die Frist von 6 Minuten.
+</p>
+
+</div>
+</details>
+
+
+<div style="margin-bottom:8px;">
+    <button onclick="openAll()">Alle öffnen</button>
+    <button onclick="closeAll()">Alle schließen</button>
+    
+</div>
+
+<details open><summary><b>Spielplan Isny TV 1846 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 13.10.26 22:29:19</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Ergebnisse.</i></p></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Spiele in den nächsten 8 Tagen.</i></p></div></details></div></details><details><summary><b>SR-Einteilung Isny TV 1846</b><span class='summary-right'>Stand 13.10.26 22:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
+
+<summary>
+    <b>Bezirksliga Herren Süd 26/27 (Senioren Schwaben; Liganr.: 22011) (Liga 54484)</b>
+    <span class='summary-right'>
+        
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html' onclick='liveHref(this)' target='_blank'>Details ( 13.10. 14:09)</a>
+        <span style='color:green; font-weight:bold;'>✔</span>
+        <span class='liga-icon green'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<h3>Ergebnisse (letzte 8 Tage)</h3>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11002</td>
+<td>1</td>
+<td>11.10.2026 16:30</td>
+<td>TSV Haunstetten</td>
+<td>SG Heising-Kottern</td>
+<td>77 : 81</td>
+</tr>
+</tbody>
+</table>
+<h3>Tabelle</h3>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Platz</th>
+      <th>Verein</th>
+      <th>Spiele</th>
+      <th>W/L</th>
+      <th>Punkte</th>
+      <th>Körbe</th>
+      <th>Differenz</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Netz16 Baskets Königsbrunn</td>
+      <td>1</td>
+      <td>1/0</td>
+      <td>2</td>
+      <td>78 : 46</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>SG Heising-Kottern</td>
+      <td>1</td>
+      <td>1/0</td>
+      <td>2</td>
+      <td>81 : 77</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>BG Illertal 2</td>
+      <td>0</td>
+      <td>0/0</td>
+      <td>0</td>
+      <td>0 : 0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>TSV Ottobeuren</td>
+      <td>0</td>
+      <td>0/0</td>
+      <td>0</td>
+      <td>0 : 0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>TV Memmingen</td>
+      <td>0</td>
+      <td>0/0</td>
+      <td>0</td>
+      <td>0 : 0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>TV 1846 Isny</td>
+      <td>0</td>
+      <td>0/0</td>
+      <td>0</td>
+      <td>0 : 0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>TSV Haunstetten</td>
+      <td>1</td>
+      <td>0/1</td>
+      <td>0</td>
+      <td>77 : 81</td>
+      <td>-4</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>VFL Buchloe</td>
+      <td>1</td>
+      <td>0/1</td>
+      <td>0</td>
+      <td>46 : 78</td>
+      <td>-32</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>BG Leitershofen/Stadtbergen 4</td>
+      <td>0</td>
+      <td>0/0</td>
+      <td>0</td>
+      <td>0 : 0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p style='margin:8px 0 0;'>BG Leitershofen/Stadtbergen 4 hat zurückgezogen.</p>
+<h3>Nächste Spiele (8 Tage)</h3>
+<table border="1" class="dataframe naechste">
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>halle</th>
+<th>Schiedsrichter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11008</td>
+<td>2</td>
+<td>17.10.2026 14:00</td>
+<td><div class="mannschaft">VFL Buchloe</div></td>
+<td><div class="mannschaft">TV Memmingen</div></td>
+<td><div class="halle">Sporthalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Hrvoje Glavina</span><br/><span class="sr-zeile"><b>SR2</b> Raimund Fink</span></td>
+</tr>
+<tr>
+<td>11007</td>
+<td>2</td>
+<td>17.10.2026 18:00</td>
+<td><div class="mannschaft">TSV Ottobeuren</div></td>
+<td><div class="mannschaft">TV 1846 Isny</div></td>
+<td><div class="halle">Rupert-Neß-Gymnasium (neu)</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Verein<br/><span class="sr-verein">TV Memmingen (220223)</span></span><br/><span class="sr-zeile"><b>SR2</b> Verein<br/><span class="sr-verein">TV Memmingen (220223)</span></span></td>
+</tr>
+<tr>
+<td>11005</td>
+<td>2</td>
+<td>17.10.2026 18:30</td>
+<td><div class="mannschaft">Netz16 Baskets Königsbrunn</div></td>
+<td><div class="mannschaft">TSV Haunstetten</div></td>
+<td><div class="halle">Gymnasium</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Verein<br/><span class="sr-verein">TV 1847 Augsburg (220206)</span></span><br/><span class="sr-zeile"><b>SR2</b> Verein<br/><span class="sr-verein">TV 1847 Augsburg (220206)</span></span></td>
+</tr>
+<tr>
+<td>11006</td>
+<td>2</td>
+<td>18.10.2026 14:30</td>
+<td><div class="mannschaft">SG Heising-Kottern</div></td>
+<td><div class="mannschaft">BG Illertal 2</div></td>
+<td><div class="halle">Sporthalle Lauben</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Raimund Fink</span><br/><span class="sr-zeile"><b>SR2</b> Hans-Georg Sauter</span></td>
+</tr>
+</tbody>
+</table>
+<h3>Weitere Zahlen</h3>
+<p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html' onclick='liveHref(this)' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html?nocache=</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54484' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=54484</a> <span style='color:green; font-weight:bold;'>✔</span></p>
+<hr class='short'>
+</div>
+</details>
+
+
+<hr class='short'>
+
+
+<div class='seitenende'>
+  <div class='werbung-box'>
+    <a href="https://shop.lenahaunstetter.de/" target="_blank">
+      <img src="https://sevenup51.github.io/BASKETOPEN/assets/img/infoshop_kompl.webp"
+           alt="Lena Haunstetter Shop" class="werbung-bild">
+    </a>
+  </div>
+  <div class='qr-box'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAAFIAQAAAAAab1qeAAACjklEQVR4nO1a0Y7EIAhkyP7/L3OBAdu7J3sPq+xqum2NJKtTYACFyWTTWUE5kjNNp6S+XVKsFNT88pvlG3tSYl1WpEslX0RSBIEeTOA4wh8cMY62WZEux1NQegjejE9H9xrtsiLdRRIBp2PoCFoo6/v+/SMlzU0+3Sbc9t/67x9j75Yduxu7IZCVGu2yIl2OJ6rjVBQdC99pwUrYYp7aRBKXjwx1pPuk0V881WlFuloS5CKHcPwiYnJWgrcTL8l0M2dyv8ftCuLjJSnKfGj5d28kaa6EFwHdYqZKnPaYZxf/ifKT0S2LD1YCHerqeWoTyVey+kU99KFF60n3sDYr0tWSRsw8gh9RPF2pY2tkqg3m2aa+ZEk5wUs3KrpieTt89AB5RNzp2nkrMxHkYiOs/u7aR9KYD6UyJsNnvc75yLDHPLvwO+Ia3JMVuyiFElo7/C6P83dUgS6CpLTxW6lZumiI7iAJamNckX86hs7tPsjHFvPsYO9SNboI40eAn0mSVF25y4p0qSRo4reOY5qVpvKf4r8uK9KlkihHWWVOEv1woQnq8nlqJ0ljEM9Qk1sdVFXGSnbiT5lt+GXZ1+5wwkhNlVMPeVZPxkiG4Pw+XqMQIsfedRrPF70lWSiZPsn9z4acPvlG3y4J+s/wl2XyPCiC2pLbYp4d+B0jpxy+svbikvRt/Ty14f6m3QKkzDoHXVmbFeny+rxEI2q10xH6Wedv5MSfsw2juHQrNGXINLbjxd+7aIjucr4Oo0QXMOa5G9ljntoJTzbmRFkfyTMNwfcImLusSHeStNp9i7pdhU84+dGz/N1yl4NB0nCaTJtw6p/6r/PzxqpI5US/j+DYVnbUIf78kBXpkZxoXVD6AdWdVkeOaGQ8AAAAAElFTkSuQmCC' alt='QR-Code zur aktuellen Seite'><p>Link gerne weitergeben</p></div>
+</div>
+
+
+</body>
+</html>
