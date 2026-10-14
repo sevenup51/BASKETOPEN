@@ -54,9 +54,16 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .sr-sprung { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; }
 .liga-icon { width: 12px; height: 8px; border-radius: 2px; }
 .liga-icon.green  { background:#2ecc71; }
-.livescore-list { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; max-width:calc(2 * 280px + 12px); margin:6px 0 8px 0; }
+.livescore-list { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; max-width:calc(2 * 368px + 12px); margin:6px 0 8px 0; }
 .livescore-list > :not(.livescore-box) { flex:1 0 100%; }
 .livescore-box { box-sizing:border-box; border:1px solid #ccc; border-radius:12px; padding:10px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.15); width:280px; flex:0 0 280px; max-width:280px; }
+.livescore-box:has(.ls-seite) { display:flex; align-items:stretch; padding:0; width:368px; flex-basis:368px; max-width:368px; overflow:hidden; }
+.ls-kern { flex:1 1 auto; min-width:0; padding:10px; }
+.ls-seite { flex:0 0 88px; display:flex; flex-direction:column; background:#c9ddf2; border-left:1px solid #8eaccc; }
+.ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
+.ls-vid { border-top:1px solid #8eaccc; }
+.ls-seite a { color:#1a3d7c; }
+.listen-stand { margin:8px 0 4px; font-size:13px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
 .livescore-block .ls-nicht-heute { display:block; }
@@ -95,10 +102,10 @@ table.sr-verein tr.verein-name td { background: #d9f2e3; }
 table.sr-verein tr.pruefen td, table.sr-verein tr.pruef-einsatz td { background: #cfe8ff; }
 
 hr.short { width:240px; border:0; border-top:2px solid #1a3d7c; margin:6px 0 4px 0; }
-.seitenende { display:flex; align-items:flex-start; gap:24px; margin-top:16px; max-width:780px; }
+.seitenende { display:flex; align-items:flex-start; gap:24px; margin-top:16px; width:100%; max-width:780px; box-sizing:border-box; }
 .werbung-box { width:260px; flex:0 0 260px; }
 .werbung-bild { width:100%; height:auto; border-radius:8px; display:block; }
-.qr-box { text-align:center; }
+.qr-box { text-align:center; margin-left:auto; flex:0 0 auto; }
 .qr-box img { width:140px; height:140px; }
 .qr-box p { margin:6px 0 0 0; font-size:12px; font-weight:bold; color:#1a3d7c; }
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
@@ -243,7 +250,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 14.10.26 21:29:17</h1>
+<h1>Bundesligen – Stand: 14.10.26 21:35:50</h1>
 
 
 <details id='wasfindeichhier'>
@@ -494,6 +501,15 @@ Unter livescore_heute ist die ganze Kachel grün.<br>
 Meldet die API das Ende früher, bleibt es noch 10 Minuten, aber nur wenn es vorher aktiv war.<br>
 Der Refresh läuft, solange so eine Kachel unter Live steht.<br>
 Die Refresh-Zeile steht direkt hinter Live.<br>
+<br>
+<b>14.10.26</b><br>
+Der Block heißt Spiele live oder beginnen gleich. Darüber steht<br>
+Bundesligen, Stand der Liste mit dem Datum des Laufs.<br>
+Rechts an jeder Kachel hängt eine blaue Verlängerung. Oben Boxscore,<br>
+unten Video, mit demselben Text und demselben Link wie in der Tabelle.<br>
+Die 2. DBBL Süd und Nord haben keinen Livescore. Die Spiele stehen<br>
+trotzdem in der Liste. Ohne Ergebnis steht NE. Begonnene Spiele von<br>
+heute liegen auch unter livescore_heute, wieder mit NE und den Links.<br>
 Darin steht ULT und die nächste Upload-Zeit. Der Upload läuft alle 6 Minuten.<br>
 Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 30 Sekunden nach dem Upload neu. Danach gilt wieder die Frist von 6 Minuten.
@@ -509,25 +525,8 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     <button onclick="openLivescoreDrei()">livescore_3days</button><button onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-sammel' data-block='Live' open><summary><b>Live</b><span id='live-refresh'></span><span class='summary-right'>Stand: 14.10 21:29:17</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-liga' data-block='live-55817' open><summary><b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>Bayer Giants Leverkusen</div>
-                    <div class='ls-score'>76:73</div>
-                    <div class='ls-team' style='text-align:right;'>Ahorn Camp Baskets</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>14.10.2026 19:30</div>
-                
-                
-            </div><div class='livescore-box' style='background:#ffdd99;'>
-                <div class='ls-row'>
-                    <div class='ls-team'>SKYLINERS Juniors</div>
-                    <div class='ls-score'>73:70</div>
-                    <div class='ls-team' style='text-align:right;'>Dragons Rhöndorf</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>14.10.2026 19:30</div>
-                
-                
-            </div><div class='livescore-box' style='background:#ffdd99;'>
+<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 14.10.2026</p><details class='live-sammel' data-block='Live' open><summary><b>Spiele live oder beginnen gleich</b><span id='live-refresh'></span><span class='summary-right'>Stand: 14.10 21:35:50</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-liga' data-block='live-55817' open><summary><b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSG Schöller SI Ravens Reutlingen</div>
                     <div class='ls-score'>92:70</div>
@@ -536,7 +535,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006150?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/tsg-reutlingen-ravens/tsg-reutlingen-ravens-vs-sv-fellbach-flashers' target='_blank'>Video</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern Basketball II</div>
                     <div class='ls-score'>84:93</div>
@@ -545,7 +547,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>14.10.2026 19:30</div>
                 
                 
-            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 14.10 21:29:17</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006149?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/fc-bayern-basketball-ii/fc-bayern-basketball-ii-vs-tsv-oberhaching-tropics' target='_blank'>Video</a></div></div>
+            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 14.10 21:35:50</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Medikamente per Klick Bayreuth</div>
                     <div class='ls-score'>89:100</div>
@@ -554,7 +559,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:00</div>
                 <div class='ls-date'>Q1 20-32 | Q2 20-27 | Q3 31-27 | Q4 18-14</div>
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005855?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/medikamente-per-klick-bayreuth/medikamente-per-klick-bayreuth-vs-orangeacademy' target='_blank'>Pay</a></div></div>
             </div></div></details><details class='live-drei-liga' data-block='drei-55817' open><summary><b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TV Langen</div>
                     <div class='ls-score'>71:63</div>
@@ -563,7 +571,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>13.10.2026 19:00</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006152?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/tv-langen/tv-langen-vs-catl-basketball-loewen' target='_blank'>Video</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Bayer Giants Leverkusen</div>
                     <div class='ls-score'>76:73</div>
@@ -572,7 +583,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006153?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/bayer-giants-leverkusen/bayer-giants-leverkusen-vs-ahorn-camp-baskets' target='_blank'>Video</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS Juniors</div>
                     <div class='ls-score'>73:70</div>
@@ -581,7 +595,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006151?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-dragons-rhoendorf' target='_blank'>Video</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSG Schöller SI Ravens Reutlingen</div>
                     <div class='ls-score'>92:70</div>
@@ -590,7 +607,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006150?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/tsg-reutlingen-ravens/tsg-reutlingen-ravens-vs-sv-fellbach-flashers' target='_blank'>Video</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern Basketball II</div>
                     <div class='ls-score'>84:93</div>
@@ -599,7 +619,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006149?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/fc-bayern-basketball-ii/fc-bayern-basketball-ii-vs-tsv-oberhaching-tropics' target='_blank'>Video</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dresden Titans</div>
                     <div class='ls-score'>79:55</div>
@@ -608,7 +631,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006148?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/dresden-titans/dresden-titans-vs-bbc-coburg' target='_blank'>Video</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Hessing Leitershofen</div>
                     <div class='ls-score'>70:62</div>
@@ -617,6 +643,8 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006147?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/bg-hessing-leitershofen/bg-hessing-leitershofen-vs-porsche-bba-ludwigsburg' target='_blank'>Video</a></div></div>
             </div></div></details></div></details><details class='hat-livescore'>
 
 <summary>
@@ -1179,6 +1207,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProA, gestern bis morgen</div>
             <div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Medikamente per Klick Bayreuth</div>
                     <div class='ls-score'>89:100</div>
@@ -1187,6 +1216,8 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:00</div>
                 <div class='ls-date'>Q1 20-32 | Q2 20-27 | Q3 31-27 | Q4 18-14</div>
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005855?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/medikamente-per-klick-bayreuth/medikamente-per-klick-bayreuth-vs-orangeacademy' target='_blank'>Pay</a></div></div>
             </div>
             </div></details>
 <details class='liga-rest' open>
@@ -1575,7 +1606,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 </div>
 </details>
 </div>
-</details><details>
+</details><details class='hat-livescore'>
 
 <summary>
     <b>2. DBBL Süd (Senioren; Liganr.: 43) (Liga 55749)</b>
@@ -1587,6 +1618,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     </span>
 </summary>
 
+<div style='margin-left:10px;'>
+<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><p><i>Keine Spiele.</i></p></div></details>
+<details class='liga-rest' open>
+<summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Re-Live des Spieles.</p>
@@ -1794,7 +1829,9 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55749' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55749</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details>
+</details>
+</div>
+</details><details class='hat-livescore'>
 
 <summary>
     <b>2. DBBL Nord (Senioren; Liganr.: 40) (Liga 55746)</b>
@@ -1806,6 +1843,10 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     </span>
 </summary>
 
+<div style='margin-left:10px;'>
+<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><p><i>Keine Spiele.</i></p></div></details>
+<details class='liga-rest' open>
+<summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <p>Link in der Spalte nr führt zum Re-Live des Spieles.</p>
@@ -2013,13 +2054,15 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55746' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55746</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
+</details>
+</div>
 </details><details class='hat-livescore spielt-heute'>
 
 <summary>
     <b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 14.10. 21:23)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 14.10. 21:27)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2028,6 +2071,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Süd, gestern bis morgen</div>
             <div class='livescore-box' style=''>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TV Langen</div>
                     <div class='ls-score'>71:63</div>
@@ -2036,9 +2080,12 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>13.10.2026 19:00</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006152?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/tv-langen/tv-langen-vs-catl-basketball-loewen' target='_blank'>Video</a></div></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Bayer Giants Leverkusen</div>
                     <div class='ls-score'>76:73</div>
@@ -2047,9 +2094,12 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006153?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/bayer-giants-leverkusen/bayer-giants-leverkusen-vs-ahorn-camp-baskets' target='_blank'>Video</a></div></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS Juniors</div>
                     <div class='ls-score'>73:70</div>
@@ -2058,9 +2108,12 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006151?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-dragons-rhoendorf' target='_blank'>Video</a></div></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSG Schöller SI Ravens Reutlingen</div>
                     <div class='ls-score'>92:70</div>
@@ -2069,9 +2122,12 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006150?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/tsg-reutlingen-ravens/tsg-reutlingen-ravens-vs-sv-fellbach-flashers' target='_blank'>Video</a></div></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern Basketball II</div>
                     <div class='ls-score'>84:93</div>
@@ -2080,9 +2136,12 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006149?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/fc-bayern-basketball-ii/fc-bayern-basketball-ii-vs-tsv-oberhaching-tropics' target='_blank'>Video</a></div></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dresden Titans</div>
                     <div class='ls-score'>79:55</div>
@@ -2091,9 +2150,12 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006148?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/dresden-titans/dresden-titans-vs-bbc-coburg' target='_blank'>Video</a></div></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Hessing Leitershofen</div>
                     <div class='ls-score'>70:62</div>
@@ -2102,6 +2164,8 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
                 <div class='ls-date'>14.10.2026 19:30</div>
                 
                 
+                </div>
+                <div class='ls-seite'><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006147?s=boxscore' target='_blank'>html</a></div><div class='ls-vid'><a href='https://sporteurope.tv/bg-hessing-leitershofen/bg-hessing-leitershofen-vs-porsche-bba-ludwigsburg' target='_blank'>Video</a></div></div>
             </div>
             </div></details>
 <details class='liga-rest' open>
