@@ -39,6 +39,7 @@ details { margin-bottom:3px; }
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
 #live-refresh { margin-left: 8px; font-weight: bold; }
+#live-refresh .live-rest.knapp { background: #1b7f37; color: #fff; padding: 0 4px; border-radius: 2px; }
 details.live-sammel > summary { padding-right: 230px; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
@@ -265,7 +266,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedost – Stand: 16.10.26 21:06:11</h1>
+<h1>Regionalliga Suedost – Stand: 16.10.26 21:36:09</h1>
 
 
 <details id='wasfindeichhier'>
@@ -517,6 +518,12 @@ Meldet die API das Ende früher, bleibt es noch 10 Minuten, aber nur wenn es vor
 Der Refresh läuft, solange so eine Kachel unter Live steht.<br>
 Die Refresh-Zeile steht direkt hinter Live.<br>
 <br>
+<b>16.10.26</b><br>
+Neben der Refresh-Uhr läuft eine Stoppuhr rückwärts bis zum Refresh.<br>
+Unter 11 Sekunden ist die Stoppuhr grün mit weißer Schrift.<br>
+Der BBL-Pokal 1/8-Finale, Liga 55807, hat einen eigenen Livescore.<br>
+Der Spieltag-Schalter schreibt dafür eine eigene GameDay-Datei.
+<br>
 <b>14.10.26</b><br>
 Der Block heißt Spiele live oder beginnen gleich. Darüber steht<br>
 Bundesligen, Stand der Liste mit dem Datum des Laufs.<br>
@@ -618,6 +625,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>11032</td>
+<td>4</td>
+<td>16.10.2026 19:30</td>
+<td>TSV 1861 Nördlingen</td>
+<td>hapa Ansbach</td>
+<td>82 : 73</td>
+</tr>
 <tr>
 <td>11025</td>
 <td>3</td>
@@ -668,6 +683,15 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
   <tbody>
     <tr>
       <td>1</td>
+      <td>TSV 1861 Nördlingen</td>
+      <td>4</td>
+      <td>4/0</td>
+      <td>8</td>
+      <td>319 : 273</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <td>2</td>
       <td>TS Jahn München</td>
       <td>3</td>
       <td>3/0</td>
@@ -676,31 +700,22 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
       <td>49</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>TSV 1861 Nördlingen</td>
       <td>3</td>
-      <td>3/0</td>
-      <td>6</td>
-      <td>237 : 200</td>
-      <td>37</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>hapa Ansbach</td>
-      <td>3</td>
-      <td>2/1</td>
-      <td>4</td>
-      <td>281 : 265</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <td>4</td>
       <td>TSV Vilsbiburg</td>
       <td>3</td>
       <td>2/1</td>
       <td>4</td>
       <td>232 : 234</td>
       <td>-2</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>hapa Ansbach</td>
+      <td>4</td>
+      <td>2/2</td>
+      <td>4</td>
+      <td>354 : 347</td>
+      <td>7</td>
     </tr>
     <tr>
       <td>5</td>
@@ -754,7 +769,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>11032</td>
 <td>4</td>
 <td>16.10.2026 19:30</td>
@@ -1858,6 +1873,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>40387</td>
+<td>3</td>
+<td>16.10.2026 19:30</td>
+<td>SV Automation 61 Leipzig</td>
+<td>Leipzig Lakers</td>
+<td>62 : 61</td>
+</tr>
 <tr>
 <td>40377</td>
 <td>2</td>
@@ -1979,21 +2002,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>8</td>
+      <td>SV Automation 61 Leipzig</td>
+      <td>3</td>
+      <td>1/2</td>
+      <td>2</td>
+      <td>162 : 237</td>
+      <td>-75</td>
+    </tr>
+    <tr>
+      <td>9</td>
       <td>DJK Neustadt a. d. Waldnaab</td>
       <td>0</td>
       <td>0/0</td>
       <td>0</td>
       <td>0 : 0</td>
       <td>0</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>Leipzig Lakers</td>
-      <td>2</td>
-      <td>0/2</td>
-      <td>0</td>
-      <td>118 : 157</td>
-      <td>-39</td>
     </tr>
     <tr>
       <td>10</td>
@@ -2006,21 +2029,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>11</td>
-      <td>SV Automation 61 Leipzig</td>
-      <td>2</td>
-      <td>0/2</td>
-      <td>0</td>
-      <td>100 : 176</td>
-      <td>-76</td>
-    </tr>
-    <tr>
-      <td>12</td>
       <td>TG Pfauen Würzburg</td>
       <td>2</td>
       <td>0/2</td>
       <td>0</td>
       <td>110 : 190</td>
       <td>-80</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Leipzig Lakers</td>
+      <td>3</td>
+      <td>0/3</td>
+      <td>0</td>
+      <td>179 : 219</td>
+      <td>-40</td>
     </tr>
   </tbody>
 </table>
@@ -2038,7 +2061,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>40387</td>
 <td>3</td>
 <td>16.10.2026 19:30</td>

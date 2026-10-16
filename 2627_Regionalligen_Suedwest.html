@@ -39,6 +39,7 @@ details { margin-bottom:3px; }
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
 #live-refresh { margin-left: 8px; font-weight: bold; }
+#live-refresh .live-rest.knapp { background: #1b7f37; color: #fff; padding: 0 4px; border-radius: 2px; }
 details.live-sammel > summary { padding-right: 230px; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
@@ -265,7 +266,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedwest – Stand: 16.10.26 21:06:27</h1>
+<h1>Regionalliga Suedwest – Stand: 16.10.26 21:36:24</h1>
 
 
 <details id='wasfindeichhier'>
@@ -516,6 +517,12 @@ Unter livescore_heute ist die ganze Kachel grün.<br>
 Meldet die API das Ende früher, bleibt es noch 10 Minuten, aber nur wenn es vorher aktiv war.<br>
 Der Refresh läuft, solange so eine Kachel unter Live steht.<br>
 Die Refresh-Zeile steht direkt hinter Live.<br>
+<br>
+<b>16.10.26</b><br>
+Neben der Refresh-Uhr läuft eine Stoppuhr rückwärts bis zum Refresh.<br>
+Unter 11 Sekunden ist die Stoppuhr grün mit weißer Schrift.<br>
+Der BBL-Pokal 1/8-Finale, Liga 55807, hat einen eigenen Livescore.<br>
+Der Spieltag-Schalter schreibt dafür eine eigene GameDay-Datei.
 <br>
 <b>14.10.26</b><br>
 Der Block heißt Spiele live oder beginnen gleich. Darüber steht<br>
