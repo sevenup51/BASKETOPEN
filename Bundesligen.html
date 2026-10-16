@@ -39,6 +39,7 @@ details { margin-bottom:3px; }
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
 #live-refresh { margin-left: 8px; font-weight: bold; }
+#live-refresh .live-rest.knapp { background: #1b7f37; color: #fff; padding: 0 4px; border-radius: 2px; }
 details.live-sammel > summary { padding-right: 230px; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
@@ -265,7 +266,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 16.10.26 21:17:06</h1>
+<h1>Bundesligen – Stand: 16.10.26 21:23:08</h1>
 
 
 <details id='wasfindeichhier'>
@@ -517,6 +518,12 @@ Meldet die API das Ende früher, bleibt es noch 10 Minuten, aber nur wenn es vor
 Der Refresh läuft, solange so eine Kachel unter Live steht.<br>
 Die Refresh-Zeile steht direkt hinter Live.<br>
 <br>
+<b>16.10.26</b><br>
+Neben der Refresh-Uhr läuft eine Stoppuhr rückwärts bis zum Refresh.<br>
+Unter 11 Sekunden ist die Stoppuhr grün mit weißer Schrift.<br>
+Der BBL-Pokal 1/8-Finale, Liga 55807, hat einen eigenen Livescore.<br>
+Der Spieltag-Schalter schreibt dafür eine eigene GameDay-Datei.
+<br>
 <b>14.10.26</b><br>
 Der Block heißt Spiele live oder beginnen gleich. Darüber steht<br>
 Bundesligen, Stand der Liste mit dem Datum des Laufs.<br>
@@ -592,91 +599,67 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 16.10.2026</p><details class='live-sammel' data-block='Live' open><summary><b>Spiele live oder beginnen gleich</b><span id='live-refresh'></span><span class='summary-right'>Stand: 16.10 21:17:06</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-liga' data-block='live-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
-                <div class='ls-kern'>
-                <div class='ls-row'>
-                    <div class='ls-team'>EWE Baskets Oldenburg</div>
-                    <div class='ls-score'>31:40</div>
-                    <div class='ls-team' style='text-align:right;'>Telekom Baskets Bonn</div>
-                </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
-                <div class='ls-date'>Q1 16-24 | Q2 13-14 | Q3 2-2</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q3 7:09</span></div>
-                </div>
-                <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'>Boxscore</div></div>
-            </div></div></details><details class='live-liga' data-block='live-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
+<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 16.10.2026</p><details class='live-sammel' data-block='Live' open><summary><b>Spiele live oder beginnen gleich</b><span id='live-refresh'></span><span class='summary-right'>Stand: 16.10 21:23:08</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-liga' data-block='live-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SBB Börde Baskets </div>
-                    <div class='ls-score'>66:66</div>
+                    <div class='ls-score'>69:66</div>
                     <div class='ls-team' style='text-align:right;'>EPG Baskets Koblenz</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 19:30</div>
-                <div class='ls-date'>Q1 30-16 | Q2 12-23 | Q3 10-15 | Q4 14-12</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q4 00:16</span></div>
+                <div class='ls-date'>Q1 30-16 | Q2 12-23 | Q3 10-15 | Q4 17-12</div>
+                
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sbbbasketswolmirstedt/sbb-baskets-wolmirstedt-vs-epg-baskets-koblenz' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005857?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Tigers Tübingen</div>
-                    <div class='ls-score'>75:66</div>
+                    <div class='ls-score'>81:73</div>
                     <div class='ls-team' style='text-align:right;'>VfL SparkassenStars Bochum</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 19:30</div>
-                <div class='ls-date'>Q1 20-17 | Q2 18-15 | Q3 17-21 | Q4 20-13 | OT 0--4</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q4 01:40</span></div>
+                <div class='ls-date'>Q1 20-17 | Q2 18-15 | Q3 17-21 | Q4 26-20 | OT -3--2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:22</span><span>Q4 00:00</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tigers-tuebingen/tigers-tuebingen-vs-vfl-sparkassenstars-bochum' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005858?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div></div></details><details class='live-liga' data-block='live-55817' open><summary><b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Ahorn Camp Baskets</div>
-                    <div class='ls-score'>43:58</div>
+                    <div class='ls-score'>49:61</div>
                     <div class='ls-team' style='text-align:right;'>TV Langen</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q3 03:19</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:22</span><span>Q3 00:37</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ahorn-camp-baskets/ahorn-camp-baskets-vs-tv-langen' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006154?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div></div></details><details class='live-liga' data-block='live-55815' open><summary><b>Herren ProB Nord (Senioren; Liganr.: 20) (Liga 55815)</b></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SG Braunschweig</div>
-                    <div class='ls-score'>53:69</div>
+                    <div class='ls-score'>60:78</div>
                     <div class='ls-team' style='text-align:right;'>TSV Neustadt temps Shooters</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q3 05:23</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:22</span><span>Q3 02:20</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sg-braunschweig/sg-braunschweig-vs-tsv-neustadt-temps-shooters' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006357?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 16.10 21:17:06</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary><b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b></summary><div class='livescore-list'><div class='livescore-box ls-live' style='background:#ffdd99;'>
+            </div></div></details><details class='live-liga' data-block='live-55807' open><summary><b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EWE Baskets Oldenburg</div>
-                    <div class='ls-score'>31:40</div>
+                    <div class='ls-score'>40:43</div>
                     <div class='ls-team' style='text-align:right;'>Telekom Baskets Bonn</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
-                <div class='ls-date'>Q1 16-24 | Q2 13-14 | Q3 2-2</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q3 7:09</span></div>
+                <div class='ls-date'>Q1 16-24 | Q2 13-14 | Q3 11-5</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:23</span><span>Q3 4:49</span></div>
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'>Boxscore</div></div>
-            </div><div class='livescore-box' style=''>
-                <div class='ls-kern'>
-                <div class='ls-row'>
-                    <div class='ls-team'>ratiopharm ulm</div>
-                    <div class='ls-score'>–</div>
-                    <div class='ls-team' style='text-align:right;'>Phoenix Hagen</div>
-                </div>
-                <div class='ls-date'>17.10.2026 20:00</div>
-                
-                
-                </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'>Boxscore</div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55738' open><summary><b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+                <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
+            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 16.10 21:23:08</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55738' open><summary><b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Herner TC</div>
@@ -688,28 +671,28 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=EyTGrQNhCtc' target='_blank'>Live</a></div><div class='ls-box'>Boxscore</div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><div class='livescore-box ls-live' style='background:#ffdd99;'>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55811' open><summary><b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SBB Börde Baskets </div>
-                    <div class='ls-score'>66:66</div>
+                    <div class='ls-score'>69:66</div>
                     <div class='ls-team' style='text-align:right;'>EPG Baskets Koblenz</div>
                 </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 19:30</div>
-                <div class='ls-date'>Q1 30-16 | Q2 12-23 | Q3 10-15 | Q4 14-12</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q4 00:16</span></div>
+                <div class='ls-date'>16.10.2026 19:30</div>
+                <div class='ls-date'>Q1 30-16 | Q2 12-23 | Q3 10-15 | Q4 17-12</div>
+                
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sbbbasketswolmirstedt/sbb-baskets-wolmirstedt-vs-epg-baskets-koblenz' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005857?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Tigers Tübingen</div>
-                    <div class='ls-score'>75:66</div>
+                    <div class='ls-score'>81:73</div>
                     <div class='ls-team' style='text-align:right;'>VfL SparkassenStars Bochum</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 19:30</div>
-                <div class='ls-date'>Q1 20-17 | Q2 18-15 | Q3 17-21 | Q4 20-13 | OT 0--4</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q4 01:40</span></div>
+                <div class='ls-date'>Q1 20-17 | Q2 18-15 | Q3 17-21 | Q4 26-20 | OT -3--2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:22</span><span>Q4 00:00</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tigers-tuebingen/tigers-tuebingen-vs-vfl-sparkassenstars-bochum' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005858?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style=''>
@@ -872,12 +855,12 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Ahorn Camp Baskets</div>
-                    <div class='ls-score'>43:58</div>
+                    <div class='ls-score'>49:61</div>
                     <div class='ls-team' style='text-align:right;'>TV Langen</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q3 03:19</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:22</span><span>Q3 00:37</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ahorn-camp-baskets/ahorn-camp-baskets-vs-tv-langen' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006154?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style=''>
@@ -920,12 +903,12 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SG Braunschweig</div>
-                    <div class='ls-score'>53:69</div>
+                    <div class='ls-score'>60:78</div>
                     <div class='ls-team' style='text-align:right;'>TSV Neustadt temps Shooters</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q3 05:23</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:22</span><span>Q3 02:20</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sg-braunschweig/sg-braunschweig-vs-tsv-neustadt-temps-shooters' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006357?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style=''>
@@ -1000,35 +983,19 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/itzehoeeagles/itzehoe-eagles-vs-iserlohn-kangaroos' target='_blank'>Video</a></div><div class='ls-box'>Boxscore</div></div>
-            </div></div></details></div></details><details class='hat-livescore spielt-heute'>
-
-<summary>
-    <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b>
-    <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 16.10. 21:11)</a>
-        <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon green'></span>
-    </span>
-</summary>
-
-<div style='margin-left:10px;'>
-<details class='livescore-block' open><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>easyCredit BBL, gestern bis morgen</div>
-            <div class='livescore-box ls-live' style='background:#ffdd99;'>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55807' open><summary><b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b></summary><div class='livescore-list'><div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EWE Baskets Oldenburg</div>
-                    <div class='ls-score'>31:40</div>
+                    <div class='ls-score'>40:43</div>
                     <div class='ls-team' style='text-align:right;'>Telekom Baskets Bonn</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
-                <div class='ls-date'>Q1 16-24 | Q2 13-14 | Q3 2-2</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q3 7:09</span></div>
+                <div class='ls-date'>Q1 16-24 | Q2 13-14 | Q3 11-5</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:23</span><span>Q3 4:49</span></div>
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'>Boxscore</div></div>
-            </div>
-            
-            <div class='livescore-box' style=''>
+                <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
+            </div><div class='livescore-box' style=''>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ratiopharm ulm</div>
@@ -1039,9 +1006,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'>Boxscore</div></div>
-            </div>
-            </div></details>
+                <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
+            </div></div></details></div></details><details class='hat-livescore spielt-heute'>
+
+<summary>
+    <b>1. Bundesliga (easyCredit BBL) (Senioren; Liganr.: 1) (Liga 55802)</b>
+    <span class='summary-right'>
+        
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 16.10. 21:16)</a>
+        <span style='color:green; font-weight:bold;'>✔</span>
+        <span class='liga-icon green'></span>
+    </span>
+</summary>
+
+<div style='margin-left:10px;'>
+<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><p><i>Keine Spiele.</i></p></div></details>
 <details class='liga-rest' open>
 <summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
 <div style='margin-left:10px;'>
@@ -1639,7 +1618,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Herren ProA (Senioren; Liganr.: 10) (Liga 55811)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 16.10. 21:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 16.10. 21:17)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1647,16 +1626,16 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block' open><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProA, gestern bis morgen</div>
-            <div class='livescore-box ls-live' style='background:#ffdd99;'>
+            <div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SBB Börde Baskets </div>
-                    <div class='ls-score'>66:66</div>
+                    <div class='ls-score'>69:66</div>
                     <div class='ls-team' style='text-align:right;'>EPG Baskets Koblenz</div>
                 </div>
-                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 19:30</div>
-                <div class='ls-date'>Q1 30-16 | Q2 12-23 | Q3 10-15 | Q4 14-12</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q4 00:16</span></div>
+                <div class='ls-date'>16.10.2026 19:30</div>
+                <div class='ls-date'>Q1 30-16 | Q2 12-23 | Q3 10-15 | Q4 17-12</div>
+                
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sbbbasketswolmirstedt/sbb-baskets-wolmirstedt-vs-epg-baskets-koblenz' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005857?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -1665,12 +1644,12 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Tigers Tübingen</div>
-                    <div class='ls-score'>75:66</div>
+                    <div class='ls-score'>81:73</div>
                     <div class='ls-team' style='text-align:right;'>VfL SparkassenStars Bochum</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 19:30</div>
-                <div class='ls-date'>Q1 20-17 | Q2 18-15 | Q3 17-21 | Q4 20-13 | OT 0--4</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q4 01:40</span></div>
+                <div class='ls-date'>Q1 20-17 | Q2 18-15 | Q3 17-21 | Q4 26-20 | OT -3--2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:22</span><span>Q4 00:00</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tigers-tuebingen/tigers-tuebingen-vs-vfl-sparkassenstars-bochum' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005858?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -1777,6 +1756,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <th>Boxscore</th><th>Video</th></tr>
 </thead>
 <tbody>
+<tr>
+<td>2005857</td>
+<td>5</td>
+<td>16.10.2026 19:30</td>
+<td>SBB Börde Baskets</td>
+<td>EPG Baskets Koblenz</td>
+<td>69:66</td>
+<td><a href="https://live.2basketballbundesliga.de/g/2005857?s=boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://sporteurope.tv/sbbbasketswolmirstedt/sbb-baskets-wolmirstedt-vs-epg-baskets-koblenz" target="_blank">Pay</a></td></tr>
 <tr>
 <td>2005855</td>
 <td>4</td>
@@ -2825,7 +2812,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Herren ProB Süd (Senioren; Liganr.: 22) (Liga 55817)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 16.10. 21:11)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 16.10. 21:15)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2837,12 +2824,12 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Ahorn Camp Baskets</div>
-                    <div class='ls-score'>43:58</div>
+                    <div class='ls-score'>49:61</div>
                     <div class='ls-team' style='text-align:right;'>TV Langen</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q3 03:19</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:22</span><span>Q3 00:37</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ahorn-camp-baskets/ahorn-camp-baskets-vs-tv-langen' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006154?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -3311,7 +3298,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Herren ProB Nord (Senioren; Liganr.: 20) (Liga 55815)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 16.10. 21:10)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 16.10. 21:14)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3323,12 +3310,12 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SG Braunschweig</div>
-                    <div class='ls-score'>53:69</div>
+                    <div class='ls-score'>60:78</div>
                     <div class='ls-team' style='text-align:right;'>TSV Neustadt temps Shooters</div>
                 </div>
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:16</span><span>Q3 05:23</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:22</span><span>Q3 02:20</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sg-braunschweig/sg-braunschweig-vs-tsv-neustadt-temps-shooters' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006357?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -3784,7 +3771,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55809' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55809</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
 </div>
-</details><details>
+</details><details class='hat-livescore'>
 
 <summary>
     <b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b>
@@ -3796,6 +3783,38 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </span>
 </summary>
 
+<div style='margin-left:10px;'>
+<details class='livescore-block' open><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>BBL-Pokal 1/8-Finale, gestern bis morgen</div>
+            <div class='livescore-box ls-live' style='background:#ffdd99;'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>EWE Baskets Oldenburg</div>
+                    <div class='ls-score'>40:43</div>
+                    <div class='ls-team' style='text-align:right;'>Telekom Baskets Bonn</div>
+                </div>
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>16.10.2026 20:00</div>
+                <div class='ls-date'>Q1 16-24 | Q2 13-14 | Q3 11-5</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 21:23</span><span>Q3 4:49</span></div>
+                </div>
+                <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
+            </div>
+            
+            <div class='livescore-box' style=''>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>ratiopharm ulm</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Phoenix Hagen</div>
+                </div>
+                <div class='ls-date'>17.10.2026 20:00</div>
+                
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
+            </div>
+            </div></details>
+<details class='liga-rest' open>
+<summary><b>Ergebnisse, Tabelle, nächste Spiele</b></summary>
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
 <p><i>Keine Ergebnisse.</i></p>
@@ -3814,14 +3833,6 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>9</td>
-<td>2</td>
-<td>16.10.2026 20:00</td>
-<td>EWE Baskets Oldenburg</td>
-<td>Telekom Baskets Bonn</td>
-<td>EWE-Arena</td>
-</tr>
 <tr>
 <td>10</td>
 <td>2</td>
@@ -3884,6 +3895,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <p class='ligalink'><a href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <p class='ligalink'><a href='https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55807' target='_blank'>https://www.basketball-bund.net/index.jsp?Action=101&liga_id=55807</a> <span style='color:green; font-weight:bold;'>✔</span></p>
 <hr class='short'>
+</div>
+</details>
 </div>
 </details><details>
 
@@ -4144,9 +4157,16 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     if (refresh - vorher < 2 * 60 * 1000 && vorher + 30000 > ab) return vorher + 30000;
     return refresh;
   }
+  function stoppuhr() {
+    var rest = Math.max(0, Math.ceil((ziel - Date.now()) / 1000));
+    var text = zwei(Math.floor(rest / 60)) + ":" + zwei(rest % 60);
+    var klasse = rest < 11 ? "live-rest knapp" : "live-rest";
+    return "<span class='" + klasse + "'>" + text + "</span>";
+  }
   function zeilentext() {
     var ult = new Date(naechsterUpload(Date.now()));
     return "geladen " + uhr(geladen) + " · Refresh " + uhr(new Date(ziel))
+      + " · Stopp " + stoppuhr()
       + " · ULT " + uhr(ult) + " · Zeit: " + uhr(new Date());
   }
   function stoppeUhr() {
@@ -4159,24 +4179,24 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     uhrIntervall = setInterval(function () {
       var el = document.getElementById("live-refresh");
       if (!el || !laufendesSpiel()) {
-        if (el) el.textContent = "";
+        if (el) el.innerHTML = "";
         stoppeUhr();
         return;
       }
-      el.textContent = zeilentext();
+      el.innerHTML = zeilentext();
     }, 1000);
   }
   function zeige() {
     var el = document.getElementById("live-refresh");
     if (!el) return;
     if (!laufendesSpiel()) {
-      el.textContent = "";
+      el.innerHTML = "";
       ziel = 0;
       stoppeUhr();
       return;
     }
     if (!ziel) ziel = refreshZiel(Date.now());
-    el.textContent = zeilentext();
+    el.innerHTML = zeilentext();
     starteUhr();
   }
   zeige();
