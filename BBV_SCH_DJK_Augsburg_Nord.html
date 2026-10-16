@@ -265,7 +265,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Augsburg DJK Nord – Stand: 16.10.26 16:12:21</h1>
+<h1>Augsburg DJK Nord – Stand: 16.10.26 17:12:23</h1>
 
 
 <details id='wasfindeichhier'>
@@ -280,7 +280,7 @@ function boxscoreHinweis(){
 <li><a href="#a4">Geschichte</a>
 <ol>
 <li><a href="#a41">Die alte Anwendung</a></li>
-<li><a href="#a42">Wo komme ich zu den Listen?</a>
+<li><a href="#a42">Wie komme ich zu den Listen?</a>
 <ol>
 <li><a href="#a421">Verbände</a></li>
 <li><a href="#a422">Altersklassen</a></li>
@@ -342,15 +342,15 @@ noch aktuelle Ergebnisse eingetragen werden. Den Zeitpunkt der Erstellung erkenn
 
 <p>
 Ganz aktuelle Daten findet man über den Link auf die basketball‑bund.net‑Seite.<br>
-Wenn eine andere Liga interessiert, kann man die 5‑stellige Zahl (= LigaNr) durch die LigaNr 
+Wenn eine andere Liga interessiert, kann man die 5-stellige Zahl (= LigaId) durch die LigaId
 der gewünschten Liga ersetzen.<br>
 Wenn für diese Liga bereits etwas generiert wurde, ist die entsprechende Seite vorhanden.
 </p>
 
 <p>
-Die LigaNr findet ihr auf der basketball‑bund.net‑Seite.<br>
+Die LigaId findet ihr auf der basketball-bund.net-Seite.<br>
 Wenn man die Liga gefunden hat (in der Übersicht wird nur „Liga“ angezeigt) und diese Liga aufruft, 
-sieht man im aufgebauten Link die LigaNr.
+sieht man im aufgebauten Link die LigaId.
 </p>
 
 <h3 id="a2">2. Eigene Vereinsliste</h3>
@@ -400,34 +400,34 @@ https://sevenup51.github.io/BASKETOPEN/Uebersicht_Ligenlisten.html?nocache=
 <br>
 Erklärung dazu:<br>
 Hier sieht man hinter dem Text Stand, von wann diese Listen sind. Diese sind eventuell<br>
-aktueller als die Infos unter Details bei den entsprechenden Ligen, da dies öfters erstellt wird.
+aktueller als die Infos unter Details bei den entsprechenden Ligen, da diese Übersicht öfter erstellt wird.
 </p>
 
 <h3 id="a4">4. Geschichte</h3>
 <h4 id="a41">4.1 Die alte Anwendung</h4>
 <p>
-Grundlage dieser Seiten sind meine alte Basketballanwendung,<br>
+Grundlage dieser Seiten ist meine alte Basketballanwendung,<br>
 die ich für den Bezirk Schwaben einmal mit dBASE realisiert hatte.<br>
 Da wurden Spielpläne erfasst, daraus das Terminheft für den Bezirk Schwaben erstellt. Während
 der Saison meldeten die Vereine ihre Ergebnisse. Auf Knopfdruck wurden dann Ergebnislisten
 und die dazugehörigen Tabellen erzeugt. Die gingen dann per Mail an Vereine und an die Presse.<br>
-Am Monatsende dann das gleiche für den zurückliegenden Zeitraum erstellt. Dies war dann
+Am Monatsende wurde dann dasselbe für den zurückliegenden Zeitraum erstellt. Dies war dann
 Grundlage für den Schwabenreport bzw. bayernbasket.<br>
 Da ich mich mit KI beschäftigen wollte, mich auch etwas in Python einarbeiten wollte, kam ich
-auf die Idee, meine damalige Anwendung in Python umzusetzen. Hierbei war mir Anfangs
+auf die Idee, meine damalige Anwendung in Python umzusetzen. Hierbei war mir anfangs
 Copilot eine große Hilfe, wobei ich sagen muss, dass dies teilweise sehr umständlich war.<br>
-Aber es hat funktioniert. Dann gab es letzte Woche nach einem Copilot-Update erhebliche
+Aber es hat funktioniert. Dann gab es nach einem Copilot-Update erhebliche
 Probleme, da Copilot den Pythoncode in bestimmten Bereichen (hat Copilot ja selbst
 erstellt) fehlerhaft bearbeitet hat.<br>
-Da bin ich auf cursor.ai gestossen. Und man sieht, wie sich das ganze entwickelt. Jetzt brauche
-ich keine Daten mehr hin und her schieben. Ich stelle meine Anforderungen, cursor.ai passt den Sourcecode
-direkt in der *.py-Datei an, testet seine Änderungen, und gibt sie dann frei. Dies ist a) eine erhebliche Erleichterung und<br>
-b) geht wesentlich schneller und c) es funktioniert.
+Da bin ich auf cursor.ai gestoßen. Und man sieht, wie sich das Ganze entwickelt. Jetzt muss
+ich keine Daten mehr hin und her schieben. Ich stelle meine Anforderungen, cursor.ai passt den Quelltext
+direkt in der *.py-Datei an, testet seine Änderungen und gibt sie dann frei. Das ist a) eine erhebliche Erleichterung,<br>
+b) es geht wesentlich schneller und c) es funktioniert.
 
 <br><br>
 
 <b>24.09.26</b><br>
-Es gibt einen neuen Link in der Spalte "euroleaguebasketball<br>LIVE".<br>
+Es gibt einen neuen Link in der Spalte „euroleaguebasketball LIVE“.<br>
 Hier kann man die aktuellen Spiele live verfolgen.
 
 <br><br>
@@ -480,8 +480,8 @@ und livescore_heute. livescore_heute ist weiß auf grün.<br>
 livescore_heute öffnet den Block Live und schließt die übrigen Blöcke.<br>
 Unter Live steht jede Liga mit ihrer Liga-ID. Darunter nur die grünen,<br>
 also laufenden Spiele von heute.<br>
-Ist heute noch keins live, steht: Das nächste Spiel startet um HH:MM.<br>
-Sind die heutigen Spiele aus, steht: Es sind heute keine Spiele mehr.<br>
+Ist heute noch keines live, steht: Das nächste Spiel startet um HH:MM.<br>
+Sind die heutigen Spiele vorbei, steht: Es sind heute keine Spiele mehr.<br>
 Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
 livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
@@ -533,6 +533,55 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
 30 Sekunden nach dem Upload neu. Danach gilt wieder die Frist von 6 Minuten.
 </p>
 
+<h4 id="a42">4.2 Wie komme ich zu den Listen?</h4>
+<h5 id="a427">4.2.7 Liganummer und LigaId</h5>
+<p>
+Die TeamSL-LigaId ist eine laufende Nummer. Die 5 am Anfang ist der Zählerstand, keine Playoff-Marke.<br>
+Vorabliga ist nur ja oder nein. Daraus folgt keine Playoff-LigaId.<br>
+Neben der TeamSL-Nummer steht ein eigener Schlüssel. Die letzte Stelle ist die Runde dieser Liga.<br>
+0 ist die Liga ohne Playoffs. 1 ist die Hauptrunde einer Liga mit Playoffs.<br>
+2 bis 5 sind die Playoffrunden. 6 bis 9 werden nicht vergeben.<br>
+2610050000 gibt es nicht. 2610050006 bis 2610050009 bleiben frei.
+</p>
+<table class="plan">
+<tr><th>Liga</th><th>TeamSL</th><th>Hauptrunde</th><th>Runde 1</th><th>Runde 2</th><th>Runde 3</th><th>Runde 4</th></tr>
+<tr><td>easyCredit BBL</td><td>55802</td><td>2610050001 Hauptrunde</td><td>2610050002 Play-In</td><td>2610050003 1/4-Finale</td><td>2610050004 1/2-Finale</td><td>2610050005 Finale</td></tr>
+<tr><td>Toyota DBBL</td><td>55738</td><td>2610050011 Hauptrunde</td><td>2610050012 1/4-Finale</td><td>2610050013 1/2-Finale</td><td>2610050014 Finale</td><td>nicht vergeben</td></tr>
+<tr><td>ProA</td><td>55811</td><td>2610050021 Hauptrunde</td><td>2610050022 1/4-Finale</td><td>2610050023 1/2-Finale</td><td>2610050024 Finale</td><td>nicht vergeben</td></tr>
+<tr><td>ProB Nord</td><td>55815</td><td>2610050031 Hauptrunde</td><td colspan="4">Playoffs gemeinsam, siehe unten</td></tr>
+<tr><td>ProB Süd</td><td>55817</td><td>2610050041 Hauptrunde</td><td colspan="4">Playoffs gemeinsam, siehe unten</td></tr>
+<tr><td>ProB Playoffs</td><td>noch keine</td><td>keine eigene Hauptrunde</td><td>2610050052 1/8-Finale</td><td>2610050053 1/4-Finale</td><td>2610050054 1/2-Finale</td><td>2610050055 Finale</td></tr>
+</table>
+<p>
+In der DBBL und in der ProA gibt es kein Play-In.<br>
+In der DBBL spielen die ersten vier beider Gruppen die Playoffs. Die erste Runde ist das Viertelfinale.<br>
+In der ProB qualifizieren sich die besten 8 der Staffel Nord und die besten 8 der Staffel Süd, zusammen 16 Teams.<br>
+Ab dem Achtelfinale werden die Staffeln gemischt. Der 1. der Staffel Nord spielt gegen den 8. der Staffel Süd, der 2. Nord gegen den 7. Süd, und so weiter.<br>
+Achtelfinale, Viertelfinale und Halbfinale gehen im Best-of-Three. Wer zuerst zwei Siege hat, ist eine Runde weiter.<br>
+Das in der Hauptrunde besser platzierte Team hat im ersten und in einem möglichen dritten Spiel Heimrecht.<br>
+Die beiden Finalisten sind Aufsteiger in die ProA. Der Meistertitel wird in genau zwei Spielen ermittelt, Hin- und Rückspiel.<br>
+Gewertet wird das Korbverhältnis beider Spiele.
+</p>
+<table class="plan">
+<tr><th>Eigene ID</th><th>Liga</th><th>TeamSL</th><th>Playoff 1 bis 4</th></tr>
+<tr><td>2600250000</td><td>Bayernliga Herren Nord</td><td>52530</td><td>nicht vergeben</td></tr>
+<tr><td>2600250010</td><td>Bayernliga Herren Mitte</td><td>52531</td><td>nicht vergeben</td></tr>
+<tr><td>2600250020</td><td>Bayernliga Herren Süd</td><td>52532</td><td>nicht vergeben</td></tr>
+<tr><td>2600250030</td><td>Bayernliga Nord Damen</td><td>52533</td><td>nicht vergeben</td></tr>
+<tr><td>2600250040</td><td>Bayernliga Süd Damen</td><td>52534</td><td>nicht vergeben</td></tr>
+<tr><td>2600252010</td><td>Bezirksoberliga Herren 26/27, Schwaben</td><td>54453</td><td>nicht vergeben</td></tr>
+<tr><td>2600252020</td><td>Bezirksoberliga Damen 26/27, Schwaben</td><td>54454</td><td>nicht vergeben</td></tr>
+<tr><td>2600250100</td><td>Bezirksoberliga Damen 26/27, Oberbayern</td><td>53875</td><td>nicht vergeben</td></tr>
+<tr><td>2600250110</td><td>Bezirksoberliga Herren 26/27, Oberbayern</td><td>53725</td><td>nicht vergeben</td></tr>
+<tr><td>2600250120</td><td>Bezirksliga Damen 26/27, Oberbayern</td><td>53876</td><td>nicht vergeben</td></tr>
+</table>
+<p>
+2600250040 ist die Bayernliga Süd Damen.<br>
+2600252010 ist die Bezirksoberliga Herren 26/27, Schwaben. Die Damen folgen mit 2600252020.<br>
+In Oberbayern beginnen die Ligen mit 2600250100. Der Bezirk steht nicht in der Nummer.<br>
+Die Endziffer ist 0, es gibt keine Playoffrunde.
+</p>
+
 </div>
 </details>
 
@@ -543,7 +592,7 @@ Liegen Refresh und Upload weniger als 2 Minuten auseinander, lädt die Seite<br>
     
 </div>
 
-<details open><summary><b>Spielplan Augsburg DJK Nord – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 16.10.26 16:12:21</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Ergebnisse.</i></p></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>18.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td class='halle'><div class='halle'>Hans-<wbr>Adlhoch-<wbr>Halle<br>Spiel 12007</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg DJK Nord</b><span class='summary-right'>Stand 16.10.26 16:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
+<details open><summary><b>Spielplan Augsburg DJK Nord – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 16.10.26 17:12:23</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Ergebnisse.</i></p></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>18.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td class='halle'><div class='halle'>Hans-<wbr>Adlhoch-<wbr>Halle<br>Spiel 12007</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg DJK Nord</b><span class='summary-right'>Stand 16.10.26 17:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
 
 <summary>
     <b>Bezirksliga Herren Nord 26/27 (Senioren Schwaben; Liganr.: 22012) (Liga 54485)</b>
