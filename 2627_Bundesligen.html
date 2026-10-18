@@ -113,6 +113,10 @@ img.vereins-leiste { display:block; max-width:780px; height:auto; margin:4px 0; 
 .qr-box img { width:140px; height:140px; }
 .qr-box a { display:block; margin-bottom:8px; }
 .qr-box img.verein-logo { width:110px; height:auto; margin:0 auto 8px; }
+.qr-box.qr-mit-logo { display:flex; align-items:flex-start; gap:16px; text-align:left; }
+.qr-box.qr-mit-logo .qr-code { text-align:center; }
+.qr-box.qr-mit-logo a { margin-bottom:0; }
+.qr-box.qr-mit-logo img.verein-logo { width:auto; height:140px; margin:0; }
 .angels-logos { position:relative; width:180px; margin:0 auto 8px; }
 .angels-logos img { width:100%; height:auto; display:block; }
 .angels-logos a { position:absolute; top:0; height:100%; width:50%; margin:0; }
@@ -268,7 +272,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 18.10.26 14:36:18</h1>
+<h1>Bundesligen – Stand: 18.10.26 15:05:29</h1>
 
 
 <details id='wasfindeichhier'>
@@ -605,33 +609,46 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 18.10.2026</p><details class='live-sammel' data-block='Live' open><summary><b>Spiele live oder beginnen gleich</b> <span id='live-refresh'></span><span class='summary-right'>Stand: 18.10 14:36:18</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-liga' data-block='live-55807' open><summary><b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
+<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 18.10.2026</p><details class='live-sammel' data-block='Live' open><summary><b>Spiele live oder beginnen gleich</b> <span id='live-refresh'></span><span class='summary-right'>Stand: 18.10 15:05:29</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-liga' data-block='live-55749' open><summary><b>2. DBBL Süd (Senioren; Liganr.: 43) (Liga 55749)</b></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-ohne-stand' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
-                    <div class='ls-team'>Basketball Löwen Braunschweig</div>
-                    <div class='ls-score'>0:0</div>
-                    <div class='ls-team' style='text-align:right;'>NINERS Chemnitz</div>
+                    <div class='ls-team'>VIMODROM Baskets Jena</div>
+                    <div class='ls-score'>NE</div>
+                    <div class='ls-team' style='text-align:right;'>Bender Baskets Grünberg</div>
                 </div>
                 
                 <div class='ls-date'>18.10.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=IiBScnF2lDw' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11458/#boxscore' target='_blank'>Boxscore</a></div></div>
+            </div></div></details><details class='live-liga' data-block='live-55807' open><summary><b>BBL-Pokal 1/8-Finale (Senioren; Liganr.: 6) (Liga 55807)</b></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>Basketball Löwen Braunschweig</div>
+                    <div class='ls-score'>3:2</div>
+                    <div class='ls-team' style='text-align:right;'>NINERS Chemnitz</div>
+                </div>
+                
+                <div class='ls-date'>18.10.2026 15:00</div>
+                <div class='ls-date'>Q1 3-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1 7:48</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Fitness First Würzburg Baskets</div>
-                    <div class='ls-score'>0:0</div>
+                    <div class='ls-score'>8:3</div>
                     <div class='ls-team' style='text-align:right;'>SYNTAINICS MBC</div>
                 </div>
                 
                 <div class='ls-date'>18.10.2026 15:00</div>
-                
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date'>Q1 8-3</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1 8:16</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
-            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 18.10 14:36:18</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55738' open><summary><b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
+            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 18.10 15:05:29</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55738' open><summary><b>1. Bundesliga (Toyota DBBL) (Senioren; Liganr.: 30) (Liga 55738)</b></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Herner TC</div>
@@ -1116,26 +1133,26 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Basketball Löwen Braunschweig</div>
-                    <div class='ls-score'>0:0</div>
+                    <div class='ls-score'>3:2</div>
                     <div class='ls-team' style='text-align:right;'>NINERS Chemnitz</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 15:00</div>
-                
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date'>Q1 3-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1 7:48</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Fitness First Würzburg Baskets</div>
-                    <div class='ls-score'>0:0</div>
+                    <div class='ls-score'>8:3</div>
                     <div class='ls-team' style='text-align:right;'>SYNTAINICS MBC</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 15:00</div>
-                
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date'>Q1 8-3</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1 8:16</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
@@ -1148,7 +1165,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
@@ -1161,7 +1178,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
@@ -1174,7 +1191,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 18:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div><div class='livescore-box' style=''>
@@ -4319,13 +4336,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Basketball Löwen Braunschweig</div>
-                    <div class='ls-score'>0:0</div>
+                    <div class='ls-score'>3:2</div>
                     <div class='ls-team' style='text-align:right;'>NINERS Chemnitz</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 15:00</div>
-                
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date'>Q1 3-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1 7:48</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div>
@@ -4334,13 +4351,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Fitness First Würzburg Baskets</div>
-                    <div class='ls-score'>0:0</div>
+                    <div class='ls-score'>8:3</div>
                     <div class='ls-team' style='text-align:right;'>SYNTAINICS MBC</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 15:00</div>
-                
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date'>Q1 8-3</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1 8:16</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div>
@@ -4355,7 +4372,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div>
@@ -4370,7 +4387,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div>
@@ -4385,7 +4402,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>18.10.2026 18:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 14:36</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 15:05</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Video</div><div class='ls-box'>Boxscore</div></div>
             </div>
