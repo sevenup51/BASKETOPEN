@@ -120,7 +120,9 @@ img.vereins-leiste { display:block; max-width:780px; height:auto; margin:4px 0; 
 .angels-logos a.eigner { left:50%; }
 .angels-news { display:flex; gap:12px; align-items:flex-start; max-width:780px; margin:8px 0 12px; }
 .angels-news a { flex:1 1 0; min-width:0; text-decoration:none; color:#222; }
-.angels-news img { width:100%; height:auto; display:block; }
+.angels-news a { display:flex; flex-direction:column; }
+.angels-news img, .angels-news .bild-platz { width:100%; height:120px; flex:0 0 120px; object-fit:cover;
+          object-position:center; display:block; background:#e8eef7; }
 .angels-news span { display:block; margin-top:6px; font-size:12px; font-weight:bold; line-height:1.25; text-transform:uppercase; }
 a.angels-news-alle { display:inline-block; margin:0 0 12px; padding:2px 7px; background:#1a3d7c; color:white;
                     border-radius:3px; font-size:10px; font-weight:normal; text-decoration:none; text-transform:none; }
@@ -131,7 +133,7 @@ a.angels-news-alle:hover { background:#163568; }
 .verein-kachel h3 a { color:#1a3d7c; text-decoration:none; }
 .verein-kachel h3 img { width:42px; height:42px; object-fit:contain; flex:0 0 42px; background:#fff; }
 .verein-kachel .angels-news { flex-direction:column; gap:8px; max-width:none; margin:0 0 4px; }
-.verein-kachel .angels-news img { max-height:72px; width:100%; object-fit:cover; }
+.verein-kachel .angels-news img, .verein-kachel .angels-news .bild-platz { height:72px; max-height:72px; flex-basis:72px; }
 .verein-kachel .angels-news span { font-size:10px; text-transform:none; }
 .keine-news { margin:8px 0; font-style:italic; }
 .verein-sozial { display:flex; gap:8px; align-items:center; margin:0 0 12px; }
@@ -280,7 +282,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedwest – Stand: 18.10.26 22:06:35</h1>
+<h1>Regionalliga Suedwest – Stand: 18.10.26 22:21:34</h1>
 
 
 <details id='wasfindeichhier'>
@@ -623,7 +625,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>2. Regionalliga Herren Nord (Senioren Nord; Liganr.: 6010010) (Liga 52859)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 14:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52859.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 22:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -838,7 +840,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Regionalliga Damen Nord (Senioren Nord; Liganr.: 602) (Liga 52860)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52860.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52860.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 14:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52860.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52860.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 22:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -1053,7 +1055,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>1. Regionalliga Südwest (Senioren; Liganr.: 21018190) (Liga 53088)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53088.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53088.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 14:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53088.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53088.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 22:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1429,7 +1431,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>1. Regionalliga Südwest Halbfinale (Senioren; Liganr.: 210181901) (Liga 53229)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53229.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53229.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 14:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53229.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53229.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 22:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
@@ -1454,7 +1456,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>1. Regionalliga Südwest Finale (Senioren; Liganr.: 210181902) (Liga 53230)</b>
     <span class='summary-right'>
         <span style='color:red; font-weight:bold;'>Keine Tab</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53230.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53230.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 14:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_53230.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_53230.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 22:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon red'></span>
     </span>
