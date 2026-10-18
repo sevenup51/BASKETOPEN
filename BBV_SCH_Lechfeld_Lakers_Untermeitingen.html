@@ -125,6 +125,14 @@ img.vereins-leiste { display:block; max-width:780px; height:auto; margin:4px 0; 
 a.angels-news-alle { display:inline-block; margin:0 0 12px; padding:2px 7px; background:#1a3d7c; color:white;
                     border-radius:3px; font-size:10px; font-weight:normal; text-decoration:none; text-transform:none; }
 a.angels-news-alle:hover { background:#163568; }
+.verein-kacheln { display:flex; flex-wrap:wrap; gap:12px; max-width:780px; margin:8px 0 12px; }
+.verein-kachel { box-sizing:border-box; width:250px; border:1px solid #ccc; border-radius:12px; background:#fff; padding:10px; }
+.verein-kachel h3 { display:flex; align-items:center; gap:8px; margin:0 0 8px; font-size:12px; line-height:1.25; }
+.verein-kachel h3 a { color:#1a3d7c; text-decoration:none; }
+.verein-kachel h3 img { width:42px; height:42px; object-fit:contain; flex:0 0 42px; background:#fff; }
+.verein-kachel .angels-news { flex-direction:column; gap:8px; max-width:none; margin:0 0 4px; }
+.verein-kachel .angels-news img { max-height:72px; width:100%; object-fit:cover; }
+.verein-kachel .angels-news span { font-size:10px; text-transform:none; }
 .qr-box p { margin:6px 0 0 0; font-size:12px; font-weight:bold; color:#1a3d7c; }
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
@@ -268,7 +276,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Untermeitingen Lechfeld Lakers – Stand: 18.10.26 19:17:11</h1>
+<h1>Untermeitingen Lechfeld Lakers – Stand: 18.10.26 20:17:10</h1>
 
 
 <details id='wasfindeichhier'>
@@ -605,7 +613,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Untermeitingen Lechfeld Lakers – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 18.10.26 19:17:11</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54509</td><td>Herren</td><td>17.10.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren 2</div></td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td>72 : 59</td></tr><tr><td>54509</td><td>Herren</td><td>10.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td>73 : 87</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54509</td><td>Herren</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe 2</div></td><td class='halle'><div class='halle'>Dreifachsporthalle Mittelschule Untermeitingen<br>Spiel 8010</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Untermeitingen Lechfeld Lakers</b><span class='summary-right'>Stand 18.10.26 19:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
+<details open><summary><b>Spielplan Untermeitingen Lechfeld Lakers – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 18.10.26 20:17:10</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54509</td><td>Herren</td><td>17.10.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren 2</div></td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td>72 : 59</td></tr><tr><td>54509</td><td>Herren</td><td>10.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td>73 : 87</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54509</td><td>Herren</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe 2</div></td><td class='halle'><div class='halle'>Dreifachsporthalle Mittelschule Untermeitingen<br>Spiel 8010</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Untermeitingen Lechfeld Lakers</b><span class='summary-right'>Stand 18.10.26 20:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
 
 <summary>
     <b>Bezirksklasse Herren Süd 26/27 (Senioren Schwaben; Liganr.: 22008) (Liga 54509)</b>
@@ -807,7 +815,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-
+<div class='angels-news'><a href='https://sv-untermeitingen.de/allkampf-taekwondo/' target='_blank'><span>Allkampf / Taekwondo</span></a><a href='https://sv-untermeitingen.de/wp-content/uploads/2022/06/Aufnahme-Antrag2018.pdf' target='_blank'><img src='https://sv-untermeitingen.de/wp-content/uploads/2026/05/icon-pdf.png' alt='Aufnahmeantrag'><span>Aufnahmeantrag</span></a></div><p><a class='angels-news-alle' href='https://sv-untermeitingen.de/news/' target='_blank'>Alle News</a></p>
 <div class='seitenende'>
 
   <div class='werbung-box'>
@@ -816,7 +824,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
            alt="Lena Haunstetter Shop" class="werbung-bild">
     </a>
   </div>
-  <div class='qr-box'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADD0lEQVR4nO1bAW4jMQgE1P9/mRPDYO+p1Z1aWRE09jbN7hpFaELwDGbV5RvDvmMs1/rzuJi8FpMPEc0zBLq6qMcNV3HFIQ+L++0cwFsS6QDagS+xjneNCS+Li/cRvEWBucsjml0cSDO20+Li/cX4+W9eNVB2QI/QrkRy4LP/P+zdrBXhrIk2kEdMB/4v9uS35xPHacAsSN6uuWjG8hnXZdHIbxtqLSt8/R9HDvc+fttQ648Vu1wtpaJ6vbZFI79trrXyqOG4Ij3ZnEW7+T3SWoFrYIrkLYxx3kDy5gp69c6hb8dD6QQvIazK6MYA4rF+/uyzvzHsbfS8M6pDYkopeuSSJfC5aPbx2ybzQaF+pIgXgIsgR1rBTeScPn7bUGutRF3sROMEWT0G10oaNfLbBlt7wU2No5siAmYQlptPzvFBIUPxkPMZ0qkqSQMz0G8+OZS/taqCSCz6V0V2SR3t97scau2I6uQjviUlKyhQQiwZ9vJ7qrUyQXsSbc3ojrydyZuK89a/j307msImI9kDXBAUHKCFKIx3i5Ox1honO1NL7Z/Ve0J++fexb8exOlYdxWtu7fEkObn5+5DekZQ3zNxCSrigL7F/9c6h+qDnWYlJKU1fKjOpYVz2yoMTrbXAfoS3UPtgpuqxd708qC+VhdcghMwmtW1JcQ+S3ihObLK+lMQZylIedIUEJfp+Uv308dsGW/vahK8kkpWUoIKpLwv7Xn5P5ieye9iE8HP6udHTx28bbK2xnYbWwUwoawlFcD97fnr5PdRagfTeX/Dq0qw/9P+8wpM3sBaUqeLF6qCsFsKK9AxwjD5+21BrSah3C5XgRqaQx1Te6uO3zbV2Jo1s1/S9y1ANyjH3Ek/e6/kGZwubYOFk732um/XUQx+/bf7zDUJsNTVP1VM2N+/kt81/vkF3X5ustsG1ZXz3d87hnaN4oMZFbltmbtmip0+c2Hy8lRTQWUfBPfZZsYDVx2/7Bc83aPxXbmVWYfbBwTv5bb/i+QZZSmc91sBpTFz+fWq/YVyc2LX+NC4m8mn8AY9OoYgRXwSwAAAAAElFTkSuQmCC' alt='QR-Code zur aktuellen Seite'><p>Link gerne weitergeben</p></div>
+  <div class='qr-box'><a href='https://sv-untermeitingen.de/' target='_blank'><img class='verein-logo' src='https://sv-untermeitingen.de/wp-content/uploads/2026/05/SVU-Wappen.svg' alt='Untermeitingen Lechfeld Lakers'></a><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFoAQAAAABSnlx4AAADD0lEQVR4nO1bAW4jMQgE1P9/mRPDYO+p1Z1aWRE09jbN7hpFaELwDGbV5RvDvmMs1/rzuJi8FpMPEc0zBLq6qMcNV3HFIQ+L++0cwFsS6QDagS+xjneNCS+Li/cRvEWBucsjml0cSDO20+Li/cX4+W9eNVB2QI/QrkRy4LP/P+zdrBXhrIk2kEdMB/4v9uS35xPHacAsSN6uuWjG8hnXZdHIbxtqLSt8/R9HDvc+fttQ648Vu1wtpaJ6vbZFI79trrXyqOG4Ij3ZnEW7+T3SWoFrYIrkLYxx3kDy5gp69c6hb8dD6QQvIazK6MYA4rF+/uyzvzHsbfS8M6pDYkopeuSSJfC5aPbx2ybzQaF+pIgXgIsgR1rBTeScPn7bUGutRF3sROMEWT0G10oaNfLbBlt7wU2No5siAmYQlptPzvFBIUPxkPMZ0qkqSQMz0G8+OZS/taqCSCz6V0V2SR3t97scau2I6uQjviUlKyhQQiwZ9vJ7qrUyQXsSbc3ojrydyZuK89a/j307msImI9kDXBAUHKCFKIx3i5Ox1honO1NL7Z/Ve0J++fexb8exOlYdxWtu7fEkObn5+5DekZQ3zNxCSrigL7F/9c6h+qDnWYlJKU1fKjOpYVz2yoMTrbXAfoS3UPtgpuqxd708qC+VhdcghMwmtW1JcQ+S3ihObLK+lMQZylIedIUEJfp+Uv308dsGW/vahK8kkpWUoIKpLwv7Xn5P5ieye9iE8HP6udHTx28bbK2xnYbWwUwoawlFcD97fnr5PdRagfTeX/Dq0qw/9P+8wpM3sBaUqeLF6qCsFsKK9AxwjD5+21BrSah3C5XgRqaQx1Te6uO3zbV2Jo1s1/S9y1ANyjH3Ek/e6/kGZwubYOFk732um/XUQx+/bf7zDUJsNTVP1VM2N+/kt81/vkF3X5ustsG1ZXz3d87hnaN4oMZFbltmbtmip0+c2Hy8lRTQWUfBPfZZsYDVx2/7Bc83aPxXbmVWYfbBwTv5bb/i+QZZSmc91sBpTFz+fWq/YVyc2LX+NC4m8mn8AY9OoYgRXwSwAAAAAElFTkSuQmCC' alt='QR-Code zur aktuellen Seite'><p>Link gerne weitergeben</p></div>
 </div>
 
 

@@ -125,6 +125,14 @@ img.vereins-leiste { display:block; max-width:780px; height:auto; margin:4px 0; 
 a.angels-news-alle { display:inline-block; margin:0 0 12px; padding:2px 7px; background:#1a3d7c; color:white;
                     border-radius:3px; font-size:10px; font-weight:normal; text-decoration:none; text-transform:none; }
 a.angels-news-alle:hover { background:#163568; }
+.verein-kacheln { display:flex; flex-wrap:wrap; gap:12px; max-width:780px; margin:8px 0 12px; }
+.verein-kachel { box-sizing:border-box; width:250px; border:1px solid #ccc; border-radius:12px; background:#fff; padding:10px; }
+.verein-kachel h3 { display:flex; align-items:center; gap:8px; margin:0 0 8px; font-size:12px; line-height:1.25; }
+.verein-kachel h3 a { color:#1a3d7c; text-decoration:none; }
+.verein-kachel h3 img { width:42px; height:42px; object-fit:contain; flex:0 0 42px; background:#fff; }
+.verein-kachel .angels-news { flex-direction:column; gap:8px; max-width:none; margin:0 0 4px; }
+.verein-kachel .angels-news img { max-height:72px; width:100%; object-fit:cover; }
+.verein-kachel .angels-news span { font-size:10px; text-transform:none; }
 .qr-box p { margin:6px 0 0 0; font-size:12px; font-weight:bold; color:#1a3d7c; }
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
@@ -268,7 +276,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Gerolfing FC 1930 – Stand: 18.10.26 19:14:35</h1>
+<h1>Gerolfing FC 1930 – Stand: 18.10.26 20:14:31</h1>
 
 
 <details id='wasfindeichhier'>
@@ -605,7 +613,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Gerolfing FC 1930 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 18.10.26 19:14:35</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54457</td><td>U20</td><td>11.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>FC Gerolfing 1930 e.V.</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>70 : 60</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr><td>54488</td><td>U16</td><td>25.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>FC Gerolfing 1930 e.V.</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 27009</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Gerolfing FC 1930</b><span class='summary-right'>Stand 18.10.26 19:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Gerolfing FC 1930 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 18.10.26 20:14:31</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54457</td><td>U20</td><td>11.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>FC Gerolfing 1930 e.V.</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>70 : 60</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr><td>54488</td><td>U16</td><td>25.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>FC Gerolfing 1930 e.V.</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 27009</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Gerolfing FC 1930</b><span class='summary-right'>Stand 18.10.26 20:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>So. 25.10.26</td><td>17:00</td><td class="wrap">TSV Etting-Ingolstadt 2</td><td class="wrap">PSV Ingolstadt 2</td><td class="liga">Bezirksklasse<br/>Herren Nord<br/>26/27</td><td class="halle">Ballspielhalle<br/>Retzbachweg 10<br/>85055 Etting</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54507#:~:text=25.10.2026%2017%3A00,PSV%20Ingolstadt%202" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr><td>Sa. 14.11.26</td><td>20:00</td><td class="wrap">TSV Etting-Ingolstadt 2</td><td class="wrap">DJK Eichstätt 2</td><td class="liga">Bezirksklasse<br/>Herren Nord<br/>26/27</td><td class="halle">Ballspielhalle<br/>Retzbachweg 10<br/>85055 Etting</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54507#:~:text=14.11.2026%2020%3A00,DJK%20Eichst%C3%A4tt%202" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -914,7 +922,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-
+<div class='angels-news'><a href='https://www.fc-gerolfing.de/oaks-cup/' target='_blank'><span>3×3 Oaks Cup</span></a></div>
 <div class='seitenende'>
 
   <div class='werbung-box'>
@@ -923,7 +931,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
            alt="Lena Haunstetter Shop" class="werbung-bild">
     </a>
   </div>
-  <div class='qr-box'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAAFIAQAAAAAab1qeAAACj0lEQVR4nO1by47DMAgE1P//5VnBgNMeVkp6wezakdrU4WAmPAbsKuTmsLuCciTvDLsl9d8lXyLKOzdUFahf/ktjwu/5dIpG1ir5SiQdVUXAmdDGLa6nUzSyfklVt8K0TDdNYisSvzWe7rDOeZIIDKGOrIbH77nOKZIqboxasNLZN1zn1vFTErWIn4liGClzEnZYpw2RFJQJ4peLA5iikbVKvpb9xVj5XYNGMSvN0shaJdWJpn7yTwJKpyc7xSCNrF8SfhVwEUUjjDIpST7bYJ1D4ifeYiXqw+eTzePET3mCvNLv08UdRo8C5f5CYMdYiHVLIlD7qC0dRGdLzurFedMO65wjqYlmle7MRAEu3f7Y55P+EhxHOrqPNFI6P7E99vnI34Vx8r1Nt7xfWNRv4UdD+KfESE9fsbTIKNh5GqORtUoqvTsze9zTUFnIvxF8a12nDZGUJJxknMGNFiNdvRCc+v1hfaRF3oMh8cuRzaIJ7e/dZkkic3m1mQJeNubB2T3WOSN+6qqIqoznTNEm+NcUjax/fxPRk19bmbWzeaE8SSPrlkQ2RZiVwiCzhXftcGKDdc7xd2HjozY3q4rPEgmcmqKRdUtq5qGo2Ymf9z8rycvpJ8vD/rxk5vlIQdVQlgS5/b1PyUdSlWW0mVZGT/uUokxTNLJN9o98JHnKQr7Yk0TGn6KRtUrqtbt57b4lV6puiBz+KV+cr0NZZQLNFp7WVt0UC7FdztdpZPbc04wOaJy7kbThKRrZDvlI1sGaxDE9vpojcvL7AzzfxnJ61qAVPLX7vdtEPBVwAl/bxD7qEGj3Om3e+Tpkyy74U+T2LEBxzifLV+frUJ/VAb0OieCcr7s19Pxf5g9FG/tzkj83AWs4FbeT7QAAAABJRU5ErkJggg==' alt='QR-Code zur aktuellen Seite'><p>Link gerne weitergeben</p></div>
+  <div class='qr-box'><a href='https://www.fc-gerolfing.de/basketball/' target='_blank'><img class='verein-logo' src='https://www.fc-gerolfing.de/wp-content/uploads/2016/03/logo-fc_150x150.png' alt='Gerolfing FC 1930'></a><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAAFIAQAAAAAab1qeAAACj0lEQVR4nO1by47DMAgE1P//5VnBgNMeVkp6wezakdrU4WAmPAbsKuTmsLuCciTvDLsl9d8lXyLKOzdUFahf/ktjwu/5dIpG1ir5SiQdVUXAmdDGLa6nUzSyfklVt8K0TDdNYisSvzWe7rDOeZIIDKGOrIbH77nOKZIqboxasNLZN1zn1vFTErWIn4liGClzEnZYpw2RFJQJ4peLA5iikbVKvpb9xVj5XYNGMSvN0shaJdWJpn7yTwJKpyc7xSCNrF8SfhVwEUUjjDIpST7bYJ1D4ifeYiXqw+eTzePET3mCvNLv08UdRo8C5f5CYMdYiHVLIlD7qC0dRGdLzurFedMO65wjqYlmle7MRAEu3f7Y55P+EhxHOrqPNFI6P7E99vnI34Vx8r1Nt7xfWNRv4UdD+KfESE9fsbTIKNh5GqORtUoqvTsze9zTUFnIvxF8a12nDZGUJJxknMGNFiNdvRCc+v1hfaRF3oMh8cuRzaIJ7e/dZkkic3m1mQJeNubB2T3WOSN+6qqIqoznTNEm+NcUjax/fxPRk19bmbWzeaE8SSPrlkQ2RZiVwiCzhXftcGKDdc7xd2HjozY3q4rPEgmcmqKRdUtq5qGo2Ymf9z8rycvpJ8vD/rxk5vlIQdVQlgS5/b1PyUdSlWW0mVZGT/uUokxTNLJN9o98JHnKQr7Yk0TGn6KRtUrqtbt57b4lV6puiBz+KV+cr0NZZQLNFp7WVt0UC7FdztdpZPbc04wOaJy7kbThKRrZDvlI1sGaxDE9vpojcvL7AzzfxnJ61qAVPLX7vdtEPBVwAl/bxD7qEGj3Om3e+Tpkyy74U+T2LEBxzifLV+frUJ/VAb0OieCcr7s19Pxf5g9FG/tzkj83AWs4FbeT7QAAAABJRU5ErkJggg==' alt='QR-Code zur aktuellen Seite'><p>Link gerne weitergeben</p></div>
 </div>
 
 

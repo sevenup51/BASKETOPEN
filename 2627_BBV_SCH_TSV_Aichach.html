@@ -125,6 +125,14 @@ img.vereins-leiste { display:block; max-width:780px; height:auto; margin:4px 0; 
 a.angels-news-alle { display:inline-block; margin:0 0 12px; padding:2px 7px; background:#1a3d7c; color:white;
                     border-radius:3px; font-size:10px; font-weight:normal; text-decoration:none; text-transform:none; }
 a.angels-news-alle:hover { background:#163568; }
+.verein-kacheln { display:flex; flex-wrap:wrap; gap:12px; max-width:780px; margin:8px 0 12px; }
+.verein-kachel { box-sizing:border-box; width:250px; border:1px solid #ccc; border-radius:12px; background:#fff; padding:10px; }
+.verein-kachel h3 { display:flex; align-items:center; gap:8px; margin:0 0 8px; font-size:12px; line-height:1.25; }
+.verein-kachel h3 a { color:#1a3d7c; text-decoration:none; }
+.verein-kachel h3 img { width:42px; height:42px; object-fit:contain; flex:0 0 42px; background:#fff; }
+.verein-kachel .angels-news { flex-direction:column; gap:8px; max-width:none; margin:0 0 4px; }
+.verein-kachel .angels-news img { max-height:72px; width:100%; object-fit:cover; }
+.verein-kachel .angels-news span { font-size:10px; text-transform:none; }
 .qr-box p { margin:6px 0 0 0; font-size:12px; font-weight:bold; color:#1a3d7c; }
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
@@ -268,7 +276,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Aichach TSV – Stand: 18.10.26 19:12:34</h1>
+<h1>Aichach TSV – Stand: 18.10.26 20:12:31</h1>
 
 
 <details id='wasfindeichhier'>
@@ -605,7 +613,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Aichach TSV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 18.10.26 19:12:34</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Ergebnisse.</i></p></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Spiele in den nächsten 8 Tagen.</i></p></div></details></div></details><details><summary><b>SR-Einteilung Aichach TSV</b><span class='summary-right'>Stand 18.10.26 19:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Aichach TSV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 18.10.26 20:12:31</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Ergebnisse.</i></p></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Spiele in den nächsten 8 Tagen.</i></p></div></details></div></details><details><summary><b>SR-Einteilung Aichach TSV</b><span class='summary-right'>Stand 18.10.26 20:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>So. 08.11.26</td><td>14:45</td><td class="wrap">TSV 1868 Aichach</td><td class="wrap">MTV Baskets Ingolstadt 2</td><td class="liga">Bezirksliga<br/>U16 männlich Nord<br/>26/27</td><td class="halle">Volksschule Aichach-Nord<br/>Mozartstr. 1<br/>86551 Aichach</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54488#:~:text=08.11.2026%2014%3A45,MTV%20Baskets%20Ingolstadt%202" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr><td>So. 15.11.26</td><td>13:30</td><td class="wrap">TSV Schwaben Augsburg</td><td class="wrap">BG Illertal</td><td class="liga">Bezirksoberliga<br/>U18 männlich<br/>26/27</td><td class="halle">Berufsschule VI<br/>Haunstetter Str. 59<br/>86161 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54459#:~:text=15.11.2026%2013%3A30,BG%20Illertal" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -941,7 +949,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-
+<div class='angels-news'><a href='https://www.tsv-aichach.de/2026/10/15/fit-fuer-die-skisaison-skigymnastik-beim-tsv-aichach-ab-21-10-2026/' target='_blank'><img src='https://www.tsv-aichach.de/wp-content/uploads/2026/10/Ski-960x720.jpeg' alt='Fit für die Skisaison: Skigymnastik beim TSV Aichach ab 21.10.2026'><span>Fit für die Skisaison: Skigymnastik beim TSV Aichach ab 21.10.2026</span></a><a href='https://www.tsv-aichach.de/2026/10/15/scheine-fuer-vereine/' target='_blank'><img src='https://www.tsv-aichach.de/wp-content/uploads/2026/09/ScheineFuerVereine_2026_Fan-Studio.png' alt='DANKE für eure Unterstützung bei „Scheine für Vereine“! 💪'><span>DANKE für eure Unterstützung bei „Scheine für Vereine“! 💪</span></a><a href='https://www.tsv-aichach.de/2026/09/24/der-neue-tsv-online-shop/' target='_blank'><span>Der neue TSV Online-Shop</span></a></div><p><a class='angels-news-alle' href='https://www.tsv-aichach.de/aktuelles/tsv-aktuell/' target='_blank'>Alle News</a></p>
 <div class='seitenende'>
 
   <div class='werbung-box'>
@@ -950,7 +958,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
            alt="Lena Haunstetter Shop" class="werbung-bild">
     </a>
   </div>
-  <div class='qr-box'><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAAFIAQAAAAAab1qeAAACh0lEQVR4nO1bS64jMQgElPtfuUYUYCfSLLqzGJqMeVFit5FiV/jjp5CLZFcZ5XBeIbvE9b9zvkQ0RhCFT+AfIlIfkqtTTmStnC9ilbipCJQ4KlFVX0KuTjmRteMpjiMFMgaigIJg7lWZciJ7DKdSPFP1HV1A/923/yCnhlA6pj4MfX/gPp+u78gJUu05J6DYq1NOZK2cgncw//YXBEw5kbVy6tbo8EeksJsRQU07kbVyKn2PjzI+Sm+eTxNitO/ThnBqgrecjwf0jOkrDhWPndC9T5vDqe+ymYhm9MkHCj3x/E3klcYzFZ/oRtAUySeOvl8mgG7cE0smlzEIr79dvxz/fl0+UVm7C2iIqM8DXvD1BLs0hlN9EBoeEkqLmgP15/qIfQ7Jj7SCpfLs2x+tRXTv0wbZT5ThDLMZb5l0xtyVfsqJrJVT0jqu1JK+hxgv+yl8NOVE1sop6dkDRgIYHx/OXY583so3sSZVm68S86owj5EQe0a+qZWvl1xmWi+F9pQTWSun7iyd8VEknTt/Lyk98nknf1d2NjJGiqoyY3sFMizt/t1tCOdrV+UZea6msXxU69C9T5tX/9RQ+FW3K0ARgjvlRNbOqYyZ0qkHqv7ugROX5OTvcpW0NHzJIQGNVzY+QCHt/92H2E+n1SeqeLN8VIrnuR9y734IoqRUvpxU4inHH9lX/U0hqtXu8DSpDIAefb9/vw4f7WHC6TEoUkqnWDB7yv06fRPGZTozNm3fp827XycJIuU0nFJU5nH8u9zCMyn7HlWtrzayHv9u8g0nwhvlDdBVscfpH9k9PJEtjqjN5VVFl0q24vT0N+3L+3VOhe3uxOPU5+Uq6fl/mR+KLuznOP8AMsRxFjkI36IAAAAASUVORK5CYII=' alt='QR-Code zur aktuellen Seite'><p>Link gerne weitergeben</p></div>
+  <div class='qr-box'><a href='https://www.tsv-aichach.de/abteilungen/basketball/' target='_blank'><img class='verein-logo' src='https://www.tsv-aichach.de/wp-content/uploads/2025/07/TSV-Aichach-1868-Quer.jpg#66052' alt='Aichach TSV'></a><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAAFIAQAAAAAab1qeAAACh0lEQVR4nO1bS64jMQgElPtfuUYUYCfSLLqzGJqMeVFit5FiV/jjp5CLZFcZ5XBeIbvE9b9zvkQ0RhCFT+AfIlIfkqtTTmStnC9ilbipCJQ4KlFVX0KuTjmRteMpjiMFMgaigIJg7lWZciJ7DKdSPFP1HV1A/923/yCnhlA6pj4MfX/gPp+u78gJUu05J6DYq1NOZK2cgncw//YXBEw5kbVy6tbo8EeksJsRQU07kbVyKn2PjzI+Sm+eTxNitO/ThnBqgrecjwf0jOkrDhWPndC9T5vDqe+ymYhm9MkHCj3x/E3klcYzFZ/oRtAUySeOvl8mgG7cE0smlzEIr79dvxz/fl0+UVm7C2iIqM8DXvD1BLs0hlN9EBoeEkqLmgP15/qIfQ7Jj7SCpfLs2x+tRXTv0wbZT5ThDLMZb5l0xtyVfsqJrJVT0jqu1JK+hxgv+yl8NOVE1sop6dkDRgIYHx/OXY583so3sSZVm68S86owj5EQe0a+qZWvl1xmWi+F9pQTWSun7iyd8VEknTt/Lyk98nknf1d2NjJGiqoyY3sFMizt/t1tCOdrV+UZea6msXxU69C9T5tX/9RQ+FW3K0ARgjvlRNbOqYyZ0qkHqv7ugROX5OTvcpW0NHzJIQGNVzY+QCHt/92H2E+n1SeqeLN8VIrnuR9y734IoqRUvpxU4inHH9lX/U0hqtXu8DSpDIAefb9/vw4f7WHC6TEoUkqnWDB7yv06fRPGZTozNm3fp827XycJIuU0nFJU5nH8u9zCMyn7HlWtrzayHv9u8g0nwhvlDdBVscfpH9k9PJEtjqjN5VVFl0q24vT0N+3L+3VOhe3uxOPU5+Uq6fl/mR+KLuznOP8AMsRxFjkI36IAAAAASUVORK5CYII=' alt='QR-Code zur aktuellen Seite'><p>Link gerne weitergeben</p></div>
 </div>
 
 
