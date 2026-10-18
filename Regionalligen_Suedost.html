@@ -125,6 +125,14 @@ img.vereins-leiste { display:block; max-width:780px; height:auto; margin:4px 0; 
 a.angels-news-alle { display:inline-block; margin:0 0 12px; padding:2px 7px; background:#1a3d7c; color:white;
                     border-radius:3px; font-size:10px; font-weight:normal; text-decoration:none; text-transform:none; }
 a.angels-news-alle:hover { background:#163568; }
+.verein-kacheln { display:flex; flex-wrap:wrap; gap:12px; max-width:780px; margin:8px 0 12px; }
+.verein-kachel { box-sizing:border-box; width:250px; border:1px solid #ccc; border-radius:12px; background:#fff; padding:10px; }
+.verein-kachel h3 { display:flex; align-items:center; gap:8px; margin:0 0 8px; font-size:12px; line-height:1.25; }
+.verein-kachel h3 a { color:#1a3d7c; text-decoration:none; }
+.verein-kachel h3 img { width:42px; height:42px; object-fit:contain; flex:0 0 42px; background:#fff; }
+.verein-kachel .angels-news { flex-direction:column; gap:8px; max-width:none; margin:0 0 4px; }
+.verein-kachel .angels-news img { max-height:72px; width:100%; object-fit:cover; }
+.verein-kachel .angels-news span { font-size:10px; text-transform:none; }
 .qr-box p { margin:6px 0 0 0; font-size:12px; font-weight:bold; color:#1a3d7c; }
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
@@ -268,7 +276,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedost – Stand: 18.10.26 20:06:12</h1>
+<h1>Regionalliga Suedost – Stand: 18.10.26 20:21:19</h1>
 
 
 <details id='wasfindeichhier'>
