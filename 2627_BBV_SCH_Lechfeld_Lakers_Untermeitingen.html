@@ -120,7 +120,9 @@ img.vereins-leiste { display:block; max-width:780px; height:auto; margin:4px 0; 
 .angels-logos a.eigner { left:50%; }
 .angels-news { display:flex; gap:12px; align-items:flex-start; max-width:780px; margin:8px 0 12px; }
 .angels-news a { flex:1 1 0; min-width:0; text-decoration:none; color:#222; }
-.angels-news img { width:100%; height:auto; display:block; }
+.angels-news a { display:flex; flex-direction:column; }
+.angels-news img, .angels-news .bild-platz { width:100%; height:120px; flex:0 0 120px; object-fit:cover;
+          object-position:center; display:block; background:#e8eef7; }
 .angels-news span { display:block; margin-top:6px; font-size:12px; font-weight:bold; line-height:1.25; text-transform:uppercase; }
 a.angels-news-alle { display:inline-block; margin:0 0 12px; padding:2px 7px; background:#1a3d7c; color:white;
                     border-radius:3px; font-size:10px; font-weight:normal; text-decoration:none; text-transform:none; }
@@ -131,7 +133,7 @@ a.angels-news-alle:hover { background:#163568; }
 .verein-kachel h3 a { color:#1a3d7c; text-decoration:none; }
 .verein-kachel h3 img { width:42px; height:42px; object-fit:contain; flex:0 0 42px; background:#fff; }
 .verein-kachel .angels-news { flex-direction:column; gap:8px; max-width:none; margin:0 0 4px; }
-.verein-kachel .angels-news img { max-height:72px; width:100%; object-fit:cover; }
+.verein-kachel .angels-news img, .verein-kachel .angels-news .bild-platz { height:72px; max-height:72px; flex-basis:72px; }
 .verein-kachel .angels-news span { font-size:10px; text-transform:none; }
 .keine-news { margin:8px 0; font-style:italic; }
 .verein-sozial { display:flex; gap:8px; align-items:center; margin:0 0 12px; }
@@ -280,7 +282,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Untermeitingen Lechfeld Lakers – Stand: 18.10.26 21:25:10</h1>
+<h1>Untermeitingen Lechfeld Lakers – Stand: 18.10.26 22:17:10</h1>
 
 
 <details id='wasfindeichhier'>
@@ -617,13 +619,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Untermeitingen Lechfeld Lakers – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 18.10.26 21:25:10</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54509</td><td>Herren</td><td>17.10.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren 2</div></td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td>72 : 59</td></tr><tr><td>54509</td><td>Herren</td><td>10.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td>73 : 87</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54509</td><td>Herren</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe 2</div></td><td class='halle'><div class='halle'>Dreifachsporthalle Mittelschule Untermeitingen<br>Spiel 8010</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Untermeitingen Lechfeld Lakers</b><span class='summary-right'>Stand 18.10.26 21:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
+<details open><summary><b>Spielplan Untermeitingen Lechfeld Lakers – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 18.10.26 22:17:10</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54509</td><td>Herren</td><td>17.10.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren 2</div></td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td>72 : 59</td></tr><tr><td>54509</td><td>Herren</td><td>10.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td>73 : 87</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54509</td><td>Herren</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe 2</div></td><td class='halle'><div class='halle'>Dreifachsporthalle Mittelschule Untermeitingen<br>Spiel 8010</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Untermeitingen Lechfeld Lakers</b><span class='summary-right'>Stand 18.10.26 22:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
 
 <summary>
     <b>Bezirksklasse Herren Süd 26/27 (Senioren Schwaben; Liganr.: 22008) (Liga 54509)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 14:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html' onclick='liveHref(this)' target='_blank'>Details ( 18.10. 22:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -819,7 +821,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-<div class='angels-news'><a href='https://sv-untermeitingen.de/allkampf-taekwondo/' target='_blank'><span>Allkampf / Taekwondo</span></a><a href='https://sv-untermeitingen.de/wp-content/uploads/2022/06/Aufnahme-Antrag2018.pdf' target='_blank'><img src='https://sv-untermeitingen.de/wp-content/uploads/2026/05/icon-pdf.png' alt='Aufnahmeantrag'><span>Aufnahmeantrag</span></a></div><p><a class='angels-news-alle' href='https://sv-untermeitingen.de/news/' target='_blank'>Alle News</a></p>
+<div class='angels-news'><a href='https://sv-untermeitingen.de/allkampf-taekwondo/' target='_blank'><span class='bild-platz'></span><span>Allkampf / Taekwondo</span></a><a href='https://sv-untermeitingen.de/wp-content/uploads/2022/06/Aufnahme-Antrag2018.pdf' target='_blank'><img src='https://sv-untermeitingen.de/wp-content/uploads/2026/05/icon-pdf.png' alt='Aufnahmeantrag'><span>Aufnahmeantrag</span></a></div><p><a class='angels-news-alle' href='https://sv-untermeitingen.de/news/' target='_blank'>Alle News</a></p>
 <div class='seitenende'>
 
   <div class='werbung-box'>
