@@ -135,10 +135,13 @@ a.angels-news-alle:hover { background:#163568; }
 .verein-kachel .angels-news { flex-direction:column; gap:8px; max-width:none; margin:0 0 4px; }
 .verein-kachel .angels-news img, .verein-kachel .angels-news .bild-platz { height:72px; max-height:72px; flex-basis:72px; }
 .verein-kachel .angels-news span { font-size:10px; text-transform:none; }
+.news-zeile, .keine-news { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .keine-news { margin:8px 0; font-style:italic; }
-.verein-sozial { display:flex; gap:8px; align-items:center; margin:0 0 12px; }
+.verein-sozial { display:inline-flex; gap:8px; align-items:center; margin:0; }
 .verein-sozial a { display:inline-flex; line-height:0; }
 .verein-sozial svg { width:22px; height:22px; }
+details.verein-gruppe { margin:8px 0 12px; max-width:780px; }
+details.verein-gruppe > summary { max-width:780px; }
 .qr-box p { margin:6px 0 0 0; font-size:12px; font-weight:bold; color:#1a3d7c; }
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
@@ -282,7 +285,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Ingolstadt PSV – Stand: 19.10.26 03:15:35</h1>
+<h1>Ingolstadt PSV – Stand: 19.10.26 04:15:40</h1>
 
 
 <details id='wasfindeichhier'>
@@ -619,7 +622,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Ingolstadt PSV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 19.10.26 03:15:35</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54507</td><td>Herren</td><td>18.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen 3</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td>73 : 45</td></tr><tr><td>52531</td><td>Herren</td><td>18.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>FC Bayern München 3</div></td><td>76 : 82</td></tr><tr><td>54459</td><td>U18</td><td>18.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td>60 : 109</td></tr><tr><td>54498</td><td>U10</td><td>18.10.2026 11:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td>14 : 98</td></tr><tr><td>54466</td><td>U14</td><td>17.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td>66 : 105</td></tr><tr><td>54471</td><td>U12</td><td>17.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td>84 : 101</td></tr><tr><td>54507</td><td>Herren</td><td>11.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt 2</div></td><td>79 : 59</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td>134 : 58</td></tr><tr><td>54498</td><td>U10</td><td>11.10.2026 11:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td>73 : 50</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>24.10.2026 10:30</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='halle'><div class='halle'>August-<wbr>Horch-<wbr>Schule<br>Spiel 34018</div></td></tr><tr><td>54459</td><td>U18</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 22009</div></td></tr><tr><td>54498</td><td>U10</td><td>24.10.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>VSC Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 45009</div></td></tr><tr><td>52531</td><td>Herren</td><td>24.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>Dukes Dingolfing</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Dreifachturnhalle Höll-<wbr>Ost<br>Spiel 20598</div></td></tr><tr><td>54476</td><td>U8</td><td>25.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 41003</div></td></tr><tr><td>54495</td><td>U12</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 35009</div></td></tr><tr><td>54507</td><td>Herren</td><td>25.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 6007</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Ingolstadt PSV</b><span class='summary-right'>Stand 19.10.26 00:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Ingolstadt PSV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 19.10.26 04:15:40</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54507</td><td>Herren</td><td>18.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen 3</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td>73 : 45</td></tr><tr><td>52531</td><td>Herren</td><td>18.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>FC Bayern München 3</div></td><td>76 : 82</td></tr><tr><td>54459</td><td>U18</td><td>18.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td>60 : 109</td></tr><tr><td>54498</td><td>U10</td><td>18.10.2026 11:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td>14 : 98</td></tr><tr><td>54466</td><td>U14</td><td>17.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td>66 : 105</td></tr><tr><td>54471</td><td>U12</td><td>17.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td>84 : 101</td></tr><tr><td>54507</td><td>Herren</td><td>11.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt 2</div></td><td>79 : 59</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 13:30</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td>134 : 58</td></tr><tr><td>54498</td><td>U10</td><td>11.10.2026 11:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td>73 : 50</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>24.10.2026 10:30</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='halle'><div class='halle'>August-<wbr>Horch-<wbr>Schule<br>Spiel 34018</div></td></tr><tr><td>54459</td><td>U18</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 22009</div></td></tr><tr><td>54498</td><td>U10</td><td>24.10.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>VSC Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 45009</div></td></tr><tr><td>52531</td><td>Herren</td><td>24.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>Dukes Dingolfing</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Dreifachturnhalle Höll-<wbr>Ost<br>Spiel 20598</div></td></tr><tr><td>54476</td><td>U8</td><td>25.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 41003</div></td></tr><tr><td>54495</td><td>U12</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 35009</div></td></tr><tr><td>54507</td><td>Herren</td><td>25.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 6007</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Ingolstadt PSV</b><span class='summary-right'>Stand 19.10.26 04:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr class="verein-name"><td>Sa. 24.10.26</td><td>10:30</td><td class="wrap">PSV Ingolstadt</td><td class="wrap">VSC Baskets Donauwörth</td><td class="liga">Bezirksoberliga<br/>U12 gemischt<br/>26/27</td><td class="halle">August-Horch-Schule<br/>Furtwänglerstr. 9<br/>85057 Ingolstadt</td><td class="wrap">Lepej, Darko (SR1), SRNAME nicht öffentlich (SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54471#:~:text=24.10.2026%2010%3A30,Darko%20Lepej" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 14.11.26</td><td>10:00</td><td class="wrap">PSV Ingolstadt</td><td class="wrap">ESV Ingolstadt-Ringsee</td><td class="liga">Bezirksliga<br/>U10 gemischt Nord<br/>26/27</td><td class="halle">August-Horch-Schule<br/>Furtwänglerstr. 9<br/>85057 Ingolstadt</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54498#:~:text=14.11.2026%2010%3A00,ESV%20Ingolstadt-Ringsee" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -639,7 +642,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bayernliga Herren Mitte (ByLHM) (Senioren; Liganr.: 20002) (Liga 52531)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -935,7 +938,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksklasse Herren Nord 26/27 (Senioren Schwaben; Liganr.: 22006) (Liga 54507)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1104,7 +1107,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksoberliga U18 männlich 26/27 (U18 Schwaben; Liganr.: 22022) (Liga 54459)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1317,7 +1320,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksoberliga U14 männlich 26/27 (U14 Schwaben; Liganr.: 22030) (Liga 54466)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1487,7 +1490,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksoberliga U12 gemischt 26/27 (U12 Schwaben; Liganr.: 22034) (Liga 54471)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1735,7 +1738,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksoberliga U8 gemischt 26/27 (U8 Schwaben; Liganr.: 22041) (Liga 54476)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1853,7 +1856,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksliga U16 männlich Nord 26/27 (U16 Schwaben; Liganr.: 22027) (Liga 54488)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2007,7 +2010,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksliga U12 gemischt Nord 26/27 (U12 Schwaben; Liganr.: 22035) (Liga 54495)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2160,7 +2163,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksliga U10 gemischt Nord 26/27 (U10 Schwaben; Liganr.: 22045) (Liga 54498)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2347,7 +2350,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-<div class='angels-news'><a href='https://psv-ingolstadt.de/news' target='_blank'><img src='https://psv-ingolstadt.de/static/sis-kooperation-1.png' alt='Gemeinsam bringen wir Basketball in die Schule: Neue Partnerschaft mit der SIS Ingolstadt'><span>Gemeinsam bringen wir Basketball in die Schule: Neue Partnerschaft mit der SIS Ingolstadt</span></a><a href='https://psv-ingolstadt.de/news' target='_blank'><img src='https://psv-ingolstadt.de/static/vorstand-2026.jpg' alt='🏀 Bei uns tut sich was! — Unser Vorstand neu aufgestellt'><span>🏀 Bei uns tut sich was! — Unser Vorstand neu aufgestellt</span></a><a href='https://psv-ingolstadt.de/news' target='_blank'><img src='https://psv-ingolstadt.de/static/kirkcaldy-artikel.jpg' alt='Sportliche Begegnung mit Kirkcaldy — Basketballspieler aus Schottland zu Gast in Ingolstadt'><span>Sportliche Begegnung mit Kirkcaldy — Basketballspieler aus Schottland zu Gast in Ingolstadt</span></a></div><p><a class='angels-news-alle' href='https://psv-ingolstadt.de/news' target='_blank'>Alle News</a></p><p class='verein-sozial'><a href='https://www.instagram.com/psvingolstadt_basketball/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a></p>
+<div class='angels-news'><a href='https://psv-ingolstadt.de/news' target='_blank'><img src='https://psv-ingolstadt.de/static/sis-kooperation-1.png' alt='Gemeinsam bringen wir Basketball in die Schule: Neue Partnerschaft mit der SIS Ingolstadt'><span>Gemeinsam bringen wir Basketball in die Schule: Neue Partnerschaft mit der SIS Ingolstadt</span></a><a href='https://psv-ingolstadt.de/news' target='_blank'><img src='https://psv-ingolstadt.de/static/vorstand-2026.jpg' alt='🏀 Bei uns tut sich was! — Unser Vorstand neu aufgestellt'><span>🏀 Bei uns tut sich was! — Unser Vorstand neu aufgestellt</span></a><a href='https://psv-ingolstadt.de/news' target='_blank'><img src='https://psv-ingolstadt.de/static/kirkcaldy-artikel.jpg' alt='Sportliche Begegnung mit Kirkcaldy — Basketballspieler aus Schottland zu Gast in Ingolstadt'><span>Sportliche Begegnung mit Kirkcaldy — Basketballspieler aus Schottland zu Gast in Ingolstadt</span></a></div><p class='news-zeile'><a class='angels-news-alle' href='https://psv-ingolstadt.de/news' target='_blank'>Alle News</a><span class='verein-sozial'><a href='https://www.instagram.com/psvingolstadt_basketball/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a></span></p>
 <div class='seitenende'>
 
   <div class='werbung-box'>

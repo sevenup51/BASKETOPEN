@@ -135,10 +135,13 @@ a.angels-news-alle:hover { background:#163568; }
 .verein-kachel .angels-news { flex-direction:column; gap:8px; max-width:none; margin:0 0 4px; }
 .verein-kachel .angels-news img, .verein-kachel .angels-news .bild-platz { height:72px; max-height:72px; flex-basis:72px; }
 .verein-kachel .angels-news span { font-size:10px; text-transform:none; }
+.news-zeile, .keine-news { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .keine-news { margin:8px 0; font-style:italic; }
-.verein-sozial { display:flex; gap:8px; align-items:center; margin:0 0 12px; }
+.verein-sozial { display:inline-flex; gap:8px; align-items:center; margin:0; }
 .verein-sozial a { display:inline-flex; line-height:0; }
 .verein-sozial svg { width:22px; height:22px; }
+details.verein-gruppe { margin:8px 0 12px; max-width:780px; }
+details.verein-gruppe > summary { max-width:780px; }
 .qr-box p { margin:6px 0 0 0; font-size:12px; font-weight:bold; color:#1a3d7c; }
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
@@ -282,7 +285,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Augsburg DJK Nord – Stand: 19.10.26 03:12:39</h1>
+<h1>Augsburg DJK Nord – Stand: 19.10.26 04:12:35</h1>
 
 
 <details id='wasfindeichhier'>
@@ -619,13 +622,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Augsburg DJK Nord – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 19.10.26 03:12:39</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54485</td><td>Herren</td><td>18.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td>54 : 71</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>25.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='halle'><div class='halle'>Hans-<wbr>Adlhoch-<wbr>Halle<br>Spiel 12011</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg DJK Nord</b><span class='summary-right'>Stand 19.10.26 00:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
+<details open><summary><b>Spielplan Augsburg DJK Nord – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 19.10.26 04:12:35</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54485</td><td>Herren</td><td>18.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td>54 : 71</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>25.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='halle'><div class='halle'>Hans-<wbr>Adlhoch-<wbr>Halle<br>Spiel 12011</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg DJK Nord</b><span class='summary-right'>Stand 19.10.26 04:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
 
 <summary>
     <b>Bezirksliga Herren Nord 26/27 (Senioren Schwaben; Liganr.: 22012) (Liga 54485)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 02:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -832,7 +835,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-<p class='keine-news'>Keine News gefunden.</p><p class='verein-sozial'><a href='https://www.instagram.com/virtus_mma/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a><a href='https://www.facebook.com/groups/www.djknord.net/' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></p>
+<p class='keine-news'>Automatisiert keine News gefunden. <span class='verein-sozial'><a href='https://www.instagram.com/virtus_mma/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a><a href='https://www.facebook.com/groups/www.djknord.net/' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></span></p>
 <div class='seitenende'>
 
   <div class='werbung-box'>

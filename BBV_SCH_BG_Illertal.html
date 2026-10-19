@@ -135,10 +135,13 @@ a.angels-news-alle:hover { background:#163568; }
 .verein-kachel .angels-news { flex-direction:column; gap:8px; max-width:none; margin:0 0 4px; }
 .verein-kachel .angels-news img, .verein-kachel .angels-news .bild-platz { height:72px; max-height:72px; flex-basis:72px; }
 .verein-kachel .angels-news span { font-size:10px; text-transform:none; }
+.news-zeile, .keine-news { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .keine-news { margin:8px 0; font-style:italic; }
-.verein-sozial { display:flex; gap:8px; align-items:center; margin:0 0 12px; }
+.verein-sozial { display:inline-flex; gap:8px; align-items:center; margin:0; }
 .verein-sozial a { display:inline-flex; line-height:0; }
 .verein-sozial svg { width:22px; height:22px; }
+details.verein-gruppe { margin:8px 0 12px; max-width:780px; }
+details.verein-gruppe > summary { max-width:780px; }
 .qr-box p { margin:6px 0 0 0; font-size:12px; font-weight:bold; color:#1a3d7c; }
 button { padding:2px 7px; background:#1a3d7c; color:white; border:none; border-radius:3px;
          margin-right:5px; font-size:10px; }
@@ -282,7 +285,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Illertal BG – Stand: 19.10.26 03:15:11</h1>
+<h1>Illertal BG – Stand: 19.10.26 04:15:15</h1>
 
 
 <details id='wasfindeichhier'>
@@ -619,7 +622,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Illertal BG – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 19.10.26 03:15:11</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54484</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal 2</div></td><td>77 : 79</td></tr><tr><td>54509</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren 2</div></td><td>75 : 42</td></tr><tr><td>54461</td><td>U16</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV 1847 Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>62 : 80</td></tr><tr><td>54492</td><td>U14</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td>44 : 60</td></tr><tr><td>54496</td><td>U12</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td>75 : 81</td></tr><tr><td>52514</td><td>Herren</td><td>17.10.2026 18:30</td><td class='mannschaft'><div class='mannschaft'>MÜNCHEN BASKET</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>76 : 92</td></tr><tr><td>54457</td><td>U20</td><td>17.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>70 : 93</td></tr><tr><td>54487</td><td>U18</td><td>17.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal 2</div></td><td>84 : 29</td></tr><tr><td>54509</td><td>Herren</td><td>11.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Lindau</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal 3</div></td><td>43 : 77</td></tr><tr><td>52514</td><td>Herren</td><td>11.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>Haching Baskets</div></td><td>72 : 79</td></tr><tr><td>54492</td><td>U14</td><td>11.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1850 Lindau</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>36 : 64</td></tr><tr><td>54461</td><td>U16</td><td>11.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td>91 : 53</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td>82 : 49</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54487</td><td>U18</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Sonthofen</div></td><td class='halle'><div class='halle'>Vöhlinhalle<br>Spiel 24009</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>24.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='halle'><div class='halle'>Vöhlinhalle<br>Spiel 22012</div></td></tr><tr style='background-color:#ffdd99;'><td>54484</td><td>Herren</td><td>24.10.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>BG Illertal 2</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>Vöhlinhalle<br>Spiel 11012</div></td></tr><tr style='background-color:#ffdd99;'><td>52514</td><td>Herren</td><td>24.10.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>MTSV Schwabing</div></td><td class='halle'><div class='halle'>Vöhlinhalle<br>Spiel 11033</div></td></tr><tr style='background-color:#ffdd99;'><td>54492</td><td>U14</td><td>25.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Sonthofen</div></td><td class='halle'><div class='halle'>Karl-<wbr>August-<wbr>Forter-<wbr>Grundschule<br>Spiel 32011</div></td></tr><tr style='background-color:#ffdd99;'><td>54461</td><td>U16</td><td>25.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neuburg</div></td><td class='halle'><div class='halle'>Karl-<wbr>August-<wbr>Forter-<wbr>Grundschule<br>Spiel 26017</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Illertal BG</b><span class='summary-right'>Stand 19.10.26 00:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Illertal BG – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 19.10.26 04:15:15</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54484</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal 2</div></td><td>77 : 79</td></tr><tr><td>54509</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren 2</div></td><td>75 : 42</td></tr><tr><td>54461</td><td>U16</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV 1847 Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>62 : 80</td></tr><tr><td>54492</td><td>U14</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td>44 : 60</td></tr><tr><td>54496</td><td>U12</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td>75 : 81</td></tr><tr><td>52514</td><td>Herren</td><td>17.10.2026 18:30</td><td class='mannschaft'><div class='mannschaft'>MÜNCHEN BASKET</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>76 : 92</td></tr><tr><td>54457</td><td>U20</td><td>17.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>70 : 93</td></tr><tr><td>54487</td><td>U18</td><td>17.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal 2</div></td><td>84 : 29</td></tr><tr><td>54509</td><td>Herren</td><td>11.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Lindau</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal 3</div></td><td>43 : 77</td></tr><tr><td>52514</td><td>Herren</td><td>11.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>Haching Baskets</div></td><td>72 : 79</td></tr><tr><td>54492</td><td>U14</td><td>11.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1850 Lindau</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>36 : 64</td></tr><tr><td>54461</td><td>U16</td><td>11.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td>91 : 53</td></tr><tr><td>54459</td><td>U18</td><td>11.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td>82 : 49</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54487</td><td>U18</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Sonthofen</div></td><td class='halle'><div class='halle'>Vöhlinhalle<br>Spiel 24009</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>24.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='halle'><div class='halle'>Vöhlinhalle<br>Spiel 22012</div></td></tr><tr style='background-color:#ffdd99;'><td>54484</td><td>Herren</td><td>24.10.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>BG Illertal 2</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>Vöhlinhalle<br>Spiel 11012</div></td></tr><tr style='background-color:#ffdd99;'><td>52514</td><td>Herren</td><td>24.10.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>MTSV Schwabing</div></td><td class='halle'><div class='halle'>Vöhlinhalle<br>Spiel 11033</div></td></tr><tr style='background-color:#ffdd99;'><td>54492</td><td>U14</td><td>25.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Sonthofen</div></td><td class='halle'><div class='halle'>Karl-<wbr>August-<wbr>Forter-<wbr>Grundschule<br>Spiel 32011</div></td></tr><tr style='background-color:#ffdd99;'><td>54461</td><td>U16</td><td>25.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neuburg</div></td><td class='halle'><div class='halle'>Karl-<wbr>August-<wbr>Forter-<wbr>Grundschule<br>Spiel 26017</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Illertal BG</b><span class='summary-right'>Stand 19.10.26 04:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>Sa. 24.10.26</td><td>12:15</td><td class="wrap">BG Illertal 2</td><td class="wrap">TSV Sonthofen</td><td class="liga">Bezirksliga<br/>U18 männlich Süd<br/>26/27</td><td class="halle">Vöhlinhalle<br/>Gottfried-Hart-Str. 8<br/>89257 Illertissen</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54487#:~:text=24.10.2026%2012%3A15,TSV%20Sonthofen" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>So. 25.10.26</td><td>12:15</td><td class="wrap">BG Illertal</td><td class="wrap">TSV Sonthofen</td><td class="liga">Bezirksliga<br/>U14 männlich Süd<br/>26/27</td><td class="halle">Karl-August-Forter-Grundschule<br/>Dorfstr. 14<br/>89257 Illertissen</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54492#:~:text=25.10.2026%2012%3A15,TSV%20Sonthofen" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -642,7 +645,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>1. Regionalliga Herren HR-Süd (1RLH-HRS) (Senioren; Liganr.: 204) (Liga 52514)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52514.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52514.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:07)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52514.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52514.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -863,7 +866,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksliga Herren Süd 26/27 (Senioren Schwaben; Liganr.: 22011) (Liga 54484)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1086,7 +1089,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksklasse Herren Süd 26/27 (Senioren Schwaben; Liganr.: 22008) (Liga 54509)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1264,7 +1267,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksoberliga U20 männlich 26/27 (U20 Schwaben; Liganr.: 22020) (Liga 54457)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54457.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54457.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54457.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54457.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1386,7 +1389,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksoberliga U18 männlich 26/27 (U18 Schwaben; Liganr.: 22022) (Liga 54459)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1599,7 +1602,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksoberliga U16 männlich 26/27 (U16 Schwaben; Liganr.: 22026) (Liga 54461)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:08)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1830,7 +1833,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksliga U18 männlich Süd 26/27 (U18 Schwaben; Liganr.: 22024) (Liga 54487)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54487.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54487.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54487.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54487.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1983,7 +1986,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksliga U14 männlich Süd 26/27 (U14 Schwaben; Liganr.: 22032) (Liga 54492)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2162,7 +2165,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksliga U12 gemischt Süd 26/27 (U12 Schwaben; Liganr.: 22036) (Liga 54496)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2340,7 +2343,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Bezirksliga U10 gemischt Süd 26/27 (U10 Schwaben; Liganr.: 22046) (Liga 54499)</b>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54499.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54499.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 03:09)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54499.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54499.html' onclick='liveHref(this)' target='_blank'>Details ( 19.10. 04:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2528,7 +2531,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-<div class='angels-news'><a href='https://www.bg-illertal.de/post/wieder-keine-punkte' target='_blank'><img src='https://static.wixstatic.com/media/621c50_fbe026c8952f4f07aee220013901d467~mv2.jpeg/v1/fill/w_667,h_1000,al_c,q_85,usm_0.66_1.00_0.01/621c50_fbe026c8952f4f07aee220013901d467~mv2.jpeg' alt='WIEDER KEINE PUNKTE'><span>WIEDER KEINE PUNKTE</span></a><a href='https://www.bg-illertal.de/post/ein-bitterer-abend-in-vilsbiburg' target='_blank'><img src='https://static.wixstatic.com/media/621c50_20f17b389dec42808f8303e8a6108360~mv2.jpeg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/621c50_20f17b389dec42808f8303e8a6108360~mv2.jpeg' alt='EIN BITTERER ABEND IN VILSBIBURG'><span>EIN BITTERER ABEND IN VILSBIBURG</span></a><a href='https://www.bg-illertal.de/post/schwabenkrimi-im-illertal' target='_blank'><img src='https://static.wixstatic.com/media/621c50_530922598ecd408398916c8d25dd27e4~mv2.jpg/v1/fill/w_1000,h_813,al_c,q_85,usm_0.66_1.00_0.01/621c50_530922598ecd408398916c8d25dd27e4~mv2.jpg' alt='SCHWABENKRIMI IM ILLERTAL'><span>SCHWABENKRIMI IM ILLERTAL</span></a></div><p><a class='angels-news-alle' href='https://www.bg-illertal.de/news' target='_blank'>Alle News</a></p><p class='verein-sozial'><a href='https://www.facebook.com/BGIllertal' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></p>
+<div class='angels-news'><a href='https://www.bg-illertal.de/post/wieder-keine-punkte' target='_blank'><img src='https://static.wixstatic.com/media/621c50_fbe026c8952f4f07aee220013901d467~mv2.jpeg/v1/fill/w_667,h_1000,al_c,q_85,usm_0.66_1.00_0.01/621c50_fbe026c8952f4f07aee220013901d467~mv2.jpeg' alt='WIEDER KEINE PUNKTE'><span>WIEDER KEINE PUNKTE</span></a><a href='https://www.bg-illertal.de/post/ein-bitterer-abend-in-vilsbiburg' target='_blank'><img src='https://static.wixstatic.com/media/621c50_20f17b389dec42808f8303e8a6108360~mv2.jpeg/v1/fill/w_1000,h_667,al_c,q_85,usm_0.66_1.00_0.01/621c50_20f17b389dec42808f8303e8a6108360~mv2.jpeg' alt='EIN BITTERER ABEND IN VILSBIBURG'><span>EIN BITTERER ABEND IN VILSBIBURG</span></a><a href='https://www.bg-illertal.de/post/schwabenkrimi-im-illertal' target='_blank'><img src='https://static.wixstatic.com/media/621c50_530922598ecd408398916c8d25dd27e4~mv2.jpg/v1/fill/w_1000,h_813,al_c,q_85,usm_0.66_1.00_0.01/621c50_530922598ecd408398916c8d25dd27e4~mv2.jpg' alt='SCHWABENKRIMI IM ILLERTAL'><span>SCHWABENKRIMI IM ILLERTAL</span></a></div><p class='news-zeile'><a class='angels-news-alle' href='https://www.bg-illertal.de/news' target='_blank'>Alle News</a><span class='verein-sozial'><a href='https://www.facebook.com/BGIllertal' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></span></p>
 <div class='seitenende'>
 
   <div class='werbung-box'>
