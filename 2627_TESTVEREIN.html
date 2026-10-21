@@ -31,6 +31,15 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
+summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 300px;
+                    align-items: center; column-gap: 8px; }
+summary.liga-kopf::before { margin-right: 0; }
+summary.liga-kopf .summary-right { position: static; transform: none; width: 300px; min-width: 300px;
+                                   justify-content: flex-end; }
+.liga-titel { display: contents; }
+.liga-titel > b { min-width: 0; }
+.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
+.liga-meta span { display: block; white-space: nowrap; font-variant-numeric: tabular-nums; }
 summary::marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
@@ -295,7 +304,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Uebersicht diverse Ligen fuer Test – Stand: 21.10.26 22:10:04</h1>
+<h1>Uebersicht diverse Ligen fuer Test – Stand: 21.10.26 23:10:04</h1>
 
 
 <details id='wasfindeichhier'>
@@ -643,8 +652,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <details open>
 
-<summary>
-    <b>Unbekannte Liga (Liga 99999)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Unbekannte Liga</b><span class='liga-meta'><span>(Liga 99999)</span></span></span>
     <span class='summary-right'>
         <span style='color:#1a3d7c; font-weight:bold;'>Runde beendet</span>
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_51520.html' onclick='liveHref(this)' target='_blank'>Details ( 22.06. 04:00)</a>
