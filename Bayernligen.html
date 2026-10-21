@@ -31,6 +31,15 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
+summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 270px;
+                    align-items: center; column-gap: 8px; }
+summary.liga-kopf::before { margin-right: 0; }
+summary.liga-kopf .summary-right { position: static; transform: none; width: 270px; min-width: 270px;
+                                   justify-content: flex-end; }
+.liga-titel { display: contents; }
+.liga-titel > b { min-width: 0; }
+.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
+.liga-meta span { display: block; white-space: nowrap; font-variant-numeric: tabular-nums; }
 summary::marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
@@ -295,7 +304,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bayernliga – Stand: 21.10.26 22:07:46</h1>
+<h1>Bayernliga – Stand: 21.10.26 22:21:57</h1>
 
 
 <details id='wasfindeichhier'>
@@ -643,8 +652,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <details open>
 
-<summary>
-    <b>Bayernliga Herren  Nord (ByLHN) (Senioren; Liganr.: 20001) (Liga 52530)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bayernliga Herren  Nord (ByLHN)</b><span class='liga-meta'><span>(Senioren; Liganr.: 20001)</span><span>(Liga 52530)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52530.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52530.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -919,8 +928,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>Bayernliga Herren Mitte (ByLHM) (Senioren; Liganr.: 20002) (Liga 52531)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bayernliga Herren Mitte (ByLHM)</b><span class='liga-meta'><span>(Senioren; Liganr.: 20002)</span><span>(Liga 52531)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52531.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1200,8 +1209,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>Bayernliga Herren Süd (ByLHS) (Senioren; Liganr.: 20006) (Liga 52532)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bayernliga Herren Süd (ByLHS)</b><span class='liga-meta'><span>(Senioren; Liganr.: 20006)</span><span>(Liga 52532)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52532.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52532.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1468,8 +1477,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>Bayernliga Nord Damen (ByLND) (Senioren; Liganr.: 20004) (Liga 52533)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bayernliga Nord Damen (ByLND)</b><span class='liga-meta'><span>(Senioren; Liganr.: 20004)</span><span>(Liga 52533)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52533.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52533.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1709,8 +1718,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>Bayernliga Süd Damen (ByLSD) (Senioren; Liganr.: 20005) (Liga 52534)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bayernliga Süd Damen (ByLSD)</b><span class='liga-meta'><span>(Senioren; Liganr.: 20005)</span><span>(Liga 52534)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>

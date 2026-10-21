@@ -31,6 +31,15 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
+summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 270px;
+                    align-items: center; column-gap: 8px; }
+summary.liga-kopf::before { margin-right: 0; }
+summary.liga-kopf .summary-right { position: static; transform: none; width: 270px; min-width: 270px;
+                                   justify-content: flex-end; }
+.liga-titel { display: contents; }
+.liga-titel > b { min-width: 0; }
+.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
+.liga-meta span { display: block; white-space: nowrap; font-variant-numeric: tabular-nums; }
 summary::marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
@@ -295,7 +304,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedost – Stand: 21.10.26 22:07:09</h1>
+<h1>Regionalliga Suedost – Stand: 21.10.26 22:21:28</h1>
 
 
 <details id='wasfindeichhier'>
@@ -643,8 +652,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <details open>
 
-<summary>
-    <b>1. Regionalliga Herren HR-Süd (1RLH-HRS) (Senioren; Liganr.: 204) (Liga 52514)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>1. Regionalliga Herren HR-Süd (1RLH-HRS)</b><span class='liga-meta'><span>(Senioren; Liganr.: 204)</span><span>(Liga 52514)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52514.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52514.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
@@ -850,8 +859,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>1. Regionalliga Herren HR-Nord (1RLH-HRN) (Senioren; Liganr.: 206) (Liga 52515)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>1. Regionalliga Herren HR-Nord (1RLH-HRN)</b><span class='liga-meta'><span>(Senioren; Liganr.: 206)</span><span>(Liga 52515)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52515.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52515.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
@@ -1057,8 +1066,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>Regionalliga Damen HR-Nord (RLD-HRN) (Senioren; Liganr.: 203) (Liga 52497)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Regionalliga Damen HR-Nord (RLD-HRN)</b><span class='liga-meta'><span>(Senioren; Liganr.: 203)</span><span>(Liga 52497)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52497.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52497.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:07)</a>
@@ -1273,8 +1282,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>Regionalliga Damen HR-Süd (RLD-HRS) (Senioren; Liganr.: 205) (Liga 52498)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Regionalliga Damen HR-Süd (RLD-HRS)</b><span class='liga-meta'><span>(Senioren; Liganr.: 205)</span><span>(Liga 52498)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52498.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52498.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:07)</a>
@@ -1480,8 +1489,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>2. Regionalliga Süd (2RLS) (Senioren; Liganr.: 202) (Liga 52528)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>2. Regionalliga Süd (2RLS)</b><span class='liga-meta'><span>(Senioren; Liganr.: 202)</span><span>(Liga 52528)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52528.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52528.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:07)</a>
@@ -1749,8 +1758,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>2. Regionalliga Nord (2RLN) (Senioren; Liganr.: 201) (Liga 52527)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>2. Regionalliga Nord (2RLN)</b><span class='liga-meta'><span>(Senioren; Liganr.: 201)</span><span>(Liga 52527)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52527.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52527.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:07)</a>
@@ -1774,6 +1783,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>40384</td>
+<td>3</td>
+<td>21.10.2026 20:15</td>
+<td>Dresden Titans 3</td>
+<td>NINERS Chemnitz 2</td>
+<td>76 : 111</td>
+</tr>
 <tr>
 <td>40385</td>
 <td>3</td>
@@ -1850,6 +1867,15 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>3</td>
+      <td>NINERS Chemnitz 2</td>
+      <td>2</td>
+      <td>2/0</td>
+      <td>4</td>
+      <td>207 : 130</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <td>4</td>
       <td>ONLINEPRINTERS Neustadt a.d. Aisch</td>
       <td>3</td>
       <td>2/1</td>
@@ -1858,22 +1884,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
       <td>22</td>
     </tr>
     <tr>
-      <td>4</td>
+      <td>5</td>
       <td>GGZ Baskets Zwickau</td>
       <td>3</td>
       <td>2/1</td>
       <td>4</td>
       <td>240 : 210</td>
       <td>30</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>NINERS Chemnitz 2</td>
-      <td>1</td>
-      <td>1/0</td>
-      <td>2</td>
-      <td>96 : 54</td>
-      <td>42</td>
     </tr>
     <tr>
       <td>6</td>
@@ -1887,11 +1904,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>7</td>
       <td>Dresden Titans 3</td>
+      <td>3</td>
+      <td>1/2</td>
       <td>2</td>
-      <td>1/1</td>
-      <td>2</td>
-      <td>165 : 159</td>
-      <td>6</td>
+      <td>241 : 270</td>
+      <td>-29</td>
     </tr>
     <tr>
       <td>8</td>
@@ -1954,7 +1971,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>40384</td>
 <td><a href="https://regionalliga-suedost.de/index.php/alle-sp-1rlh/ziel-an-vorwoche-anknuepfen-dresden-zu-gast-in-gotha" target="_blank">3</a></td>
 <td>21.10.2026 20:15</td>

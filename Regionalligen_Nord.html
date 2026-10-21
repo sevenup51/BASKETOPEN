@@ -31,6 +31,15 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
+summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 270px;
+                    align-items: center; column-gap: 8px; }
+summary.liga-kopf::before { margin-right: 0; }
+summary.liga-kopf .summary-right { position: static; transform: none; width: 270px; min-width: 270px;
+                                   justify-content: flex-end; }
+.liga-titel { display: contents; }
+.liga-titel > b { min-width: 0; }
+.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
+.liga-meta span { display: block; white-space: nowrap; font-variant-numeric: tabular-nums; }
 summary::marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
@@ -295,7 +304,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Nord – Stand: 21.10.26 22:07:18</h1>
+<h1>Regionalliga Nord – Stand: 21.10.26 22:21:37</h1>
 
 
 <details id='wasfindeichhier'>
@@ -643,8 +652,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <details open>
 
-<summary>
-    <b>1. Regionalliga Herren (Senioren; Liganr.: 130) (Liga 54819)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>1. Regionalliga Herren</b><span class='liga-meta'><span>(Senioren; Liganr.: 130)</span><span>(Liga 54819)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54819.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54819.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
@@ -997,8 +1006,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>1. Regionalliga Damen (Senioren; Liganr.: 2001) (Liga 54820)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>1. Regionalliga Damen</b><span class='liga-meta'><span>(Senioren; Liganr.: 2001)</span><span>(Liga 54820)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54820.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54820.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
@@ -1170,8 +1179,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>2. Regionalliga Damen Ost (Senioren; Liganr.: 2006) (Liga 54822)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>2. Regionalliga Damen Ost</b><span class='liga-meta'><span>(Senioren; Liganr.: 2006)</span><span>(Liga 54822)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54822.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54822.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
@@ -1331,8 +1340,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>2. Regionalliga Damen West (Senioren; Liganr.: 2007) (Liga 54823)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>2. Regionalliga Damen West</b><span class='liga-meta'><span>(Senioren; Liganr.: 2007)</span><span>(Liga 54823)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54823.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54823.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
@@ -1474,8 +1483,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>2. Regionalliga Herren West (Senioren; Liganr.: 2004) (Liga 54826)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>2. Regionalliga Herren West</b><span class='liga-meta'><span>(Senioren; Liganr.: 2004)</span><span>(Liga 54826)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54826.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54826.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
@@ -1653,8 +1662,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>2. Regionalliga Herren Ost (Senioren; Liganr.: 2003) (Liga 54831)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>2. Regionalliga Herren Ost</b><span class='liga-meta'><span>(Senioren; Liganr.: 2003)</span><span>(Liga 54831)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54831.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54831.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
@@ -1852,8 +1861,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </div>
 </details><details>
 
-<summary>
-    <b>2. Regionalliga Herren Nord (Senioren; Liganr.: 2002) (Liga 54834)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>2. Regionalliga Herren Nord</b><span class='liga-meta'><span>(Senioren; Liganr.: 2002)</span><span>(Liga 54834)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54834.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54834.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
