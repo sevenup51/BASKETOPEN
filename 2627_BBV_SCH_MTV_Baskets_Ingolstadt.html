@@ -31,6 +31,15 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
+summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 270px;
+                    align-items: center; column-gap: 8px; }
+summary.liga-kopf::before { margin-right: 0; }
+summary.liga-kopf .summary-right { position: static; transform: none; width: 270px; min-width: 270px;
+                                   justify-content: flex-end; }
+.liga-titel { display: contents; }
+.liga-titel > b { min-width: 0; }
+.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
+.liga-meta span { display: block; white-space: nowrap; font-variant-numeric: tabular-nums; }
 summary::marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
@@ -295,7 +304,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Ingolstadt MTV Baskets – Stand: 21.10.26 21:16:06</h1>
+<h1>Ingolstadt MTV Baskets – Stand: 21.10.26 22:16:19</h1>
 
 
 <details id='wasfindeichhier'>
@@ -641,7 +650,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Ingolstadt MTV Baskets – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 21.10.26 21:16:06</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>55699</td><td>U10</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV 1909 Gersthofen e.V.</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td>30 : 50</td></tr><tr><td>54495</td><td>U12</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td>81 : 32</td></tr><tr><td>54508</td><td>Herren</td><td>17.10.2026 20:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 3</div></td><td class='mannschaft'><div class='mannschaft'>TG Viktoria Augsburg</div></td><td>73 : 47</td></tr><tr><td>54453</td><td>Herren</td><td>17.10.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>VSC Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td>67 : 57</td></tr><tr><td>54507</td><td>Herren</td><td>17.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td>71 : 42</td></tr><tr><td>54461</td><td>U16</td><td>17.10.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td>51 : 70</td></tr><tr><td>54486</td><td>U18</td><td>17.10.2026 15:15</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>72 : 54</td></tr><tr><td>54488</td><td>U16</td><td>17.10.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td>86 : 63</td></tr><tr><td>54491</td><td>U14</td><td>17.10.2026 10:45</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1862 Neuburg 2</div></td><td>107 : 20</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54461</td><td>U16</td><td>24.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 26019</div></td></tr><tr style='background-color:#ffdd99;'><td>54486</td><td>U18</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 23008</div></td></tr><tr style='background-color:#ffdd99;'><td>54507</td><td>Herren</td><td>24.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt 2</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 6008</div></td></tr><tr style='background-color:#ffdd99;'><td>55699</td><td>U10</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 76010</div></td></tr><tr style='background-color:#ffdd99;'><td>54495</td><td>U12</td><td>25.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 3</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 35011</div></td></tr><tr><td>54508</td><td>Herren</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen 2</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 3</div></td><td class='halle'><div class='halle'>Paul-<wbr>Klee-<wbr>Gymnasium (neu)<br>Spiel 7010</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Ingolstadt MTV Baskets</b><span class='summary-right'>Stand 21.10.26 21:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Ingolstadt MTV Baskets – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 21.10.26 22:16:19</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>55699</td><td>U10</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV 1909 Gersthofen e.V.</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td>30 : 50</td></tr><tr><td>54495</td><td>U12</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td>81 : 32</td></tr><tr><td>54508</td><td>Herren</td><td>17.10.2026 20:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 3</div></td><td class='mannschaft'><div class='mannschaft'>TG Viktoria Augsburg</div></td><td>73 : 47</td></tr><tr><td>54453</td><td>Herren</td><td>17.10.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>VSC Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td>67 : 57</td></tr><tr><td>54507</td><td>Herren</td><td>17.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td>71 : 42</td></tr><tr><td>54461</td><td>U16</td><td>17.10.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td>51 : 70</td></tr><tr><td>54486</td><td>U18</td><td>17.10.2026 15:15</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>72 : 54</td></tr><tr><td>54488</td><td>U16</td><td>17.10.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td>86 : 63</td></tr><tr><td>54491</td><td>U14</td><td>17.10.2026 10:45</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1862 Neuburg 2</div></td><td>107 : 20</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54461</td><td>U16</td><td>24.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 26019</div></td></tr><tr style='background-color:#ffdd99;'><td>54486</td><td>U18</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 23008</div></td></tr><tr style='background-color:#ffdd99;'><td>54507</td><td>Herren</td><td>24.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt 2</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 6008</div></td></tr><tr style='background-color:#ffdd99;'><td>55699</td><td>U10</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 76010</div></td></tr><tr style='background-color:#ffdd99;'><td>54495</td><td>U12</td><td>25.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 3</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 35011</div></td></tr><tr><td>54508</td><td>Herren</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen 2</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt 3</div></td><td class='halle'><div class='halle'>Paul-<wbr>Klee-<wbr>Gymnasium (neu)<br>Spiel 7010</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Ingolstadt MTV Baskets</b><span class='summary-right'>Stand 21.10.26 22:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr class="offen"><td>Sa. 24.10.26</td><td>12:30</td><td class="wrap">MTV Baskets Ingolstadt</td><td class="wrap">SSV Schrobenhausen</td><td class="liga">Bezirksoberliga<br/>U16 männlich<br/>26/27</td><td class="halle">Wilhelm Ernst Grundschule<br/>Feselenstr. 42<br/>85053 Ingolstadt</td><td class="wrap">SRNAME nicht öffentlich (SR1), SRNAME nicht öffentlich (SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54461#:~:text=24.10.2026%2012%3A30,SSV%20Schrobenhausen" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 24.10.26</td><td>15:00</td><td class="wrap">MTV Baskets Ingolstadt</td><td class="wrap">DJK Eichstätt</td><td class="liga">Bezirksliga<br/>U18 männlich Nord<br/>26/27</td><td class="halle">Wilhelm Ernst Grundschule<br/>Feselenstr. 42<br/>85053 Ingolstadt</td><td class="wrap">SRNAME nicht öffentlich (SR1), SRNAME nicht öffentlich (SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54486#:~:text=24.10.2026%2015%3A00,DJK%20Eichst%C3%A4tt" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -660,8 +669,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <tr class="offen"><td>Sa. 12.12.26</td><td>17:00</td><td class="wrap">MTV Baskets Ingolstadt 2</td><td class="wrap">TSV 1868 Aichach</td><td class="liga">Bezirksliga<br/>U16 männlich Nord<br/>26/27</td><td class="halle">Wilhelm Ernst Grundschule<br/>Feselenstr. 42<br/>85053 Ingolstadt</td><td class="wrap">SRNAME nicht öffentlich (SR1), SRNAME nicht öffentlich (SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54488#:~:text=12.12.2026%2017%3A00,TSV%201868%20Aichach" rel="noopener" target="_blank">Spielplan</a></td></tr>
 </table></div></details><details>
 
-<summary>
-    <b>Bezirksoberliga Herren 26/27 (Senioren Schwaben; Liganr.: 22004) (Liga 54453)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga Herren 26/27</b><span class='liga-meta'><span>(Senioren Schwaben; Liganr.: 22004)</span><span>(Liga 54453)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -875,8 +884,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksklasse Herren Mitte 26/27 (Senioren Schwaben; Liganr.: 22007) (Liga 54508)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksklasse Herren Mitte 26/27</b><span class='liga-meta'><span>(Senioren Schwaben; Liganr.: 22007)</span><span>(Liga 54508)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -1037,8 +1046,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksklasse Herren Nord 26/27 (Senioren Schwaben; Liganr.: 22006) (Liga 54507)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksklasse Herren Nord 26/27</b><span class='liga-meta'><span>(Senioren Schwaben; Liganr.: 22006)</span><span>(Liga 54507)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -1198,8 +1207,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U16 männlich 26/27 (U16 Schwaben; Liganr.: 22026) (Liga 54461)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U16 männlich 26/27</b><span class='liga-meta'><span>(U16 Schwaben; Liganr.: 22026)</span><span>(Liga 54461)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1413,8 +1422,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U18 männlich Nord 26/27 (U18 Schwaben; Liganr.: 22023) (Liga 54486)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U18 männlich Nord 26/27</b><span class='liga-meta'><span>(U18 Schwaben; Liganr.: 22023)</span><span>(Liga 54486)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54486.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54486.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1566,8 +1575,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U16 männlich Nord 26/27 (U16 Schwaben; Liganr.: 22027) (Liga 54488)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U16 männlich Nord 26/27</b><span class='liga-meta'><span>(U16 Schwaben; Liganr.: 22027)</span><span>(Liga 54488)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54488.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -1720,8 +1729,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U14 männlich Nord 26/27 (U14 Schwaben; Liganr.: 22031) (Liga 54491)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U14 männlich Nord 26/27</b><span class='liga-meta'><span>(U14 Schwaben; Liganr.: 22031)</span><span>(Liga 54491)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54491.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54491.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -1882,8 +1891,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U12 gemischt Nord 26/27 (U12 Schwaben; Liganr.: 22035) (Liga 54495)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U12 gemischt Nord 26/27</b><span class='liga-meta'><span>(U12 Schwaben; Liganr.: 22035)</span><span>(Liga 54495)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -2035,8 +2044,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksklasse U10 gemischt 26/27 (U10 Schwaben; Liganr.: 22076) (Liga 55699)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksklasse U10 gemischt 26/27</b><span class='liga-meta'><span>(U10 Schwaben; Liganr.: 22076)</span><span>(Liga 55699)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>

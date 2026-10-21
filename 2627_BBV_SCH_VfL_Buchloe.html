@@ -31,6 +31,14 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
+summary.liga-kopf { display: flex; align-items: center; gap: 8px; }
+summary.liga-kopf .summary-right { position: static; transform: none; flex: 0 0 auto; margin-left: 8px; }
+.liga-titel { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+              flex: 1 1 auto; min-width: 0; }
+.liga-titel > b { min-width: 0; }
+.liga-meta { flex: 0 0 auto; margin-left: auto; text-align: right; font-weight: normal;
+             font-size: 10px; line-height: 1.3; }
+.liga-meta span { display: block; white-space: nowrap; font-variant-numeric: tabular-nums; }
 summary::marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
@@ -295,7 +303,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Buchloe VfL – Stand: 21.10.26 21:14:17</h1>
+<h1>Buchloe VfL – Stand: 21.10.26 22:14:32</h1>
 
 
 <details id='wasfindeichhier'>
@@ -641,7 +649,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Buchloe VfL – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 21.10.26 21:14:17</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54484</td><td>Herren</td><td>17.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>66 : 81</td></tr><tr><td>54459</td><td>U18</td><td>17.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>66 : 98</td></tr><tr><td>54496</td><td>U12</td><td>17.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td>24 : 99</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr><td>54509</td><td>Herren</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe 2</div></td><td class='halle'><div class='halle'>Dreifachsporthalle Mittelschule Untermeitingen<br>Spiel 8010</div></td></tr><tr><td>54492</td><td>U14</td><td>24.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='halle'><div class='halle'>Schraderhalle<br>Spiel 32010</div></td></tr><tr><td>54489</td><td>U16</td><td>24.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 28010</div></td></tr><tr><td>54484</td><td>Herren</td><td>25.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='halle'><div class='halle'>Albert-<wbr>Loderer-<wbr>Sporthalle<br>Spiel 11010</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>25.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='halle'><div class='halle'>Sporthalle<br>Spiel 22011</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Buchloe VfL</b><span class='summary-right'>Stand 21.10.26 21:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Buchloe VfL – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 21.10.26 22:14:32</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54484</td><td>Herren</td><td>17.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>66 : 81</td></tr><tr><td>54459</td><td>U18</td><td>17.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>66 : 98</td></tr><tr><td>54496</td><td>U12</td><td>17.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td>24 : 99</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr><td>54509</td><td>Herren</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>Lechfeld Lakers Untermeitingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe 2</div></td><td class='halle'><div class='halle'>Dreifachsporthalle Mittelschule Untermeitingen<br>Spiel 8010</div></td></tr><tr><td>54492</td><td>U14</td><td>24.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='halle'><div class='halle'>Schraderhalle<br>Spiel 32010</div></td></tr><tr><td>54489</td><td>U16</td><td>24.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 28010</div></td></tr><tr><td>54484</td><td>Herren</td><td>25.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='halle'><div class='halle'>Albert-<wbr>Loderer-<wbr>Sporthalle<br>Spiel 11010</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>25.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='halle'><div class='halle'>Sporthalle<br>Spiel 22011</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Buchloe VfL</b><span class='summary-right'>Stand 21.10.26 22:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>Sa. 07.11.26</td><td>14:00</td><td class="wrap">VFL Buchloe</td><td class="wrap">TSV Sonthofen</td><td class="liga">Bezirksliga<br/>U14 männlich Süd<br/>26/27</td><td class="halle">Sporthalle<br/>Am Bad 4<br/>86807 Buchloe</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54492#:~:text=07.11.2026%2014%3A00,TSV%20Sonthofen" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 14.11.26</td><td>09:30</td><td class="wrap">VFL Buchloe</td><td class="wrap">TSV Wasserburg/<br/>Günzburg</td><td class="liga">Bezirksliga<br/>U12 gemischt Süd<br/>26/27</td><td class="halle">Sporthalle<br/>Am Bad 4<br/>86807 Buchloe</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54496#:~:text=14.11.2026%2009%3A30,TSV%20Wasserburg%2FG%C3%BCnzburg" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -654,8 +662,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <tr class="offen"><td>Sa. 19.12.26</td><td>12:30</td><td class="wrap">VFL Buchloe</td><td class="wrap">TSV Ottobeuren</td><td class="liga">Bezirksliga<br/>U16 männlich Süd<br/>26/27</td><td class="halle">Sporthalle<br/>Am Bad 4<br/>86807 Buchloe</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54489#:~:text=19.12.2026%2012%3A30,TSV%20Ottobeuren" rel="noopener" target="_blank">Spielplan</a></td></tr>
 </table></div></details><details>
 
-<summary>
-    <b>Bezirksliga Herren Süd 26/27 (Senioren Schwaben; Liganr.: 22011) (Liga 54484)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga Herren Süd 26/27</b><span class='liga-meta'><span>(Senioren Schwaben; Liganr.: 22011)</span><span>(Liga 54484)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -869,8 +877,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksklasse Herren Süd 26/27 (Senioren Schwaben; Liganr.: 22008) (Liga 54509)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksklasse Herren Süd 26/27</b><span class='liga-meta'><span>(Senioren Schwaben; Liganr.: 22008)</span><span>(Liga 54509)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54509.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -1039,8 +1047,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U18 männlich 26/27 (U18 Schwaben; Liganr.: 22022) (Liga 54459)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U18 männlich 26/27</b><span class='liga-meta'><span>(U18 Schwaben; Liganr.: 22022)</span><span>(Liga 54459)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1236,8 +1244,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U16 männlich Süd 26/27 (U16 Schwaben; Liganr.: 22028) (Liga 54489)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U16 männlich Süd 26/27</b><span class='liga-meta'><span>(U16 Schwaben; Liganr.: 22028)</span><span>(Liga 54489)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54489.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54489.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -1381,8 +1389,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U14 männlich Süd 26/27 (U14 Schwaben; Liganr.: 22032) (Liga 54492)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U14 männlich Süd 26/27</b><span class='liga-meta'><span>(U14 Schwaben; Liganr.: 22032)</span><span>(Liga 54492)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -1552,8 +1560,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U12 gemischt Süd 26/27 (U12 Schwaben; Liganr.: 22036) (Liga 54496)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U12 gemischt Süd 26/27</b><span class='liga-meta'><span>(U12 Schwaben; Liganr.: 22036)</span><span>(Liga 54496)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>

@@ -31,6 +31,14 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
+summary.liga-kopf { display: flex; align-items: center; gap: 8px; }
+summary.liga-kopf .summary-right { position: static; transform: none; flex: 0 0 auto; margin-left: 8px; }
+.liga-titel { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+              flex: 1 1 auto; min-width: 0; }
+.liga-titel > b { min-width: 0; }
+.liga-meta { flex: 0 0 auto; margin-left: auto; text-align: right; font-weight: normal;
+             font-size: 10px; line-height: 1.3; }
+.liga-meta span { display: block; white-space: nowrap; font-variant-numeric: tabular-nums; }
 summary::marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
@@ -295,7 +303,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Noerdlingen TSV 1861 – Stand: 21.10.26 21:12:31</h1>
+<h1>Noerdlingen TSV 1861 – Stand: 21.10.26 22:13:02</h1>
 
 
 <details id='wasfindeichhier'>
@@ -641,7 +649,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Nördlingen TSV 1861 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 21.10.26 21:12:31</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54485</td><td>Herren</td><td>18.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td>54 : 71</td></tr><tr><td>54466</td><td>U14</td><td>18.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>32 : 122</td></tr><tr><td>54473</td><td>U10</td><td>18.10.2026 13:15</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>49 : 69</td></tr><tr><td>54471</td><td>U12</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>106 : 63</td></tr><tr><td>54461</td><td>U16</td><td>17.10.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td>51 : 70</td></tr><tr><td>55701</td><td>U12</td><td>17.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 2</div></td><td>76 : 40</td></tr><tr><td>54466</td><td>U14</td><td>17.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neuburg</div></td><td>92 : 67</td></tr><tr><td>54459</td><td>U18</td><td>17.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>66 : 98</td></tr><tr><td>52514</td><td>Herren</td><td>16.10.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>hapa Ansbach</div></td><td>82 : 73</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 34017</div></td></tr><tr><td>54462</td><td>U16</td><td>24.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 29011</div></td></tr><tr><td>54473</td><td>U10</td><td>24.10.2026 11:45</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 38009</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 22009</div></td></tr><tr><td>54475</td><td>U9</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 39004</div></td></tr><tr><td>54472</td><td>U12</td><td>24.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 37007</div></td></tr><tr><td>55701</td><td>U12</td><td>24.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>VSC Donauwörth 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 2</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 77009</div></td></tr><tr><td>54466</td><td>U14</td><td>24.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='halle'><div class='halle'>Gymnasium<br>Spiel 30046</div></td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>24.10.2026 19:00</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth 2</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 12009</div></td></tr><tr><td>54474</td><td>U10</td><td>25.10.2026 11:45</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen a.K.</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 40003</div></td></tr><tr><td>54495</td><td>U12</td><td>25.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 3</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 35011</div></td></tr><tr style='background-color:#ffdd99;'><td>54467</td><td>U14</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 33011</div></td></tr><tr><td>52514</td><td>Herren</td><td>25.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>TSV Vilsbiburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Ballsporthalle<br>Spiel 11035</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Nördlingen TSV 1861</b><span class='summary-right'>Stand 21.10.26 21:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Nördlingen TSV 1861 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 21.10.26 22:13:02</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54485</td><td>Herren</td><td>18.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td>54 : 71</td></tr><tr><td>54466</td><td>U14</td><td>18.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>32 : 122</td></tr><tr><td>54473</td><td>U10</td><td>18.10.2026 13:15</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>49 : 69</td></tr><tr><td>54471</td><td>U12</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>106 : 63</td></tr><tr><td>54461</td><td>U16</td><td>17.10.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td>51 : 70</td></tr><tr><td>55701</td><td>U12</td><td>17.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 2</div></td><td>76 : 40</td></tr><tr><td>54466</td><td>U14</td><td>17.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neuburg</div></td><td>92 : 67</td></tr><tr><td>54459</td><td>U18</td><td>17.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>66 : 98</td></tr><tr><td>52514</td><td>Herren</td><td>16.10.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>hapa Ansbach</div></td><td>82 : 73</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 34017</div></td></tr><tr><td>54462</td><td>U16</td><td>24.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 29011</div></td></tr><tr><td>54473</td><td>U10</td><td>24.10.2026 11:45</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 38009</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 22009</div></td></tr><tr><td>54475</td><td>U9</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 39004</div></td></tr><tr><td>54472</td><td>U12</td><td>24.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 37007</div></td></tr><tr><td>55701</td><td>U12</td><td>24.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>VSC Donauwörth 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 2</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 77009</div></td></tr><tr><td>54466</td><td>U14</td><td>24.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='halle'><div class='halle'>Gymnasium<br>Spiel 30046</div></td></tr><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>24.10.2026 19:00</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth 2</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 12009</div></td></tr><tr><td>54474</td><td>U10</td><td>25.10.2026 11:45</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen a.K.</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 40003</div></td></tr><tr><td>54495</td><td>U12</td><td>25.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 3</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 35011</div></td></tr><tr style='background-color:#ffdd99;'><td>54467</td><td>U14</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 33011</div></td></tr><tr><td>52514</td><td>Herren</td><td>25.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>TSV Vilsbiburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Ballsporthalle<br>Spiel 11035</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Nördlingen TSV 1861</b><span class='summary-right'>Stand 21.10.26 22:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>Sa. 24.10.26</td><td>10:00</td><td class="wrap">TSV Nördlingen</td><td class="wrap">Netz16 Baskets Königsbrunn</td><td class="liga">Bezirksoberliga<br/>U12 gemischt<br/>26/27</td><td class="halle">Mehrzweckhalle<br/>Gerhart-Hauptmann-Str. 3<br/>86720 Nördlingen</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54471#:~:text=24.10.2026%2010%3A00,Netz16%20Baskets%20K%C3%B6nigsbrunn" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="verein-name"><td>So. 25.10.26</td><td>14:30</td><td class="wrap">TSV 1861 Nördlingen 2</td><td class="wrap">TV Memmingen</td><td class="liga">Bezirksoberliga<br/>U14 weiblich<br/>26/27</td><td class="halle">Mehrzweckhalle<br/>Gerhart-Hauptmann-Str. 3<br/>86720 Nördlingen</td><td class="wrap">- (SR1), SRNAME nicht öffentlich (SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54467#:~:text=25.10.2026%2014%3A30,TV%20Memmingen" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -679,8 +687,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <tr class="offen"><td>Sa. 19.12.26</td><td>13:00</td><td class="wrap">TSV Nördlingen</td><td class="wrap">SSV Schrobenhausen</td><td class="liga">Bezirksoberliga<br/>U16 weiblich<br/>26/27</td><td class="halle">Mehrzweckhalle<br/>Gerhart-Hauptmann-Str. 3<br/>86720 Nördlingen</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54462#:~:text=19.12.2026%2013%3A00,SSV%20Schrobenhausen" rel="noopener" target="_blank">Spielplan</a></td></tr>
 </table></div></details><details>
 
-<summary>
-    <b>1. Regionalliga Herren HR-Süd (1RLH-HRS) (Senioren; Liganr.: 204) (Liga 52514)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>1. Regionalliga Herren HR-Süd (1RLH-HRS)</b><span class='liga-meta'><span>(Senioren; Liganr.: 204)</span><span>(Liga 52514)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52514.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52514.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:06)</a>
@@ -885,8 +893,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga Herren Nord 26/27 (Senioren Schwaben; Liganr.: 22012) (Liga 54485)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga Herren Nord 26/27</b><span class='liga-meta'><span>(Senioren Schwaben; Liganr.: 22012)</span><span>(Liga 54485)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1083,8 +1091,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U18 männlich 26/27 (U18 Schwaben; Liganr.: 22022) (Liga 54459)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U18 männlich 26/27</b><span class='liga-meta'><span>(U18 Schwaben; Liganr.: 22022)</span><span>(Liga 54459)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1280,8 +1288,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U16 männlich 26/27 (U16 Schwaben; Liganr.: 22026) (Liga 54461)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U16 männlich 26/27</b><span class='liga-meta'><span>(U16 Schwaben; Liganr.: 22026)</span><span>(Liga 54461)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1495,8 +1503,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U16 weiblich 26/27 (U16 Schwaben; Liganr.: 22029) (Liga 54462)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U16 weiblich 26/27</b><span class='liga-meta'><span>(U16 Schwaben; Liganr.: 22029)</span><span>(Liga 54462)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1666,8 +1674,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U14 männlich 26/27 (U14 Schwaben; Liganr.: 22030) (Liga 54466)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U14 männlich 26/27</b><span class='liga-meta'><span>(U14 Schwaben; Liganr.: 22030)</span><span>(Liga 54466)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -1836,8 +1844,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U14 weiblich 26/27 (U14 Schwaben; Liganr.: 22033) (Liga 54467)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U14 weiblich 26/27</b><span class='liga-meta'><span>(U14 Schwaben; Liganr.: 22033)</span><span>(Liga 54467)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -2007,8 +2015,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U12 weiblich 26/27 (U12 Schwaben; Liganr.: 22037) (Liga 54472)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U12 weiblich 26/27</b><span class='liga-meta'><span>(U12 Schwaben; Liganr.: 22037)</span><span>(Liga 54472)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -2143,8 +2151,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U12 gemischt 26/27 (U12 Schwaben; Liganr.: 22034) (Liga 54471)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U12 gemischt 26/27</b><span class='liga-meta'><span>(U12 Schwaben; Liganr.: 22034)</span><span>(Liga 54471)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -2383,8 +2391,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U10 weiblich 26/27 (U10 Schwaben; Liganr.: 22040) (Liga 54474)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U10 weiblich 26/27</b><span class='liga-meta'><span>(U10 Schwaben; Liganr.: 22040)</span><span>(Liga 54474)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54474.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54474.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -2471,8 +2479,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U10 gemischt 26/27 (U10 Schwaben; Liganr.: 22038) (Liga 54473)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U10 gemischt 26/27</b><span class='liga-meta'><span>(U10 Schwaben; Liganr.: 22038)</span><span>(Liga 54473)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -2633,8 +2641,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U9 gemischt 26/27 (U9 Schwaben; Liganr.: 22039) (Liga 54475)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U9 gemischt 26/27</b><span class='liga-meta'><span>(U9 Schwaben; Liganr.: 22039)</span><span>(Liga 54475)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -2739,8 +2747,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksoberliga U8 gemischt 26/27 (U8 Schwaben; Liganr.: 22041) (Liga 54476)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksoberliga U8 gemischt 26/27</b><span class='liga-meta'><span>(U8 Schwaben; Liganr.: 22041)</span><span>(Liga 54476)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
@@ -2857,8 +2865,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U12 gemischt Mitte Nord 26/27 (U12 Schwaben; Liganr.: 22077) (Liga 55701)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U12 gemischt Mitte Nord 26/27</b><span class='liga-meta'><span>(U12 Schwaben; Liganr.: 22077)</span><span>(Liga 55701)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -3010,8 +3018,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U12 gemischt Nord 26/27 (U12 Schwaben; Liganr.: 22035) (Liga 54495)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U12 gemischt Nord 26/27</b><span class='liga-meta'><span>(U12 Schwaben; Liganr.: 22035)</span><span>(Liga 54495)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>
@@ -3163,8 +3171,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 </details><details>
 
-<summary>
-    <b>Bezirksliga U10 gemischt Nord 26/27 (U10 Schwaben; Liganr.: 22045) (Liga 54498)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga U10 gemischt Nord 26/27</b><span class='liga-meta'><span>(U10 Schwaben; Liganr.: 22045)</span><span>(Liga 54498)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:09)</a>

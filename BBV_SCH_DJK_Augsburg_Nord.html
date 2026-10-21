@@ -31,6 +31,14 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
+summary.liga-kopf { display: flex; align-items: center; gap: 8px; }
+summary.liga-kopf .summary-right { position: static; transform: none; flex: 0 0 auto; margin-left: 8px; }
+.liga-titel { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+              flex: 1 1 auto; min-width: 0; }
+.liga-titel > b { min-width: 0; }
+.liga-meta { flex: 0 0 auto; margin-left: auto; text-align: right; font-weight: normal;
+             font-size: 10px; line-height: 1.3; }
+.liga-meta span { display: block; white-space: nowrap; font-variant-numeric: tabular-nums; }
 summary::marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
@@ -295,7 +303,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Augsburg DJK Nord – Stand: 21.10.26 21:12:53</h1>
+<h1>Augsburg DJK Nord – Stand: 21.10.26 22:13:20</h1>
 
 
 <details id='wasfindeichhier'>
@@ -641,13 +649,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Augsburg DJK Nord – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 21.10.26 21:12:53</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54485</td><td>Herren</td><td>18.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td>54 : 71</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>25.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='halle'><div class='halle'>Hans-<wbr>Adlhoch-<wbr>Halle<br>Spiel 12011</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg DJK Nord</b><span class='summary-right'>Stand 21.10.26 21:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Augsburg DJK Nord – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 21.10.26 22:13:20</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54485</td><td>Herren</td><td>18.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td>54 : 71</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54485</td><td>Herren</td><td>25.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>DJK Augsburg Nord</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='halle'><div class='halle'>Hans-<wbr>Adlhoch-<wbr>Halle<br>Spiel 12011</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg DJK Nord</b><span class='summary-right'>Stand 21.10.26 22:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>Sa. 21.11.26</td><td>20:00</td><td class="wrap">TV 1847 Augsburg 3</td><td class="wrap">TSV Gersthofen 2</td><td class="liga">Bezirksklasse<br/>Herren Mitte<br/>26/27</td><td class="halle">TVA Halle<br/>Gabelsbergerstr. 64<br/>86199 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54508#:~:text=21.11.2026%2020%3A00,TSV%20Gersthofen%202" rel="noopener" target="_blank">Spielplan</a></td></tr>
 </table></div></details><details>
 
-<summary>
-    <b>Bezirksliga Herren Nord 26/27 (Senioren Schwaben; Liganr.: 22012) (Liga 54485)</b>
+<summary class='liga-kopf'>
+    <span class='liga-titel'><b>Bezirksliga Herren Nord 26/27</b><span class='liga-meta'><span>(Senioren Schwaben; Liganr.: 22012)</span><span>(Liga 54485)</span></span></span>
     <span class='summary-right'>
         
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54485.html' onclick='liveHref(this)' target='_blank'>Details ( 21.10. 14:08)</a>
