@@ -31,7 +31,7 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
-summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 300px;
+summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 250px;
                     align-items: center; column-gap: 8px; }
 summary.liga-kopf::before { margin-right: 0; order: 0; }
 summary.liga-kopf > b,
@@ -40,8 +40,11 @@ summary.liga-kopf .liga-titel > b { order: 1; min-width: 0; white-space: nowrap;
 summary.liga-kopf > .liga-meta,
 summary.liga-kopf .liga-titel > .liga-meta { order: 2; }
 summary.liga-kopf > .summary-right { order: 3; }
-summary.liga-kopf .summary-right { position: static; transform: none; width: 300px; min-width: 300px;
-                                   justify-content: flex-end; flex-wrap: nowrap; white-space: nowrap; }
+summary.liga-kopf .summary-right { position: static; transform: none; width: 250px; min-width: 250px;
+                                   justify-content: flex-end; flex-wrap: nowrap; white-space: nowrap; gap: 3px; }
+summary.liga-kopf .liga-status { flex: 0 0 84px; width: 84px; text-align: right; font-size: 9px;
+                                 font-weight: bold; line-height: 1; }
+summary.liga-kopf .details-btn { font-size: 9px; padding: 0 3px; min-width: 0; line-height: 1.35; }
 details.live-liga > summary.liga-kopf,
 details.live-drei-liga > summary.liga-kopf { margin-left: -10px; width: calc(100% + 10px); }
 @media (max-width: 860px) {
@@ -49,9 +52,14 @@ details.live-drei-liga > summary.liga-kopf { margin-left: -10px; width: calc(100
   summary.liga-kopf .summary-right { width: auto; min-width: 0; }
 }
 .liga-titel { display: contents; }
-.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
-.liga-meta span.liga-kennung { display: block; white-space: pre; font-weight: normal;
-  font-family: Consolas, "Courier New", monospace; font-variant-numeric: tabular-nums; }
+.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.2; }
+.liga-meta span.liga-kennung { display: inline-grid; grid-template-columns: 8em auto auto;
+  column-gap: 0.3em; align-items: baseline; white-space: nowrap; font-weight: 600; font-size: 10px;
+  font-family: system-ui, "Segoe UI", sans-serif; font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em; }
+.liga-kennung .k-zahl { display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }
+.liga-kennung .k-lnr .k-zahl { min-width: 4.2em; }
+.liga-kennung .k-lid .k-zahl { min-width: 3em; }
 .legende-kopf { font-size: 13px; color: #1a3d7c; margin: 16px 0 4px; }
 table.legende { border-collapse: collapse; font-size: 10px; margin-bottom: 12px; }
 table.legende th, table.legende td { border: 1px solid #1a3d7c; padding: 2px 6px; text-align: left; }
@@ -319,7 +327,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Nord – Stand: 22.10.26 22:08:04</h1>
+<h1>Regionalliga Nord – Stand: 22.10.26 22:23:13</h1>
 
 
 <details id='wasfindeichhier'>
@@ -668,10 +676,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <details open>
 
 <summary class='liga-kopf'>
-    <b>1. Regionalliga Herren</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR     130; LID 54819)</span></span>
+    <b>1. Regionalliga Herren</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>130</span></span><span class='k-lid'>; LID <span class='k-zahl'>54819</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54819.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54819.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:06)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54819.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54819.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1022,10 +1030,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <b>1. Regionalliga Damen</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR    2001; LID 54820)</span></span>
+    <b>1. Regionalliga Damen</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>2001</span></span><span class='k-lid'>; LID <span class='k-zahl'>54820</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54820.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54820.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:06)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54820.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54820.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1195,10 +1203,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <b>2. Regionalliga Damen Ost</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR    2006; LID 54822)</span></span>
+    <b>2. Regionalliga Damen Ost</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>2006</span></span><span class='k-lid'>; LID <span class='k-zahl'>54822</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54822.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54822.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:06)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54822.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54822.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -1356,10 +1364,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <b>2. Regionalliga Damen West</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR    2007; LID 54823)</span></span>
+    <b>2. Regionalliga Damen West</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>2007</span></span><span class='k-lid'>; LID <span class='k-zahl'>54823</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54823.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54823.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:07)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54823.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54823.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -1499,10 +1507,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <b>2. Regionalliga Herren West</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR    2004; LID 54826)</span></span>
+    <b>2. Regionalliga Herren West</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>2004</span></span><span class='k-lid'>; LID <span class='k-zahl'>54826</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54826.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54826.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:06)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54826.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54826.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -1687,10 +1695,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <b>2. Regionalliga Herren Ost</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR    2003; LID 54831)</span></span>
+    <b>2. Regionalliga Herren Ost</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>2003</span></span><span class='k-lid'>; LID <span class='k-zahl'>54831</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54831.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54831.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:06)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54831.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54831.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1886,10 +1894,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <b>2. Regionalliga Herren Nord</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR    2002; LID 54834)</span></span>
+    <b>2. Regionalliga Herren Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>2002</span></span><span class='k-lid'>; LID <span class='k-zahl'>54834</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54834.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54834.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:06)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54834.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54834.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
