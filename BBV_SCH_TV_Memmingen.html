@@ -31,27 +31,39 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
-summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 300px;
+summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 250px;
                     align-items: center; column-gap: 8px; }
-summary.liga-kopf::before { margin-right: 0; }
-summary.liga-kopf .summary-right { position: static; transform: none; width: 300px; min-width: 300px;
-                                   justify-content: flex-end; }
+summary.liga-kopf::before { margin-right: 0; order: 0; }
+summary.liga-kopf > b,
+summary.liga-kopf .liga-titel > b { order: 1; min-width: 0; white-space: nowrap; overflow: hidden;
+                                    text-overflow: ellipsis; }
+summary.liga-kopf > .liga-meta,
+summary.liga-kopf .liga-titel > .liga-meta { order: 2; }
+summary.liga-kopf > .summary-right { order: 3; }
+summary.liga-kopf .summary-right { position: static; transform: none; width: 250px; min-width: 250px;
+                                   justify-content: flex-end; flex-wrap: nowrap; white-space: nowrap; gap: 3px; }
+summary.liga-kopf .liga-status { flex: 0 0 84px; width: 84px; text-align: right; font-size: 9px;
+                                 font-weight: bold; line-height: 1; }
+summary.liga-kopf .details-btn { font-size: 9px; padding: 0 3px; min-width: 0; line-height: 1.35; }
 details.live-liga > summary.liga-kopf,
 details.live-drei-liga > summary.liga-kopf { margin-left: -10px; width: calc(100% + 10px); }
 @media (max-width: 860px) {
   summary.liga-kopf { grid-template-columns: 14px minmax(0, 1fr) max-content minmax(165px, max-content); }
   summary.liga-kopf .summary-right { width: auto; min-width: 0; }
-  summary.liga-kopf .liga-titel > b { white-space: nowrap; }
 }
 .liga-titel { display: contents; }
-.liga-titel > b { min-width: 0; }
-.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
-.liga-meta span.liga-kennung { display: block; white-space: pre; font-weight: normal;
-  font-family: Consolas, "Courier New", monospace; font-variant-numeric: tabular-nums; }
+.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.2; }
+.liga-meta span.liga-kennung { display: inline-grid; grid-template-columns: 8em auto auto;
+  column-gap: 0.3em; align-items: baseline; white-space: nowrap; font-weight: 600; font-size: 10px;
+  font-family: system-ui, "Segoe UI", sans-serif; font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em; }
+.liga-kennung .k-zahl { display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }
+.liga-kennung .k-lnr .k-zahl { min-width: 4.2em; }
+.liga-kennung .k-lid .k-zahl { min-width: 3em; }
 .legende-kopf { font-size: 13px; color: #1a3d7c; margin: 16px 0 4px; }
 table.legende { border-collapse: collapse; font-size: 10px; margin-bottom: 12px; }
 table.legende th, table.legende td { border: 1px solid #1a3d7c; padding: 2px 6px; text-align: left; }
-summary::marker { display:none; }
+summary::marker, summary::-webkit-details-marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
 details { margin-bottom:3px; }
@@ -315,7 +327,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Memmingen TV – Stand: 22.10.26 21:17:17</h1>
+<h1>Memmingen TV – Stand: 22.10.26 22:17:02</h1>
 
 
 <details id='wasfindeichhier'>
@@ -661,7 +673,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Memmingen TV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 22.10.26 21:17:17</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54462</td><td>U16</td><td>17.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>42 : 89</td></tr><tr><td>54484</td><td>Herren</td><td>17.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>66 : 81</td></tr><tr><td>54496</td><td>U12</td><td>17.10.2026 13:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>67 : 81</td></tr><tr><td>54489</td><td>U16</td><td>17.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>71 : 61</td></tr><tr><td>54467</td><td>U14</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>34 : 89</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54462</td><td>U16</td><td>24.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen a.K.</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 29011</div></td></tr><tr style='background-color:#ffdd99;'><td>54496</td><td>U12</td><td>24.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 36010</div></td></tr><tr style='background-color:#ffdd99;'><td>54489</td><td>U16</td><td>24.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 28010</div></td></tr><tr><td>54467</td><td>U14</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 33011</div></td></tr><tr><td>54492</td><td>U14</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1850 Lindau</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Dreifachhalle<br>Spiel 32012</div></td></tr><tr><td>54454</td><td>Herren</td><td>25.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Rupert-<wbr>Neß-<wbr>Gymnasium (neu)<br>Spiel 3017</div></td></tr><tr><td>54484</td><td>Herren</td><td>25.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TV 1846 Isny</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Rotmoos Sporthalle<br>Spiel 11009</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Memmingen TV</b><span class='summary-right'>Stand 22.10.26 21:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Memmingen TV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 22.10.26 22:17:02</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54462</td><td>U16</td><td>17.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>42 : 89</td></tr><tr><td>54484</td><td>Herren</td><td>17.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>66 : 81</td></tr><tr><td>54496</td><td>U12</td><td>17.10.2026 13:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>67 : 81</td></tr><tr><td>54489</td><td>U16</td><td>17.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>DJK Kaufbeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>71 : 61</td></tr><tr><td>54467</td><td>U14</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>34 : 89</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54462</td><td>U16</td><td>24.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen a.K.</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 29011</div></td></tr><tr style='background-color:#ffdd99;'><td>54496</td><td>U12</td><td>24.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 36010</div></td></tr><tr style='background-color:#ffdd99;'><td>54489</td><td>U16</td><td>24.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 28010</div></td></tr><tr><td>54467</td><td>U14</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 33011</div></td></tr><tr><td>54492</td><td>U14</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1850 Lindau</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Dreifachhalle<br>Spiel 32012</div></td></tr><tr><td>54454</td><td>Herren</td><td>25.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Rupert-<wbr>Neß-<wbr>Gymnasium (neu)<br>Spiel 3017</div></td></tr><tr><td>54484</td><td>Herren</td><td>25.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TV 1846 Isny</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Rotmoos Sporthalle<br>Spiel 11009</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Memmingen TV</b><span class='summary-right'>Stand 22.10.26 22:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr class="offen"><td>Sa. 24.10.26</td><td>11:30</td><td class="wrap">TV Memmingen</td><td class="wrap">TSV Nördlingen a.K.</td><td class="liga">Bezirksoberliga<br/>U16 weiblich<br/>26/27</td><td class="halle">Elsbethen-Bismarck-Halle<br/>Kaisergraben 47<br/>87700 Memmingen</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54462#:~:text=24.10.2026%2011%3A30,TSV%20N%C3%B6rdlingen%20a.K." rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 24.10.26</td><td>14:00</td><td class="wrap">TV Memmingen</td><td class="wrap">TSV Schwaben Augsburg 2</td><td class="liga">Bezirksliga<br/>U12 gemischt Süd<br/>26/27</td><td class="halle">Elsbethen-Bismarck-Halle<br/>Kaisergraben 47<br/>87700 Memmingen</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54496#:~:text=24.10.2026%2014%3A00,TSV%20Schwaben%20Augsburg%202" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -679,10 +691,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </table></div></details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga Herren 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22004; LID 54453)</span></span></span>
+    <b>Bezirksoberliga Herren 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22004</span></span><span class='k-lid'>; LID <span class='k-zahl'>54453</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:08)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -894,10 +906,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga Damen 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22003; LID 54454)</span></span></span>
+    <b>Bezirksoberliga Damen 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22003</span></span><span class='k-lid'>; LID <span class='k-zahl'>54454</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:08)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1074,10 +1086,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksliga Herren Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22011; LID 54484)</span></span></span>
+    <b>Bezirksliga Herren Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22011</span></span><span class='k-lid'>; LID <span class='k-zahl'>54484</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54484.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1289,10 +1301,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U16 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U16 Schwaben  ; LNR   22029; LID 54462)</span></span></span>
+    <b>Bezirksoberliga U16 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U16 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22029</span></span><span class='k-lid'>; LID <span class='k-zahl'>54462</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1460,10 +1472,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U14 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U14 Schwaben  ; LNR   22033; LID 54467)</span></span></span>
+    <b>Bezirksoberliga U14 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U14 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22033</span></span><span class='k-lid'>; LID <span class='k-zahl'>54467</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1631,10 +1643,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksliga U18 männlich Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U18 Schwaben  ; LNR   22024; LID 54487)</span></span></span>
+    <b>Bezirksliga U18 männlich Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U18 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22024</span></span><span class='k-lid'>; LID <span class='k-zahl'>54487</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54487.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54487.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54487.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54487.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1784,10 +1796,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksliga U16 männlich Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U16 Schwaben  ; LNR   22028; LID 54489)</span></span></span>
+    <b>Bezirksliga U16 männlich Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U16 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22028</span></span><span class='k-lid'>; LID <span class='k-zahl'>54489</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54489.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54489.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54489.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54489.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1929,10 +1941,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksliga U14 männlich Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U14 Schwaben  ; LNR   22032; LID 54492)</span></span></span>
+    <b>Bezirksliga U14 männlich Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U14 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22032</span></span><span class='k-lid'>; LID <span class='k-zahl'>54492</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54492.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2100,10 +2112,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksliga U12 gemischt Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U12 Schwaben  ; LNR   22036; LID 54496)</span></span></span>
+    <b>Bezirksliga U12 gemischt Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U12 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22036</span></span><span class='k-lid'>; LID <span class='k-zahl'>54496</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54496.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 22:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2274,7 +2286,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-<div class='angels-news'><a href='https://basketball.tv-memmingen.de/2026/04/u14w-14-spiele-14-siege/' target='_blank'><span class='bild-platz'>Keine ladbare Bilddatei</span><span>Neueste Beiträge</span></a></div><p class='news-zeile'><a class='angels-news-alle' href='https://basketball.tv-memmingen.de/' target='_blank'>Alle News</a><span class='verein-sozial'><a href='https://www.instagram.com/tvmemmingenbasketball/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a><a href='https://www.facebook.com/tvmemmingen/' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></span></p>
+<div class='angels-news'><a href='https://basketball.tv-memmingen.de/2026/04/u14w-14-spiele-14-siege/' target='_blank'><span class='bild-platz'>Keine ladbare Bilddatei</span><span>U14w: 14 Spiele 14 Siege</span></a></div><p class='news-zeile'><a class='angels-news-alle' href='https://basketball.tv-memmingen.de/' target='_blank'>Alle News</a><span class='verein-sozial'><a href='https://www.instagram.com/tvmemmingenbasketball/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a><a href='https://www.facebook.com/tvmemmingen/' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></span></p>
 <div class='seitenende'>
 
   <div class='werbung-box'>

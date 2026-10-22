@@ -31,27 +31,39 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
-summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 300px;
+summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 250px;
                     align-items: center; column-gap: 8px; }
-summary.liga-kopf::before { margin-right: 0; }
-summary.liga-kopf .summary-right { position: static; transform: none; width: 300px; min-width: 300px;
-                                   justify-content: flex-end; }
+summary.liga-kopf::before { margin-right: 0; order: 0; }
+summary.liga-kopf > b,
+summary.liga-kopf .liga-titel > b { order: 1; min-width: 0; white-space: nowrap; overflow: hidden;
+                                    text-overflow: ellipsis; }
+summary.liga-kopf > .liga-meta,
+summary.liga-kopf .liga-titel > .liga-meta { order: 2; }
+summary.liga-kopf > .summary-right { order: 3; }
+summary.liga-kopf .summary-right { position: static; transform: none; width: 250px; min-width: 250px;
+                                   justify-content: flex-end; flex-wrap: nowrap; white-space: nowrap; gap: 3px; }
+summary.liga-kopf .liga-status { flex: 0 0 72px; width: 72px; text-align: right; font-size: 9px;
+                                 font-weight: bold; line-height: 1; }
+summary.liga-kopf .details-btn { font-size: 9px; padding: 0 3px; min-width: 0; line-height: 1.35; }
 details.live-liga > summary.liga-kopf,
 details.live-drei-liga > summary.liga-kopf { margin-left: -10px; width: calc(100% + 10px); }
 @media (max-width: 860px) {
   summary.liga-kopf { grid-template-columns: 14px minmax(0, 1fr) max-content minmax(165px, max-content); }
   summary.liga-kopf .summary-right { width: auto; min-width: 0; }
-  summary.liga-kopf .liga-titel > b { white-space: nowrap; }
 }
 .liga-titel { display: contents; }
-.liga-titel > b { min-width: 0; }
-.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
-.liga-meta span.liga-kennung { display: block; white-space: pre; font-weight: normal;
-  font-family: Consolas, "Courier New", monospace; font-variant-numeric: tabular-nums; }
+.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.2; }
+.liga-meta span.liga-kennung { display: inline-grid; grid-template-columns: 8em auto auto;
+  column-gap: 0.3em; align-items: baseline; white-space: nowrap; font-weight: 600; font-size: 10px;
+  font-family: system-ui, "Segoe UI", sans-serif; font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em; }
+.liga-kennung .k-zahl { display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }
+.liga-kennung .k-lnr .k-zahl { min-width: 4.2em; }
+.liga-kennung .k-lid .k-zahl { min-width: 3em; }
 .legende-kopf { font-size: 13px; color: #1a3d7c; margin: 16px 0 4px; }
 table.legende { border-collapse: collapse; font-size: 10px; margin-bottom: 12px; }
 table.legende th, table.legende td { border: 1px solid #1a3d7c; padding: 2px 6px; text-align: left; }
-summary::marker { display:none; }
+summary::marker, summary::-webkit-details-marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
 details { margin-bottom:3px; }
@@ -315,7 +327,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Schrobenhausen SSV – Stand: 22.10.26 21:12:04</h1>
+<h1>Schrobenhausen SSV – Stand: 22.10.26 22:12:10</h1>
 
 
 <details id='wasfindeichhier'>
@@ -661,7 +673,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Schrobenhausen SSV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 22.10.26 21:12:04</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54507</td><td>Herren</td><td>18.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen 3</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td>73 : 45</td></tr><tr><td>54454</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>84 : 39</td></tr><tr><td>54461</td><td>U16</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td>49 : 88</td></tr><tr><td>55699</td><td>U10</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen 2</div></td><td>62 : 37</td></tr><tr><td>54453</td><td>Herren</td><td>17.10.2026 19:45</td><td class='mannschaft'><div class='mannschaft'>Green Devils Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td>74 : 68</td></tr><tr><td>54486</td><td>U18</td><td>17.10.2026 15:15</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>72 : 54</td></tr><tr><td>54462</td><td>U16</td><td>17.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>42 : 89</td></tr><tr><td>54476</td><td>U8</td><td>17.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>31 : 13</td></tr><tr><td>54466</td><td>U14</td><td>17.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td>66 : 105</td></tr><tr><td>54473</td><td>U10</td><td>17.10.2026 10:30</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>86 : 49</td></tr><tr><td>54472</td><td>U12</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>77 : 43</td></tr><tr><td>54471</td><td>U12</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>67 : 73</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54473</td><td>U10</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 38010</div></td></tr><tr style='background-color:#ffdd99;'><td>54475</td><td>U9</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 39004</div></td></tr><tr><td>54461</td><td>U16</td><td>24.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 26019</div></td></tr><tr><td>54466</td><td>U14</td><td>24.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Uzin Utz Court<br>Spiel 30010</div></td></tr><tr style='background-color:#ffdd99;'><td>54472</td><td>U12</td><td>24.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 37007</div></td></tr><tr><td>54467</td><td>U14</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 33010</div></td></tr><tr style='background-color:#ffdd99;'><td>54476</td><td>U8</td><td>25.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 41003</div></td></tr><tr style='background-color:#ffdd99;'><td>54474</td><td>U10</td><td>25.10.2026 11:45</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen a.K.</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 40003</div></td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>25.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 34016</div></td></tr><tr><td>54508</td><td>Herren</td><td>25.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>TG Viktoria Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen 2</div></td><td class='halle'><div class='halle'>Reischlesche Wirtschaftsschule (groß)<br>Spiel 7054</div></td></tr><tr style='background-color:#ffdd99;'><td>54486</td><td>U18</td><td>25.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 23007</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Schrobenhausen SSV</b><span class='summary-right'>Stand 22.10.26 21:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Schrobenhausen SSV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 22.10.26 22:12:10</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54507</td><td>Herren</td><td>18.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen 3</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td>73 : 45</td></tr><tr><td>54454</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>84 : 39</td></tr><tr><td>54461</td><td>U16</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td>49 : 88</td></tr><tr><td>55699</td><td>U10</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen 2</div></td><td>62 : 37</td></tr><tr><td>54453</td><td>Herren</td><td>17.10.2026 19:45</td><td class='mannschaft'><div class='mannschaft'>Green Devils Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td>74 : 68</td></tr><tr><td>54486</td><td>U18</td><td>17.10.2026 15:15</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>72 : 54</td></tr><tr><td>54462</td><td>U16</td><td>17.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>42 : 89</td></tr><tr><td>54476</td><td>U8</td><td>17.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>31 : 13</td></tr><tr><td>54466</td><td>U14</td><td>17.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt 2</div></td><td>66 : 105</td></tr><tr><td>54473</td><td>U10</td><td>17.10.2026 10:30</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>86 : 49</td></tr><tr><td>54472</td><td>U12</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>77 : 43</td></tr><tr><td>54471</td><td>U12</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>67 : 73</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54473</td><td>U10</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 38010</div></td></tr><tr style='background-color:#ffdd99;'><td>54475</td><td>U9</td><td>24.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 39004</div></td></tr><tr><td>54461</td><td>U16</td><td>24.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Wilhelm Ernst Grundschule<br>Spiel 26019</div></td></tr><tr><td>54466</td><td>U14</td><td>24.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Uzin Utz Court<br>Spiel 30010</div></td></tr><tr style='background-color:#ffdd99;'><td>54472</td><td>U12</td><td>24.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 37007</div></td></tr><tr><td>54467</td><td>U14</td><td>24.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 33010</div></td></tr><tr style='background-color:#ffdd99;'><td>54476</td><td>U8</td><td>25.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 41003</div></td></tr><tr style='background-color:#ffdd99;'><td>54474</td><td>U10</td><td>25.10.2026 11:45</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen a.K.</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 40003</div></td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>25.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 34016</div></td></tr><tr><td>54508</td><td>Herren</td><td>25.10.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>TG Viktoria Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen 2</div></td><td class='halle'><div class='halle'>Reischlesche Wirtschaftsschule (groß)<br>Spiel 7054</div></td></tr><tr style='background-color:#ffdd99;'><td>54486</td><td>U18</td><td>25.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 23007</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Schrobenhausen SSV</b><span class='summary-right'>Stand 22.10.26 22:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>Sa. 24.10.26</td><td>16:00</td><td class="wrap">ESV Ingolstadt-Ringsee</td><td class="wrap">TSV Etting-Ingolstadt</td><td class="liga">Bezirksliga<br/>Herren Nord<br/>26/27</td><td class="halle">Grundschule an der Münchenerstraße<br/>Münchener Str. 65<br/>85051 Ingolstadt</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54485#:~:text=24.10.2026%2016%3A00,TSV%20Etting-Ingolstadt" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 24.10.26</td><td>10:00</td><td class="wrap">SSV Schrobenhausen</td><td class="wrap">TSV Etting-Ingolstadt</td><td class="liga">Bezirksoberliga<br/>U10 gemischt<br/>26/27</td><td class="halle">Michael-Sommer Mittelschule<br/>Georg-Leinfelder-Str. 16<br/>86529 Schrobenhausen</td><td class="wrap">Moritz, Lukas (SR1), - (SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54473#:~:text=24.10.2026%2010%3A00,Lukas%20Moritz" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -697,10 +709,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </table></div></details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga Herren 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22004; LID 54453)</span></span></span>
+    <b>Bezirksoberliga Herren 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22004</span></span><span class='k-lid'>; LID <span class='k-zahl'>54453</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -912,10 +924,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga Damen 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22003; LID 54454)</span></span></span>
+    <b>Bezirksoberliga Damen 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22003</span></span><span class='k-lid'>; LID <span class='k-zahl'>54454</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1092,10 +1104,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksklasse Herren Mitte 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22007; LID 54508)</span></span></span>
+    <b>Bezirksklasse Herren Mitte 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22007</span></span><span class='k-lid'>; LID <span class='k-zahl'>54508</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1254,10 +1266,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksklasse Herren Nord 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22006; LID 54507)</span></span></span>
+    <b>Bezirksklasse Herren Nord 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22006</span></span><span class='k-lid'>; LID <span class='k-zahl'>54507</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54507.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1415,10 +1427,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U20 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U20 Schwaben  ; LNR   22020; LID 54457)</span></span></span>
+    <b>Bezirksoberliga U20 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U20 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22020</span></span><span class='k-lid'>; LID <span class='k-zahl'>54457</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54457.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54457.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54457.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54457.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1529,10 +1541,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U16 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U16 Schwaben  ; LNR   22026; LID 54461)</span></span></span>
+    <b>Bezirksoberliga U16 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U16 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22026</span></span><span class='k-lid'>; LID <span class='k-zahl'>54461</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1744,10 +1756,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U16 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U16 Schwaben  ; LNR   22029; LID 54462)</span></span></span>
+    <b>Bezirksoberliga U16 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U16 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22029</span></span><span class='k-lid'>; LID <span class='k-zahl'>54462</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1915,10 +1927,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U14 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U14 Schwaben  ; LNR   22030; LID 54466)</span></span></span>
+    <b>Bezirksoberliga U14 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U14 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22030</span></span><span class='k-lid'>; LID <span class='k-zahl'>54466</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2085,10 +2097,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U14 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U14 Schwaben  ; LNR   22033; LID 54467)</span></span></span>
+    <b>Bezirksoberliga U14 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U14 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22033</span></span><span class='k-lid'>; LID <span class='k-zahl'>54467</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2256,10 +2268,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U12 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U12 Schwaben  ; LNR   22037; LID 54472)</span></span></span>
+    <b>Bezirksoberliga U12 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U12 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22037</span></span><span class='k-lid'>; LID <span class='k-zahl'>54472</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2392,10 +2404,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U12 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U12 Schwaben  ; LNR   22034; LID 54471)</span></span></span>
+    <b>Bezirksoberliga U12 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U12 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22034</span></span><span class='k-lid'>; LID <span class='k-zahl'>54471</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2632,10 +2644,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U10 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U10 Schwaben  ; LNR   22040; LID 54474)</span></span></span>
+    <b>Bezirksoberliga U10 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U10 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22040</span></span><span class='k-lid'>; LID <span class='k-zahl'>54474</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54474.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54474.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54474.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54474.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -2720,10 +2732,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U10 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U10 Schwaben  ; LNR   22038; LID 54473)</span></span></span>
+    <b>Bezirksoberliga U10 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U10 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22038</span></span><span class='k-lid'>; LID <span class='k-zahl'>54473</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2882,10 +2894,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U9 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U9 Schwaben   ; LNR   22039; LID 54475)</span></span></span>
+    <b>Bezirksoberliga U9 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U9 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22039</span></span><span class='k-lid'>; LID <span class='k-zahl'>54475</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -2988,10 +3000,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U8 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U8 Schwaben   ; LNR   22041; LID 54476)</span></span></span>
+    <b>Bezirksoberliga U8 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U8 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22041</span></span><span class='k-lid'>; LID <span class='k-zahl'>54476</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3106,10 +3118,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksliga U18 männlich Nord 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U18 Schwaben  ; LNR   22023; LID 54486)</span></span></span>
+    <b>Bezirksliga U18 männlich Nord 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U18 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22023</span></span><span class='k-lid'>; LID <span class='k-zahl'>54486</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54486.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54486.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54486.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54486.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3259,10 +3271,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksliga U12 gemischt Mitte Nord 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U12 Schwaben  ; LNR   22077; LID 55701)</span></span></span>
+    <b>Bezirksliga U12 gemischt Mitte Nord 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U12 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22077</span></span><span class='k-lid'>; LID <span class='k-zahl'>55701</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55701.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3412,10 +3424,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksklasse U10 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U10 Schwaben  ; LNR   22076; LID 55699)</span></span></span>
+    <b>Bezirksklasse U10 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U10 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22076</span></span><span class='k-lid'>; LID <span class='k-zahl'>55699</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55699.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3576,7 +3588,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-<p class='keine-news'>Automatisiert keine News gefunden.</p><p class='news-zeile'><a class='angels-news-alle' href='https://www.ssv-schrobenhausen.de/ueber-uns/news' target='_blank'>Alle News</a><span class='verein-sozial'><a href='https://www.instagram.com/ssv_sob_fechten/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a><a href='https://www.facebook.com/groups/1458388591085853/?fref=ts' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></span></p>
+<div class='angels-news'><a href='https://www.ssv-schrobenhausen.de/ueber-uns/news/viewNews/73' target='_blank'><span class='bild-platz'>Keine ladbare Bilddatei</span><span>Mitgliederversammlung 2026</span></a><a href='https://www.ssv-schrobenhausen.de/ueber-uns/news/viewNews/72' target='_blank'><span class='bild-platz'>Keine ladbare Bilddatei</span><span>Philippinische Kampfkunst Modern Arnis</span></a><a href='https://www.ssv-schrobenhausen.de/ueber-uns/news/viewNews/71' target='_blank'><span class='bild-platz'>Keine ladbare Bilddatei</span><span>Es gibt wieder ein SSV Zeltlager</span></a></div><p class='news-zeile'><a class='angels-news-alle' href='https://www.ssv-schrobenhausen.de/ueber-uns/news' target='_blank'>Alle News</a><span class='verein-sozial'><a href='https://www.instagram.com/ssv_sob_fechten/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a><a href='https://www.facebook.com/groups/1458388591085853/?fref=ts' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></span></p>
 <div class='seitenende'>
 
   <div class='werbung-box'>

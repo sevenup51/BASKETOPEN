@@ -31,27 +31,39 @@ h1 { margin-bottom:6px; color:#1a3d7c; }
 summary { position: relative; cursor: pointer; font-size: 11px; padding: 3px 6px; background: #e8eef7;
           border: 1px solid #1a3d7c; border-radius: 3px; margin-bottom: 4px; list-style: none;
           width: 100%; max-width: 780px; box-sizing: border-box; }
-summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 300px;
+summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) max-content 250px;
                     align-items: center; column-gap: 8px; }
-summary.liga-kopf::before { margin-right: 0; }
-summary.liga-kopf .summary-right { position: static; transform: none; width: 300px; min-width: 300px;
-                                   justify-content: flex-end; }
+summary.liga-kopf::before { margin-right: 0; order: 0; }
+summary.liga-kopf > b,
+summary.liga-kopf .liga-titel > b { order: 1; min-width: 0; white-space: nowrap; overflow: hidden;
+                                    text-overflow: ellipsis; }
+summary.liga-kopf > .liga-meta,
+summary.liga-kopf .liga-titel > .liga-meta { order: 2; }
+summary.liga-kopf > .summary-right { order: 3; }
+summary.liga-kopf .summary-right { position: static; transform: none; width: 250px; min-width: 250px;
+                                   justify-content: flex-end; flex-wrap: nowrap; white-space: nowrap; gap: 3px; }
+summary.liga-kopf .liga-status { flex: 0 0 72px; width: 72px; text-align: right; font-size: 9px;
+                                 font-weight: bold; line-height: 1; }
+summary.liga-kopf .details-btn { font-size: 9px; padding: 0 3px; min-width: 0; line-height: 1.35; }
 details.live-liga > summary.liga-kopf,
 details.live-drei-liga > summary.liga-kopf { margin-left: -10px; width: calc(100% + 10px); }
 @media (max-width: 860px) {
   summary.liga-kopf { grid-template-columns: 14px minmax(0, 1fr) max-content minmax(165px, max-content); }
   summary.liga-kopf .summary-right { width: auto; min-width: 0; }
-  summary.liga-kopf .liga-titel > b { white-space: nowrap; }
 }
 .liga-titel { display: contents; }
-.liga-titel > b { min-width: 0; }
-.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
-.liga-meta span.liga-kennung { display: block; white-space: pre; font-weight: normal;
-  font-family: Consolas, "Courier New", monospace; font-variant-numeric: tabular-nums; }
+.liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.2; }
+.liga-meta span.liga-kennung { display: inline-grid; grid-template-columns: 8em auto auto;
+  column-gap: 0.3em; align-items: baseline; white-space: nowrap; font-weight: 600; font-size: 10px;
+  font-family: system-ui, "Segoe UI", sans-serif; font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em; }
+.liga-kennung .k-zahl { display: inline-block; text-align: right; font-variant-numeric: tabular-nums; }
+.liga-kennung .k-lnr .k-zahl { min-width: 4.2em; }
+.liga-kennung .k-lid .k-zahl { min-width: 3em; }
 .legende-kopf { font-size: 13px; color: #1a3d7c; margin: 16px 0 4px; }
 table.legende { border-collapse: collapse; font-size: 10px; margin-bottom: 12px; }
 table.legende th, table.legende td { border: 1px solid #1a3d7c; padding: 2px 6px; text-align: left; }
-summary::marker { display:none; }
+summary::marker, summary::-webkit-details-marker { display:none; }
 summary::before { content:"▶"; font-size:10px; margin-right:5px; color:#1a3d7c; }
 details[open] summary::before { content:"▼"; }
 details { margin-bottom:3px; }
@@ -315,7 +327,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Augsburg TV 1847 – Stand: 22.10.26 21:13:45</h1>
+<h1>Augsburg TV 1847 – Stand: 22.10.26 22:13:50</h1>
 
 
 <details id='wasfindeichhier'>
@@ -661,7 +673,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Augsburg TV 1847 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 22.10.26 21:13:45</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54453</td><td>Herren</td><td>18.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td>59 : 80</td></tr><tr><td>54466</td><td>U14</td><td>18.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>32 : 122</td></tr><tr><td>54454</td><td>Herren</td><td>18.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td>47 : 69</td></tr><tr><td>54462</td><td>U16</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting a.K.</div></td><td>56 : 52</td></tr><tr><td>52534</td><td>Herren</td><td>17.10.2026 20:00</td><td class='mannschaft'><div class='mannschaft'>BC Hellenen München</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td>81 : 27</td></tr><tr><td>52528</td><td>Herren</td><td>17.10.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Nürnberg Falcons</div></td><td>62 : 79</td></tr><tr><td>54471</td><td>U12</td><td>17.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td>94 : 69</td></tr><tr><td>54459</td><td>U18</td><td>17.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>106 : 44</td></tr><tr><td>52498</td><td>Herren</td><td>17.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>ESV Staffelsee</div></td><td>46 : 72</td></tr><tr><td>54461</td><td>U16</td><td>17.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TSV Neuburg</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td>76 : 84</td></tr><tr><td>54476</td><td>U8</td><td>17.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>31 : 13</td></tr><tr><td>54499</td><td>U10</td><td>17.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>56 : 30</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54497</td><td>U12</td><td>24.10.2026 09:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neusäß</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 43009</div></td></tr><tr><td>54471</td><td>U12</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Allianz Court<br>Spiel 34019</div></td></tr><tr style='background-color:#ffdd99;'><td>54499</td><td>U10</td><td>24.10.2026 11:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 46010</div></td></tr><tr><td>52498</td><td>Herren</td><td>24.10.2026 15:15</td><td class='mannschaft'><div class='mannschaft'>MÜNCHEN BASKET</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Städt. Sporthalle Dachauer Str.<br>Spiel 21014</div></td></tr><tr><td>54472</td><td>U12</td><td>25.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 37008</div></td></tr><tr style='background-color:#ffdd99;'><td>54475</td><td>U9</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 39003</div></td></tr><tr style='background-color:#ffdd99;'><td>52534</td><td>Herren</td><td>25.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>DJK Landsberg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 50468</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>25.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 22010</div></td></tr><tr><td>54454</td><td>Herren</td><td>25.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 3</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 3020</div></td></tr><tr><td>52528</td><td>Herren</td><td>25.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>MTV 1879 München</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>MTV München<br>Spiel 50425</div></td></tr><tr style='background-color:#ffdd99;'><td>54453</td><td>Herren</td><td>25.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 4016</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg TV 1847</b><span class='summary-right'>Stand 22.10.26 21:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Augsburg TV 1847 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 22.10.26 22:13:50</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54453</td><td>Herren</td><td>18.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td>59 : 80</td></tr><tr><td>54466</td><td>U14</td><td>18.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>32 : 122</td></tr><tr><td>54454</td><td>Herren</td><td>18.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td>47 : 69</td></tr><tr><td>54462</td><td>U16</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting a.K.</div></td><td>56 : 52</td></tr><tr><td>52534</td><td>Herren</td><td>17.10.2026 20:00</td><td class='mannschaft'><div class='mannschaft'>BC Hellenen München</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td>81 : 27</td></tr><tr><td>52528</td><td>Herren</td><td>17.10.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Nürnberg Falcons</div></td><td>62 : 79</td></tr><tr><td>54471</td><td>U12</td><td>17.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td>94 : 69</td></tr><tr><td>54459</td><td>U18</td><td>17.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>106 : 44</td></tr><tr><td>52498</td><td>Herren</td><td>17.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>ESV Staffelsee</div></td><td>46 : 72</td></tr><tr><td>54461</td><td>U16</td><td>17.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TSV Neuburg</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td>76 : 84</td></tr><tr><td>54476</td><td>U8</td><td>17.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>31 : 13</td></tr><tr><td>54499</td><td>U10</td><td>17.10.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>56 : 30</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54497</td><td>U12</td><td>24.10.2026 09:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neusäß</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 43009</div></td></tr><tr><td>54471</td><td>U12</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Allianz Court<br>Spiel 34019</div></td></tr><tr style='background-color:#ffdd99;'><td>54499</td><td>U10</td><td>24.10.2026 11:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 46010</div></td></tr><tr><td>52498</td><td>Herren</td><td>24.10.2026 15:15</td><td class='mannschaft'><div class='mannschaft'>MÜNCHEN BASKET</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Städt. Sporthalle Dachauer Str.<br>Spiel 21014</div></td></tr><tr><td>54472</td><td>U12</td><td>25.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 37008</div></td></tr><tr style='background-color:#ffdd99;'><td>54475</td><td>U9</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 39003</div></td></tr><tr style='background-color:#ffdd99;'><td>52534</td><td>Herren</td><td>25.10.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>DJK Landsberg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 50468</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>25.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 22010</div></td></tr><tr><td>54454</td><td>Herren</td><td>25.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 3</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 3020</div></td></tr><tr><td>52528</td><td>Herren</td><td>25.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>MTV 1879 München</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>MTV München<br>Spiel 50425</div></td></tr><tr style='background-color:#ffdd99;'><td>54453</td><td>Herren</td><td>25.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 4016</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg TV 1847</b><span class='summary-right'>Stand 22.10.26 22:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr class="offen"><td>Sa. 24.10.26</td><td>09:00</td><td class="wrap">TV 1847 Augsburg 2</td><td class="wrap">TSV Neusäß</td><td class="liga">Bezirksliga<br/>U12 gemischt Mitte<br/>26/27</td><td class="halle">TVA Halle<br/>Gabelsbergerstr. 64<br/>86199 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54497#:~:text=24.10.2026%2009%3A00,TSV%20Neus%C3%A4%C3%9F" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 24.10.26</td><td>11:00</td><td class="wrap">TV 1847 Augsburg</td><td class="wrap">Sportfreunde Friedberg</td><td class="liga">Bezirksliga<br/>U10 gemischt Süd<br/>26/27</td><td class="halle">TVA Halle<br/>Gabelsbergerstr. 64<br/>86199 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54499#:~:text=24.10.2026%2011%3A00,Sportfreunde%20Friedberg" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -694,10 +706,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </table></div></details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Regionalliga Damen HR-Süd (RLD-HRS)</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR     205; LID 52498)</span></span></span>
+    <b>Regionalliga Damen HR-Süd (RLD-HRS)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>205</span></span><span class='k-lid'>; LID <span class='k-zahl'>52498</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52498.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52498.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:08)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52498.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52498.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -900,10 +912,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>2. Regionalliga Süd (2RLS)</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR     202; LID 52528)</span></span></span>
+    <b>2. Regionalliga Süd (2RLS)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>202</span></span><span class='k-lid'>; LID <span class='k-zahl'>52528</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52528.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52528.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:08)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52528.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52528.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:07)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1168,10 +1180,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bayernliga Süd Damen (ByLSD)</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR   20005; LID 52534)</span></span></span>
+    <b>Bayernliga Süd Damen (ByLSD)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>20005</span></span><span class='k-lid'>; LID <span class='k-zahl'>52534</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_52534.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1400,10 +1412,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga Herren 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22004; LID 54453)</span></span></span>
+    <b>Bezirksoberliga Herren 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22004</span></span><span class='k-lid'>; LID <span class='k-zahl'>54453</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54453.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1615,10 +1627,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga Damen 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22003; LID 54454)</span></span></span>
+    <b>Bezirksoberliga Damen 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22003</span></span><span class='k-lid'>; LID <span class='k-zahl'>54454</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54454.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:08)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1795,10 +1807,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksklasse Herren Mitte 26/27</b><span class='liga-meta'><span class='liga-kennung'>(Senioren Schwaben; LNR   22007; LID 54508)</span></span></span>
+    <b>Bezirksklasse Herren Mitte 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22007</span></span><span class='k-lid'>; LID <span class='k-zahl'>54508</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54508.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1957,10 +1969,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U18 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U18 Schwaben  ; LNR   22022; LID 54459)</span></span></span>
+    <b>Bezirksoberliga U18 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U18 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22022</span></span><span class='k-lid'>; LID <span class='k-zahl'>54459</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54459.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2154,10 +2166,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U18 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U18 Schwaben  ; LNR   22025; LID 54460)</span></span></span>
+    <b>Bezirksoberliga U18 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U18 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22025</span></span><span class='k-lid'>; LID <span class='k-zahl'>54460</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54460.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54460.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54460.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54460.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2259,10 +2271,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U16 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U16 Schwaben  ; LNR   22026; LID 54461)</span></span></span>
+    <b>Bezirksoberliga U16 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U16 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22026</span></span><span class='k-lid'>; LID <span class='k-zahl'>54461</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54461.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2474,10 +2486,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U16 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U16 Schwaben  ; LNR   22029; LID 54462)</span></span></span>
+    <b>Bezirksoberliga U16 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U16 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22029</span></span><span class='k-lid'>; LID <span class='k-zahl'>54462</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54462.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2645,10 +2657,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U14 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U14 Schwaben  ; LNR   22030; LID 54466)</span></span></span>
+    <b>Bezirksoberliga U14 männlich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U14 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22030</span></span><span class='k-lid'>; LID <span class='k-zahl'>54466</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54466.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2815,10 +2827,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U14 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U14 Schwaben  ; LNR   22033; LID 54467)</span></span></span>
+    <b>Bezirksoberliga U14 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U14 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22033</span></span><span class='k-lid'>; LID <span class='k-zahl'>54467</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54467.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2986,10 +2998,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U12 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U12 Schwaben  ; LNR   22037; LID 54472)</span></span></span>
+    <b>Bezirksoberliga U12 weiblich 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U12 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22037</span></span><span class='k-lid'>; LID <span class='k-zahl'>54472</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54472.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3122,10 +3134,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U12 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U12 Schwaben  ; LNR   22034; LID 54471)</span></span></span>
+    <b>Bezirksoberliga U12 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U12 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22034</span></span><span class='k-lid'>; LID <span class='k-zahl'>54471</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54471.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3362,10 +3374,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U9 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U9 Schwaben   ; LNR   22039; LID 54475)</span></span></span>
+    <b>Bezirksoberliga U9 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U9 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22039</span></span><span class='k-lid'>; LID <span class='k-zahl'>54475</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:09)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54475.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -3468,10 +3480,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksoberliga U8 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U8 Schwaben   ; LNR   22041; LID 54476)</span></span></span>
+    <b>Bezirksoberliga U8 gemischt 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U8 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22041</span></span><span class='k-lid'>; LID <span class='k-zahl'>54476</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54476.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:09)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3586,10 +3598,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksliga U12 gemischt Mitte 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U12 Schwaben  ; LNR   22043; LID 54497)</span></span></span>
+    <b>Bezirksliga U12 gemischt Mitte 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U12 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22043</span></span><span class='k-lid'>; LID <span class='k-zahl'>54497</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54497.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54497.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54497.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54497.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3765,10 +3777,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </details><details>
 
 <summary class='liga-kopf'>
-    <span class='liga-titel'><b>Bezirksliga U10 gemischt Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'>(U10 Schwaben  ; LNR   22046; LID 54499)</span></span></span>
+    <b>Bezirksliga U10 gemischt Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(U10 Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22046</span></span><span class='k-lid'>; LID <span class='k-zahl'>54499</span>)</span></span></span>
     <span class='summary-right'>
-        
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54499.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54499.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 20:10)</a>
+        <span class='liga-status'></span>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54499.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54499.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 21:10)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3948,7 +3960,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <hr class='short'>
 
 
-<div class='angels-news'><a href='https://tvabasketball.de/%f0%9f%8f%80-u12-1-bleibt-auf-erfolgskurs-deutlicher-auswaertssieg-in-schrobenhausen-%f0%9f%92%aa%f0%9f%94%a5/' target='_blank'><img src='https://tvabasketball.de/wp-content/uploads/2026/02/tva_basketball_Website_Header-scaled.webp' alt='TVA Augsburg Basketball' onerror='bildFehlt(this)'><span>TVA Augsburg Basketball</span></a><a href='https://tvabasketball.de/zweiter-sieg-im-zweiten-spiel/' target='_blank'><span class='bild-platz'>Keine ladbare Bilddatei</span><span>🏀 ZWEITER SIEG IM ZWEITEN SPIEL! 💪</span></a><a href='https://tvabasketball.de/verdienter-sieg-der-tva-maedels-gegen-muenchen-ost/' target='_blank'><span class='bild-platz'>Keine ladbare Bilddatei</span><span>Verdienter Sieg der TVA-Mädels gegen München Ost</span></a></div><p class='news-zeile'><a class='angels-news-alle' href='https://tvabasketball.de/news-blog/' target='_blank'>Alle News</a><span class='verein-sozial'><a href='https://www.instagram.com/tvaugsburgbasketball/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a><a href='https://www.facebook.com/p/TV-Augsburg-Basketball-100050507983048/?locale=de_DE' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></span></p>
+<div class='angels-news'><a href='https://tvabasketball.de/2580-2/' target='_blank'><img src='https://tvabasketball.de/wp-content/uploads/2021/10/Sven.jpg' alt='🏀 DERBYSIEG! TVA U12-1 BLEIBT UNGESCHLAGEN! 💪🔥' onerror='bildFehlt(this)'><span>🏀 DERBYSIEG! TVA U12-1 BLEIBT UNGESCHLAGEN! 💪🔥</span></a><a href='https://tvabasketball.de/%f0%9f%8f%80-u12-1-bleibt-auf-erfolgskurs-deutlicher-auswaertssieg-in-schrobenhausen-%f0%9f%92%aa%f0%9f%94%a5/' target='_blank'><img src='https://tvabasketball.de/wp-content/uploads/2021/10/Sven.jpg' alt='🏀 U12-1 bleibt auf Erfolgskurs – deutlicher Auswärtssieg in Schrobenhausen! 💪🔥' onerror='bildFehlt(this)'><span>🏀 U12-1 bleibt auf Erfolgskurs – deutlicher Auswärtssieg in Schrobenhausen! 💪🔥</span></a><a href='https://tvabasketball.de/zweiter-sieg-im-zweiten-spiel/' target='_blank'><img src='https://tvabasketball.de/wp-content/uploads/2021/10/Sven.jpg' alt='🏀 ZWEITER SIEG IM ZWEITEN SPIEL! 💪' onerror='bildFehlt(this)'><span>🏀 ZWEITER SIEG IM ZWEITEN SPIEL! 💪</span></a></div><p class='news-zeile'><a class='angels-news-alle' href='https://tvabasketball.de/news-blog/' target='_blank'>Alle News</a><span class='verein-sozial'><a href='https://www.instagram.com/tvaugsburgbasketball/' target='_blank' aria-label='Instagram'><svg viewBox='0 0 24 24' aria-hidden='true'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='12' cy='12' r='4' fill='none' stroke='#c13584' stroke-width='2'/><circle cx='17.5' cy='6.5' r='1' fill='#c13584'/></svg></a><a href='https://www.facebook.com/p/TV-Augsburg-Basketball-100050507983048/?locale=de_DE' target='_blank' aria-label='Facebook'><svg viewBox='0 0 24 24' aria-hidden='true'><path fill='#1877F2' d='M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z'/></svg></a></span></p>
 <div class='seitenende'>
 
   <div class='werbung-box'>
