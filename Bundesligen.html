@@ -36,6 +36,8 @@ summary.liga-kopf { display: grid; grid-template-columns: 14px minmax(0, 1fr) ma
 summary.liga-kopf::before { margin-right: 0; }
 summary.liga-kopf .summary-right { position: static; transform: none; width: 300px; min-width: 300px;
                                    justify-content: flex-end; }
+details.live-liga > summary.liga-kopf,
+details.live-drei-liga > summary.liga-kopf { margin-left: -10px; width: calc(100% + 10px); }
 .liga-titel { display: contents; }
 .liga-titel > b { min-width: 0; }
 .liga-meta { text-align: right; font-weight: normal; font-size: 10px; line-height: 1.3; }
@@ -308,7 +310,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 22.10.26 19:06:12</h1>
+<h1>Bundesligen – Stand: 22.10.26 19:36:14</h1>
 
 
 <details id='wasfindeichhier'>
@@ -654,7 +656,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <button onclick="openLivescoreDrei()">livescore_3days</button>
 </div>
 
-<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 22.10 19:06:12</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><span class='liga-titel'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR       1; LID 55802)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
+<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 22.10 19:36:14</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><span class='liga-titel'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR       1; LID 55802)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EWE Baskets Oldenburg</div>
@@ -673,7 +675,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR       1; LID 55802)</span></span></span>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:41)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#ffdd99;'></span>
     </span>
@@ -993,7 +995,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>1. Bundesliga (Toyota DBBL)</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR      30; LID 55738)</span></span></span>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:41)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1244,7 +1246,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>Herren ProA</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR      10; LID 55811)</span></span></span>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:41)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1671,7 +1673,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR      43; LID 55749)</span></span></span>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1956,7 +1958,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>2. DBBL Nord</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR      40; LID 55746)</span></span></span>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55746.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2254,7 +2256,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR      22; LID 55817)</span></span></span>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2650,7 +2652,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>Herren ProB Nord</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR      20; LID 55815)</span></span></span>
     <span class='summary-right'>
         
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2971,7 +2973,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>BBL-Pokal 1. Runde</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR       8; LID 55809)</span></span></span>
     <span class='summary-right'>
         <span style='color:#1a3d7c; font-weight:bold;'>Runde beendet</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55809.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#1a3d7c;'></span>
     </span>
@@ -2996,7 +2998,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>BBL-Pokal 1/8-Finale</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR       6; LID 55807)</span></span></span>
     <span class='summary-right'>
         <span style='color:#1a3d7c; font-weight:bold;'>Runde beendet</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55807.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#1a3d7c;'></span>
     </span>
@@ -3107,7 +3109,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>DBBL-Pokal Runde 1</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR      35; LID 55743)</span></span></span>
     <span class='summary-right'>
         <span style='color:#1a3d7c; font-weight:bold;'>Runde beendet</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55743.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#1a3d7c;'></span>
     </span>
@@ -3132,7 +3134,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <span class='liga-titel'><b>DBBL-Pokal Runde 2</b><span class='liga-meta'><span class='liga-kennung'>(Senioren      ; LNR      37; LID 55744)</span></span></span>
     <span class='summary-right'>
         <span style='color:#1a3d7c; font-weight:bold;'>Runde beendet</span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 18:42)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55744.html' onclick='liveHref(this)' target='_blank'>Details ( 22.10. 19:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon' style='background:#1a3d7c;'></span>
     </span>
