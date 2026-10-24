@@ -47,6 +47,20 @@ summary.liga-kopf .liga-status { flex: 0 0 84px; width: 84px; text-align: right;
 summary.liga-kopf .details-btn { font-size: 9px; padding: 0 3px; min-width: 0; line-height: 1.35; }
 details.live-liga > summary.liga-kopf,
 details.live-drei-liga > summary.liga-kopf { margin-left: -10px; width: calc(100% + 10px); }
+details.live-drei-liga > summary.liga-kopf { grid-template-columns: 14px minmax(0, 1fr) max-content 214px; }
+details.live-drei-liga > summary.liga-kopf .summary-right.naechstes {
+  position: static; transform: none; display: grid;
+  grid-template-columns: max-content 5em 3.6em; width: 214px; min-width: 214px;
+  justify-content: end; align-items: baseline; column-gap: 0.35em;
+  font-size: 11px; font-weight: normal; white-space: nowrap;
+}
+details.live-drei-liga > summary.liga-kopf .naechstes .tag { text-align: right; }
+details.live-drei-liga > summary.liga-kopf .naechstes .uhr {
+  text-align: right; font-variant-numeric: tabular-nums; font-weight: bold;
+}
+details.live-drei-liga > summary.liga-kopf .summary-right.kein-aktuell {
+  display: block; width: 214px; min-width: 214px; text-align: right;
+}
 @media (max-width: 860px) {
   summary.liga-kopf { grid-template-columns: 14px minmax(0, 1fr) max-content minmax(165px, max-content); }
   summary.liga-kopf .summary-right { width: auto; min-width: 0; }
@@ -206,6 +220,15 @@ function blockPfad(d){
 }
 var bloeckeWerdenHergestellt = false;
 var bloeckeStehen = false;
+function leseVergroesserung(){
+  var gesetzt = parseFloat(document.documentElement.style.zoom);
+  if(!(gesetzt > 0)) gesetzt = 1;
+  var fenster = window.visualViewport;
+  var gesehen = fenster && fenster.scale ? fenster.scale : 1;
+  var faktor = Math.max(gesetzt, gesehen);
+  if(faktor <= 1.05) return 1;
+  return Math.round(faktor * 100) / 100;
+}
 function speichereBloecke(){
   if(bloeckeWerdenHergestellt || !bloeckeStehen) return;
   var offen = [];
@@ -215,10 +238,12 @@ function speichereBloecke(){
   sessionStorage.setItem("bbBloecke:" + location.pathname, JSON.stringify({
     offen: offen,
     drei: document.body.classList.contains("zeige-drei-tage"),
-    scroll: window.scrollY
+    scroll: window.scrollY,
+    zoom: leseVergroesserung()
   }));
 }
 function stelleBloeckeHer(){
+  if(!document.body) return;
   var start = document.body.getAttribute("data-start");
   if(start === "nur-datum") return;
   var roh = sessionStorage.getItem("bbBloecke:" + location.pathname);
@@ -233,8 +258,19 @@ function stelleBloeckeHer(){
   });
   if(stand.drei) document.body.classList.add("zeige-drei-tage");
   else document.body.classList.remove("zeige-drei-tage");
+  if(stand.zoom > 1.05) document.documentElement.style.zoom = String(stand.zoom);
+  else document.documentElement.style.zoom = "";
   bloeckeWerdenHergestellt = false;
   if(typeof stand.scroll === "number") window.scrollTo(0, stand.scroll);
+}
+function istMorgenGruppe(d){
+  var tag = d.querySelector(":scope > summary .naechstes .tag");
+  return !!(tag && tag.textContent.indexOf("morgen") >= 0);
+}
+function schliesseMorgen(){
+  document.querySelectorAll("details.live-drei-liga").forEach(function(d){
+    if(istMorgenGruppe(d) || d.classList.contains("live-drei-leer")) d.removeAttribute("open");
+  });
 }
 function gruppeAuf(knopf){
   var box = knopf.closest("details");
@@ -265,7 +301,8 @@ function openLivescoreDrei(){
   document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
   document.querySelectorAll("details.live-drei, details.live-drei-liga").forEach(function(d){
-    d.setAttribute("open","");
+    if(d.classList.contains("live-drei-liga") && (istMorgenGruppe(d) || d.classList.contains("live-drei-leer"))) d.removeAttribute("open");
+    else d.setAttribute("open","");
   });
   document.querySelectorAll("details.live-sammel, details.live-liga").forEach(function(d){
     d.removeAttribute("open");
@@ -301,8 +338,12 @@ document.addEventListener("DOMContentLoaded", function(){
   });
   stelleBloeckeHer();
   bloeckeStehen = true;
+  schliesseMorgen();
 });
+window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); });
+window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); });
 window.addEventListener("beforeunload", speichereBloecke);
+window.addEventListener("pagehide", speichereBloecke);
 function bildFehlt(img){
   var platz = document.createElement("span");
   platz.className = "bild-platz";
@@ -327,7 +368,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 24.10.26 18:17:32</h1>
+<h1>Bundesligen – Stand: 24.10.26 18:23:40</h1>
 
 
 <details id='wasfindeichhier'>
@@ -595,8 +636,27 @@ T aktuelle Zeit, L letzter Refresh, R nächster Refresh, in die Restzeit,<br>
 UN nächster Upload, UA letzter Upload.<br>
 Unter 11 Sekunden ist die Restzeit grün mit weißer Schrift.<br>
 Der Upload läuft alle 6 Minuten. Der Refresh kommt spätestens 80 Sekunden danach.<br>
-Die Stoppuhr springt auf 20 Sekunden nur, wenn die Stand-Zeit der ersten grünen Kachel<br>
-plus 80 Sekunden vor UA liegt. Eine neuere Kachelzeit lässt die Uhr weiterlaufen.
+Die Stoppuhr springt auf 20 Sekunden, sobald das Ergebnis schon da ist:<br>
+der Stand der ersten grünen Kachel plus 80 Sekunden liegt vor UA,<br>
+oder der letzte Upload liegt nach dem Laden dieser Seite.<br>
+Dann wartet der Refresh nicht mehrere Minuten.<br>
+Ist die Seite noch aktuell und der nächste Upload innerhalb von 4 Minuten,<br>
+wartet der Refresh bis 30 Sekunden nach diesem Upload.<br>
+Danach gilt wieder die 20-Sekunden-Regel.<br>
+Ein Refresh lässt geschlossene Gruppen geschlossen. Eine Vergrößerung der Seite bleibt erhalten.
+<br>
+<b>24.10.26</b><br>
+Rechts an jeder Liga unter Spiele von gestern, heute und morgen steht<br>
+Nächstes Spiel heute: HH:MM oder Nächstes Spiel morgen: HH:MM.<br>
+Die Uhrzeit steht in allen Gruppen an derselben Stelle.<br>
+Steht dort morgen, ist diese Liga zugeklappt.<br>
+Steht bei der DBBL NE und der Anpfiff ist vorbei, kommt der Spielstand<br>
+von der Spielseite, die große Zahl über dem Boxscore. Darunter stehen<br>
+die Viertel Q1 bis Q4, soweit sie gespielt sind. Das steht unter<br>
+livescore_3days und unter livescore_heute. Läuft die Partie, bleibt<br>
+die Kachel live. Vor dem Anpfiff bleibt NE.<br>
+Hat eine Liga unter Spiele von gestern, heute und morgen kein Spiel,<br>
+steht rechts kein aktuelles Spiel. Diese Liga bleibt zu, bis man sie öffnet.
 <br>
 <b>14.10.26</b><br>
 Der Block heißt Spiele live oder beginnen gleich. Darüber steht<br>
@@ -673,7 +733,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 24.10.2026</p><details class='live-sammel' data-block='Live' open><summary><b>LIVE</b> <span id='live-refresh'></span><span class='summary-right'>Stand: 24.10 18:17:32</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div>
+<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 24.10.2026</p><details class='live-sammel' data-block='Live' open><summary><b>LIVE</b> <span id='live-refresh'></span><span class='summary-right'>Stand: 24.10 18:23:40</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div>
 <details class="legende-refresh" open>
   <summary><b>Legende Refreshzeile</b></summary>
   <table class="legende">
@@ -696,20 +756,20 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date'>24.10.2026 18:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:16</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:22</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006866#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-liga' data-block='live-55749' open><summary class='liga-kopf'><b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>43</span></span><span class='k-lid'>; LID <span class='k-zahl'>55749</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-ohne-stand' style='background:#b7ebc6;'>
+            </div></div></details><details class='live-liga' data-block='live-55749' open><summary class='liga-kopf'><b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>43</span></span><span class='k-lid'>; LID <span class='k-zahl'>55749</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live ls-boxstand' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Lou's Foodtruck MTV Stuttgart</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>65:71</div>
                     <div class='ls-team' style='text-align:right;'>TS Jahn München</div>
                 </div>
                 
                 <div class='ls-date'>24.10.2026 16:30</div>
-                
-                
+                <div class='ls-date'>Q1 16-21 | Q2 23-17 | Q3 19-20 | Q4 7-13</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=dLmck-uzFwA' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11462/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-aktiv ls-ohne-stand' style='background:#b7ebc6;'>
@@ -725,85 +785,85 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=GJAeWj6w8tE' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11463/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box ls-aktiv ls-ohne-stand' style='background:#b7ebc6;'>
+            </div><div class='livescore-box ls-aktiv ls-live ls-boxstand' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Medikamente per Klick Bamberg Baskets</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>21:14</div>
                     <div class='ls-team' style='text-align:right;'>KB Sharks Würzburg</div>
                 </div>
                 
                 <div class='ls-date'>24.10.2026 18:00</div>
-                
-                
+                <div class='ls-date'>Q1 21-14</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=tmE0_P8tYDs' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11464/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-liga' data-block='live-55746' open><summary class='liga-kopf'><b>2. DBBL Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>40</span></span><span class='k-lid'>; LID <span class='k-zahl'>55746</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-ohne-stand' style='background:#b7ebc6;'>
+            </div></div></details><details class='live-liga' data-block='live-55746' open><summary class='liga-kopf'><b>2. DBBL Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>40</span></span><span class='k-lid'>; LID <span class='k-zahl'>55746</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live ls-boxstand' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SCALA Hamburg</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>10:43</div>
                     <div class='ls-team' style='text-align:right;'>BBC Osnabrück</div>
                 </div>
                 
                 <div class='ls-date'>24.10.2026 17:15</div>
-                
-                
+                <div class='ls-date'>Q1 8-22 | Q2 2-21</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=gt1leJj3Z_s' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11330/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box ls-aktiv ls-ohne-stand' style='background:#b7ebc6;'>
+            </div><div class='livescore-box ls-aktiv ls-live ls-boxstand' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>WINGS Leverkusen</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>23:9</div>
                     <div class='ls-team' style='text-align:right;'>Eimsbütteler Turnverband</div>
                 </div>
                 
                 <div class='ls-date'>24.10.2026 18:00</div>
-                
-                
+                <div class='ls-date'>Q1 23-9</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=rZK6qWL1LEA' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11331/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box ls-aktiv ls-ohne-stand' style='background:#b7ebc6;'>
+            </div><div class='livescore-box ls-aktiv ls-live ls-boxstand' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ChemCats Chemnitz</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>25:17</div>
                     <div class='ls-team' style='text-align:right;'>TuS Lichterfelde</div>
                 </div>
                 
                 <div class='ls-date'>24.10.2026 18:00</div>
-                
-                
+                <div class='ls-date'>Q1 23-15 | Q2 2-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=u7vctLI_H6s' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11332/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div></div></details><details class='live-liga' data-block='live-55817' open><summary class='liga-kopf'><b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SV Fellbach Flashers</div>
-                    <div class='ls-score'>47:37</div>
+                    <div class='ls-score'>49:38</div>
                     <div class='ls-team' style='text-align:right;'>Basketball Löwen</div>
                 </div>
                 
                 <div class='ls-date'>24.10.2026 17:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:17</span><span>Q2 00:27</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span>Q2</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sv-fellbach-flashers/sv-fellbach-flashers-vs-catl-basketball-loewen' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006162?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Bayer Giants Leverkusen</div>
-                    <div class='ls-score'>21:8</div>
+                    <div class='ls-score'>25:12</div>
                     <div class='ls-team' style='text-align:right;'>FC Bayern Basketball II</div>
                 </div>
                 
                 <div class='ls-date'>24.10.2026 18:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:17</span><span>Q1 00:44</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span>Q2 08:23</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bayer-giants-leverkusen/bayer-giants-leverkusen-vs-fc-bayern-basketball-ii' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006164?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 24.10 18:17:32</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
+            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 24.10 18:23:40</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>18:30</span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EWE Baskets Oldenburg</div>
@@ -826,7 +886,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:16</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:22</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006866#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
@@ -852,7 +912,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:16</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:22</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006868#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style=''>
@@ -894,7 +954,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006872#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55738' open><summary class='liga-kopf'><b>1. Bundesliga (Toyota DBBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>30</span></span><span class='k-lid'>; LID <span class='k-zahl'>55738</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55738'><summary class='liga-kopf'><b>1. Bundesliga (Toyota DBBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>30</span></span><span class='k-lid'>; LID <span class='k-zahl'>55738</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>morgen:</span><span class='uhr'>16:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Eisvögel USC Freiburg</div>
@@ -959,7 +1019,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=CYtag3Ib7J8' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11220/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55811' open><summary class='liga-kopf'><b>Herren ProA</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>10</span></span><span class='k-lid'>; LID <span class='k-zahl'>55811</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55811' open><summary class='liga-kopf'><b>Herren ProA</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>10</span></span><span class='k-lid'>; LID <span class='k-zahl'>55811</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>19:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>VfL SparkassenStars Bochum</div>
@@ -1063,7 +1123,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/rheinstars-koeln/rheinstars-koeln-vs-medikamente-per-klick-bayreuth' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005873?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55749' open><summary class='liga-kopf'><b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>43</span></span><span class='k-lid'>; LID <span class='k-zahl'>55749</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55749' open><summary class='liga-kopf'><b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>43</span></span><span class='k-lid'>; LID <span class='k-zahl'>55749</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>19:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Rhein-Main Baskets</div>
@@ -1076,17 +1136,17 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=azZQKbpYPmI' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11461/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            </div><div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Lou's Foodtruck MTV Stuttgart</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>65:71</div>
                     <div class='ls-team' style='text-align:right;'>TS Jahn München</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 16:30</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 16:30</div>
+                <div class='ls-date'>Q1 16-21 | Q2 23-17 | Q3 19-20 | Q4 7-13</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=dLmck-uzFwA' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11462/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
@@ -1102,17 +1162,17 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=GJAeWj6w8tE' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11463/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            </div><div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Medikamente per Klick Bamberg Baskets</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>21:14</div>
                     <div class='ls-team' style='text-align:right;'>KB Sharks Würzburg</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 18:00</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:00</div>
+                <div class='ls-date'>Q1 21-14</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=tmE0_P8tYDs' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11464/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
@@ -1141,7 +1201,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=EE95UlyJ3t8' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11466/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55746' open><summary class='liga-kopf'><b>2. DBBL Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>40</span></span><span class='k-lid'>; LID <span class='k-zahl'>55746</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55746' open><summary class='liga-kopf'><b>2. DBBL Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>40</span></span><span class='k-lid'>; LID <span class='k-zahl'>55746</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>18:30</span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>UBC Münster</div>
@@ -1154,43 +1214,43 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=6Un9opcoW6k' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11329/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            </div><div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SCALA Hamburg</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>10:43</div>
                     <div class='ls-team' style='text-align:right;'>BBC Osnabrück</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 17:15</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 17:15</div>
+                <div class='ls-date'>Q1 8-22 | Q2 2-21</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=gt1leJj3Z_s' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11330/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            </div><div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>WINGS Leverkusen</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>23:9</div>
                     <div class='ls-team' style='text-align:right;'>Eimsbütteler Turnverband</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 18:00</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:00</div>
+                <div class='ls-date'>Q1 23-9</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=rZK6qWL1LEA' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11331/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            </div><div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ChemCats Chemnitz</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>25:17</div>
                     <div class='ls-team' style='text-align:right;'>TuS Lichterfelde</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 18:00</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:00</div>
+                <div class='ls-date'>Q1 23-15 | Q2 2-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=u7vctLI_H6s' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11332/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
@@ -1219,30 +1279,30 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=pL0jMICSnpQ' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11334/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55817' open><summary class='liga-kopf'><b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-live' style='background:#ffdd99;'>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55817' open><summary class='liga-kopf'><b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>19:00</span></span></summary><div class='livescore-list'><div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SV Fellbach Flashers</div>
-                    <div class='ls-score'>47:37</div>
+                    <div class='ls-score'>49:38</div>
                     <div class='ls-team' style='text-align:right;'>Basketball Löwen</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 17:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:17</span><span>Q2 00:27</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span>Q2</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sv-fellbach-flashers/sv-fellbach-flashers-vs-catl-basketball-loewen' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006162?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Bayer Giants Leverkusen</div>
-                    <div class='ls-score'>21:8</div>
+                    <div class='ls-score'>25:12</div>
                     <div class='ls-team' style='text-align:right;'>FC Bayern Basketball II</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:17</span><span>Q1 00:44</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span>Q2 08:23</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bayer-giants-leverkusen/bayer-giants-leverkusen-vs-fc-bayern-basketball-ii' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006164?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
@@ -1310,7 +1370,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-tsv-oberhaching-tropics' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006166?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55815' open><summary class='liga-kopf'><b>Herren ProB Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>20</span></span><span class='k-lid'>; LID <span class='k-zahl'>55815</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55815' open><summary class='liga-kopf'><b>Herren ProB Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>20</span></span><span class='k-lid'>; LID <span class='k-zahl'>55815</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>19:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSV Neustadt temps Shooters</div>
@@ -1401,7 +1461,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/baskets-juniors-tsg-westerstede/baskets-juniors-tsg-westerstede-vs-seawolves-academy' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006369?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details></div></details><details class='hat-livescore spielt-heute'>
+            </div></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55807'><summary class='liga-kopf'><b>BBL-Pokal 1/8-Finale</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>6</span></span><span class='k-lid'>; LID <span class='k-zahl'>55807</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details></div></details><details class='hat-livescore spielt-heute'>
 
 <summary class='liga-kopf'>
     <b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span>
@@ -1440,7 +1500,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:16</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:22</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006866#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -1470,7 +1530,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 20:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:16</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:22</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006868#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -2850,7 +2910,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </summary>
 
 <div style='margin-left:10px;'>
-<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>2. DBBL Süd, gestern bis morgen</div>
+<details class='livescore-block' open><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>2. DBBL Süd, gestern bis morgen</div>
             <div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -2866,17 +2926,17 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=azZQKbpYPmI' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11461/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            <div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Lou's Foodtruck MTV Stuttgart</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>65:71</div>
                     <div class='ls-team' style='text-align:right;'>TS Jahn München</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 16:30</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 16:30</div>
+                <div class='ls-date'>Q1 16-21 | Q2 23-17 | Q3 19-20 | Q4 7-13</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=dLmck-uzFwA' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11462/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -2896,17 +2956,17 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=GJAeWj6w8tE' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11463/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            <div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Medikamente per Klick Bamberg Baskets</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>21:14</div>
                     <div class='ls-team' style='text-align:right;'>KB Sharks Würzburg</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 18:00</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:00</div>
+                <div class='ls-date'>Q1 21-14</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=tmE0_P8tYDs' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11464/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -3157,15 +3217,6 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </thead>
 <tbody>
 <tr style="background-color:#ffdd99; font-weight:bold;">
-<td>3020</td>
-<td>4</td>
-<td>24.10.2026 16:30</td>
-<td><div class="mannschaft">Lou's Foodtruck MTV Stuttgart</div></td>
-<td><div class="mannschaft">TS Jahn München</div></td>
-<td><div class="halle">Sporthalle West</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Jennifer Schuster</span></td>
-<td><a href="https://toyota-dbbl.de/spiel/11462/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=dLmck-uzFwA" target="_blank">Live</a></td></tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>3021</td>
 <td>4</td>
 <td>24.10.2026 17:00</td>
@@ -3174,15 +3225,6 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td><div class="halle">Theresianum Mainz</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Kevin Ketzer</span><br/><span class="sr-zeile"><b>SR2</b> David Damjanovic</span></td>
 <td><a href="https://toyota-dbbl.de/spiel/11463/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=GJAeWj6w8tE" target="_blank">Live</a></td></tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>3022</td>
-<td>4</td>
-<td>24.10.2026 18:00</td>
-<td><div class="mannschaft">Medikamente per Klick Bamberg Baskets</div></td>
-<td><div class="mannschaft">KB Sharks Würzburg</div></td>
-<td><div class="halle">Graf-Stauffenberg-Schule</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Dennis Kaufhold</span><br/><span class="sr-zeile"><b>SR2</b> Elena Bistrian</span></td>
-<td><a href="https://toyota-dbbl.de/spiel/11464/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=tmE0_P8tYDs" target="_blank">Live</a></td></tr>
 <tr style="background-color:#ffdd99; font-weight:bold;">
 <td>3023</td>
 <td>4</td>
@@ -3278,7 +3320,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </summary>
 
 <div style='margin-left:10px;'>
-<details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>2. DBBL Nord, gestern bis morgen</div>
+<details class='livescore-block' open><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>2. DBBL Nord, gestern bis morgen</div>
             <div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -3294,47 +3336,47 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=6Un9opcoW6k' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11329/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            <div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SCALA Hamburg</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>10:43</div>
                     <div class='ls-team' style='text-align:right;'>BBC Osnabrück</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 17:15</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 17:15</div>
+                <div class='ls-date'>Q1 8-22 | Q2 2-21</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=gt1leJj3Z_s' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11330/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            <div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>WINGS Leverkusen</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>23:9</div>
                     <div class='ls-team' style='text-align:right;'>Eimsbütteler Turnverband</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 18:00</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:00</div>
+                <div class='ls-date'>Q1 23-9</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=rZK6qWL1LEA' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11331/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box ls-ohne-stand' style='background:#ffdd99;'>
+            <div class='livescore-box ls-live ls-boxstand' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ChemCats Chemnitz</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>25:17</div>
                     <div class='ls-team' style='text-align:right;'>TuS Lichterfelde</div>
                 </div>
                 
-                <div class='ls-date'>24.10.2026 18:00</div>
-                
-                
+                <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:00</div>
+                <div class='ls-date'>Q1 23-15 | Q2 2-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span></span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=u7vctLI_H6s' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11332/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -3598,33 +3640,6 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </thead>
 <tbody>
 <tr style="background-color:#ffdd99; font-weight:bold;">
-<td>2020</td>
-<td>4</td>
-<td>24.10.2026 17:15</td>
-<td><div class="mannschaft">SCALA Hamburg</div></td>
-<td><div class="mannschaft">BBC Osnabrück</div></td>
-<td><div class="halle">Loogestraße</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Shoun Schröder</span><br/><span class="sr-zeile"><b>SR2</b> Mehmet Halavurta</span></td>
-<td><a href="https://toyota-dbbl.de/spiel/11330/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=gt1leJj3Z_s" target="_blank">Live</a></td></tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>2021</td>
-<td>4</td>
-<td>24.10.2026 18:00</td>
-<td><div class="mannschaft">WINGS Leverkusen</div></td>
-<td><div class="mannschaft">Eimsbütteler Turnverband</div></td>
-<td><div class="halle">Sporthalle Bahnstadt</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> *** ****</span><br/><span class="sr-zeile"><b>SR2</b> Thomas Schilling</span></td>
-<td><a href="https://toyota-dbbl.de/spiel/11331/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=rZK6qWL1LEA" target="_blank">Live</a></td></tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
-<td>2022</td>
-<td>4</td>
-<td>24.10.2026 18:00</td>
-<td><div class="mannschaft">ChemCats Chemnitz</div></td>
-<td><div class="mannschaft">TuS Lichterfelde</div></td>
-<td><div class="halle">Sporthalle am Schloßteich</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Curt Kindler</span><br/><span class="sr-zeile"><b>SR2</b> Tristan Runge</span></td>
-<td><a href="https://toyota-dbbl.de/spiel/11332/#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=u7vctLI_H6s" target="_blank">Live</a></td></tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>2023</td>
 <td>4</td>
 <td>24.10.2026 18:30</td>
@@ -3712,7 +3727,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span>
     <span class='summary-right'>
         <span class='liga-status'></span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 24.10. 18:11)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 24.10. 18:15)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3724,13 +3739,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SV Fellbach Flashers</div>
-                    <div class='ls-score'>47:37</div>
+                    <div class='ls-score'>49:38</div>
                     <div class='ls-team' style='text-align:right;'>Basketball Löwen</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 17:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:17</span><span>Q2 00:27</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span>Q2</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sv-fellbach-flashers/sv-fellbach-flashers-vs-catl-basketball-loewen' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006162?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -3739,13 +3754,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Bayer Giants Leverkusen</div>
-                    <div class='ls-score'>21:8</div>
+                    <div class='ls-score'>25:12</div>
                     <div class='ls-team' style='text-align:right;'>FC Bayern Basketball II</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>24.10.2026 18:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:17</span><span>Q1 00:44</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 18:23</span><span>Q2 08:23</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bayer-giants-leverkusen/bayer-giants-leverkusen-vs-fc-bayern-basketball-ii' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006164?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -4985,6 +5000,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 /* Uhr und Refresh nur bei offenem Live-Block und einer aktiven Kachel. */
 (function () {
   var ziel = 0;
+  var halteBis = 0;
   var geladen = new Date();
   var uhrIntervall = 0;
   function zwei(zahl) { return (zahl < 10 ? "0" : "") + zahl; }
@@ -5022,12 +5038,25 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     }
     return false;
   }
+  function ergebnisSchonDa(ab, ua) {
+    if (staendeZuAlt(ua)) return true;
+    return ua > geladen.getTime() + 15 * 1000 && ab >= ua;
+  }
   function refreshZiel(ab) {
     var un = naechsterUpload(ab);
     var ua = letzterUpload(ab);
     var plan = Math.min(ab + 6 * 60 * 1000, un + 80 * 1000);
-    if (staendeZuAlt(ua)) plan = ab + 20 * 1000;
-    return plan;
+    if (ergebnisSchonDa(ab, ua)) {
+      halteBis = 0;
+      return { zeit: ab + 20 * 1000, art: "zwanzig" };
+    }
+    if (un - ab <= 4 * 60 * 1000) {
+      halteBis = un + 30 * 1000;
+      return { zeit: halteBis, art: "halte" };
+    }
+    if (halteBis && ab < halteBis) return { zeit: halteBis, art: "halte" };
+    halteBis = 0;
+    return { zeit: plan, art: "plan" };
   }
   function stoppuhr() {
     var rest = Math.max(0, Math.ceil((ziel - Date.now()) / 1000));
@@ -5073,7 +5102,9 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
       return;
     }
     var plan = refreshZiel(Date.now());
-    if (!ziel || plan < ziel) ziel = plan;
+    if (plan.art === "halte") ziel = plan.zeit;
+    else if (plan.art === "zwanzig") { if (!ziel || ziel > plan.zeit) ziel = plan.zeit; }
+    else if (!ziel || plan.zeit < ziel) ziel = plan.zeit;
     el.innerHTML = zeilentext();
     starteUhr();
   }
