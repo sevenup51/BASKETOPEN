@@ -47,6 +47,20 @@ summary.liga-kopf .liga-status { flex: 0 0 84px; width: 84px; text-align: right;
 summary.liga-kopf .details-btn { font-size: 9px; padding: 0 3px; min-width: 0; line-height: 1.35; }
 details.live-liga > summary.liga-kopf,
 details.live-drei-liga > summary.liga-kopf { margin-left: -10px; width: calc(100% + 10px); }
+details.live-drei-liga > summary.liga-kopf { grid-template-columns: 14px minmax(0, 1fr) max-content 214px; }
+details.live-drei-liga > summary.liga-kopf .summary-right.naechstes {
+  position: static; transform: none; display: grid;
+  grid-template-columns: max-content 5em 3.6em; width: 214px; min-width: 214px;
+  justify-content: end; align-items: baseline; column-gap: 0.35em;
+  font-size: 11px; font-weight: normal; white-space: nowrap;
+}
+details.live-drei-liga > summary.liga-kopf .naechstes .tag { text-align: right; }
+details.live-drei-liga > summary.liga-kopf .naechstes .uhr {
+  text-align: right; font-variant-numeric: tabular-nums; font-weight: bold;
+}
+details.live-drei-liga > summary.liga-kopf .summary-right.kein-aktuell {
+  display: block; width: 214px; min-width: 214px; text-align: right;
+}
 @media (max-width: 860px) {
   summary.liga-kopf { grid-template-columns: 14px minmax(0, 1fr) max-content minmax(165px, max-content); }
   summary.liga-kopf .summary-right { width: auto; min-width: 0; }
@@ -206,6 +220,15 @@ function blockPfad(d){
 }
 var bloeckeWerdenHergestellt = false;
 var bloeckeStehen = false;
+function leseVergroesserung(){
+  var gesetzt = parseFloat(document.documentElement.style.zoom);
+  if(!(gesetzt > 0)) gesetzt = 1;
+  var fenster = window.visualViewport;
+  var gesehen = fenster && fenster.scale ? fenster.scale : 1;
+  var faktor = Math.max(gesetzt, gesehen);
+  if(faktor <= 1.05) return 1;
+  return Math.round(faktor * 100) / 100;
+}
 function speichereBloecke(){
   if(bloeckeWerdenHergestellt || !bloeckeStehen) return;
   var offen = [];
@@ -215,10 +238,12 @@ function speichereBloecke(){
   sessionStorage.setItem("bbBloecke:" + location.pathname, JSON.stringify({
     offen: offen,
     drei: document.body.classList.contains("zeige-drei-tage"),
-    scroll: window.scrollY
+    scroll: window.scrollY,
+    zoom: leseVergroesserung()
   }));
 }
 function stelleBloeckeHer(){
+  if(!document.body) return;
   var start = document.body.getAttribute("data-start");
   if(start === "nur-datum") return;
   var roh = sessionStorage.getItem("bbBloecke:" + location.pathname);
@@ -233,8 +258,19 @@ function stelleBloeckeHer(){
   });
   if(stand.drei) document.body.classList.add("zeige-drei-tage");
   else document.body.classList.remove("zeige-drei-tage");
+  if(stand.zoom > 1.05) document.documentElement.style.zoom = String(stand.zoom);
+  else document.documentElement.style.zoom = "";
   bloeckeWerdenHergestellt = false;
   if(typeof stand.scroll === "number") window.scrollTo(0, stand.scroll);
+}
+function istMorgenGruppe(d){
+  var tag = d.querySelector(":scope > summary .naechstes .tag");
+  return !!(tag && tag.textContent.indexOf("morgen") >= 0);
+}
+function schliesseMorgen(){
+  document.querySelectorAll("details.live-drei-liga").forEach(function(d){
+    if(istMorgenGruppe(d) || d.classList.contains("live-drei-leer")) d.removeAttribute("open");
+  });
 }
 function gruppeAuf(knopf){
   var box = knopf.closest("details");
@@ -265,7 +301,8 @@ function openLivescoreDrei(){
   document.body.classList.remove("zeige-drei-tage");
   bloeckeWerdenHergestellt = true;
   document.querySelectorAll("details.live-drei, details.live-drei-liga").forEach(function(d){
-    d.setAttribute("open","");
+    if(d.classList.contains("live-drei-liga") && (istMorgenGruppe(d) || d.classList.contains("live-drei-leer"))) d.removeAttribute("open");
+    else d.setAttribute("open","");
   });
   document.querySelectorAll("details.live-sammel, details.live-liga").forEach(function(d){
     d.removeAttribute("open");
@@ -301,8 +338,12 @@ document.addEventListener("DOMContentLoaded", function(){
   });
   stelleBloeckeHer();
   bloeckeStehen = true;
+  schliesseMorgen();
 });
+window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); });
+window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); });
 window.addEventListener("beforeunload", speichereBloecke);
+window.addEventListener("pagehide", speichereBloecke);
 function bildFehlt(img){
   var platz = document.createElement("span");
   platz.className = "bild-platz";
@@ -327,7 +368,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Augsburg TSV Schwaben – Stand: 24.10.26 18:13:54</h1>
+<h1>Augsburg TSV Schwaben – Stand: 24.10.26 19:13:52</h1>
 
 
 <details id='wasfindeichhier'>
@@ -595,8 +636,27 @@ T aktuelle Zeit, L letzter Refresh, R nächster Refresh, in die Restzeit,<br>
 UN nächster Upload, UA letzter Upload.<br>
 Unter 11 Sekunden ist die Restzeit grün mit weißer Schrift.<br>
 Der Upload läuft alle 6 Minuten. Der Refresh kommt spätestens 80 Sekunden danach.<br>
-Die Stoppuhr springt auf 20 Sekunden nur, wenn die Stand-Zeit der ersten grünen Kachel<br>
-plus 80 Sekunden vor UA liegt. Eine neuere Kachelzeit lässt die Uhr weiterlaufen.
+Die Stoppuhr springt auf 20 Sekunden, sobald das Ergebnis schon da ist:<br>
+der Stand der ersten grünen Kachel plus 80 Sekunden liegt vor UA,<br>
+oder der letzte Upload liegt nach dem Laden dieser Seite.<br>
+Dann wartet der Refresh nicht mehrere Minuten.<br>
+Ist die Seite noch aktuell und der nächste Upload innerhalb von 4 Minuten,<br>
+wartet der Refresh bis 30 Sekunden nach diesem Upload.<br>
+Danach gilt wieder die 20-Sekunden-Regel.<br>
+Ein Refresh lässt geschlossene Gruppen geschlossen. Eine Vergrößerung der Seite bleibt erhalten.
+<br>
+<b>24.10.26</b><br>
+Rechts an jeder Liga unter Spiele von gestern, heute und morgen steht<br>
+Nächstes Spiel heute: HH:MM oder Nächstes Spiel morgen: HH:MM.<br>
+Die Uhrzeit steht in allen Gruppen an derselben Stelle.<br>
+Steht dort morgen, ist diese Liga zugeklappt.<br>
+Steht bei der DBBL NE und der Anpfiff ist vorbei, kommt der Spielstand<br>
+von der Spielseite, die große Zahl über dem Boxscore. Darunter stehen<br>
+die Viertel Q1 bis Q4, soweit sie gespielt sind. Das steht unter<br>
+livescore_3days und unter livescore_heute. Läuft die Partie, bleibt<br>
+die Kachel live. Vor dem Anpfiff bleibt NE.<br>
+Hat eine Liga unter Spiele von gestern, heute und morgen kein Spiel,<br>
+steht rechts kein aktuelles Spiel. Diese Liga bleibt zu, bis man sie öffnet.
 <br>
 <b>14.10.26</b><br>
 Der Block heißt Spiele live oder beginnen gleich. Darüber steht<br>
@@ -673,7 +733,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Augsburg TSV Schwaben – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 24.10.26 18:13:54</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54497</td><td>U12</td><td>24.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td>75 : 13</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54473</td><td>U10</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td>34 : 112</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54494</td><td>U14</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV 1863 Schwabmünchen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>34 : 100</td></tr><tr><td>54459</td><td>U18</td><td>18.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td>60 : 109</td></tr><tr><td>54454</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>84 : 39</td></tr><tr><td>54461</td><td>U16</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV 1847 Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>62 : 80</td></tr><tr><td>54497</td><td>U12</td><td>18.10.2026 10:45</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td>29 : 94</td></tr><tr><td>54471</td><td>U12</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>106 : 63</td></tr><tr><td>54494</td><td>U14</td><td>17.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td>42 : 27</td></tr><tr><td>54467</td><td>U14</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>34 : 89</td></tr><tr><td>54472</td><td>U12</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>77 : 43</td></tr><tr><td>54499</td><td>U10</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2 (BOLU10W)</div></td><td>53 : 60</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54473</td><td>U10</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 38012</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54494</td><td>U14</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV 1863 Schwabmünchen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Leonhard-<wbr>Wagner-<wbr>Halle<br>Spiel 75010</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54497</td><td>U12</td><td>24.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 43012</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54496</td><td>U12</td><td>24.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 36010</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>24.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf a.K.</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 33012</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>52534</td><td>Herren</td><td>24.10.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Haching Baskets</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 50470</div></td></tr><tr style='background-color:#ffdd99;'><td>54472</td><td>U12</td><td>25.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 37008</div></td></tr><tr><td>54475</td><td>U9</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 39003</div></td></tr><tr><td>54462</td><td>U16</td><td>25.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Etting a.K.</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 29010</div></td></tr><tr><td>54471</td><td>U12</td><td>25.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 34016</div></td></tr><tr><td>54459</td><td>U18</td><td>25.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 22010</div></td></tr><tr style='background-color:#ffdd99;'><td>54454</td><td>Herren</td><td>25.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 3</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 3020</div></td></tr><tr><td>54453</td><td>Herren</td><td>25.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 4016</div></td></tr><tr><td>54497</td><td>U12</td><td>01.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td class='halle'><div class='halle'>Albert-<wbr>Loderer-<wbr>Sporthalle<br>Spiel 43016</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg TSV Schwaben</b><span class='summary-right'>Stand 24.10.26 18:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Augsburg TSV Schwaben – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 24.10.26 19:13:52</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>24.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf a.K.</div></td><td>92 : 9</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54496</td><td>U12</td><td>24.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>81 : 36</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54497</td><td>U12</td><td>24.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td>75 : 13</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54473</td><td>U10</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td>34 : 112</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54494</td><td>U14</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV 1863 Schwabmünchen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>34 : 100</td></tr><tr><td>54459</td><td>U18</td><td>18.10.2026 14:45</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td>60 : 109</td></tr><tr><td>54454</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>84 : 39</td></tr><tr><td>54461</td><td>U16</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV 1847 Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>62 : 80</td></tr><tr><td>54497</td><td>U12</td><td>18.10.2026 10:45</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td>29 : 94</td></tr><tr><td>54471</td><td>U12</td><td>18.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>106 : 63</td></tr><tr><td>54494</td><td>U14</td><td>17.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td>42 : 27</td></tr><tr><td>54467</td><td>U14</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>34 : 89</td></tr><tr><td>54472</td><td>U12</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td>77 : 43</td></tr><tr><td>54499</td><td>U10</td><td>17.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2 (BOLU10W)</div></td><td>53 : 60</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54473</td><td>U10</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 38012</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54494</td><td>U14</td><td>24.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV 1863 Schwabmünchen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Leonhard-<wbr>Wagner-<wbr>Halle<br>Spiel 75010</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54497</td><td>U12</td><td>24.10.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 43012</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54496</td><td>U12</td><td>24.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 36010</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>24.10.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf a.K.</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 33012</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>52534</td><td>Herren</td><td>24.10.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Haching Baskets</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 50470</div></td></tr><tr style='background-color:#ffdd99;'><td>54472</td><td>U12</td><td>25.10.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 37008</div></td></tr><tr><td>54475</td><td>U9</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 39003</div></td></tr><tr><td>54462</td><td>U16</td><td>25.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Etting a.K.</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 29010</div></td></tr><tr><td>54471</td><td>U12</td><td>25.10.2026 14:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 34016</div></td></tr><tr><td>54459</td><td>U18</td><td>25.10.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 22010</div></td></tr><tr style='background-color:#ffdd99;'><td>54454</td><td>Herren</td><td>25.10.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 3</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 3020</div></td></tr><tr><td>54453</td><td>Herren</td><td>25.10.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 4016</div></td></tr><tr><td>54497</td><td>U12</td><td>01.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td class='halle'><div class='halle'>Albert-<wbr>Loderer-<wbr>Sporthalle<br>Spiel 43016</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg TSV Schwaben</b><span class='summary-right'>Stand 24.10.26 19:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr class="offen"><td>Sa. 24.10.26</td><td>10:00</td><td class="wrap">TSV Schwaben Augsburg</td><td class="wrap">BBU'01 Sektion BY e.V.</td><td class="liga">Bezirksoberliga<br/>U10 gemischt<br/>26/27</td><td class="halle">Berufsschule VI<br/>Haunstetter Str. 59<br/>86161 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54473#:~:text=24.10.2026%2010%3A00,BBU%2701%20Sektion%20BY%20e.V." rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 24.10.26</td><td>12:00</td><td class="wrap">TSV Schwaben Augsburg 3 (BOLU12W)</td><td class="wrap">TSV Diedorf</td><td class="liga">Bezirksliga<br/>U12 gemischt Mitte<br/>26/27</td><td class="halle">Berufsschule VI<br/>Haunstetter Str. 59<br/>86161 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54497#:~:text=24.10.2026%2012%3A00,TSV%20Diedorf" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -733,6 +793,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>50467</td>
+<td>4</td>
+<td>24.10.2026 16:45</td>
+<td>TSV 1861 Nördlingen</td>
+<td>BC Hellenen München</td>
+<td>44 : 54</td>
+</tr>
 <tr>
 <td>50464</td>
 <td>3</td>
@@ -793,11 +861,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>2</td>
       <td>BC Hellenen München</td>
-      <td>3</td>
-      <td>2/1</td>
       <td>4</td>
-      <td>183 : 151</td>
-      <td>32</td>
+      <td>3/1</td>
+      <td>6</td>
+      <td>237 : 195</td>
+      <td>42</td>
     </tr>
     <tr>
       <td>3</td>
@@ -847,11 +915,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>8</td>
       <td>TSV 1861 Nördlingen</td>
-      <td>3</td>
-      <td>1/2</td>
+      <td>4</td>
+      <td>1/3</td>
       <td>2</td>
-      <td>174 : 165</td>
-      <td>9</td>
+      <td>218 : 219</td>
+      <td>-1</td>
     </tr>
     <tr>
       <td>9</td>
@@ -887,7 +955,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>50467</td>
 <td>4</td>
 <td>24.10.2026 16:45</td>
@@ -2116,6 +2184,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>33012</td>
+<td>3</td>
+<td>24.10.2026 17:00</td>
+<td>TSV Schwaben Augsburg 2</td>
+<td>TSV Diedorf a.K.</td>
+<td>92 : 9</td>
+</tr>
 <tr>
 <td>33005</td>
 <td>2</td>
@@ -2151,11 +2227,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>1</td>
       <td>TSV Schwaben Augsburg 2</td>
-      <td>2</td>
-      <td>2/0</td>
-      <td>4</td>
-      <td>132 : 71</td>
-      <td>61</td>
+      <td>3</td>
+      <td>3/0</td>
+      <td>6</td>
+      <td>224 : 80</td>
+      <td>144</td>
     </tr>
     <tr>
       <td>2</td>
@@ -2186,15 +2262,6 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>5</td>
-      <td>TSV Diedorf a.K.</td>
-      <td>1</td>
-      <td>0/1</td>
-      <td>0</td>
-      <td>35 : 70</td>
-      <td>-35</td>
-    </tr>
-    <tr>
-      <td>6</td>
       <td>TV Memmingen</td>
       <td>1</td>
       <td>0/1</td>
@@ -2203,13 +2270,22 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
       <td>-55</td>
     </tr>
     <tr>
-      <td>7</td>
+      <td>6</td>
       <td>SSV Schrobenhausen</td>
       <td>1</td>
       <td>0/1</td>
       <td>0</td>
       <td>16 : 79</td>
       <td>-63</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>TSV Diedorf a.K.</td>
+      <td>2</td>
+      <td>0/2</td>
+      <td>0</td>
+      <td>44 : 162</td>
+      <td>-118</td>
     </tr>
   </tbody>
 </table>
@@ -2236,7 +2312,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td><div class="halle">Ballspielhalle</div></td>
 <td class="schiedsrichter"></td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>33012</td>
 <td>3</td>
 <td>24.10.2026 17:00</td>
@@ -3470,6 +3546,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>36010</td>
+<td>3</td>
+<td>24.10.2026 14:00</td>
+<td>TV Memmingen</td>
+<td>TSV Schwaben Augsburg 2</td>
+<td>81 : 36</td>
+</tr>
 <tr>
 <td>36007</td>
 <td>2</td>
@@ -3513,11 +3597,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>1</td>
       <td>TV Memmingen</td>
-      <td>2</td>
-      <td>2/0</td>
-      <td>4</td>
-      <td>170 : 90</td>
-      <td>80</td>
+      <td>3</td>
+      <td>3/0</td>
+      <td>6</td>
+      <td>251 : 126</td>
+      <td>125</td>
     </tr>
     <tr>
       <td>2</td>
@@ -3539,15 +3623,6 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>4</td>
-      <td>TSV Schwaben Augsburg 2</td>
-      <td>1</td>
-      <td>0/1</td>
-      <td>0</td>
-      <td>55 : 58</td>
-      <td>-3</td>
-    </tr>
-    <tr>
-      <td>5</td>
       <td>BG Illertal</td>
       <td>1</td>
       <td>0/1</td>
@@ -3556,13 +3631,22 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
       <td>-6</td>
     </tr>
     <tr>
-      <td>6</td>
+      <td>5</td>
       <td>TSV Ottobeuren</td>
       <td>1</td>
       <td>0/1</td>
       <td>0</td>
       <td>67 : 81</td>
       <td>-14</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>TSV Schwaben Augsburg 2</td>
+      <td>2</td>
+      <td>0/2</td>
+      <td>0</td>
+      <td>91 : 139</td>
+      <td>-48</td>
     </tr>
     <tr>
       <td>7</td>
@@ -3589,7 +3673,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>36010</td>
 <td>3</td>
 <td>24.10.2026 14:00</td>
