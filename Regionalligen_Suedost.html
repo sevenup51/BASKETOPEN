@@ -368,7 +368,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedost – Stand: 26.10.26 09:07:03</h1>
+<h1>Regionalliga Suedost – Stand: 26.10.26 09:37:10</h1>
 
 
 <details id='wasfindeichhier'>
@@ -635,14 +635,11 @@ Der Block heißt LIVE. Die Zeile dahinter lautet<br>
 T aktuelle Zeit, L letzter Refresh, R nächster Refresh, in die Restzeit,<br>
 UN nächster Upload, UA letzter Upload.<br>
 Unter 11 Sekunden ist die Restzeit grün mit weißer Schrift.<br>
-Der Upload läuft alle 6 Minuten. Der Refresh kommt spätestens 80 Sekunden danach.<br>
-Die Stoppuhr springt auf 20 Sekunden, sobald das Ergebnis schon da ist:<br>
-der Stand der ersten grünen Kachel plus 80 Sekunden liegt vor UA,<br>
-oder der letzte Upload liegt nach dem Laden dieser Seite.<br>
-Dann wartet der Refresh nicht mehrere Minuten.<br>
-Ist die Seite noch aktuell und der nächste Upload innerhalb von 4 Minuten,<br>
-wartet der Refresh bis 30 Sekunden nach diesem Upload.<br>
-Danach gilt wieder die 20-Sekunden-Regel.<br>
+Der Upload läuft alle 6 Minuten. Der Refresh liegt 30 Sekunden nach UN.<br>
+Ist der jüngste Stand in der Kachel 20:34, ist um 20:38 der neuere Stand da.<br>
+Liegt UN plus 30 Sekunden nach dieser Frist, lädt die Seite zur Frist.<br>
+Danach springt die Stoppuhr nicht auf 20 Sekunden.<br>
+Der Refresh liegt 30 Sekunden nach UN.<br>
 Ein Refresh lässt geschlossene Gruppen geschlossen. Eine Vergrößerung der Seite bleibt erhalten.
 <br>
 <b>24.10.26</b><br>
@@ -650,6 +647,9 @@ Rechts an jeder Liga unter Spiele von gestern, heute und morgen steht<br>
 Nächstes Spiel heute: HH:MM oder Nächstes Spiel morgen: HH:MM.<br>
 Die Uhrzeit steht in allen Gruppen an derselben Stelle.<br>
 Steht dort morgen, ist diese Liga zugeklappt.<br>
+Meldet ProA noch Q0, die Viertel haben aber schon Punkte, ist die Kachel grün.<br>
+Oben steht die Summe der Viertel. Die Uhr zeigt ??, solange keine Uhrzeit kommt.<br>
+Kommt der Spielstand vom Liveserver, gilt der, und die Uhrzeit dazu.<br>
 Steht bei der DBBL NE und der Anpfiff ist vorbei, kommt der Spielstand<br>
 von der Spielseite, die große Zahl über dem Boxscore. Darunter stehen<br>
 die Viertel Q1 bis Q4, soweit sie gespielt sind. Das steht unter<br>
@@ -1187,7 +1187,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td>5</td>
 <td>24.10.2026 17:15</td>
 <td>BG Litzendorf</td>
-<td>BC Dresden</td>
+<td><a href="https://regionalliga-suedost.de/index.php/alle-sp-rld/dritter-sieg-im-fuenften-spiel-bc-damen-triumphieren-in-litzendorf" target="_blank">BC Dresden</a></td>
 <td>50 : 52</td>
 </tr>
 <tr>
