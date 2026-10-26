@@ -368,7 +368,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Ottobeuren TSV – Stand: 26.10.26 09:17:33</h1>
+<h1>Ottobeuren TSV – Stand: 26.10.26 10:18:22</h1>
 
 
 <details id='wasfindeichhier'>
@@ -635,14 +635,11 @@ Der Block heißt LIVE. Die Zeile dahinter lautet<br>
 T aktuelle Zeit, L letzter Refresh, R nächster Refresh, in die Restzeit,<br>
 UN nächster Upload, UA letzter Upload.<br>
 Unter 11 Sekunden ist die Restzeit grün mit weißer Schrift.<br>
-Der Upload läuft alle 6 Minuten. Der Refresh kommt spätestens 80 Sekunden danach.<br>
-Die Stoppuhr springt auf 20 Sekunden, sobald das Ergebnis schon da ist:<br>
-der Stand der ersten grünen Kachel plus 80 Sekunden liegt vor UA,<br>
-oder der letzte Upload liegt nach dem Laden dieser Seite.<br>
-Dann wartet der Refresh nicht mehrere Minuten.<br>
-Ist die Seite noch aktuell und der nächste Upload innerhalb von 4 Minuten,<br>
-wartet der Refresh bis 30 Sekunden nach diesem Upload.<br>
-Danach gilt wieder die 20-Sekunden-Regel.<br>
+Der Upload läuft alle 6 Minuten. Der Refresh liegt 30 Sekunden nach UN.<br>
+Ist der jüngste Stand in der Kachel 20:34, ist um 20:38 der neuere Stand da.<br>
+Liegt UN plus 30 Sekunden nach dieser Frist, lädt die Seite zur Frist.<br>
+Danach springt die Stoppuhr nicht auf 20 Sekunden.<br>
+Der Refresh liegt 30 Sekunden nach UN.<br>
 Ein Refresh lässt geschlossene Gruppen geschlossen. Eine Vergrößerung der Seite bleibt erhalten.
 <br>
 <b>24.10.26</b><br>
@@ -650,6 +647,9 @@ Rechts an jeder Liga unter Spiele von gestern, heute und morgen steht<br>
 Nächstes Spiel heute: HH:MM oder Nächstes Spiel morgen: HH:MM.<br>
 Die Uhrzeit steht in allen Gruppen an derselben Stelle.<br>
 Steht dort morgen, ist diese Liga zugeklappt.<br>
+Meldet ProA noch Q0, die Viertel haben aber schon Punkte, ist die Kachel grün.<br>
+Oben steht die Summe der Viertel. Die Uhr zeigt ??, solange keine Uhrzeit kommt.<br>
+Kommt der Spielstand vom Liveserver, gilt der, und die Uhrzeit dazu.<br>
 Steht bei der DBBL NE und der Anpfiff ist vorbei, kommt der Spielstand<br>
 von der Spielseite, die große Zahl über dem Boxscore. Darunter stehen<br>
 die Viertel Q1 bis Q4, soweit sie gespielt sind. Das steht unter<br>
@@ -733,7 +733,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Ottobeuren TSV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 26.10.26 09:17:33</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54454</td><td>Herren</td><td>25.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>45 : 47</td></tr><tr><td>54487</td><td>U18</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td>67 : 73</td></tr><tr><td>54496</td><td>U12</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td>43 : 84</td></tr><tr><td>54484</td><td>Herren</td><td>24.10.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td>79 : 84</td></tr><tr><td>54509</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren 2</div></td><td>75 : 42</td></tr><tr><td>54492</td><td>U14</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td>44 : 60</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Spiele in den nächsten 8 Tagen.</i></p></div></details></div></details><details><summary><b>SR-Einteilung Ottobeuren TSV</b><span class='summary-right'>Stand 26.10.26 09:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Ottobeuren TSV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 26.10.26 10:18:22</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54454</td><td>Herren</td><td>25.10.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td>45 : 47</td></tr><tr><td>54487</td><td>U18</td><td>25.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td>67 : 73</td></tr><tr><td>54496</td><td>U12</td><td>25.10.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td>43 : 84</td></tr><tr><td>54484</td><td>Herren</td><td>24.10.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td>79 : 84</td></tr><tr><td>54509</td><td>Herren</td><td>18.10.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>BG Illertal 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren 2</div></td><td>75 : 42</td></tr><tr><td>54492</td><td>U14</td><td>18.10.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Ottobeuren</div></td><td>44 : 60</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Spiele in den nächsten 8 Tagen.</i></p></div></details></div></details><details><summary><b>SR-Einteilung Ottobeuren TSV</b><span class='summary-right'>Stand 26.10.26 10:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr class="offen"><td>Sa. 14.11.26</td><td>13:30</td><td class="wrap">TSV Ottobeuren</td><td class="wrap">TSV Wasserburg/<br/>Günzburg</td><td class="liga">Bezirksliga<br/>U10 gemischt Süd<br/>26/27</td><td class="halle">Rupert-Neß-Gymnasium (neu)<br/>Bergstr. 88<br/>87724 Ottobeuren</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54499#:~:text=14.11.2026%2013%3A30,TSV%20Wasserburg%2FG%C3%BCnzburg" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 14.11.26</td><td>15:30</td><td class="wrap">TSV Ottobeuren</td><td class="wrap">BG Illertal</td><td class="liga">Bezirksliga<br/>U12 gemischt Süd<br/>26/27</td><td class="halle">Rupert-Neß-Gymnasium (neu)<br/>Bergstr. 88<br/>87724 Ottobeuren</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54496#:~:text=14.11.2026%2015%3A30,BG%20Illertal" rel="noopener" target="_blank">Spielplan</a></td></tr>
