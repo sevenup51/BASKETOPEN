@@ -85,7 +85,10 @@ details { margin-bottom:3px; }
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
 #live-refresh { font-weight: bold; }
-#live-refresh .live-rest.knapp { background: #1b7f37; color: #fff; padding: 0 4px; border-radius: 2px; }
+#live-refresh .live-rest.knapp,
+table.legende td.knapp { background: #1b7f37; color: #fff; padding: 0 4px; border-radius: 2px; }
+table.legende td.lg-grau { background: #d9d9d9; }
+.legende-stern { margin: 2px 0 0; font-size: 10px; }
 details.live-sammel > summary { padding-right: 230px; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
@@ -368,7 +371,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 30.10.26 22:51:19</h1>
+<h1>Bundesligen – Stand: 30.10.26 23:06:18</h1>
 
 
 <details id='wasfindeichhier'>
@@ -636,10 +639,10 @@ T aktuelle Zeit, L letzter Refresh, R nächster Refresh, in die Restzeit,<br>
 UN nächster Upload, UA letzter Upload.<br>
 Unter 11 Sekunden ist die Restzeit grün mit weißer Schrift.<br>
 Der Upload läuft alle 6 Minuten. Der Refresh liegt 30 Sekunden nach UN.<br>
-Ist der jüngste Stand in der Kachel 20:34, ist um 20:38 der neuere Stand da.<br>
-Liegt UN plus 30 Sekunden nach dieser Frist, lädt die Seite zur Frist.<br>
-Danach springt die Stoppuhr nicht auf 20 Sekunden.<br>
-Der Refresh liegt 30 Sekunden nach UN.<br>
+I ist der jüngste Stand in der Kachel.<br>
+Liegt I nach UA, bleibt der Refresh 30 Sekunden nach UN.<br>
+Liegt der letzte Refresh vor UA, springt die Stoppuhr auf 20 Sekunden.<br>
+Danach liegt der Refresh wieder 30 Sekunden nach UN.<br>
 Ein Refresh lässt geschlossene Gruppen geschlossen. Eine Vergrößerung der Seite bleibt erhalten.
 <br>
 <b>24.10.26</b><br>
@@ -735,7 +738,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <button onclick="openLivescoreDrei()">livescore_3days</button>
 </div>
 
-<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 30.10 22:51:19</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802'><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>morgen:</span><span class='uhr'>18:30</span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
+<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 30.10 23:06:18</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802'><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>morgen:</span><span class='uhr'>18:30</span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Science City Jena</div>
@@ -760,7 +763,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-date'>Q1 25-25 | Q2 13-31 | Q3 15-25 | Q4 21-19</div>
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006893#boxscore' target='_blank'>Boxscore</a></div></div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=RTmIIJdUZq0' target='_blank'>Kurzbericht</a></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006893#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style=''>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -1218,7 +1221,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-date'>Q1 25-25 | Q2 13-31 | Q3 15-25 | Q4 21-19</div>
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006893#boxscore' target='_blank'>Boxscore</a></div></div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=RTmIIJdUZq0' target='_blank'>Kurzbericht</a></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006893#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
             <div class='livescore-box' style=''>
@@ -1291,7 +1294,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td>Phoenix Hagen</td>
 <td>RASTA Vechta</td>
 <td>74:100</td>
-<td><a href="https://www.easycredit-bbl.de/spiele/2006893#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td></td></tr>
+<td><a href="https://www.easycredit-bbl.de/spiele/2006893#boxscore" target="_blank">html</a><span style="color:green; font-weight:bold;"> ✔</span></td><td><a href="https://www.youtube.com/watch?v=RTmIIJdUZq0" target="_blank">Kurzbericht</a></td></tr>
 <tr>
 <td>50</td>
 <td>6</td>
@@ -4525,28 +4528,62 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
   }
   function refreshZiel(ab) {
     var plan = naechsterUpload(ab) + 30 * 1000;
+    var ua = letzterUpload(ab);
     var stand = juengsterStand(ab);
-    if (!stand) return { zeit: plan, art: "plan" };
-    var frist = stand + 4 * 60 * 1000;
-    if (ab < frist && plan - frist > 30 * 1000) return { zeit: frist, art: "plan" };
+    if (stand && stand > ua) return { zeit: plan, art: "plan" };
+    if (geladen.getTime() < ua) return { zeit: ab + 20 * 1000, art: "zwanzig" };
     return { zeit: plan, art: "plan" };
   }
-  function stoppuhr() {
+  function restzeit() {
     var rest = Math.max(0, Math.ceil((ziel - Date.now()) / 1000));
-    var text = zwei(Math.floor(rest / 60)) + ":" + zwei(rest % 60);
-    var klasse = rest < 11 ? "live-rest knapp" : "live-rest";
-    return "<span class='" + klasse + "'>" + text + "</span>";
+    return {
+      text: zwei(Math.floor(rest / 60)) + ":" + zwei(rest % 60),
+      knapp: rest < 11
+    };
+  }
+  function stoppuhr() {
+    var rest = restzeit();
+    var klasse = rest.knapp ? "live-rest knapp" : "live-rest";
+    return "<span class='" + klasse + "'>" + rest.text + "</span>";
+  }
+  function legeZeit(id, text, knapp) {
+    var zelle = document.getElementById(id);
+    if (!zelle) return;
+    zelle.textContent = text || "";
+    var grau = zelle.getAttribute("data-grau") === "1";
+    zelle.className = (knapp ? "knapp " : "") + (grau ? "lg-grau" : "");
+  }
+  function fuelleLegende(jetzt) {
+    var un = new Date(naechsterUpload(jetzt.getTime()));
+    var ua = new Date(letzterUpload(jetzt.getTime()));
+    var rest = ziel ? restzeit() : { text: "", knapp: false };
+    var stand = juengsterStand(jetzt.getTime());
+    legeZeit("lg-t", uhr(jetzt), false);
+    legeZeit("lg-l", uhr(geladen), false);
+    legeZeit("lg-r", ziel ? uhr(new Date(ziel)) : "", false);
+    legeZeit("lg-in", rest.text, rest.knapp);
+    legeZeit("lg-i", stand ? uhr(new Date(stand)) : "", false);
+    legeZeit("lg-ua", uhr(ua), false);
+    legeZeit("lg-un", uhr(un), false);
+  }
+  function leereLegende() {
+    ["lg-t", "lg-l", "lg-r", "lg-in", "lg-i", "lg-ua", "lg-un"].forEach(function (id) {
+      legeZeit(id, "", false);
+    });
   }
   function zeilentext() {
     var jetzt = new Date();
     var un = new Date(naechsterUpload(jetzt.getTime()));
     var ua = new Date(letzterUpload(jetzt.getTime()));
+    var stand = juengsterStand(jetzt.getTime());
+    fuelleLegende(jetzt);
     return "T " + uhr(jetzt)
       + " L " + uhr(geladen)
       + " R " + uhr(new Date(ziel))
       + " in " + stoppuhr()
-      + " UN " + uhr(un)
-      + " UA " + uhr(ua);
+      + " I " + (stand ? uhr(new Date(stand)) : "--")
+      + " UA " + uhr(ua)
+      + " UN " + uhr(un);
   }
   function stoppeUhr() {
     if (!uhrIntervall) return;
@@ -4559,6 +4596,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
       var el = document.getElementById("live-refresh");
       if (!el || !laufendesSpiel()) {
         if (el) el.innerHTML = "";
+        leereLegende();
         stoppeUhr();
         return;
       }
@@ -4571,6 +4609,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     if (!laufendesSpiel()) {
       el.innerHTML = "";
       ziel = 0;
+      leereLegende();
       stoppeUhr();
       return;
     }

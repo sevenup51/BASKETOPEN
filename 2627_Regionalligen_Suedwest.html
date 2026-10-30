@@ -85,7 +85,10 @@ details { margin-bottom:3px; }
                  display: flex; flex-direction: row; align-items: center; gap: 6px;
                  min-width: 220px; justify-content: flex-end; }
 #live-refresh { font-weight: bold; }
-#live-refresh .live-rest.knapp { background: #1b7f37; color: #fff; padding: 0 4px; border-radius: 2px; }
+#live-refresh .live-rest.knapp,
+table.legende td.knapp { background: #1b7f37; color: #fff; padding: 0 4px; border-radius: 2px; }
+table.legende td.lg-grau { background: #d9d9d9; }
+.legende-stern { margin: 2px 0 0; font-size: 10px; }
 details.live-sammel > summary { padding-right: 230px; }
 .details-btn { background: orange; color: black; padding: 1px 4px; font-size: 10px;
                border-radius: 3px; text-decoration: none; font-weight: bold; white-space: nowrap;
@@ -368,7 +371,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedwest – Stand: 30.10.26 22:53:02</h1>
+<h1>Regionalliga Suedwest – Stand: 30.10.26 23:07:59</h1>
 
 
 <details id='wasfindeichhier'>
@@ -636,10 +639,10 @@ T aktuelle Zeit, L letzter Refresh, R nächster Refresh, in die Restzeit,<br>
 UN nächster Upload, UA letzter Upload.<br>
 Unter 11 Sekunden ist die Restzeit grün mit weißer Schrift.<br>
 Der Upload läuft alle 6 Minuten. Der Refresh liegt 30 Sekunden nach UN.<br>
-Ist der jüngste Stand in der Kachel 20:34, ist um 20:38 der neuere Stand da.<br>
-Liegt UN plus 30 Sekunden nach dieser Frist, lädt die Seite zur Frist.<br>
-Danach springt die Stoppuhr nicht auf 20 Sekunden.<br>
-Der Refresh liegt 30 Sekunden nach UN.<br>
+I ist der jüngste Stand in der Kachel.<br>
+Liegt I nach UA, bleibt der Refresh 30 Sekunden nach UN.<br>
+Liegt der letzte Refresh vor UA, springt die Stoppuhr auf 20 Sekunden.<br>
+Danach liegt der Refresh wieder 30 Sekunden nach UN.<br>
 Ein Refresh lässt geschlossene Gruppen geschlossen. Eine Vergrößerung der Seite bleibt erhalten.
 <br>
 <b>24.10.26</b><br>
