@@ -226,12 +226,8 @@ var bloeckeWerdenHergestellt = false;
 var bloeckeStehen = false;
 function leseVergroesserung(){
   var gesetzt = parseFloat(document.documentElement.style.zoom);
-  if(!(gesetzt > 0)) gesetzt = 1;
-  var fenster = window.visualViewport;
-  var gesehen = fenster && fenster.scale ? fenster.scale : 1;
-  var faktor = Math.max(gesetzt, gesehen);
-  if(faktor <= 1.05) return 1;
-  return Math.round(faktor * 100) / 100;
+  if(!(gesetzt > 0) || gesetzt <= 1.05) return 1;
+  return Math.round(gesetzt * 100) / 100;
 }
 function speichereBloecke(){
   if(bloeckeWerdenHergestellt || !bloeckeStehen) return;
@@ -372,7 +368,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Bayernliga – Stand: 01.11.26 16:07:37</h1>
+<h1>Bayernliga – Stand: 01.11.26 16:22:42</h1>
 
 
 <details id='wasfindeichhier'>
