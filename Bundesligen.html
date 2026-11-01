@@ -226,12 +226,8 @@ var bloeckeWerdenHergestellt = false;
 var bloeckeStehen = false;
 function leseVergroesserung(){
   var gesetzt = parseFloat(document.documentElement.style.zoom);
-  if(!(gesetzt > 0)) gesetzt = 1;
-  var fenster = window.visualViewport;
-  var gesehen = fenster && fenster.scale ? fenster.scale : 1;
-  var faktor = Math.max(gesetzt, gesehen);
-  if(faktor <= 1.05) return 1;
-  return Math.round(faktor * 100) / 100;
+  if(!(gesetzt > 0) || gesetzt <= 1.05) return 1;
+  return Math.round(gesetzt * 100) / 100;
 }
 function speichereBloecke(){
   if(bloeckeWerdenHergestellt || !bloeckeStehen) return;
@@ -372,7 +368,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 01.11.26 16:04:53</h1>
+<h1>Bundesligen – Stand: 01.11.26 16:10:55</h1>
 
 
 <details id='wasfindeichhier'>
@@ -739,7 +735,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 01.11.2026</p><details class='live-sammel' data-block='Live' open><summary><b>LIVE</b> <span id='live-refresh'></span><span class='summary-right'>Stand: 01.11 16:04:53</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div>
+<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 01.11.2026</p><details class='live-sammel' data-block='Live' open><summary><b>LIVE</b> <span id='live-refresh'></span><span class='summary-right'>Stand: 01.11 16:10:55</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div>
 <details class="legende-refresh" open>
   <summary><b>Legende Refreshzeile</b></summary>
   <table class="legende" id="legende-refresh">
@@ -765,26 +761,26 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BMA365 Bamberg Baskets</div>
-                    <div class='ls-score'>47:43</div>
+                    <div class='ls-score'>47:45</div>
                     <div class='ls-team' style='text-align:right;'>Science City Jena</div>
                 </div>
                 
                 <div class='ls-date'>01.11.2026 15:00</div>
-                <div class='ls-date'>Q1 26-30 | Q2 21-13</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q2 Pause</span></div>
+                <div class='ls-date'>Q1 26-30 | Q2 21-13 | Q3 0-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q3 9:31</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006897#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ROSTOCK SEAWOLVES</div>
-                    <div class='ls-score'>38:40</div>
+                    <div class='ls-score'>38:45</div>
                     <div class='ls-team' style='text-align:right;'>FC Bayern München Basketball</div>
                 </div>
                 
                 <div class='ls-date'>01.11.2026 15:00</div>
-                <div class='ls-date'>Q1 24-15 | Q2 14-25</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q3 10:00</span></div>
+                <div class='ls-date'>Q1 24-15 | Q2 14-25 | Q3 0-5</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q3 7:56</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006908#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
@@ -797,20 +793,20 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date'>01.11.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006898#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-liga' data-block='live-55738' open><summary class='liga-kopf'><b>1. Bundesliga (Toyota DBBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>30</span></span><span class='k-lid'>; LID <span class='k-zahl'>55738</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live ls-ohne-stand' style='background:#b7ebc6;'>
+            </div></div></details><details class='live-liga' data-block='live-55738' open><summary class='liga-kopf'><b>1. Bundesliga (Toyota DBBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>30</span></span><span class='k-lid'>; LID <span class='k-zahl'>55738</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Rutronik Stars Keltern</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>4:2</div>
                     <div class='ls-team' style='text-align:right;'>TK Hannover</div>
                 </div>
                 
                 <div class='ls-date'>01.11.2026 16:00</div>
-                
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span></span></div>
+                <div class='ls-date'>Q1 4-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q1 2'</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=1iNueyCj9jM' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11224/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-aktiv' style='background:#ffdd99;'>
@@ -843,55 +839,55 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern Basketball II</div>
-                    <div class='ls-score'>53:34</div>
+                    <div class='ls-score'>59:34</div>
                     <div class='ls-team' style='text-align:right;'>Ahorn Camp Baskets</div>
                 </div>
                 
                 <div class='ls-date'>01.11.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q3 08:17</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q3 05:56</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/fc-bayern-basketball-ii/fc-bayern-basketball-ii-vs-ahorn-camp-baskets' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006171?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSV Oberhaching Tropics</div>
-                    <div class='ls-score'>9:7</div>
+                    <div class='ls-score'>15:9</div>
                     <div class='ls-team' style='text-align:right;'>Culture City Weimar</div>
                 </div>
                 
                 <div class='ls-date'>01.11.2026 16:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q1 07:53</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q1 05:29</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tsv-oberhaching-tropics/tsv-oberhaching-tropics-vs-culture-city-weimar' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006174?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBC Coburg</div>
-                    <div class='ls-score'>2:2</div>
+                    <div class='ls-score'>8:10</div>
                     <div class='ls-team' style='text-align:right;'>TV Langen</div>
                 </div>
                 
                 <div class='ls-date'>01.11.2026 16:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q1 08:36</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q1 05:08</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bbc-coburg/bbc-coburg-vs-tv-langen' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006170?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div></div></details><details class='live-liga' data-block='live-55815' open><summary class='liga-kopf'><b>Herren ProB Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>20</span></span><span class='k-lid'>; LID <span class='k-zahl'>55815</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv ls-live' style='background:#b7ebc6;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Baskets Juniors TSG Westerstede</div>
-                    <div class='ls-score'>35:42</div>
+                    <div class='ls-score'>41:47</div>
                     <div class='ls-team' style='text-align:right;'>SG Braunschweig</div>
                 </div>
                 
                 <div class='ls-date'>01.11.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q3 10:00</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q3 07:02</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/baskets-juniors-tsg-westerstede/sg-braunschweig-vs-baskets-juniors-tsg-westerstede' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006377?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 01.11 16:04:53</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>16:30</span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
+            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 01.11 16:10:55</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>16:30</span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ratiopharm ulm</div>
@@ -934,26 +930,26 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BMA365 Bamberg Baskets</div>
-                    <div class='ls-score'>47:43</div>
+                    <div class='ls-score'>47:45</div>
                     <div class='ls-team' style='text-align:right;'>Science City Jena</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 15:00</div>
-                <div class='ls-date'>Q1 26-30 | Q2 21-13</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q2 Pause</span></div>
+                <div class='ls-date'>Q1 26-30 | Q2 21-13 | Q3 0-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q3 9:31</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006897#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ROSTOCK SEAWOLVES</div>
-                    <div class='ls-score'>38:40</div>
+                    <div class='ls-score'>38:45</div>
                     <div class='ls-team' style='text-align:right;'>FC Bayern München Basketball</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 15:00</div>
-                <div class='ls-date'>Q1 24-15 | Q2 14-25</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q3 10:00</span></div>
+                <div class='ls-date'>Q1 24-15 | Q2 14-25 | Q3 0-5</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q3 7:56</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006908#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
@@ -966,7 +962,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006898#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
@@ -995,17 +991,17 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=ZyW_11C70wI' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11222/#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box ls-live ls-ohne-stand' style='background:#ffdd99;'>
+            </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Rutronik Stars Keltern</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>4:2</div>
                     <div class='ls-team' style='text-align:right;'>TK Hannover</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 16:00</div>
-                
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span></span></div>
+                <div class='ls-date'>Q1 4-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q1 2'</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=1iNueyCj9jM' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11224/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
@@ -1324,39 +1320,39 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern Basketball II</div>
-                    <div class='ls-score'>53:34</div>
+                    <div class='ls-score'>59:34</div>
                     <div class='ls-team' style='text-align:right;'>Ahorn Camp Baskets</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q3 08:17</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q3 05:56</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/fc-bayern-basketball-ii/fc-bayern-basketball-ii-vs-ahorn-camp-baskets' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006171?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSV Oberhaching Tropics</div>
-                    <div class='ls-score'>9:7</div>
+                    <div class='ls-score'>15:9</div>
                     <div class='ls-team' style='text-align:right;'>Culture City Weimar</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 16:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q1 07:53</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q1 05:29</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tsv-oberhaching-tropics/tsv-oberhaching-tropics-vs-culture-city-weimar' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006174?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBC Coburg</div>
-                    <div class='ls-score'>2:2</div>
+                    <div class='ls-score'>8:10</div>
                     <div class='ls-team' style='text-align:right;'>TV Langen</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 16:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q1 08:36</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q1 05:08</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bbc-coburg/bbc-coburg-vs-tv-langen' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006170?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
@@ -1467,13 +1463,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Baskets Juniors TSG Westerstede</div>
-                    <div class='ls-score'>35:42</div>
+                    <div class='ls-score'>41:47</div>
                     <div class='ls-team' style='text-align:right;'>SG Braunschweig</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q3 10:00</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q3 07:02</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/baskets-juniors-tsg-westerstede/sg-braunschweig-vs-baskets-juniors-tsg-westerstede' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006377?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55807'><summary class='liga-kopf'><b>BBL-Pokal 1/8-Finale</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>6</span></span><span class='k-lid'>; LID <span class='k-zahl'>55807</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details></div></details><details class='hat-livescore spielt-heute'>
@@ -1482,7 +1478,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span>
     <span class='summary-right'>
         <span class='liga-status'></span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 15:57)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55802.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 16:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -1539,13 +1535,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BMA365 Bamberg Baskets</div>
-                    <div class='ls-score'>47:43</div>
+                    <div class='ls-score'>47:45</div>
                     <div class='ls-team' style='text-align:right;'>Science City Jena</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 15:00</div>
-                <div class='ls-date'>Q1 26-30 | Q2 21-13</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q2 Pause</span></div>
+                <div class='ls-date'>Q1 26-30 | Q2 21-13 | Q3 0-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q3 9:31</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006897#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -1554,13 +1550,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ROSTOCK SEAWOLVES</div>
-                    <div class='ls-score'>38:40</div>
+                    <div class='ls-score'>38:45</div>
                     <div class='ls-team' style='text-align:right;'>FC Bayern München Basketball</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 15:00</div>
-                <div class='ls-date'>Q1 24-15 | Q2 14-25</div>
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q3 10:00</span></div>
+                <div class='ls-date'>Q1 24-15 | Q2 14-25 | Q3 0-5</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q3 7:56</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006908#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -1575,7 +1571,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 16:30</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span>Q1</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q1</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>Kurzbericht</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006898#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -2009,7 +2005,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>1. Bundesliga (Toyota DBBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>30</span></span><span class='k-lid'>; LID <span class='k-zahl'>55738</span>)</span></span></span>
     <span class='summary-right'>
         <span class='liga-status'></span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 15:59)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 16:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2032,17 +2028,17 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=ZyW_11C70wI' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11222/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box ls-live ls-ohne-stand' style='background:#ffdd99;'>
+            <div class='livescore-box ls-live' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Rutronik Stars Keltern</div>
-                    <div class='ls-score'>NE</div>
+                    <div class='ls-score'>4:2</div>
                     <div class='ls-team' style='text-align:right;'>TK Hannover</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 16:00</div>
-                
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:03</span><span></span></div>
+                <div class='ls-date'>Q1 4-2</div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:09</span><span>Q1 2'</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=1iNueyCj9jM' target='_blank'>Live</a></div><div class='ls-box'><a href='https://toyota-dbbl.de/spiel/11224/#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -2370,7 +2366,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Herren ProA</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>10</span></span><span class='k-lid'>; LID <span class='k-zahl'>55811</span>)</span></span></span>
     <span class='summary-right'>
         <span class='liga-status'></span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 15:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55811.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 16:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -2948,7 +2944,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>43</span></span><span class='k-lid'>; LID <span class='k-zahl'>55749</span>)</span></span></span>
     <span class='summary-right'>
         <span class='liga-status'></span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 15:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55749.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 16:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3807,7 +3803,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span>
     <span class='summary-right'>
         <span class='liga-status'></span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 15:58)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 16:03)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -3849,13 +3845,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern Basketball II</div>
-                    <div class='ls-score'>53:34</div>
+                    <div class='ls-score'>59:34</div>
                     <div class='ls-team' style='text-align:right;'>Ahorn Camp Baskets</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q3 08:17</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q3 05:56</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/fc-bayern-basketball-ii/fc-bayern-basketball-ii-vs-ahorn-camp-baskets' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006171?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -3864,13 +3860,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSV Oberhaching Tropics</div>
-                    <div class='ls-score'>9:7</div>
+                    <div class='ls-score'>15:9</div>
                     <div class='ls-team' style='text-align:right;'>Culture City Weimar</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 16:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q1 07:53</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q1 05:29</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tsv-oberhaching-tropics/tsv-oberhaching-tropics-vs-culture-city-weimar' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006174?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -3879,13 +3875,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBC Coburg</div>
-                    <div class='ls-score'>2:2</div>
+                    <div class='ls-score'>8:10</div>
                     <div class='ls-team' style='text-align:right;'>TV Langen</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 16:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q1 08:36</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q1 05:08</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bbc-coburg/bbc-coburg-vs-tv-langen' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006170?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
@@ -4294,7 +4290,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Herren ProB Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>20</span></span><span class='k-lid'>; LID <span class='k-zahl'>55815</span>)</span></span></span>
     <span class='summary-right'>
         <span class='liga-status'></span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 15:58)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55815.html' onclick='liveHref(this)' target='_blank'>Details ( 01.11. 16:02)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -4396,13 +4392,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Baskets Juniors TSG Westerstede</div>
-                    <div class='ls-score'>35:42</div>
+                    <div class='ls-score'>41:47</div>
                     <div class='ls-team' style='text-align:right;'>SG Braunschweig</div>
                 </div>
                 
                 <div class='ls-date' style='background:#b7ebc6;display:inline-block;padding:0 3px;'>01.11.2026 15:00</div>
                 
-                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:04</span><span>Q3 10:00</span></div>
+                <div class='ls-date' style='display:flex; justify-content:space-between;'><span>Stand 16:10</span><span>Q3 07:02</span></div>
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/baskets-juniors-tsg-westerstede/sg-braunschweig-vs-baskets-juniors-tsg-westerstede' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006377?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
