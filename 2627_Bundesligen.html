@@ -368,7 +368,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 13.11.26 17:36:20</h1>
+<h1>Bundesligen – Stand: 13.11.26 18:06:19</h1>
 
 
 <details id='wasfindeichhier'>
@@ -733,10 +733,45 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
-    <button onclick="openLivescoreDrei()">livescore_3days</button>
+    <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 13.11 17:36:20</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>20:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
+<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 13.11.2026</p><details class='live-sammel' data-block='Live' open><summary><b>LIVE</b> <span id='live-refresh'></span><span class='summary-right'>Stand: 13.11 18:06:19</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div>
+<details class="legende-refresh" open>
+  <summary><b>Legende Refreshzeile</b></summary>
+  <table class="legende" id="legende-refresh">
+    <tr><th>Kürzel</th><th>Bedeutung</th><th>Zeit</th><th>Kürzel</th><th>Bedeutung</th><th>Zeit</th><th>Kürzel</th><th>Bedeutung</th><th>Zeit</th><th>in</th><th>Differenz *)</th></tr>
+    <tr>
+      <td>T</td><td>Aktuelle Zeit.</td><td id="lg-t"></td>
+      <td>L</td><td>Letzter Refresh.</td><td id="lg-l"></td>
+      <td>R</td><td>Nächster Refresh.</td><td id="lg-r"></td>
+      <td>in</td><td id="lg-in"></td>
+    </tr>
+    <tr>
+      <td>I</td><td>Stand Internet *)</td><td id="lg-i"></td>
+      <td>UA</td><td>Letzter Upload.</td><td id="lg-ua"></td>
+      <td>UN</td><td>Nächster Upload. *)</td><td id="lg-un"></td>
+      <td class="lg-grau" colspan="2"></td>
+    </tr>
+  </table>
+  <p class="legende-stern">*) Restzeit bis zum Refresh. Unter 11 Sekunden grün mit weißer Schrift.</p>
+  <p class="legende-stern">*) Jüngster Stand in der Kachel.</p>
+  <p class="legende-stern">*) Der Upload läuft alle 6 Minuten.</p>
+</details>
+<details class='live-liga' data-block='live-55817' open><summary class='liga-kopf'><b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv' style='background:#ffdd99;'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>Basketball Löwen</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>Dresden Titans</div>
+                </div>
+                
+                <div class='ls-date' style='display:inline-block;padding:0 3px;border:2px solid #1b7f37;'>13.11.2026 18:30</div>
+                
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006183?s=boxscore' target='_blank'>Boxscore</a></div></div>
+            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 13.11 18:06:19</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>20:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Phoenix Hagen</div>
@@ -930,7 +965,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006183?s=boxscore' target='_blank'>Boxscore</a></div></div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006183?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='background:#ffdd99;'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -3079,7 +3114,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006183?s=boxscore' target='_blank'>Boxscore</a></div></div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006183?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
             <div class='livescore-box' style='background:#ffdd99;'>
