@@ -114,6 +114,14 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
 .ls-box { border-top:1px solid #8eaccc; }
 .ls-seite a { color:#1a3d7c; }
+.ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
+.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-aus:hover { background:#9eb8d6; }
+.livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
+.livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
+.live-drei .livescore-box.ls-aus-live { opacity:0.72; }
+details.live-sammel .livescore-box.ls-aus-live { display:none; }
 .listen-stand { margin:8px 0 4px; font-size:13px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
@@ -319,7 +327,48 @@ function openLivescoreHeute(){
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
+  if(typeof lsAusAnwenden === "function") lsAusAnwenden();
 }
+function lsAusSchluessel(){ return "lsAusLive:" + location.pathname; }
+function lsAusLesen(){
+  try {
+    var roh = sessionStorage.getItem(lsAusSchluessel());
+    var liste = roh ? JSON.parse(roh) : [];
+    return Array.isArray(liste) ? liste : [];
+  } catch(e){ return []; }
+}
+function lsAusSchreiben(liste){
+  try { sessionStorage.setItem(lsAusSchluessel(), JSON.stringify(liste || [])); } catch(e){}
+}
+function lsAusAnwenden(){
+  var aus = lsAusLesen();
+  document.querySelectorAll(".livescore-box[data-ls-key]").forEach(function(box){
+    var key = box.getAttribute("data-ls-key") || "";
+    box.classList.toggle("ls-aus-live", key && aus.indexOf(key) >= 0);
+  });
+}
+function lsAusUmschalten(key){
+  if(!key) return;
+  var aus = lsAusLesen();
+  var i = aus.indexOf(key);
+  if(i >= 0) aus.splice(i, 1);
+  else aus.push(key);
+  lsAusSchreiben(aus);
+  lsAusAnwenden();
+}
+function lsAusAufloesen(){
+  lsAusSchreiben([]);
+  lsAusAnwenden();
+}
+document.addEventListener("click", function(ev){
+  var knopf = ev.target.closest(".ls-vid-aus");
+  if(!knopf) return;
+  ev.preventDefault();
+  ev.stopPropagation();
+  var box = knopf.closest(".livescore-box");
+  if(!box) return;
+  lsAusUmschalten(box.getAttribute("data-ls-key") || "");
+});
 function openAll(){
   document.querySelectorAll("details").forEach(d=>{
     if(d.id==="wasfindeichhier") return;
@@ -339,9 +388,10 @@ document.addEventListener("DOMContentLoaded", function(){
   stelleBloeckeHer();
   bloeckeStehen = true;
   schliesseMorgen();
+  lsAusAnwenden();
 });
-window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); });
-window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); });
+window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
+window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
 window.addEventListener("beforeunload", speichereBloecke);
 window.addEventListener("pagehide", speichereBloecke);
 function bildFehlt(img){
@@ -368,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Noerdlingen Eigner Angels – Stand: 14.11.26 11:12:57</h1>
+<h1>Noerdlingen Eigner Angels – Stand: 14.11.26 12:13:21</h1>
 
 
 <details id='wasfindeichhier'>
@@ -589,6 +639,8 @@ Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
 livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
 und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei heutigen Spielen ist die blaue Video-Spalte geteilt. Rechts ✕ schließt<br>
+das Spiel aus livescore_heute aus. Auswahl live auflösen setzt das zurück.<br>
 Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: html. Der Link führt auf die Boxscore-Seite der BBL.<br>
@@ -736,13 +788,13 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Nördlingen Eigner Angels – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 11:12:57</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>55738</td><td>Damen</td><td>07.11.2026 19:00</td><td class='mannschaft'><div class='mannschaft'>halfit LIONS</div></td><td class='mannschaft'><div class='mannschaft'>Eigner Angels Nördlingen</div></td><td>86 : 71</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>55738</td><td>Damen</td><td>22.11.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>Eigner Angels Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>ALBA Berlin</div></td><td class='halle'><div class='halle'>Hermann-<wbr>Keßler-<wbr>Halle<br>Spiel 1034</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Nördlingen Eigner Angels</b><span class='summary-right'>Stand 14.11.26 11:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details class='hat-livescore'>
+<details open><summary><b>Spielplan Nördlingen Eigner Angels – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 12:13:21</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>55738</td><td>Damen</td><td>07.11.2026 19:00</td><td class='mannschaft'><div class='mannschaft'>halfit LIONS</div></td><td class='mannschaft'><div class='mannschaft'>Eigner Angels Nördlingen</div></td><td>86 : 71</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>55738</td><td>Damen</td><td>22.11.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>Eigner Angels Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>ALBA Berlin</div></td><td class='halle'><div class='halle'>Hermann-<wbr>Keßler-<wbr>Halle<br>Spiel 1034</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Nördlingen Eigner Angels</b><span class='summary-right'>Stand 14.11.26 12:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details class='hat-livescore'>
 
 <summary class='liga-kopf'>
     <b>1. Bundesliga (Toyota DBBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>30</span></span><span class='k-lid'>; LID <span class='k-zahl'>55738</span>)</span></span></span>
     <span class='summary-right'>
         <span class='liga-status'></span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 14.11. 11:05)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55738.html' onclick='liveHref(this)' target='_blank'>Details ( 14.11. 12:05)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>

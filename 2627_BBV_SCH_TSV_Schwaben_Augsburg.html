@@ -114,6 +114,14 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
 .ls-box { border-top:1px solid #8eaccc; }
 .ls-seite a { color:#1a3d7c; }
+.ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
+.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-aus:hover { background:#9eb8d6; }
+.livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
+.livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
+.live-drei .livescore-box.ls-aus-live { opacity:0.72; }
+details.live-sammel .livescore-box.ls-aus-live { display:none; }
 .listen-stand { margin:8px 0 4px; font-size:13px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
@@ -319,7 +327,48 @@ function openLivescoreHeute(){
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
+  if(typeof lsAusAnwenden === "function") lsAusAnwenden();
 }
+function lsAusSchluessel(){ return "lsAusLive:" + location.pathname; }
+function lsAusLesen(){
+  try {
+    var roh = sessionStorage.getItem(lsAusSchluessel());
+    var liste = roh ? JSON.parse(roh) : [];
+    return Array.isArray(liste) ? liste : [];
+  } catch(e){ return []; }
+}
+function lsAusSchreiben(liste){
+  try { sessionStorage.setItem(lsAusSchluessel(), JSON.stringify(liste || [])); } catch(e){}
+}
+function lsAusAnwenden(){
+  var aus = lsAusLesen();
+  document.querySelectorAll(".livescore-box[data-ls-key]").forEach(function(box){
+    var key = box.getAttribute("data-ls-key") || "";
+    box.classList.toggle("ls-aus-live", key && aus.indexOf(key) >= 0);
+  });
+}
+function lsAusUmschalten(key){
+  if(!key) return;
+  var aus = lsAusLesen();
+  var i = aus.indexOf(key);
+  if(i >= 0) aus.splice(i, 1);
+  else aus.push(key);
+  lsAusSchreiben(aus);
+  lsAusAnwenden();
+}
+function lsAusAufloesen(){
+  lsAusSchreiben([]);
+  lsAusAnwenden();
+}
+document.addEventListener("click", function(ev){
+  var knopf = ev.target.closest(".ls-vid-aus");
+  if(!knopf) return;
+  ev.preventDefault();
+  ev.stopPropagation();
+  var box = knopf.closest(".livescore-box");
+  if(!box) return;
+  lsAusUmschalten(box.getAttribute("data-ls-key") || "");
+});
 function openAll(){
   document.querySelectorAll("details").forEach(d=>{
     if(d.id==="wasfindeichhier") return;
@@ -339,9 +388,10 @@ document.addEventListener("DOMContentLoaded", function(){
   stelleBloeckeHer();
   bloeckeStehen = true;
   schliesseMorgen();
+  lsAusAnwenden();
 });
-window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); });
-window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); });
+window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
+window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
 window.addEventListener("beforeunload", speichereBloecke);
 window.addEventListener("pagehide", speichereBloecke);
 function bildFehlt(img){
@@ -368,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Augsburg TSV Schwaben – Stand: 14.11.26 11:13:33</h1>
+<h1>Augsburg TSV Schwaben – Stand: 14.11.26 12:13:56</h1>
 
 
 <details id='wasfindeichhier'>
@@ -589,6 +639,8 @@ Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
 livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
 und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei heutigen Spielen ist die blaue Video-Spalte geteilt. Rechts ✕ schließt<br>
+das Spiel aus livescore_heute aus. Auswahl live auflösen setzt das zurück.<br>
 Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: html. Der Link führt auf die Boxscore-Seite der BBL.<br>
@@ -736,7 +788,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Augsburg TSV Schwaben – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 11:13:33</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>54497</td><td>U12</td><td>08.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td>33 : 108</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 33016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2 (BOLU10W)</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 46015</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54473</td><td>U10</td><td>14.11.2026 10:45</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 38016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54496</td><td>U12</td><td>14.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 36016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>52534</td><td>Herren</td><td>14.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TS Jahn München 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TS Jahn München<br>Spiel 50475</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54472</td><td>U12</td><td>14.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 37011</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54453</td><td>Herren</td><td>14.11.2026 19:45</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 4025</div></td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>15.11.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 34025</div></td></tr><tr style='background-color:#ffdd99;'><td>54461</td><td>U16</td><td>15.11.2026 11:15</td><td class='mannschaft'><div class='mannschaft'>TSV 1847 Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 26025</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>15.11.2026 13:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 22016</div></td></tr><tr style='background-color:#ffdd99;'><td>54473</td><td>U10</td><td>21.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 38020</div></td></tr><tr><td>54459</td><td>U18</td><td>21.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Sporthalle<br>Spiel 22019</div></td></tr><tr><td>54461</td><td>U16</td><td>21.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1847 Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>MTV-<wbr>Halle<br>Spiel 26029</div></td></tr><tr style='background-color:#ffdd99;'><td>54497</td><td>U12</td><td>21.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neusäß</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 43020</div></td></tr><tr style='background-color:#ffdd99;'><td>54454</td><td>Herren</td><td>21.11.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 3030</div></td></tr><tr style='background-color:#ffdd99;'><td>52534</td><td>Herren</td><td>21.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BC Hellenen München</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 50480</div></td></tr><tr><td>54453</td><td>Herren</td><td>21.11.2026 20:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>MTV-<wbr>Halle<br>Spiel 4029</div></td></tr><tr style='background-color:#ffdd99;'><td>54472</td><td>U12</td><td>22.11.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 37015</div></td></tr><tr><td>54471</td><td>U12</td><td>22.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Allianz Court<br>Spiel 34029</div></td></tr><tr><td>54496</td><td>U12</td><td>22.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Hermann-<wbr>Luib-<wbr>Halle<br>Spiel 36019</div></td></tr><tr style='background-color:#ffdd99;'><td>54472</td><td>U12</td><td>22.11.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 37014</div></td></tr><tr><td>54460</td><td>U18</td><td>22.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg (BOLU20W)</div></td><td class='halle'><div class='halle'>DJK Halle<br>Spiel 25013</div></td></tr><tr style='background-color:#ffdd99;'><td>54462</td><td>U16</td><td>22.11.2026 13:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 29047</div></td></tr><tr><td>54494</td><td>U14</td><td>22.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 75019</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg TSV Schwaben</b><span class='summary-right'>Stand 14.11.26 11:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Augsburg TSV Schwaben – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 12:13:56</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td>16 : 103</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2 (BOLU10W)</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>56 : 42</td></tr><tr><td>54497</td><td>U12</td><td>08.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td>33 : 108</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 33016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2 (BOLU10W)</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 46015</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54473</td><td>U10</td><td>14.11.2026 10:45</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 38016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54496</td><td>U12</td><td>14.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 36016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>52534</td><td>Herren</td><td>14.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TS Jahn München 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>TS Jahn München<br>Spiel 50475</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54472</td><td>U12</td><td>14.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 37011</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54453</td><td>Herren</td><td>14.11.2026 19:45</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 4025</div></td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>15.11.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 34025</div></td></tr><tr style='background-color:#ffdd99;'><td>54461</td><td>U16</td><td>15.11.2026 11:15</td><td class='mannschaft'><div class='mannschaft'>TSV 1847 Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 26025</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>15.11.2026 13:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 22016</div></td></tr><tr style='background-color:#ffdd99;'><td>54473</td><td>U10</td><td>21.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 38020</div></td></tr><tr><td>54459</td><td>U18</td><td>21.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Sporthalle<br>Spiel 22019</div></td></tr><tr><td>54461</td><td>U16</td><td>21.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1847 Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>MTV-<wbr>Halle<br>Spiel 26029</div></td></tr><tr style='background-color:#ffdd99;'><td>54497</td><td>U12</td><td>21.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 3 (BOLU12W)</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neusäß</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 43020</div></td></tr><tr style='background-color:#ffdd99;'><td>54454</td><td>Herren</td><td>21.11.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 3030</div></td></tr><tr style='background-color:#ffdd99;'><td>52534</td><td>Herren</td><td>21.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BC Hellenen München</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 50480</div></td></tr><tr><td>54453</td><td>Herren</td><td>21.11.2026 20:00</td><td class='mannschaft'><div class='mannschaft'>MTV Baskets Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>MTV-<wbr>Halle<br>Spiel 4029</div></td></tr><tr style='background-color:#ffdd99;'><td>54472</td><td>U12</td><td>22.11.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 37015</div></td></tr><tr><td>54471</td><td>U12</td><td>22.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='halle'><div class='halle'>Allianz Court<br>Spiel 34029</div></td></tr><tr><td>54496</td><td>U12</td><td>22.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>Hermann-<wbr>Luib-<wbr>Halle<br>Spiel 36019</div></td></tr><tr style='background-color:#ffdd99;'><td>54472</td><td>U12</td><td>22.11.2026 11:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg2</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 37014</div></td></tr><tr><td>54460</td><td>U18</td><td>22.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg (BOLU20W)</div></td><td class='halle'><div class='halle'>DJK Halle<br>Spiel 25013</div></td></tr><tr style='background-color:#ffdd99;'><td>54462</td><td>U16</td><td>22.11.2026 13:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 29047</div></td></tr><tr><td>54494</td><td>U14</td><td>22.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 75019</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg TSV Schwaben</b><span class='summary-right'>Stand 14.11.26 12:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr class="offen"><td>Sa. 14.11.26</td><td>10:00</td><td class="wrap">TSV Schwaben Augsburg 2 (BOLU10W)</td><td class="wrap">TV 1847 Augsburg</td><td class="liga">Bezirksliga<br/>U10 gemischt Süd<br/>26/27</td><td class="halle">Berufsschule VI<br/>Haunstetter Str. 59<br/>86161 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54499#:~:text=14.11.2026%2010%3A00,TV%201847%20Augsburg" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 14.11.26</td><td>12:00</td><td class="wrap">TSV Schwaben Augsburg 2</td><td class="wrap">SG Heising-Kottern</td><td class="liga">Bezirksliga<br/>U12 gemischt Süd<br/>26/27</td><td class="halle">Berufsschule VI<br/>Haunstetter Str. 59<br/>86161 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54496#:~:text=14.11.2026%2012%3A00,SG%20Heising-Kottern" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -2195,6 +2247,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>33016</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>SSV Schrobenhausen</td>
+<td>TSV Schwaben Augsburg 2</td>
+<td>16 : 103</td>
+</tr>
 <tr>
 <td>33024</td>
 <td>6</td>
@@ -2223,11 +2283,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>1</td>
       <td>TSV Schwaben Augsburg 2</td>
-      <td>3</td>
-      <td>3/0</td>
-      <td>6</td>
-      <td>152 : 71</td>
-      <td>81</td>
+      <td>4</td>
+      <td>4/0</td>
+      <td>8</td>
+      <td>255 : 87</td>
+      <td>168</td>
       <td>0</td>
     </tr>
     <tr>
@@ -2283,11 +2343,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>7</td>
       <td>SSV Schrobenhausen</td>
-      <td>2</td>
-      <td>0/2</td>
+      <td>3</td>
+      <td>0/3</td>
       <td>0</td>
-      <td>53 : 180</td>
-      <td>-127</td>
+      <td>69 : 283</td>
+      <td>-214</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -2306,7 +2366,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>33016</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>
@@ -2826,13 +2886,34 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
         <span class='liga-status'></span>
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html' onclick='liveHref(this)' target='_blank'>Details ( 13.11. 14:18)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:#ffdd99;'></span>
+        <span class='liga-icon green'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
-<p><i>Keine Ergebnisse.</i></p>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>38015</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>TSV Nördlingen</td>
+<td>SSV Schrobenhausen</td>
+<td>97 : 70</td>
+</tr>
+</tbody>
+</table>
 <h3>Tabelle</h3>
 <table border="1" class="dataframe">
   <thead>
@@ -2859,11 +2940,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>2</td>
       <td>TSV Nördlingen</td>
-      <td>3</td>
-      <td>2/1</td>
       <td>4</td>
-      <td>202 : 171</td>
-      <td>31</td>
+      <td>3/1</td>
+      <td>6</td>
+      <td>299 : 241</td>
+      <td>58</td>
     </tr>
     <tr>
       <td>3</td>
@@ -2895,11 +2976,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>6</td>
       <td>SSV Schrobenhausen</td>
-      <td>2</td>
-      <td>0/2</td>
+      <td>3</td>
+      <td>0/3</td>
       <td>0</td>
-      <td>130 : 197</td>
-      <td>-67</td>
+      <td>200 : 294</td>
+      <td>-94</td>
     </tr>
   </tbody>
 </table>
@@ -2917,7 +2998,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>38015</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>
@@ -3612,6 +3693,22 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>46015</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>TSV Schwaben Augsburg 2 (BOLU10W)</td>
+<td>TV 1847 Augsburg</td>
+<td>56 : 42</td>
+</tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>46016</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>Sportfreunde Friedberg</td>
+<td>BG Illertal</td>
+<td>100 : 5</td>
+</tr>
 <tr>
 <td>46028</td>
 <td>7</td>
@@ -3656,11 +3753,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>2</td>
       <td>Sportfreunde Friedberg</td>
-      <td>3</td>
-      <td>2/1</td>
       <td>4</td>
-      <td>237 : 126</td>
-      <td>111</td>
+      <td>3/1</td>
+      <td>6</td>
+      <td>337 : 131</td>
+      <td>206</td>
     </tr>
     <tr>
       <td>3</td>
@@ -3673,21 +3770,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>4</td>
+      <td>TSV Schwaben Augsburg 2 (BOLU10W)</td>
+      <td>3</td>
+      <td>2/1</td>
+      <td>4</td>
+      <td>150 : 145</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>5</td>
       <td>BG Leitershofen/Stadtbergen 2</td>
       <td>4</td>
       <td>2/2</td>
       <td>4</td>
       <td>194 : 200</td>
       <td>-6</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>TSV Schwaben Augsburg 2 (BOLU10W)</td>
-      <td>2</td>
-      <td>1/1</td>
-      <td>2</td>
-      <td>94 : 103</td>
-      <td>-9</td>
     </tr>
     <tr>
       <td>6</td>
@@ -3701,20 +3798,20 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>7</td>
       <td>BG Illertal</td>
-      <td>1</td>
-      <td>0/1</td>
+      <td>2</td>
+      <td>0/2</td>
       <td>0</td>
-      <td>4 : 78</td>
-      <td>-74</td>
+      <td>9 : 178</td>
+      <td>-169</td>
     </tr>
     <tr>
       <td>8</td>
       <td>TV 1847 Augsburg</td>
-      <td>3</td>
-      <td>0/3</td>
+      <td>4</td>
+      <td>0/4</td>
       <td>0</td>
-      <td>110 : 238</td>
-      <td>-128</td>
+      <td>152 : 294</td>
+      <td>-142</td>
     </tr>
   </tbody>
 </table>
@@ -3732,7 +3829,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>46015</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>
@@ -3741,7 +3838,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td><div class="halle">Berufsschule VI</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Verein<br/><span class="sr-verein">TSV Schwaben Augsburg (220205)</span></span><br/><span class="sr-zeile"><b>SR2</b> Verein<br/><span class="sr-verein">TSV Schwaben Augsburg (220205)</span></span></td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>46016</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>

@@ -114,6 +114,14 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
 .ls-box { border-top:1px solid #8eaccc; }
 .ls-seite a { color:#1a3d7c; }
+.ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
+.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-aus:hover { background:#9eb8d6; }
+.livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
+.livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
+.live-drei .livescore-box.ls-aus-live { opacity:0.72; }
+details.live-sammel .livescore-box.ls-aus-live { display:none; }
 .listen-stand { margin:8px 0 4px; font-size:13px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
@@ -319,7 +327,48 @@ function openLivescoreHeute(){
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
+  if(typeof lsAusAnwenden === "function") lsAusAnwenden();
 }
+function lsAusSchluessel(){ return "lsAusLive:" + location.pathname; }
+function lsAusLesen(){
+  try {
+    var roh = sessionStorage.getItem(lsAusSchluessel());
+    var liste = roh ? JSON.parse(roh) : [];
+    return Array.isArray(liste) ? liste : [];
+  } catch(e){ return []; }
+}
+function lsAusSchreiben(liste){
+  try { sessionStorage.setItem(lsAusSchluessel(), JSON.stringify(liste || [])); } catch(e){}
+}
+function lsAusAnwenden(){
+  var aus = lsAusLesen();
+  document.querySelectorAll(".livescore-box[data-ls-key]").forEach(function(box){
+    var key = box.getAttribute("data-ls-key") || "";
+    box.classList.toggle("ls-aus-live", key && aus.indexOf(key) >= 0);
+  });
+}
+function lsAusUmschalten(key){
+  if(!key) return;
+  var aus = lsAusLesen();
+  var i = aus.indexOf(key);
+  if(i >= 0) aus.splice(i, 1);
+  else aus.push(key);
+  lsAusSchreiben(aus);
+  lsAusAnwenden();
+}
+function lsAusAufloesen(){
+  lsAusSchreiben([]);
+  lsAusAnwenden();
+}
+document.addEventListener("click", function(ev){
+  var knopf = ev.target.closest(".ls-vid-aus");
+  if(!knopf) return;
+  ev.preventDefault();
+  ev.stopPropagation();
+  var box = knopf.closest(".livescore-box");
+  if(!box) return;
+  lsAusUmschalten(box.getAttribute("data-ls-key") || "");
+});
 function openAll(){
   document.querySelectorAll("details").forEach(d=>{
     if(d.id==="wasfindeichhier") return;
@@ -339,9 +388,10 @@ document.addEventListener("DOMContentLoaded", function(){
   stelleBloeckeHer();
   bloeckeStehen = true;
   schliesseMorgen();
+  lsAusAnwenden();
 });
-window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); });
-window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); });
+window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
+window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
 window.addEventListener("beforeunload", speichereBloecke);
 window.addEventListener("pagehide", speichereBloecke);
 function bildFehlt(img){
@@ -368,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Ingolstadt-Ringsee ESV – Stand: 14.11.26 11:16:46</h1>
+<h1>Ingolstadt-Ringsee ESV – Stand: 14.11.26 12:17:23</h1>
 
 
 <details id='wasfindeichhier'>
@@ -589,6 +639,8 @@ Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
 livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
 und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei heutigen Spielen ist die blaue Video-Spalte geteilt. Rechts ✕ schließt<br>
+das Spiel aus livescore_heute aus. Auswahl live auflösen setzt das zurück.<br>
 Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: html. Der Link führt auf die Boxscore-Seite der BBL.<br>
@@ -736,7 +788,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Ingolstadt-Ringsee ESV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 11:16:46</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Ergebnisse.</i></p></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54498</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>August-<wbr>Horch-<wbr>Schule<br>Spiel 45015</div></td></tr><tr><td>54488</td><td>U16</td><td>15.11.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>FC Gerolfing 1930 e.V.</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Sporthalle Gerolfing<br>Spiel 27015</div></td></tr><tr><td>54485</td><td>Herren</td><td>15.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth 2</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 12015</div></td></tr><tr><td>54495</td><td>U12</td><td>22.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ringsee Ingolstadt</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 35017</div></td></tr><tr><td>54498</td><td>U10</td><td>22.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>VSC Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 45017</div></td></tr><tr><td>54488</td><td>U16</td><td>22.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 27017</div></td></tr><tr><td>54485</td><td>Herren</td><td>22.11.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 12017</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Ingolstadt-Ringsee ESV</b><span class='summary-right'>Stand 14.11.26 11:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Ingolstadt-Ringsee ESV – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 12:17:23</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54498</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td>83 : 39</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54498</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>August-<wbr>Horch-<wbr>Schule<br>Spiel 45015</div></td></tr><tr><td>54488</td><td>U16</td><td>15.11.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>FC Gerolfing 1930 e.V.</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Sporthalle Gerolfing<br>Spiel 27015</div></td></tr><tr><td>54485</td><td>Herren</td><td>15.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth 2</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 12015</div></td></tr><tr><td>54495</td><td>U12</td><td>22.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt 2</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ringsee Ingolstadt</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 35017</div></td></tr><tr><td>54498</td><td>U10</td><td>22.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>VSC Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 45017</div></td></tr><tr><td>54488</td><td>U16</td><td>22.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 27017</div></td></tr><tr><td>54485</td><td>Herren</td><td>22.11.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen 2</div></td><td class='mannschaft'><div class='mannschaft'>ESV Ingolstadt-Ringsee</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 12017</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Ingolstadt-Ringsee ESV</b><span class='summary-right'>Stand 14.11.26 12:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>Sa. 28.11.26</td><td>14:30</td><td class="wrap">ESV Ingolstadt-Ringsee</td><td class="wrap">TSV 1868 Aichach</td><td class="liga">Bezirksliga<br/>U16 männlich Nord<br/>26/27</td><td class="halle">Grundschule an der Münchenerstraße<br/>Münchener Str. 65<br/>85051 Ingolstadt</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54488#:~:text=28.11.2026%2014%3A30,TSV%201868%20Aichach" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr><td>So. 29.11.26</td><td>16:00</td><td class="wrap">PSV Ingolstadt</td><td class="wrap">VFL Buchloe</td><td class="liga">Bezirksoberliga<br/>U18 männlich<br/>26/27</td><td class="halle">August-Horch-Schule<br/>Furtwänglerstr. 9<br/>85057 Ingolstadt</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54459#:~:text=29.11.2026%2016%3A00,VFL%20Buchloe" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -1081,13 +1133,34 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
         <span class='liga-status'></span>
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54495.html' onclick='liveHref(this)' target='_blank'>Details ( 13.11. 14:20)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:#ffdd99;'></span>
+        <span class='liga-icon green'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
-<p><i>Keine Ergebnisse.</i></p>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>35013</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>DJK Eichstätt</td>
+<td>MTV Baskets Ingolstadt</td>
+<td>90 : 52</td>
+</tr>
+</tbody>
+</table>
 <h3>Tabelle</h3>
 <table border="1" class="dataframe">
   <thead>
@@ -1104,21 +1177,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
   <tbody>
     <tr>
       <td>1</td>
-      <td>MTV Baskets Ingolstadt</td>
-      <td>2</td>
-      <td>2/0</td>
-      <td>4</td>
-      <td>168 : 66</td>
-      <td>102</td>
+      <td>DJK Eichstätt</td>
+      <td>3</td>
+      <td>3/0</td>
+      <td>6</td>
+      <td>257 : 135</td>
+      <td>122</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>DJK Eichstätt</td>
-      <td>2</td>
-      <td>2/0</td>
+      <td>MTV Baskets Ingolstadt</td>
+      <td>3</td>
+      <td>2/1</td>
       <td>4</td>
-      <td>167 : 83</td>
-      <td>84</td>
+      <td>220 : 156</td>
+      <td>64</td>
     </tr>
     <tr>
       <td>3</td>
@@ -1172,7 +1245,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>35013</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>
@@ -1223,13 +1296,34 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
         <span class='liga-status'></span>
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54498.html' onclick='liveHref(this)' target='_blank'>Details ( 13.11. 14:20)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:#ffdd99;'></span>
+        <span class='liga-icon green'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
-<p><i>Keine Ergebnisse.</i></p>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>45015</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>PSV Ingolstadt</td>
+<td>ESV Ingolstadt-Ringsee</td>
+<td>83 : 39</td>
+</tr>
+</tbody>
+</table>
 <h3>Tabelle</h3>
 <table border="1" class="dataframe">
   <thead>
@@ -1247,20 +1341,20 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>1</td>
       <td>PSV Ingolstadt</td>
-      <td>3</td>
-      <td>3/0</td>
-      <td>6</td>
-      <td>305 : 79</td>
-      <td>226</td>
+      <td>4</td>
+      <td>4/0</td>
+      <td>8</td>
+      <td>388 : 118</td>
+      <td>270</td>
     </tr>
     <tr>
       <td>2</td>
       <td>ESV Ingolstadt-Ringsee</td>
-      <td>3</td>
-      <td>2/1</td>
       <td>4</td>
-      <td>229 : 161</td>
-      <td>68</td>
+      <td>2/2</td>
+      <td>4</td>
+      <td>268 : 244</td>
+      <td>24</td>
     </tr>
     <tr>
       <td>3</td>
@@ -1323,7 +1417,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>45015</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>

@@ -114,6 +114,14 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
 .ls-box { border-top:1px solid #8eaccc; }
 .ls-seite a { color:#1a3d7c; }
+.ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
+.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-aus:hover { background:#9eb8d6; }
+.livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
+.livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
+.live-drei .livescore-box.ls-aus-live { opacity:0.72; }
+details.live-sammel .livescore-box.ls-aus-live { display:none; }
 .listen-stand { margin:8px 0 4px; font-size:13px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
@@ -319,7 +327,48 @@ function openLivescoreHeute(){
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
+  if(typeof lsAusAnwenden === "function") lsAusAnwenden();
 }
+function lsAusSchluessel(){ return "lsAusLive:" + location.pathname; }
+function lsAusLesen(){
+  try {
+    var roh = sessionStorage.getItem(lsAusSchluessel());
+    var liste = roh ? JSON.parse(roh) : [];
+    return Array.isArray(liste) ? liste : [];
+  } catch(e){ return []; }
+}
+function lsAusSchreiben(liste){
+  try { sessionStorage.setItem(lsAusSchluessel(), JSON.stringify(liste || [])); } catch(e){}
+}
+function lsAusAnwenden(){
+  var aus = lsAusLesen();
+  document.querySelectorAll(".livescore-box[data-ls-key]").forEach(function(box){
+    var key = box.getAttribute("data-ls-key") || "";
+    box.classList.toggle("ls-aus-live", key && aus.indexOf(key) >= 0);
+  });
+}
+function lsAusUmschalten(key){
+  if(!key) return;
+  var aus = lsAusLesen();
+  var i = aus.indexOf(key);
+  if(i >= 0) aus.splice(i, 1);
+  else aus.push(key);
+  lsAusSchreiben(aus);
+  lsAusAnwenden();
+}
+function lsAusAufloesen(){
+  lsAusSchreiben([]);
+  lsAusAnwenden();
+}
+document.addEventListener("click", function(ev){
+  var knopf = ev.target.closest(".ls-vid-aus");
+  if(!knopf) return;
+  ev.preventDefault();
+  ev.stopPropagation();
+  var box = knopf.closest(".livescore-box");
+  if(!box) return;
+  lsAusUmschalten(box.getAttribute("data-ls-key") || "");
+});
 function openAll(){
   document.querySelectorAll("details").forEach(d=>{
     if(d.id==="wasfindeichhier") return;
@@ -339,9 +388,10 @@ document.addEventListener("DOMContentLoaded", function(){
   stelleBloeckeHer();
   bloeckeStehen = true;
   schliesseMorgen();
+  lsAusAnwenden();
 });
-window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); });
-window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); });
+window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
+window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
 window.addEventListener("beforeunload", speichereBloecke);
 window.addEventListener("pagehide", speichereBloecke);
 function bildFehlt(img){
@@ -368,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Friedberg Sportfreunde – Stand: 14.11.26 11:15:22</h1>
+<h1>Friedberg Sportfreunde – Stand: 14.11.26 12:15:53</h1>
 
 
 <details id='wasfindeichhier'>
@@ -589,6 +639,8 @@ Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
 livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
 und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei heutigen Spielen ist die blaue Video-Spalte geteilt. Rechts ✕ schließt<br>
+das Spiel aus livescore_heute aus. Auswahl live auflösen setzt das zurück.<br>
 Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: html. Der Link führt auf die Boxscore-Seite der BBL.<br>
@@ -736,7 +788,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Friedberg Sportfreunde – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 11:15:22</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Ergebnisse.</i></p></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='halle'><div class='halle'>Stadthalle<br>Spiel 46016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54494</td><td>U14</td><td>14.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1863 Schwabmünchen</div></td><td class='halle'><div class='halle'>Stadthalle<br>Spiel 75015</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54490</td><td>U16</td><td>14.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neusäß</div></td><td class='halle'><div class='halle'>Stadthalle<br>Spiel 44016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54453</td><td>Herren</td><td>14.11.2026 19:45</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 4025</div></td></tr><tr><td>54499</td><td>U10</td><td>21.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>Bruno-<wbr>Merk-<wbr>Sporthalle<br>Spiel 46019</div></td></tr><tr><td>55701</td><td>U12</td><td>21.11.2026 12:45</td><td class='mannschaft'><div class='mannschaft'>TSV Neuburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>Mehrfachhalle im Ostend<br>Spiel 77019</div></td></tr><tr style='background-color:#ffdd99;'><td>54453</td><td>Herren</td><td>21.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='halle'><div class='halle'>Stadthalle<br>Spiel 4030</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Friedberg Sportfreunde</b><span class='summary-right'>Stand 14.11.26 11:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Friedberg Sportfreunde – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 12:15:53</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td>100 : 5</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='halle'><div class='halle'>Stadthalle<br>Spiel 46016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54494</td><td>U14</td><td>14.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1863 Schwabmünchen</div></td><td class='halle'><div class='halle'>Stadthalle<br>Spiel 75015</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54490</td><td>U16</td><td>14.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Neusäß</div></td><td class='halle'><div class='halle'>Stadthalle<br>Spiel 44016</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54453</td><td>Herren</td><td>14.11.2026 19:45</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 4025</div></td></tr><tr><td>54499</td><td>U10</td><td>21.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Wasserburg/<wbr>Günzburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>Bruno-<wbr>Merk-<wbr>Sporthalle<br>Spiel 46019</div></td></tr><tr><td>55701</td><td>U12</td><td>21.11.2026 12:45</td><td class='mannschaft'><div class='mannschaft'>TSV Neuburg</div></td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='halle'><div class='halle'>Mehrfachhalle im Ostend<br>Spiel 77019</div></td></tr><tr style='background-color:#ffdd99;'><td>54453</td><td>Herren</td><td>21.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>Sportfreunde Friedberg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='halle'><div class='halle'>Stadthalle<br>Spiel 4030</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Friedberg Sportfreunde</b><span class='summary-right'>Stand 14.11.26 12:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr class="offen"><td>Sa. 14.11.26</td><td>10:00</td><td class="wrap">Sportfreunde Friedberg</td><td class="wrap">BG Illertal</td><td class="liga">Bezirksliga<br/>U10 gemischt Süd<br/>26/27</td><td class="halle">Stadthalle<br/>Aichacher Str. 7<br/>86316 Friedberg</td><td class="wrap">SRNAME nicht öffentlich (SR1), SRNAME nicht öffentlich (SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54499#:~:text=14.11.2026%2010%3A00,BG%20Illertal" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>Sa. 14.11.26</td><td>12:15</td><td class="wrap">Sportfreunde Friedberg</td><td class="wrap">TSV 1863 Schwabmünchen</td><td class="liga">Bezirksliga<br/>U14 männlich Mitte<br/>26/27</td><td class="halle">Stadthalle<br/>Aichacher Str. 7<br/>86316 Friedberg</td><td class="wrap">SRNAME nicht öffentlich (SR1), SRNAME nicht öffentlich (SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54494#:~:text=14.11.2026%2012%3A15,TSV%201863%20Schwabm%C3%BCnchen" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -1171,6 +1223,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>44014</td>
+<td>4</td>
+<td>14.11.2026 10:30</td>
+<td>TSV Diedorf</td>
+<td>TSV Gersthofen</td>
+<td>81 : 68</td>
+</tr>
 <tr>
 <td>44011</td>
 <td>3</td>
@@ -1218,22 +1278,22 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>3</td>
+      <td>TSV Diedorf</td>
+      <td>5</td>
+      <td>2/3</td>
+      <td>4</td>
+      <td>374 : 425</td>
+      <td>-51</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
       <td>Sportfreunde Friedberg</td>
       <td>1</td>
       <td>1/0</td>
       <td>2</td>
       <td>79 : 49</td>
       <td>30</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>TSV Gersthofen</td>
-      <td>2</td>
-      <td>1/1</td>
-      <td>2</td>
-      <td>106 : 151</td>
-      <td>-45</td>
       <td>0</td>
     </tr>
     <tr>
@@ -1248,12 +1308,12 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>6</td>
-      <td>TSV Diedorf</td>
-      <td>4</td>
-      <td>1/3</td>
+      <td>TSV Gersthofen</td>
+      <td>3</td>
+      <td>1/2</td>
       <td>2</td>
-      <td>293 : 357</td>
-      <td>-64</td>
+      <td>174 : 232</td>
+      <td>-58</td>
       <td>0</td>
     </tr>
     <tr>
@@ -1301,7 +1361,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td><div class="halle">Leonhard-Wagner-Halle</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Verein<br/><span class="sr-verein">TSV 1863 Schwabmünchen (220271)</span></span><br/><span class="sr-zeile"><b>SR2</b> Verein<br/><span class="sr-verein">TSV 1863 Schwabmünchen (220271)</span></span></td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>44014</td>
 <td>4</td>
 <td>14.11.2026 10:30</td>
@@ -1729,6 +1789,22 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>46015</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>TSV Schwaben Augsburg 2 (BOLU10W)</td>
+<td>TV 1847 Augsburg</td>
+<td>56 : 42</td>
+</tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>46016</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>Sportfreunde Friedberg</td>
+<td>BG Illertal</td>
+<td>100 : 5</td>
+</tr>
 <tr>
 <td>46028</td>
 <td>7</td>
@@ -1773,11 +1849,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>2</td>
       <td>Sportfreunde Friedberg</td>
-      <td>3</td>
-      <td>2/1</td>
       <td>4</td>
-      <td>237 : 126</td>
-      <td>111</td>
+      <td>3/1</td>
+      <td>6</td>
+      <td>337 : 131</td>
+      <td>206</td>
     </tr>
     <tr>
       <td>3</td>
@@ -1790,21 +1866,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>4</td>
+      <td>TSV Schwaben Augsburg 2 (BOLU10W)</td>
+      <td>3</td>
+      <td>2/1</td>
+      <td>4</td>
+      <td>150 : 145</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>5</td>
       <td>BG Leitershofen/Stadtbergen 2</td>
       <td>4</td>
       <td>2/2</td>
       <td>4</td>
       <td>194 : 200</td>
       <td>-6</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>TSV Schwaben Augsburg 2 (BOLU10W)</td>
-      <td>2</td>
-      <td>1/1</td>
-      <td>2</td>
-      <td>94 : 103</td>
-      <td>-9</td>
     </tr>
     <tr>
       <td>6</td>
@@ -1818,20 +1894,20 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>7</td>
       <td>BG Illertal</td>
-      <td>1</td>
-      <td>0/1</td>
+      <td>2</td>
+      <td>0/2</td>
       <td>0</td>
-      <td>4 : 78</td>
-      <td>-74</td>
+      <td>9 : 178</td>
+      <td>-169</td>
     </tr>
     <tr>
       <td>8</td>
       <td>TV 1847 Augsburg</td>
-      <td>3</td>
-      <td>0/3</td>
+      <td>4</td>
+      <td>0/4</td>
       <td>0</td>
-      <td>110 : 238</td>
-      <td>-128</td>
+      <td>152 : 294</td>
+      <td>-142</td>
     </tr>
   </tbody>
 </table>
@@ -1849,7 +1925,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>46015</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>
@@ -1858,7 +1934,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td><div class="halle">Berufsschule VI</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Verein<br/><span class="sr-verein">TSV Schwaben Augsburg (220205)</span></span><br/><span class="sr-zeile"><b>SR2</b> Verein<br/><span class="sr-verein">TSV Schwaben Augsburg (220205)</span></span></td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>46016</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>
