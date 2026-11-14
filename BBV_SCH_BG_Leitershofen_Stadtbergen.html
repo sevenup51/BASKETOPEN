@@ -114,6 +114,14 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
 .ls-box { border-top:1px solid #8eaccc; }
 .ls-seite a { color:#1a3d7c; }
+.ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
+.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-aus:hover { background:#9eb8d6; }
+.livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
+.livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
+.live-drei .livescore-box.ls-aus-live { opacity:0.72; }
+details.live-sammel .livescore-box.ls-aus-live { display:none; }
 .listen-stand { margin:8px 0 4px; font-size:13px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
@@ -319,7 +327,48 @@ function openLivescoreHeute(){
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
+  if(typeof lsAusAnwenden === "function") lsAusAnwenden();
 }
+function lsAusSchluessel(){ return "lsAusLive:" + location.pathname; }
+function lsAusLesen(){
+  try {
+    var roh = sessionStorage.getItem(lsAusSchluessel());
+    var liste = roh ? JSON.parse(roh) : [];
+    return Array.isArray(liste) ? liste : [];
+  } catch(e){ return []; }
+}
+function lsAusSchreiben(liste){
+  try { sessionStorage.setItem(lsAusSchluessel(), JSON.stringify(liste || [])); } catch(e){}
+}
+function lsAusAnwenden(){
+  var aus = lsAusLesen();
+  document.querySelectorAll(".livescore-box[data-ls-key]").forEach(function(box){
+    var key = box.getAttribute("data-ls-key") || "";
+    box.classList.toggle("ls-aus-live", key && aus.indexOf(key) >= 0);
+  });
+}
+function lsAusUmschalten(key){
+  if(!key) return;
+  var aus = lsAusLesen();
+  var i = aus.indexOf(key);
+  if(i >= 0) aus.splice(i, 1);
+  else aus.push(key);
+  lsAusSchreiben(aus);
+  lsAusAnwenden();
+}
+function lsAusAufloesen(){
+  lsAusSchreiben([]);
+  lsAusAnwenden();
+}
+document.addEventListener("click", function(ev){
+  var knopf = ev.target.closest(".ls-vid-aus");
+  if(!knopf) return;
+  ev.preventDefault();
+  ev.stopPropagation();
+  var box = knopf.closest(".livescore-box");
+  if(!box) return;
+  lsAusUmschalten(box.getAttribute("data-ls-key") || "");
+});
 function openAll(){
   document.querySelectorAll("details").forEach(d=>{
     if(d.id==="wasfindeichhier") return;
@@ -339,9 +388,10 @@ document.addEventListener("DOMContentLoaded", function(){
   stelleBloeckeHer();
   bloeckeStehen = true;
   schliesseMorgen();
+  lsAusAnwenden();
 });
-window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); });
-window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); });
+window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
+window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
 window.addEventListener("beforeunload", speichereBloecke);
 window.addEventListener("pagehide", speichereBloecke);
 function bildFehlt(img){
@@ -368,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Leitershofen/Stadtbergen BG – Stand: 14.11.26 11:11:54</h1>
+<h1>Leitershofen/Stadtbergen BG – Stand: 14.11.26 12:11:58</h1>
 
 
 <details id='wasfindeichhier'>
@@ -589,6 +639,8 @@ Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
 livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
 und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei heutigen Spielen ist die blaue Video-Spalte geteilt. Rechts ✕ schließt<br>
+das Spiel aus livescore_heute aus. Auswahl live auflösen setzt das zurück.<br>
 Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: html. Der Link führt auf die Boxscore-Seite der BBL.<br>
@@ -736,7 +788,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Leitershofen/Stadtbergen BG – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 11:11:54</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>55817</td><td>Herren</td><td>13.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>TSV Oberhaching Tropics</div></td><td class='mannschaft'><div class='mannschaft'>BG Hessing Leitershofen</div></td><td>85 : 99</td></tr><tr><td>52528</td><td>Herren</td><td>08.11.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>SB DJK Rosenheim</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td>77 : 69</td></tr><tr><td>54459</td><td>U18</td><td>08.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>73 : 84</td></tr><tr><td>54499</td><td>U10</td><td>08.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td>4 : 78</td></tr><tr><td>55817</td><td>Herren</td><td>07.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>BG Hessing Leitershofen</div></td><td class='mannschaft'><div class='mannschaft'>TV Langen</div></td><td>72 : 75</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54494</td><td>U14</td><td>14.11.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 3</div></td><td class='halle'><div class='halle'>Schmuttertalhalle<br>Spiel 75013</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>52528</td><td>Herren</td><td>14.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='mannschaft'><div class='mannschaft'>Chiemgau Panthers Traunstein</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 50439</div></td></tr><tr style='background-color:#ffdd99;'><td>54499</td><td>U10</td><td>15.11.2026 09:00</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 46042</div></td></tr><tr><td>54471</td><td>U12</td><td>15.11.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 34025</div></td></tr><tr style='background-color:#ffdd99;'><td>55817</td><td>Herren</td><td>15.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>BG Hessing Leitershofen</div></td><td class='mannschaft'><div class='mannschaft'>BBC Coburg</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 2006190</div></td></tr><tr><td>54453</td><td>Herren</td><td>21.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG powered by BBA Leitershofen/<wbr>Stadtbergen 3</div></td><td class='halle'><div class='halle'>Erhard-<wbr>Wunderlich-<wbr>Sporthalle<br>Spiel 4026</div></td></tr><tr style='background-color:#ffdd99;'><td>54497</td><td>U12</td><td>21.11.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 43018</div></td></tr><tr><td>52528</td><td>Herren</td><td>21.11.2026 19:45</td><td class='mannschaft'><div class='mannschaft'>TS Herzogenaurach</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='halle'><div class='halle'>Gymnasium<br>Spiel 50446</div></td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>22.11.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 34030</div></td></tr><tr style='background-color:#ffdd99;'><td>54473</td><td>U10</td><td>22.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 38017</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>22.11.2026 14:15</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 22018</div></td></tr><tr style='background-color:#ffdd99;'><td>54494</td><td>U14</td><td>22.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 75019</div></td></tr><tr><td>55817</td><td>Herren</td><td>22.11.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>Bayer Giants Leverkusen</div></td><td class='mannschaft'><div class='mannschaft'>BG Hessing Leitershofen</div></td><td class='halle'><div class='halle'>Ostermann-<wbr>Arena<br>Spiel 2006202</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Leitershofen/Stadtbergen BG</b><span class='summary-right'>Stand 14.11.26 11:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Leitershofen/Stadtbergen BG – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 12:11:58</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr><td>55817</td><td>Herren</td><td>13.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>TSV Oberhaching Tropics</div></td><td class='mannschaft'><div class='mannschaft'>BG Hessing Leitershofen</div></td><td>85 : 99</td></tr><tr><td>52528</td><td>Herren</td><td>08.11.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>SB DJK Rosenheim</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td>77 : 69</td></tr><tr><td>54459</td><td>U18</td><td>08.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td>73 : 84</td></tr><tr><td>54499</td><td>U10</td><td>08.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td>4 : 78</td></tr><tr><td>55817</td><td>Herren</td><td>07.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>BG Hessing Leitershofen</div></td><td class='mannschaft'><div class='mannschaft'>TV Langen</div></td><td>72 : 75</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54494</td><td>U14</td><td>14.11.2026 15:30</td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 3</div></td><td class='halle'><div class='halle'>Schmuttertalhalle<br>Spiel 75013</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>52528</td><td>Herren</td><td>14.11.2026 19:30</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='mannschaft'><div class='mannschaft'>Chiemgau Panthers Traunstein</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 50439</div></td></tr><tr style='background-color:#ffdd99;'><td>54499</td><td>U10</td><td>15.11.2026 09:00</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 46042</div></td></tr><tr><td>54471</td><td>U12</td><td>15.11.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 34025</div></td></tr><tr style='background-color:#ffdd99;'><td>55817</td><td>Herren</td><td>15.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>BG Hessing Leitershofen</div></td><td class='mannschaft'><div class='mannschaft'>BBC Coburg</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 2006190</div></td></tr><tr><td>54453</td><td>Herren</td><td>21.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG powered by BBA Leitershofen/<wbr>Stadtbergen 3</div></td><td class='halle'><div class='halle'>Erhard-<wbr>Wunderlich-<wbr>Sporthalle<br>Spiel 4026</div></td></tr><tr style='background-color:#ffdd99;'><td>54497</td><td>U12</td><td>21.11.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Diedorf</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 43018</div></td></tr><tr><td>52528</td><td>Herren</td><td>21.11.2026 19:45</td><td class='mannschaft'><div class='mannschaft'>TS Herzogenaurach</div></td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 2</div></td><td class='halle'><div class='halle'>Gymnasium<br>Spiel 50446</div></td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>22.11.2026 09:30</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 34030</div></td></tr><tr style='background-color:#ffdd99;'><td>54473</td><td>U10</td><td>22.11.2026 12:00</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 38017</div></td></tr><tr style='background-color:#ffdd99;'><td>54459</td><td>U18</td><td>22.11.2026 14:15</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen</div></td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 22018</div></td></tr><tr style='background-color:#ffdd99;'><td>54494</td><td>U14</td><td>22.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>BG Leitershofen/<wbr>Stadtbergen 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2</div></td><td class='halle'><div class='halle'>MZWH Stadtbergen<br>Spiel 75019</div></td></tr><tr><td>55817</td><td>Herren</td><td>22.11.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>Bayer Giants Leverkusen</div></td><td class='mannschaft'><div class='mannschaft'>BG Hessing Leitershofen</div></td><td class='halle'><div class='halle'>Ostermann-<wbr>Arena<br>Spiel 2006202</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Leitershofen/Stadtbergen BG</b><span class='summary-right'>Stand 14.11.26 12:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>So. 15.11.26</td><td>09:00</td><td class="wrap">BG Leitershofen/<br/>Stadtbergen 2</td><td class="wrap">Netz16 Baskets Königsbrunn</td><td class="liga">Bezirksliga<br/>U10 gemischt Süd<br/>26/27</td><td class="halle">MZWH Stadtbergen<br/>Heinrich-Gerlach-Str.<br/>86391 Stadtbergen</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54499#:~:text=15.11.2026%2009%3A00,Netz16%20Baskets%20K%C3%B6nigsbrunn" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr><td>So. 15.11.26</td><td>17:30</td><td class="wrap">TV 1847 Augsburg 3</td><td class="wrap">Netz16 Baskets Königsbrunn 2</td><td class="liga">Bezirksklasse<br/>Herren Mitte<br/>26/27</td><td class="halle">TVA Halle<br/>Gabelsbergerstr. 64<br/>86199 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54508#:~:text=15.11.2026%2017%3A30,Netz16%20Baskets%20K%C3%B6nigsbrunn%202" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -756,7 +808,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span>
     <span class='summary-right'>
         <span class='liga-status'></span>
-        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 14.11. 10:06)</a>
+        <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_55817.html' onclick='liveHref(this)' target='_blank'>Details ( 14.11. 11:06)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
         <span class='liga-icon green'></span>
     </span>
@@ -764,7 +816,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Süd, gestern bis morgen</div>
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 18:30|Basketball Löwen|Dresden Titans'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Basketball Löwen</div>
@@ -779,7 +831,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006183?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|Culture City Weimar|Dragons Rhöndorf'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Culture City Weimar</div>
@@ -794,7 +846,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/culturecityweimar/culture-city-weimar-vs-dragons-rhoendorf' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006188?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|BBC Coburg|FC Bayern Basketball II'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBC Coburg</div>
@@ -809,7 +861,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006182?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|TV Langen|SV Fellbach Flashers'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TV Langen</div>
@@ -824,7 +876,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tv-langen/tv-langen-vs-sv-fellbach-flashers' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006187?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|TSV Oberhaching Tropics|BG Hessing Leitershofen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSV Oberhaching Tropics</div>
@@ -839,7 +891,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tsv-oberhaching-tropics/tsv-oberhaching-tropics-vs-bg-hessing-leitershofen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006186?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|SKYLINERS Juniors|Ahorn Camp Baskets'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS Juniors</div>
@@ -854,7 +906,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-ahorn-camp-baskets' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006185?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|Porsche BBA Ludwigsburg|TSG Schöller SI Ravens Reutlingen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Porsche BBA Ludwigsburg</div>
@@ -869,7 +921,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/porsche-bba-ludwigsburg/porsche-bba-ludwigsburg-vs-tsg-reutlingen-ravens' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006184?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|SKYLINERS Juniors|Basketball Löwen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS Juniors</div>
@@ -884,7 +936,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-catl-basketball-loewen' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006193?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dragons Rhöndorf|TV Langen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dragons Rhöndorf</div>
@@ -899,7 +951,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dragons-rhoendorf/dragons-rhoendorf-vs-tv-langen' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006195?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dresden Titans|Culture City Weimar'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dresden Titans</div>
@@ -914,7 +966,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dresden-titans/dresden-titans-vs-culture-city-weimar' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006191?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|Ahorn Camp Baskets|Porsche BBA Ludwigsburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Ahorn Camp Baskets</div>
@@ -929,7 +981,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ahorn-camp-baskets/ahorn-camp-baskets-vs-porsche-bba-ludwigsburg' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006189?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|BG Hessing Leitershofen|BBC Coburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Hessing Leitershofen</div>
@@ -944,7 +996,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bg-hessing-leitershofen/bg-hessing-leitershofen-vs-bbc-coburg' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006190?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|TSG Schöller SI Ravens Reutlingen|TSV Oberhaching Tropics'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSG Schöller SI Ravens Reutlingen</div>
@@ -959,7 +1011,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tsg-reutlingen-ravens/tsg-reutlingen-ravens-vs-tsv-oberhaching-tropics' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006192?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:30|SV Fellbach Flashers|Bayer Giants Leverkusen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SV Fellbach Flashers</div>
@@ -2921,13 +2973,34 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
         <span class='liga-status'></span>
         <a class='details-btn' href='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html?nocache=' data-base='https://sevenup51.github.io/BASKETOPEN/bb_api_54473.html' onclick='liveHref(this)' target='_blank'>Details ( 13.11. 14:18)</a>
         <span style='color:green; font-weight:bold;'>✔</span>
-        <span class='liga-icon' style='background:#ffdd99;'></span>
+        <span class='liga-icon green'></span>
     </span>
 </summary>
 
 <div style='margin-left:10px;'>
 <h3>Ergebnisse (letzte 8 Tage)</h3>
-<p><i>Keine Ergebnisse.</i></p>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>nr</th>
+<th>sptag</th>
+<th>date</th>
+<th>home</th>
+<th>guest</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>38015</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>TSV Nördlingen</td>
+<td>SSV Schrobenhausen</td>
+<td>97 : 70</td>
+</tr>
+</tbody>
+</table>
 <h3>Tabelle</h3>
 <table border="1" class="dataframe">
   <thead>
@@ -2954,11 +3027,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>2</td>
       <td>TSV Nördlingen</td>
-      <td>3</td>
-      <td>2/1</td>
       <td>4</td>
-      <td>202 : 171</td>
-      <td>31</td>
+      <td>3/1</td>
+      <td>6</td>
+      <td>299 : 241</td>
+      <td>58</td>
     </tr>
     <tr>
       <td>3</td>
@@ -2990,11 +3063,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>6</td>
       <td>SSV Schrobenhausen</td>
-      <td>2</td>
-      <td>0/2</td>
+      <td>3</td>
+      <td>0/3</td>
       <td>0</td>
-      <td>130 : 197</td>
-      <td>-67</td>
+      <td>200 : 294</td>
+      <td>-94</td>
     </tr>
   </tbody>
 </table>
@@ -3012,7 +3085,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>38015</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>
@@ -3413,6 +3486,22 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>46015</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>TSV Schwaben Augsburg 2 (BOLU10W)</td>
+<td>TV 1847 Augsburg</td>
+<td>56 : 42</td>
+</tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>46016</td>
+<td>4</td>
+<td>14.11.2026 10:00</td>
+<td>Sportfreunde Friedberg</td>
+<td>BG Illertal</td>
+<td>100 : 5</td>
+</tr>
 <tr>
 <td>46028</td>
 <td>7</td>
@@ -3457,11 +3546,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>2</td>
       <td>Sportfreunde Friedberg</td>
-      <td>3</td>
-      <td>2/1</td>
       <td>4</td>
-      <td>237 : 126</td>
-      <td>111</td>
+      <td>3/1</td>
+      <td>6</td>
+      <td>337 : 131</td>
+      <td>206</td>
     </tr>
     <tr>
       <td>3</td>
@@ -3474,21 +3563,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>4</td>
+      <td>TSV Schwaben Augsburg 2 (BOLU10W)</td>
+      <td>3</td>
+      <td>2/1</td>
+      <td>4</td>
+      <td>150 : 145</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>5</td>
       <td>BG Leitershofen/Stadtbergen 2</td>
       <td>4</td>
       <td>2/2</td>
       <td>4</td>
       <td>194 : 200</td>
       <td>-6</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>TSV Schwaben Augsburg 2 (BOLU10W)</td>
-      <td>2</td>
-      <td>1/1</td>
-      <td>2</td>
-      <td>94 : 103</td>
-      <td>-9</td>
     </tr>
     <tr>
       <td>6</td>
@@ -3502,20 +3591,20 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>7</td>
       <td>BG Illertal</td>
-      <td>1</td>
-      <td>0/1</td>
+      <td>2</td>
+      <td>0/2</td>
       <td>0</td>
-      <td>4 : 78</td>
-      <td>-74</td>
+      <td>9 : 178</td>
+      <td>-169</td>
     </tr>
     <tr>
       <td>8</td>
       <td>TV 1847 Augsburg</td>
-      <td>3</td>
-      <td>0/3</td>
+      <td>4</td>
+      <td>0/4</td>
       <td>0</td>
-      <td>110 : 238</td>
-      <td>-128</td>
+      <td>152 : 294</td>
+      <td>-142</td>
     </tr>
   </tbody>
 </table>
@@ -3533,7 +3622,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>46015</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>
@@ -3542,7 +3631,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td><div class="halle">Berufsschule VI</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Verein<br/><span class="sr-verein">TSV Schwaben Augsburg (220205)</span></span><br/><span class="sr-zeile"><b>SR2</b> Verein<br/><span class="sr-verein">TSV Schwaben Augsburg (220205)</span></span></td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>46016</td>
 <td>4</td>
 <td>14.11.2026 10:00</td>
