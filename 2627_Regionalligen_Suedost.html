@@ -114,6 +114,14 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
 .ls-box { border-top:1px solid #8eaccc; }
 .ls-seite a { color:#1a3d7c; }
+.ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
+.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-aus:hover { background:#9eb8d6; }
+.livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
+.livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
+.live-drei .livescore-box.ls-aus-live { opacity:0.72; }
+details.live-sammel .livescore-box.ls-aus-live { display:none; }
 .listen-stand { margin:8px 0 4px; font-size:13px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
@@ -319,7 +327,48 @@ function openLivescoreHeute(){
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
+  if(typeof lsAusAnwenden === "function") lsAusAnwenden();
 }
+function lsAusSchluessel(){ return "lsAusLive:" + location.pathname; }
+function lsAusLesen(){
+  try {
+    var roh = sessionStorage.getItem(lsAusSchluessel());
+    var liste = roh ? JSON.parse(roh) : [];
+    return Array.isArray(liste) ? liste : [];
+  } catch(e){ return []; }
+}
+function lsAusSchreiben(liste){
+  try { sessionStorage.setItem(lsAusSchluessel(), JSON.stringify(liste || [])); } catch(e){}
+}
+function lsAusAnwenden(){
+  var aus = lsAusLesen();
+  document.querySelectorAll(".livescore-box[data-ls-key]").forEach(function(box){
+    var key = box.getAttribute("data-ls-key") || "";
+    box.classList.toggle("ls-aus-live", key && aus.indexOf(key) >= 0);
+  });
+}
+function lsAusUmschalten(key){
+  if(!key) return;
+  var aus = lsAusLesen();
+  var i = aus.indexOf(key);
+  if(i >= 0) aus.splice(i, 1);
+  else aus.push(key);
+  lsAusSchreiben(aus);
+  lsAusAnwenden();
+}
+function lsAusAufloesen(){
+  lsAusSchreiben([]);
+  lsAusAnwenden();
+}
+document.addEventListener("click", function(ev){
+  var knopf = ev.target.closest(".ls-vid-aus");
+  if(!knopf) return;
+  ev.preventDefault();
+  ev.stopPropagation();
+  var box = knopf.closest(".livescore-box");
+  if(!box) return;
+  lsAusUmschalten(box.getAttribute("data-ls-key") || "");
+});
 function openAll(){
   document.querySelectorAll("details").forEach(d=>{
     if(d.id==="wasfindeichhier") return;
@@ -339,9 +388,10 @@ document.addEventListener("DOMContentLoaded", function(){
   stelleBloeckeHer();
   bloeckeStehen = true;
   schliesseMorgen();
+  lsAusAnwenden();
 });
-window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); });
-window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); });
+window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
+window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
 window.addEventListener("beforeunload", speichereBloecke);
 window.addEventListener("pagehide", speichereBloecke);
 function bildFehlt(img){
@@ -368,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Suedost – Stand: 14.11.26 11:38:07</h1>
+<h1>Regionalliga Suedost – Stand: 14.11.26 11:50:54</h1>
 
 
 <details id='wasfindeichhier'>
@@ -589,6 +639,8 @@ Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
 livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
 und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei heutigen Spielen ist die blaue Video-Spalte geteilt. Rechts ✕ schließt<br>
+das Spiel aus livescore_heute aus. Auswahl live auflösen setzt das zurück.<br>
 Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: html. Der Link führt auf die Boxscore-Seite der BBL.<br>

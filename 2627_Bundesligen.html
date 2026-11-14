@@ -114,6 +114,14 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
 .ls-box { border-top:1px solid #8eaccc; }
 .ls-seite a { color:#1a3d7c; }
+.ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
+.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-aus:hover { background:#9eb8d6; }
+.livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
+.livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
+.live-drei .livescore-box.ls-aus-live { opacity:0.72; }
+details.live-sammel .livescore-box.ls-aus-live { display:none; }
 .listen-stand { margin:8px 0 4px; font-size:13px; }
 .ls-nicht-heute { display:none; }
 body.zeige-drei-tage .ls-nicht-heute { display:block; }
@@ -319,7 +327,48 @@ function openLivescoreHeute(){
   });
   bloeckeWerdenHergestellt = false;
   speichereBloecke();
+  if(typeof lsAusAnwenden === "function") lsAusAnwenden();
 }
+function lsAusSchluessel(){ return "lsAusLive:" + location.pathname; }
+function lsAusLesen(){
+  try {
+    var roh = sessionStorage.getItem(lsAusSchluessel());
+    var liste = roh ? JSON.parse(roh) : [];
+    return Array.isArray(liste) ? liste : [];
+  } catch(e){ return []; }
+}
+function lsAusSchreiben(liste){
+  try { sessionStorage.setItem(lsAusSchluessel(), JSON.stringify(liste || [])); } catch(e){}
+}
+function lsAusAnwenden(){
+  var aus = lsAusLesen();
+  document.querySelectorAll(".livescore-box[data-ls-key]").forEach(function(box){
+    var key = box.getAttribute("data-ls-key") || "";
+    box.classList.toggle("ls-aus-live", key && aus.indexOf(key) >= 0);
+  });
+}
+function lsAusUmschalten(key){
+  if(!key) return;
+  var aus = lsAusLesen();
+  var i = aus.indexOf(key);
+  if(i >= 0) aus.splice(i, 1);
+  else aus.push(key);
+  lsAusSchreiben(aus);
+  lsAusAnwenden();
+}
+function lsAusAufloesen(){
+  lsAusSchreiben([]);
+  lsAusAnwenden();
+}
+document.addEventListener("click", function(ev){
+  var knopf = ev.target.closest(".ls-vid-aus");
+  if(!knopf) return;
+  ev.preventDefault();
+  ev.stopPropagation();
+  var box = knopf.closest(".livescore-box");
+  if(!box) return;
+  lsAusUmschalten(box.getAttribute("data-ls-key") || "");
+});
 function openAll(){
   document.querySelectorAll("details").forEach(d=>{
     if(d.id==="wasfindeichhier") return;
@@ -339,9 +388,10 @@ document.addEventListener("DOMContentLoaded", function(){
   stelleBloeckeHer();
   bloeckeStehen = true;
   schliesseMorgen();
+  lsAusAnwenden();
 });
-window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); });
-window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); });
+window.addEventListener("load", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
+window.addEventListener("pageshow", function(){ stelleBloeckeHer(); schliesseMorgen(); lsAusAnwenden(); });
 window.addEventListener("beforeunload", speichereBloecke);
 window.addEventListener("pagehide", speichereBloecke);
 function bildFehlt(img){
@@ -368,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 14.11.26 11:36:24</h1>
+<h1>Bundesligen – Stand: 14.11.26 11:49:39</h1>
 
 
 <details id='wasfindeichhier'>
@@ -589,6 +639,8 @@ Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 Überschrift die Uhr Refresh HH:MM:SS. Zu dieser Zeit lädt die Seite neu.<br>
 livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
 und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
+Bei heutigen Spielen ist die blaue Video-Spalte geteilt. Rechts ✕ schließt<br>
+das Spiel aus livescore_heute aus. Auswahl live auflösen setzt das zurück.<br>
 Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: html. Der Link führt auf die Boxscore-Seite der BBL.<br>
@@ -736,7 +788,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <button onclick="openLivescoreDrei()">livescore_3days</button>
 </div>
 
-<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 14.11 11:36:24</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>18:30</span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
+<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 14.11 11:49:39</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button><button type='button' onclick='lsAusAufloesen()'>Auswahl live auflösen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>heute:</span><span class='uhr'>18:30</span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|Phoenix Hagen|MHP RIESEN Ludwigsburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Phoenix Hagen</div>
@@ -749,7 +801,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=WTUkRg8mjwY' target='_blank'>Kurzbericht</a></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006847#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style='background:#ffdd99;'>
+            </div><div class='livescore-box' style='background:#ffdd99;' data-ls-key='14.11.2026 18:30|ratiopharm ulm|Science City Jena'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ratiopharm ulm</div>
@@ -761,8 +813,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006851#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-seite'><div class='ls-vid ls-vid-geteilt'><div class='ls-vid-links'>siehe dyn</div><button type='button' class='ls-vid-aus' title='Nicht in livescore_heute' aria-label='Nicht in livescore_heute'>✕</button></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006851#boxscore' target='_blank'>Boxscore</a></div></div>
+            </div><div class='livescore-box' style='background:#ffdd99;' data-ls-key='14.11.2026 18:30|BMA365 Bamberg Baskets|Telekom Baskets Bonn'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BMA365 Bamberg Baskets</div>
@@ -774,8 +826,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006850#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-seite'><div class='ls-vid ls-vid-geteilt'><div class='ls-vid-links'>siehe dyn</div><button type='button' class='ls-vid-aus' title='Nicht in livescore_heute' aria-label='Nicht in livescore_heute'>✕</button></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006850#boxscore' target='_blank'>Boxscore</a></div></div>
+            </div><div class='livescore-box' style='background:#ffdd99;' data-ls-key='14.11.2026 20:00|EWE Baskets Oldenburg|ALBA BERLIN'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EWE Baskets Oldenburg</div>
@@ -787,8 +839,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006848#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style='background:#ffdd99;'>
+                <div class='ls-seite'><div class='ls-vid ls-vid-geteilt'><div class='ls-vid-links'>siehe dyn</div><button type='button' class='ls-vid-aus' title='Nicht in livescore_heute' aria-label='Nicht in livescore_heute'>✕</button></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006848#boxscore' target='_blank'>Boxscore</a></div></div>
+            </div><div class='livescore-box' style='background:#ffdd99;' data-ls-key='14.11.2026 20:00|Veolia Towers Hamburg|Fitness First Würzburg Baskets'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Veolia Towers Hamburg</div>
@@ -800,8 +852,8 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006849#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+                <div class='ls-seite'><div class='ls-vid ls-vid-geteilt'><div class='ls-vid-links'>siehe dyn</div><button type='button' class='ls-vid-aus' title='Nicht in livescore_heute' aria-label='Nicht in livescore_heute'>✕</button></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006849#boxscore' target='_blank'>Boxscore</a></div></div>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|SKYLINERS|VET-CONCEPT Gladiators Trier'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS</div>
@@ -814,7 +866,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006852#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|ROSTOCK SEAWOLVES|RASTA Vechta'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ROSTOCK SEAWOLVES</div>
@@ -827,7 +879,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006853#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|FC Bayern München Basketball|SYNTAINICS MBC'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern München Basketball</div>
@@ -840,7 +892,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006854#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 18:00|NINERS Chemnitz|Basketball Löwen Braunschweig'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>NINERS Chemnitz</div>
@@ -853,7 +905,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006855#boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55738'><summary class='liga-kopf'><b>1. Bundesliga (Toyota DBBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>30</span></span><span class='k-lid'>; LID <span class='k-zahl'>55738</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga' data-block='drei-55811'><summary class='liga-kopf'><b>Herren ProA</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>10</span></span><span class='k-lid'>; LID <span class='k-zahl'>55811</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>morgen:</span><span class='uhr'>15:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
+            </div></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55738'><summary class='liga-kopf'><b>1. Bundesliga (Toyota DBBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>30</span></span><span class='k-lid'>; LID <span class='k-zahl'>55738</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga' data-block='drei-55811'><summary class='liga-kopf'><b>Herren ProA</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>10</span></span><span class='k-lid'>; LID <span class='k-zahl'>55811</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>morgen:</span><span class='uhr'>15:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|OrangeAcademy|WGV Tigers Tübingen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>OrangeAcademy</div>
@@ -866,7 +918,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/orangeacademy/orangeacademy-vs-tigers-tuebingen' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005901?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|BG Göttingen|ETB Miners'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Göttingen</div>
@@ -879,7 +931,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bg-goettingen/bg-goettingen-vs-etb-miners' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005896?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|Medikamente per Klick Bayreuth|MLP Academics Heidelberg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Medikamente per Klick Bayreuth</div>
@@ -892,7 +944,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/medikamente-per-klick-bayreuth/medikamente-per-klick-bayreuth-vs-mlp-academics-heidelberg' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005895?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|EPG Baskets Koblenz|VfL SparkassenStars Bochum'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EPG Baskets Koblenz</div>
@@ -905,7 +957,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/epgbasketskoblenz/epg-baskets-koblenz-vs-vfl-sparkassenstars-bochum' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005898?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|SBB Börde Baskets |Eisbären Bremerhaven'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SBB Börde Baskets </div>
@@ -918,7 +970,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sbbbasketswolmirstedt/sbb-baskets-wolmirstedt-vs-eisbaeren-bremerhaven' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005902?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|Artland Dragons|Paderborn Baskets'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Artland Dragons</div>
@@ -931,7 +983,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/artland-dragons/artland-dragons-vs-paderborn-baskets' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005894?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|GIESSEN 46ers|Nürnberg Falcons'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>GIESSEN 46ers</div>
@@ -944,7 +996,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/giessen-46er/giessen-46ers-vs-nuernberg-falcons-bc' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005899?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|Kreisbau Kirchheim Knights|PS Karlsruhe LIONS'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Kreisbau Kirchheim Knights</div>
@@ -957,7 +1009,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/kreisbau-kirchheim-knights/kreisbau-kirchheim-knights-vs-ps-karlsruhe-lions' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005897?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|HAKRO Merlins Crailsheim|RheinStars Köln'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>HAKRO Merlins Crailsheim</div>
@@ -970,7 +1022,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/hakromerlins/hakro-merlins-crailsheim-vs-rheinstars-koeln' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005900?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|Eisbären Bremerhaven|BG Göttingen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Eisbären Bremerhaven</div>
@@ -983,7 +1035,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/eisbaerenbremerhaven/eisbaeren-bremerhaven-vs-bg-goettingen' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005904?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|MLP Academics Heidelberg|HAKRO Merlins Crailsheim'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>MLP Academics Heidelberg</div>
@@ -996,7 +1048,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/mlp-academics-heidelberg/mlp-academics-heidelberg-vs-hakro-merlins-crailsheim' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005908?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|ETB Miners|GIESSEN 46ers'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ETB Miners</div>
@@ -1009,7 +1061,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/etb-miners/etb-miners-vs-giessen-46ers' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005903?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|WGV Tigers Tübingen|Kreisbau Kirchheim Knights'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>WGV Tigers Tübingen</div>
@@ -1022,7 +1074,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tigers-tuebingen/tigers-tuebingen-vs-kreisbau-kirchheim-knights' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005907?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|Nürnberg Falcons|Medikamente per Klick Bayreuth'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Nürnberg Falcons</div>
@@ -1035,7 +1087,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/nuernberg-falcons-bc/nuernberg-falcons-bc-vs-medikamente-per-klick-bayreuth' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005905?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:30|PS Karlsruhe LIONS|OrangeAcademy'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>PS Karlsruhe LIONS</div>
@@ -1048,7 +1100,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ps-karlsruhe-lions/ps-karlsruhe-lions-vs-orangeacademy' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005906?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 18:00|VfL SparkassenStars Bochum|Artland Dragons'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>VfL SparkassenStars Bochum</div>
@@ -1061,7 +1113,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sparkassenstars-bochum/vfl-sparkassenstars-bochum-vs-artland-dragons' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005909?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55749'><summary class='liga-kopf'><b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>43</span></span><span class='k-lid'>; LID <span class='k-zahl'>55749</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55746'><summary class='liga-kopf'><b>2. DBBL Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>40</span></span><span class='k-lid'>; LID <span class='k-zahl'>55746</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga' data-block='drei-55817'><summary class='liga-kopf'><b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>morgen:</span><span class='uhr'>16:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
+            </div></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55749'><summary class='liga-kopf'><b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>43</span></span><span class='k-lid'>; LID <span class='k-zahl'>55749</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55746'><summary class='liga-kopf'><b>2. DBBL Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>40</span></span><span class='k-lid'>; LID <span class='k-zahl'>55746</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga' data-block='drei-55817'><summary class='liga-kopf'><b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>morgen:</span><span class='uhr'>16:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='13.11.2026 18:30|Basketball Löwen|Dresden Titans'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Basketball Löwen</div>
@@ -1074,7 +1126,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006183?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|Culture City Weimar|Dragons Rhöndorf'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Culture City Weimar</div>
@@ -1087,7 +1139,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/culturecityweimar/culture-city-weimar-vs-dragons-rhoendorf' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006188?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|BBC Coburg|FC Bayern Basketball II'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBC Coburg</div>
@@ -1100,7 +1152,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006182?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|TV Langen|SV Fellbach Flashers'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TV Langen</div>
@@ -1113,7 +1165,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tv-langen/tv-langen-vs-sv-fellbach-flashers' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006187?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|TSV Oberhaching Tropics|BG Hessing Leitershofen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSV Oberhaching Tropics</div>
@@ -1126,7 +1178,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tsv-oberhaching-tropics/tsv-oberhaching-tropics-vs-bg-hessing-leitershofen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006186?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|SKYLINERS Juniors|Ahorn Camp Baskets'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS Juniors</div>
@@ -1139,7 +1191,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-ahorn-camp-baskets' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006185?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|Porsche BBA Ludwigsburg|TSG Schöller SI Ravens Reutlingen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Porsche BBA Ludwigsburg</div>
@@ -1152,7 +1204,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/porsche-bba-ludwigsburg/porsche-bba-ludwigsburg-vs-tsg-reutlingen-ravens' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006184?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|SKYLINERS Juniors|Basketball Löwen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS Juniors</div>
@@ -1165,7 +1217,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-catl-basketball-loewen' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006193?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dragons Rhöndorf|TV Langen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dragons Rhöndorf</div>
@@ -1178,7 +1230,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dragons-rhoendorf/dragons-rhoendorf-vs-tv-langen' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006195?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dresden Titans|Culture City Weimar'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dresden Titans</div>
@@ -1191,7 +1243,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dresden-titans/dresden-titans-vs-culture-city-weimar' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006191?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|Ahorn Camp Baskets|Porsche BBA Ludwigsburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Ahorn Camp Baskets</div>
@@ -1204,7 +1256,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ahorn-camp-baskets/ahorn-camp-baskets-vs-porsche-bba-ludwigsburg' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006189?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|BG Hessing Leitershofen|BBC Coburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Hessing Leitershofen</div>
@@ -1217,7 +1269,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bg-hessing-leitershofen/bg-hessing-leitershofen-vs-bbc-coburg' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006190?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|TSG Schöller SI Ravens Reutlingen|TSV Oberhaching Tropics'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSG Schöller SI Ravens Reutlingen</div>
@@ -1230,7 +1282,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tsg-reutlingen-ravens/tsg-reutlingen-ravens-vs-tsv-oberhaching-tropics' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006192?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:30|SV Fellbach Flashers|Bayer Giants Leverkusen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SV Fellbach Flashers</div>
@@ -1243,7 +1295,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sv-fellbach-flashers/sv-fellbach-flashers-vs-bayer-giants-leverkusen' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006194?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55815'><summary class='liga-kopf'><b>Herren ProB Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>20</span></span><span class='k-lid'>; LID <span class='k-zahl'>55815</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>morgen:</span><span class='uhr'>17:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style=''>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55815'><summary class='liga-kopf'><b>Herren ProB Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>20</span></span><span class='k-lid'>; LID <span class='k-zahl'>55815</span>)</span></span></span><span class='summary-right naechstes'>Nächstes Spiel <span class='tag'>morgen:</span><span class='uhr'>17:00</span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|Iserlohn Kangaroos|Uni Baskets Münster'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Iserlohn Kangaroos</div>
@@ -1256,7 +1308,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/iserlohn-kangaroos/iserlohn-kangaroos-vs-uni-baskets-muenster' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006389?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|EN BASKETS Schwelm|Seawolves Academy'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EN BASKETS Schwelm</div>
@@ -1269,7 +1321,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/enbasketsschwelm/en-baskets-schwelm-vs-seawolves-academy' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006387?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|BSW Sixers|TSV Neustadt temps Shooters'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BSW Sixers</div>
@@ -1282,7 +1334,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-ahorn-camp-baskets' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006385?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|Hertener Löwen|ART Giants Düsseldorf'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Hertener Löwen</div>
@@ -1295,7 +1347,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/hertenerloewen/hertener-loewen-e-v-vs-art-giants-duesseldorf' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006388?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|SC Rist Wedel|Itzehoe Eagles'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SC Rist Wedel</div>
@@ -1308,7 +1360,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sc-rist-wedel/sc-rist-wedel-vs-itzehoe-eagles' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006390?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|SG Braunschweig|LOK BERNAU'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SG Braunschweig</div>
@@ -1321,7 +1373,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sg-braunschweig/sg-braunschweig-vs-lok-bernau' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006391?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='13.11.2026 20:15|BBA Hagen|Baskets Juniors TSG Westerstede'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBA Hagen</div>
@@ -1334,7 +1386,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bba-hagen/bba-hagen-vs-baskets-juniors-tsg-westerstede' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006386?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|LOK BERNAU|BSW Sixers'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>LOK BERNAU</div>
@@ -1347,7 +1399,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/lok-bernau/lok-bernau-vs-bsw-sixers' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006395?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|BBA Hagen|EN BASKETS Schwelm'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBA Hagen</div>
@@ -1360,7 +1412,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bba-hagen/bba-hagen-vs-en-baskets-schwelm' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006392?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|SC Rist Wedel|Baskets Juniors TSG Westerstede'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SC Rist Wedel</div>
@@ -1373,7 +1425,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sc-rist-wedel/sc-rist-wedel-vs-baskets-juniors-tsg-westerstede' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006397?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:30|ART Giants Düsseldorf|Iserlohn Kangaroos'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ART Giants Düsseldorf</div>
@@ -1386,7 +1438,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/art-giants-duesseldorf/art-giants-duesseldorf-vs-iserlohn-kangaroos' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006393?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 18:00|Uni Baskets Münster|Hertener Löwen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Uni Baskets Münster</div>
@@ -1399,7 +1451,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/uni-baskets-muenster/uni-baskets-muenster-vs-hertener-loewen-e-v' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006396?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 18:30|Seawolves Academy|SG Braunschweig'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Seawolves Academy</div>
@@ -1412,7 +1464,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/seawolves-academy/seawolves-academy-vs-sg-braunschweig' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006398?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style=''>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 20:00|Itzehoe Eagles|TSV Neustadt temps Shooters'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Itzehoe Eagles</div>
@@ -1439,7 +1491,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>easyCredit BBL, gestern bis morgen</div>
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|Phoenix Hagen|MHP RIESEN Ludwigsburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Phoenix Hagen</div>
@@ -1454,7 +1506,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://www.youtube.com/watch?v=WTUkRg8mjwY' target='_blank'>Kurzbericht</a></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006847#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style='background:#ffdd99;'>
+            <div class='livescore-box' style='background:#ffdd99;' data-ls-key='14.11.2026 18:30|ratiopharm ulm|Science City Jena'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ratiopharm ulm</div>
@@ -1466,10 +1518,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006851#boxscore' target='_blank'>Boxscore</a></div></div>
+                <div class='ls-seite'><div class='ls-vid ls-vid-geteilt'><div class='ls-vid-links'>siehe dyn</div><button type='button' class='ls-vid-aus' title='Nicht in livescore_heute' aria-label='Nicht in livescore_heute'>✕</button></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006851#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style='background:#ffdd99;'>
+            <div class='livescore-box' style='background:#ffdd99;' data-ls-key='14.11.2026 18:30|BMA365 Bamberg Baskets|Telekom Baskets Bonn'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BMA365 Bamberg Baskets</div>
@@ -1481,10 +1533,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006850#boxscore' target='_blank'>Boxscore</a></div></div>
+                <div class='ls-seite'><div class='ls-vid ls-vid-geteilt'><div class='ls-vid-links'>siehe dyn</div><button type='button' class='ls-vid-aus' title='Nicht in livescore_heute' aria-label='Nicht in livescore_heute'>✕</button></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006850#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style='background:#ffdd99;'>
+            <div class='livescore-box' style='background:#ffdd99;' data-ls-key='14.11.2026 20:00|EWE Baskets Oldenburg|ALBA BERLIN'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EWE Baskets Oldenburg</div>
@@ -1496,10 +1548,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006848#boxscore' target='_blank'>Boxscore</a></div></div>
+                <div class='ls-seite'><div class='ls-vid ls-vid-geteilt'><div class='ls-vid-links'>siehe dyn</div><button type='button' class='ls-vid-aus' title='Nicht in livescore_heute' aria-label='Nicht in livescore_heute'>✕</button></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006848#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style='background:#ffdd99;'>
+            <div class='livescore-box' style='background:#ffdd99;' data-ls-key='14.11.2026 20:00|Veolia Towers Hamburg|Fitness First Würzburg Baskets'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Veolia Towers Hamburg</div>
@@ -1511,10 +1563,10 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 
                 
                 </div>
-                <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006849#boxscore' target='_blank'>Boxscore</a></div></div>
+                <div class='ls-seite'><div class='ls-vid ls-vid-geteilt'><div class='ls-vid-links'>siehe dyn</div><button type='button' class='ls-vid-aus' title='Nicht in livescore_heute' aria-label='Nicht in livescore_heute'>✕</button></div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006849#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|SKYLINERS|VET-CONCEPT Gladiators Trier'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS</div>
@@ -1529,7 +1581,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006852#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|ROSTOCK SEAWOLVES|RASTA Vechta'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ROSTOCK SEAWOLVES</div>
@@ -1544,7 +1596,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006853#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|FC Bayern München Basketball|SYNTAINICS MBC'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>FC Bayern München Basketball</div>
@@ -1559,7 +1611,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'>siehe dyn</div><div class='ls-box'><a href='https://www.easycredit-bbl.de/spiele/2006854#boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 18:00|NINERS Chemnitz|Basketball Löwen Braunschweig'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>NINERS Chemnitz</div>
@@ -2288,7 +2340,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProA, gestern bis morgen</div>
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|OrangeAcademy|WGV Tigers Tübingen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>OrangeAcademy</div>
@@ -2303,7 +2355,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/orangeacademy/orangeacademy-vs-tigers-tuebingen' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005901?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|BG Göttingen|ETB Miners'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Göttingen</div>
@@ -2318,7 +2370,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bg-goettingen/bg-goettingen-vs-etb-miners' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005896?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|Medikamente per Klick Bayreuth|MLP Academics Heidelberg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Medikamente per Klick Bayreuth</div>
@@ -2333,7 +2385,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/medikamente-per-klick-bayreuth/medikamente-per-klick-bayreuth-vs-mlp-academics-heidelberg' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005895?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|EPG Baskets Koblenz|VfL SparkassenStars Bochum'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EPG Baskets Koblenz</div>
@@ -2348,7 +2400,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/epgbasketskoblenz/epg-baskets-koblenz-vs-vfl-sparkassenstars-bochum' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005898?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|SBB Börde Baskets |Eisbären Bremerhaven'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SBB Börde Baskets </div>
@@ -2363,7 +2415,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sbbbasketswolmirstedt/sbb-baskets-wolmirstedt-vs-eisbaeren-bremerhaven' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005902?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|Artland Dragons|Paderborn Baskets'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Artland Dragons</div>
@@ -2378,7 +2430,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/artland-dragons/artland-dragons-vs-paderborn-baskets' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005894?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|GIESSEN 46ers|Nürnberg Falcons'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>GIESSEN 46ers</div>
@@ -2393,7 +2445,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/giessen-46er/giessen-46ers-vs-nuernberg-falcons-bc' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005899?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|Kreisbau Kirchheim Knights|PS Karlsruhe LIONS'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Kreisbau Kirchheim Knights</div>
@@ -2408,7 +2460,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/kreisbau-kirchheim-knights/kreisbau-kirchheim-knights-vs-ps-karlsruhe-lions' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005897?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|HAKRO Merlins Crailsheim|RheinStars Köln'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>HAKRO Merlins Crailsheim</div>
@@ -2423,7 +2475,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/hakromerlins/hakro-merlins-crailsheim-vs-rheinstars-koeln' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005900?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|Eisbären Bremerhaven|BG Göttingen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Eisbären Bremerhaven</div>
@@ -2438,7 +2490,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/eisbaerenbremerhaven/eisbaeren-bremerhaven-vs-bg-goettingen' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005904?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|MLP Academics Heidelberg|HAKRO Merlins Crailsheim'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>MLP Academics Heidelberg</div>
@@ -2453,7 +2505,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/mlp-academics-heidelberg/mlp-academics-heidelberg-vs-hakro-merlins-crailsheim' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005908?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|ETB Miners|GIESSEN 46ers'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ETB Miners</div>
@@ -2468,7 +2520,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/etb-miners/etb-miners-vs-giessen-46ers' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005903?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|WGV Tigers Tübingen|Kreisbau Kirchheim Knights'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>WGV Tigers Tübingen</div>
@@ -2483,7 +2535,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tigers-tuebingen/tigers-tuebingen-vs-kreisbau-kirchheim-knights' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005907?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|Nürnberg Falcons|Medikamente per Klick Bayreuth'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Nürnberg Falcons</div>
@@ -2498,7 +2550,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/nuernberg-falcons-bc/nuernberg-falcons-bc-vs-medikamente-per-klick-bayreuth' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005905?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:30|PS Karlsruhe LIONS|OrangeAcademy'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>PS Karlsruhe LIONS</div>
@@ -2513,7 +2565,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ps-karlsruhe-lions/ps-karlsruhe-lions-vs-orangeacademy' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005906?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 18:00|VfL SparkassenStars Bochum|Artland Dragons'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>VfL SparkassenStars Bochum</div>
@@ -3665,7 +3717,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Süd, gestern bis morgen</div>
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 18:30|Basketball Löwen|Dresden Titans'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Basketball Löwen</div>
@@ -3680,7 +3732,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006183?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|Culture City Weimar|Dragons Rhöndorf'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Culture City Weimar</div>
@@ -3695,7 +3747,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/culturecityweimar/culture-city-weimar-vs-dragons-rhoendorf' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006188?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|BBC Coburg|FC Bayern Basketball II'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBC Coburg</div>
@@ -3710,7 +3762,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/basketball-loewen-erfurt/catl-basketball-loewen-vs-dresden-titans' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006182?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|TV Langen|SV Fellbach Flashers'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TV Langen</div>
@@ -3725,7 +3777,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tv-langen/tv-langen-vs-sv-fellbach-flashers' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006187?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|TSV Oberhaching Tropics|BG Hessing Leitershofen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSV Oberhaching Tropics</div>
@@ -3740,7 +3792,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tsv-oberhaching-tropics/tsv-oberhaching-tropics-vs-bg-hessing-leitershofen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006186?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|SKYLINERS Juniors|Ahorn Camp Baskets'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS Juniors</div>
@@ -3755,7 +3807,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-ahorn-camp-baskets' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006185?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|Porsche BBA Ludwigsburg|TSG Schöller SI Ravens Reutlingen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Porsche BBA Ludwigsburg</div>
@@ -3770,7 +3822,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/porsche-bba-ludwigsburg/porsche-bba-ludwigsburg-vs-tsg-reutlingen-ravens' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006184?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|SKYLINERS Juniors|Basketball Löwen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS Juniors</div>
@@ -3785,7 +3837,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-catl-basketball-loewen' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006193?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dragons Rhöndorf|TV Langen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dragons Rhöndorf</div>
@@ -3800,7 +3852,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dragons-rhoendorf/dragons-rhoendorf-vs-tv-langen' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006195?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dresden Titans|Culture City Weimar'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dresden Titans</div>
@@ -3815,7 +3867,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dresden-titans/dresden-titans-vs-culture-city-weimar' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006191?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|Ahorn Camp Baskets|Porsche BBA Ludwigsburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Ahorn Camp Baskets</div>
@@ -3830,7 +3882,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ahorn-camp-baskets/ahorn-camp-baskets-vs-porsche-bba-ludwigsburg' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006189?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|BG Hessing Leitershofen|BBC Coburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BG Hessing Leitershofen</div>
@@ -3845,7 +3897,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bg-hessing-leitershofen/bg-hessing-leitershofen-vs-bbc-coburg' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006190?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|TSG Schöller SI Ravens Reutlingen|TSV Oberhaching Tropics'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>TSG Schöller SI Ravens Reutlingen</div>
@@ -3860,7 +3912,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/tsg-reutlingen-ravens/tsg-reutlingen-ravens-vs-tsv-oberhaching-tropics' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006192?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:30|SV Fellbach Flashers|Bayer Giants Leverkusen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SV Fellbach Flashers</div>
@@ -4343,7 +4395,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Nord, gestern bis morgen</div>
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:00|Iserlohn Kangaroos|Uni Baskets Münster'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Iserlohn Kangaroos</div>
@@ -4358,7 +4410,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/iserlohn-kangaroos/iserlohn-kangaroos-vs-uni-baskets-muenster' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006389?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|EN BASKETS Schwelm|Seawolves Academy'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>EN BASKETS Schwelm</div>
@@ -4373,7 +4425,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/enbasketsschwelm/en-baskets-schwelm-vs-seawolves-academy' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006387?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 19:30|BSW Sixers|TSV Neustadt temps Shooters'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BSW Sixers</div>
@@ -4388,7 +4440,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-ahorn-camp-baskets' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006385?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|Hertener Löwen|ART Giants Düsseldorf'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Hertener Löwen</div>
@@ -4403,7 +4455,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/hertenerloewen/hertener-loewen-e-v-vs-art-giants-duesseldorf' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006388?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|SC Rist Wedel|Itzehoe Eagles'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SC Rist Wedel</div>
@@ -4418,7 +4470,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sc-rist-wedel/sc-rist-wedel-vs-itzehoe-eagles' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006390?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:00|SG Braunschweig|LOK BERNAU'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SG Braunschweig</div>
@@ -4433,7 +4485,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sg-braunschweig/sg-braunschweig-vs-lok-bernau' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006391?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='13.11.2026 20:15|BBA Hagen|Baskets Juniors TSG Westerstede'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBA Hagen</div>
@@ -4448,7 +4500,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bba-hagen/bba-hagen-vs-baskets-juniors-tsg-westerstede' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006386?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|LOK BERNAU|BSW Sixers'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>LOK BERNAU</div>
@@ -4463,7 +4515,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/lok-bernau/lok-bernau-vs-bsw-sixers' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006395?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|BBA Hagen|EN BASKETS Schwelm'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>BBA Hagen</div>
@@ -4478,7 +4530,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bba-hagen/bba-hagen-vs-en-baskets-schwelm' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006392?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|SC Rist Wedel|Baskets Juniors TSG Westerstede'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SC Rist Wedel</div>
@@ -4493,7 +4545,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sc-rist-wedel/sc-rist-wedel-vs-baskets-juniors-tsg-westerstede' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006397?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:30|ART Giants Düsseldorf|Iserlohn Kangaroos'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>ART Giants Düsseldorf</div>
@@ -4508,7 +4560,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/art-giants-duesseldorf/art-giants-duesseldorf-vs-iserlohn-kangaroos' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006393?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 18:00|Uni Baskets Münster|Hertener Löwen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Uni Baskets Münster</div>
@@ -4523,7 +4575,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/uni-baskets-muenster/uni-baskets-muenster-vs-hertener-loewen-e-v' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006396?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 18:30|Seawolves Academy|SG Braunschweig'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Seawolves Academy</div>
@@ -4538,7 +4590,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/seawolves-academy/seawolves-academy-vs-sg-braunschweig' target='_blank'>Video</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006398?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style=''>
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 20:00|Itzehoe Eagles|TSV Neustadt temps Shooters'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Itzehoe Eagles</div>
