@@ -111,12 +111,12 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .livescore-box:has(.ls-seite) { display:flex; align-items:stretch; padding:0; width:368px; flex-basis:368px; max-width:368px; overflow:hidden; }
 .ls-kern { flex:1 1 auto; min-width:0; padding:10px; }
 .ls-seite { flex:0 0 88px; display:flex; flex-direction:column; background:#c9ddf2; border-left:1px solid #8eaccc; }
-.ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
+.ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; overflow-wrap:break-word; white-space:pre-line; }
 .ls-box { border-top:1px solid #8eaccc; }
-.ls-seite a { color:#1a3d7c; }
+.ls-seite a { color:#1a3d7c; overflow-wrap:break-word; white-space:pre-line; }
 .ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
-.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
-.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px 2px; min-width:0; overflow-wrap:break-word; white-space:pre-line; }
+.ls-vid-aus { flex:0 0 28px; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
 .ls-vid-aus:hover { background:#9eb8d6; }
 .livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
 .livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
@@ -418,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Augsburg TV 1847 – Stand: 14.11.26 18:14:10</h1>
+<h1>Augsburg TV 1847 – Stand: 14.11.26 19:14:54</h1>
 
 
 <details id='wasfindeichhier'>
@@ -788,7 +788,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Augsburg TV 1847 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 18:14:10</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>14.11.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>57 : 79</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54466</td><td>U14</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td>55 : 107</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2 (BOLU10W)</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>56 : 42</td></tr><tr><td>54461</td><td>U16</td><td>08.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td>51 : 84</td></tr><tr><td>52498</td><td>Herren</td><td>08.11.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>FC Bayern München</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>57 : 69</td></tr><tr><td>52528</td><td>Herren</td><td>08.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>DJK SB München</div></td><td>83 : 84</td></tr><tr><td>54475</td><td>U9</td><td>08.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td>39 : 56</td></tr><tr><td>54460</td><td>U18</td><td>08.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td>75 : 23</td></tr><tr><td>54459</td><td>U18</td><td>07.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>131 : 75</td></tr><tr><td>54471</td><td>U12</td><td>07.11.2026 10:30</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>79 : 86</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54466</td><td>U14</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 30021</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2 (BOLU10W)</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 46015</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>14.11.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 33014</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54472</td><td>U12</td><td>14.11.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 37010</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>52498</td><td>Herren</td><td>14.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TG Landshut</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 21024</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54459</td><td>U18</td><td>14.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>August-<wbr>Horch-<wbr>Schule<br>Spiel 22015</div></td></tr><tr style='background-color:#ffdd99;'><td>54462</td><td>U16</td><td>15.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 29013</div></td></tr><tr><td>54471</td><td>U12</td><td>15.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 34021</div></td></tr><tr><td>54466</td><td>U14</td><td>15.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 30014</div></td></tr><tr style='background-color:#ffdd99;'><td>54461</td><td>U16</td><td>15.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 26023</div></td></tr><tr><td>54453</td><td>Herren</td><td>15.11.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='halle'><div class='halle'>Paul-<wbr>Klee-<wbr>Gymnasium (neu)<br>Spiel 4024</div></td></tr><tr style='background-color:#ffdd99;'><td>54508</td><td>Herren</td><td>15.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 3</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn 2</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 7021</div></td></tr><tr style='background-color:#ffdd99;'><td>54467</td><td>U14</td><td>21.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 33017</div></td></tr><tr style='background-color:#ffdd99;'><td>54497</td><td>U12</td><td>21.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 43017</div></td></tr><tr style='background-color:#ffdd99;'><td>54453</td><td>Herren</td><td>21.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG powered by BBA Leitershofen/<wbr>Stadtbergen 3</div></td><td class='halle'><div class='halle'>Erhard-<wbr>Wunderlich-<wbr>Sporthalle<br>Spiel 4026</div></td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>21.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 34028</div></td></tr><tr><td>54459</td><td>U18</td><td>21.11.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 22017</div></td></tr><tr><td>52498</td><td>Herren</td><td>21.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TSV München Ost</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Ost-<wbr>Dome 1<br>Spiel 21031</div></td></tr><tr><td>52534</td><td>Herren</td><td>21.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 50476</div></td></tr><tr style='background-color:#ffdd99;'><td>54466</td><td>U14</td><td>21.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 30017</div></td></tr><tr style='background-color:#ffdd99;'><td>52528</td><td>Herren</td><td>21.11.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Regensburg Baskets</div></td><td class='halle'><div class='halle'>Erhard-<wbr>Wunderlich-<wbr>Sporthalle<br>Spiel 50445</div></td></tr><tr style='background-color:#ffdd99;'><td>54508</td><td>Herren</td><td>21.11.2026 20:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen 2</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 7017</div></td></tr><tr><td>54476</td><td>U8</td><td>22.11.2026 11:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>August-<wbr>Horch-<wbr>Schule<br>Spiel 41005</div></td></tr><tr><td>54462</td><td>U16</td><td>22.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen a.K.</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 29018</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg TV 1847</b><span class='summary-right'>Stand 14.11.26 18:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
+<details open><summary><b>Spielplan Augsburg TV 1847 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 14.11.26 19:14:54</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Ergebnis</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54472</td><td>U12</td><td>14.11.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>75 : 62</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>14.11.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>57 : 79</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54466</td><td>U14</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td>55 : 107</td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2 (BOLU10W)</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>56 : 42</td></tr><tr><td>54461</td><td>U16</td><td>08.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>SG Heising-Kottern</div></td><td>51 : 84</td></tr><tr><td>52498</td><td>Herren</td><td>08.11.2026 16:00</td><td class='mannschaft'><div class='mannschaft'>FC Bayern München</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>57 : 69</td></tr><tr><td>52528</td><td>Herren</td><td>08.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>DJK SB München</div></td><td>83 : 84</td></tr><tr><td>54475</td><td>U9</td><td>08.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV 1861 Nördlingen</div></td><td>39 : 56</td></tr><tr><td>54460</td><td>U18</td><td>08.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>DJK Eichstätt</div></td><td>75 : 23</td></tr><tr><td>54459</td><td>U18</td><td>07.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>VFL Buchloe</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>131 : 75</td></tr><tr><td>54471</td><td>U12</td><td>07.11.2026 10:30</td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td>79 : 86</td></tr></tbody></table></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54466</td><td>U14</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 30021</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54499</td><td>U10</td><td>14.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TSV Schwaben Augsburg 2 (BOLU10W)</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Berufsschule VI<br>Spiel 46015</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54467</td><td>U14</td><td>14.11.2026 13:00</td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Elsbethen-<wbr>Bismarck-<wbr>Halle<br>Spiel 33014</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54472</td><td>U12</td><td>14.11.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>SSV Schrobenhausen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Michael-<wbr>Sommer Mittelschule<br>Spiel 37010</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>52498</td><td>Herren</td><td>14.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TG Landshut</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 21024</div></td></tr><tr style='background-color:#b7ebc6; font-weight:bold;'><td>54459</td><td>U18</td><td>14.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>August-<wbr>Horch-<wbr>Schule<br>Spiel 22015</div></td></tr><tr style='background-color:#ffdd99;'><td>54462</td><td>U16</td><td>15.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TV Memmingen</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 29013</div></td></tr><tr><td>54471</td><td>U12</td><td>15.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>VSC Baskets Donauwörth</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Stauferpark Halle<br>Spiel 34021</div></td></tr><tr><td>54466</td><td>U14</td><td>15.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 30014</div></td></tr><tr style='background-color:#ffdd99;'><td>54461</td><td>U16</td><td>15.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG Illertal</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 26023</div></td></tr><tr><td>54453</td><td>Herren</td><td>15.11.2026 17:00</td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='halle'><div class='halle'>Paul-<wbr>Klee-<wbr>Gymnasium (neu)<br>Spiel 4024</div></td></tr><tr style='background-color:#ffdd99;'><td>54508</td><td>Herren</td><td>15.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 3</div></td><td class='mannschaft'><div class='mannschaft'>Netz16 Baskets Königsbrunn 2</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 7021</div></td></tr><tr style='background-color:#ffdd99;'><td>54467</td><td>U14</td><td>21.11.2026 10:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 33017</div></td></tr><tr style='background-color:#ffdd99;'><td>54497</td><td>U12</td><td>21.11.2026 12:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 43017</div></td></tr><tr style='background-color:#ffdd99;'><td>54453</td><td>Herren</td><td>21.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV Augsburg 2</div></td><td class='mannschaft'><div class='mannschaft'>BG powered by BBA Leitershofen/<wbr>Stadtbergen 3</div></td><td class='halle'><div class='halle'>Erhard-<wbr>Wunderlich-<wbr>Sporthalle<br>Spiel 4026</div></td></tr><tr style='background-color:#ffdd99;'><td>54471</td><td>U12</td><td>21.11.2026 15:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 34028</div></td></tr><tr><td>54459</td><td>U18</td><td>21.11.2026 16:45</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 22017</div></td></tr><tr><td>52498</td><td>Herren</td><td>21.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TSV München Ost</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Ost-<wbr>Dome 1<br>Spiel 21031</div></td></tr><tr style='background-color:#ffdd99;'><td>54466</td><td>U14</td><td>21.11.2026 17:30</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>BBU'01 Sektion BY e.V.</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 30017</div></td></tr><tr style='background-color:#ffdd99;'><td>52528</td><td>Herren</td><td>21.11.2026 18:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='mannschaft'><div class='mannschaft'>Regensburg Baskets</div></td><td class='halle'><div class='halle'>Erhard-<wbr>Wunderlich-<wbr>Sporthalle<br>Spiel 50445</div></td></tr><tr style='background-color:#ffdd99;'><td>54508</td><td>Herren</td><td>21.11.2026 20:00</td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 3</div></td><td class='mannschaft'><div class='mannschaft'>TSV Gersthofen 2</div></td><td class='halle'><div class='halle'>TVA Halle<br>Spiel 7017</div></td></tr><tr><td>54476</td><td>U8</td><td>22.11.2026 11:00</td><td class='mannschaft'><div class='mannschaft'>PSV Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>August-<wbr>Horch-<wbr>Schule<br>Spiel 41005</div></td></tr><tr><td>54462</td><td>U16</td><td>22.11.2026 12:15</td><td class='mannschaft'><div class='mannschaft'>TSV Nördlingen a.K.</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg</div></td><td class='halle'><div class='halle'>Mehrzweckhalle<br>Spiel 29018</div></td></tr><tr><td>52534</td><td>Herren</td><td>22.11.2026 14:30</td><td class='mannschaft'><div class='mannschaft'>TSV Etting-Ingolstadt</div></td><td class='mannschaft'><div class='mannschaft'>TV 1847 Augsburg 2</div></td><td class='halle'><div class='halle'>Ballspielhalle<br>Spiel 50476</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Augsburg TV 1847</b><span class='summary-right'>Stand 14.11.26 19:00</span></summary><div style='margin-left:10px;'><table class="sr-verein">
 <tr><th>Datum</th><th>Uhrzeit</th><th class="wrap">Heim</th><th class="wrap">Gast</th><th class="liga">Liga</th><th class="halle">Halle</th><th class="wrap">SR-Kollege</th><th class="wrap">weitere</th><th>TeamSL</th></tr>
 <tr><td>Sa. 14.11.26</td><td>10:00</td><td class="wrap">TV 1847 Augsburg</td><td class="wrap">Netz16 Baskets Königsbrunn</td><td class="liga">Bezirksoberliga<br/>U14 männlich<br/>26/27</td><td class="halle">TVA Halle<br/>Gabelsbergerstr. 64<br/>86199 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54466#:~:text=14.11.2026%2010%3A00,Netz16%20Baskets%20K%C3%B6nigsbrunn" rel="noopener" target="_blank">Spielplan</a></td></tr>
 <tr class="offen"><td>So. 15.11.26</td><td>10:00</td><td class="wrap">TV 1847 Augsburg</td><td class="wrap">TV Memmingen</td><td class="liga">Bezirksoberliga<br/>U16 weiblich<br/>26/27</td><td class="halle">TVA Halle<br/>Gabelsbergerstr. 64<br/>86199 Augsburg</td><td class="wrap">- (SR1, SR2)</td><td class="wrap">-</td><td><a class="plan" href="https://www.basketball-bund.net/public/spielplan_list.jsp?print=1&amp;viewDescKey=sport.dbb.liga.SpielplanViewPublic/index.jsp_&amp;liga_id=54462#:~:text=15.11.2026%2010%3A00,TV%20Memmingen" rel="noopener" target="_blank">Spielplan</a></td></tr>
@@ -834,6 +834,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>21025</td>
+<td>8</td>
+<td>14.11.2026 17:00</td>
+<td><a href="https://regionalliga-suedost.de/index.php/alle-sp-rld/start-in-die-rueckrunde-gegen-mtv-muenchen" target="_blank">SB DJK Rosenheim</a></td>
+<td>MTV 1879 München</td>
+<td>132 : 47</td>
+</tr>
 <tr>
 <td>21020</td>
 <td>7</td>
@@ -877,11 +885,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>1</td>
       <td>SB DJK Rosenheim</td>
-      <td>6</td>
-      <td>6/0</td>
-      <td>12</td>
-      <td>501 : 378</td>
-      <td>123</td>
+      <td>7</td>
+      <td>7/0</td>
+      <td>14</td>
+      <td>633 : 425</td>
+      <td>208</td>
     </tr>
     <tr>
       <td>2</td>
@@ -940,11 +948,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>8</td>
       <td>MTV 1879 München</td>
-      <td>6</td>
-      <td>0/6</td>
+      <td>7</td>
+      <td>0/7</td>
       <td>0</td>
-      <td>323 : 531</td>
-      <td>-208</td>
+      <td>370 : 663</td>
+      <td>-293</td>
     </tr>
   </tbody>
 </table>
@@ -962,7 +970,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>21025</td>
 <td>8</td>
 <td>14.11.2026 17:00</td>
@@ -1587,15 +1595,6 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Tobias Hundertmark</span><br/><span class="sr-zeile"><b>SR2</b> George Tannouz</span></td>
 </tr>
 <tr>
-<td>50476</td>
-<td>6</td>
-<td>21.11.2026 17:30</td>
-<td><div class="mannschaft">TSV Etting-Ingolstadt</div></td>
-<td><div class="mannschaft">TV 1847 Augsburg 2</div></td>
-<td><div class="halle">Ballspielhalle</div></td>
-<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Christoph Hönsch</span><br/><span class="sr-zeile"><b>SR2</b> Matthias Wolf</span></td>
-</tr>
-<tr>
 <td>50477</td>
 <td>6</td>
 <td>21.11.2026 19:15</td>
@@ -1621,6 +1620,15 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td><div class="mannschaft">Haching Baskets</div></td>
 <td><div class="halle">Badria</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Eduard Safont Balaguer</span><br/><span class="sr-zeile"><b>SR2</b> Jure Odak</span></td>
+</tr>
+<tr>
+<td>50476</td>
+<td>6</td>
+<td>22.11.2026 14:30</td>
+<td><div class="mannschaft">TSV Etting-Ingolstadt</div></td>
+<td><div class="mannschaft">TV 1847 Augsburg 2</div></td>
+<td><div class="halle">Ballspielhalle</div></td>
+<td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Christoph Hönsch</span><br/><span class="sr-zeile"><b>SR2</b> Matthias Wolf</span></td>
 </tr>
 <tr>
 <td>50479</td>
@@ -2240,6 +2248,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>22013</td>
+<td>4</td>
+<td>14.11.2026 17:00</td>
+<td>VSC Baskets Donauwörth</td>
+<td>VFL Buchloe</td>
+<td>93 : 53</td>
+</tr>
 <tr>
 <td>22014</td>
 <td>4</td>
@@ -2301,21 +2317,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>4</td>
+      <td>VSC Baskets Donauwörth</td>
+      <td>3</td>
+      <td>2/1</td>
+      <td>4</td>
+      <td>257 : 231</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>5</td>
       <td>BG Illertal</td>
       <td>2</td>
       <td>1/1</td>
       <td>2</td>
       <td>161 : 130</td>
       <td>31</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>VSC Baskets Donauwörth</td>
-      <td>2</td>
-      <td>1/1</td>
-      <td>2</td>
-      <td>164 : 178</td>
-      <td>-14</td>
     </tr>
     <tr>
       <td>6</td>
@@ -2338,11 +2354,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>8</td>
       <td>VFL Buchloe</td>
-      <td>5</td>
-      <td>1/4</td>
+      <td>6</td>
+      <td>1/5</td>
       <td>2</td>
-      <td>358 : 422</td>
-      <td>-64</td>
+      <td>411 : 515</td>
+      <td>-104</td>
     </tr>
   </tbody>
 </table>
@@ -2360,7 +2376,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>22013</td>
 <td>4</td>
 <td>14.11.2026 17:00</td>
@@ -2592,6 +2608,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>26021</td>
+<td>5</td>
+<td>14.11.2026 17:00</td>
+<td>TSV Nördlingen</td>
+<td>SSV Schrobenhausen</td>
+<td>89 : 55</td>
+</tr>
 <tr>
 <td>26033</td>
 <td>7</td>
@@ -2681,29 +2705,29 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>7</td>
       <td>TSV Nördlingen</td>
-      <td>3</td>
-      <td>0/3</td>
-      <td>0</td>
-      <td>165 : 229</td>
-      <td>-64</td>
+      <td>4</td>
+      <td>1/3</td>
+      <td>2</td>
+      <td>254 : 284</td>
+      <td>-30</td>
     </tr>
     <tr>
       <td>8</td>
-      <td>SSV Schrobenhausen</td>
-      <td>3</td>
-      <td>0/3</td>
-      <td>0</td>
-      <td>164 : 237</td>
-      <td>-73</td>
-    </tr>
-    <tr>
-      <td>9</td>
       <td>DJK Eichstätt</td>
       <td>3</td>
       <td>0/3</td>
       <td>0</td>
       <td>162 : 258</td>
       <td>-96</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>SSV Schrobenhausen</td>
+      <td>4</td>
+      <td>0/4</td>
+      <td>0</td>
+      <td>219 : 326</td>
+      <td>-107</td>
     </tr>
     <tr>
       <td>10</td>
@@ -2731,7 +2755,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>26021</td>
 <td>5</td>
 <td>14.11.2026 17:00</td>
@@ -3442,6 +3466,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </thead>
 <tbody>
 <tr style="background-color:#ffdd99; font-weight:bold;">
+<td>37010</td>
+<td>4</td>
+<td>14.11.2026 17:00</td>
+<td>SSV Schrobenhausen</td>
+<td>TV 1847 Augsburg</td>
+<td>75 : 62</td>
+</tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>37011</td>
 <td>4</td>
 <td>14.11.2026 14:30</td>
@@ -3485,21 +3517,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>3</td>
-      <td>TV 1847 Augsburg</td>
-      <td>2</td>
-      <td>1/1</td>
-      <td>2</td>
-      <td>121 : 107</td>
-      <td>14</td>
+      <td>SSV Schrobenhausen</td>
+      <td>3</td>
+      <td>2/1</td>
+      <td>4</td>
+      <td>181 : 191</td>
+      <td>-10</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>SSV Schrobenhausen</td>
+      <td>TV 1847 Augsburg</td>
+      <td>3</td>
+      <td>1/2</td>
       <td>2</td>
-      <td>1/1</td>
-      <td>2</td>
-      <td>106 : 129</td>
-      <td>-23</td>
+      <td>183 : 182</td>
+      <td>1</td>
     </tr>
     <tr>
       <td>5</td>
@@ -3535,7 +3567,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td><div class="halle">Mehrzweckhalle</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Verein<br/><span class="sr-verein">TSV 1861 Nördlingen (220226)</span></span><br/><span class="sr-zeile"><b>SR2</b> Verein<br/><span class="sr-verein">TSV 1861 Nördlingen (220226)</span></span></td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>37010</td>
 <td>4</td>
 <td>14.11.2026 17:00</td>
