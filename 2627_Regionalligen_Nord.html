@@ -111,12 +111,12 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .livescore-box:has(.ls-seite) { display:flex; align-items:stretch; padding:0; width:368px; flex-basis:368px; max-width:368px; overflow:hidden; }
 .ls-kern { flex:1 1 auto; min-width:0; padding:10px; }
 .ls-seite { flex:0 0 88px; display:flex; flex-direction:column; background:#c9ddf2; border-left:1px solid #8eaccc; }
-.ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
+.ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; overflow-wrap:anywhere; word-break:break-word; }
 .ls-box { border-top:1px solid #8eaccc; }
-.ls-seite a { color:#1a3d7c; }
+.ls-seite a { color:#1a3d7c; overflow-wrap:anywhere; word-break:break-word; }
 .ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
-.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
-.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px 2px; min-width:0; overflow-wrap:anywhere; word-break:break-word; }
+.ls-vid-aus { flex:0 0 28px; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
 .ls-vid-aus:hover { background:#9eb8d6; }
 .livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
 .livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
@@ -418,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga Nord – Stand: 14.11.26 18:38:07</h1>
+<h1>Regionalliga Nord – Stand: 14.11.26 18:53:05</h1>
 
 
 <details id='wasfindeichhier'>
@@ -1552,6 +1552,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
+<tr style="background-color:#ffdd99; font-weight:bold;">
+<td>6029</td>
+<td>6</td>
+<td>14.11.2026 16:00</td>
+<td>BASS BERLIN</td>
+<td>ALBA BERLIN Basketballteam 2</td>
+<td>72 : 91</td>
+</tr>
 <tr>
 <td>6025</td>
 <td>5</td>
@@ -1603,20 +1611,20 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>1</td>
       <td>ALBA BERLIN Basketballteam 2</td>
-      <td>4</td>
-      <td>4/0</td>
-      <td>8</td>
-      <td>315 : 183</td>
-      <td>132</td>
+      <td>5</td>
+      <td>5/0</td>
+      <td>10</td>
+      <td>406 : 255</td>
+      <td>151</td>
     </tr>
     <tr>
       <td>2</td>
       <td>BASS BERLIN</td>
-      <td>5</td>
-      <td>4/1</td>
+      <td>6</td>
+      <td>4/2</td>
       <td>8</td>
-      <td>312 : 246</td>
-      <td>66</td>
+      <td>384 : 337</td>
+      <td>47</td>
     </tr>
     <tr>
       <td>3</td>
@@ -1706,7 +1714,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </tr>
 </thead>
 <tbody>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>6029</td>
 <td>6</td>
 <td>14.11.2026 16:00</td>

@@ -111,12 +111,12 @@ details.verein-zeile > summary .summary-right { min-width: 0; }
 .livescore-box:has(.ls-seite) { display:flex; align-items:stretch; padding:0; width:368px; flex-basis:368px; max-width:368px; overflow:hidden; }
 .ls-kern { flex:1 1 auto; min-width:0; padding:10px; }
 .ls-seite { flex:0 0 88px; display:flex; flex-direction:column; background:#c9ddf2; border-left:1px solid #8eaccc; }
-.ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; }
+.ls-box, .ls-vid { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-size:11px; font-weight:bold; line-height:1.25; padding:4px; overflow-wrap:anywhere; word-break:break-word; }
 .ls-box { border-top:1px solid #8eaccc; }
-.ls-seite a { color:#1a3d7c; }
+.ls-seite a { color:#1a3d7c; overflow-wrap:anywhere; word-break:break-word; }
 .ls-vid-geteilt { flex-direction:row; align-items:stretch; padding:0; gap:0; }
-.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px; min-width:0; }
-.ls-vid-aus { flex:0 0 50%; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
+.ls-vid-links { flex:1 1 0; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4px 2px; min-width:0; overflow-wrap:anywhere; word-break:break-word; }
+.ls-vid-aus { flex:0 0 28px; margin:0; border:0; border-left:1px solid #8eaccc; background:#b7cce3; color:#1a3d7c; font-size:14px; font-weight:bold; cursor:pointer; padding:0; }
 .ls-vid-aus:hover { background:#9eb8d6; }
 .livescore-box.ls-aus-live .ls-vid-aus { background:#c0392b; color:#fff; }
 .livescore-box.ls-aus-live .ls-vid-aus:hover { background:#a93226; }
@@ -418,7 +418,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Regionalliga West – Stand: 14.11.26 18:38:23</h1>
+<h1>Regionalliga West – Stand: 14.11.26 18:53:20</h1>
 
 
 <details id='wasfindeichhier'>
@@ -2095,6 +2095,14 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 </thead>
 <tbody>
 <tr style="background-color:#ffdd99; font-weight:bold;">
+<td>36</td>
+<td>6</td>
+<td>14.11.2026 17:00</td>
+<td>BC Langendreer</td>
+<td>TSV Hagen</td>
+<td>48 : 64</td>
+</tr>
+<tr style="background-color:#ffdd99; font-weight:bold;">
 <td>31</td>
 <td>6</td>
 <td>14.11.2026 16:00</td>
@@ -2203,21 +2211,21 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     </tr>
     <tr>
       <td>4</td>
+      <td>TSV Hagen</td>
+      <td>6</td>
+      <td>4/2</td>
+      <td>8</td>
+      <td>455 : 423</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>5</td>
       <td>Hürther BC</td>
       <td>5</td>
       <td>3/2</td>
       <td>6</td>
       <td>340 : 330</td>
       <td>10</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>TSV Hagen</td>
-      <td>5</td>
-      <td>3/2</td>
-      <td>6</td>
-      <td>391 : 375</td>
-      <td>16</td>
     </tr>
     <tr>
       <td>6</td>
@@ -2276,11 +2284,11 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     <tr>
       <td>12</td>
       <td>BC Langendreer</td>
-      <td>5</td>
-      <td>0/5</td>
+      <td>6</td>
+      <td>0/6</td>
       <td>0</td>
-      <td>264 : 317</td>
-      <td>-53</td>
+      <td>312 : 381</td>
+      <td>-69</td>
     </tr>
   </tbody>
 </table>
@@ -2307,7 +2315,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <td><div class="halle">SH Ost</div></td>
 <td class="schiedsrichter"><span class="sr-zeile"><b>SR1</b> Alexander Prahm</span><br/><span class="sr-zeile"><b>SR2</b> Henrik Stachowicz</span></td>
 </tr>
-<tr style="background-color:#ffdd99; font-weight:bold;">
+<tr style="background-color:#b7ebc6; font-weight:bold;">
 <td>36</td>
 <td>6</td>
 <td>14.11.2026 17:00</td>
