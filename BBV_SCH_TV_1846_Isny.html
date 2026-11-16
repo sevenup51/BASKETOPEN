@@ -330,15 +330,21 @@ function openLivescoreHeute(){
   if(typeof lsAusAnwenden === "function") lsAusAnwenden();
 }
 function lsAusSchluessel(){ return "lsAusLive:" + location.pathname; }
-function lsAusLesen(){
+function lsAusMerkSchluessel(){ return "lsAusLiveMerk:" + location.pathname; }
+function lsAusListeLesen(name){
   try {
-    var roh = sessionStorage.getItem(lsAusSchluessel());
+    var roh = sessionStorage.getItem(name);
     var liste = roh ? JSON.parse(roh) : [];
     return Array.isArray(liste) ? liste : [];
   } catch(e){ return []; }
 }
+function lsAusLesen(){ return lsAusListeLesen(lsAusSchluessel()); }
+function lsAusMerkLesen(){ return lsAusListeLesen(lsAusMerkSchluessel()); }
 function lsAusSchreiben(liste){
   try { sessionStorage.setItem(lsAusSchluessel(), JSON.stringify(liste || [])); } catch(e){}
+}
+function lsAusMerkSchreiben(liste){
+  try { sessionStorage.setItem(lsAusMerkSchluessel(), JSON.stringify(liste || [])); } catch(e){}
 }
 function lsAusAnwenden(){
   var aus = lsAusLesen();
@@ -357,7 +363,15 @@ function lsAusUmschalten(key){
   lsAusAnwenden();
 }
 function lsAusAufloesen(){
+  var aus = lsAusLesen();
+  if(aus.length) lsAusMerkSchreiben(aus);
   lsAusSchreiben([]);
+  lsAusAnwenden();
+}
+function lsAusWiederherstellen(){
+  var merk = lsAusMerkLesen();
+  if(!merk.length) return;
+  lsAusSchreiben(merk.slice());
   lsAusAnwenden();
 }
 document.addEventListener("click", function(ev){
@@ -418,7 +432,7 @@ function boxscoreHinweis(){
 </head>
 <body>
 
-<h1>Isny TV 1846 – Stand: 16.11.26 17:16:53</h1>
+<h1>Isny TV 1846 – Stand: 16.11.26 18:18:05</h1>
 
 
 <details id='wasfindeichhier'>
@@ -640,7 +654,9 @@ Solange Live offen ist und ein Spiel grün ist, steht rechts in der<br>
 livescore_3days öffnet nur den Block Spiele von gestern, heute und morgen<br>
 und schließt Live. Die einzelnen Ligen darunter bleiben davon unberührt.<br>
 Bei heutigen Spielen ist die blaue Video-Spalte geteilt. Rechts ✕ schließt<br>
-das Spiel aus livescore_heute aus. Auswahl live auflösen setzt das zurück.<br>
+das Spiel aus livescore_heute aus. Auswahl live auflösen setzt das zurück und<br>
+merkt die Markierung. Auswahl Live wiederherstellen bringt sie zurück.<br>
+Beide Schaltflächen stehen unter livescore_3days und unter livescore_heute.<br>
 Bei jeder Liga zeigt Livescore gestern, heute und morgen.<br>
 Bei den Bundesligen gibt es zusätzlich die Spalten Boxscore und Video.<br>
 Boxscore bei der BBL: html. Der Link führt auf die Boxscore-Seite der BBL.<br>
@@ -788,7 +804,7 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
     
 </div>
 
-<details open><summary><b>Spielplan Isny TV 1846 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 16.11.26 17:16:53</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Ergebnisse.</i></p></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54484</td><td>Herren</td><td>22.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TV 1846 Isny</div></td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='halle'><div class='halle'>Rotmoos Sporthalle<br>Spiel 11017</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Isny TV 1846</b><span class='summary-right'>Stand 16.11.26 17:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
+<details open><summary><b>Spielplan Isny TV 1846 – Die nächsten Spiele und aktuelle Ergebnisse</b><span class='summary-right'>Stand 16.11.26 18:18:05</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button></div><details open><summary><b>Ergebnisse der letzten 8 Tage</b></summary><div style='margin-left:10px;'><p><i>Keine Ergebnisse.</i></p></div></details><details open><summary><b>Spiele der nächsten 8 Tage</b></summary><div style='margin-left:10px;'><table class='spielplan'><thead><tr><th>LigaID</th><th>Liga</th><th>date</th><th>home</th><th>guest</th><th>Halle</th></tr></thead><tbody><tr style='background-color:#ffdd99;'><td>54484</td><td>Herren</td><td>22.11.2026 16:30</td><td class='mannschaft'><div class='mannschaft'>TV 1846 Isny</div></td><td class='mannschaft'><div class='mannschaft'>TSV Haunstetten</div></td><td class='halle'><div class='halle'>Rotmoos Sporthalle<br>Spiel 11017</div></td></tr></tbody></table></div></details></div></details><details><summary><b>SR-Einteilung Isny TV 1846</b><span class='summary-right'>Stand 16.11.26 18:00</span></summary><div style='margin-left:10px;'><p><i>Keine SR-Einteilung für diesen Verein.</i></p></div></details><details>
 
 <summary class='liga-kopf'>
     <b>Bezirksliga Herren Süd 26/27</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren Schwaben</span><span class='k-lnr'>; LNR <span class='k-zahl'>22011</span></span><span class='k-lid'>; LID <span class='k-zahl'>54484</span>)</span></span></span>
