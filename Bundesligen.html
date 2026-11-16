@@ -432,7 +432,7 @@ function boxscoreHinweis(){
 </head>
 <body data-start='bundesliga'>
 
-<h1>Bundesligen – Stand: 16.11.26 18:36:23</h1>
+<h1>Bundesligen – Stand: 16.11.26 19:06:21</h1>
 
 
 <details id='wasfindeichhier'>
@@ -801,10 +801,45 @@ Die Endziffer ist 0, es gibt keine Playoffrunde.
 <div style="margin-bottom:8px;">
     <button onclick="openAll()">Alle öffnen</button>
     <button onclick="closeAll()">Alle schließen</button>
-    <button onclick="openLivescoreDrei()">livescore_3days</button>
+    <button onclick="openLivescoreDrei()">livescore_3days</button><button class="livescore-heute" onclick="openLivescoreHeute()">livescore_heute</button>
 </div>
 
-<details class='live-drei' data-block='Live3' open><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 16.11 18:36:23</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button><button type='button' onclick='lsAusAufloesen()'>Auswahl live auflösen</button><button type='button' onclick='lsAusWiederherstellen()'>Auswahl Live wiederherstellen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|SKYLINERS|VET-CONCEPT Gladiators Trier'>
+<p class='listen-stand'><b>Bundesligen</b>, Stand der Liste 16.11.2026</p><details class='live-sammel' data-block='Live' open><summary><b>LIVE</b> <span id='live-refresh'></span><span class='summary-right'>Stand: 16.11 19:06:21</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button><button type='button' onclick='lsAusAufloesen()'>Auswahl live auflösen</button><button type='button' onclick='lsAusWiederherstellen()'>Auswahl Live wiederherstellen</button></div>
+<details class="legende-refresh" open>
+  <summary><b>Legende Refreshzeile</b></summary>
+  <table class="legende" id="legende-refresh">
+    <tr><th>Kürzel</th><th>Bedeutung</th><th>Zeit</th><th>Kürzel</th><th>Bedeutung</th><th>Zeit</th><th>Kürzel</th><th>Bedeutung</th><th>Zeit</th><th>in</th><th>Differenz *)</th></tr>
+    <tr>
+      <td>T</td><td>Aktuelle Zeit.</td><td id="lg-t"></td>
+      <td>L</td><td>Letzter Refresh.</td><td id="lg-l"></td>
+      <td>R</td><td>Nächster Refresh.</td><td id="lg-r"></td>
+      <td>in</td><td id="lg-in"></td>
+    </tr>
+    <tr>
+      <td>I</td><td>Stand Internet *)</td><td id="lg-i"></td>
+      <td>UA</td><td>Letzter Upload.</td><td id="lg-ua"></td>
+      <td>UN</td><td>Nächster Upload. *)</td><td id="lg-un"></td>
+      <td class="lg-grau" colspan="2"></td>
+    </tr>
+  </table>
+  <p class="legende-stern">*) Restzeit bis zum Refresh. Unter 11 Sekunden grün mit weißer Schrift.</p>
+  <p class="legende-stern">*) Jüngster Stand in der Kachel.</p>
+  <p class="legende-stern">*) Der Upload läuft alle 6 Minuten.</p>
+</details>
+<details class='live-liga' data-block='live-55811' open><summary class='liga-kopf'><b>Herren ProA</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>10</span></span><span class='k-lid'>; LID <span class='k-zahl'>55811</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box ls-aktiv' style='background:#ffdd99;' data-ls-key='16.11.2026 19:30|RheinStars Köln|EPG Baskets Koblenz'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>RheinStars Köln</div>
+                    <div class='ls-score'>–</div>
+                    <div class='ls-team' style='text-align:right;'>EPG Baskets Koblenz</div>
+                </div>
+                
+                <div class='ls-date' style='display:inline-block;padding:0 3px;border:2px solid #1b7f37;'>16.11.2026 19:30</div>
+                
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid ls-vid-geteilt'><div class='ls-vid-links'><a href='https://sporteurope.tv/rheinstars-koeln/rheinstars-koeln-vs-epg-baskets-koblenz' target='_blank'>Pay</a></div><button type='button' class='ls-vid-aus' title='Nicht in livescore_heute' aria-label='Nicht in livescore_heute'>✕</button></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005910?s=boxscore' target='_blank'>Boxscore</a></div></div>
+            </div></div></details></div></details><details class='live-drei' data-block='Live3'><summary><b>Spiele von gestern, heute und morgen</b><span class='summary-right'>Stand: 16.11 19:06:21</span></summary><div style='margin-left:10px;'><div style='margin:4px 0 6px;'><button type='button' onclick='gruppeAuf(this)'>Alles öffnen</button><button type='button' onclick='gruppeZu(this)'>Alles schließen</button><button type='button' onclick='lsAusAufloesen()'>Auswahl live auflösen</button><button type='button' onclick='lsAusWiederherstellen()'>Auswahl Live wiederherstellen</button></div><details class='live-drei-liga' data-block='drei-55802' open><summary class='liga-kopf'><b>1. Bundesliga (easyCredit BBL)</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>1</span></span><span class='k-lid'>; LID <span class='k-zahl'>55802</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='15.11.2026 15:00|SKYLINERS|VET-CONCEPT Gladiators Trier'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>SKYLINERS</div>
@@ -980,20 +1015,7 @@ richt</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.d
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sbbbasketswolmirstedt/sbb-boerde-baskets-vs-paderborn-baskets' target='_blank'>Pay</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2005911?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55749'><summary class='liga-kopf'><b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>43</span></span><span class='k-lid'>; LID <span class='k-zahl'>55749</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55746'><summary class='liga-kopf'><b>2. DBBL Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>40</span></span><span class='k-lid'>; LID <span class='k-zahl'>55746</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga' data-block='drei-55817' open><summary class='liga-kopf'><b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|SKYLINERS Juniors|Basketball Löwen'>
-                <div class='ls-kern'>
-                <div class='ls-row'>
-                    <div class='ls-team'>SKYLINERS Juniors</div>
-                    <div class='ls-score'>64:56</div>
-                    <div class='ls-team' style='text-align:right;'>Basketball Löwen</div>
-                </div>
-                
-                <div class='ls-date'>15.11.2026 16:00</div>
-                
-                
-                </div>
-                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-catl-basketball-loewen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006193?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dragons Rhöndorf|TV Langen'>
+            </div></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55749'><summary class='liga-kopf'><b>2. DBBL Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>43</span></span><span class='k-lid'>; LID <span class='k-zahl'>55749</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga live-drei-leer' data-block='drei-55746'><summary class='liga-kopf'><b>2. DBBL Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>40</span></span><span class='k-lid'>; LID <span class='k-zahl'>55746</span>)</span></span></span><span class='summary-right naechstes kein-aktuell'>kein aktuelles Spiel</span></summary><div class='livescore-list'></div></details><details class='live-drei-liga' data-block='drei-55817' open><summary class='liga-kopf'><b>Herren ProB Süd</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>22</span></span><span class='k-lid'>; LID <span class='k-zahl'>55817</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dragons Rhöndorf|TV Langen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>Dragons Rhöndorf</div>
@@ -1006,6 +1028,19 @@ richt</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.d
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dragons-rhoendorf/dragons-rhoendorf-vs-tv-langen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006195?s=boxscore' target='_blank'>Boxscore</a></div></div>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|SKYLINERS Juniors|Basketball Löwen'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>SKYLINERS Juniors</div>
+                    <div class='ls-score'>64:56</div>
+                    <div class='ls-team' style='text-align:right;'>Basketball Löwen</div>
+                </div>
+                
+                <div class='ls-date'>15.11.2026 16:00</div>
+                
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-catl-basketball-loewen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006193?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dresden Titans|Culture City Weimar'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -1019,19 +1054,6 @@ richt</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.d
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dresden-titans/dresden-titans-vs-culture-city-weimar' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006191?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|BG Hessing Leitershofen|BBC Coburg'>
-                <div class='ls-kern'>
-                <div class='ls-row'>
-                    <div class='ls-team'>BG Hessing Leitershofen</div>
-                    <div class='ls-score'>82:69</div>
-                    <div class='ls-team' style='text-align:right;'>BBC Coburg</div>
-                </div>
-                
-                <div class='ls-date'>15.11.2026 16:30</div>
-                
-                
-                </div>
-                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bg-hessing-leitershofen/bg-hessing-leitershofen-vs-bbc-coburg' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006190?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|Ahorn Camp Baskets|Porsche BBA Ludwigsburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -1045,6 +1067,19 @@ richt</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.d
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ahorn-camp-baskets/ahorn-camp-baskets-vs-porsche-bba-ludwigsburg' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006189?s=boxscore' target='_blank'>Boxscore</a></div></div>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|BG Hessing Leitershofen|BBC Coburg'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>BG Hessing Leitershofen</div>
+                    <div class='ls-score'>82:69</div>
+                    <div class='ls-team' style='text-align:right;'>BBC Coburg</div>
+                </div>
+                
+                <div class='ls-date'>15.11.2026 16:30</div>
+                
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bg-hessing-leitershofen/bg-hessing-leitershofen-vs-bbc-coburg' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006190?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|TSG Schöller SI Ravens Reutlingen|TSV Oberhaching Tropics'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -1071,20 +1106,7 @@ richt</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.d
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sv-fellbach-flashers/sv-fellbach-flashers-vs-bayer-giants-leverkusen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006194?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div></div></details><details class='live-drei-liga' data-block='drei-55815' open><summary class='liga-kopf'><b>Herren ProB Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>20</span></span><span class='k-lid'>; LID <span class='k-zahl'>55815</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|BBA Hagen|EN BASKETS Schwelm'>
-                <div class='ls-kern'>
-                <div class='ls-row'>
-                    <div class='ls-team'>BBA Hagen</div>
-                    <div class='ls-score'>73:59</div>
-                    <div class='ls-team' style='text-align:right;'>EN BASKETS Schwelm</div>
-                </div>
-                
-                <div class='ls-date'>15.11.2026 17:00</div>
-                
-                
-                </div>
-                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bba-hagen/bba-hagen-vs-en-baskets-schwelm' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006392?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|LOK BERNAU|BSW Sixers'>
+            </div></div></details><details class='live-drei-liga' data-block='drei-55815' open><summary class='liga-kopf'><b>Herren ProB Nord</b><span class='liga-meta'><span class='liga-kennung'><span class='k-stufe'>(Senioren</span><span class='k-lnr'>; LNR <span class='k-zahl'>20</span></span><span class='k-lid'>; LID <span class='k-zahl'>55815</span>)</span></span></span></summary><div class='livescore-list'><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|LOK BERNAU|BSW Sixers'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
                     <div class='ls-team'>LOK BERNAU</div>
@@ -1110,6 +1132,19 @@ richt</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.d
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sc-rist-wedel/sc-rist-wedel-vs-baskets-juniors-tsg-westerstede' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006397?s=boxscore' target='_blank'>Boxscore</a></div></div>
+            </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|BBA Hagen|EN BASKETS Schwelm'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>BBA Hagen</div>
+                    <div class='ls-score'>73:59</div>
+                    <div class='ls-team' style='text-align:right;'>EN BASKETS Schwelm</div>
+                </div>
+                
+                <div class='ls-date'>15.11.2026 17:00</div>
+                
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bba-hagen/bba-hagen-vs-en-baskets-schwelm' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006392?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div><div class='livescore-box' style='' data-ls-key='15.11.2026 17:30|ART Giants Düsseldorf|Iserlohn Kangaroos'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -3030,21 +3065,6 @@ richt</a></td></tr>
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Süd, gestern bis morgen</div>
-            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|SKYLINERS Juniors|Basketball Löwen'>
-                <div class='ls-kern'>
-                <div class='ls-row'>
-                    <div class='ls-team'>SKYLINERS Juniors</div>
-                    <div class='ls-score'>64:56</div>
-                    <div class='ls-team' style='text-align:right;'>Basketball Löwen</div>
-                </div>
-                
-                <div class='ls-date'>15.11.2026 16:00</div>
-                
-                
-                </div>
-                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-catl-basketball-loewen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006193?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div>
-            
             <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dragons Rhöndorf|TV Langen'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -3058,6 +3078,21 @@ richt</a></td></tr>
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dragons-rhoendorf/dragons-rhoendorf-vs-tv-langen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006195?s=boxscore' target='_blank'>Boxscore</a></div></div>
+            </div>
+            
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|SKYLINERS Juniors|Basketball Löwen'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>SKYLINERS Juniors</div>
+                    <div class='ls-score'>64:56</div>
+                    <div class='ls-team' style='text-align:right;'>Basketball Löwen</div>
+                </div>
+                
+                <div class='ls-date'>15.11.2026 16:00</div>
+                
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/frankfurt-skyliners-juniors/skyliners-juniors-vs-catl-basketball-loewen' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006193?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
             <div class='livescore-box' style='' data-ls-key='15.11.2026 16:00|Dresden Titans|Culture City Weimar'>
@@ -3075,21 +3110,6 @@ richt</a></td></tr>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/dresden-titans/dresden-titans-vs-culture-city-weimar' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006191?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
-            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|BG Hessing Leitershofen|BBC Coburg'>
-                <div class='ls-kern'>
-                <div class='ls-row'>
-                    <div class='ls-team'>BG Hessing Leitershofen</div>
-                    <div class='ls-score'>82:69</div>
-                    <div class='ls-team' style='text-align:right;'>BBC Coburg</div>
-                </div>
-                
-                <div class='ls-date'>15.11.2026 16:30</div>
-                
-                
-                </div>
-                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bg-hessing-leitershofen/bg-hessing-leitershofen-vs-bbc-coburg' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006190?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div>
-            
             <div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|Ahorn Camp Baskets|Porsche BBA Ludwigsburg'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -3103,6 +3123,21 @@ richt</a></td></tr>
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/ahorn-camp-baskets/ahorn-camp-baskets-vs-porsche-bba-ludwigsburg' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006189?s=boxscore' target='_blank'>Boxscore</a></div></div>
+            </div>
+            
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 16:30|BG Hessing Leitershofen|BBC Coburg'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>BG Hessing Leitershofen</div>
+                    <div class='ls-score'>82:69</div>
+                    <div class='ls-team' style='text-align:right;'>BBC Coburg</div>
+                </div>
+                
+                <div class='ls-date'>15.11.2026 16:30</div>
+                
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bg-hessing-leitershofen/bg-hessing-leitershofen-vs-bbc-coburg' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006190?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
             <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|TSG Schöller SI Ravens Reutlingen|TSV Oberhaching Tropics'>
@@ -3537,21 +3572,6 @@ richt</a></td></tr>
 
 <div style='margin-left:10px;'>
 <details class='livescore-block'><summary><b>Livescore</b></summary><div class='livescore-list'><div style='flex:1 0 100%; font-size:12px; color:#666; margin-top:8px;'>ProB Nord, gestern bis morgen</div>
-            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|BBA Hagen|EN BASKETS Schwelm'>
-                <div class='ls-kern'>
-                <div class='ls-row'>
-                    <div class='ls-team'>BBA Hagen</div>
-                    <div class='ls-score'>73:59</div>
-                    <div class='ls-team' style='text-align:right;'>EN BASKETS Schwelm</div>
-                </div>
-                
-                <div class='ls-date'>15.11.2026 17:00</div>
-                
-                
-                </div>
-                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bba-hagen/bba-hagen-vs-en-baskets-schwelm' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006392?s=boxscore' target='_blank'>Boxscore</a></div></div>
-            </div>
-            
             <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|LOK BERNAU|BSW Sixers'>
                 <div class='ls-kern'>
                 <div class='ls-row'>
@@ -3580,6 +3600,21 @@ richt</a></td></tr>
                 
                 </div>
                 <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/sc-rist-wedel/sc-rist-wedel-vs-baskets-juniors-tsg-westerstede' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006397?s=boxscore' target='_blank'>Boxscore</a></div></div>
+            </div>
+            
+            <div class='livescore-box' style='' data-ls-key='15.11.2026 17:00|BBA Hagen|EN BASKETS Schwelm'>
+                <div class='ls-kern'>
+                <div class='ls-row'>
+                    <div class='ls-team'>BBA Hagen</div>
+                    <div class='ls-score'>73:59</div>
+                    <div class='ls-team' style='text-align:right;'>EN BASKETS Schwelm</div>
+                </div>
+                
+                <div class='ls-date'>15.11.2026 17:00</div>
+                
+                
+                </div>
+                <div class='ls-seite'><div class='ls-vid'><a href='https://sporteurope.tv/bba-hagen/bba-hagen-vs-en-baskets-schwelm' target='_blank'>Re-Live</a></div><div class='ls-box'><a href='https://live.2basketballbundesliga.de/g/2006392?s=boxscore' target='_blank'>Boxscore</a></div></div>
             </div>
             
             <div class='livescore-box' style='' data-ls-key='15.11.2026 17:30|ART Giants Düsseldorf|Iserlohn Kangaroos'>
